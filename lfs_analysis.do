@@ -81,8 +81,10 @@ g del = ar>=61 & ar<720
 
 	keep if date==date_q
 
+ 	g p=pay!=.
+
 	sort conacct date
-	foreach var of varlist c pay del ar emp wage hrs {
+	foreach var of varlist c pay del ar emp wage hrs amount p {
 		by conacct: g `var'_ch = `var'[_n]-`var'[_n-1]
 	}
 
@@ -91,26 +93,75 @@ g del = ar>=61 & ar<720
 	gen y1    = year(date1)
 
 
+
 	global cond "c_ch<=50 & c_ch>=-50 & emp_ch>=-.5 & emp_ch<=.5 "
 	global ctrls "emp_ch hrs_ch i.m1 i.y1"
 	global ctrls1 "c_ch ${ctrls}"
+	global ctrls2 "c_ch amount_ch ${ctrls}"
+		reg amount_ch $ctrls  if $cond, cluster(age_mun) r
 		reg c_ch $ctrls  if $cond, cluster(age_mun) r
 		reg ar_ch $ctrls1  if $cond, cluster(age_mun) r
 		reg del_ch $ctrls1  if $cond, cluster(age_mun) r
+		reg ar_ch $ctrls2  if $cond, cluster(age_mun) r
+		reg del_ch $ctrls2  if $cond, cluster(age_mun) r
 
-	global cond "c_ch<=50 & c_ch>=-50  "
-	global ctrls "emp_ch hrs_ch i.m1"
+
+	global cond "c_ch<=50 & c_ch>=-50 & emp_ch>=-.5 & emp_ch<=.5 "
+	global ctrls "emp_ch hrs_ch i.date"
 	global ctrls1 "c_ch ${ctrls}"
-		reg c_ch $ctrls  if $cond, cluster(age_mun) r 
+	global ctrls2 "c_ch amount_ch ${ctrls}"
+		reg amount_ch $ctrls  if $cond, cluster(age_mun) r
+		reg c_ch $ctrls  if $cond, cluster(age_mun) r
 		reg ar_ch $ctrls1  if $cond, cluster(age_mun) r
 		reg del_ch $ctrls1  if $cond, cluster(age_mun) r
+		reg ar_ch $ctrls2  if $cond, cluster(age_mun) r
+		reg del_ch $ctrls2  if $cond, cluster(age_mun) r
+
+		reg p_ch $ctrls2  if $cond, cluster(age_mun) r
+
+
+
+
+	global cond "c_ch<=40 & c_ch>=-40  "
+	global ctrls "hrs_ch i.date"
+	global ctrls1 "c_ch ${ctrls}"
+	global ctrls2 "c_ch amount_ch ${ctrls}"
+		reg amount_ch $ctrls  if $cond, cluster(age_mun) r
+		reg c_ch $ctrls  if $cond, cluster(age_mun) r
+		reg ar_ch $ctrls1  if $cond, cluster(age_mun) r
+		reg del_ch $ctrls1  if $cond, cluster(age_mun) r
+		reg ar_ch $ctrls2  if $cond, cluster(age_mun) r
+		reg del_ch $ctrls2  if $cond, cluster(age_mun) r
+
+
+
+	global cond "c_ch<=50 & c_ch>=-50 & emp_ch>-.5 & emp_ch<.5 "
+	global ctrls "hrs_ch i.date"
+	global ctrls1 "c_ch ${ctrls}"
+	global ctrls2 "c_ch amount_ch ${ctrls}"
+	global ctrls3 "amount_ch ${ctrls}"
+	
+		reg amount_ch $ctrls  if $cond, cluster(age_mun) r
+		reg c_ch $ctrls  if $cond, cluster(age_mun) r
+		reg ar_ch $ctrls1  if $cond, cluster(age_mun) r
+		reg del_ch $ctrls1  if $cond, cluster(age_mun) r
+		reg ar_ch $ctrls3  if $cond, cluster(age_mun) r
+		reg del_ch $ctrls3  if $cond, cluster(age_mun) r
+		reg p_ch $ctrls3  if $cond, cluster(age_mun) r
+
+
+
 
 	global cond "c_ch>=-25  & c_ch<=25 & emp_ch>=-.25 & emp_ch<=.25 & hrs_ch>=-10 & hrs_ch<=10 & wage_ch>=-5000 & wage_ch<=5000"
-	global ctrls "emp_ch hrs_ch i.m1"
+	global ctrls "emp_ch hrs_ch i.m1 i.y1"
 	global ctrls1 "c_ch ${ctrls}"
+	global ctrls2 "c_ch amount_ch ${ctrls}"
+		reg amount_ch $ctrls  if $cond, cluster(age_mun) r
 		reg c_ch $ctrls  if $cond, cluster(age_mun) r
 		reg ar_ch $ctrls1  if $cond, cluster(age_mun) r
 		reg del_ch $ctrls1  if $cond, cluster(age_mun) r
+		reg ar_ch $ctrls2  if $cond, cluster(age_mun) r
+		reg del_ch $ctrls2  if $cond, cluster(age_mun) r
 
 
 

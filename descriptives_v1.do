@@ -95,6 +95,11 @@ use "${temp}temp_descriptives_2.dta", clear
 *	keep if date>=600
 
 
+g price = 100 if c<10
+replace price = 100+ 20*(c-10) if c>=10 & c<=20
+replace price = 100+ 20*(10) + 30*(c-20) if c>=20 & c<=40
+replace price = 100+ 20*(10) + 30*(20) + 40*(c-40) if c>=40
+
 
 g cmiss = c==.
 
@@ -127,6 +132,8 @@ g p=pay!=. & pay!=0
 
 g pay0=pay
 replace pay0=0 if pay==.
+
+
 
 sum p if cmiss_tot<=4 
 sum p if cmiss_tot<=4  & max_ar<=196 
@@ -169,8 +176,8 @@ cap program drop graph_trend
 program define graph_trend
 	local fe_var "`2'"
 	local outcome "`1'"
-	local T_high "24"
-	local T_low "-24"
+	local T_high "36"
+	local T_low "-36"
 	preserve
 		`4'
 		`5'
@@ -198,10 +205,48 @@ end
 *** TEST FOR LEAKS
 
 * disc_count days_pay days_rec leak over_charge enough_time
+graph_trend price conacct price_test_d
+
+
+graph_trend amount conacct amount_d "keep if max_ar<196 & cm_pre<50 & CS==21 "
+
+graph_trend amount conacct amount_d
+
+graph_trend c conacct c_d
+
+graph_trend dc conacct dc_d
+
+graph_trend pay conacct dc_pay
+
+graph_trend ar conacct ar_d  "keep if max_ar<150"
+
+
+
 
 tab  disc_count tcdi, miss
 
 tab  over_charge tcdi, miss
+
+
+g tight = max_ar<=150 & CS==21 & cm_pre<50 
+
+egen dc_max=max(dc), by(conacct)
+
+
+
+
+
+
+graph_trend c conacct c_desc_leak "keep if max_ar<150"
+
+
+
+graph_trend c conacct c_desc_tight " keep if tight==1 "
+
+graph_trend c conacct c_desc_no_tight " keep if tight==0 "
+
+graph_trend c conacct c_desc_dc " keep if CS<=10 "
+
 
 
 

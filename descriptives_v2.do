@@ -90,78 +90,41 @@ save "${temp}temp_descriptives_2.dta", replace
 
 
 
+
+
 use "${temp}temp_descriptives_2.dta", clear
 	drop if date==653
 *	keep if date>=600
 
+global M = 12
 
+g price = 100 if c<10
+replace price = 100+ 20*(c-10) if c>=10 & c<=20
+replace price = 100+ 20*(10) + 30*(c-20) if c>=20 & c<=40
+replace price = 100+ 20*(10) + 30*(20) + 40*(c-40) if c>=40
 
 g cmiss = c==.
-
-* egen max_cmiss = max(cmiss), by(conacct)
+egen cms=sum(cmiss), by(conacct)
 
 sort conacct date
 by conacct: g tcd_id = dc[_n-1]==0 & dc[_n]==1
-by conacct: g dc_id = cmiss[_n-1]==0 & cmiss[_n]==1 & cmiss[_n+1]==1  & cmiss[_n+2]==1  & cmiss[_n+3]==1  & cmiss[_n+4]==1  & cmiss[_n+5]==1 
-
-by conacct: g dc_yr = cmiss[_n-1]==0 & cmiss[_n]==1 & cmiss[_n+1]==1  & cmiss[_n+2]==1  & cmiss[_n+3]==1  & cmiss[_n+4]==1  & cmiss[_n+5]==1 & cmiss[_n+6]==1  & cmiss[_n+7]==1  & cmiss[_n+8]==1  & cmiss[_n+9]==1  & cmiss[_n+10]==1   & cmiss[_n+11]==1 
- 
-
 replace tcd_id = . if date<=602
 
-g tcd_date = date if tcd_id == 1
-egen tcd = min(tcd_date), by(conacct)
+g T = .
+replace T = 0 if tcd_id==1
+forvalues v=1/$M {
+by conacct: replace T=-`v' if tcd_id[_n+`v']==1 
+}
 
-g T = date-tcd
-
-
-g cid = T>=-10 & T<=10 & c>0 & c<.
-egen CS = sum(cid), by(conacct)
-
-
-egen max_ar = max(ar), by(conacct)
-
-egen cmiss_tot=sum(cmiss), by(conacct)
-
-g p=pay!=. & pay!=0
-
-g pay0=pay
-replace pay0=0 if pay==.
-
-sum p if cmiss_tot<=4 
-sum p if cmiss_tot<=4  & max_ar<=196 
-
-sum pay if cmiss_tot<=4  & pay<3000 
-sum pay if cmiss_tot<=4  & pay<3000 & max_ar<=196 
-
-sum ar if cmiss_tot<=4 
-sum ar if cmiss_tot<=4  & max_ar<=300
-sum ar if cmiss_tot<=4  & max_ar<=196 
-
-sum amount if cmiss_tot<=4  & amount<3000
-sum amount if cmiss_tot<=4  & max_ar<=300 & amount<3000
-sum amount if cmiss_tot<=4  & max_ar<=196 & amount<3000 
+forvalues v=1/$M {
+by conacct: replace T=`v' if tcd_id[_n-`v']==1 
+}
 
 
-
-g c_pre = c if  date+4<tcd_date
-
-egen cm_pre=mean(c_pre), by(conacct)
-egen sd_pre=sd(c_pre), by(conacct)
-
-g tcdi = tcd>0 & tcd<.
-
-
- ** predict key attributes
-
-reg enough_time c low_skill SHH SHO house_1 house_2 age hhemp hhsize, cluster(conacct)
-
-reg days_pay c low_skill SHH SHO house_1 house_2 age hhemp hhsize if days_pay<=60, cluster(conacct)
-
-
-* reg days_pay c low_skill SHH SHO house_1 house_2 age hhemp hhsize, cluster(conacct)
-
-
+* g tcd_date_id = date if tcd_id == 1
+* egen tcd_date = min(tcd_date_id), by(conacct)
+* g c_pre = c if  date<tcd_date
+* egen cm_pre=mean(c_pre), by(conacct)
 
 
 
@@ -169,11 +132,20 @@ cap program drop graph_trend
 program define graph_trend
 	local fe_var "`2'"
 	local outcome "`1'"
-	local T_high "24"
-	local T_low "-24"
+	local T_high "${M}"
+	local T_low "-${M}"
 	preserve
 		`4'
 		`5'
+		*** FULL ***
+		* replace T=. if T<`=`T_low'' | T>`=`T_high''
+		* qui sum T, detail
+		* local time_min `=r(min)'
+		* local time `=r(max)-r(min)'
+		* replace T=99 if T==.
+		* qui tab T, g(T_)
+
+		*** NON-FULL ***
 		keep if T>=`=`T_low'' & T<=`=`T_high''
 		qui tab T, g(T_)
 		qui sum T, detail
@@ -197,11 +169,109 @@ end
 
 *** TEST FOR LEAKS
 
+graph_trend c conacct c_d 
+
+
+
 * disc_count days_pay days_rec leak over_charge enough_time
+graph_trend price conacct price_test_d
+
+
+graph_trend amount conacct amount_d "keep if max_ar<196 & cm_pre<50 & CS==21 "
+
+graph_trend amount conacct amount_d
+
+graph_trend c conacct c_d
+
+graph_trend dc conacct dc_d
+
+graph_trend pay conacct dc_pay
+
+graph_trend ar conacct ar_d  "keep if max_ar<150"
+
+
+
 
 tab  disc_count tcdi, miss
 
 tab  over_charge tcdi, miss
+
+
+g tight = max_ar<=150 & CS==21 & cm_pre<50 
+
+egen dc_max=max(dc), by(conacct)
+
+
+
+
+* by conacct: g dc_id = cmiss[_n-1]==0 & cmiss[_n]==1 & cmiss[_n+1]==1  & cmiss[_n+2]==1  & cmiss[_n+3]==1  & cmiss[_n+4]==1  & cmiss[_n+5]==1 
+* by conacct: g dc_yr = cmiss[_n-1]==0 & cmiss[_n]==1 & cmiss[_n+1]==1  & cmiss[_n+2]==1  & cmiss[_n+3]==1  & cmiss[_n+4]==1  & cmiss[_n+5]==1 & cmiss[_n+6]==1  & cmiss[_n+7]==1  & cmiss[_n+8]==1  & cmiss[_n+9]==1  & cmiss[_n+10]==1   & cmiss[_n+11]==1 
+ 
+* replace tcd_id = . if date<=602
+
+* g tcd_date = date if tcd_id == 1
+* egen tcd = min(tcd_date), by(conacct)
+
+* g T = date-tcd
+* g cid = T>=-10 & T<=10 & c>0 & c<.
+* egen CS = sum(cid), by(conacct)
+
+
+* egen max_ar = max(ar), by(conacct)
+* egen cmiss_tot=sum(cmiss), by(conacct)
+
+* g p=pay!=. & pay!=0
+* g pay0=pay
+* replace pay0=0 if pay==.
+ 
+* sum p if cmiss_tot<=4 
+* sum p if cmiss_tot<=4  & max_ar<=196 
+
+* sum pay if cmiss_tot<=4  & pay<3000 
+* sum pay if cmiss_tot<=4  & pay<3000 & max_ar<=196 
+
+* sum ar if cmiss_tot<=4 
+* sum ar if cmiss_tot<=4  & max_ar<=300
+* sum ar if cmiss_tot<=4  & max_ar<=196 
+
+* sum amount if cmiss_tot<=4  & amount<3000
+* sum amount if cmiss_tot<=4  & max_ar<=300 & amount<3000
+* sum amount if cmiss_tot<=4  & max_ar<=196 & amount<3000 
+
+
+
+* g c_pre = c if  date+4<tcd_date
+
+* egen cm_pre=mean(c_pre), by(conacct)
+* egen sd_pre=sd(c_pre), by(conacct)
+
+* g tcdi = tcd>0 & tcd<.
+
+
+*  ** predict key attributes
+
+* reg enough_time c low_skill SHH SHO house_1 house_2 age hhemp hhsize, cluster(conacct)
+
+* reg days_pay c low_skill SHH SHO house_1 house_2 age hhemp hhsize if days_pay<=60, cluster(conacct)
+
+
+* * reg days_pay c low_skill SHH SHO house_1 house_2 age hhemp hhsize, cluster(conacct)
+
+
+
+
+
+
+graph_trend c conacct c_desc_leak "keep if max_ar<150"
+
+
+
+graph_trend c conacct c_desc_tight " keep if tight==1 "
+
+graph_trend c conacct c_desc_no_tight " keep if tight==0 "
+
+graph_trend c conacct c_desc_dc " keep if CS<=10 "
+
 
 
 
@@ -294,19 +364,20 @@ drop poor
 ren poorm poor
 
 
+
 cap program drop graph_trend2
 program define graph_trend2
 	local fe_var "`2'"
 	local outcome "`1'"
-	local T_high "24"
-	local T_low "-24"
+	local T_high "${M}"
+	local T_low "-${M}"
 	preserve
 		`5'
 		`6'
-		keep if T>=`=`T_low'' & T<=`=`T_high''
+		replace T=99 if T==.
 		qui tab T, g(T_)
-		
-		drop T_1
+		drop T_`=2*${M}+2'
+
 		foreach var of varlist T_* {
 			g `var'_no = `var'==1 & `3'==0
 			g `var'_yes = `var'==1 & `3'==1
@@ -320,6 +391,7 @@ program define graph_trend2
 	   		save "${temp}temp_est.dta", replace
 
 	   		use "${temp}temp_est.dta", clear
+				keep if regexm(parm,"_no")==1
 				g time = _n
 	   			keep if time<=`=`time''	   		
 	   			replace time = time + `=`time_min''
@@ -330,9 +402,7 @@ program define graph_trend2
 	   		save "${temp}temp_est_no.dta", replace
 
 	   		use "${temp}temp_est.dta", clear
-				g time = _n
-	   			drop if time<=`=`time''
-	   			drop time
+				keep if regexm(parm,"_yes")==1
 	   			g time = _n
 	   			keep if time<=`=`time''   		
 	   			replace time = time + `=`time_min''
@@ -359,6 +429,14 @@ program define graph_trend2
     	 erase "${temp}temp_est_no.dta"
     restore
 end
+
+
+graph_trend2 c conacct pay_soon pay_soon 
+
+graph_trend2  c conacct enough_time enough_time 
+
+
+
 
 
 
