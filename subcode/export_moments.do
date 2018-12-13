@@ -21,44 +21,45 @@ use "${temp}temp_descriptives_2.dta", clear
 	keep if cms<=20
 	drop cms
 
-*** Loan Max : (<=451) drop 5%
-	egen ar_max=max(ar), by(conacct) 
-	keep if ar_max<=451
-	drop ar_max
-	
 *** Measure TCD  %%% ONLY KEEP THOSE THAT GET A DISCONNECTION NOTICE!! (CUS THEY ARE A DIFFERENT SAMPLE... BUT MATTER (OTHERWISE NEED INDIVIDUAL FIXED EFFECTS, WHICH ARE HARD!!))
 	sort conacct date
 	by conacct: g tcd_id = dc[_n-1]==0 & dc[_n]==1
 	replace tcd_id = . if date<=602
 	replace tcd_id = 0 if ar==0
-
+	
 	egen tcd_max=max(tcd_id), by(conacct)
 	keep if tcd_max==1 
 		*** this is important ! 
 
+		** TCD DISTRIBUTION
+		* egen tcd_m_ar= mean(tcd_id), by(ar)
+		* bys ar: g arn=_n
+		* scatter tcd_m_ar ar if arn==1
+		*** looks really good!!!
+
+*** Loan Max : (<=451) drop 5%
+	* egen ar_max=max(ar), by(conacct) 
+	* keep if ar_max<=451
+	* drop ar_max	
 *** Keep only accounts with pre-106 disconnections
-	g ar_dc = ar if tcd_id==1
-	egen arm = max(ar_dc), by(conacct)
-	drop if arm>106 & arm<.
-
+	* g ar_dc = ar if tcd_id==1
+	* egen arm = max(ar_dc), by(conacct)
+	* drop if arm>106 & arm<.
 *** EXPORT SIMPLE MOMENTS !!! ***
-
 	* browse conacct date ar pay c dc amount bal
 
-	*** SET UP 
-
+*** SET UP 
 	g p_avg = amount/c
 	sum p_avg
 	write "${moments}p_avg.csv" `=r(mean)' 0.1 "%12.0g"
 
 	reg p_avg c
 	matrix define p_reg=e(b)
-	scalar define p_int=p_reg[1,1]
-	scalar define p_slope=p_reg[1,2]
+	scalar define p_int=p_reg[1,2]
+	scalar define p_slope=p_reg[1,1]
 
 	write "${moments}p_int.csv" `=p_int' 0.001 "%12.0g"
 	write "${moments}p_slope.csv" `=p_slope' 0.001 "%12.0g"
-
 
 	sum tcd_id if ar>0
 	write "${moments}prob_caught.csv" `=r(mean)' 0.0001 "%12.4g"
@@ -94,16 +95,18 @@ use "${temp}temp_descriptives_2.dta", clear
 	local cv "C[1,2]"
 	write "${moments}bal_corr.csv" `cv' 0.001 "%12.0g"
 
+
 	global M = 6
 		g T = .
 		replace T = 0 if tcd_id==1
 		forvalues v=1/$M {
 		qui by conacct: replace T=-`v' if tcd_id[_n+`v']==1 
+		sum c if T==-`v'
 		}
 		forvalues v=1/$M {
 		qui by conacct: replace T=`v' if tcd_id[_n-`v']==1 
+		sum c if T==`v'
 		}
-
 
 	sum c if T==-2 
 	write "${moments}c_avg_pre.csv" `=r(mean)' 0.1 "%12.0g"	
@@ -116,15 +119,15 @@ use "${temp}temp_descriptives_2.dta", clear
 
 
 
-	egen tcds = sum(tcd_id), by(conacct) 
-	 **  this is good! (repeat TCDs)
+	* egen tcds = sum(tcd_id), by(conacct) 
+	*  **  this is good! (repeat TCDs)
 
-	 tab ar if tcd_id==1
-	 tab ar date if tcd_id==1
+	*  tab ar if tcd_id==1
+	*  tab ar date if tcd_id==1
 
-	tab tcd_id if ar>=15
+	* tab tcd_id if ar>=15
 
-	replace tcd_id = 0 if ar>76
+	* replace tcd_id = 0 if ar>76
 
 	* tab tcd_id
 	* tab tcd_id if ar>=15

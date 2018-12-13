@@ -1,118 +1,86 @@
 
 
-%{
+%{a
 
 %%% cobb-doug  THIS WORKS WELL TO BALL-PARK EFFECTS!
 clear;
-syms x w y p rl rh A l alpha Ap
+syms x w y p1 p2 rl rh A l alpha Ap
 
 assume(rl>0 & rl<1)
 assume(rh>0 & rh<1)
 assume(l>0)
-assume(p>0)
+assume(p1>0)
+assume(p2>0)
 assume(w>0)
 assume(x>0)
 assume(y>0)
 assume(alpha>0 & alpha<1)
 
 
-BC = ( (y+A) - ( ( Ap + ((p*w)/(1+rl)) ) /(1+rh) ) + ((p*w)/(1+rl))  -   (p*w+x) ) 
+p = p1+p2*w;
+
+BC = ( (y+A) - ( ( Ap + (p*w) ) /(1+rh) ) + (p*w)  -   (p*w + x) ) 
 
 lan  =  (1-alpha)*log(x) + (alpha)*log(w) + l*BC
 
-dw = diff(lan,w)
+steps=10
+dw = simplify(diff(lan,w),'IgnoreAnalyticConstraints',true,'Steps',steps)
 dx = diff(lan,x)
 dl = diff(lan,l)
 
 [ws,xs,ls,pt,st] = solve([dw,dx,dl],[w,x,l],'ReturnConditions',true)
 
-ws
+
 
 simplify(ws)
 
-wse = ws(2,1)
-xse = xs(2,1)
+eval(subs(ws,[p1,p2,y,alpha,rh,A,Ap],[1,1,30000,.02,.1,100,100]))
+eval(subs(xs,[p1,p2,y,alpha,rh],[1,1,30000,.02,.1]))
+
+steps=10
+
+wse = simplify(ws(2,1),'IgnoreAnalyticConstraints',true,'Steps',steps) 
+eval(subs(wse,[p1,p2,y,alpha,rh,A,Ap],[1,1,30000,.02,.1,100,100]))
+
+xse = simplify(xs(2,1),'IgnoreAnalyticConstraints',true,'Steps',steps) 
+eval(subs(xse,[p1,p2,y,alpha,rh,A,Ap],[1,1,30000,.02,.1,100,100]))
 
 vse = (1-alpha)*log(xse) + (alpha)*log(wse)
 
-steps=10
-matlabFunction(simplify(wse,'IgnoreAnalyticConstraints',true,'Steps',steps),'File','w_b.m')
-matlabFunction(simplify(vse,'IgnoreAnalyticConstraints',true,'Steps',steps),'File','v_b.m')
+matlabFunction(wse,'File','w_b_con.m')
+matlabFunction(vse,'File','v_b_con.m')
+%matlabFunction(simplify(vse,'IgnoreAnalyticConstraints',true,'Steps',steps),'File','v_b_con.m')
 
-eval(subs(wse,[A,Ap,p,rl,rh,y,alpha],[10,-100,20,.02,.05,10000,.02]))
+%eval(subs(wse,[A,Ap,p,rl,rh,y,alpha],[10,-100,20,.02,.05,10000,.02]))
 
-eval(subs(diff(wse,rl),[A,Ap,p,rl,rh,y,alpha],[10,-100,20,.02,.05,10000,.02]))
+%eval(subs(diff(wse,rl),[A,Ap,p,rl,rh,y,alpha],[10,-100,20,.02,.05,10000,.02]))
 
-eval(subs(diff(wse,rh),[A,Ap,p,rl,rh,y,alpha],[10,-100,20,.02,.05,10000,.02]))
+%eval(subs(diff(wse,rh),[A,Ap,p,rl,rh,y,alpha],[10,-100,20,.02,.05,10000,.02]))
 
-%}
-
-
-
-%{
-
-%%% ADD EXTRA BORROWING STATE (CONDITIONAL ON FIRST PERIOD BORROWING...)
-clear;
-syms x w y p rl rh A l alpha Ap Ab
-
-assume(rl>0 & rl<1)
-assume(rh>0 & rh<1)
-assume(l>0)
-assume(p>0)
-assume(w>0)
-assume(x>0)
-assume(y>0)
-assume(alpha>0 & alpha<1)
-
-
-BC = ( (y+A) - ( ( Ap + ((p*w - Ab)/(1+rl)) ) /(1+rh) ) + ((p*w - Ab)/(1+rl))  -   (p*w+x) ) 
-
-lan  =  (1-alpha)*log(x) + (alpha)*log(w) + l*BC
-
-dw = diff(lan,w)
-dx = diff(lan,x)
-dl = diff(lan,l)
-
-[ws,xs,ls,pt,st] = solve([dw,dx,dl],[w,x,l],'ReturnConditions',true)
-
-ws
-
-simplify(ws)
-
-wse = ws(1,1)
-xse = xs(1,1)
-
-vse = (1-alpha)*log(xse) + (alpha)*log(wse)
-
-steps=10
-matlabFunction(simplify(wse,'IgnoreAnalyticConstraints',true,'Steps',steps),'File','w_b2.m')
-matlabFunction(simplify(vse,'IgnoreAnalyticConstraints',true,'Steps',steps),'File','v_b2.m')
 
 
 %}
 
 
-
-
-
-
-
-%{
+%{a
 
 %%% NOW JUST DO SIMPLE COBB DOUG!
 %%% cobb-doug reg
+
 clear;
-syms x w y p r A l alpha Ap
+syms x w y p1 p2 r A l alpha Ap
 
 assume(r>0 & r<1)
 assume(l>0)
-assume(p>0)
+assume(p1>0)
+assume(p2>0)
 assume(w>0)
 assume(x>0)
 assume(y>0)
 assume(alpha>0 & alpha<1)
 
 
+p = p1+p2*w;
 BC = ( (y+A) - ((Ap)/(1+r)) -   (p*w+x) ) 
 
 lan  =  (1-alpha)*log(x) + (alpha)*log(w) + l*BC
@@ -121,86 +89,72 @@ dw = diff(lan,w)
 dx = diff(lan,x)
 dl = diff(lan,l)
 
-[ws,xs,ls,pt,st] = solve([dw,dx,dl],[w,x,l],'ReturnConditions',true)
+[ws,xs,ls,pt,st]  =  solve([dw,dx,dl],[w,x,l],'ReturnConditions',true)
 
-ws
 
-simplify(ws)
 
-wse = ws(1,1)
-xse = xs(1,1)
+%s1=eval(subs(st,[p1,p2,y,alpha,A,Ap,r],[15,.2,30000,.02,-100,-100,.1]))
+
+% simplify(ws)
+% wt=eval(subs(ws,[p1,p2,y,alpha,A,Ap,r],[15,.2,30000,.02,100,100,.1]))
+% wt=eval(subs(ws,[p1,p2,y,alpha,A,Ap,r],[15,.2,30000,.02,200,100,0]))
+% xt=eval(subs(xs,[p1,p2,y,alpha,A,Ap,r],[15,.2,30000,.02,100,100,.1]))
+% eval(subs(xs,[p1,p2,y,alpha,A,Ap,r],[1,1,30000,.02,100,100,.1]))
+% vs = eval(subs((1-alpha)*log(wt) + (alpha)*log(xt),alpha,.02))
+% vs(2,1)
+% eval(subs(vs,[p1,p2,y,alpha,A,Ap,r],[15,.2,30000,.02,100,100,.1]))
+%eval(subs(ws,[p1,p2,y,alpha,rh,A,Ap],[1,1,30000,.02,.1,100,100]))
+
+
+steps=10
+wse = simplify(ws(4,1),'IgnoreAnalyticConstraints',true,'Steps',steps) 
+xse = simplify(xs(4,1),'IgnoreAnalyticConstraints',true,'Steps',steps) 
+
 
 vse = (1-alpha)*log(xse) + (alpha)*log(wse)
 
-steps=10
-% matlabFunction(simplify(wse,'IgnoreAnalyticConstraints',true,'Steps',steps),'File','w_reg.m')
-% matlabFunction(simplify(vse,'IgnoreAnalyticConstraints',true,'Steps',steps),'File','v_reg.m')
+matlabFunction(wse,'File','w_reg_con.m')
+matlabFunction(vse,'File','v_reg_con.m')
 
 
 %%% cut point?
-
-cut_point = solve(-wse*p - Ap, Ap)
 % 
-% matlabFunction(simplify(cut_point,'IgnoreAnalyticConstraints',true,'Steps',steps),'File','A_cut.m')
-
-
-
-%%% borrowing a little last period
-cut_point2 = solve(-wse*p + A - Ap, Ap)
+% [cut_point,pc,sc] = solve(-wse*(p1+p2*wse) - Ap, Ap,'ReturnConditions',true)
 % 
-% matlabFunction(simplify(cut_point2,'IgnoreAnalyticConstraints',true,'Steps',steps),'File','A_cut2.m')
-
-%%% borrowing a ton last period
-cut_point2_1 = solve(-2*wse*p - Ap, Ap)
 % 
-% matlabFunction(simplify(cut_point2_1,'IgnoreAnalyticConstraints',true,'Steps',steps),'File','A_cut2_1.m')
+% %s1=eval(subs(st,[p1,p2,y,alpha,A,Ap,r],[15,.2,30000,.02,-100,-100,.1]))
+% 
+% matlabFunction(simplify(cut_point,'IgnoreAnalyticConstraints',true,'Steps',steps),'File','A_cut_con.m')
+% 
 
+syms m
+%%% borrow 3x consumption! per period
+%cut_point3 = solve(-m*wse*p - Ap, Ap)
 
+wsr0=simplify(subs(wse,r,0));
 
-%}
+wst=simplify(m*wsr0*(p1+p2*wsr0));
 
+cut_point3 = simplify(solve(-wst-Ap,Ap));
 
+% t1=eval(subs(t,[p1,p2,y,alpha,A,m],[15,.2,30000,.02,-100,3]));
+% [cut_point3,pc,sc] = solve(-m*wsr0*(p1+p2*wsr0) - Ap, Ap,'ReturnConditions',true)
 
+matlabFunction(simplify(cut_point3(2,1),'IgnoreAnalyticConstraints',true,'Steps',steps),'File','A_cut3_con.m')
 
+% 
+% 
+% %%% borrowing a little last period
+% cut_point2 = solve(-wse*p + A - Ap, Ap)
+% 
+% matlabFunction(simplify(cut_point2,'IgnoreAnalyticConstraints',true,'Steps',steps),'File','A_cut2_con.m')
+% 
+% %%% borrowing a ton last period
+% cut_point2_1 = solve(-2*wse*p - Ap, Ap)
+% 
+% matlabFunction(simplify(cut_point2_1,'IgnoreAnalyticConstraints',true,'Steps',steps),'File','A_cut2_1_con.m')
+% 
 
-%{
-
-%%% NOW JUST DO SIMPLE COBB DOUG!
-%%% cobb-doug reg
-clear;
-syms x w y p r A l alpha Ap rho1 rho2
-
-assume(r>0 & r<1)
-assume(l>0)
-assume(p>0)
-assume(w>0)
-assume(x>0)
-assume(y>0)
-assume(alpha>0 & alpha<1)
-assume(rho1>0)
-assume(rho2>0)
-
-BC = ( y -  ((rho1+w*rho2)*w + x) ) 
-
-lan  =  (1-alpha)*log(x) + (alpha)*log(w) + l*BC
-
-dw = diff(lan,w)
-dx = diff(lan,x)
-dl = diff(lan,l)
-
-[ws,xs,ls,pt,st] = solve([dw,dx,dl],[w,x,l],'ReturnConditions',true)
-
-simplify(ws)
-
-eval(subs(ws,[rho1,rho2,y,alpha],[1,1,30000,.02]))
-eval(subs(xs,[rho1,rho2,y,alpha],[1,1,30000,.02]))
-
-
-xs
-
-
-wse = ws(1,1)
-xse = xs(1,1)
 
 
 %}
