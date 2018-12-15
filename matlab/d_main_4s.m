@@ -33,7 +33,7 @@ delinquency_cost = csvread(strcat(folder,'delinquency_cost.csv'));
 r_lend    = csvread(strcat(folder,'irate.csv'))./12 ; %%% convert to monthly here!
 
 
-n = 10000;
+n = 5000;
 
 minA =  -20000;                     % minimum value of the asset grid
 maxA =  50000;                     % maximum value of the asset grid   
@@ -41,7 +41,7 @@ inA  =  1000;                    % size of asset grid increments
 
 minB =  -8000;                 % minimum value of the asset grid
 maxB =  0;                     % maximum value of the asset grid   
-inB  =  250;                   % size of asset grid increments
+inB  =  500;                   % size of asset grid increments
 
 
 nA   = round((maxA-minA)/inA+1);   % number of grid points
@@ -86,8 +86,9 @@ option = [ 3 ];
     data = data_moments'; % need to transpose here
     weights =  eye(size(option_moments,2))./(data(option_moments).^2) ;   % normalize moments to be between zero and one (matters quite a bit)
 
-given1   =   [ r_lend   0    .04     .6    .021    .02  y_avg p1 p2  n   10  0 ];
-S = [-.05 0 .025 .05 .075 .1 .125 .15  ];
+given1   =   [ r_lend    0     .04      .15     .018    .01  y_avg p1 p2  n   10  0 ];
+
+%S = [-.05 0 .025 .05 .075 .1 .125 .15  ];
 S = [-.05 0 .05 .1 .15  ];
 
 H = zeros(7,size(S,2));
@@ -99,9 +100,12 @@ for s = 1:size(S,2)
     U(1,s)=US;
 end
 
-S 
-H
-data
+format short g
+
+
+R = [S;H;H(6,:)-H(7,:)];
+round(R,2)
+round([data;data(6,:)-data(7,:)],2)
 
 
 

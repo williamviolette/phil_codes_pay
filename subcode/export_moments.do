@@ -72,7 +72,7 @@ use "${temp}temp_descriptives_2.dta", clear
 	write "${moments}c_avg.csv" `=r(mean)' 0.1 "%12.0g"
 
 	egen c_i = mean(c), by(conacct)
-	g c_norm = c - c_i
+	g c_norm = c -c_i
 	sum c_norm 
 	write "${moments}c_std.csv" `=r(sd)' 0.1 "%12.0g" 
 
