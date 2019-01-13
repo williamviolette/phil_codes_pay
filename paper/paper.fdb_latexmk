@@ -1,18 +1,21 @@
 # Fdb version 3
-["bibtex paper"] 1544468327 "paper.aux" "paper.bbl" "paper" 1544468328
+["bibtex paper"] 1547323514 "paper.aux" "paper.bbl" "paper" 1547323595
   "/usr/local/texlive/2015/texmf-dist/bibtex/bst/natbib/abbrvnat.bst" 1233624470 26532 66bed5cc59495faaa3f9ae9af9fa5e42 ""
-  "paper.aux" 1544468327 1431 389f76a1c22e4c94d40df16c6744646c ""
+  "paper.aux" 1547323595 2385 1f97c941b3051c8997a853f89061059e ""
   "paper.bcf" 0 -1 0 ""
-  "ref.bib" 1544468319 423 66be74332221ce3d2f3ffd81a50172c2 ""
+  "ref.bib" 1544475853 1512 9acfd18a5f99468081ae7a9ffb91e9e7 ""
   (generated)
   "paper.bbl"
-["pdflatex"] 1544468327 "paper.tex" "paper.pdf" "paper" 1544468328
+  "paper.blg"
+["pdflatex"] 1547323595 "paper.tex" "paper.pdf" "paper" 1547323595
   "/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2015/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/adobe/palatino/pplb7t.tfm" 1136768653 1616 371d1ee60c04b008c8fd760060cd34f1 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/adobe/palatino/pplb8r.tfm" 1136768653 2532 9ad73cf4dd2173a847f2a5f5608e0b9a ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/adobe/palatino/pplr7t.tfm" 1136768653 1804 7b5f73028f6509167f47ace9d69509ed ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/adobe/palatino/pplr8r.tfm" 1136768653 2796 d37c29814a6717720ee1a7c9a0b2c3b8 ""
+  "/usr/local/texlive/2015/texmf-dist/fonts/tfm/adobe/palatino/pplri7t.tfm" 1136768653 1732 3671a0e54806deb8b706eb5e53aba0a5 ""
+  "/usr/local/texlive/2015/texmf-dist/fonts/tfm/adobe/palatino/pplri8r.tfm" 1136768653 2720 70000d5e623e601132eab3cded5b819b ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm" 1246382020 924 9904cf1d39e9767e7a3622f2a125a565 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm" 1246382020 928 2dc8d444221b7a635bb58038579b861a ""
@@ -47,8 +50,10 @@
   "/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1248133631 32716 08e384dc442464e7285e891af9f45947 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb" 1136849748 52406 dad2f72863a03727d5f536c64a69c452 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb" 1136849748 52665 661b1e6b26edb5f50dd491f8a701cb57 ""
+  "/usr/local/texlive/2015/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb" 1136849748 50022 90249cba7e3e4e9845f80328d6f9bd13 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/vf/adobe/palatino/pplb7t.vf" 1136768653 1380 798ef26de8f0a21f37c9b1147f4fe5d8 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/vf/adobe/palatino/pplr7t.vf" 1136768653 1380 037725697594405988999f61172f52de ""
+  "/usr/local/texlive/2015/texmf-dist/fonts/vf/adobe/palatino/pplri7t.vf" 1136768653 1376 a5f9301e24d8e27c2286a3b415778d2d ""
   "/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii" 1337017135 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty" 1284331290 1458 43ab4710dc82f3edeabecd0d099626b2 ""
   "/usr/local/texlive/2015/texmf-dist/tex/generic/kastrup/binhex.tex" 1215376579 2553 4b99aa9667b708dd355926023d705446 ""
@@ -200,10 +205,12 @@
   "/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1432479641 1764542 91654ba72bdb667e84ea24f076ae16d8 ""
   "/usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt" 1432479681 3849859 39a7d258195bde2394e244961601fbc5 ""
   "/usr/local/texlive/2015/texmf.cnf" 1432479636 577 0d611272082f3cdb8e80e09a3c69cf07 ""
-  "paper.aux" 1544468327 1431 389f76a1c22e4c94d40df16c6744646c ""
-  "paper.bbl" 1544468327 497 f95963d5d92d564789450ccded0082a9 "bibtex paper"
-  "paper.tex" 1544468324 6864 2cc22ddf52deeb4454d69cb7bdf40077 ""
+  "paper.aux" 1547323595 2385 1f97c941b3051c8997a853f89061059e ""
+  "paper.bbl" 1547323515 1519 701533ffb0aaaa8676969a5f89722730 "bibtex paper"
+  "paper.tex" 1547323513 7637 6289bbd4720a9810fcc71592b03dff06 ""
+  "tables/est.tex" 1547323042 156 ff0773454650e0e2de2f4fbd14912fd9 ""
+  "tables/fit.tex" 1547323590 342 a73e7a76bfa772a8e3b9016502ac53a9 ""
   (generated)
   "paper.aux"
-  "paper.pdf"
   "paper.log"
+  "paper.pdf"

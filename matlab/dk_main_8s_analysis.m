@@ -8,13 +8,13 @@ folder ='/Users/williamviolette/Documents/Philippines/phil_analysis/phil_temp_pa
 
 real_data     = 1     ;
 first_output  = 0     ;
-second_output = 0     ;
+second_output = 1     ;
 est_many      = 0     ;
-counter       = 1     ;
+counter       = 0     ;
 
 
 
-mult_set = [  .9   1  ];
+mult_set = [  .1   1  ];
 
 %%% import key stats
 c_avg     = csvread(strcat(folder,'c_avg.csv'));
@@ -39,13 +39,13 @@ r_lend    = csvread(strcat(folder,'irate.csv'))./12 ; %%% convert to monthly her
 
 n = 10000;  %%% GRID SIZE AFFECTS THE MAXIMUM !!!!!!!
 
-nA = 25 ;
+nA = 35 ;
 sigA = 10000 ;
 Agrid = 0 + sqrt(2)*sigA*erfinv(2*((1:nA)'./(nA+1))-1);
 Agrid = round(Agrid,0);
 %hist(Agrid,100)
 
-nB = 25 ;
+nB = 35 ;
 sigB = 3800 ;
 Bgrid = 0 + sqrt(2)*sigB*erfinv(2*((1:nB)'./(2.*nB+1))-1);
 Bgrid =round(sort(-1.*abs(Bgrid),'descend'),0);
@@ -66,8 +66,7 @@ Bprime = repmat(Bprime_r,nA,nA);
 
 n_states=8;
 
-
-pyk = .2 ;
+pyk = .9 ;
 
 pym = [ pyk  (1-pyk) pyk  (1-pyk) ; ...
         pyk  (1-pyk) pyk  (1-pyk) ; ...
@@ -139,10 +138,10 @@ if second_output == 1
     data = data_moments'; % need to transpose here
     % given :  r_lend , r_water, r_high ,  lambda (U) ,   theta (y), gamma (a), alpha , beta_up , Y , p1, p2 ,  n , metric, waterlend,
             %    1         2       3          4            5           6         7          8     9 10
-    given   =   [ r_lend   0     .03          .2          0.4         0       .019      .02     y_avg p1 p2 n   10  0 ];
+    given   =   [ r_lend   0     .03          0           0.3         0       .019      .02     y_avg p1 p2 n   10  0 ];
 
-    S = [ 0 .01 .02 .03 .04 .05 .06 .07 .08 ];
-    S = [ 0  .03  .05 ];
+    S = [ 0 .02  .04  .06  .08 ];
+    %S = [ 0  .03  .05 ];
 
     H = zeros(7,size(S,2));
     U = zeros(1,size(S,2));
@@ -187,7 +186,7 @@ end
 
 % given :  r_lend , r_water, r_high ,  lambda (U) ,   theta (y), gamma (a), alpha , beta_up , Y , p1, p2 ,  n , metric, waterlend,
             %    1     2       3          4            5           6         7          8     9 10
-given   =   [ r_lend   0     .04          0            0.2         15       .018    .02     y_avg p1 p2 n   10  0 ];
+given   =   [ r_lend   0     .04          0            0.3         15       .018    .02     y_avg p1 p2 n   10  0 ];
 
 option = [ 3   5  6  7 ];
 

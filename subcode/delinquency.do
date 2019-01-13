@@ -23,6 +23,8 @@ keep if SHH==1
 sort conacct date
 by conacct: g new_dc = dc[_n-1]!=2 & dc[_n]==2
 * hist date if new_dc==1 ** KEEP ONLY LATE ONES
+g new_dc_date_id=date if new_dc==1
+egen new_dc_date = max(new_dc_date_id), by(conacct)
 
 keep if date>=618
 tab bal if new_dc==1
@@ -39,8 +41,18 @@ g new_c = date == new_c_date
 ** KEEP ONLY EARLY ONES
 keep if date<=654 
 
+g DC_date = new_c_date
+replace DC_date = new_dc_date if DC_date==.
+
+g T = date-DC_date
+
+
+
+
 *** AGGREGATE MEASURE
-g DC = new_dc==1 | new_c==1
+*g DC = new_dc==1 | new_c==1
+
+g DC = DC_date == date
 replace bal = 0 if bal<5  | bal==.
 replace bal = . if bal>100000 & bal<.
 *hist bal if DC==1
@@ -58,7 +70,48 @@ g cost = BAL_TOTAL/(time*tot_acc)
 tab cost
 
 sum cost
+
 write "${moments}delinquency_cost.csv" `=r(mean)' 0.1 "%12.0g"
+
+
+
+global M = 30
+
+cap program drop graph_trend
+program define graph_trend
+
+	local fe_var "`2'"
+	local outcome "`1'"
+	local T_high "0"
+	local T_low "-${M}"
+	preserve
+		`4'
+		`5'
+		keep if T>=`=`T_low'' & T<=`=`T_high''
+		qui tab T, g(T_)
+		qui sum T, detail
+		local time_min `=r(min)'
+		local time `=r(max)-r(min)'
+		*areg `outcome' T_* , absorb(`fe_var') cluster(`fe_var') r 
+		reg `outcome' T_* , cluster(`fe_var') r 
+	   	parmest, fast
+	   	g time = _n
+	   	keep if time<=`=`time''
+	   	replace time = time + `=`time_min''
+	   	lab var time "Time"
+    	*tw (scatter estimate time) || (rcap max95 min95 time)
+    	tw (line estimate time, lcolor(black) lwidth(medthick)) ///
+    	|| (line max95 time, lcolor(blue) lpattern(dash) lwidth(med)) ///
+    	|| (line min95 time, lcolor(blue) lpattern(dash) lwidth(med)), ///
+    	 graphregion(color(gs16)) plotregion(color(gs16)) xlabel(`=`T_low''(2)`=`T_high'') ///
+    	 ytitle("`outcome'") xline(0)
+    	 graph export  "${temp}trend_`3'.pdf", as(pdf) replace
+   	restore
+end
+
+graph_trend c conacct delinq_c
+
+
 
 
 

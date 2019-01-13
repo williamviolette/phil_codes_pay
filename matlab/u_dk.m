@@ -2,7 +2,8 @@ function [util,w] = u_dk(L,debt,alpha,p1,p2,y,lambda,k)
 
 if debt==1
     L_cut = cut_dk(alpha,k,p1,p2,y);
-
+    %L_cut = cut_dk(alpha,p1,p2,y);
+    
     vb = v_b_dk(L,alpha,k,p1,p2,y);
     vb(isinf(vb))=-1000000;
     
@@ -11,9 +12,13 @@ if debt==1
 
     w   = w_reg_dk(L,alpha,k,p1,p2,y).*(L>=L_cut) + ...  %%% less negative!
           w_b_dk(L,p1,p2).*(L<L_cut);   %%% more negative !
+    %w   = w_reg_dk(L,alpha,p1,p2,y).*(L>=L_cut) + ...  %%% less negative!
+    %      w_b_dk(L,p1,p2).*(L<L_cut);   %%% more negative !
+
 else
     util  = v_reg_dk(L,alpha,k,p1,p2,y);
     w   = w_reg_dk(L,alpha,k,p1,p2,y);
+    %w   = w_reg_dk(L,alpha,p1,p2,y);
 end
 
 util(y<=0)=-1000000;

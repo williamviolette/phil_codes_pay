@@ -29,6 +29,7 @@ Y_low  = Y.*(1-theta) ;  % low value for income
 k_high = gamma;
 k_low  = -gamma;
 
+
 [util1,util2,util3,util4,util5,util6,util7,util8] = ...
          gen_dk_8s(A,B,Aprime,Bprime,r_high,r_lend,r_water,water_lending,Y_high,Y_low,p1,p2,alpha,k_high,k_low,lambda_high,lambda_low);
 

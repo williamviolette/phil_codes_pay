@@ -1,14 +1,38 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{5}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
+\bibitem[Andreoni and Sprenger(2012)]{andreoni2012estimating}
+J.~Andreoni and C.~Sprenger.
+\newblock Estimating time preferences from convex budgets.
+\newblock \emph{American Economic Review}, 102\penalty0 (7):\penalty0 3333--56,
+  2012.
+
+\bibitem[Gin{\'e} and Karlan(2014)]{gine2014group}
+X.~Gin{\'e} and D.~S. Karlan.
+\newblock Group versus individual liability: Short and long term evidence from
+  philippine microcredit lending groups.
+\newblock \emph{Journal of development Economics}, 107:\penalty0 65--83, 2014.
+
+\bibitem[Gourinchas and Parker(2002)]{gourinchas2002consumption}
+P.-O. Gourinchas and J.~A. Parker.
+\newblock Consumption over the life cycle.
+\newblock \emph{Econometrica}, 70\penalty0 (1):\penalty0 47--89, 2002.
+
 \bibitem[Karlan and Zinman(2009)]{karlan2009expanding}
 D.~S. Karlan and J.~Zinman.
 \newblock Expanding microenterprise credit access: Using randomized supply
   decisions to estimate the impacts in manila.
 \newblock 2009.
+
+\bibitem[Laibson et~al.(2007)Laibson, Repetto, and
+  Tobacman]{laibson2007estimating}
+D.~Laibson, A.~Repetto, and J.~Tobacman.
+\newblock Estimating discount functions with consumption choices over the
+  lifecycle.
+\newblock Technical report, National Bureau of Economic Research, 2007.
 
 \end{thebibliography}

@@ -35,7 +35,7 @@ assume(alpha>0 & alpha<1)
 p = p1+p2*w;
 BC = ( y - L -   (p*w+x) ) 
 
-lan  =  (1-alpha)*log(x) + (alpha)*log(w+k) + l*BC
+lan  =  (1-alpha)*log(x) + (alpha)*log(k*w) + l*BC
 
 dw = simplify(diff(lan,w))
 dx = diff(lan,x)
@@ -49,7 +49,7 @@ dl = diff(lan,l)
 %s1=eval(subs(st,[p1,p2,y,alpha,A,Ap,r],[15,.2,30000,.02,-100,-100,.1]))
 
 simplify(ws)
-wt=eval(subs(ws,[p1,p2,y,alpha,A,Ap,L,k],[15,.2,30000,.02,100,100,100,0]))
+wt=eval(subs(ws,[p1,p2,y,alpha,A,Ap,r,L,k],[15,.2,30000,.02,100,100,.1,100,0]))
 %wt=eval(subs(ws,[p1,p2,y,alpha,A,Ap,r],[15,.2,30000,.02,200,100,0]))
 %xt=eval(subs(xs,[p1,p2,y,alpha,A,Ap,r],[15,.2,30000,.02,100,100,.1]))
 % eval(subs(xs,[p1,p2,y,alpha,A,Ap,r],[1,1,30000,.02,100,100,.1]))
@@ -64,9 +64,7 @@ wse = simplify(ws(1,1),'IgnoreAnalyticConstraints',true,'Steps',steps)
 xse = simplify(xs(1,1),'IgnoreAnalyticConstraints',true,'Steps',steps) 
 
 
-vse = (1-alpha)*log(xse) + (alpha)*log(wse+k)
-
-%eval(subs(vse,[p1,p2,y,alpha,A,Ap,r,k,L],[1,1,30000,.02,100,100,.1,0,-300]))
+vse = (1-alpha)*log(xse) + (alpha)*log(k*wse)
 
 matlabFunction(wse,'File','w_reg_dk.m')
 matlabFunction(vse,'File','v_reg_dk.m')
@@ -103,9 +101,7 @@ eval(subs(weq,[L,p1,p2],[-1000,15,.2]))
 weq_opt = simplify(weq(1,1));
 xeq_opt = simplify(y - L - weq_opt*(p1 + p2*weq_opt));
 
-eval(subs(xeq_opt,[L,p1,p2,y],[-1000,15,.2,10000]))
-
-veq_opt = simplify((1-alpha)*log(xeq_opt) + (alpha)*log(weq_opt+k));
+veq_opt = simplify((1-alpha)*log(xeq_opt) + (alpha)*log(weq_opt*k));
 
 matlabFunction(simplify(weq_opt,'IgnoreAnalyticConstraints',true,'Steps',steps),'File','w_b_dk.m')
 matlabFunction(simplify(veq_opt,'IgnoreAnalyticConstraints',true,'Steps',steps),'File','v_b_dk.m')
