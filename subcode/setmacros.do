@@ -24,6 +24,7 @@ global billingdata   = "${phil_folder}descriptives/output/"
 global complaintdata = "${phil_folder}data/cc/"
 
 global moments 		 = "${temp}moments/"
+global tables        = "${phil_folder}phil_analysis/phil_codes_pay/paper/tables/"
 
 	** data version **
 *global version = "v1"

@@ -1,13 +1,14 @@
 # Fdb version 3
-["bibtex paper"] 1547323514 "paper.aux" "paper.bbl" "paper" 1547323595
+["bibtex paper"] 1547594621 "paper.aux" "paper.bbl" "paper" 1547594622
   "/usr/local/texlive/2015/texmf-dist/bibtex/bst/natbib/abbrvnat.bst" 1233624470 26532 66bed5cc59495faaa3f9ae9af9fa5e42 ""
-  "paper.aux" 1547323595 2385 1f97c941b3051c8997a853f89061059e ""
+  "paper.aux" 1547594622 2873 f0bb261cc5b848a14eda96538db54ac1 ""
   "paper.bcf" 0 -1 0 ""
   "ref.bib" 1544475853 1512 9acfd18a5f99468081ae7a9ffb91e9e7 ""
   (generated)
-  "paper.bbl"
   "paper.blg"
-["pdflatex"] 1547323595 "paper.tex" "paper.pdf" "paper" 1547323595
+  "paper.bbl"
+["pdflatex"] 1547594621 "paper.tex" "paper.pdf" "paper" 1547594622
+  "./tables/deaton.png" 1547501461 82934 1ab07acd0d2a4eea1444340ae91c68a6 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2015/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/adobe/palatino/pplb7t.tfm" 1136768653 1616 371d1ee60c04b008c8fd760060cd34f1 ""
@@ -205,12 +206,22 @@
   "/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1432479641 1764542 91654ba72bdb667e84ea24f076ae16d8 ""
   "/usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt" 1432479681 3849859 39a7d258195bde2394e244961601fbc5 ""
   "/usr/local/texlive/2015/texmf.cnf" 1432479636 577 0d611272082f3cdb8e80e09a3c69cf07 ""
-  "paper.aux" 1547323595 2385 1f97c941b3051c8997a853f89061059e ""
-  "paper.bbl" 1547323515 1519 701533ffb0aaaa8676969a5f89722730 "bibtex paper"
-  "paper.tex" 1547323513 7637 6289bbd4720a9810fcc71592b03dff06 ""
+  "paper.aux" 1547594622 2873 f0bb261cc5b848a14eda96538db54ac1 ""
+  "paper.bbl" 1547594621 1519 701533ffb0aaaa8676969a5f89722730 "bibtex paper"
+  "paper.tex" 1547594620 10702 8fa14bdfbcfdeef507251952bc255845 ""
+  "tables/ar_dc.tex" 1547592546 5 f6cc3a40292713e02c57010ff89279a0 ""
+  "tables/atm.tex" 1547589072 3 ad9995c0d305d650bc1a138f32113af7 ""
+  "tables/center.tex" 1547589072 4 206ff0ea135a181b5c4ec8102bee6bb4 ""
+  "tables/collector.tex" 1547589072 2 51650330e96c767cf675e245aee13389 ""
+  "tables/counter.tex" 1547505244 327 631f1b37c619bd3273fd6f944a822e47 ""
+  "tables/days_pay_average.tex" 1547594578 4 a8b50efeb1e1b290fed333e06f523754 ""
+  "tables/days_pay_under_30.tex" 1547594578 4 2d590faba26e98b250775347871d27b0 ""
+  "tables/deaton.png" 1547501461 82934 1ab07acd0d2a4eea1444340ae91c68a6 ""
   "tables/est.tex" 1547323042 156 ff0773454650e0e2de2f4fbd14912fd9 ""
-  "tables/fit.tex" 1547323590 342 a73e7a76bfa772a8e3b9016502ac53a9 ""
+  "tables/fit.tex" 1547323650 328 ddaa9e292a1c0295c09f9bb7026f3fa0 ""
+  "tables/maynilad.tex" 1547589072 3 b68de8f1f938e0330acdf64c63b08b9a ""
+  "tables/share_pay_3_months.tex" 1547593252 2 926c743accb0c7a259550c8da7a1a692 ""
   (generated)
-  "paper.aux"
   "paper.log"
   "paper.pdf"
+  "paper.aux"

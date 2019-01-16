@@ -115,6 +115,8 @@ use "${temp}temp_descriptives_2.dta", clear
 	write "${moments}c_avg_dc.csv" `=r(mean)' 0.1 "%12.0g"	
 
 
+	g cz=c
+	replace cz=0 if c==.
 
 
 
@@ -153,6 +155,7 @@ program define graph_trend
 	preserve
 		`4'
 		`5'
+		`6'
 		cap drop T
 		g T = .
 		replace T = 0 if tcd_id==1
@@ -195,8 +198,61 @@ end
 
  sum bal if tcd_id==1
 
+
+ 		sort conacct date
+ 		cap drop cn 
+ 		cap drop tid 
+ 		cap drop T1
+		g T1 = .
+		by conacct: g cn=_n if tcd_id==1
+		g tid=cn if tcd_id==1
+		replace T1 = 0 if tcd_id==1
+		forvalues v=1/$M {
+		qui by conacct: replace T1=-`v' if tcd_id[_n+`v']==1 
+		qui by conacct: replace tid=cn[_n+`v'] if tcd_id[_n+`v']==1 
+		}
+		forvalues v=1/$M {
+		qui by conacct: replace T1=`v' if tcd_id[_n-`v']==1 
+		qui by conacct: replace tid=cn[_n-`v'] if tcd_id[_n-`v']==1 
+		}
+
+
+cap drop pay_post_id
+cap drop pay_post
+g pay_post_id = pay>0 & pay<. & T1==1
+egen pay_post=max(pay_post_id), by(conacct tid)
+
+
+cap drop ar_post_id
+cap drop ar_post
+g ar_post_id = ar if T1==1
+egen ar_post=max(ar_post_id), by(conacct tid)
+
+
+graph_trend cmiss conacct cmissing_nopay "keep if pay_post ==0"
+graph_trend cmiss conacct cmissing_pay "keep if pay_post ==1"
+
+graph_trend cmiss conacct cmissing_ar "keep if ar_post<=60"
+graph_trend cmiss conacct cmissing_noar "keep if ar_post>60 & ar_post<."
+
+
+graph_trend c conacct c_nopay "keep if pay_post ==0"
+graph_trend c conacct c_pay "keep if pay_post ==1"
+
+graph_trend cz conacct cz_nopay "keep if pay_post ==0"
+graph_trend cz conacct cz_pay "keep if pay_post ==1"
+
+
+
+
+graph_trend cmiss conacct cmissing
+
+graph_trend ar conacct ar
+
+
 graph_trend c conacct c_dcleanall 
 
+graph_trend cz conacct cz_dcleanall 
 
 
 graph_trend c conacct c_dclean0   "drop if tcd_id==1 & ar!=0"

@@ -10,8 +10,8 @@ cd_dir ='/Users/williamviolette/Documents/Philippines/phil_analysis/phil_codes_p
 real_data     = 1     ;
 second_output = 0     ;
 est_many      = 0     ;
-est_tables    = 1     ;
-counter       = 0     ;
+est_tables    = 0     ;
+counter       = 1     ;
 
 
 s=4;
@@ -197,7 +197,7 @@ if est_tables==1
     
     %%% Deaton Figure
     [~,~,sim] = dk_obj(res_out,prob,A,Aprime,nA,B,Bprime,nB,chain,s);
-    
+    [~] = deaton_print(sim,cd_dir);
 end
 
 
@@ -210,14 +210,12 @@ if counter==1
     estimates = csvread(strcat(folder,'estimates.csv'));
     res_out = given;
     res_out(option)=estimates;
-    
-    
-    %%% TRY WATER LENDING
-    res_out(14)=0;
-    %res_out(3)=.05;
-    
+
+    %%% current
+    [h,util] = dk_obj(res_out,prob,A,Aprime,nA,B,Bprime,nB,chain,s);
+    c_h = h(1);
+   
     %%% value of 10 PhP
-    [hu,util] = dk_obj(res_out,prob,A,Aprime,nA,B,Bprime,nB,chain,s)
     res_poor = res_out;
     res_poor(9) = res_out(9) - 10;
     [~,util_poor] =dk_obj(res_poor,prob,A,Aprime,nA,B,Bprime,nB,chain,s);
@@ -227,59 +225,32 @@ if counter==1
     %%% utility loss from no loans
     res_nl = res_out;
 	res_nl(2) = .8;
-    %res_nl(14)=1; %%% DO IT THROUGH WATER LENDING!
     [h_nl,util_nl] = dk_obj(res_nl,prob,A,Aprime,nA,B,Bprime,nB,chain,s)     
     
-    (util-util_nl)/du_dy10
+    U_nl = (util_nl-util)/du_dy10
+    c_nl = h_nl(1);
     
-    %{a
-    
-    % given :  r_lend , r_water, r_high ,  lambda (U) , theta (y), gamma (a), alpha , beta_up , Y , p1, p2 ,  n , metric, waterlend,
-            %    1         2       3          4          5          6         7          8     9 10
-%      res_test=     [ r_lend    0     .04      0      0.3             0     .0205    .02     (y_avg+0) p1 p2 n   10  0 ];
-%     [~,util_test] = dk_obj(res_test,prob,A,Aprime,nA,B,Bprime,nB,chain,s) ;    
-%     (util-util_test)/du_dy10
-    
-     res_test=     [ r_lend    0     .1      0      0.3             0     .0205    .02     (y_avg+0) p1 p2 n   10  0 ];
-    [~,util_test] = dk_obj(res_test,prob,A,Aprime,nA,B,Bprime,nB,chain,s) ;    
-    (util-util_test)/du_dy10
-    
-     res_test=     [ r_lend   .05     .04      0      0.3             0     .0205    .02     (y_avg+0) p1 p2 n   10  0 ];
-    [~,util_test] = dk_obj(res_test,prob,A,Aprime,nA,B,Bprime,nB,chain,s) ;    
-    (util-util_test)/du_dy10
-    
-     res_test=     [ r_lend   .1     .04      0      0.3             0     .0205    .02     (y_avg+0) p1 p2 n   10  0 ];
-    [~,util_test] = dk_obj(res_test,prob,A,Aprime,nA,B,Bprime,nB,chain,s) ;    
-    (util-util_test)/du_dy10
-    
-     res_test=     [ r_lend   .5     .04      0      0.3             0     .0205    .02     (y_avg+0) p1 p2 n   10  0 ];
-    [~,util_test] = dk_obj(res_test,prob,A,Aprime,nA,B,Bprime,nB,chain,s) ;    
-    (util-util_test)/du_dy10
-    
-    %}
-    
-    
-    %{
-    
-%     res_counter = res_out;
-%     res_counter(2) = res_counter(3); %%% what if there were NO B!!! 
-%     res_counter(2) = .3;
-    
-    % given :  r_lend , r_water, r_high ,  lambda (U) , theta (y), gamma (a), alpha , beta_up , Y , p1, p2 ,  n , metric, waterlend,
-            %    1         2       3          4          5          6         7          8     9 10
-    %res_out=     [ r_lend   0     .032      0      0.2156       15.3     .0205    .02     y_avg p1 p2 n   10  0 ];
-
-    %res_out =     [ r_lend   0     .047      0      0.2156       0     .0205    .02     (y_avg+delinquency_cost) p1 p2 n   10  0 ];
-    %res_counter = [ r_lend  .6     .047      0      0.2156       0     .0205    .02     y_avg p1 p2 n   10  0 ];
-    
-    
-    
-    [~,util] = dk_obj(res_out,prob,A,Aprime,nA,B,Bprime,nB,chain,s)
+    %%%% CV APPROACH! 
+%      Ys=1;
+%      Ywindow = 60;
+%      Ygrid = ((res_out(9)-Ywindow):Ys:(res_out(9)+Ys))' ;
+%      U = zeros(size(Ygrid,1),1);
+%      for i=1:size(Ygrid,1)
+%         res_temp = res_out;
+%         res_temp(9) = Ygrid(i);
+%         [~,util_temp] = dk_obj(res_temp,prob,A,Aprime,nA,B,Bprime,nB,chain,s);
+%         U(i,1) = abs(util_temp - util_nl);
+%      end
+%      plot(Ygrid,U)
+%      [~,ind]=min(U)
+%      [Ygrid(ind) res_out(9) (Ygrid(ind)-res_out(9))]
+%  LINES UP WELL WITH THE APPROXIMATION THANKFULLY!
 
     
-    ww = w_reg_dk(0,res_out(7),0,p1,p2, (y_avg + delinquency_cost) );
-    
-    %ww = w_reg_dk(0,res_out(7),0,p1+1,p2,y_avg);
+    %%% %%% pre-paid %%% %%% 
+    %%% current revenue
+    %%%%% NOTE!!!! THIS IS AN AVERAGE CONSUMPTION CHANGE!! NOTE!!!!!!
+    ww = w_reg_dk(0,res_out(7),0,p1,p2, y_avg );
     
     rev_goal = ((p1 + p2.*ww).*ww) - delinquency_cost;
     
@@ -296,46 +267,20 @@ if counter==1
     Pgrid(ind)
     
     p1c=p1+Pgrid(ind);
-           % given :  r_lend , r_water, r_high ,  lambda (U) , theta (y), gamma (a), alpha , beta_up , Y , p1, p2 ,  n , metric, waterlend,
-                   %    1         2       3          4          5          6         7          8       9        10
-    res_out     = [ r_lend      0       .03         0.15      0.7        0        .02        .02     (y_avg+delinquency_cost)   p1   p2  n   10  0 ];
-    res_counter = [ r_lend     .8       .03         0.15      0.7        0        .02        .02       y_avg                    p1c  p2  n   10  0 ];
     
-     
-    [~,util] = dk_obj(res_out,prob,A,Aprime,nA,B,Bprime,nB,chain,s)
-    [~,util_counter] = dk_obj(res_counter,prob,A,Aprime,nA,B,Bprime,nB,chain,s)
+    res_pp=res_out; % with pre-paid meters, don't get delinquency or loan, but get lower marginal price!
+    res_pp(2)=.8;
+    res_pp(9)=res_pp(9)-delinquency_cost;
+    res_pp(10)=p1c;
     
-    format long g
-    util - util_counter
+    [h_pp,util_pp] = dk_obj(res_pp,prob,A,Aprime,nA,B,Bprime,nB,chain,s);
     
-    res_poor = res_out;
-    res_poor(9) = res_out(9) - 10;
-    [~,util_poor] =dk_obj_8s(res_poor,prob,A,Aprime,nA,B,Bprime,nB,chain);
-
-    du_dy10 = (util-util_poor)/10;
+    U_pp = (util_pp-util)/du_dy10;
+    c_pp = h_pp(1);
     
-    du_poor =  (util-util_poor)
-    du =    (util - util_counter)
-    dy = du/du_dy10
+    estimates_c = [0 1 1 ; c_h c_nl c_pp ;  0 U_nl U_pp  ; delinquency_cost delinquency_cost 0;  p1 p1 p1c];
     
-    Ys = 5;
-
-    
-%     Ywindow = 60;
-%     Ygrid = ((res_out(9)-Ywindow):Ys:(res_out(9)+Ys))' ;
-%     U = zeros(size(Ygrid,1),1);
-% 
-%     for i=1:size(Ygrid,1)
-%        res_temp = res_out;
-%        res_temp(9) = Ygrid(i);
-%        [~,util_temp] = dk_obj_8s(res_temp,prob,A,Aprime,nA,B,Bprime,nB,chain);
-%        U(i,1) = abs(util_temp - util_counter);
-%     end
-% 
-%     plot(Ygrid,U)
-%     [~,ind]=min(U)
-%     
-%     [Ygrid(ind) res_out(9) (Ygrid(ind)-res_out(9))]
+    [~] = counter_print(estimates_c,cd_dir);
 
     %}
 end
