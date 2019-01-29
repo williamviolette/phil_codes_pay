@@ -36,6 +36,7 @@ end
 
 Aprime_inc = (Aprime./(1+r_high)).*(Aprime<=0) + (Aprime./(1+r_lend)).*(Aprime>0);
 Bprime_inc = (Bprime./(1+r_water)).*(Bprime>=B) + (B./(1+r_water)).*(Bprime<B); %% capped at B because the rest is raised through L
+
 L          = 0.*(Bprime>=B) + ((Bprime - B)./(1+r_water)).*(Bprime<B); %% need to raise Bprime-B (or zero)
 
 % if water_lending == 0

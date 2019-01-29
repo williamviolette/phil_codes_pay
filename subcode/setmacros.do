@@ -6,7 +6,7 @@
 ******************
 
 global phil_folder="/Users/williamviolette/Documents/Philippines/"
-*global subcode="${phil_folder}phil_analysis/phil_codes/phil_subcode/"
+global subcode="${phil_folder}phil_analysis/phil_codes_pay/subcode/"
 
 	** data locations **
 global generated     = "${phil_folder}phil_analysis/phil_generated/"
@@ -26,6 +26,7 @@ global complaintdata = "${phil_folder}data/cc/"
 global moments 		 = "${temp}moments/"
 global tables        = "${phil_folder}phil_analysis/phil_codes_pay/paper/tables/"
 
+global mib           = "${phil_folder}mib/input/"
 	** data version **
 *global version = "v1"
 *global version_leaks = "v1"

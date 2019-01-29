@@ -1,0 +1,112 @@
+function [util1,util2,util3,util4,w1,w2,w3,w4] = ...
+         gen_dc_4s(A,B,D,Aprime,Bprime,Dprime,r_high,r_lend,r_water,water_lending,Y_high,Y_low,p1,p2,p1d,p2d,pd,alpha,k_high,k_low,lambda_high,lambda_low)
+
+% TEST
+%{
+k_high=0;
+k_low=0;
+Y_high = 10000;
+Y_low = 10000;
+p1=16.2;
+p2=0.21   ;  
+
+p1d=17;
+p2d=0.21;
+
+alpha=.02;
+lambda_high = 0;
+lambda_low=0;
+
+D = 0;
+Dprime = 1;
+
+A = 0;
+B = -2000;
+Aprime = 0;
+Bprime = -2000;
+
+r_high = .04;
+r_lend = 0;
+water_lending=0;
+
+r_water = 0
+%}
+
+
+if water_lending == 0
+    r_water = r_water.*(Aprime<=0) + (r_water+.5).*(Aprime>0); 
+end
+
+Aprime_inc = (Aprime./(1+r_high)).*(Aprime<=0) + (Aprime./(1+r_lend)).*(Aprime>0);  %% UNCHANGED
+
+Bprime_inc = (Bprime./(1+r_water)).*(Bprime>=B) + (B./(1+r_water)).*(Bprime<B); %% capped at B because the rest is raised through L
+
+L          = 0.*(Bprime>=B) + ((Bprime - B)./(1+r_water)).*(Bprime<B); %% need to raise Bprime-B (or zero)
+
+
+% given connected, choose to be connected  : C==0, Cprime==0
+    %%% payoff: (p1, p2)   + (B - Bprime_inc (YES L))  [OR 0 if caught]
+    
+% given connected, choose to be disconnected  : C==0, Cprime==1
+    %%% payoff: (p1c, p2c)  + (B - Bprime_inc (NO L))  UCOST pd
+    
+% given disconnected, choose to be connected  : C==1, Cprime==1
+    %%% payoff: (p1, p2)  + 0 (NO Bprime AT ALL) (YES L)
+    
+% given disconnected, choose to be disconnected  : C==1, Cprime==1
+    %%% payoff: (p1c, p2c)  + (B - Bprime_inc (NO L))  UCOST pd
+
+    
+cc = (D==0).*(Dprime==0); 
+cd = (D==0).*(Dprime==1);
+dc = (D==1).*(Dprime==0);
+dd = (D==1).*(Dprime==1);
+    
+p1f = p1.*cc + p1d.*cd + p1.*dc + p1d.*dd;
+p2f = p2.*cc + p2d.*cd + p2.*dc + p2d.*dd;
+
+Lf_12 = L.*cc + 0.*cd + L.*dc + 0.*dd;
+Lf_34 = L.*0; 
+
+y_12f = (A-Aprime_inc + B-Bprime_inc).*cc + (A-Aprime_inc + B-Bprime_inc - pd).*cd + ...
+        (A-Aprime_inc + B).*dc            + (A-Aprime_inc + B-Bprime_inc - pd).*dd ;
+    
+y_34f = (A-Aprime_inc + B).*cc            + (A-Aprime_inc + B-Bprime_inc - pd).*cd + ...
+        (A-Aprime_inc + B).*dc            + (A-Aprime_inc + B-Bprime_inc - pd).*dd ;
+
+    
+debt_12 = 1;
+[util1,w1] = u_dk(Lf_12,debt_12,alpha,p1f,p2f, Y_high + y_12f, lambda_high,k_high);
+[util2,w2] = u_dk(Lf_12,debt_12,alpha,p1f,p2f, Y_low  + y_12f, lambda_low,k_low);
+ 
+debt_34 = 0;
+[util3,w3] = u_dk(Lf_34,debt_34,alpha,p1f,p2f,Y_high + y_34f, lambda_high,k_high);
+[util4,w4] = u_dk(Lf_34,debt_34,alpha,p1f,p2f,Y_low  + y_34f, lambda_low,k_low);
+
+    
+% [cc_1,cc_w1] = u_dk(L,1,   alpha,p1,p2,   Y + A-Aprime_inc + B-Bprime_inc  , lambda_high,k_high);
+% [cd_1,cd_w1] = u_dk(L.*0,0,alpha,p1c,p2c, Y + A-Aprime_inc + B-Bprime_inc , lambda_high,k_high);
+% [dc_1,dc_w1] = u_dk(L.*0,0,alpha,p1c,p2c, Y + A-Aprime_inc + B   , lambda_high,k_high);
+% [dd_1,dd_w1] = u_dk(L.*0,0,alpha,p1c,p2c, Y + A-Aprime_inc + B-Bprime_inc , lambda_high,k_high);
+% 
+% util1 = cc_1.*(C==0).*(Cprime==0) + cd_1.*(C==0).*(Cprime==1) + dc_1.*(C==1).*(Cprime==0) + dd_1.*(C==1).*(Cprime==1);
+% w1 = cc_w1.*(C==0).*(Cprime==0) + cd_w1.*(C==0).*(Cprime==1) + dc_w1.*(C==1).*(Cprime==0) + dd_w1.*(C==1).*(Cprime==1);
+
+% y_12 = A + B - Aprime_inc -  Bprime_inc ; 
+% y_34 = A + B - Aprime_inc ; %%% don't get ANY Bprime_inc !! (default, so go back to zero...)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

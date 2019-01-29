@@ -1,6 +1,63 @@
 
 
 
+* SELECT SUM(B.c) AS c, B.date, N.conacctn AS conacct
+* FROM (SELECT conacct, conacctn, rank, distance FROM neighbor WHERE rank<=5 & distance<=2) AS N
+* JOIN (SELECT DISTINCT conacct from paws) AS P
+* ON N.conacctn = P.conacct
+* JOIN (SELECT * FROM billing_1 WHERE c<200) AS B
+* ON B.conacct = N.conacct
+* GROUP BY N.conacctn, B.date
+
+
+/*
+forvalues r = 1/12 {
+#delimit;
+local bill_query "
+	SELECT B.c, B.date, N.conacctn, N.conacct
+	FROM (SELECT conacct, conacctn, rank, distance FROM neighbor WHERE rank<=4 & distance<=2) AS N
+	JOIN (SELECT DISTINCT conacct from paws) AS P
+	ON N.conacctn = P.conacct
+	JOIN (SELECT * FROM billing_`r' WHERE c<200) AS B
+	ON B.conacct = N.conacct
+	";
+#delimit cr;
+odbc load, exec("`bill_query'")  dsn("phil") clear  
+
+save "${temp}bill_temp_pay_neighbor_`r'.dta", replace
+}
+*/
+
+
+forvalues r = 1/12 {
+*local r "1"
+use "${temp}bill_temp_pay_neighbor_`r'.dta", clear
+egen cs = sum(c), by(conacctn date)
+keep conacctn date cs
+duplicates drop conacctn date, force
+ren conacctn conacct
+ren cs c
+save "${temp}bill_temp_pay_neighbor_`r'_s.dta", replace
+}
+
+
+forvalues r = 1/12 {
+if `r'==1 {
+use "${temp}bill_temp_pay_neighbor_`r'_s.dta", clear
+}
+else {
+	append using "${temp}bill_temp_pay_neighbor_`r'_s.dta"
+}
+}
+ren c cs
+duplicates drop conacct date, force
+save "${temp}neighbor_c.dta", replace
+
+
+
+/*
+
+
 #delimit;
 local bill_query "";
 forvalues r = 1/12 {;

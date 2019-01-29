@@ -9,11 +9,95 @@ prog define write
 end
 
 
-
-
-
 use "${data}paws/clean/full_sample_1.dta", clear
  
+*** NOTE: don't find TCD rec charges much in PNs!
+*** BUT: do I find PNs as evidence of notice?! that would be the evidence....
+	** No, very few PNs and they are only for BIG delinquencies!
+
+***** Concern:  What if TCD is actually disconnecting people for a little while (a few days?) until they pay?
+
+*** A) date of payment on collection records? date of visitation in MCF? [ more notes in MCF? ]
+	* MCF has info on reconnected status, and whether TCD is "found active", good coverage (all years)
+		* Pasay total: 100,000 then 30,000 get TCD'd at some point, half reconnect 15,000 BUT: very few documented re-connections (only like 3-6,000) 
+		* ALSO: what about illegal activity extending a loan?!?!? (build that in?!)?!?
+	* we have the post_date of all the payments, which is cool, possibly...
+		* get the day of the month on collection records
+
+
+*** B) consumption drop at 60 days AR (why does payment look weird there?)
+
+
+*** C) track patterns of survey respondents who are disconnected, and translate correctly
+	* key : find respondents that PAY IMMEDIATELY, then look at when they say they are reconnected!!
+
+	** key, do they pay??
+
+
+*** D) USE DYNAMICS!
+
+	* D.1 cmiss then not miss (could be partial)
+	* D.2 pay a lot!, then never miss?
+	* D.3 pay correspond exactly with drop?! NOT REALLY! CORRESPONDS MORE WITH MISSING CONSUMPTION!
+		* part of this is the construction of the measure
+	*** smoothing argument?! washing clothes, showering...
+
+	***** Use size of balance (paying more means more credit constrained!!) conditioning for missing consumption
+
+	** evidence for this approach:
+		* D.a reconnect quickly, especially for quick payers (2 days, not ideal...)
+		* D.b do payments and usage line up??
+
+		*** exploit more of the timing??
+
+
+
+*** E) USE NEIGHBOR USE!!  those [DC'd] and those [NOT DC'd] !   THIS IS DOABLE...
+
+	** what's the goal: FIND ZERO
+	** ugh, can't find anything good... 
+
+
+*** F) FIND OTHER INCOME SHOCKS!!! look at complaints for billing shocks/errors !!
+
+	*** use generous and non-generous handlers; super not generalizable...
+
+	*** VERY HARD TO DISENTANGLE FROM LEAKS (ALTHOUGH LEAKS ARE SOLID....)
+
+ * disconnection in past year because of non-payment (number of times)
+ * if yes, go to days given to pay the amount, enough time
+ * if no, go to 
+
+* days given to pay the amount 
+
+*** G) SAME PAYMENT, LENGTH OF delinquency!!
+
+
+*** half the time, they DC without warning (surprise!)
+*** mandated to reconnect in 2 days!  (percentage of the month..)
+*** can this account for prompt payers?  how does this story relate to the credit constraints idea?!?!?
+
+
+
+ * *** DISCONNECTION 
+
+***** COUNTERNARRATIVE
+
+* households are disconnected, and there's a lag to being reconnected EVEN if they pay for reconnection!
+
+*** if there are NO partial disconnections
+	** then NO household should use from a neighbor when cmiss==0
+	** this is actually not a bad test!!!
+	** show how much DC'd households switch over, then show that non-dc'd households barely switch
+	** so then its mostly cutting back!
+
+
+
+
+
+
+
+
 g dc_note = 1 if regexm(disc_notice,"Oo")==1
 replace dc_note=0 if regexm(disc_notice,"Hindi")==1
 sum dc_note
@@ -28,171 +112,13 @@ replace dp_30=0 if days_to_pay_extra>30 & days_to_pay_extra<.
 sum dp_30
 	write "${tables}days_pay_under_30.tex" `=100*`=r(mean)'' 0.1 "%12.0g"
 
-
 g et = 1 if regexm(enough_time,"Oo")==1
 replace et=0 if regexm(enough_time,"Hindi")==1
 sum et
 	write "${tables}enough_time.tex" `=100*`=r(mean)'' 0.1 "%12.0g"
 
 
+destring days_before_rec_extra, replace force
+sum days_before_rec_extra, detail
 
 
-
-*** WHAT PERCENT ACTUALLY DISCONNECT?!
-
-use "${temp}temp_descriptives_2.dta", clear
-	drop if date==653
-
-	keep if SHH==1
-
-*** Missing C : (<=20) drop 5%
-	* g cmiss = c==.
-	* egen cms=sum(cmiss), by(conacct)
-	* keep if cms<=20
-	* drop cms
-
-*** Measure TCD  %%% ONLY KEEP THOSE THAT GET A DISCONNECTION NOTICE!! (CUS THEY ARE A DIFFERENT SAMPLE... BUT MATTER (OTHERWISE NEED INDIVIDUAL FIXED EFFECTS, WHICH ARE HARD!!))
-	sort conacct date
-	by conacct: g tcd_id = dc[_n-1]==0 & dc[_n]==1
-	replace tcd_id = . if date<=602
-	replace tcd_id = 0 if ar==0
-	
-	sort conacct date
-	by conacct: g post_tcd = tcd_id==1 | tcd_id[_n-1]==1 | tcd_id[_n-2]==1 | tcd_id[_n-3]==1 
-	g pt_id=.
-	forvalues r = 0/3 {
-		replace pt_id = cn[_n-`r'] if tcd_id[_n-`r']==1
-	}
-	g cmt = c==. & post_tcd==1
-	egen pts = sum(post_tcd), by(conacct pt_id)
-	egen cmts=sum(cmt), by(conacct pt_id)
-
-	g share=cmts/pts
-
-	tab cmts if pts==4
-
-
-	tab cmts
-
-
-
-
-use "${temp}temp_descriptives_2.dta", clear
-	drop if date==653
-
-*** Single HH's
-	keep if SHH==1
-
-*** Missing C : (<=20) drop 5%
-	g cmiss = c==.
-	egen cms=sum(cmiss), by(conacct)
-	keep if cms<=20
-	drop cms
-
-*** Measure TCD  %%% ONLY KEEP THOSE THAT GET A DISCONNECTION NOTICE!! (CUS THEY ARE A DIFFERENT SAMPLE... BUT MATTER (OTHERWISE NEED INDIVIDUAL FIXED EFFECTS, WHICH ARE HARD!!))
-	sort conacct date
-	by conacct: g tcd_id = dc[_n-1]==0 & dc[_n]==1
-	replace tcd_id = . if date<=602
-	replace tcd_id = 0 if ar==0
-	
-	egen tcd_max=max(tcd_id), by(conacct)
-	keep if tcd_max==1 
-
- 	g ar_dc = ar if tcd_id==1
- 	sum ar_dc
-		write "${tables}ar_dc.tex" `=r(mean)' 0.1 "%12.0g"
-
-	sort conacct date
-	by conacct: g cn=_n
-
-	sort conacct date
-	by conacct: g post_tcd = tcd_id==1 | tcd_id[_n-1]==1 | tcd_id[_n-2]==1 
-
-	g pt_id=.
-	forvalues r = 0/2 {
-		replace pt_id = cn[_n-`r'] if tcd_id[_n-`r']==1
-	}
-
-	g ar_post = ar if post_tcd==1
-
-	egen ar_min=min(ar_post), by(conacct pt_id)
-
-	g no_pay = pay==.
-	g p0 = pay>0 & pay<.
-	egen p0_min = min(p0), by(conacct pt_id)
-
-	egen no_pay_min = min(no_pay), by(conacct pt_id)
-
-	g paid=0 if ar_min!=.
-	replace paid =1 if  ar_min<=46
- 	sum paid
-		write "${tables}share_pay_3_months.tex" `=100*r(mean)' 0.1 "%12.0g"
-
-
-
-/*
-
-use "${data}paws/clean/full_sample_1.dta", clear
-
-tab payment
-drop if payment=="" 
-g collector = regexm(payment,"Collector ng Maynilad")==1
-***drop if collector==1
-
-g atm = regexm(payment,"ATM")==1
-sum atm
-	write "${tables}atm.tex" `=100*`=r(mean)'' 0.1 "%12.0g"
-
-g center = regexm(payment,"Bayad Center")==1
-sum center
-	write "${tables}center.tex" `=100*`=r(mean)'' 0.1 "%12.0g"
-
-g maynilad = regexm(payment,"Business Center ng Maynilad")==1
-sum maynilad
-	write "${tables}maynilad.tex" `=100*`=r(mean)'' 0.1 "%12.0g"
-
-sum collector
-	write "${tables}collector.tex" `=100*`=r(mean)'' 0.1 "%12.0g"
-
-
-
-
-
-/*
-
-g leak = regexm(billing_error,"Leak")==1
-g over_charge = regexm(billing_error,"Mahal na singil")==1
-
-
-
-
-
-
-destring disc_times_extra, replace force
-keep if disc_times_extra!=.  // keep only disconnect
-drop if disc_times_extra==0
-ren disc_times_extra disc_count
-
-g disc_note = 1 if disc_notice == "Hindi"
-replace disc_note = 0 if disc_notice == "Hindi Alam"
-replace disc_note = 0 if disc_notice == "Oo"
-
-destring days_before_rec_extra, replace
-	ren days_before_rec_extra days_rec
-
-destring  days_to_pay_extra, replace
-	ren days_to_pay_extra days_pay
-
-g enough_time1 = 1 if enough_time == "Hindi"
-replace enough_time1 = 0 if enough_time == "Hindi Alam"
-replace enough_time1 = 0 if enough_time == "Oo"
-drop enough_time
-ren enough_time1 enough_time
-duplicates drop conacct, force
-
-
-
-
-/*
-
-keep conacct leak over_charge disc_count days_rec days_pay enough_time

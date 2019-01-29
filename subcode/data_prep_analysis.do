@@ -75,9 +75,10 @@ use "${temp}temp_descriptives.dta", clear
 	keep if max_class==1
 	drop max_class
 
-	replace ar = ar + 15 if ar <361
-		replace ar = 361 + (541-361)/2 if ar==361
-		replace ar = 541 + (720-540)/2 if ar==541
+	replace ar = ar + 30 if ar<=361
+	* replace ar = ar + 15 if ar <361
+	* 	replace ar = 361 + (541-361)/2 if ar==361
+	* 	replace ar = 541 + (720-540)/2 if ar==541
 		replace ar = 0 if ar==.
 	replace dc = 0 if dc==.
 	g cp = c!=.

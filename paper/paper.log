@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  15 JAN 2019 18:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  28 JAN 2019 18:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1087,23 +1087,34 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 98.
 
-[1] (./tables/center.tex) (./tables/maynilad.tex) (./tables/atm.tex)
-(./tables/collector.tex) [2] (./tables/ar_dc.tex)
-(./tables/days_pay_under_30.tex) (./tables/days_pay_average.tex)
-(./tables/share_pay_3_months.tex) [3] (./tables/est.tex) (./tables/fit.tex)
-<tables/deaton.png, id=22, 562.2606pt x 421.575pt>
+[1] [2] (./tables/descriptives.tex) (./tables/center.tex)
+(./tables/maynilad.tex) (./tables/atm.tex) (./tables/collector.tex) [3]
+(./tables/days_delinquent.tex) (./tables/bill.tex) (./tables/pay_size.tex)
+(./tables/pay_freq.tex) (./tables/balance.tex) (./tables/y_avg.tex)
+(./tables/save_avg.tex) (./tables/balance_inc.tex) (./tables/balance_save.tex)
+(./tables/disc_prob.tex) (./tables/disc_prob_60.tex)
+<tables/dc_hazard_full.pdf, id=22, 397.485pt x 289.08pt>
+File: tables/dc_hazard_full.pdf Graphic file (type pdf)
+
+<use tables/dc_hazard_full.pdf>
+Package pdftex.def Info: tables/dc_hazard_full.pdf used on input line 177.
+(pdftex.def)             Requested size: 278.2376pt x 202.35461pt.
+ (./tables/days_pay_under_30.tex)
+(./tables/days_pay_average.tex) (./tables/enough_time.tex) [4]
+(./tables/est.tex) (./tables/fit.tex)
+<tables/deaton.png, id=26, 562.2606pt x 421.575pt>
 File: tables/deaton.png Graphic file (type png)
  <use tables/deaton.png>
-Package pdftex.def Info: tables/deaton.png used on input line 211.
+Package pdftex.def Info: tables/deaton.png used on input line 252.
 (pdftex.def)             Requested size: 281.12961pt x 210.78697pt.
 
-(./tables/counter.tex) (./paper.bbl [4]) [5 <./tables/deaton.png (PNG copy)>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 229.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 229.
-
-(./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 229.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 229.
+(./tables/counter.tex) (./paper.bbl [5 <./tables/dc_hazard_full.pdf>] [6 <./tab
+les/deaton.png (PNG copy)>]) [7]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 270.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 270.
+ (./paper.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 270.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 270.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1115,23 +1126,23 @@ LaTeX Font Warning: Size substitutions with differences
 ### semi simple group (level 1) entered at line 72 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 20746 strings out of 493089
- 366827 string characters out of 6134842
- 445755 words of memory out of 5000000
- 23756 multiletter control sequences out of 15000+600000
+ 20827 strings out of 493089
+ 367953 string characters out of 6134842
+ 448880 words of memory out of 5000000
+ 23803 multiletter control sequences out of 15000+600000
  76692 words of font info for 211 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 59i,11n,94p,934b,568s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 59i,11n,94p,1203b,608s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc
 }</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></
 usr/local/texlive/2015/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/loc
 al/texlive/2015/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texl
 ive/2015/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on paper.pdf (6 pages, 162235 bytes).
+Output written on paper.pdf (8 pages, 180304 bytes).
 PDF statistics:
- 48 PDF objects out of 1000 (max. 8388607)
- 33 compressed objects within 1 object stream
+ 69 PDF objects out of 1000 (max. 8388607)
+ 49 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 18 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 23 words of extra memory for PDF output out of 10000 (max. 10000000)
 

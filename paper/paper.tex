@@ -141,41 +141,78 @@ Disconnection : Don't pay bill; come and threaten disconnection
 \end{itemize}
 
 
-\section{Paying Water Bills in Manila}
+\section{Data}
 
-At the end of each month, the water company sends meter readers who record monthly consumption for each account and then use a mobile device to print and deliver the bill to the account owner in person.\footnote{The company upgraded in the first year of the sample.  Previously, the company mailed the bill to each account at the end of the month.}  The account owner is then expected to pay the bill by the end of the month.  Account owners have many options to pay their bills with \input{tables/center}\unskip\% using small payment centers (mall kiosks, gas stations, convenient stores, etc.), \input{tables/maynilad}\unskip\% paying at local water company offices, \input{tables/atm}\unskip\% paying over phone, online, or via ATM kiosks, and 0\unskip\input{tables/collector}\unskip\% paying the meter readers in person.\footnote{Figures are tabulated from the account survey.}
+To measure water consumption and payments, I partnered with a large water provider in Manila who shared administrative data on over 1.5 million water connections.  These data include water consumption and payment data as well as disconnection status. 
 
-After an account has remained unpaid for a minimum of 60 days, the government regulator allows the water company to issue a written statement to the account owner, notifying the owner that their water will be disconnected in 7 days if their outstanding balances remain unpaid.  The government regulator also prohibits the water company from charging any interest on these outstanding balances.  In practice, the water company tolerates \input{tables/ar_dc}days of delinquency on average before issuing a notice.  The level of delinquency tolerated before issuing notices also appears uncorrelated with (list measures/demographics...).  ( SHOW REGRESSION IN APPENDIX )  
+Describe notice of disconnection in more detail here???
 
-Upon receiving a notice of disconnection, account owners negotiate for time to pay their outstanding balances.  In \input{tables/days_pay_under_30}\unskip\% of notices, owners are agree to pay within 30 days, making an average grace period of \input{tables/days_pay_average}days according to the water account survey.  \input{tables/enough_time}\unskip\% of accounts report having ``enough time'' to make their payments.  
+used to measure water consumption and payment data comes from monthly administrative data from a large water provider in Metro Manila
 
-The administrative data indicate that \input{tables/share_pay_3_months}\unskip\% resolve their outstanding balances following a notice.
 
-Disconnection typically involves workers from the water company placing a metal lock on the water meter stopping the flow.  Once disconnected, account owners are charged a one-time fee of 200 PhP to restore their water service on top of settling any outstanding balances.  The water company is then required to restore service within 48 hours of receiving full payment for reconnection.  
+The 2015 Family Income and Expenditure Survey provides household income measures, which help to calibrate the structural model.  
 
-%\footnote{To account for potential mismeasurement in the administrative data, this measure allows account owners to resolve their outstanding balances within 60 days of receiving notice.}
+STICK WITH ONE HOUSEHOLD PER METER IN THIS PAPER!  EXPLAIN THIS IN THE DATA SECTION!
+
+\section{Credit through Unpaid Water Bills in Manila}
+
+\begin{table}
+\centering
+\caption{Descriptives}\label{table:descriptives}
+\input{tables/descriptives}
+\end{table}
+
+At the end of each month, the water company sends meter readers who record monthly consumption for each connection and then use a mobile device to print and deliver the bill to the household in person.\footnote{The company upgraded in the first year of the sample.  Previously, the company mailed the bill to each household at the end of the month.}  The household is then expected to pay the bill by the end of the month.  Households have many options to pay their bills with \input{tables/center}\unskip\% using small payment centers (mall kiosks, gas stations, convenient stores, etc.), \input{tables/maynilad}\unskip\% paying at local water company offices, \input{tables/atm}\unskip\% paying over phone, online, or via ATM kiosks, and 0\unskip\input{tables/collector}\unskip\% paying the meter readers in person.\footnote{Figures are tabulated from the connection survey.}  
+
+Despite encouragement from the company and easy payment mechanisms, households rarely pay their bills on time.  Table~\ref{table:descriptives} provides summary statistics on the usage, billing, and payment patterns of households.  On average, households are \input{tables/days_delinquent}days behind in their payments.  Households also make large, infrequent payments.  While the average bill is \input{tables/bill}PhP per month, monthly payments average \input{tables/pay_size}PhP and households make payments in only \input{tables/pay_freq}\unskip\% of months.  These payment patterns amount to an average outstanding balance of \input{tables/balance} per month.  
+
+Since the government regulator also prohibits the water company from charging any interest on outstanding balances, unpaid water bills can provide a reliable source of low-cost credit to households.  Given an average monthly income of \input{tables/y_avg}PhP and savings rate of \input{tables/save_avg}PhP, unpaid water bills reach an average of \input{tables/balance_inc}\unskip\% of income and \input{tables/balance_save}\unskip\% of savings.
+
+After a connection has remained unpaid for a minimum of 60 days, the government regulator allows the water company to issue a written statement to the connection owner, notifying the owner that their water will be disconnected in 7 days if their outstanding balances remain unpaid.  In practice, the water company often tolerates delinquency well over 60 days, which is consistent with (1) costs of sending and following up on notifications and (2) household demand for credit from the water company.  Households receive notice in \input{tables/disc_prob}\unskip\% of months.  This rate increases to \input{tables/disc_prob_60}\unskip\% for households with at least 60 days of delinquency.  Figure~\ref{figure:dc_hazard} graphs the probability of receiving a delinquency notice conditional on the level of delinquency for each account.  The water company appears to carefully follow government regulations preventing any disconnection for delinquency below 60 days.  Once households reach 61 days of delinquency, they face some probability of receiving a notice, which triples moving above 90 days unpaid balance.  Conditional on having greater than 90 days of delinquency 
+
+
+\begin{figure}
+\centering
+\caption{Probability of Notice Conditional on Days Delinquent}\label{figure:dc_hazard}
+\includegraphics[scale=.7]{tables/dc_hazard_full.pdf}
+\end{figure}
+
+
+
+% Appendix on notice!  ( need to get water company confirmation )
+
+%  In practice, the water company tolerates \input{tables/ar_dc}days of delinquency on average before issuing a notice.  The level of delinquency tolerated before issuing notices also appears uncorrelated with (list measures/demographics...).  ( SHOW REGRESSION IN APPENDIX )  
+
+Upon receiving a notice of disconnection, connection owners then negotiate for time to pay their outstanding balances.  In \input{tables/days_pay_under_30}\unskip\% of notices, owners are agree to pay within 30 days, making an average grace period of \input{tables/days_pay_average}days according to the water connection survey.  \input{tables/enough_time}\unskip\% of connections report having ``enough time'' to make their payments.  
+
+%The administrative data indicate that \input{tables/share_pay_3_months}\unskip\% resolve their outstanding balances following a notice.
+
+Disconnection typically involves workers from the water company placing a metal lock on the water meter stopping the flow.  Once disconnected, connection owners are charged a small, one-time fee of 200 PhP to restore their water service on top of settling any outstanding balances.  The water company is then required to restore service within 48 hours of receiving full payment for reconnection.
+
+
+
+
+
+\begin{itemize}
+	\item No notice: great access to credit, or just not enough time to observe them hitting a
+	\item Average notice rate!?!
+
+\end{itemize}
+
+
+
+
+%\footnote{To account for potential mismeasurement in the administrative data, this measure allows connection owners to resolve their outstanding balances within 60 days of receiving notice.}
 
 %In practice, \input{tables/dc_note}\unskip\% of owners report receiving advanced notice.  
 
 
 
 
-In some cases 
-
-the water company is allowed to disconnect an account only after it has remained unpaid for over 60 days and the water company has issued a written statement to the account .  
 
 
 
-
-
-
-
-
-
-
-
-
-\section{Interest rate}
+\section{Model Primitives}
 
 % https://www.cgdev.org/blog/compartamos-context
 
