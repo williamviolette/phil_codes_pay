@@ -1,4 +1,4 @@
-\begin{thebibliography}{5}
+\begin{thebibliography}{6}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -10,6 +10,13 @@ J.~Andreoni and C.~Sprenger.
 \newblock Estimating time preferences from convex budgets.
 \newblock \emph{American Economic Review}, 102\penalty0 (7):\penalty0 3333--56,
   2012.
+
+\bibitem[Cull et~al.(2009)Cull, Asli Demirg{\"u}{\c{c}}-Kunt, and
+  Morduch]{cull2009microfinance}
+R.~Cull, A.~Asli Demirg{\"u}{\c{c}}-Kunt, and J.~Morduch.
+\newblock Microfinance meets the market.
+\newblock \emph{Journal of Economic perspectives}, 23\penalty0 (1):\penalty0
+  167--92, 2009.
 
 \bibitem[Gin{\'e} and Karlan(2014)]{gine2014group}
 X.~Gin{\'e} and D.~S. Karlan.

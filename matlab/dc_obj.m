@@ -136,7 +136,7 @@ if s==1
 
     % [w_debt_pre w_debt_pre2 w_debt_pre3 w_pre1]
 
-    d_post_pre_b  = mean(controls(state_pre>=3  & w_pre==1,4));
+    d_post_pre_b  = mean(controls(state_now>=3  & w_pre==1,4));
     d_post_pre1_b  = mean(controls(state_pre>=3  & w_pre1==1,4));
     d_post_pre2_b = mean(controls(state_pre2>=3 & w_pre2==1,4));
     d_post_pre3_b = mean(controls(state_pre3>=3 & w_pre3==1,4));

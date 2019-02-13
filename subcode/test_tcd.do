@@ -138,6 +138,13 @@ program define graph_trend
    	restore
 end
 
+cap drop c0
+g c0 = c==0
+
+graph_trend c0 tcd_id conacct tc0 "drop if c==."
+
+
+
 cap drop pay0
 g pay0=pay
 replace pay0=0 if pay0==.

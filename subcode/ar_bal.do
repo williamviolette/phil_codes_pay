@@ -9,9 +9,9 @@ prog define load_data_ar_bal
 	odbc exec("CREATE TABLE ar_bal_`1' ( conacct INTEGER, date INTEGER, bal REAL );"), dsn("phil")
 
 	use "${billingdata}`2'_ar_2009_2015.dta", clear 
-		keep conacct year month amount
+		keep conacct year month hisbal
 			drop if conacct == .
-			egen bal = sum(amount), by(conacct year month)
+			egen bal = sum(hisbal), by(conacct year month)
 		keep conacct year month bal
 		sort conacct year month bal
 			by conacct year month: g id1=_n

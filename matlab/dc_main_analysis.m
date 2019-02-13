@@ -14,7 +14,7 @@ est_tables    = 0     ;
 counter       = 1     ;
 
 
-s=0; % now controls the number of moments!!
+s=1; % 1 adds amar moments
 
 mult_set = [  1  ];
 
@@ -24,14 +24,20 @@ c_std     = csvread(strcat(folder,'c_std.csv'));
 bal_avg   = csvread(strcat(folder,'bal_avg.csv'));
 bal_std   = csvread(strcat(folder,'bal_std.csv'));
 bal_corr  = csvread(strcat(folder,'bal_corr.csv'));
-cm1       = csvread(strcat(folder,'cm1.csv'));
-cm2       = csvread(strcat(folder,'cm2.csv'));
-cm3       = csvread(strcat(folder,'cm3.csv'));
-cm4       = csvread(strcat(folder,'cm4.csv'));
+am1       = csvread(strcat(folder,'am1.csv'));
+am2       = csvread(strcat(folder,'am2.csv'));
+am3       = csvread(strcat(folder,'am3.csv'));
+am4       = csvread(strcat(folder,'am4.csv'));
 % cm5       = csvread(strcat(folder,'cm5.csv'));  %%
 
+amar1       = csvread(strcat(folder,'amar1.csv'));
+amar2       = csvread(strcat(folder,'amar2.csv'));
+amar3       = csvread(strcat(folder,'amar3.csv'));
+amar4       = csvread(strcat(folder,'amar4.csv'));
 
-data_moments = [  c_avg c_std bal_avg bal_std bal_corr cm1 cm2 cm3 cm4 ];
+
+
+data_moments = [  c_avg c_std bal_avg bal_std bal_corr am1 am2 am3 am4 amar1 amar2 amar3 amar4 ];
 
 p1        = csvread(strcat(folder,'p_int.csv'));
 p2        = csvread(strcat(folder,'p_slope.csv'));
@@ -98,8 +104,11 @@ format long g
 
 pd = 200;
     % given :  r_lend , r_water, r_high ,  lambda (U) ,   theta (y), gamma (a), alpha , beta_up , Y , p1, p2 ,pd,  n , metric, waterlend,
-           %    1         2       3          4            5           6         7        8       9    10  11  12       %    
-  given   =   [ r_lend    0      .04         0            0.3         0       .018      .02     y_avg p1  p2  pd   n   10  0 ];
+           %    1         2       3         4             5          6         7        8       9    10  11  12       %    
+given    =   [ r_lend    0      .04         0            0.2         0       .024      .02     y_avg p1  p2  pd   n   10  0 ];
+
+
+%oldgiven=   [ r_lend    0      .04         0            0.3         0       .018      .02     y_avg p1  p2  pd   n   10  0 ];
 
    
   
@@ -113,7 +122,7 @@ if second_output == 1
     %S = [ .04  ];
     S = [ 0 .02  .04  .06  .08 ]
     %S = [ 0  .03  .05 ];
-    H = zeros(9,size(S,2));
+    H = zeros(size(data,1),size(S,2));
     U = zeros(1,size(S,2));
     for ss = 1:size(S,2)
         given(3) = S(ss);
@@ -146,7 +155,7 @@ end
 
 option = [ 3   5  7 12 ];   %%% what to estimate
 %option_moments = [ 1 2 3 4 6 7 ];
-option_moments = [ 1 3   6 7 8 9   ];  %%% moments to use!
+option_moments = [ 1 3   6 7 8 9   10 11 12 13    ];  %%% moments to use!
 
 if real_data == 1
     data = data_moments(option_moments)'; % need to transpose here

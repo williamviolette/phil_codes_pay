@@ -6,13 +6,13 @@
 cap program drop load_data_coll
 prog define load_data_coll
 	odbc exec("DROP TABLE IF EXISTS coll_`1';"), dsn("phil")
-	odbc exec("CREATE TABLE coll_`1' ( conacct INTEGER, date INTEGER, pay INTEGER );"), dsn("phil")
+	odbc exec("CREATE TABLE coll_`1' ( conacct INTEGER, date INTEGER, pay REAL );"), dsn("phil")
 
 	use "${billingdata}`2'_coll_2008_2015.dta", clear 
 		keep conacct year month totalpymnt
 		
 		drop if conacct == .
-		drop if totalpymnt < 10
+		*drop if totalpymnt < 10
 		egen pay = sum(totalpymnt), by(conacct year month)
 			drop totalpymnt
 		duplicates drop conacct year month, force

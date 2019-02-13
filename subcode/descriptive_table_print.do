@@ -58,23 +58,44 @@ end
 cap drop p0
 g p0 = pay>0 & pay<.
 
-print_mean usage c "%10.1fc" 1
-print_mean bill amount "%10.1fc" 1
-print_mean balance bal "%10.1fc" 1
-print_mean pay_size pay "%10.1fc" 1
-print_mean pay_freq p0 "%10.0fc" 100
-print_mean days_delinquent ar "%10.1fc" 1
+cap drop pays
+g pays = pay if pay>0 & pay<.
+
+print_mean usage_${dtable_name} c "%10.0fc" 1
+print_mean bill_${dtable_name} amount "%10.0fc" 1
+print_mean balance_${dtable_name} bal "%10.0fc" 1
+print_mean pay_freq_${dtable_name} p0 "%10.0fc" 100
+print_mean pay_size_${dtable_name} pays "%10.0fc" 1
+print_mean days_delinquent_${dtable_name} ar "%10.0fc" 1
 
 cap drop bal_y
 g bal_y = bal/$y_avg
 cap drop bal_s
 g bal_s = bal/$save_avg
 
-print_mean balance_inc bal_y "%10.1fc" 100
-print_mean balance_save bal_s "%10.1fc" 100
+print_mean balance_inc_${dtable_name} bal_y "%10.1fc" 100
+print_mean balance_save_${dtable_name} bal_s "%10.1fc" 100
 
 
-print_mean tcd_per_account tcds "%10.1fc" 1
+cap drop bal_y_p20
+g bal_y_p20 = bal/$y_p20
+print_mean balance_inc_20_${dtable_name} bal_y_p20 "%10.0fc" 100
+drop bal_y_p20
+
+
+cap drop bill_inc
+  g bill_inc = amount/$y_avg
+print_mean bill_inc_${dtable_name} bill_inc "%10.1fc" 100
+  drop bill_inc
+
+cap drop bill_sav
+  g bill_sav = amount/$save_avg
+print_mean bill_sav_${dtable_name} bill_sav "%10.1fc" 100
+  drop bill_sav
+
+
+
+print_mean tcd_per_account_${dtable_name} tcds "%10.1fc" 1
 
 cap drop cobs_id
 cap drop cobs
@@ -87,46 +108,39 @@ by conacct: g conN=_N
 cap drop tobs
 g tobs=_N
 
-cap drop pay_dc
-g pay_dc = pay if tcd_id==1
 
-cap drop cmiss
-g cmiss=c==.
-replace cmiss=. if date==600 | date==601
 
-*** Make descriptive table
-* global cat1=" "
- * global cat1="keep if tcd_max==1 & ar_post<=60" 
- * global cat2="keep if tcd_max==1 & ar_post>60"
- * global cat3="keep if tcd_max==0"
+print_mean total_hhs_${dtable_name} cobs "%10.0fc" 1
+print_mean obs_per_hh_${dtable_name} conN "%10.1fc" 1
+print_mean total_obs_${dtable_name} tobs "%10.0fc" 1
+
 
  global cat_num=6
  global cat_group = "mean sd min p25 p75 max"
 
-    file open newfile using "${tables}descriptives.tex", write replace
-    print_table_start
-    file write newfile " & Mean & SD & Min & 25th & 75th & Max \\ " _n  
+    file open newfile using "${tables}descriptives_${dtable_name}.tex", write replace
+*    print_table_start
+*    file write newfile " & Mean & SD & Min & 25th & 75th & Max \\ " _n  
 
       print_1_cg "Usage (m3)" c  "%10.1fc"
       print_1_cg "Bill" amount  "%10.0fc" 
-      print_1_cg "Unpaid Bill" bal "%10.0fc"     
-      print_1_cg "Payment Size" pay  "%10.0fc"      
-      print_1_cg "\% Months with Payment" p0 "%10.2fc"     
+      print_1_cg "Unpaid Balance" bal "%10.0fc"   
+      print_1_cg "Share of Months with Payment" p0 "%10.2fc"       
+      print_1_cg "Payment Size" pays  "%10.0fc"      
       print_1_cg "Days Delinquent" ar  "%10.1fc"
-      print_blank
-      print_1_cg "Disc. Visit" tcds   "%10.3fc"
-      print_1_cg "Payment Size in Disc. Month" pay_dc   "%10.1fc"
-      print_1_cg "Mean Months Disc." cmiss   "%10.3fc"
-      * print_1_cg "Share Disc. 1 month After Visit" cm1  "%10.3fc"  // put this in a graph please~!!~
-      * print_1_cg "Share Disc. 2 months After Visit" cm2  "%10.3fc"
-      * print_1_cg "Share Disc. 3 months After Visit" cm3  "%10.3fc"
-      * print_1_cg "Share Disc. 4 months After Visit" cm4  "%10.3fc"
-      print_blank
-      print_obs "Total Households" cobs "%10.0fc" 
-      print_obs "Mean Obs. per Household" conN "%10.1fc" 
-      print_obs "Total Obs." tobs "%10.0fc" 
+      print_1_cg "Delinquency Visits per HH" tcds   "%10.2fc"
+      print_1_cg "Share of Months Disconnected" am   "%10.2fc"
 
-    file write newfile "\end{tabu}" _n
-    file close newfile
+*      print_blank
+*      print_obs "Total Households" cobs "%10.0fc" 
+*      print_obs "Mean Obs. per Household" conN "%10.1fc" 
+*      print_obs "Total Obs." tobs "%10.0fc" 
+
+*    file write newfile "\end{tabu}" _n
+   file close newfile
     * "\bottomrule" _n 
+
+drop cobs conN tobs p0 pays bal_y bal_s cobs_id
+
+
 

@@ -14,6 +14,9 @@ end
 
 
 
+cap drop ar_pre
+sort conacct date
+by conacct: g ar_pre = ar[_n-1]
 
 print_mean disc_prob tcd_id "%10.2fc" 100
 
@@ -46,7 +49,7 @@ graph export "${tables}dc_hazard.pdf", as(pdf) replace
 
 cap drop m_tcd
 egen m_tcd = mean(tcd_id), by(ar_pre1)
-scatter m_tcd ar_pre if arm==1 & ar_pre1<=400, xtitle("Days Delinquent") ytitle("Probability of Receiving a Disconnection Notice")
+scatter m_tcd ar_pre1 if arm==1 & ar_pre1<=400, xtitle("Days Delinquent") ytitle("Probability of Receiving a Disconnection Notice")
 graph export "${tables}dc_hazard_full.pdf", as(pdf) replace
 
 

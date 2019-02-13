@@ -143,39 +143,164 @@ Disconnection : Don't pay bill; come and threaten disconnection
 
 \section{Data}
 
-To measure water consumption and payments, I partnered with a large water provider in Manila who shared administrative data on over 1.5 million water connections.  These data include water consumption and payment data as well as disconnection status. 
+To measure water consumption and payments, I partnered with a large water provider in Manila who shared administrative data on over 1.5 million water connections.  These data include water consumption and payment data as well as disconnection status.  
 
 Describe notice of disconnection in more detail here???
 
 used to measure water consumption and payment data comes from monthly administrative data from a large water provider in Metro Manila
 
-
 The 2015 Family Income and Expenditure Survey provides household income measures, which help to calibrate the structural model.  
 
-STICK WITH ONE HOUSEHOLD PER METER IN THIS PAPER!  EXPLAIN THIS IN THE DATA SECTION!
+STICK WITH ONE HOUSEHOLD PER METER IN THIS PAPER!  EXPLAIN THIS IN THE DATA SECTION!  CONNECT TO FIES DATA AS WELL!!
 
-\section{Credit through Unpaid Water Bills in Manila}
 
-\begin{table}
+\section{Credit through Unpaid Water Bills}
+
+% \footnote{The company upgraded t in the first year of the sample.  Previously, the company mailed the bill to each household at the end of the month.} 
+% Each month, households consume \input{tables/usage_all}m3 of piped water on average, which totals an average monthly bill of \input{tables/bill_all}PhP as shown in Table~\ref{table:descriptives_all}.  Given an average monthly income in Manila of \input{tables/y_avg}PhP and savings rate of \input{tables/save_avg}PhP,  monthly water bills reach a modest average of \input{tables/bill_inc_all}\unskip\% of income and \input{tables/bill_sav_all}\unskip\% of savings.  
+
+
+\begin{table}[h!] % PUT IN DEMOGRAPHICS PLEASE ?!?!?
 \centering
-\caption{Descriptives}\label{table:descriptives}
-\input{tables/descriptives}
+\caption{Mean Characteristics}\label{table:descriptives_all}
+\vspace{-2mm}
+\begin{tabular}{l*{1}{cccccc}}
+\toprule
+ & Mean & SD & Min & 25th & 75th & Max  \\
+\midrule
+\input{tables/descriptives_all}
+\bottomrule \\ [-.8em]
+\multicolumn{7}{c}{Total Households: \input{tables/total_hhs_all}  Obs. per Household: \input{tables/obs_per_hh_all} Total Obs.: \input{tables/total_obs_all}}
+\end{tabular}
 \end{table}
 
-At the end of each month, the water company sends meter readers who record monthly consumption for each connection and then use a mobile device to print and deliver the bill to the household in person.\footnote{The company upgraded in the first year of the sample.  Previously, the company mailed the bill to each household at the end of the month.}  The household is then expected to pay the bill by the end of the month.  Households have many options to pay their bills with \input{tables/center}\unskip\% using small payment centers (mall kiosks, gas stations, convenient stores, etc.), \input{tables/maynilad}\unskip\% paying at local water company offices, \input{tables/atm}\unskip\% paying over phone, online, or via ATM kiosks, and 0\unskip\input{tables/collector}\unskip\% paying the meter readers in person.\footnote{Figures are tabulated from the connection survey.}  
+Unpaid water bills may provide a reliable source of low-cost credit to households because (1) the company tolerates high rates of delinquency before disconnecting them from service and (2) the water company is prohibited from charging any interest on outstanding balances. 
 
-Despite encouragement from the company and easy payment mechanisms, households rarely pay their bills on time.  Table~\ref{table:descriptives} provides summary statistics on the usage, billing, and payment patterns of households.  On average, households are \input{tables/days_delinquent}days behind in their payments.  Households also make large, infrequent payments.  While the average bill is \input{tables/bill}PhP per month, monthly payments average \input{tables/pay_size}PhP and households make payments in only \input{tables/pay_freq}\unskip\% of months.  These payment patterns amount to an average outstanding balance of \input{tables/balance} per month.  
+At the end of each month, the water company sends meter readers who record monthly consumption for each connection and then use a mobile device to print and deliver the bill to the household in person.  The household is then expected to pay the bill by the end of the month.  Households have many options to pay their bills with \input{tables/center}\unskip\% using small payment centers (mall kiosks, gas stations, convenient stores, etc.), \input{tables/maynilad}\unskip\% paying at local water company offices, and \input{tables/atm}\unskip\% paying over phone, online, or via ATM kiosks.\footnote{Figures are tabulated from the connection survey sample.}  Despite easy payment mechanisms, households rarely pay their bills on time.  Table~\ref{table:descriptives_all} provides summary statistics on the usage, billing, and payment patterns of households.  On average, households are \input{tables/days_delinquent_all}days behind in their payments.  Households also make large, infrequent payments.  While the average bill is \input{tables/bill_all}PhP per month, payment sizes average \input{tables/pay_size_all}PhP and households make payments in only \input{tables/pay_freq}\unskip\% of months.  These payment patterns leave an average total outstanding balance of \input{tables/balance_all}PhP per month.  
 
-Since the government regulator also prohibits the water company from charging any interest on outstanding balances, unpaid water bills can provide a reliable source of low-cost credit to households.  Given an average monthly income of \input{tables/y_avg}PhP and savings rate of \input{tables/save_avg}PhP, unpaid water bills reach an average of \input{tables/balance_inc}\unskip\% of income and \input{tables/balance_save}\unskip\% of savings.
+Given average monthly household incomes of \input{tables/y_avg}PhP and savings rates of \input{tables/save_avg}PhP in Manila, unpaid water bills reach \input{tables/balance_inc}\unskip\% of income and \input{tables/balance_save}\unskip\% of savings on average each month.  For households at the 20th income percentile, unpaid water bills jump to \input{tables/balance_inc_20_all}\unskip\% of monthly income.  As a benchmark, \cite{cull2009microfinance} survey microfinance institutions throughout the developing world and find median yearly loan sizes expressed as a share of the 20th percentile of household income at 48\% for nongovernmental organizations (NGOs), 160\% for nonbank financial institutions, and 224\% for banks.  These descriptives suggest that a yearly loan from an NGO could be reached with around 5 months of unpaid water bills for households at the 20th income percentile.\footnote{Deal with income effects on water consumption!}  Moreover, microfinance loans charge high yearly interest ranging from 25\% for NGOs to 13\% for banks.  In comparison, unpaid water bills are interest-free, but households face some risk of service disconnection for delinquency.
 
-After a connection has remained unpaid for a minimum of 60 days, the government regulator allows the water company to issue a written statement to the connection owner, notifying the owner that their water will be disconnected in 7 days if their outstanding balances remain unpaid.  In practice, the water company often tolerates delinquency well over 60 days, which is consistent with (1) costs of sending and following up on notifications and (2) household demand for credit from the water company.  Households receive notice in \input{tables/disc_prob}\unskip\% of months.  This rate increases to \input{tables/disc_prob_60}\unskip\% for households with at least 60 days of delinquency.  Figure~\ref{figure:dc_hazard} graphs the probability of receiving a delinquency notice conditional on the level of delinquency for each account.  The water company appears to carefully follow government regulations preventing any disconnection for delinquency below 60 days.  Once households reach 61 days of delinquency, they face some probability of receiving a notice, which triples moving above 90 days unpaid balance.  Conditional on having greater than 90 days of delinquency 
+After bills have remained unpaid for at least 60 days, the government regulator permits the water company to visit delinquent households to disconnect their water service.\footnote{Regulations also require the water company to issue written statements to households, notifying them that their connections will be disconnected in 7 days if their outstanding balances remain unpaid.  In practice, only \input{tables/disc_notice}\unskip\% of disconnected households report receiving advanced notice.  All percentages are calculated from \input{tables/disc_count}respondents who report being visited for disconnection in the past year out of \input{tables/paws_accounts}total respondents in the connection survey.}  Likely due to time and travel costs, delinquency visits are relatively rare in practice, occurring in only \input{tables/tcd_id_mean}\unskip\% of household-month observations.  This probability increases to \input{tables/tcd_id_ar_cond}\unskip\% for household-months over 60 days overdue.  Figure~\ref{figure:dc_hazard} plots the share of months with delinquency visits according to days overdue.  The risk of delinquency visits spikes at 61 days overdue before settling to around 2.5\% at higher levels of delinquency.  Appendix Table~\ref{table:tcd_predict} predicts delinquency visits with days overdue, outstanding balance, and household characteristics.  This exercise finds that days overdue and unpaid balances are strongly and independently correlated with visits while demographic indicators have weaker associations. % more to say here about magnitudes?!
+
+When company staff conduct delinquency visits, households often negotiate for additional time to pay their outstanding balances.  \input{tables/days_pay_under_30}\unskip\% of households report agreeing to pay within 30 days and the average grace period is \input{tables/days_pay_average}days; however, only \input{tables/enough_time}\unskip\% of connections report having ``enough time'' to make their payments.  For households who fail to pay, disconnection typically involves workers from the water company placing a metal lock on the water meter stopping the flow.  In order to reconnect, households must pay a small, one-time fee of 200 PhP on top of settling any outstanding balances.  The water company is then required to restore service within 48 hours of receiving full payment for reconnection, which is confirmed in survey data.\footnote{Households report being reconnected \input{tables/days_rec_average}days after payment.}  
 
 
 \begin{figure}
 \centering
-\caption{Probability of Notice Conditional on Days Delinquent}\label{figure:dc_hazard}
-\includegraphics[scale=.7]{tables/dc_hazard_full.pdf}
+\caption{Share of Households that Receive a Delinquency Visit \\ depending on Days Delinquent in the Previous Month}\label{figure:dc_hazard}
+\includegraphics[scale=.7]{tables/connected_visit_hazard_all.pdf}
 \end{figure}
+
+
+
+
+\begin{table}[h!]
+\centering
+\caption{Mean Characteristics by Delinquency Visit Status}\label{table:descriptives_3g}
+\vspace{-2mm}
+\begin{tabular}{l*{1}{ccc}}
+\toprule
+ & Never Visited & Stayers & Leavers  \\
+% &   &         &        \\
+\midrule
+\input{tables/descriptives_3_groups}
+\bottomrule
+\multicolumn{4}{l}{\scriptsize ``Never Visited'' includes HHs that never receive a delinquency visit.}\\  [-.5em]
+\multicolumn{4}{l}{\scriptsize ``Stayers'' includes HHs with $\geq$1 visit and are connected for the last 6 months.}\\ [-.5em]
+\multicolumn{4}{l}{\scriptsize ``Leavers'' includes HHs with $\geq$1 visit and are disconnected for $\geq$1 of the last 6 months.}\\ [-.5em]
+\multicolumn{4}{l}{\scriptsize Bill, Unpaid Balance, and Payment Size are in PhP/month.} 
+\end{tabular}
+\end{table}
+
+
+Table~\ref{table:descriptives_3g} provides mean characteristics according to whether and how households respond to delinquency visits over the course of the sample.  The first column, ``Never Visited,'' includes households that never receive a delinquency visit.  Since delinquency visits are relatively rare, the majority of observations fall into this category.  The second and third columns include households that receive at least one delinquency visit.   The second column, ``Stayers,'' also requires that households are connected for the final 6 months of the sample while the third column, ``Leavers,'' includes households that are disconnected for at least one of the final 6 months of the sample.  
+
+Leavers are predominantly composed of households that permanently disconnect over the sample period, which likely occurs when households move out of their current residences.  These households often leave large outstanding balances that are almost never repaid due to difficulties tracking households across locations.  By incentivizing households to pay, frequent delinquency visits provide a strategy for the company to minimize this lost revenue.
+
+Stayers include households that remain connected at the end of the sample despite receiving at least one delinquency visit over the duration.\footnote{Stayers also excludes \input{tables/pcd_hh}households that the company has flagged as ``permanently disconnected.''}  Compared to households that are never visited, stayers have much higher outstanding balances and days delinquent.  Their payments also occur less frequently but have larger average sizes.  Stayers spend 3\% of the sample period disconnected from service.  Until they are able to pay for reconnection, these households likely substitute to alternative water sources including sharing with neighbors, using from deepwells, or purchasing from local water vendors.\footnote{Table~\ref{table:descriptives_3g} indicates that even for households that are never visited, they are disconnected during 1\% of months.  These disconnections include (1) households that received a delinquency visit before the start of the sample (but later reconnected) and (2) households that notify the water company about their moving plans in advance and therefore, do not need a delinquency visit.}  Stayers also have slightly larger household sizes, younger heads of household, and greater incidence of low-skilled employment than never visited households.  These demographic patterns are consistent with lower-income households having greater difficulty paying their bills promptly.
+
+
+
+
+\begin{figure*}[t!]
+    \centering
+    \vspace{2mm}
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \caption[]{\small Share Disconnected}  
+        \vspace{-1mm}
+        \includegraphics[width=\textwidth,trim={.2cm .2cm .2cm 0cm}, clip=true]{tables/line_disconnection}
+        \label{fig:line_disc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}  
+        \centering 
+        \caption[]{\small Unpaid Balance}
+        \vspace{-1mm}
+        \includegraphics[width=\textwidth,trim={.2cm .2cm .2cm 0cm}, clip=true]{tables/line_bal}
+        \label{fig:line_bal}
+    \end{subfigure}
+    \vskip 1mm \vskip 0pt
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \caption[]{\small Days Overdue}
+        \vspace{-1mm}
+        \includegraphics[width=\textwidth,trim={.2cm .2cm .2cm 0cm}, clip=true]{tables/line_ar}
+        \label{fig:line_ar}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}  
+        \centering
+        \caption[]{\small Monthly Payment}  
+        \vspace{-1mm}
+        \includegraphics[width=\textwidth,trim={.2cm .2cm .2cm 0cm}, clip=true]{tables/line_pay}
+        \label{fig:line_pay}
+    \end{subfigure}
+    \vskip 1mm \vskip 0pt
+    \begin{subfigure}[b]{.49\textwidth}  
+        \centering
+        \caption[]{\small Average Consumption} 
+        \vspace{-1mm}
+        \includegraphics[width=\textwidth,trim={.2cm .2cm .2cm 0cm}, clip=true]{tables/line_c}  
+        \label{fig:line_c}
+    \end{subfigure}
+    \hfill \hspace{.02\textwidth}
+    \begin{minipage}{0.47\textwidth}   
+    \vspace{-6cm}
+    \caption[]
+    {\small Mean Outcomes around First Delinquency Visit  \\  \\  Figures include all households with delinquency visits.  Stayers include only households who are connected for the last 6 months of the sample.  Mean monthly payments include zeros when no payment is made. } \label{fig:line_graphs}
+    \end{minipage}
+\end{figure*} 
+
+
+To investigate the timing of household responses to delinquency visits, Figure~\ref{fig:line_graphs} plots monthly mean outcomes in months relative to the first delinquency visit for each household.  Outcomes are plotted separately for all households that experience delinquency visits as well as stayer households who experience visits and also remain connected for the last 6 months of the sample.  In the months just preceding a visit, monthly payments (Figure~\ref{fig:line_pay}) decrease suddenly, leading to corresponding increases in unpaid balances (Figure~\ref{fig:line_bal}) and days overdue (Figure~\ref{fig:line_ar}).  Average consumption (Figure~\ref{fig:line_c}) increases slightly as well.  Prior to disconnection, stayers follow similar patterns but with lower levels of delinquency than the population average.
+
+Immediately following the first delinquency visit, monthly payments spike as many households pay their full outstanding balances to prevent any disconnection.  Despite these payments, the average share of households disconnected (Figure~\ref{fig:line_disc}) also spikes to around \input{tables/am_2}\unskip\% before decreasing, as some households pay for reconnection, and stabilizing at \input{tables/am_20}\unskip\%, which is likely composed of households who have permanently disconnected.  Stayer households pay more and disconnect less than the population average following a visit.  Disconnection rates for stayers spike to \input{tables/am6_2}\unskip\% before declining to around \input{tables/am6_20}\unskip\% two years later.\footnote{Although stayers are connected for the last 6 months of the sample by definition, disconnection rates do not decline to zero since some stayers experience multiple disconnection spells.}  The decline among stayers accounts for much of the average decline in disconnection rates across the sample.  Although many stayers quickly reconnect within 6 months, reconnections continue accumulating up to one year after a visit.  
+
+This descriptive evidence indicates that many households choose to disconnect for long periods before finally paying for reconnection.  This behavior is consistent with households facing credit-constraints, which prevent them from taking a low-cost loan to fund immediate reconnection.  Instead, households substitute to lower-quality alternative sources of water until they can save enough income for reconnection.  Credit constraints would additionally predict that the most delinquent households at the time of the visit may be the most likely to disconnect following a visit.  The data support this hypothesis, finding that the share disconnected two months after a visit is \input{tables/amar_2}\unskip\% for stayers that are over 90 days delinquent at the time of the visit.  The corresponding share for stayers under 90 days delinquent shrinks to \input{tables/amar_2a}\unskip\%.
+
+Another hypothesis may be that households choose to stop paying when they leave their homes for vacation or overseas work.  This mechanism would likely predict a large decrease in water consumption in the months preceding delinquency visits.  Instead, consumption rises consistently between 24 and 2 months before a visit.  Consumption then drops one month before, during, and after a visit, before quickly returning to an average level.  This dip in consumption likely corresponds to connections that are disconnected for less than a month before being reconnected and having their consumption recorded for that month.  Overall, this variation is small given a mean consumption for stayers of \input{tables/c_avg}m3 with a standard deviation of \input{tables/c_std}\unskip.  Moreover, delinquency visits are relatively rare, which may make their exact timing difficult for households to predict.  
+
+
+
+
+
+
+
+
+
+
+
+%The administrative data indicate that \input{tables/share_pay_3_months}\unskip\% resolve their outstanding balances following a notice.
+
+% At this time, households report paying 
+
+%In practice, the water company often tolerates delinquency well over 60 days, which is consistent with (1) costs of sending and following up on notifications and (2) household demand for credit from the water company.  Households receive notice in \input{tables/disc_prob}\unskip\% of months.  
+
+% This rate increases to \input{tables/disc_prob_60}\unskip\% for households with at least 60 days of delinquency.  
+
+% Figure~\ref{figure:dc_hazard} graphs the probability of receiving a delinquency notice conditional on the level of delinquency for each account.  The water company appears to carefully follow government regulations preventing any disconnection for delinquency below 60 days.  Once households reach 61 days of delinquency, they face some probability of receiving a notice, which triples moving above 90 days unpaid balance.  Conditional on having greater than 90 days of delinquency 
+
 
 
 
@@ -183,28 +308,53 @@ After a connection has remained unpaid for a minimum of 60 days, the government 
 
 %  In practice, the water company tolerates \input{tables/ar_dc}days of delinquency on average before issuing a notice.  The level of delinquency tolerated before issuing notices also appears uncorrelated with (list measures/demographics...).  ( SHOW REGRESSION IN APPENDIX )  
 
-Upon receiving a notice of disconnection, connection owners then negotiate for time to pay their outstanding balances.  In \input{tables/days_pay_under_30}\unskip\% of notices, owners are agree to pay within 30 days, making an average grace period of \input{tables/days_pay_average}days according to the water connection survey.  \input{tables/enough_time}\unskip\% of connections report having ``enough time'' to make their payments.  
+% Upon receiving a notice of disconnection, connection owners then negotiate for time to pay their outstanding balances.  In \input{tables/days_pay_under_30}\unskip\% of notices, owners are agree to pay within 30 days, making an average grace period of \input{tables/days_pay_average}days according to the water connection survey.  \input{tables/enough_time}\unskip\% of connections report having ``enough time'' to make their payments.  
 
-%The administrative data indicate that \input{tables/share_pay_3_months}\unskip\% resolve their outstanding balances following a notice.
+% %The administrative data indicate that \input{tables/share_pay_3_months}\unskip\% resolve their outstanding balances following a notice.
 
-Disconnection typically involves workers from the water company placing a metal lock on the water meter stopping the flow.  Once disconnected, connection owners are charged a small, one-time fee of 200 PhP to restore their water service on top of settling any outstanding balances.  The water company is then required to restore service within 48 hours of receiving full payment for reconnection.
+% Disconnection typically involves workers from the water company placing a metal lock on the water meter stopping the flow.  Once disconnected, connection owners are charged a small, one-time fee of 200 PhP to restore their water service on top of settling any outstanding balances.  The water company is then required to restore service within 48 hours of receiving full payment for reconnection.
 
+% \begin{itemize}
+% 	\item No notice: great access to credit, or just not enough time to observe them hitting a
+% 	\item Average notice rate!?!
 
-
-
-
-\begin{itemize}
-	\item No notice: great access to credit, or just not enough time to observe them hitting a
-	\item Average notice rate!?!
-
-\end{itemize}
-
-
-
+% \end{itemize}
 
 %\footnote{To account for potential mismeasurement in the administrative data, this measure allows connection owners to resolve their outstanding balances within 60 days of receiving notice.}
 
 %In practice, \input{tables/dc_note}\unskip\% of owners report receiving advanced notice.  
+
+
+
+\section{Model}
+
+
+\begin{align}\label{eq:u}
+E_t \Big[ \sum_{\tau = t}^{t-\tau}  u(w_{\tau},c_{\tau})   \Big]
+\end{align}
+\begin{align}
+c_t + p(w_t) w_t = y_t + A_t - \dfrac{A_{t+1}}{1+r^{a}_{t}}  +  B_t - D_{t+1} \dfrac{B_{t+1}}{1+r^{b}_{t}}  - D_{t+1}
+\end{align}
+\begin{align}
+r^{a}_{t} = 
+\begin{cases}
+  r_l &\text{ if } A_{t+1} \leq 0  \\
+  r_h  &\text{ if } A_{t+1} > 0
+\end{cases}
+\end{align}
+\begin{align}
+r^{b}_{t} = 
+\begin{cases}
+  r_w &\text{ if } A_{t+1} \leq 0 \\
+r_h &\text{ if } A_{t+1} > 0 
+\end{cases}
+\end{align}
+\begin{align}
+&B_t - D_{t+1} p(w_t) w_t \leq B_{t+1} \leq 0
+\end{align}
+
+
+
 
 
 
@@ -213,6 +363,9 @@ Disconnection typically involves workers from the water company placing a metal 
 
 
 \section{Model Primitives}
+
+
+
 
 % https://www.cgdev.org/blog/compartamos-context
 
@@ -259,11 +412,83 @@ Disconnection typically involves workers from the water company placing a metal 
 \end{table}
 
 
+\section{Appendix}
+
+
+\begin{table}[h!]
+\small
+\centering
+\caption{ Linear Probability of Receiving a Delinquency Visit }\label{table:tcd_predict}
+\vspace{-2mm}
+\begin{tabular}{lCCC}
+\toprule
+& \small (1) & \small (2) & \small (3)  \\
+\midrule 
+\input{tables/tcd_predict}
+\bottomrule
+\multicolumn{4}{l}{\footnotesize Std. errors clustered at the HH-level. \textsuperscript{c} p$<$0.10,\textsuperscript{b} p$<$0.05,\textsuperscript{a} p$<$0.01 }
+\end{tabular}
+\end{table}
+
+
+
+
+\begin{table}[h!]
+\centering
+\caption{Estimating Sample Construction}\label{table:sampleconstruction}
+\vspace{-2mm}
+\begin{tabular}{l*{1}{cc}}
+\toprule
+ & Observations & Observations Removed  \\
+\midrule
+Initial sample   &         \input{tables/date_N}  &     \\
+Keep residential connections (excluding commercial)   &            &    \input{tables/class_drop}  \\
+Keep connections with payment records &  &   \input{tables/pay_drop}   \\
+Keep months with consumption under 200 m3    &            &  \input{tables/chigh_drop}     \\
+Keep bills $>$ -5,000 PhP and $<$ 80,000 PhP  &  & \input{tables/amount_drop}  \\
+Keep unpaid bills $>$ -5,000 PhP and $<$ 80,000 PhP &             &     \input{tables/bal_drop}  \\
+Keep payments $>$ -80,000 PhP and $<$ 80,000 PhP    &            &    \input{tables/paylh_drop}   \\
+Keep connections with over 30 months of records   &            &   \input{tables/month_drop}    \\
+Keep connections serving a single household   &            &   \input{tables/SHH_drop}    \\
+Drop connections that are disconnected for final yr.  &            &   \input{tables/dc_drop}    \\
+Final sample & \input{tables/am_N} & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+
+\begin{figure}
+\centering
+\caption{Stayers Share of Households that Receive a Delinquency Visit \\ depending on Days Delinquent in the Previous Month}\label{figure:dc_hazardstayers}
+\includegraphics[scale=.7]{tables/connected_visit_hazard.pdf} \\
+{ \footnotesize Only stayer households. }
+\end{figure}
+
+
+\begin{table}[h!]
+\centering
+\caption{Descriptives for Stayers}\label{table:descriptives_stayers}
+\vspace{-2mm}
+\begin{tabular}{l*{1}{cccccc}}
+\toprule
+ & Mean & SD & Min & 25th & 75th & Max  \\
+\midrule
+\input{tables/descriptives_stayers}
+\bottomrule
+\multicolumn{7}{c}{Total Households: \input{tables/total_hhs_stayers}  Obs. per Household: \input{tables/obs_per_hh_stayers} Total Obs.: \input{tables/total_obs_stayers}}
+\end{tabular}
+\end{table}
+
+
 \nocite{*}
 \singlespacing
 \setlength{\bibsep}{7pt}
 \bibliographystyle{abbrvnat}
 \bibliography{ref}
+
+
 
 
 

@@ -9,38 +9,78 @@ prog define write
 end
 
 
-
 use "${temp}temp_descriptives_2.dta", clear
-	drop if date==653
 
-*** Single HH's
-	keep if SHH==1
 
-*** Missing C : (<=20) drop 5%
-	g cmiss = c==.
-	egen cms=sum(cmiss), by(conacct)
-	keep if cms<=20
-	drop cms
+duplicates drop conacct, force
 
-*** Measure TCD  %%% ONLY KEEP THOSE THAT GET A DISCONNECTION NOTICE!! (CUS THEY ARE A DIFFERENT SAMPLE... BUT MATTER (OTHERWISE NEED INDIVIDUAL FIXED EFFECTS, WHICH ARE HARD!!))
-	sort conacct date
-	by conacct: g tcd_id = dc[_n-1]==0 & dc[_n]==1
-	replace tcd_id = . if date<=602
-	replace tcd_id = 0 if ar==0
-	
-	egen tcd_max=max(tcd_id), by(conacct)
-	keep if tcd_max==1 
+	write "${tables}paws_accounts.tex" `=_N' 0.1 "%12.0gc"
+
+
+keep if disc_count!=.
+
+	write "${tables}disc_count.tex" `=_N' 0.1 "%12.0gc"
+
+
+
+	preserve
+		keep conacct
+		save "${temp}paws_stats_conacct.dta", replace
+	restore
+
+
+sum days_pay, detail
+	write "${tables}days_pay_average.tex" `=r(mean)' 1 "%12.0g"
+
+g dp_30=1 if days_pay<=30
+replace dp_30=0 if days_pay>30 & days_pay<.
+sum dp_30
+	write "${tables}days_pay_under_30.tex" `=100*`=r(mean)'' 1 "%12.0g"
+
+sum enough_time
+	write "${tables}enough_time.tex" `=100*`=r(mean)'' 1 "%12.0g"
+
+
+sum days_rec, detail
+	write "${tables}days_rec_average.tex" `=r(mean)' .1 "%12.0g"
+
 
 
 
 
 use "${data}paws/clean/full_sample_1.dta", clear
 
-g dc_note = 1 if regexm(disc_notice,"Oo")==1
-replace dc_note=0 if regexm(disc_notice,"Hindi")==1
-sum dc_note
-	write "${tables}dc_note.tex" `=100*`=r(mean)'' 0.1 "%12.0g"
+merge m:1 conacct using "${temp}paws_stats_conacct.dta"
+keep if _merge==3
+drop _merge
 
+
+g disc_note = 1 if disc_notice == "Hindi"
+replace disc_note = 0 if disc_notice == "Hindi Alam"
+replace disc_note = 0 if disc_notice == "Oo"
+
+sum disc_note
+	write "${tables}disc_notice.tex" `=100*`=r(mean)'' 1 "%12.0g"
+
+tab payment
+drop if payment=="" 
+g collector = regexm(payment,"Collector ng Maynilad")==1
+***drop if collector==1
+
+g atm = regexm(payment,"ATM")==1
+sum atm
+	write "${tables}atm.tex" `=100*`=r(mean)'' 1 "%12.0g"
+
+g center = regexm(payment,"Bayad Center")==1
+sum center
+	write "${tables}center.tex" `=100*`=r(mean)'' 1 "%12.0g"
+
+g maynilad = regexm(payment,"Business Center ng Maynilad")==1
+sum maynilad
+	write "${tables}maynilad.tex" `=100*`=r(mean)'' 1 "%12.0g"
+
+*sum collector
+*	write "${tables}collector.tex" `=100*`=r(mean)'' 0.1 "%12.0g"
 
 
 

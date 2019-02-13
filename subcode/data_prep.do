@@ -1,4 +1,25 @@
 
+#delimit;
+local bill_query "";
+forvalues r = 1/12 {;
+	local bill_query "`bill_query' 
+	SELECT A.*, `r' AS ba
+	FROM coll_`r' AS A
+	JOIN (SELECT DISTINCT conacct FROM paws) AS B 
+		ON A.conacct = B.conacct
+	";
+	if `r'!=12{;
+		local bill_query "`bill_query' UNION ALL";
+	};
+};
+clear;
+#delimit cr;
+
+odbc load, exec("`bill_query'")  dsn("phil") clear  
+
+save "${temp}coll_temp_pay.dta", replace
+
+
 
 
 * SELECT SUM(B.c) AS c, B.date, N.conacctn AS conacct
@@ -26,7 +47,7 @@ odbc load, exec("`bill_query'")  dsn("phil") clear
 
 save "${temp}bill_temp_pay_neighbor_`r'.dta", replace
 }
-*/
+
 
 
 forvalues r = 1/12 {
@@ -57,26 +78,6 @@ save "${temp}neighbor_c.dta", replace
 
 /*
 
-
-#delimit;
-local bill_query "";
-forvalues r = 1/12 {;
-	local bill_query "`bill_query' 
-	SELECT A.*, `r' AS ba
-	FROM ar_bal_`r' AS A
-	JOIN (SELECT DISTINCT conacct FROM paws) AS B 
-		ON A.conacct = B.conacct
-	";
-	if `r'!=12{;
-		local bill_query "`bill_query' UNION ALL";
-	};
-};
-clear;
-#delimit cr;
-
-odbc load, exec("`bill_query'")  dsn("phil") clear  
-
-save "${temp}ar_bal_temp_pay.dta", replace
 
 
 
@@ -195,27 +196,6 @@ local bill_query "";
 forvalues r = 1/12 {;
 	local bill_query "`bill_query' 
 	SELECT A.*, `r' AS ba
-	FROM coll_`r' AS A
-	JOIN (SELECT DISTINCT conacct FROM paws) AS B 
-		ON A.conacct = B.conacct
-	";
-	if `r'!=12{;
-		local bill_query "`bill_query' UNION ALL";
-	};
-};
-clear;
-#delimit cr;
-
-odbc load, exec("`bill_query'")  dsn("phil") clear  
-
-save "${temp}coll_temp_pay.dta", replace
-
-
-#delimit;
-local bill_query "";
-forvalues r = 1/12 {;
-	local bill_query "`bill_query' 
-	SELECT A.*, `r' AS ba
 	FROM ar_`r' AS A
 	JOIN (SELECT DISTINCT conacct FROM paws) AS B 
 		ON A.conacct = B.conacct
@@ -285,5 +265,49 @@ save "${temp}bill_temp_pay.dta", replace
 
 
 
+
+
+#delimit;
+local bill_query "";
+forvalues r = 1/12 {;
+	local bill_query "`bill_query' 
+	SELECT A.*, `r' AS ba
+	FROM ar_bal_`r' AS A
+	JOIN (SELECT DISTINCT conacct FROM paws) AS B 
+		ON A.conacct = B.conacct
+	";
+	if `r'!=12{;
+		local bill_query "`bill_query' UNION ALL";
+	};
+};
+clear;
+#delimit cr;
+
+odbc load, exec("`bill_query'")  dsn("phil") clear  
+
+save "${temp}ar_bal_temp_pay.dta", replace
+
+
+
+
+#delimit;
+local bill_query "";
+forvalues r = 1/12 {;
+	local bill_query "`bill_query' 
+	SELECT A.*, `r' AS ba
+	FROM bill_total_`r' AS A
+	JOIN (SELECT DISTINCT conacct FROM paws) AS B 
+		ON A.conacct = B.conacct
+	";
+	if `r'!=12{;
+		local bill_query "`bill_query' UNION ALL";
+	};
+};
+clear;
+#delimit cr;
+
+odbc load, exec("`bill_query'")  dsn("phil") clear  
+
+save "${temp}bill_total_temp_pay.dta", replace
 
 
