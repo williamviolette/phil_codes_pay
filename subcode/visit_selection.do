@@ -46,12 +46,12 @@ prog define sp
 		egen mv = mean(`2') , by(`3')
 		cap drop dn
 		bys `3': g dn=_n
-		twoway connected mv `3' if dn==1, lp(dash) lc(gs0) lw(medthick) plotr(lw(medthick )) xlabel(0(60)361) ytitle("Share of Months with Delinquency Visit") xtitle("Days Overdue in Previous Month") 
+		twoway connected mv `3' if dn==1, lp(dash) lc(gs0) lw(medthick) plotr(lw(medthick )) xlabel(0(60)300 360 "360+") ytitle("Share of Months with Delinquency Visit") xtitle("Days Overdue in Previous Month") 
 		graph export  "${tables}connected_`1'.pdf", as(pdf) replace
 	restore
 end
 
-sp "visit_hazard_all" tcd_id ar_lag "keep if ar_lag<500"
+sp "visit_hazard_all" tcd_id ar_lag "replace ar_lag=360 if ar_lag>360 & ar_lag<."
 
 
 **** EXPORT AVERAGE

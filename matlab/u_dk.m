@@ -1,5 +1,10 @@
 function [util,w] = u_dk(L,debt,alpha,p1,p2,y,lambda,k)
 
+%B
+%y = 37863.5449142332; % high
+%-645.123985766768
+%37863.5449142332
+
 if debt==1
     L_cut = cut_dk(alpha,k,p1,p2,y);
     %L_cut = cut_dk(alpha,p1,p2,y);

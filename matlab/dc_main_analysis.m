@@ -13,58 +13,126 @@ est_many      = 0     ;
 est_tables    = 0     ;
 counter       = 1     ;
 
+bs            = 0 ; % bootstrap option
+br      = [3 4] ; % rep interval
+br_est  = [1 2] ;
 
+fileID = fopen(strcat(cd_dir,'breps.tex'),'w');
+        fprintf(fileID,'%s\n',num2str(br(2),'%5.0f')); 
+        fclose(fileID);
+        
 s=1; % 1 adds amar moments
 
 mult_set = [  1  ];
 
-%%% import key stats
-c_avg     = csvread(strcat(folder,'c_avg.csv'));
-c_std     = csvread(strcat(folder,'c_std.csv'));
-bal_avg   = csvread(strcat(folder,'bal_avg.csv'));
-bal_std   = csvread(strcat(folder,'bal_std.csv'));
-bal_corr  = csvread(strcat(folder,'bal_corr.csv'));
-am1       = csvread(strcat(folder,'am1.csv'));
-am2       = csvread(strcat(folder,'am2.csv'));
-am3       = csvread(strcat(folder,'am3.csv'));
-am4       = csvread(strcat(folder,'am4.csv'));
-% cm5       = csvread(strcat(folder,'cm5.csv'));  %%
 
-amar1       = csvread(strcat(folder,'amar1.csv'));
-amar2       = csvread(strcat(folder,'amar2.csv'));
-amar3       = csvread(strcat(folder,'amar3.csv'));
-amar4       = csvread(strcat(folder,'amar4.csv'));
+if bs==1
+    bmat = csvread(strcat(folder,'B.csv'));
+    p1 = bmat(1,:);
+    p2 = bmat(2,:);
+    prob_caught = bmat(3,:);
+    prob_caught = .05.*ones(size(prob_caught,1),size(prob_caught,2))  %%% HAVE HIGH PROB OF GETTING CAUGHT
+    prob_caught = .05; %%% HAVE HIGH PROB OF GETTING CAUGHT
+    
+    c_avg = bmat(4,:);
+    c_std = bmat(5,:);
+    bal_avg = bmat(6,:);
+    bal_std = bmat(7,:);
+    bal_corr = bmat(8,:);
+    
+    am1 = bmat(10,:); %%% start with plus 2! fix this later?!
+    am2 = bmat(11,:);
+    am3 = bmat(12,:);
+    am4 = bmat(13,:);
+    
+    amar1 = bmat(16,:); %%% same plus 2 here too
+    amar2 = bmat(17,:); 
+    amar3 = bmat(18,:); 
+    amar4 = bmat(19,:); 
+         
+    
+else
+    %%% import key stats
+    c_avg     = csvread(strcat(folder,'c_avg.csv'));
+    c_std     = csvread(strcat(folder,'c_std.csv'));
+    bal_avg   = csvread(strcat(folder,'bal_avg.csv'));
+    bal_std   = csvread(strcat(folder,'bal_std.csv'));
+    bal_corr  = csvread(strcat(folder,'bal_corr.csv'));
+    
+    am1       = csvread(strcat(folder,'am1.csv')); %%% start with 1 not zero!!!!
+    am2       = csvread(strcat(folder,'am2.csv'));
+    am3       = csvread(strcat(folder,'am3.csv'));
+    am4       = csvread(strcat(folder,'am4.csv'));
+
+    amar1       = csvread(strcat(folder,'amar1.csv'));
+    amar2       = csvread(strcat(folder,'amar2.csv'));
+    amar3       = csvread(strcat(folder,'amar3.csv'));
+    amar4       = csvread(strcat(folder,'amar4.csv'));
+
+    p1        = csvread(strcat(folder,'p_int.csv'));
+    p2        = csvread(strcat(folder,'p_slope.csv'));
+
+    prob_caught = csvread(strcat(folder,'prob_caught.csv'));
+    prob_caught = .05  %%% HAVE HIGH PROB OF GETTING CAUGHT
+
+end
+
+
+    y_avg     = csvread(strcat(folder,'y_avg.csv'));
+    delinquency_cost = csvread(strcat(folder,'delinquency_cost.csv'));
+    r_lend    = csvread(strcat(folder,'irate.csv'));
+
+data_moments = [  c_avg; c_std; bal_avg; bal_std; bal_corr; am1; am2; am3; am4; amar1; amar2; amar3; amar4 ];
 
 
 
-data_moments = [  c_avg c_std bal_avg bal_std bal_corr am1 am2 am3 am4 amar1 amar2 amar3 amar4 ];
 
-p1        = csvread(strcat(folder,'p_int.csv'));
-p2        = csvread(strcat(folder,'p_slope.csv'));
-p_avg     = csvread(strcat(folder,'p_avg.csv'));
-y_avg     = csvread(strcat(folder,'y_avg.csv'));
-prob_caught = csvread(strcat(folder,'prob_caught.csv'));
 
-prob_caught = .05  %%% HAVE HIGH PROB OF GETTING CAUGHT
-delinquency_cost = csvread(strcat(folder,'delinquency_cost.csv'));
-r_lend    = csvread(strcat(folder,'irate.csv'))./12 ; %%% convert to monthly here!
 
 %prob_caught=.05;
 
 n = 5000;  %%% GRID SIZE AFFECTS THE MAXIMUM !!!!!!!
+    fileID = fopen(strcat(cd_dir,'par_n_iter.tex'),'w');
+        fprintf(fileID,'%s\n',num2sepstr(n,'%5.0f')); 
+        fclose(fileID);
 
 nA = 25 ;
+    fileID = fopen(strcat(cd_dir,'par_nA.tex'),'w');
+        fprintf(fileID,'%s\n',num2sepstr(nA,'%5.0f')); 
+        fclose(fileID);
 sigA = 10000 ;
+    fileID = fopen(strcat(cd_dir,'par_sigA.tex'),'w');
+        fprintf(fileID,'%s\n',num2sepstr(sigA,'%5.0f')); 
+        fclose(fileID);
+
 Agrid = 0 + sqrt(2)*sigA*erfinv(2*((1:nA)'./(nA+1))-1);
 Agrid = round(Agrid,0);
 %hist(Agrid,100)
+    fileID = fopen(strcat(cd_dir,'par_Amin.tex'),'w');
+        fprintf(fileID,'%s\n',num2sepstr(min(Agrid),'%5.0f')); 
+        fclose(fileID);
+    fileID = fopen(strcat(cd_dir,'par_Amax.tex'),'w');
+        fprintf(fileID,'%s\n',num2sepstr(max(Agrid),'%5.0f')); 
+        fclose(fileID);
 
 nB = 25 ;
 sigB = 3800 ;
+    fileID = fopen(strcat(cd_dir,'par_sigB.tex'),'w');
+        fprintf(fileID,'%s\n',num2sepstr(sigB,'%5.0f')); 
+        fclose(fileID);
 Bgrid = 0 + sqrt(2)*sigB*erfinv(2*((1:nB)'./(2.*nB+1))-1);
 Bgrid =round(sort(-1.*abs(Bgrid),'descend'),0);
 Bgrid = [0;Bgrid];
+    fileID = fopen(strcat(cd_dir,'par_Bmin.tex'),'w');
+        fprintf(fileID,'%s\n',num2sepstr(min(Bgrid),'%5.0f')); 
+        fclose(fileID);
+    fileID = fopen(strcat(cd_dir,'par_Bmax.tex'),'w');
+        fprintf(fileID,'%s\n',num2sepstr(max(Bgrid),'%5.0f')); 
+        fclose(fileID);
 nB=size(Bgrid,1);
+    fileID = fopen(strcat(cd_dir,'par_nB.tex'),'w');
+        fprintf(fileID,'%s\n',num2sepstr(nB,'%5.0f')); 
+        fclose(fileID);
 %hist(Bgrid,100)
 
 nD = 2;
@@ -87,11 +155,11 @@ Bprime = repmat(Bprime_r1,nD,nD);
 D = [ zeros( size(A_r1,1).*nD , size(A_r1,1) )  ...
       ones( size(A_r1,1).*nD , size(A_r1,1) ) ] ;
 Dprime = D';  
-  
+    fileID = fopen(strcat(cd_dir,'par_totalsize.tex'),'w');
+        fprintf(fileID,'%s\n',num2sepstr(size(D,1),'%5.0f')); 
+        fclose(fileID);  
 
 %%%% set grid right!!
-
-
 
 n_states=4;
 prob = [(1-prob_caught).*ones(n_states,n_states/2) (prob_caught).*ones(n_states,n_states/2)]./(n_states./2); 
@@ -117,7 +185,7 @@ if second_output == 1
 
 %%% set theta high, adjust gamma to hit VAR and alpha to hit MEAN, then look for R to hit 
     
-    data = data_moments'; % need to transpose here
+    data = data_moments;
 
     %S = [ .04  ];
     S = [ 0 .02  .04  .06  .08 ]
@@ -157,51 +225,111 @@ option = [ 3   5  7 12 ];   %%% what to estimate
 %option_moments = [ 1 2 3 4 6 7 ];
 option_moments = [ 1 3   6 7 8 9   10 11 12 13    ];  %%% moments to use!
 
-if real_data == 1
-    data = data_moments(option_moments)'; % need to transpose here
-else
-    data = h(option_moments);
-end
 
-weights =  eye(size(option_moments,2))./(data.^2) ;   % normalize moments to be between zero and one (matters quite a bit)
-ag = given(1,option);    
-obj = @(a1)dc_objopt(a1,given,data,option,option_moments,weights,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
-            
-
-if est_many == 1
-        %%% run mamy starting values! %%%
-    R = zeros(size(mult_set,2),size(option,2));
-    OBJ_VAL = zeros(size(mult_set,2),1);
-    OUTPUT = zeros(size(mult_set,2),size(data_moments,2));
-        for k = 1:size(mult_set,2)
-            ag
-            mult_set(k).*ag
-            res = fminsearch(obj,mult_set(k).*ag)
-                %[~,mom_pred]=m_1loan3_objopt(res,given,data,option,option_moments,weights,prob,A,Aprime,Agrid,inA,minA,nA,chain);
-                %weights_new = inv(mom_pred*mom_pred'); %%% optimal weighting matrix runs fine
-                %obj_new = @(a1)m_1loan3_objopt(a1,given,data,option,option_moments,weights_new,prob,A,Aprime,Agrid,inA,minA,nA,chain);
-                %res_new = fminunc(obj_new,res)
-            res_new = res;
-            
-            res_out = given
-            res_out(option) = res_new
-            output1 =  dc_obj(res_out,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s)
-            OUTPUT(k,:) = output1
-            R(k,:) = res_new;
-            OBJ_VAL(k,:) = obj(res_new);
-            
-        end
+if bs==1 %%% HERE IS BOOSTRAPPED
+    for j=br(1):br(2)
         
-    mult_set'.*ag
-    R
-    OBJ_VAL
+        pd = 200;
+        
+        given    =   [ r_lend    0      .04         0            0.2         0       .024      .02     y_avg  p1(j)  p2(j)  pd   n   10  0 ];
 
-    [OUTPUT' data_moments']
+        rng(j);
+        s0 = 1;  
+        [chain1,state1] = markov(prob,n,s0);
 
-    [~,ind]=min(OBJ_VAL);
-    estimates = R(ind,:);
+        data = data_moments(option_moments, j ); % need to transpose here
+
+        weights =  eye(size(option_moments,2))./(data.^2) ;   % normalize moments to be between zero and one (matters quite a bit)
+        ag = given(1,option);    
+        obj = @(a1)dc_objopt(a1,given,data,option,option_moments,weights,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain1,s);
+
+        if est_many == 1
+                %%% run mamy starting values! %%%
+            R = zeros(size(mult_set,2),size(option,2));
+            OBJ_VAL = zeros(size(mult_set,2),1);
+            OUTPUT = zeros(size(data_moments,1),size(mult_set,2));
+                for k = 1:size(mult_set,2)
+                    ag
+                    mult_set(k).*ag
+                    res = fminsearch(obj,mult_set(k).*ag)
+                        %[~,mom_pred]=m_1loan3_objopt(res,given,data,option,option_moments,weights,prob,A,Aprime,Agrid,inA,minA,nA,chain);
+                        %weights_new = inv(mom_pred*mom_pred'); %%% optimal weighting matrix runs fine
+                        %obj_new = @(a1)m_1loan3_objopt(a1,given,data,option,option_moments,weights_new,prob,A,Aprime,Agrid,inA,minA,nA,chain);
+                        %res_new = fminunc(obj_new,res)
+                    res_new = res;
+
+                    res_out = given
+                    res_out(option) = res_new
+                    output1 =  dc_obj(res_out,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain1,s)
+                    OUTPUT(:,k) = output1
+                    R(k,:) = res_new;
+                    OBJ_VAL(k,:) = obj(res_new);
+
+                end
+
+            mult_set'.*ag
+            R
+            OBJ_VAL
+
+            [OUTPUT data_moments(:,j)]
+
+            [~,ind]=min(OBJ_VAL);
+            estimates = R(ind,:);
+
+            csvwrite(strcat(folder,'estimates_',num2str(j),'.csv'),estimates)
+        end
+    end
+
     
-    csvwrite(strcat(folder,'estimates.csv'),estimates)
+else %%%%% HERE IS TRUE ESTIMATE! 
+    
+    if real_data == 1
+        data = data_moments(option_moments); % need to transpose here
+    else
+        data = h(option_moments);
+    end
+
+    weights =  eye(size(option_moments,2))./(data.^2) ;   % normalize moments to be between zero and one (matters quite a bit)
+    ag = given(1,option);    
+    obj = @(a1)dc_objopt(a1,given,data,option,option_moments,weights,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
+
+
+    if est_many == 1
+            %%% run mamy starting values! %%%
+        R = zeros(size(mult_set,2),size(option,2));
+        OBJ_VAL = zeros(size(mult_set,2),1);
+        OUTPUT = zeros(size(mult_set,2),size(data_moments,2));
+            for k = 1:size(mult_set,2)
+                ag
+                mult_set(k).*ag
+                res = fminsearch(obj,mult_set(k).*ag)
+                    %[~,mom_pred]=m_1loan3_objopt(res,given,data,option,option_moments,weights,prob,A,Aprime,Agrid,inA,minA,nA,chain);
+                    %weights_new = inv(mom_pred*mom_pred'); %%% optimal weighting matrix runs fine
+                    %obj_new = @(a1)m_1loan3_objopt(a1,given,data,option,option_moments,weights_new,prob,A,Aprime,Agrid,inA,minA,nA,chain);
+                    %res_new = fminunc(obj_new,res)
+                res_new = res;
+
+                res_out = given
+                res_out(option) = res_new
+                output1 =  dc_obj(res_out,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s)
+                OUTPUT(k,:) = output1
+                R(k,:) = res_new;
+                OBJ_VAL(k,:) = obj(res_new);
+
+            end
+
+        mult_set'.*ag
+        R
+        OBJ_VAL
+
+        [OUTPUT' data_moments']
+
+        [~,ind]=min(OBJ_VAL);
+        estimates = R(ind,:);
+
+        csvwrite(strcat(folder,'estimates.csv'),estimates)
+    end
+
 end
 
 
@@ -212,16 +340,77 @@ if est_tables==1
     res_out = given;
     res_out(option)=estimates;
     
-    [~]=est_print(estimates,cd_dir);
+    est_boot=[];
+    for h=br_est(1):br_est(2)
+        e_temp = csvread(strcat(folder,'estimates_',num2str(h),'.csv'));
+        est_boot = [est_boot; e_temp];
+    end
+    
+    est_var = std(est_boot);
+    
+    %%% PRINT ESTIMATES
+    %[~]=est_print(estimates,cd_dir);
+    fileID = fopen(strcat(cd_dir,'est_irate.tex'),'w');
+        fprintf(fileID,'%s\n',num2str(estimates(1),'%5.3f')); 
+        fclose(fileID);
+    fileID = fopen(strcat(cd_dir,'est_theta.tex'),'w');
+        fprintf(fileID,'%s\n',num2str(estimates(2),'%5.3f')); 
+        fclose(fileID);
+    fileID = fopen(strcat(cd_dir,'est_alpha.tex'),'w');
+        fprintf(fileID,'%s\n',num2str(estimates(3),'%5.3f')); 
+        fclose(fileID);
+    fileID = fopen(strcat(cd_dir,'est_fc.tex'),'w');
+        fprintf(fileID,'%s\n',num2str(estimates(4),'%5.1f')); 
+        fclose(fileID);
+    
+    fileID = fopen(strcat(cd_dir,'est_sd_irate.tex'),'w');
+        fprintf(fileID,'%s\n',num2str(est_var(1),'%5.4f')); 
+        fclose(fileID);
+    fileID = fopen(strcat(cd_dir,'est_sd_theta.tex'),'w');
+        fprintf(fileID,'%s\n',num2str(est_var(2),'%5.4f')); 
+        fclose(fileID);
+    fileID = fopen(strcat(cd_dir,'est_sd_alpha.tex'),'w');
+        fprintf(fileID,'%s\n',num2str(est_var(3),'%5.5f')); 
+        fclose(fileID);
+    fileID = fopen(strcat(cd_dir,'est_sd_fc.tex'),'w');
+        fprintf(fileID,'%s\n',num2str(est_var(4),'%5.4f')); 
+        fclose(fileID);
+    
+    %%% PRINT FIT!
+    output = dc_obj(res_out,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
+    output_data = data_moments;d
+    
+    fileID = fopen(strcat(cd_dir,'table_fit_est.tex'),'w');   
+        fprintf(fileID,'%s\n',strcat('Mean Usage (m3) &',num2str(output_data(1),'%5.2f'),'&', num2str(output(1),'%5.2f'),'\\'));
+        fprintf(fileID,'%s\n',strcat('Mean Water Debt (PhP) &',num2str(output_data(3),'%5.1f'),'&', num2str(output(3),'%5.1f'),'\\'));
+    fclose(fileID);
+    
+    fileID = fopen(strcat(cd_dir,'table_fit_est_dc.tex'),'w');  
+        fprintf(fileID,'%s\n',strcat('\multicolumn{1}{r}{ $\text{Visited}_{t-1}$ } &',num2str(output_data(6),'%5.2f'),'&', num2str(output(6),'%5.2f'),'\\'));
+        fprintf(fileID,'%s\n',strcat('\multicolumn{1}{r}{ $\text{Visited}_{t-2}$ } &',num2str(output_data(7),'%5.2f'),'&', num2str(output(7),'%5.2f'),'\\'));
+        fprintf(fileID,'%s\n',strcat('\multicolumn{1}{r}{ $\text{Visited}_{t-3}$ }  &',num2str(output_data(8),'%5.2f'),'&', num2str(output(8),'%5.2f'),'\\'));
+        fprintf(fileID,'%s\n',strcat('\multicolumn{1}{r}{ $\text{Visited}_{t-4}$ } &',num2str(output_data(9),'%5.2f'),'&', num2str(output(9),'%5.2f'),'\\'));
+
+        fprintf(fileID,'%s\n',strcat('\multicolumn{1}{r}{$\text{Visited \& 90+ days overdue}_{t-1}$ } &',num2str(output_data(10),'%5.2f'),'&', num2str(output(10),'%5.2f'),'\\'));
+        fprintf(fileID,'%s\n',strcat('\multicolumn{1}{r}{$\text{Visited \& 90+ days overdue}_{t-2}$ } &',num2str(output_data(11),'%5.2f'),'&', num2str(output(11),'%5.2f'),'\\'));
+        fprintf(fileID,'%s\n',strcat('\multicolumn{1}{r}{$\text{Visited \& 90+ days overdue}_{t-3}$ } &',num2str(output_data(12),'%5.2f'),'&', num2str(output(12),'%5.2f'),'\\'));
+        fprintf(fileID,'%s\n',strcat('\multicolumn{1}{r}{$\text{Visited \& 90+ days overdue}_{t-4}$ } &',num2str(output_data(13),'%5.2f'),'&', num2str(output(13),'%5.2f'),'\\'));
+    fclose(fileID);
+
+    fileID = fopen(strcat(cd_dir,'table_fit_out.tex'),'w');      
+        fprintf(fileID,'%s\n',strcat('SD of Usage &',num2str(output_data(2),'%5.1f'),'&', num2str(output(2),'%5.1f'),'\\'));
+        fprintf(fileID,'%s\n',strcat('SD Water Debt (PhP) &',num2str(output_data(4),'%5.0f'),'&', num2str(output(4),'%5.0f'),'\\'));
+        fprintf(fileID,'%s\n',strcat('Corr. Usage and Water Debt &',num2str(output_data(5),'%5.2f'),'&', num2str(output(5),'%5.2f'),'\\'));
+    fclose(fileID);
     
     %%% Moments fit
-    output = dc_obj(res_out,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
-    output_data = data_moments';
-    [~]=fit_print(output,output_data,cd_dir);
+    %output = dc_obj(res_out,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
+    %output_data = data_moments';
+    %[~]=fit_print(output,output_data,cd_dir);
     
-    %%% Deaton Figure
-    [~,~,sim] = dc_obj(res_out,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
-    [~] = deaton_print(sim,cd_dir);
+    %%% Deaton Figure : export to stata
+    %     [~,~,sim] = dc_obj(res_out,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
+    %     csvwrite(strcat(folder,'sim.csv'),sim)
 end
 
 
@@ -302,9 +491,15 @@ if counter==1
     U_pp = (util_pp-util)/du_dy10;
     c_pp = h_pp(1);
     
+        fileID = fopen(strcat(cd_dir,'est_sd_irate.tex'),'w');
+        fprintf(fileID,'%s\n',num2str(est_var(1),'%5.4f')); 
+        fclose(fileID);
+    
+    
+    
     estimates_c = [0 1 1 ; c_h c_nl c_pp ;  0 U_nl U_pp  ; delinquency_cost delinquency_cost 0;  p1 p1 p1c];
     
-    [~] = counter_print(estimates_c,cd_dir);
+    %[~] = counter_print(estimates_c,cd_dir);
 
     %}
 end

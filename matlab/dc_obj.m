@@ -86,7 +86,8 @@ end
 % plot((1:n-1)',controls(:,1))
 % [ states controls ]
 
-
+%controls_pre  = [0; controls(1:end-1,3)];
+%C(controls(:,3)<-7000 & controls_pre>-7000)
 
 w_debt = -1.*controls(:,3);
         

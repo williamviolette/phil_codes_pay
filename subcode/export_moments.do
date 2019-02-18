@@ -1,6 +1,14 @@
 * export_moments
 
 
+	write "${tables}est_obs.tex" `=_N' 1 "%12.0fc"
+
+	preserve
+		keep conacct
+		duplicates drop conacct, force
+		write "${tables}est_hhs.tex" `=_N' 1 "%12.0fc"
+	restore
+
 *** Price
 	g p_avg = amount/c
 	sum p_avg
@@ -8,6 +16,7 @@
 	write "${tables}p_avg.tex" `=r(mean)' 0.1 "%12.0g"
 
 	reg p_avg c
+	est sto preg
 	matrix define p_reg=e(b)
 	scalar define p_int=p_reg[1,2]
 	scalar define p_slope=p_reg[1,1]
@@ -15,15 +24,55 @@
 	write "${moments}p_int.csv" `=p_int' 0.001 "%12.0g"
 	write "${moments}p_slope.csv" `=p_slope' 0.001 "%12.0g"
 
-	write "${tables}p_int.tex" `=p_int' 0.001 "%12.0g"
-	write "${tables}p_slope.tex" `=p_slope' 0.001 "%12.0g"
-	drop p_avg
+	write "${tables}p_int.tex" `=p_int' 0.1 "%12.1fc"
+	write "${tables}p_slope.tex" `=p_slope' 0.1 "%12.1fc"
+
+	lab var c "Usage (m3)"
+
+	estout preg using "${tables}price_reg.tex", replace  ///
+	style(tex) ///
+	varlabels(_cons "Intercept", el( c "[0.5em]" _cons "[0.5em]")) label noomitted mlabels(,none) collabels(none) ///
+    cells( b(fmt(2) star ) se(par fmt(2)) ) ///
+     starlevels( ///
+    "\textsuperscript{c}" 0.10  ///
+    "\textsuperscript{b}" 0.05  ///
+    "\textsuperscript{a}" 0.01)  ///
+      stats(N , fmt(%9.0fc )   ///
+      labels( ///
+      "Household-Months" )  ) 
+
+
+	sum amount if c<5 & amount>0 & amount<200  & amount>50, detail
+			write "${tables}f_10.tex" `=r(mean)' 0.01 "%12.2fc"
+	sum amount if c==11 & amount>0 & amount<250, detail
+	scalar define c11=`=r(mean)'
+	sum p_avg if c>11 & c<20 & p_avg>10 & p_avg<200, detail
+			write "${tables}f_11.tex" `=c11 - r(mean)' 0.01 "%12.2fc"
+			write "${tables}c_12.tex" `=r(mean)' 0.01 "%12.2fc"
+	sum p_avg if c>21 & c<40 & p_avg>10 & p_avg<200, detail
+			write "${tables}c_21.tex" `=r(mean)' 0.01 "%12.2fc"
+	sum p_avg if c>41 & c<60 & p_avg>20 & p_avg<200, detail
+			write "${tables}c_41.tex" `=r(mean)' 0.01 "%12.2fc"
+	sum p_avg if c>61 & c<80 & p_avg>10 & p_avg<200, detail
+			write "${tables}c_61.tex" `=r(mean)' 0.01 "%12.2fc"
+	sum p_avg if c>81 & c<100 & p_avg>30 & p_avg<200, detail
+			write "${tables}c_81.tex" `=r(mean)' 0.01 "%12.2fc"
+	sum p_avg if c>101 & c<150 & p_avg>30 & p_avg<200, detail
+			write "${tables}c_101.tex" `=r(mean)' 0.01 "%12.2fc"
+	sum p_avg if c>151 & c<200 & p_avg>30 & p_avg<200, detail
+			write "${tables}c_151.tex" `=r(mean)' 0.01 "%12.2fc"
+			write "${tables}c_200.tex" `=r(mean)*(1+0.042)' 0.01 "%12.2fc"
+
+
+
+
+
 
 
 *** Disconnection rate
 	sum tcd_id if ar_lag>31
 		write "${moments}prob_caught.csv" `=r(mean)' 0.0001 "%12.4g"
-		write "${tables}prob_caught.tex" `=r(mean)' 0.0001 "%12.4g"
+		write "${tables}prob_caught.tex" `=r(mean)*100' 0.01 "%12.2fc"
 
 
 *** Consumption

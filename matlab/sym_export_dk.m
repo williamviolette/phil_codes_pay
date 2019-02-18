@@ -19,6 +19,8 @@
 %%% cobb-doug reg
 
 clear;
+cd_dir ='/Users/williamviolette/Documents/Philippines/phil_analysis/phil_codes_pay/paper/tables/';
+
 syms x w y p1 p2 r A l alpha Ap L k
 
 assume(r>0 & r<1)
@@ -63,8 +65,16 @@ steps=10
 wse = simplify(ws(1,1),'IgnoreAnalyticConstraints',true,'Steps',steps) 
 xse = simplify(xs(1,1),'IgnoreAnalyticConstraints',true,'Steps',steps) 
 
+% fileID = fopen(strcat(cd_dir,'wse.tex'),'w');
+% fprintf(fileID,'%500s\n',latex(wse));
+% fclose(fileID);
+
 
 vse = (1-alpha)*log(xse) + (alpha)*log(wse+k)
+
+% fileID = fopen(strcat(cd_dir,'vse.tex'),'w');
+% fprintf(fileID,'%500s\n',latex(vse));
+% fclose(fileID);
 
 %eval(subs(vse,[p1,p2,y,alpha,A,Ap,r,k,L],[1,1,30000,.02,100,100,.1,0,-300]))
 
@@ -92,11 +102,18 @@ t1=eval(subs(cut_point3,[p1,p2,y,alpha,k],[15,.1,30000,.02,0]))
 
 matlabFunction(simplify(cut_point3(1,1),'IgnoreAnalyticConstraints',true,'Steps',steps),'File','cut_dk.m')
 
+% fileID = fopen(strcat(cd_dir,'cut_point3.tex'),'w');
+% fprintf(fileID,'%500s\n',latex(simplify(cut_point3(1,1),'IgnoreAnalyticConstraints',true,'Steps',steps)));
+% fclose(fileID);
+
+
 %%%%% NEED TO SOLVE FOR EXACT FUNDING
 
 syms wt
 
 weq = solve( -wt*(p1+p2*wt) - L,wt)
+
+
 
 eval(subs(weq,[L,p1,p2],[-1000,15,.2]))
 
@@ -106,6 +123,14 @@ xeq_opt = simplify(y - L - weq_opt*(p1 + p2*weq_opt));
 eval(subs(xeq_opt,[L,p1,p2,y],[-1000,15,.2,10000]))
 
 veq_opt = simplify((1-alpha)*log(xeq_opt) + (alpha)*log(weq_opt+k));
+
+% fileID = fopen(strcat(cd_dir,'weq_opt.tex'),'w');
+% fprintf(fileID,'%500s\n',latex(simplify(weq_opt,'IgnoreAnalyticConstraints',true,'Steps',steps)));
+% fclose(fileID);
+
+% fileID = fopen(strcat(cd_dir,'veq_opt.tex'),'w');
+% fprintf(fileID,'%500s\n',latex(simplify(veq_opt,'IgnoreAnalyticConstraints',true,'Steps',steps)));
+% fclose(fileID);
 
 matlabFunction(simplify(weq_opt,'IgnoreAnalyticConstraints',true,'Steps',steps),'File','w_b_dk.m')
 matlabFunction(simplify(veq_opt,'IgnoreAnalyticConstraints',true,'Steps',steps),'File','v_b_dk.m')

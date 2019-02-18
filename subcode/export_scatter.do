@@ -20,6 +20,7 @@ grstyle set imesh, horizontal
 
 		g tid=cn if tcd_id==1
 		replace T1 = 0 if tcd_id==1
+		replace T1d = 0 if tcd_id==1 & date==dt
 		forvalues v=1/$M1 {
 		qui by conacct: replace T1=-`v' if tcd_id[_n+`v']==1 
 		qui by conacct: replace T1d=-`v' if tcd_id[_n+`v']==1 & date[_n+`v']==dt[_n+`v']
@@ -85,7 +86,7 @@ prog define sp2
 		g `3'_2 = `3' if `6'==1
 		egen mv_2 = mean(`3'_2), by(`4')
 		bys `4': g dn=_n
-		twoway `2' mv_1 `4' if dn==1, lp(solid) lc(gs0) lw(medthick) || `2' mv_2 `4' if dn==1,     plotr(lw(medthick ))  lp(dash) lc(gs6) lw(medthick)  ytitle("`8'", size(${large})) xtitle("`9'", size(${large})) legend(pos(10) ring(0) col(1) lab(1 "`10'") lab(2 "`11'") size(${large})) xline(0, lw(thin)lp(shortdash))
+		twoway `2' mv_1 `4' if dn==1, lp(solid) lc(gs0) lw(medthick) || `2' mv_2 `4' if dn==1,     plotr(lw(medthick ))  lp(dash) lc(gs6) lw(medthick)  ytitle("`8'", size(${large})) xtitle("`9'", size(${textsize})) legend(pos(10) ring(0) col(1) lab(1 "`10'") lab(2 "`11'") size(${textsize})) xline(0, lw(thin)lp(shortdash))
 	    graph export  "${tables}line_`1'.pdf", as(pdf) replace
 	restore
 end
@@ -93,6 +94,18 @@ end
 global fulllab = "All Households"
 global templab = "Stayers Only"
 global xlab = "Months to First Delinquency Visit"
+
+
+*** worry : is TCD really a visit?  so : if you pay fully, do you NOT get disconnected!? *** YES! IT LOOKS GOOD!
+* cap drop bal_post
+* cap drop bs
+* g bal_post = pay==0  & T1d>=0 & T1d<=3 & pay<.
+* g bal_post = pay>1500  & T1d>=0 & T1d<=3 & pay<. 
+* egen bs= sum(bal_post), by(conacct) 
+
+* sp2 "paid_disconnection" "line" am T1d aa a6 "keep if T1d!=. & bs==4"  "Share Disconnected" "${xlab}" "${fulllab}" "${templab}"
+* sp2 "paid_pay" "line" pay T1d aa a6 "keep if T1d!=." "Mean Monthly Payment (PhP)"  "${xlab}" "${fulllab}" "${templab}"
+
 
 sp2 "disconnection" "line" am T1d aa a6 "keep if T1d!=."  "Share Disconnected" "${xlab}" "${fulllab}" "${templab}"
 

@@ -1,4 +1,4 @@
-\begin{thebibliography}{6}
+\begin{thebibliography}{8}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -41,5 +41,17 @@ D.~Laibson, A.~Repetto, and J.~Tobacman.
 \newblock Estimating discount functions with consumption choices over the
   lifecycle.
 \newblock Technical report, National Bureau of Economic Research, 2007.
+
+\bibitem[Szab{\'o}(2015)]{szabo2015value}
+A.~Szab{\'o}.
+\newblock The value of free water: Analyzing south africa's free basic water
+  policy.
+\newblock \emph{Econometrica}, 83\penalty0 (5):\penalty0 1913--1961, 2015.
+
+\bibitem[Violette(2019)]{wjv}
+W.~Violette.
+\newblock Optimal pricing and informal sharing: Evidence from piped water in
+  manila.
+\newblock \emph{Unpublished Manuscript}, 2019.
 
 \end{thebibliography}
