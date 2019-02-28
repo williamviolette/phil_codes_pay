@@ -179,13 +179,16 @@ use "${temp}temp_descriptives.dta", clear
 	g am12 = amls==12
 	drop aml amls
 
-	preserve
-		NN
-		drop if am12==1
-		global am_N = `=_N'
-		writeN dc_drop
-		write "${tables}am_N.tex" `=${am_N}' 1 "%12.0fc"
-	restore
+	global am_N = `=_N'
+	write "${tables}am_N.tex" `=${am_N}' 1 "%12.0fc"
+
+	* preserve
+	* 	NN
+	* 	drop if am12==1
+	* 	global am_N = `=_N'
+	* 	writeN dc_drop
+	* 	write "${tables}am_N.tex" `=${am_N}' 1 "%12.0fc"
+	* restore
 
 	sort conacct date
 	by conacct: g tcd_id=dc[_n-1]!=1 & dc[_n]==1

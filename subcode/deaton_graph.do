@@ -54,8 +54,21 @@ g Y = `=y_avg*(1+theta)' if s==1 | s==3
 replace Y = `=y_avg*(1-theta)' if s==2 | s==4
 replace Y = round(Y,1)
 
-g V = s==3 | s==4
+g Yi = Y - `=y_avg'
+g Yc = sum(Yi)
 
+
+g Ys = sum(Y)
+g Ysc = Ys[_n]-Ys[_n-1]
+
+label var Yc "Cumulative Inc. Shocks: {{&theta}y, -{&theta}y }"
+
+*twoway line Yc id
+
+
+
+
+g V = s==3 | s==4
 
 global tsize "large"
 
@@ -70,7 +83,7 @@ global lw "thick"
 global ms "large"
 
 
-global vspot=50000
+global vspot=40000
 
 replace V=. if V==0
 replace D=. if D==0
@@ -92,16 +105,22 @@ tab id if V==1, matrow(vt)
 * line D id, lwidth(vthick) saving("${temp}D", replace) xtitle("     ", size(${tsize})) ytitle("D{subscript:t}", margin(${marginsize})) ///
 * 	ylabel( 1 "Disconnect", angle(90))  xlabel(0 " " 20 "  " 40 "  " 60 "  " 80 "  " 100 "   ") ${gr}
 
-
-
-twoway line Y id, lwidth(${lw}) saving("${temp}Y", replace)  ///
+* Cum. ({&theta}y{subscript:t}, -{&theta}y{subscript:t})
+twoway line Yc id, lwidth(${lw}) saving("${temp}Y", replace)  ///
 || scatter V id, msize(${ms}) text($vspot 6 "Visit" $vspot 41 "Visit" $vspot 79 "Visit", place(n) margin(b+3))   ///
 || line D id, lwidth(vthick)   text($vspot 50 "Disconnect", place(n)  margin(b+1.5 )) ///
-xtitle("     ", size(${tsize})) ytitle("y{subscript:t}    ", margin(${marginsize})) ///
-	xlabel(0 " " 20 "  " 40 "  " 60 "  " 80 "  " 100 "   ") ${gr}  ylabel(25000 "25k" 40000 "40k" 50000 " ", angle(90)) legend(off) yscale(range(25000 60000))
+xtitle("     ", size(${tsize})) ytitle("Cum. {&Delta}y{subscript:t}    ", margin(${marginsize})) ///
+	xlabel(0 " " 20 "  " 40 "  " 60 "  " 80 "  " 100 "   ") ${gr}  ylabel(-100000 "-100k" 40000 "40k" , angle(90)) legend(off) yscale(range(25000 80000))
+
+
+* twoway line Y id, lwidth(${lw}) saving("${temp}Y", replace)  ///
+* || scatter V id, msize(${ms}) text($vspot 6 "Visit" $vspot 41 "Visit" $vspot 79 "Visit", place(n) margin(b+3))   ///
+* || line D id, lwidth(vthick)   text($vspot 50 "Disconnect", place(n)  margin(b+1.5 )) ///
+* xtitle("     ", size(${tsize})) ytitle("y{subscript:t}    ", margin(${marginsize})) ///
+* 	xlabel(0 " " 20 "  " 40 "  " 60 "  " 80 "  " 100 "   ") ${gr}  ylabel(-25000 "25k" 40000 "40k" 50000 " ", angle(90)) legend(off) yscale(range(25000 60000))
 
 line A id, lwidth(${lw}) saving("${temp}A", replace) xtitle("     ", size(${tsize})) ytitle("A{subscript:t+1}", margin(${marginsize})) ///
-	xlabel(0 " " 20 "  " 40 "  " 60 "  " 80 "  " 100 "   ") ${gr}  ylabel(-20000 "-20k" 20000 "20k", angle(90))
+	xlabel(0 " " 20 "  " 40 "  " 60 "  " 80 "  " 100 "   ") ${gr}  ylabel(-20000 "-20k" 0 "0" 20000 "20k", angle(90))
 
 line B id, lwidth(${lw}) saving("${temp}B", replace) xtitle("     ", size(${tsize})) ytitle("B{subscript:t+1}", margin(${marginsize}))  ///
 	xlabel(0 " " 20 "  " 40 "  " 60 "  " 80 "  " 100 "   ")   ylabel(0 "0" -8000 "-8k", angle(90))  ${gr}

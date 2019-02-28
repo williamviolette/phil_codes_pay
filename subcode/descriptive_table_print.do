@@ -55,6 +55,15 @@ program print_mean
     file close newfile    
 end
 
+cap prog drop print_mean_csv
+program print_mean_csv
+    qui sum `2', detail 
+    local value=string(`=r(mean)*`4'',"`3'")
+    file open newfile using "${moments}`1'.csv", write replace
+    file write newfile "`value'"
+    file close newfile    
+end
+
 cap drop p0
 g p0 = pay>0 & pay<.
 
@@ -63,6 +72,7 @@ g pays = pay if pay>0 & pay<.
 
 print_mean usage_${dtable_name} c "%10.0fc" 1
 print_mean bill_${dtable_name} amount "%10.0fc" 1
+print_mean_csv bill_${dtable_name} amount "%10.0fc" 1
 print_mean balance_${dtable_name} bal "%10.0fc" 1
 print_mean pay_freq_${dtable_name} p0 "%10.0fc" 100
 print_mean pay_size_${dtable_name} pays "%10.0fc" 1

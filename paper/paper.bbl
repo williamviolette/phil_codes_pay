@@ -1,9 +1,21 @@
-\begin{thebibliography}{8}
+\begin{thebibliography}{21}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Amuedo-Dorantes and Pozo(2011)]{amuedo2011remittances}
+C.~Amuedo-Dorantes and S.~Pozo.
+\newblock Remittances and income smoothing.
+\newblock \emph{American Economic Review}, 101\penalty0 (3):\penalty0 582--87,
+  2011.
+
+\bibitem[Anand(2014)]{anand2014consuming}
+N.~Anand.
+\newblock Consuming citizenship: Prepaid meters and the politics of technology
+  in mumbai.
+\newblock 2014.
 
 \bibitem[Andreoni and Sprenger(2012)]{andreoni2012estimating}
 J.~Andreoni and C.~Sprenger.
@@ -18,6 +30,26 @@ R.~Cull, A.~Asli Demirg{\"u}{\c{c}}-Kunt, and J.~Morduch.
 \newblock \emph{Journal of Economic perspectives}, 23\penalty0 (1):\penalty0
   167--92, 2009.
 
+\bibitem[Deaton(1991)]{deaton1991saving}
+A.~Deaton.
+\newblock Saving and liquidity constraints.
+\newblock \emph{Econometrica (1986-1998)}, 59\penalty0 (5):\penalty0 1221,
+  1991.
+
+\bibitem[Dupas and Robinson(2013{\natexlab{a}})]{dupas2013don}
+P.~Dupas and J.~Robinson.
+\newblock Why don't the poor save more? evidence from health savings
+  experiments.
+\newblock \emph{American Economic Review}, 103\penalty0 (4):\penalty0 1138--71,
+  2013{\natexlab{a}}.
+
+\bibitem[Dupas and Robinson(2013{\natexlab{b}})]{dupas2013savings}
+P.~Dupas and J.~Robinson.
+\newblock Savings constraints and microenterprise development: Evidence from a
+  field experiment in kenya.
+\newblock \emph{American Economic Journal: Applied Economics}, 5\penalty0
+  (1):\penalty0 163--92, 2013{\natexlab{b}}.
+
 \bibitem[Gin{\'e} and Karlan(2014)]{gine2014group}
 X.~Gin{\'e} and D.~S. Karlan.
 \newblock Group versus individual liability: Short and long term evidence from
@@ -29,11 +61,49 @@ P.-O. Gourinchas and J.~A. Parker.
 \newblock Consumption over the life cycle.
 \newblock \emph{Econometrica}, 70\penalty0 (1):\penalty0 47--89, 2002.
 
+\bibitem[Hannagan and Morduch(2015)]{hannagan2015income}
+A.~Hannagan and J.~Morduch.
+\newblock Income gains and month-to-month income volatility: Household evidence
+  from the us financial diaries.
+\newblock 2015.
+
+\bibitem[Heymans et~al.(2014)Heymans, Eales, and Franceys]{heymans2014limits}
+C.~Heymans, K.~Eales, and R.~Franceys.
+\newblock The limits and possibilities of prepaid water in urban africa:
+  Lessons from the field, 2014.
+
+\bibitem[Hoque and Wichelns(2013)]{hoque2013state}
+S.~F. Hoque and D.~Wichelns.
+\newblock State-of-the-art review: designing urban water tariffs to recover
+  costs and promote wise use.
+\newblock \emph{International journal of water resources development},
+  29\penalty0 (3):\penalty0 472--491, 2013.
+
+\bibitem[Ito(2014)]{ito2014consumers}
+K.~Ito.
+\newblock Do consumers respond to marginal or average price? evidence from
+  nonlinear electricity pricing.
+\newblock \emph{American Economic Review}, 104\penalty0 (2):\penalty0 537--63,
+  2014.
+
+\bibitem[Jack and Smith(2015)]{jack2015pay}
+B.~K. Jack and G.~Smith.
+\newblock Pay as you go: Prepaid metering and electricity expenditures in south
+  africa.
+\newblock \emph{American Economic Review}, 105\penalty0 (5):\penalty0 237--41,
+  2015.
+
+\bibitem[Jack and Smith(2016)]{jack2016charging}
+B.~K. Jack and G.~Smith.
+\newblock Charging ahead: Prepaid electricity metering in south africa.
+\newblock Technical report, National Bureau of Economic Research, 2016.
+
 \bibitem[Karlan and Zinman(2009)]{karlan2009expanding}
-D.~S. Karlan and J.~Zinman.
-\newblock Expanding microenterprise credit access: Using randomized supply
-  decisions to estimate the impacts in manila.
-\newblock 2009.
+D.~Karlan and J.~Zinman.
+\newblock Expanding credit access: Using randomized supply decisions to
+  estimate the impacts.
+\newblock \emph{The Review of Financial Studies}, 23\penalty0 (1):\penalty0
+  433--464, 2009.
 
 \bibitem[Laibson et~al.(2007)Laibson, Repetto, and
   Tobacman]{laibson2007estimating}
@@ -42,11 +112,23 @@ D.~Laibson, A.~Repetto, and J.~Tobacman.
   lifecycle.
 \newblock Technical report, National Bureau of Economic Research, 2007.
 
+\bibitem[{Northeast Group}(2014)]{northeast2014}
+{Northeast Group}.
+\newblock Sub-saharan africa electricity metering: Market forecast (2014 to
+  2024).
+\newblock \emph{Northeast Group, LLC}, 2014.
+
 \bibitem[Szab{\'o}(2015)]{szabo2015value}
 A.~Szab{\'o}.
 \newblock The value of free water: Analyzing south africa's free basic water
   policy.
 \newblock \emph{Econometrica}, 83\penalty0 (5):\penalty0 1913--1961, 2015.
+
+\bibitem[Szab{\'o} and Ujhelyi(2015)]{szabo2015reducing}
+A.~Szab{\'o} and G.~Ujhelyi.
+\newblock Reducing nonpayment for public utilities: Experimental evidence from
+  south africa.
+\newblock \emph{Journal of Development Economics}, 117:\penalty0 20--31, 2015.
 
 \bibitem[Violette(2019)]{wjv}
 W.~Violette.

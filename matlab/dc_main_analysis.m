@@ -17,6 +17,9 @@ bs            = 0 ; % bootstrap option
 br      = [3 4] ; % rep interval
 br_est  = [1 2] ;
 
+marginal_cost = 5;
+ppinst = 51;
+
 fileID = fopen(strcat(cd_dir,'breps.tex'),'w');
         fprintf(fileID,'%s\n',num2str(br(2),'%5.0f')); 
         fclose(fileID);
@@ -376,13 +379,28 @@ if est_tables==1
         fprintf(fileID,'%s\n',num2str(est_var(4),'%5.4f')); 
         fclose(fileID);
     
+    %%% print percentages %%%    
+        fileID = fopen(strcat(cd_dir,'est_theta_per.tex'),'w');
+            fprintf(fileID,'%s\n',num2str(estimates(2)*100,'%5.1f')); 
+            fclose(fileID);
+            
+         fileID = fopen(strcat(cd_dir,'est_irate_per.tex'),'w');
+            fprintf(fileID,'%s\n',num2str(estimates(1)*100,'%5.1f')); 
+            fclose(fileID);   
+         
+         fileID = fopen(strcat(cd_dir,'est_irate_annual_per.tex'),'w');
+            fprintf(fileID,'%s\n',num2str( ((1+estimates(1))^(12) - 1)*100,'%5.1f')); 
+            fclose(fileID);   
+         
+            
+       
     %%% PRINT FIT!
     output = dc_obj(res_out,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
-    output_data = data_moments;d
+    output_data = data_moments;
     
     fileID = fopen(strcat(cd_dir,'table_fit_est.tex'),'w');   
         fprintf(fileID,'%s\n',strcat('Mean Usage (m3) &',num2str(output_data(1),'%5.2f'),'&', num2str(output(1),'%5.2f'),'\\'));
-        fprintf(fileID,'%s\n',strcat('Mean Water Debt (PhP) &',num2str(output_data(3),'%5.1f'),'&', num2str(output(3),'%5.1f'),'\\'));
+        fprintf(fileID,'%s\n',strcat('Mean Outstanding Balance (PhP) &',num2str(output_data(3),'%5.1f'),'&', num2str(output(3),'%5.1f'),'\\'));
     fclose(fileID);
     
     fileID = fopen(strcat(cd_dir,'table_fit_est_dc.tex'),'w');  
@@ -398,9 +416,9 @@ if est_tables==1
     fclose(fileID);
 
     fileID = fopen(strcat(cd_dir,'table_fit_out.tex'),'w');      
-        fprintf(fileID,'%s\n',strcat('SD of Usage &',num2str(output_data(2),'%5.1f'),'&', num2str(output(2),'%5.1f'),'\\'));
-        fprintf(fileID,'%s\n',strcat('SD Water Debt (PhP) &',num2str(output_data(4),'%5.0f'),'&', num2str(output(4),'%5.0f'),'\\'));
-        fprintf(fileID,'%s\n',strcat('Corr. Usage and Water Debt &',num2str(output_data(5),'%5.2f'),'&', num2str(output(5),'%5.2f'),'\\'));
+        fprintf(fileID,'%s\n',strcat('SD Usage &',num2str(output_data(2),'%5.1f'),'&', num2str(output(2),'%5.1f'),'\\'));
+        fprintf(fileID,'%s\n',strcat('SD Outstanding Balance  &',num2str(output_data(4),'%5.1f'),'&', num2str(output(4),'%5.1f'),'\\'));
+        fprintf(fileID,'%s\n',strcat('Corr. Usage and Out. Bal. &',num2str(output_data(5),'%5.2f'),'&', num2str(output(5),'%5.2f'),'\\'));
     fclose(fileID);
     
     %%% Moments fit
@@ -465,17 +483,17 @@ if counter==1
     %%%%% NOTE!!!! THIS IS AN AVERAGE CONSUMPTION CHANGE!! NOTE!!!!!!
     ww = w_reg_dk(0,res_out(7),0,p1,p2, y_avg );
     
-    rev_goal = ((p1 + p2.*ww).*ww) - delinquency_cost;
+    rev_goal = ((p1 - marginal_cost + p2.*ww).*ww) - delinquency_cost + ppinst;
     
-    Pgrid = -1.*(0:.01:10)' ;
+    Pgrid = (-1:.02:10)' ;
     R = zeros(size(Pgrid,1),1);
     for i=1:size(Pgrid,1)
         p1n = p1+Pgrid(i);
         ww = w_reg_dk(0,res_out(7),0,p1n,p2,y_avg);
-        rev = (p1n + p2.*ww).*ww;
+        rev = (p1n - marginal_cost + p2.*ww).*ww;
         R(i,1) = abs(rev - rev_goal);
     end
-    %plot(Pgrid,R);
+    plot(Pgrid,R);
     [~,ind]=min(R);
     Pgrid(ind)
     
@@ -491,14 +509,109 @@ if counter==1
     U_pp = (util_pp-util)/du_dy10;
     c_pp = h_pp(1);
     
-        fileID = fopen(strcat(cd_dir,'est_sd_irate.tex'),'w');
-        fprintf(fileID,'%s\n',num2str(est_var(1),'%5.4f')); 
-        fclose(fileID);
-    
     
     
     estimates_c = [0 1 1 ; c_h c_nl c_pp ;  0 U_nl U_pp  ; delinquency_cost delinquency_cost 0;  p1 p1 p1c];
     
+
+    %fprintf(fileID,'%s\n','\begin{tabular}{lccc}');
+    %fprintf(fileID,'%s\n','& Current & No Water Credit & No Water Credit and \\');
+    %fprintf(fileID,'%s\n','&         &                  & Revenue Neutral \\');
+
+    
+        
+    
+    amount_avg     = csvread(strcat(folder,'bill_all.csv'));
+    
+    
+    fileID = fopen(strcat(cd_dir,'U_nl_per.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(abs(U_nl/amount_avg)*100,'%5.0f')));
+    fclose(fileID);
+    
+    fileID = fopen(strcat(cd_dir,'U_nl.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(U_nl,'%5.1f')));
+    fclose(fileID);
+        fileID = fopen(strcat(cd_dir,'U_pp.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(U_pp,'%5.1f')));
+    fclose(fileID);
+    
+    fileID = fopen(strcat(cd_dir,'U_nl_abs.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(abs(U_nl),'%5.1f')));
+    fclose(fileID);
+        fileID = fopen(strcat(cd_dir,'U_pp_abs.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(abs(U_pp),'%5.1f')));
+    fclose(fileID);
+    
+    
+    fileID = fopen(strcat(cd_dir,'c_h.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(c_h,'%5.1f')));
+    fclose(fileID);
+        fileID = fopen(strcat(cd_dir,'c_nl.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(c_nl,'%5.1f')));
+    fclose(fileID);
+        fileID = fopen(strcat(cd_dir,'c_h_nl_drop.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(100*abs((c_h-c_nl)/c_h),'%5.1f')));
+    fclose(fileID);
+        
+               fileID = fopen(strcat(cd_dir,'c_h_pp_drop.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(100*abs((c_h-c_pp)/c_h),'%5.1f')));
+    fclose(fileID);
+        
+    fileID = fopen(strcat(cd_dir,'c_pp.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(c_pp,'%5.1f')));
+    fclose(fileID);
+
+    
+         
+    fileID = fopen(strcat(cd_dir,'del_raised.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(abs(ppinst-delinquency_cost),'%5.1f')));
+    fclose(fileID);
+
+    
+    
+  
+    
+    fileID = fopen(strcat(cd_dir,'p_int_pp.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(p1c,'%5.1f')));
+    fclose(fileID);
+    
+    
+        
+    fileID = fopen(strcat(cd_dir,'p_increase_per.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(100*abs((p1c-p1)/p1),'%5.1f')));
+    fclose(fileID);
+    
+    
+    %%%% OUT-DATED TABLE STUFF %%%%
+    
+    fileID = fopen(strcat(cd_dir,'counter_usage.tex'),'w');
+        fprintf(fileID,'%s\n',strcat('Mean Usage (m3) &',num2str(c_h,'%5.1f'),'&', num2str(c_nl,'%5.1f'),'&', num2str(c_pp,'%5.1f'),'\\'));
+    fclose(fileID);
+        
+    fileID = fopen(strcat(cd_dir,'counter_cv.tex'),'w');
+        fprintf(fileID,'%s\n',strcat('Compensating Variation (PhP)  &',' & ',num2str(U_nl,'%5.1f'),'&', num2str(U_pp,'%5.1f'),'\\'));
+    fclose(fileID);
+    
+    fileID = fopen(strcat(cd_dir,'counter_price.tex'),'w');
+        fprintf(fileID,'%s\n',strcat('Price Intercept (PhP)  &',num2str(p1,'%5.1f'),'&', num2str(p1,'%5.1f'),'&', num2str(p1c,'%5.1f'),'\\'));
+    fclose(fileID);
+    
+    fileID = fopen(strcat(cd_dir,'counter_fixed.tex'),'w');
+       fprintf(fileID,'%s\n',strcat('Fixed Savings (PhP)  &',num2str(delinquency_cost,'%5.1f'),'&', num2str(delinquency_cost,'%5.1f'),'&', num2str(0,'%5.0f'),'\\'));
+    fclose(fileID);    
+    
+        
+    fileID = fopen(strcat(cd_dir,'counter_price_nomid.tex'),'w');
+        fprintf(fileID,'%s\n',strcat('Price Intercept (PhP)  &',num2str(p1,'%5.1f'),'& &', num2str(p1c,'%5.1f'),'\\'));
+    fclose(fileID);
+    
+    fileID = fopen(strcat(cd_dir,'counter_fixed_nomid.tex'),'w');
+       fprintf(fileID,'%s\n',strcat('Fixed Savings (PhP)  &',num2str(delinquency_cost,'%5.1f'),'& &', num2str(0,'%5.0f'),'\\'));
+    fclose(fileID);    
+    
+       %fprintf(fileID,'%s\n','\end{tabular} '); 
+
+
     %[~] = counter_print(estimates_c,cd_dir);
 
     %}

@@ -1,5 +1,8 @@
 * *  delinquency.do
 
+grstyle init
+grstyle set imesh, horizontal
+
 
 
 cap prog drop write
@@ -47,8 +50,6 @@ replace DC_date = new_dc_date if DC_date==.
 g T = date-DC_date
 
 
-
-
 *** AGGREGATE MEASURE
 *g DC = new_dc==1 | new_c==1
 
@@ -69,10 +70,48 @@ egen BAL_TOTAL = sum(bal_dc)
 g cost = BAL_TOTAL/(time*tot_acc)
 tab cost
 
+
+
+* g b_per_account = BAL_TOTAL/tot_acc
+* sum b_per_account
+
+sum bal_dc 
+write "${tables}out_bal.tex" `=r(mean)' 1 "%12.0fc"
+
+
+g dcs_time = DCS/(time*tot_acc)
+sum dcs_time
+write "${tables}dc_per_month_account.tex" `=r(mean)' 0.0001 "%12.4fc"
+
+
+
 sum cost
-
 write "${moments}delinquency_cost.csv" `=r(mean)' 0.1 "%12.0g"
+write "${tables}delinquency_cost.tex" `=r(mean)' 0.1 "%12.0g"
 
+
+
+global textsize "large"
+
+cap program drop sp
+prog define sp
+	preserve
+		keep if T<=-1 & T>=-30
+		egen mv = mean(c), by(T)
+		bys T: g dn=_n
+		twoway line mv T if dn==1, lp(solid) lc(gs0) lw(medthick)  plotr(lw(medthick )) ///
+		 lc(gs6) lw(medthick)  ytitle("Average Usage (m3)", size(${large})) xtitle("Months to Permanent Disconnection", size(${textsize})) ///
+		  legend(off) 
+	    graph export  "${tables}line_`1'.pdf", as(pdf) replace
+	restore
+end
+
+sp disc_graph
+
+
+
+
+/*
 
 
 global M = 30
@@ -110,8 +149,6 @@ program define graph_trend
 end
 
 graph_trend c conacct delinq_c
-
-
 
 
 

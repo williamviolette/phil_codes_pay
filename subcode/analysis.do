@@ -59,8 +59,8 @@ g aa=1
 
 * do "${subcode}descriptive_table_print_3_groups.do"
 
-* global dtable_name "all"
-* do "${subcode}descriptive_table_print.do"
+global dtable_name "all"
+do "${subcode}descriptive_table_print.do"
 	
 
 	*preserve
