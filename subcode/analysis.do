@@ -57,6 +57,12 @@ g leaver = a6!=1
 g aa=1
 
 
+cap drop del_id
+g del_id = ar>31 & ar<.
+sum del_id 
+write "${tables}share_del.tex" `=r(mean)*100' 1 "%12.0g"
+
+
 * do "${subcode}descriptive_table_print_3_groups.do"
 
 global dtable_name "all"

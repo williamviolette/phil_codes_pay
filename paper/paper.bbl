@@ -1,4 +1,4 @@
-\begin{thebibliography}{21}
+\begin{thebibliography}{32}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -23,6 +23,18 @@ J.~Andreoni and C.~Sprenger.
 \newblock \emph{American Economic Review}, 102\penalty0 (7):\penalty0 3333--56,
   2012.
 
+\bibitem[Banerjee and Duflo(2007)]{banerjee2007economic}
+A.~V. Banerjee and E.~Duflo.
+\newblock The economic lives of the poor.
+\newblock \emph{Journal of economic perspectives}, 21\penalty0 (1):\penalty0
+  141--168, 2007.
+
+\bibitem[Besley and Coate(1995)]{besley1995group}
+T.~Besley and S.~Coate.
+\newblock Group lending, repayment incentives and social collateral.
+\newblock \emph{Journal of development economics}, 46\penalty0 (1):\penalty0
+  1--18, 1995.
+
 \bibitem[Cull et~al.(2009)Cull, Asli Demirg{\"u}{\c{c}}-Kunt, and
   Morduch]{cull2009microfinance}
 R.~Cull, A.~Asli Demirg{\"u}{\c{c}}-Kunt, and J.~Morduch.
@@ -35,6 +47,12 @@ A.~Deaton.
 \newblock Saving and liquidity constraints.
 \newblock \emph{Econometrica (1986-1998)}, 59\penalty0 (5):\penalty0 1221,
   1991.
+
+\bibitem[Demirguc-Kunt et~al.(2018)Demirguc-Kunt, Klapper, Singer, Ansar, and
+  Hess]{demirguc2018global}
+A.~Demirguc-Kunt, L.~Klapper, D.~Singer, S.~Ansar, and J.~Hess.
+\newblock Global findex database 2017.
+\newblock Technical report, The World Bank, 2018.
 
 \bibitem[Dupas and Robinson(2013{\natexlab{a}})]{dupas2013don}
 P.~Dupas and J.~Robinson.
@@ -98,12 +116,37 @@ B.~K. Jack and G.~Smith.
 \newblock Charging ahead: Prepaid electricity metering in south africa.
 \newblock Technical report, National Bureau of Economic Research, 2016.
 
+\bibitem[Jack and Suri(2014)]{jack2014risk}
+W.~Jack and T.~Suri.
+\newblock Risk sharing and transactions costs: Evidence from kenya's mobile
+  money revolution.
+\newblock \emph{American Economic Review}, 104\penalty0 (1):\penalty0 183--223,
+  2014.
+
 \bibitem[Karlan and Zinman(2009)]{karlan2009expanding}
 D.~Karlan and J.~Zinman.
 \newblock Expanding credit access: Using randomized supply decisions to
   estimate the impacts.
 \newblock \emph{The Review of Financial Studies}, 23\penalty0 (1):\penalty0
   433--464, 2009.
+
+\bibitem[Kojima and Trimble(2016)]{kojima2016making}
+M.~Kojima and C.~Trimble.
+\newblock \emph{Making power affordable for Africa and viable for its
+  utilities}.
+\newblock World Bank, 2016.
+
+\bibitem[Komives et~al.(2006)Komives, Halpern, Foster, Wodon, and
+  Abdullah]{komives2006distributional}
+K.~Komives, J.~Halpern, V.~Foster, Q.~T. Wodon, and R.~Abdullah.
+\newblock The distributional incidence of residential water and electricity
+  subsidies.
+\newblock 2006.
+
+\bibitem[Laffont(2005)]{laffont2005regulation}
+J.-J. Laffont.
+\newblock \emph{Regulation and development}.
+\newblock Cambridge University Press, 2005.
 
 \bibitem[Laibson et~al.(2007)Laibson, Repetto, and
   Tobacman]{laibson2007estimating}
@@ -112,11 +155,35 @@ D.~Laibson, A.~Repetto, and J.~Tobacman.
   lifecycle.
 \newblock Technical report, National Bureau of Economic Research, 2007.
 
+\bibitem[McRae(2015)]{mcrae2015infrastructure}
+S.~McRae.
+\newblock Infrastructure quality and the subsidy trap.
+\newblock \emph{American Economic Review}, 105\penalty0 (1):\penalty0 35--66,
+  2015.
+
+\bibitem[Morduch(1995)]{morduch1995income}
+J.~Morduch.
+\newblock Income smoothing and consumption smoothing.
+\newblock \emph{Journal of economic perspectives}, 9\penalty0 (3):\penalty0
+  103--114, 1995.
+
+\bibitem[Morduch(1999)]{morduch1999microfinance}
+J.~Morduch.
+\newblock The microfinance promise.
+\newblock \emph{Journal of economic literature}, 37\penalty0 (4):\penalty0
+  1569--1614, 1999.
+
 \bibitem[{Northeast Group}(2014)]{northeast2014}
 {Northeast Group}.
 \newblock Sub-saharan africa electricity metering: Market forecast (2014 to
   2024).
 \newblock \emph{Northeast Group, LLC}, 2014.
+
+\bibitem[Stiglitz(1990)]{stiglitz1990peer}
+J.~E. Stiglitz.
+\newblock Peer monitoring and credit markets.
+\newblock \emph{The world bank economic review}, 4\penalty0 (3):\penalty0
+  351--366, 1990.
 
 \bibitem[Szab{\'o}(2015)]{szabo2015value}
 A.~Szab{\'o}.

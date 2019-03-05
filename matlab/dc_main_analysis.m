@@ -443,7 +443,7 @@ if counter==1
     res_out(option)=estimates;
 
     %%% current
-    [h,util] = dc_obj(res_out,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
+    [h,util,simc] = dc_obj(res_out,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
     c_h = h(1);
    
     %%% value of 10 PhP
@@ -477,13 +477,77 @@ if counter==1
 %      [Ygrid(ind) res_out(9) (Ygrid(ind)-res_out(9))]
 %  LINES UP WELL WITH THE APPROXIMATION THANKFULLY!
 
+    %%%% OPP COST APPROACH
+    
+    res_nle = res_out;
+	res_nle(2) = .8;
+    
+    coste = abs(mean(simc(:,3))).*r_lend;
+    
+    wwe = w_reg_dk(0,res_nle(7),0,p1,p2, y_avg );
+    
+    rev_goale = ((p1 - marginal_cost + p2.*wwe).*wwe) - coste;
+    
+    Pgride = (-1:.02:10)' ;
+    Re = zeros(size(Pgride,1),1);
+    for i=1:size(Pgride,1)
+        p1ne = p1+Pgride(i);
+        wwe = w_reg_dk(0,res_nle(7),0,p1ne,p2,y_avg);
+        reve = (p1ne - marginal_cost + p2.*wwe).*wwe;
+        Re(i,1) = abs(reve - rev_goale);
+    end
+    plot(Pgride,Re);
+    [~,inde]=min(Re);
+    Pgride(inde)
+    
+    p1ce=p1+Pgride(inde);
+   
+    
+    res_ppe=res_out; % with pre-paid meters, don't get delinquency or loan, but get lower marginal price!
+    res_ppe(2)=.8;
+    res_ppe(10)=p1ce;
+    
+    [h_ppe,util_ppe] = dc_obj(res_ppe,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
+    
+    U_ppe = (util_ppe-util)/du_dy10;
+    c_ppe = h_ppe(1);
+    
+    
+        fileID = fopen(strcat(cd_dir,'U_ppe.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(U_ppe,'%5.1f')));
+    fclose(fileID);
+        fileID = fopen(strcat(cd_dir,'U_ppe_abs.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(abs(U_ppe),'%5.1f')));
+    fclose(fileID);
+ fileID = fopen(strcat(cd_dir,'c_h_ppe_drop.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(100*abs((c_h-c_ppe)/c_h),'%5.1f')));
+    fclose(fileID);
+        
+    fileID = fopen(strcat(cd_dir,'c_ppe.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(c_ppe,'%5.1f')));
+    fclose(fileID);
+fileID = fopen(strcat(cd_dir,'p_int_ppe.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(p1ce,'%5.1f')));
+    fclose(fileID);
+    
+    
+    fileID = fopen(strcat(cd_dir,'p_int_ppe.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(p1ce,'%5.1f')));
+    fclose(fileID);
+    fileID = fopen(strcat(cd_dir,'p_increase_per_ppe.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(100*abs((p1ce-p1)/p1),'%5.1f')));
+    fclose(fileID);
+     fileID = fopen(strcat(cd_dir,'coste.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(coste,'%5.1f')));
+    fclose(fileID);
+
     
     %%% %%% pre-paid %%% %%% 
     %%% current revenue
     %%%%% NOTE!!!! THIS IS AN AVERAGE CONSUMPTION CHANGE!! NOTE!!!!!!
     ww = w_reg_dk(0,res_out(7),0,p1,p2, y_avg );
     
-    rev_goal = ((p1 - marginal_cost + p2.*ww).*ww) - delinquency_cost + ppinst;
+    rev_goal = ((p1 - marginal_cost + p2.*ww).*ww) - delinquency_cost + ppinst - coste;
     
     Pgrid = (-1:.02:10)' ;
     R = zeros(size(Pgrid,1),1);
@@ -501,7 +565,7 @@ if counter==1
     
     res_pp=res_out; % with pre-paid meters, don't get delinquency or loan, but get lower marginal price!
     res_pp(2)=.8;
-    res_pp(9)=res_pp(9)-delinquency_cost;
+    res_pp(9)=res_pp(9) - delinquency_cost - coste;
     res_pp(10)=p1c;
     
     [h_pp,util_pp] = dc_obj(res_pp,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);

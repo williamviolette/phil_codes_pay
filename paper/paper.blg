@@ -5,45 +5,46 @@ The style file: abbrvnat.bst
 Database file #1: ref.bib
 Warning--empty journal in anand2014consuming
 Warning--empty journal in hannagan2015income
-You've used 21 entries,
+Warning--empty journal in komives2006distributional
+You've used 32 entries,
             2773 wiz_defined-function locations,
-            710 strings with 7672 characters,
-and the built_in function-call counts, 8530 in all, are:
-= -- 791
-> -- 402
-< -- 18
-+ -- 139
-- -- 117
-* -- 647
-:= -- 1321
-add.period$ -- 62
-call.type$ -- 21
-change.case$ -- 104
-chr.to.int$ -- 20
-cite$ -- 44
-duplicate$ -- 404
-empty$ -- 748
-format.name$ -- 162
-if$ -- 1772
+            766 strings with 9044 characters,
+and the built_in function-call counts, 13087 in all, are:
+= -- 1202
+> -- 632
+< -- 27
++ -- 219
+- -- 186
+* -- 1000
+:= -- 2033
+add.period$ -- 95
+call.type$ -- 32
+change.case$ -- 159
+chr.to.int$ -- 31
+cite$ -- 67
+duplicate$ -- 620
+empty$ -- 1144
+format.name$ -- 250
+if$ -- 2714
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 18
-newline$ -- 112
-num.names$ -- 84
-pop$ -- 184
+missing$ -- 30
+newline$ -- 167
+num.names$ -- 128
+pop$ -- 292
 preamble$ -- 1
-purify$ -- 81
+purify$ -- 126
 quote$ -- 0
-skip$ -- 310
+skip$ -- 469
 stack$ -- 0
-substring$ -- 352
-swap$ -- 19
+substring$ -- 540
+swap$ -- 28
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 231
-warning$ -- 2
-while$ -- 90
+type$ -- 342
+warning$ -- 3
+while$ -- 137
 width$ -- 0
-write$ -- 271
-(There were 2 warnings)
+write$ -- 410
+(There were 3 warnings)
