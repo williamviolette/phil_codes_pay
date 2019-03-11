@@ -1,4 +1,4 @@
-\begin{thebibliography}{32}
+\begin{thebibliography}{33}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -122,6 +122,12 @@ W.~Jack and T.~Suri.
   money revolution.
 \newblock \emph{American Economic Review}, 104\penalty0 (1):\penalty0 183--223,
   2014.
+
+\bibitem[Jack et~al.(2016)Jack, Kremer, De~Laat, and Suri]{jack2016borrowing}
+W.~Jack, M.~Kremer, J.~De~Laat, and T.~Suri.
+\newblock Borrowing requirements, credit access, and adverse selection:
+  Evidence from kenya.
+\newblock Technical report, National Bureau of Economic Research, 2016.
 
 \bibitem[Karlan and Zinman(2009)]{karlan2009expanding}
 D.~Karlan and J.~Zinman.

@@ -10,20 +10,20 @@ end
 
 
 
-use "${fies}micro_world.dta", clear
+* use "${fies}micro_world.dta", clear
 
-g dev = regexm(regionwb,"OECD")==1
+* g dev = regexm(regionwb,"OECD")==1
 
 
-account  // has account
-q5  // has credict card 
-q6  // has used credit card in last 12 months
+* account  // has account
+* q5  // has credict card 
+* q6  // has used credit card in last 12 months
 
-q8a  // why don't you have a bank account?
+* q8a  // why don't you have a bank account?
 
-q30  // have you paid utility bills in the past 12 months
+* q30  // have you paid utility bills in the past 12 months
 
-borrowed  // any borrowing
+* borrowed  // any borrowing
 
 
 *** 2014 CFS

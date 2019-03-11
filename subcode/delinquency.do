@@ -81,6 +81,7 @@ write "${tables}out_bal.tex" `=r(mean)' 1 "%12.0fc"
 
 g dcs_time = DCS/(time*tot_acc)
 sum dcs_time
+write "${moments}dc_per_month_account.csv" `=r(mean)' 0.0001 "%12.4g"
 write "${tables}dc_per_month_account.tex" `=r(mean)' 0.0001 "%12.4fc"
 
 

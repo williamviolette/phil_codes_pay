@@ -65,11 +65,12 @@
 
 % Public utilities often tolerate large amounts of unpaid bills each month.  
 
-Unpaid utility bills may provide an important source of credit to households.  With billing data from a piped water provider in Manila, this paper estimates a consumption and savings model to measure how much households value delaying water bill payments. 
+Unpaid utility bills may provide an important source of credit to households.  With billing data from a piped water provider in Manila, this paper estimates a consumption and savings model to measure how much households value delaying water bill payments.  Estimates suggest that households would require an 8\% discount on their water bills in order to commit to always paying  on time.  
+
+
+%I also evaluate the welfare effects of implementing prepaid metering --- a popular proposal to eliminate delinquency.  Simulations imply that this technology would be welfare reducing because installation costs and costs to consumers of outweigh benefits of recovering unpaid bills.   
 
 % This framework also provides a method to estimate credit constraints with utility billing data.  probably don't sell this
-
- Estimates suggest that households would require an 8\% discount on water bills in order to commit to always paying  on time.  I also evaluate the welfare effects of implementing prepaid metering --- a popular proposal to eliminate delinquency.  Simulations imply that this technology would be welfare reducing because installation costs and costs to consumers of outweigh benefits of recovering unpaid bills.   
 
 
 %%%% NEED SOMETHING SURPRISING HERE!!
@@ -97,8 +98,8 @@ Unpaid utility bills may provide an important source of credit to households.  W
 \end{titlepage}
 \pagebreak \newpage
 
-\spacing{1}
-
+%\spacing{1.5}
+\onehalfspacing
 
 \section{Introduction}
 
@@ -106,26 +107,95 @@ Unpaid utility bills may provide an important source of credit to households.  W
 
 %While microfinance and peer-to-peer lending have received substantial research and policy attention (\cite{morduch1999microfinance}), studies have yet to examine the welfare implications of offering credit through deferred payments.
 
-Households face a dynamic problem of how to smooth their consumption over time, especially in low-income settings where households have little access to formal credit and risky streams of income (\cite{morduch1995income}).  To access loans, households often resort to costly money lenders or informal arrangements with family members (\cite{banerjee2007economic}).  Firms may provide an additional channel for consumption smoothing by allowing households to delay their payments for goods and services.  In particular, public utilities like water and electricity providers often tolerate high levels of monthly delinquency.  cover broad populations, and account for at least 5\% of household income in developing countries.\footnote{\cite{komives2006distributional} find that households spend 1-2\% of their incomes on water and 4\% on electricity.  \cite{komives2006distributional} also find revenue recovery rates ranging from 16\% to 98\% in former socialist countries.}  
+Households face a dynamic problem of how to smooth their consumption over time, especially in low-income settings where households have little access to formal credit and risky streams of income (\cite{morduch1995income}).  Households often resort to costly money lenders or informal arrangements with family members (\cite{banerjee2007economic}).  Firms may provide an additional channel for consumption smoothing by allowing households to delay their payments for goods and services.  In particular, public utilities often tolerate high levels of unpaid bills each month.  This source of credit is likely to be economically important to households in developing countries since public utilities cover broad populations and take up at least 5\% of household incomes.\footnote{\cite{komives2006distributional} find that households spend 1-2\% of their incomes on water and 4\% on electricity.} 
 
-Public utilities may be well-suited to offer credit because as monopoly providers, utilities are able to threaten disconnection from service to enforce payments, and their billing systems imply low transaction costs of monitoring debtors.  Utilities also spread default risk across a wide consumer base.  Yet, since utility prices are often regulated to cover costs, unpaid bills may increase prices for all consumers, distorting their consumption choices.  Moreover, linking credit to consumption may incentivize households to overconsume these services.  For example, consumers may substitute toward piped water and away from other beverages in months where they are credit constrained.  Since governments actively regulate public utilities, the extent to which utilities should tolerate delayed payments remains an open policy question.
+% Since public utilities cover broad populations and take up at least 5\% of household incomes, delayed payments to public utilities likely account for an economically significant share of the total credit available to households in developing countries.\footnote{\cite{komives2006distributional} find that households spend 1-2\% of their incomes on water and 4\% on electricity.} 
+
+%\footnote{For example, \cite{komives2006distributional} find revenue recovery rates ranging for utilities ranging from 16\% to 98\% among Eastern European Countries.}
+%For example, in Manila, total outstanding balances for water bills are double those for credit cards. 
+
+%This source of credit is able to reach broad populations 
+%likely to be economically substantial since public utilities cover broad populations and 
+
+% Yet, since prices are often regulated to recoup costs, defaulting consumers may lead to price increases for all consumers, distorting their future consumption.  Moreover, linking credit to consumption may incentivize overconsumption.  
+
+% As monopoly providers,  % instead of requiring upfront collateral. 
+
+When market failures limit formal lending, public utilities may provide efficient, second-best sources of credit.  First, poor access to collateral often restricts the availability of lending options to low-income households (\cite{jack2016borrowing}).  Public utilities overcome this barrier by threatening disconnection from future service to enforce repayment.  Second, poor infrastructure and mobile populations increase the transaction costs of screening and monitoring debtors, which contribute to high interest rates (\cite{jack2014risk}).  As part of their business practices, public utilities invest in meter reading and billing systems that may lower these transaction costs.  Third, moneylenders and peer-to-peer lending groups often cater to small pools of debtors while public utilities are able to spread default risk across a wide customer base.  Despite these advantages, linking credit to consumption creates an inherent inefficiency by incentivizing overconsumption.  For example, households may substitute toward piped water and away from other beverages in months where they are credit constrained.  Since governments actively regulate public utilities, the extent to which public utilities should also provide credit remains an open policy question (\cite{laffont2005regulation}).  
+
+Technologies that eliminate delayed payments have recently dominated utility policy discussions.    Both researchers and policymakers recommend new prepaid metering technologies, which require upfront payment before releasing any services, as effective strategies to prevent nonpayment.\footnote{\cite{kojima2016making} and \cite{heymans2014limits} are broadly supportive of prepaid metering for electricity and water utilities (respectively).  \cite{jack2016charging} find that prepaid meters for electricity in South Africa substantially increase utility revenues.  \cite{jack2015pay} also argue that prepaid meters may help savings constrained consumers by allowing households to pay small increments each month.}    Yet, existing analyses have yet to consider how these technologies may impact household welfare by reducing consumption smoothing.
+
+% because as monopoly providers, utilities are able to threaten disconnection from service to enforce payments,   and.  
 
 % (\cite{laffont2005regulation})
 %Also, since governments often regulate utility prices to cover their production costs, any credit risk 
 
+% Policymakers worry that high rates of delinquency weaken incentives for utilities to invest in infrastructure, especially in areas with low-income populations (\cite{mcrae2015infrastructure}, \cite{szabo2015reducing}).
+
+% NEED TO WRITE !! PLEASE !!! HERE !! WE GO !!!    Low interests rates on postponed payments lead 
+% , which mimics strategies used by many public utilities to ensure payment.  
+% This paper incorporates delayed payments for goods into household consumption and savings decisions in order to (1) estimate credit constraints facing households and (2) evaluate the welfare effects of counterfactual billing policies.  
+
+This paper incorporates delayed payments to public utilities into household consumption and savings decisions in order to evaluate the welfare effects of offering credit through public utilities.  I build a dynamic model where each period, households have the option of borrowing with a costly asset as well as with delayed payments to a public utility.  Low interest rates on delayed payments induce households to increase their borrowing by overconsuming utility services.  The extent to which households value payment flexibility depends on the borrowing costs of other assets, which are often difficult to measure in traditional survey data. %\footnote{Survey data often record current loans for households instead of reporting the quality of available credit.}
+
+To estimate borrowing costs, I take a structural approach using billing data from a regulated water utility in Manila, Philippines.  The estimation leverages months where utility workers visit households and disconnect them if they do not pay their outstanding balances.  If borrowing were costless, households would never be disconnected during these visits because they would immediately agree to pay their outstanding balances with cheap loans.  Therefore, long and frequent disconnections in response to these visits --- especially among households with large outstanding balances --- provide evidence of borrowing costs.  Using this strategy, I estimate high interest rates for borrowing, consistent with poor observed access to formal credit in Manila with only 3.9\% of households having credit cards and 18.7\% having bank accounts.\footnote{Statistics are from the Philippines 2014 Consumer Finance Survey.}  
+
+% Put this part in here!?
+
+% These estimates allow me to examine how much consumer welfare declines when 
+
+% To measure how much households value credit from delayed bills, I use these estimates to examine how consumer welfare declines when households are required to pay their water bills on time.  I find that households would be billing to pay an 8\% premium on their average water bill in order to keep billing flexibility. 
+
+% These estimates imply that households would require a monthly payment equal to 
+
+% would be willing to give up 8\% of their total water bill in order to keep their billing flexiblity .
+
+%are consistent with this descriptive evidence, producing a large predicted interest rate for borrowing.  
+%In Manila, households have low access to formal credit with only 3.9\% having credit cards and 18.7\% having bank accounts.\footnote{Statistics are from the Philippines 2014 Consumer Finance Survey.} 
+% The estimates imply that households would require a monthly payment equal to 8\% of their current water bills in order to agree to always paying their bills on time.
+
+These estimates also allow me to simulate several counterfactual policies.  First, when households are required to pay their bills on time (holding all else equal), consumer welfare drops by \input{tables/U_nl_abs}PhP (or \input{tables/U_nl_abs_usd}USD) per household-month, which is equal to \input{tables/U_nl_per}\unskip\% of an average water bill.  Usage also declines since households no longer have an incentive to overconsume water.  Second, I simulate a policy that (1) eliminates delayed payments by charging a high interest rate on unpaid bills, (2) eliminates default risk by preventing households from leaving large outstanding balances when they permanently disconnect, and (3) adjusts prices to ensure that the water utility remains revenue-neutral (consistent with regulation in Manila).\footnote{\cite{laffont2005regulation} discusses economic reasons for these regulatory structures which are common in both developed and developing country settings.}  This policy reduces social welfare by \input{tables/U_ppe_abs}PhP (or \input{tables/U_ppe_abs_usd}USD) per household-month.  Finally, I use this framework to evaluate implementing prepaid meters in this context.  Prepaid meters require steep increases in prices to cover their installation and maintenance costs.  As a result, prepaid meters produce even larger reductions in social welfare on the order of \input{tables/U_pp_abs}PhP (or \input{tables/U_pp_abs_usd}USD) per household-month.  These results suggest that popular policies to reduce nonpayment may be welfare reducing by limiting consumption smoothing.
+
+
 % Technologies that eliminate delayed payments have recently dominated utility policy discussions.  Policymakers worry that high rates of delinquency weaken incentives for utilities to invest in infrastructure, especially in areas with low-income populations (\cite{mcrae2015infrastructure}, \cite{szabo2015reducing}).  Both researchers and policymakers recommend new prepaid metering technologies, which require upfront payment before releasing any services, as effective strategies to prevent nonpayment.\footnote{\cite{kojima2016making} and \cite{heymans2014limits} are broadly supportive of prepaid metering for electricity and water utilities (respectively).}  \cite{jack2016charging} find that prepaid meters for electricity in South Africa substantially increase utility revenues.\footnote{\cite{jack2015pay} also argue that prepaid meters may help savings constrained consumers by allowing households to pay small increments each month.}  Yet, existing analyses have yet to consider how these technologies may impact households' welfare by reducing their ability to smooth consumption.
 
-% NEED TO WRITE !! PLEASE !!! HERE !! WE GO !!!
+% In Manila as well as many other cities, a government regulator determines prices for the water utility in order to exactly cover its costs.\footnote{In fact, water prices in Manila fluctuate monthly according to changes in the financial returns of the water company's assets.  \cite{laffont2005regulation} discusses economic reasons for these regulatory structures.}
 
-This paper 
+% In each period, each household faces some probability of losing access to future consumption until they pay their full outstanding balance. This feature provides a framework for estimating credit constraints from utility billing data.  Utilities often record the timing of visits when they attempt to disconnect nonpaying households.  Without credit constraints, disconnections would never take place during these visits because households would always take out low-cost loans to pay their balances.  Therefore, the frequency and duration of disconnections in response to these visits, especially among households with large outstanding balances, help to identify the magnitude of credit constraints.
+
+%  \input{tables/est_irate_annual_per}\unskip\% 
+% The structural estimation uses billing data from a regulated piped water utility in Manila, Philippines.  In this context, almost all households are connected to piped water and in any given month, one in five households is at least 30 days delinquent.\footnote{Piped water access is from the 2010 Census of Population and Housing, and delinquency figures are from water company data described in more detail below.}  At the same time, households have low access to formal credit with only 3.9\% having credit cards and 18.7\% having bank accounts.\footnote{Statistics are from the Philippines 2014 Consumer Finance Survey.}  The estimation results are consistent with this descriptive evidence, producing a large predicted interest rate for borrowing from standard assets.  
+%  This strategy also maps bill payment frequencies into estimates of month-to-month income variance and observed consumption patterns into estimates of household water demand.  Don't EVEN SAY THAT!!! 
 
 
-quantifies the extent to which households smooth their consumption by deferring bill payments to a large piped water provider in Manila, Philippines.  
+
+
+% is supported by descriptive evidence showing large rates of temporary disconnections in response to disconnection visits.
+% Descriptive evidence finds that a large share of households disconnect temporarily when the  
+
+%% NO I then combine this model with a regulatory framework to
+% The structural estimation provides a framework for estimating credit constraints paints .  This approach builds on recent structural 
+
+%from a regulated piped water utility in Manila, Philippines to recover measures of credit constraints 
+
+% Households in Manila have low access to formal credit with only 3.9\% having credit cards and 18.7\% having bank accounts.\footnote{Statistics are from the Philippines 2014 Consumer Finance Survey.}  At the same time, 96\% of households are connected to piped water where over \input{tables/share_del}\unskip\% of households are over 30 days delinquent in any given month.\footnote{Piped water access is from the 2010 Census of Population and Housing, and delinquency figures are from water company data described in more detail below.}  
+
+
+% This paper investigates the welfare effects of counterfactual billing policies in the context of a regulated piped water utility in Manila, Philippines.  
 
 
 
-Say this later : incorporates delaying payments for goods into a standard household model of consumption and savings.  This framework allows for evaluating counterfacutal in  .  The model 
+% Households in Manila have low access to formal credit with only 3.9\% having credit cards and 18.7\% having bank accounts.\footnote{Statistics are from the Philippines 2014 Consumer Finance Survey.}  At the same time, 96\% of households are connected to piped water where over \input{tables/share_del}\unskip\% of households are over 30 days delinquent in any given month.\footnote{Piped water access is from the 2010 Census of Population and Housing, and delinquency figures are from water company data described in more detail below.}  
 
+
+% When households permanently disconnect from service, they often leave large outstanding balances, which are passed on to current users through higher prices.
+
+
+
+% incorporates delayed payments for goods into household consumption and savings decisions in order to evaluate the welfare effects of counterfactual billing policies.  I build a dynamic model where each period, households have the option of borrowing through a costly asset as well as through postponing payments for a good.  Low interest rates on postponed payments induce households to overconsume this good.  
+
+
+% The structural estimation uses billing data from a large piped water utility in Manila, Philippines
 
 %\footnote{\cite{banerjee2007economic} find that shopkeepers account for 37\% of all loans to poor households in Udaipur, India while 23\% come from relatives, 18\% from money lenders, and 6\% from cooperatives or banks.}  
 
@@ -161,9 +231,6 @@ Say this later : incorporates delaying payments for goods into a standard househ
 
 % Outstanding balances for credit cards versus average outstanding balances for delinquent water users.
 
-%%% precationary savings
-
-
 % ITS ALL ABOUT CONSUMPTION SMOOTHING!!
 
 % Morduch, Besley, Townsend
@@ -185,170 +252,62 @@ Say this later : incorporates delaying payments for goods into a standard househ
 
 % want to think about later credit as smoothing credit ( credit cards can be smoothed !! , don't look at home loans, etc. )
 
-
-
-
-
-
-
 % ITS NOT ABOUT INVESTMENTS IN BIG THINGS (like getting big loans for)
 % Access to credit can generate economic growth by allowing households to smooth their consumption.   
 
 % Yet, poor credit access persists throughout the developing world as a result of many market failures (\cite{morduch1999microfinance}, \cite{demirguc2018global}).  Households are often unable to provide sufficient collateral (\cite{besley1995group}), weak transport infrastructure increases the transaction costs of issuing and monitoring loans (\cite{jack2014risk}), and poor information environments raise the costs of screening high-risk borrowers (\cite{stiglitz1990peer}).  
 
-
 %Public utilities may provide important sources of low-cost credit that overcome many of these market failures.  
 
-
-
-
 % Expanding access to credit has been a primary goal to generate economic growth especially in developing countries.  Yet, poor credit access persists throughout the developing world as a result of many market failures (\cite{morduch1999microfinance}, \cite{demirguc2018global}).  Households are often unable to provide sufficient collateral (\cite{besley1995group}), weak transport infrastructure increases the transaction costs of issuing and monitoring loans (\cite{jack2014risk}), and poor information environments raise the costs of screening high-risk borrowers (\cite{stiglitz1990peer}).  Public utilities may provide important sources of low-cost credit that overcome many of these market failures.  
-
 
 % Public utilities often allow households to delay bill payments for many months, which act as sizable microloans given that households typically spend 4\% of their income on electricity and 1-2\% of income on water.  First, the threat of service disconnection allows utilities to enforce payment.  Second, by reading meters and distributing bills, utilities maintain constant contact with their consumers, which lowers the transaction costs of offering credit.  Finally, utilities are also able to spread credit risk by raising prices for all consumers to cover delinquency from some consumers.   
 
 % For example, households in Manila, Philippines anecdotally emphasize the negative social stigma associated with being unable to pay for water and electricity.  
-
 
 % Despite these advantages, policymakers have been aggressively promoting the adoption of prepaid metering technologies, which eliminate any credit that may be provided by public utilities.  Prepaid meters require upfront payment before releasing any services (ie. water, electricity, or gas).  This technology has expanded rapidly among water and electricity utilities in Sub-Saharan Africa as a way to ensure cost recovery for utilities (\cite{heymans2014limits}, \cite{jack2016charging}).  \cite{jack2016charging} find that increases in firm profitability outweigh reductions in demand from consumers as a result of prepaid metering in South Africa.\footnote{\cite{jack2015pay} also argue that prepaid meters may help savings constrained consumers by allowing households to pay small increments each month.}  
 
 % Data constraints have prevented previous studies from examining how prepaid meters may 
 
 
+% This paper focuses on water provision in Manila, Public utilities provide broad access to credit.  
 
-%  While these meters reduce,   
+%Over 96\% of the population is connected to piped water while only 3.9\% have credit cards and 18.7\% have bank accounts.\footnote{Piped water data comes from the 2010 Census of Population and Housing and financial data comes from the 2014 Consumer Finance Survey.}  
 
-% Meter banking
-
-
-
-
-This paper focuses on water provision in Manila, Public utilities provide broad access to credit.  
-
-Over 96\% of the population is connected to piped water while only 3.9\% have credit cards and 18.7\% have bank accounts.\footnote{Piped water data comes from the 2010 Census of Population and Housing and financial data comes from the 2014 Consumer Finance Survey.}  
+% 7.6\% have loans against their retirement savings, and 10.5\% 
 
 
- 7.6\% have loans against their retirement savings, and 10.5\% 
+% \cite{heymans2014limits}
+%  prepayment water systems are in use in more than
+% 20 African countries, and in locations such as Turkey, parts
+% of the Balkans and Azerbaijan, and Colombia. Their scale
+% of use is ramping up rapidly. The Botswana Water Utilities
+% Corporation, for example, is reported to be planning to install
+% 300,000 prepaid water meters in the near future, beyond
+% the existing small-scale installations. 
 
-
-
-
-
+% don't like : “Postpaid gives you more time to find the money.”  “Water is a need, but money is not always available.”
 
 
 
-\begin{itemize}
-    \item Households in developing countries have no credit
-    \item 
+% Context : In Manila, water bills make up about 3\% of income on average, jumps to 5 to 10\% for low-income folks.  I have data from a large water provider serving half the city of Manila.  On average, people make a payment in three out of four months and are about a month behind in payments.  For example, if you don't pay for three months, that's like taking a three-month loan of around 9\% of your income.  
+
+% People might be paying infrequently because they are credit-constrained and consumption smoothing; or it might just be a pain to pay their bills so they just avoid the hassle by paying infrequently (and they have plenty of other opportunities to smooth).  
+
+% I use disconnection threats to better isolate the role of credit constraints.  Workers will occasionally visit delinquent customers and say if you don't pay your bill soon (within 12 days on average), we'll disconnect you.  Only 23\% of people say that's ``enough time'' to pay the bill.  After the threats, payments spike to double the average bill, delinquency drops to zero, and consumption drops by around 25\%.  If it were simply a hassle, people would pay their bill and consumption wouldn't change (they could get easy credit from other places and pay the bill); but if they are credit constrained, they have to deviate from consumption smoothing to make the payments.  The next step is to use theory to see what this decrease in consumption implies about the short-term interest rate that households face.
 
 
-    \item need to defend structural approach!
-\end{itemize}
+% REPRESENTATIVE HOUSEHOLD APPROACH
 
+% \cite{jack2015pay} small frequent purchases of electricity mean that prepaid meters provide a savings device for liquidity constrained households.  
 
+% \cite{jack2016charging} find decrease in usage of 13\%, what share of the bill 8-10\% of income?
 
-
-
-
-
-Public utilities limit moral hazard by threatening disconnection from service; households may overconsume to finance greater borrowing.
-
-Public utilities often tolerate large quantities of unpaid bills each month.  These unpaid bills may provide an important source of credit to low-income households.  
-
-
-
-This framework also 
-
-
-Why structure?
-\begin{itemize}
-    \item cool counterfactuals
-        \begin{enumerate}
-            \item full welfare of prepaid meters (with revenue equaling counterfactual)
-            \item how do interest rate changes affect water demand and delinquency? spillover effects!?
-        \end{enumerate}
-    \item measure consumption distortions from water loans [ shows up with first one.. ]
-    \item estimate a revealed credit constraint parameter using utility data
-        \begin{enumerate}
-            \item show that they are substitutes!
-        \end{enumerate}
-\end{itemize}
-
-This paper looks at whether utilities in developing countries provide an important source of credit to households by letting them not pay their bill?  And how do these benefits compare to the costs of delinquency?
-
-Motivation : (1) around the world, there are restrictions on when utilities can disconnect people (health, low-income, elderly), motivated by providing a sense of insurance;  
-
-
-(2) Also, in developing countries, prepaid metering where utilities essentially put fancy meters that only distribute water when people pay first.  these shut off any credit channel but eliminate delinquency
-
-\cite{heymans2014limits}
- prepayment water systems are in use in more than
-20 African countries, and in locations such as Turkey, parts
-of the Balkans and Azerbaijan, and Colombia. Their scale
-of use is ramping up rapidly. The Botswana Water Utilities
-Corporation, for example, is reported to be planning to install
-300,000 prepaid water meters in the near future, beyond
-the existing small-scale installations. 
-
-don't like : “Postpaid gives you more time to find the money.”  “Water is a need, but money is not always available.”
-
-
-%% compared to prepaid electricity
-% • Prepaid water is often seen as controversial. Payment for the supply of electricity is accepted more widely than
-% payment for water, and access to electricity is not regarded a basic human right. T
-% • The electricity sector is much less fragmented than the water sector, and has far greater clout to direct what
-% manufacturers supply. 
-% • Prepaid water meters face physical stresses that do not apply to electricity. There are more moving parts,
-% most subjected to fluctuating pressures and flows, and wear, fatigue, and abrasion increase the likelihood of
-% malfunction. 
-
-
-% When discussing costs with service providers, the review
-% team was told on several occasions that “prepaid meters cost
-% about four times more than a conventional meter.” This is
-% based on the typical cost of a prepaid metering device for an
-% individual domestic connection, about US$210, compared
-% to typical conventional mechanical meter, about US$50.   96.2\% of costs for large systems.  average of 7 year life span (assume the same for both)
-
-
-
-
-
-Context : In Manila, water bills make up about 3\% of income on average, jumps to 5 to 10\% for low-income folks.  I have data from a large water provider serving half the city of Manila.  On average, people make a payment in three out of four months and are about a month behind in payments.  For example, if you don't pay for three months, that's like taking a three-month loan of around 9\% of your income.  
-
-People might be paying infrequently because they are credit-constrained and consumption smoothing; or it might just be a pain to pay their bills so they just avoid the hassle by paying infrequently (and they have plenty of other opportunities to smooth).  
-
-I use disconnection threats to better isolate the role of credit constraints.  Workers will occasionally visit delinquent customers and say if you don't pay your bill soon (within 12 days on average), we'll disconnect you.  Only 23\% of people say that's ``enough time'' to pay the bill.  After the threats, payments spike to double the average bill, delinquency drops to zero, and consumption drops by around 25\%.  If it were simply a hassle, people would pay their bill and consumption wouldn't change (they could get easy credit from other places and pay the bill); but if they are credit constrained, they have to deviate from consumption smoothing to make the payments.  The next step is to use theory to see what this decrease in consumption implies about the short-term interest rate that households face.
-
-
-REPRESENTATIVE HOUSEHOLD APPROACH
-
-\cite{jack2015pay} small frequent purchases of electricity mean that prepaid meters provide a savings device for liquidity constrained households.  
-
-
-\cite{jack2016charging} find decrease in usage of 13\%, what share of the bill 8-10\% of income?
-
-  they acknowledge the credit mechanism
-
-
-\cite{northeast2014} predict rapid increases in prepaid electricity meters throughout Sub-Saharan Africa.  
+% \cite{northeast2014} predict rapid increases in prepaid electricity meters throughout Sub-Saharan Africa.  
 
 %% disconnection 
 
 % https://liheapch.acf.hhs.gov/Disconnect/disconnect.htm
-\subsection{Question} 
-Are utilities providing an important source of credit to households by letting them not pay their bill?
-
-\subsection{Motivation}
-\begin{itemize}
-\item Disconnection policies as insurance (in the US) 
-	\begin{itemize}
-		\item weather, health, low-income
-		\item mandate that utilities amortize arrears
-		\item Utilities even tolerate greater non-payment
-	\end{itemize}
-\item At the same time, prepaid metering is growing like crazy in the developing world (Sources)
-\end{itemize}
 
 \section{Data}
 
@@ -405,7 +364,8 @@ Because the connection survey data does not include income measures, average mon
 \midrule
 \input{tables/descriptives_all}
 \bottomrule \\ [-.8em]
-\multicolumn{7}{c}{Total Households: \input{tables/total_hhs_all}  Obs. per Household: \input{tables/obs_per_hh_all} Total Obs.: \input{tables/total_obs_all}}
+\multicolumn{7}{l}{Total Households: \input{tables/total_hhs_all}  Obs. per Household: \input{tables/obs_per_hh_all} Total Obs.: \input{tables/total_obs_all}} \\
+\multicolumn{7}{l}{\scriptsize Bill, Unpaid Balance, and Payment Size are in PhP per household-month.}
 \end{tabular}
 \end{table}
 
@@ -795,7 +755,9 @@ In terms of the correlation between usage and outstanding balances, the data fin
 \centering
 \caption{100 Months of Simulated Data around \\ a Period of Disconnection}\label{figure:deaton}
 \includegraphics[scale=1.1]{tables/new_deaton_graph.pdf} \\
-{\scriptsize  Note: 100 months are chosen to center around the first disconnection event in the \input{tables/par_n_iter}month random sequence of states used in estimation.  ``Visit'' indicates months with a delinquency visit with a diamond.  ``Disconnect'' indicates months disconnected with a thick line.  Cum. $\Delta y_t$ measures cumulative shocks to income in PHP, $A_{t+1}$ indicates the optimal standard asset position in PhP, $B_{t+1}$ indicates the optimal water borrowing in PhP, and $\text{Usage}_t$ indicates water consumption in m3.}
+{\scriptsize  
+Note: 100 months are chosen to center around the first disconnection event in the \input{tables/par_n_iter}month random sequence of states used in estimation.  ``Visit'' indicates months with a delinquency visit with a diamond.  ``Disconnect'' indicates months disconnected with a thick line.  Cum. $\Delta y_t$ measures cumulative shocks to income in PHP, $A_{t+1}$ indicates the optimal standard asset position in PhP, $B_{t+1}$ indicates the optimal water borrowing in PhP, and $\text{Usage}_t$ indicates water consumption in m3.
+\par}
 \end{figure}
 
 
@@ -808,52 +770,137 @@ The third panel indicates the household's borrowing through unpaid water bills, 
 The fourth panel indicates households water usage patterns over the same 100 months.  Usage begins to spike as the household increases it usage to fund borrowing through unpaid water bills.  The largest spikes in usage occur when the household moves to the maximum level of borrowing allowed by the grid of assets chosen for the simulation.  Because of the step-size chosen for the asset grid, moving to the largest borrowing level requires a jump in unpaid bills of around 1,000 PhP.  Since the average bill is around 600 PhP, the household needs to almost double its usage to fund this jump in unpaid borrowing.  These spikes in usage measure the extent to which borrowing from unpaid water bills may distort water usage choices, adding an additional friction associated with borrowing from water bills.  After maximizing water borrowing at around 24 months, usage begins to stabilize at lower levels, mirroring the long string of negative income shocks faced by the household.  
 
 \section{Counterfactual Policies}
+%In practice, this counterfactual setting may correspond to a policy of strict enforcement by the water company (ie. monthly delinquency visits). 
+To measure how much households value credit from unpaid water bills, the model is able to examine household welfare in a counterfactual setting where households are unable to borrow from their water bills.  Table~\ref{table:counter} includes outcomes for the current setting in Manila in Column (1) and for a counterfactual setting without water borrowing in Column (2), which is captured by raising the interest rate for water borrowing to 100\% and holding all else equal.  The first row calculates compensating variation equal to \input{tables/U_nl_abs}PhP/month associated with losing access to water credit.  This estimate suggests that households would require at least \input{tables/U_nl_abs}PhP/month (or about 1 USD) greater income to eliminate access to water credit.  Given an average water bill of \input{tables/bill_all}PhP/month, this estimate would translate into households paying around \input{tables/U_nl_per}\unskip\% smaller bills each month.  
 
-To measure how much households value credit from unpaid water bills, the model is able to examine household welfare in a counterfactual setting where households are unable to borrow from their water bills.  In practice, this counterfactual setting may correspond to a policy of strict enforcement by the water company (ie. monthly delinquency visits).  Table~\ref{table:counter} includes outcomes for the current setting in Manila in Column (1) and for a counterfactual setting without water borrowing in Column (2).  The first row calculates compensating variation equal to \input{tables/U_nl_abs}PhP/month associated with losing access to water credit.  This estimate suggests that households would require at least \input{tables/U_nl_abs}PhP/month (or about 1 USD) greater income to eliminate access to water credit.  Given an average water bill of \input{tables/bill_all}PhP/month, this estimate would translate into households paying around \input{tables/U_nl_per}\unskip\% smaller bills each month.  
-
-Eliminating credit access also decreases mean usage by \input{tables/c_h_nl_drop}\unskip\% as shown by columns (1) and (2) in the second row of Table~\ref{table:counter}.  Reducing credit access lowers the extent to which households can smooth their consumption over time while also removing the incentive for households to overconsume water in order to finance water borrowing.  Given that households spend around \input{tables/bill_inc_all}\unskip\% of their income on water, this estimate is roughly proportional with similar evidence from South Africa where restricting credit access with prepaid electricity meters produced a 13\% reduction in usage and where households spend around 8-10\% of their income on electricity (\cite{jack2016charging}).\footnote{\cite{jack2016charging} also propose other mechanisms that may account for reductions in usage such as transaction costs and intra-household bargaining constraints.}
+Eliminating credit access also decreases mean usage by \input{tables/c_h_nl_drop}\unskip\% as shown by columns (1) and (2) in the second row of Table~\ref{table:counter}.  Reducing credit access lowers the extent to which households can smooth their consumption over time while also removing the incentive for households to overconsume water in order to finance water borrowing.  Given that households spend around \input{tables/bill_inc_all}\unskip\% of their income on water, this estimate is roughly proportional to similar evidence from South Africa where restricting credit access with prepaid electricity meters produced a 13\% reduction in usage and where households spend around 8-10\% of their income on electricity (\cite{jack2016charging}).\footnote{\cite{jack2016charging} also propose other mechanisms that may account for reductions in usage such as transaction costs and intra-household bargaining constraints.}
 
 \begin{table}[H]
 \centering
 \caption{Counterfactual Policies}\label{table:counter}
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{l*{1}{cccc}}
 \toprule
  & (1) & (2) & (3) & (4) \\
- & Current & No Water   & No Water Borrowing & Prepaid  \\
- &         & Borrowing  & and Loan Savings      & Metering  \\
+ & Current & No Water   & No Water Borrowing    & Prepaid Metering \\
+ &         & Borrowing  & and Revenue Neutral      & and Revenue Neutral   \\
 \midrule   
-Compensating Variation (PhP) & & \input{tables/U_nl} & \input{tables/U_ppe}  & \input{tables/U_pp} \\
-Mean Usage (m3) & \input{tables/c_h} & \input{tables/c_nl}  & \input{tables/c_ppe} & \input{tables/c_pp} \\
+Compensating Variation (PhP) & -- & \input{tables/U_nl} & \input{tables/U_ppe}  & \input{tables/U_pp} \\
+Mean Usage (m3) & \input{tables/c_h2} & \input{tables/c_nl2}  & \input{tables/c_ppe2} & \input{tables/c_pp2} \\
  &         &           &         &  \\
+ Water Borrowing Interest Rate & 0\% & 100\% & 100\% & --  \\
 %Adjustments to stay revenue neutral  & & \\
-Price Intercept $p_1$ (PhP/m3) & \input{tables/p_int} & &  \input{tables/p_int_ppe} & \input{tables/p_int_pp} \\
-Disconnection Rebate (PhP) & \input{tables/delinquency_cost} & & & 0 \\
+Price Intercept $p_1$ (PhP/m3) & \input{tables/p_int2} & \input{tables/p_int2} &  \input{tables/p_int_ppe2} & \input{tables/p_int_pp2} \\
+Disconnection Rebate (PhP) & \input{tables/delinquency_cost} & \input{tables/delinquency_cost}  & 0 & 0 \\
+Delinquency Visit Cost (PhP) & \input{tables/visit_cost} & \input{tables/visit_cost}  & 0 & 0 \\
+Opp. Cost of Lending (PhP) & \input{tables/coste} & \input{tables/coste} & 0 & 0 \\
+Marginal Cost (PhP/m3) & 5 & 5 & 5 & 5 \\
+Additional Metering Cost (PhP) & 0 & 0 & 0 & 51 \\
 %\input{tables/counter_price_nomid}
 %\input{tables/counter_fixed_nomid}
 \bottomrule
-\multicolumn{5}{l}{ \scriptsize  All values are monthly. The price intercept increases under prepaid metering to cover meter replacement } \\[-.5em]
-\multicolumn{5}{l}{ \scriptsize  costs.  The disconnection rebate measures the average outstanding balance left unpaid by permanently } \\[-.5em]
-\multicolumn{5}{l}{ \scriptsize  disconnected households in terms of household-months.  Price intercepts and disconnection rebates are } \\[-.5em]
-\multicolumn{5}{l}{ \scriptsize  unchanged for the no water borrowing counterfactual.}
+\multicolumn{5}{l}{ \scriptsize  All values are at the household-month level. }
+%The price intercept increases under prepaid metering to cover meter replacement } % \\[-.5em]
+%\multicolumn{5}{l}{ \scriptsize  costs.  The disconnection rebate measures the average outstanding balance left unpaid by permanently disconnected households } \\[-.5em]
+%\multicolumn{5}{l}{ \scriptsize  in terms of household-months.  Price intercepts and disconnection rebates are unchanged for the no water } \\[-.5em]
+%\multicolumn{5}{l}{ \scriptsize  borrowing counterfactual.}
 \end{tabular}
+}
 \end{table}
 
 
-\subsection{Prepaid Metering}
+%\subsection{Prepaid Metering}
 
-This structural model also provides a useful opportunity to evaluate the total welfare effects of implementing prepaid metering technologies, which have become increasingly popular for both electricity and water utilities throughout the developing world.\footnote{See \cite{jack2016charging} and \cite{northeast2014} for electricity utilities and \cite{heymans2014limits} for water utilities.}  By requiring households to pay upfront for their water usage, these meters eliminate any access to credit through unpaid water bills.  
+This structural model also provides a useful opportunity to evaluate the total welfare effects of implementing policies to reduce delinquency.  I consider a policy that (1)eliminates borrowing by raising the water interest rate to 100\% and (2) adjusts water prices to ensure that the company remains revenue-neutral.  The regulatory structure in Manila as well as many other developing cities ensures that prices for water are regulated to exactly cover all production costs (\cite{hoque2013state}).
 
-Prepaid meters also provide potential savings to the water company by preventing households from permanently disconnecting and leaving large outstanding balances that are never paid.  On average, \input{tables/dc_per_month_account}households permanently disconnect per household-month.  These households that permanently disconnect leave average outstanding balances of \input{tables/out_bal}PhP.  These estimates imply household savings equal to an average of \input{tables/delinquency_cost}PhP/month per household.  In practice, households enjoy all of these savings in the final few months that they remain connected.  However, since households use water indefinitely in the model, the counterfactual exercise captures these savings by assuming that households receive a monthly fixed rebate of \input{tables/delinquency_cost}PhP.  By allowing households to spread these savings over time, this assumption is likely to overstate the true benefits to households from leaving unpaid bills.  Also, by assuming that households receive fixed rebates, this approach ignores any incentives that households may face to overconsume in their final months connected (since households face an effective price of zero in these months).  Appendix~\ref{appendix:permanentdc} finds some evidence of overconsumption before permanent disconnection.  This counterfactual exercise also assumes that prepaid meters do not affect households decision's over when and whether to permanently disconnect from service.  With prepaid meters, the water company would also no longer need to conduct delinquency visits.  Appendix~\ref{appendix:visitcosts} provides evidence that these cost savings are likely to be negligible.
+Eliminating borrowing affects the costs of the water company in four main ways
 
-The welfare effects of installing prepaid meters also depend on the costs of purchasing and installing this new technology.  \cite{heymans2014limits} surveyed eight large water providers that implemented prepaid meters in developing countries and found that each prepaid meter costs about four times as much as a standard meter and requires replacement every 7 years.  In the context of Manila, each standard meter costs around 1,500 PhP and is replaced around every 6 years and 3 months, bringing the monthly cost to 20 PhP/month.\footnote{The water company provided additional documentation of costs and frequency of meter replacement for residential households.}  Assuming that a prepaid meter costs 4 times as much as a standard meter with a replacement rate of 7 years, the estimated monthly cost of a prepaid meter would be 71 PhP/month.  Therefore, prepaid meters imply an additional cost of 51 PhP/month per household.\footnote{\cite{heymans2014limits} also report that the fixed administrative costs of installing and monitoring new meters account for less than 4\% of the total costs of switching to prepaid meters while the bulk of the expenses come from purchasing new meters.  By focusing on meter replacement, this exercise is likely to capture the majority of switching costs associated with prepaid metering.}  Moving to prepaid meters may also affect total water consumption, which would in turn affect the water company's costs of water production.  The water company reports a marginal cost of 5 PhP/m3.  
+\begin{enumerate}
+\item \textit{Opportunity Cost of Lending}: Currently, the water company faces an opportunity cost for the loans extended to households in the form of unpaid bills.  Assuming that the water company would have been able to invest this money at an average annual interest rate of \input{tables/irate}\unskip\%, the opportunity cost of lending averages \input{tables/coste}PhP per household-month, which would be recouped by the water company in a counterfactual without delayed payments.\footnote{Interest rate reflects the average between 2010 and 2015 as reported by the World Bank Databank.}
 
-The regulatory structure in Manila as well as many other developing cities ensures that prices for water are regulated to exactly cover all production costs (\cite{hoque2013state}).  To simulate this regulatory environment, the counterfactual exercise calculates the changes in prices necessary to ensure that the water company remains revenue neutral after installing prepaid water meters.  This exercise also assumes that the government regulator is able to perfectly forecast water demand among all households.  Since prices are non-linear, only the price intercept, $p_1$, which applies to all levels of usage, is adjusted in this exercise.  Savings from permanent disconnections of \input{tables/delinquency_cost}PhP per household-month are exceeded by installation costs of 51 PhP per household-month, meaning that prices need to raise enough revenue to cover \input{tables/del_raised}PhP per household-month.  Counterfactual prices must also account for changes in usage so that they are able to exactly fund any marginal costs of water production.
+\item \textit{Delinquency Visit Cost}: Without water borrowing, the water company would no longer need to conduct delinquency visits.  Conversations with the water company suggest that travel costs make up the majority of the costs for any service performed on a water meter.  Since the company requires a 200 PhP fee to reconnect disconnected households, I assume that delinquency visits cost the same amount to the water company.  Conditional on being delinquent, households receive visits in \input{tables/prob_caught}\unskip\% of household-month observations, which implies an average delinquency visit cost to the company of \input{tables/visit_cost}PhP per household-month. 
 
-Table~\ref{table:counter} includes the results of the prepaid metering counterfactual in column (3).  To cover the higher costs of prepaid meters, the price intercept, $p_1$, increases by around \input{tables/p_increase_per}\unskip\% as indicated by the third row.  At the same time, households no longer receive a disconnection rebate of \input{tables/delinquency_cost}PhP per month.  With higher prices and without water credit, households lower their consumption by \input{tables/c_h_pp_drop}\unskip\% under prepaid metering.  In order to be indifferent between the current setting and a world with prepaid metering, households would need to receive an additional \input{tables/U_pp_abs}PhP/month in compensation.  Taken together, these results provide suggestive evidence that prepaid metering would be welfare reducing in this context.
+\item \textit{Marginal Costs}: The water company reports a marginal cost per cubic meter of consumption equal to 5 PhP.
+
+\item \textit{Disconnection Rebate:}  Currently, the water company is exposed to default risk where households that permanently disconnect from the water company often leave large outstanding balances that are never paid.  On average, \input{tables/dc_per_month_account}households permanently disconnect per household-month.  These households that permanently disconnect leave average outstanding balances of \input{tables/out_bal}PhP.  These estimates imply household savings equal to an average of \input{tables/delinquency_cost}PhP per household-month.  In practice, households enjoy all of these savings in the final few months that they remain connected.  However, since households use water indefinitely in the model, the counterfactual exercise captures these savings by assuming that households receive a monthly fixed disconnection rebate of \input{tables/delinquency_cost}PhP.  This approach implies the following assumptions
+\begin{itemize}
+    \item By allowing households to spread these savings over time, this assumption is likely to overstate the true benefits to households from leaving unpaid bills. 
+
+    \item By assuming that households receive fixed rebates, this approach ignores any incentives that households may face to overconsume in their final months connected (since households may behave as if they face an effective price of zero in these months).  Appendix~\ref{appendix:permanentdc} finds some evidence of overconsumption before permanent disconnection.  
+
+    \item These exercises assume that household decisions over when and whether to permanently disconnect from service are unaffected by changes in billing flexibility.  
+
+    \item This approach assumes that under a counterfactual setting with a high borrowing interest rate, households always pay their bills on time even when they are about to permanently disconnect.  This assumption may be reasonable since with a high borrowing interest rate, the average household will have an incentive to pay their bills on time except when they are close to permanently disconnecting.  Since permanent disconnections are rare, the water company can reasonably maintain the expectation that households will be disconnected as soon as they stop paying their bills.  This threat would likely ensure that households always pay their bills on time.
+\end{itemize}    
+\end{enumerate}  
+
+The following expression calculates the fixed revenue raised by the water company per household-month given prices, $p_1$ and $p_2$, and a marginal cost, $MC$, per m3 of usage
+\begin{align*}
+REV \big(p_1,r_b,Y \big) &= \Big ( \,  p_1 - MC +  p_2 \, w^{*}(p_1,p_2,r_b,Y)  \,  \Big ) \, \, w^{*}(p_1,p_2,r_b,Y)
+\end{align*}
+%With prepaid meters, the water company would also no longer need to conduct delinquency visits.  
+
+%Appendix~\ref{appendix:visitcosts} provides evidence that these cost savings are likely to be negligible.
+
+I then solve for the price intercept, $p^{\prime}_1$, such that the current revenue with zero borrowing rate is equal to revenue under a counterfactual where the borrowing rate is equal to 100\% and the water company experiences cost savings.  Adjusting the price intercept, $p_1$, preserves the slope of the tariff structure, which likely reflects equity concerns among policy makers in Manila.  $p^{\prime}_1$ solves the following expression
+\begin{align*}
+\sum_t REV_t \big(p_1,r_b = 0,Y_t \big) =& \sum_t REV_t \big(p^{\prime}_1,r_b = 1, Y_t - \text{Disc. Rebate} \big) \\
+& - (\text{Opp. Cost of Lending + Visit Cost + Disc. Rebate})
+\end{align*}
+In the counterfactual, cost savings reduce the amount of revenue needed to be raised to stay revenue neutral.  At the same time, eliminating borrowing in the counterfactual lowers water consumption, which reduces revenue since prices are well above marginal costs.  Table~\ref{table:counter} finds that these two effects almost exactly offset each other, producing almost identical prices in the current setting in Column (1) and the counterfactual without water borrowing in Column (3).  Removing water borrowing while keeping similar prices results in a drop in average usage between Columns (1) and (3) that is nearly identical to the drop in usage between Columns (1) and (2).
+
+According to the first row of Table~\ref{table:counter}, households would require a compensating monthly payment of at least \input{tables/U_ppe_abs}PhP in order to move from the current setting in  Column (1) to a revenue-neutral counterfactual without borrowing in Column (3).  Although prices remain almost identical in Column (3), revenue neutrality ensures that households no longer receive a monthly disconnection rebate of \input{tables/delinquency_cost}PhP, which almost exactly accounts for the difference in compensating variation between columns (2) and (3).  
+
+
+I then simulate the effects of introducing prepaid metering technologies and adjusting water prices to similarly account for their costs. By requiring households to pay upfront for their water usage, these meters provide an alternative strategy for  eliminating any access to credit through unpaid water bills.  These technologies have become increasingly popular for both electricity and water utilities throughout the developing world.\footnote{See \cite{jack2016charging} and \cite{northeast2014} for electricity utilities and \cite{heymans2014limits} for water utilities.}  These technologies may be especially useful in contexts where other factors drive delinquency instead of solely the demand for consumption smoothing.   For example, \cite{szabo2015reducing} suggest that low levels of trust in local government and perceptions of fairness may drive some nonpayment behavior.  While these factors are not explicitly modeled in this context, this exercise may still provide a useful lower bound for evaluating the effects of prepaid metering programs.
+
+% as in column (2); however, I also approximate the impact of  as well as the welfare effects of passing these costs onto consumers through higher prices consistent with regulatory structure in Manila.
+%The welfare effects of installing prepaid meters also depend on the costs of
+
+Prepaid meters introduce an additional cost for the water company in terms of purchasing and installing this new technology.  \cite{heymans2014limits} surveyed eight large water providers that implemented prepaid meters in developing countries and found that each prepaid meter costs about four times as much as a standard meter and requires replacement every 7 years.  In the context of Manila, each standard meter costs around 1,500 PhP and is replaced around every 6 years and 3 months, bringing the monthly cost to 20 PhP/month.\footnote{The water company provided additional documentation of costs and frequency of meter replacement for residential households.}  Assuming that a prepaid meter costs 4 times as much as a standard meter with a replacement rate of 7 years, the estimated monthly cost of a prepaid meter would be 71 PhP/month.  Therefore, prepaid meters imply an additional cost of 51 PhP/month per household.\footnote{\cite{heymans2014limits} also report that the fixed administrative costs of installing and monitoring new meters account for less than 4\% of the total costs of switching to prepaid meters while the bulk of the expenses come from purchasing new meters.  By focusing on meter replacement, this exercise is likely to capture the majority of switching costs associated with prepaid metering.}  
+
+%Moving to prepaid meters may also affect total water consumption, which would in turn affect the water company's costs of water production.  The water company reports a marginal cost of 5 PhP/m3.  
+
+
+
+
+
+% The regulatory structure in Manila as well as many other developing cities ensures that prices for water are regulated to exactly cover all production costs (\cite{hoque2013state}).  To simulate this regulatory environment, the counterfactual exercise calculates the changes in prices necessary to ensure that the water company remains revenue neutral after installing prepaid water meters.  This exercise also assumes that the government regulator is able to perfectly forecast water demand among all households.  Since prices are non-linear, only the price intercept, $p_1$, which applies to all levels of usage, is adjusted in this exercise.  Savings from permanent disconnections of \input{tables/delinquency_cost}PhP per household-month are exceeded by installation costs of 51 PhP per household-month, meaning that prices need to raise enough revenue to cover \input{tables/del_raised}PhP per household-month.  Counterfactual prices must also account for changes in usage so that they are able to exactly fund any marginal costs of water production.
+
+
+Column (4) of Table~\ref{table:counter} includes the results of the prepaid metering counterfactual.  To cover the much higher costs of prepaid meters, the price intercept, $p_1$, increases by around \input{tables/p_increase_per}\unskip\% as indicated by the third row.  Households also no longer receive a disconnection rebate of \input{tables/delinquency_cost}PhP per month.  With higher prices and without water credit, households lower their consumption by \input{tables/c_h_pp_drop}\unskip\% under prepaid metering compared to the current setting in Column (1).  In order to be indifferent between the current setting and a world with prepaid metering, households would need to receive \input{tables/U_pp_abs}PhP/month in compensation.  Taken together, these results provide suggestive evidence that prepaid metering would be welfare reducing in this context.
 
 %%% also include counterfactual where we increase the interest rate and see substitution? may have to rewrite some of the identification section....
 
 \section{Conclusion}
+
+
+
+
+Limitations go in the CONCLUSION!!!!
+
+By focusing on consumption smoothing, this paper abstracts away from several other consequences of utility billing policy.  First, many governments require utilities to tolerate nonpayment due to health concerns.  For example, the NAACP cites stuff ....  cite some more of Jack!! what mechanisms? savings constraints?  intrahousehold bargaining; go look up her new paper!!!!
+
+
+
+
+%% compared to prepaid electricity
+% • Prepaid water is often seen as controversial. Payment for the supply of electricity is accepted more widely than
+% payment for water, and access to electricity is not regarded a basic human right. T
+% • The electricity sector is much less fragmented than the water sector, and has far greater clout to direct what
+% manufacturers supply. 
+% • Prepaid water meters face physical stresses that do not apply to electricity. There are more moving parts,
+% most subjected to fluctuating pressures and flows, and wear, fatigue, and abrasion increase the likelihood of
+% malfunction. 
+
+
+% When discussing costs with service providers, the review
+% team was told on several occasions that “prepaid meters cost
+% about four times more than a conventional meter.” This is
+% based on the typical cost of a prepaid metering device for an
+% individual domestic connection, about US$210, compared
+% to typical conventional mechanical meter, about US$50.   96.2\% of costs for large systems.  average of 7 year life span (assume the same for both)
+
 
 
 
@@ -1017,6 +1064,21 @@ Table~\ref{table:tarifftrue} provides the monthly tariff structure as it is pres
 
 \subsection{Usage Before Permanent Disconnection}\label{appendix:permanentdc}
 
+% \cite{northeast2014} predict rapid increases in prepaid electricity meters throughout Sub-Saharan Africa.  
+
+% \cite{heymans2014limits}
+%  prepayment water systems are in use in more than
+% 20 African countries, and in locations such as Turkey, parts
+% of the Balkans and Azerbaijan, and Colombia. Their scale
+% of use is ramping up rapidly. The Botswana Water Utilities
+% Corporation, for example, is reported to be planning to install
+% 300,000 prepaid water meters in the near future, beyond
+% the existing small-scale installations. 
+
+don't like : “Postpaid gives you more time to find the money.”  “Water is a need, but money is not always available.”
+
+
+
 Figure~\ref{figure:dc_permanent} plots average usage across households according to the number of months before these households permanently disconnect. Average consumption increases in the months leading up to permanent disconnection.  This increase is likely due to some households using water as if they faced a zero marginal price since they know that they will never pay their bills.  With an average bill of \input{tables/bill_all}PhP/month, leaving an outstanding balance of \input{tables/out_bal}PhP at permanent disconnection is equal to enjoying an average of around 18 months of free water consumption.
 
 \begin{figure}[H]
@@ -1026,9 +1088,7 @@ Figure~\ref{figure:dc_permanent} plots average usage across households according
 { \footnotesize Negative months indicate months before permanent disconnections. }
 \end{figure}
 
-\subsection{Cost of Conducting Delinquency Visits}\label{appendix:visitcosts}
 
-Conversations with the water company suggest that travel costs compose the majority of the total costs for any service performed on a water meter.  Since the company requires a 200 PhP reconnection fee for disconnected households, I assume that delinquency visits cost the same amount to the water company.  Since disconnection visits occur in only \input{tables/tcd_id_mean}\unskip\% of household-month observations, the company is likely to spend a negligible 1.4 PhP/month to conduct delinquency visits.
 
 
 

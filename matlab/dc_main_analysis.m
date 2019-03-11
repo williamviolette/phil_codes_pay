@@ -84,7 +84,10 @@ end
     y_avg     = csvread(strcat(folder,'y_avg.csv'));
     delinquency_cost = csvread(strcat(folder,'delinquency_cost.csv'));
     r_lend    = csvread(strcat(folder,'irate.csv'));
-
+    dc_prob = csvread(strcat(folder,'dc_per_month_account.csv'));
+    visit_price = 200;
+    erate = 45;
+    
 data_moments = [  c_avg; c_std; bal_avg; bal_std; bal_corr; am1; am2; am3; am4; amar1; amar2; amar3; amar4 ];
 
 
@@ -456,44 +459,46 @@ if counter==1
     %%% utility loss from no loans
     res_nl = res_out;
 	res_nl(2) = .8;
-    [h_nl,util_nl] = dc_obj(res_nl,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s)    
+    [h_nl,util_nl] = dc_obj(res_nl,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s)   ; 
     
     U_nl = (util_nl-util)/du_dy10
     c_nl = h_nl(1);
     
-    %%%% CV APPROACH! 
-%      Ys=1;
-%      Ywindow = 60;
-%      Ygrid = ((res_out(9)-Ywindow):Ys:(res_out(9)+Ys))' ;
-%      U = zeros(size(Ygrid,1),1);
-%      for i=1:size(Ygrid,1)
-%         res_temp = res_out;
-%         res_temp(9) = Ygrid(i);
-%         [~,util_temp] = dk_obj(res_temp,prob,A,Aprime,nA,B,Bprime,nB,chain,s);
-%         U(i,1) = abs(util_temp - util_nl);
-%      end
-%      plot(Ygrid,U)
-%      [~,ind]=min(U)
-%      [Ygrid(ind) res_out(9) (Ygrid(ind)-res_out(9))]
-%  LINES UP WELL WITH THE APPROXIMATION THANKFULLY!
+    
 
-    %%%% OPP COST APPROACH
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%% OPP COST APPROACH   %%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            
+    %%% lendingcost
+    lend_costd = abs(mean(simc(:,3))).*r_lend;
+    
+    %%% water use at baseline
+    wwd = mean(simc(:,1));    
+    wwr = mean((p1 - marginal_cost +p2.*simc(:,1)).*simc(:,1));
+    
+    simc_pre = [0 0 0 0 0;  simc(1:(size(simc,1)-1),:)];
+    visit_costd=visit_price.*(size(simc(simc_pre(:,3)<0 & simc(:,5)>2,:),1)/size(simc,1));
     
     res_nle = res_out;
 	res_nle(2) = .8;
+    res_nle(9)=res_out(9) - delinquency_cost;
     
     coste = abs(mean(simc(:,3))).*r_lend;
     
-    wwe = w_reg_dk(0,res_nle(7),0,p1,p2, y_avg );
+    rev_goale = wwr - (coste + delinquency_cost  + visit_costd) ;
     
-    rev_goale = ((p1 - marginal_cost + p2.*wwe).*wwe) - coste;
-    
-    Pgride = (-1:.02:10)' ;
+    Pgride = (0:.01:.04)' ;
     Re = zeros(size(Pgride,1),1);
     for i=1:size(Pgride,1)
         p1ne = p1+Pgride(i);
-        wwe = w_reg_dk(0,res_nle(7),0,p1ne,p2,y_avg);
-        reve = (p1ne - marginal_cost + p2.*wwe).*wwe;
+        res_nle_temp=res_nle;
+        res_nle_temp(10) = p1ne;
+        
+        [~,~,simc_temp] = dc_obj(res_nle_temp,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
+        reve = mean((p1ne - marginal_cost +p2.*simc_temp(:,1)).*simc_temp(:,1));
+        %wwe = w_reg_dk(0,res_nle(7),0,p1ne,p2,y_avg);
+        %reve = (p1ne - marginal_cost + p2.*wwe).*wwe;
         Re(i,1) = abs(reve - rev_goale);
     end
     plot(Pgride,Re);
@@ -502,10 +507,8 @@ if counter==1
     
     p1ce=p1+Pgride(inde);
    
-    
-    res_ppe=res_out; % with pre-paid meters, don't get delinquency or loan, but get lower marginal price!
-    res_ppe(2)=.8;
-    res_ppe(10)=p1ce;
+    res_ppe =res_nle;
+    res_ppe(10) = p1ce;
     
     [h_ppe,util_ppe] = dc_obj(res_ppe,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
     
@@ -519,6 +522,9 @@ if counter==1
         fileID = fopen(strcat(cd_dir,'U_ppe_abs.tex'),'w');
         fprintf(fileID,'%s\n',strcat(num2str(abs(U_ppe),'%5.1f')));
     fclose(fileID);
+            fileID = fopen(strcat(cd_dir,'U_ppe_abs_usd.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(abs(U_ppe)/erate,'%5.1f')));
+    fclose(fileID);
  fileID = fopen(strcat(cd_dir,'c_h_ppe_drop.tex'),'w');
         fprintf(fileID,'%s\n',strcat(num2str(100*abs((c_h-c_ppe)/c_h),'%5.1f')));
     fclose(fileID);
@@ -526,10 +532,21 @@ if counter==1
     fileID = fopen(strcat(cd_dir,'c_ppe.tex'),'w');
         fprintf(fileID,'%s\n',strcat(num2str(c_ppe,'%5.1f')));
     fclose(fileID);
-fileID = fopen(strcat(cd_dir,'p_int_ppe.tex'),'w');
+    fileID = fopen(strcat(cd_dir,'c_ppe2.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(c_ppe,'%5.2f')));
+    fclose(fileID);    
+    
+    fileID = fopen(strcat(cd_dir,'p_int_ppe.tex'),'w');
         fprintf(fileID,'%s\n',strcat(num2str(p1ce,'%5.1f')));
     fclose(fileID);
     
+    fileID = fopen(strcat(cd_dir,'p_int_ppe2.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(p1ce,'%5.2f')));
+    fclose(fileID);
+    
+    fileID = fopen(strcat(cd_dir,'p_int2.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(p1,'%5.2f')));
+    fclose(fileID);
     
     fileID = fopen(strcat(cd_dir,'p_int_ppe.tex'),'w');
         fprintf(fileID,'%s\n',strcat(num2str(p1ce,'%5.1f')));
@@ -541,20 +558,36 @@ fileID = fopen(strcat(cd_dir,'p_int_ppe.tex'),'w');
         fprintf(fileID,'%s\n',strcat(num2str(coste,'%5.1f')));
     fclose(fileID);
 
+    fileID = fopen(strcat(cd_dir,'visit_cost.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(visit_costd,'%5.1f')));
+    fclose(fileID);
+    
     
     %%% %%% pre-paid %%% %%% 
     %%% current revenue
     %%%%% NOTE!!!! THIS IS AN AVERAGE CONSUMPTION CHANGE!! NOTE!!!!!!
-    ww = w_reg_dk(0,res_out(7),0,p1,p2, y_avg );
+    %ww = w_reg_dk(0,res_out(7),0,p1,p2, y_avg );
     
-    rev_goal = ((p1 - marginal_cost + p2.*ww).*ww) - delinquency_cost + ppinst - coste;
+    rev_goal = wwr - delinquency_cost + ppinst - coste - visit_costd;
     
-    Pgrid = (-1:.02:10)' ;
+    res_pp_start = res_out;
+	res_pp_start(2) = .8;
+    res_pp_start(9) = res_out(9) - delinquency_cost;
+    
+    
+    Pgrid = (6:.2:7)' ;
     R = zeros(size(Pgrid,1),1);
     for i=1:size(Pgrid,1)
         p1n = p1+Pgrid(i);
-        ww = w_reg_dk(0,res_out(7),0,p1n,p2,y_avg);
-        rev = (p1n - marginal_cost + p2.*ww).*ww;
+        res_pp_temp=res_pp_start;
+        res_pp_temp(10) = p1n;
+        
+        [~,~,simc_temp_pp] = dc_obj(res_pp_temp,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
+        rev = mean((p1n - marginal_cost +p2.*simc_temp_pp(:,1)).*simc_temp_pp(:,1));
+        
+        p1n = p1+Pgrid(i);
+        %ww = w_reg_dk(0,res_out(7),0,p1n,p2,y_avg);
+        %rev = (p1n - marginal_cost + p2.*ww).*ww;
         R(i,1) = abs(rev - rev_goal);
     end
     plot(Pgrid,R);
@@ -563,9 +596,7 @@ fileID = fopen(strcat(cd_dir,'p_int_ppe.tex'),'w');
     
     p1c=p1+Pgrid(ind);
     
-    res_pp=res_out; % with pre-paid meters, don't get delinquency or loan, but get lower marginal price!
-    res_pp(2)=.8;
-    res_pp(9)=res_pp(9) - delinquency_cost - coste;
+    res_pp=res_pp_start; % with pre-paid meters, don't get delinquency or loan, but get lower marginal price!
     res_pp(10)=p1c;
     
     [h_pp,util_pp] = dc_obj(res_pp,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
@@ -602,16 +633,32 @@ fileID = fopen(strcat(cd_dir,'p_int_ppe.tex'),'w');
     fileID = fopen(strcat(cd_dir,'U_nl_abs.tex'),'w');
         fprintf(fileID,'%s\n',strcat(num2str(abs(U_nl),'%5.1f')));
     fclose(fileID);
+    
+    fileID = fopen(strcat(cd_dir,'U_nl_abs_usd.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(abs(U_nl)/erate,'%5.1f')));
+    fclose(fileID);
+    
         fileID = fopen(strcat(cd_dir,'U_pp_abs.tex'),'w');
         fprintf(fileID,'%s\n',strcat(num2str(abs(U_pp),'%5.1f')));
+    fclose(fileID);
+     fileID = fopen(strcat(cd_dir,'U_pp_abs_usd.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(abs(U_pp)/erate,'%5.1f')));
     fclose(fileID);
     
     
     fileID = fopen(strcat(cd_dir,'c_h.tex'),'w');
         fprintf(fileID,'%s\n',strcat(num2str(c_h,'%5.1f')));
     fclose(fileID);
+    
+    fileID = fopen(strcat(cd_dir,'c_h2.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(c_h,'%5.2f')));
+    fclose(fileID);
+    
         fileID = fopen(strcat(cd_dir,'c_nl.tex'),'w');
         fprintf(fileID,'%s\n',strcat(num2str(c_nl,'%5.1f')));
+    fclose(fileID);
+        fileID = fopen(strcat(cd_dir,'c_nl2.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(c_nl,'%5.2f')));
     fclose(fileID);
         fileID = fopen(strcat(cd_dir,'c_h_nl_drop.tex'),'w');
         fprintf(fileID,'%s\n',strcat(num2str(100*abs((c_h-c_nl)/c_h),'%5.1f')));
@@ -624,8 +671,9 @@ fileID = fopen(strcat(cd_dir,'p_int_ppe.tex'),'w');
     fileID = fopen(strcat(cd_dir,'c_pp.tex'),'w');
         fprintf(fileID,'%s\n',strcat(num2str(c_pp,'%5.1f')));
     fclose(fileID);
-
-    
+    fileID = fopen(strcat(cd_dir,'c_pp2.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(c_pp,'%5.2f')));
+    fclose(fileID);    
          
     fileID = fopen(strcat(cd_dir,'del_raised.tex'),'w');
         fprintf(fileID,'%s\n',strcat(num2str(abs(ppinst-delinquency_cost),'%5.1f')));
@@ -638,7 +686,10 @@ fileID = fopen(strcat(cd_dir,'p_int_ppe.tex'),'w');
     fileID = fopen(strcat(cd_dir,'p_int_pp.tex'),'w');
         fprintf(fileID,'%s\n',strcat(num2str(p1c,'%5.1f')));
     fclose(fileID);
-    
+  
+    fileID = fopen(strcat(cd_dir,'p_int_pp2.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str(p1c,'%5.2f')));
+    fclose(fileID);    
     
         
     fileID = fopen(strcat(cd_dir,'p_increase_per.tex'),'w');
@@ -680,3 +731,121 @@ fileID = fopen(strcat(cd_dir,'p_int_ppe.tex'),'w');
 
     %}
 end
+
+
+
+
+%{
+
+
+%%%%% DIFFERENCE IS DUE TO THE DEL. COST!
+
+%%%%%  COULD PROPOSE AN OPTIMAL DISCONNECTION VISIT STRATEGY
+    
+    %%%% CV APPROACH!    
+%      Ys=1;
+%      Ywindow = 60;
+%      Ygrid = ((res_out(9)-Ywindow):Ys:(res_out(9)+Ys))' ;
+%      U = zeros(size(Ygrid,1),1);
+%      for i=1:size(Ygrid,1)
+%         res_temp = res_out;
+%         res_temp(9) = Ygrid(i);
+%         [~,util_temp] = dk_obj(res_temp,prob,A,Aprime,nA,B,Bprime,nB,chain,s);
+%         U(i,1) = abs(util_temp - util_nl);
+%      end
+%      plot(Ygrid,U)
+%      [~,ind]=min(U)
+%      [Ygrid(ind) res_out(9) (Ygrid(ind)-res_out(9))]
+%  LINES UP WELL WITH THE APPROXIMATION THANKFULLY!
+
+
+    %%% TEST PROB DETECTION!
+  
+    prob_caught1 = 1
+    prob1 = [(1-prob_caught1).*ones(n_states,n_states/2) (prob_caught1).*ones(n_states,n_states/2)]./(n_states./2); 
+
+    s01 = 1;  
+    [chain1,state1] = markov(prob1,n,s01);
+
+    [h1,util1,simc1] = dc_obj(res_out,prob1,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain1,s);
+    %c_h1 = h(1);
+    
+    h
+    util
+    h1
+    util1
+    
+    U_1 = (util1-util)/du_dy10
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%% OPTIMAL DETECTION !! %%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    %%% lendingcost
+    lend_costd = abs(mean(simc(:,3))).*r_lend;
+    
+    %%% water use at baseline
+    wwd = mean(simc(:,1));    
+    wwr = mean((p1+p2.*simc(:,1)).*simc(:,1));
+   
+    %%% delinquency cost
+    del_costd = (1/prob_caught).*wwr.*dc_prob;
+   
+    %%% visit cost
+    simc_pre = [0 0 0 0 0;  simc(1:(size(simc,1)-1),:)];
+    visit_costd=visit_price.*(size(simc(simc_pre(:,3)<0 & simc(:,5)>2,:),1)/size(simc,1));
+    
+    %size(simc(simc(:,3)<0 & simc(:,5)>2,:),1)
+    %w_reg_dk(0,res_out(7),0,p1,p2, y_avg );
+                   
+                    %%% revenue coming in %%%        
+    rev_goald = ((p1 - marginal_cost + p2.*wwd).*wwd) - (lend_costd + del_costd  + visit_costd)      ;
+   
+    
+    Cgridd = (.02:.08:1)' ;  
+    Pgridd = (-1:.5:10)' ;
+    
+    Rd = zeros(size(Pgridd,1),size(Cgridd,1));
+    Ud = zeros(size(Pgridd,1),size(Cgridd,1));
+    
+    
+    for i=1:size(Pgridd,1)
+        for j=1:size(Cgridd,1)
+            
+            p1nd = p1+Pgridd(i); % new price
+            prob_caught1 = Cgridd(j); % new prob of getting caught
+            del_costd1 = (1/prob_caught1).*wwr.*dc_prob; % benefit of not getting caught
+        
+            resd = res_out;
+            resd(9)=res_out(9) + (del_costd1 - del_costd);
+            resd(10)=p1nd;
+
+            prob1 = [(1-prob_caught1).*ones(n_states,n_states/2) (prob_caught1).*ones(n_states,n_states/2)]./(n_states./2); 
+            s01 = 1;  
+            [chain1,~] = markov(prob1,n,s01);
+   
+            [h1,util1,simc1] = dc_obj(resd,prob1,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain1,s);
+            simc_pre1 = [0 0 0 0 0;  simc1(1:(size(simc1,1)-1),:)];
+            visit_costd1=visit_price.*(size(simc1(simc_pre1(:,3)<0 & simc1(:,5)>2,:),1)/size(simc1,1));
+    
+            wwd1 = mean(simc1(:,1));   
+            
+            lend_costd1 = abs(mean(simc1(:,3))).*r_lend;
+            
+            rev_goal1 = ((p1nd - marginal_cost + p2.*wwd1).*wwd1) - (lend_costd1 + del_costd1  + visit_costd1) ;
+            
+            Rd(i,j) = rev_goal1;
+            Ud(i,j) = util1;
+            
+        end
+    end
+    
+
+
+ [r_min,ind_min]=  min(abs(Rd-rev_goald))
+  Ud(ind_min)
+    
+ % plot(Cgridd,(Ud(ind_min)-max(Ud(ind_min)))./(max(Ud(ind_min))-min(Ud(ind_min))),Cgridd,r_min./max(r_min))
+    
+plot(Cgridd,(Ud(ind_min)-util)/du_dy10)
+%}
