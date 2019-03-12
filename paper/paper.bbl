@@ -1,4 +1,4 @@
-\begin{thebibliography}{33}
+\begin{thebibliography}{39}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -29,11 +29,30 @@ A.~V. Banerjee and E.~Duflo.
 \newblock \emph{Journal of economic perspectives}, 21\penalty0 (1):\penalty0
   141--168, 2007.
 
+\bibitem[Barseghyan et~al.(2013)Barseghyan, Molinari, O'Donoghue, and
+  Teitelbaum]{barseghyan2013nature}
+L.~Barseghyan, F.~Molinari, T.~O'Donoghue, and J.~C. Teitelbaum.
+\newblock The nature of risk preferences: Evidence from insurance choices.
+\newblock \emph{American Economic Review}, 103\penalty0 (6):\penalty0
+  2499--2529, 2013.
+
+\bibitem[Beetsma and Schotman(2001)]{beetsma2001measuring}
+R.~M. Beetsma and P.~C. Schotman.
+\newblock Measuring risk attitudes in a natural experiment: data from the
+  television game show lingo.
+\newblock \emph{The Economic Journal}, 111\penalty0 (474):\penalty0 821--848,
+  2001.
+
 \bibitem[Besley and Coate(1995)]{besley1995group}
 T.~Besley and S.~Coate.
 \newblock Group lending, repayment incentives and social collateral.
 \newblock \emph{Journal of development economics}, 46\penalty0 (1):\penalty0
   1--18, 1995.
+
+\bibitem[Carvalho et~al.(2016)Carvalho, Prina, and Sydnor]{carvalho2016effect}
+L.~S. Carvalho, S.~Prina, and J.~Sydnor.
+\newblock The effect of saving on risk attitudes and intertemporal choices.
+\newblock \emph{Journal of Development Economics}, 120:\penalty0 41--52, 2016.
 
 \bibitem[Cull et~al.(2009)Cull, Asli Demirg{\"u}{\c{c}}-Kunt, and
   Morduch]{cull2009microfinance}
@@ -68,6 +87,13 @@ P.~Dupas and J.~Robinson.
 \newblock \emph{American Economic Journal: Applied Economics}, 5\penalty0
   (1):\penalty0 163--92, 2013{\natexlab{b}}.
 
+\bibitem[Franklin and Kurtz(2017)]{franklin2017}
+M.~Franklin and C.~Kurtz.
+\newblock Lights out in the cold: Reforming utility shut-off policies as if
+  human rights matter, 2017.
+\newblock URL
+  \url{http://www.naacp.org/wp-content/uploads/2017/12/Lights-Out-in-the-Cold_NAACP.pdf}.
+
 \bibitem[Gin{\'e} and Karlan(2014)]{gine2014group}
 X.~Gin{\'e} and D.~S. Karlan.
 \newblock Group versus individual liability: Short and long term evidence from
@@ -84,6 +110,11 @@ A.~Hannagan and J.~Morduch.
 \newblock Income gains and month-to-month income volatility: Household evidence
   from the us financial diaries.
 \newblock 2015.
+
+\bibitem[{Health and Human Services}(2019)]{liheap}
+{Health and Human Services}.
+\newblock Liheap state disconnection program information, 2019.
+\newblock URL \url{https://liheapch.acf.hhs.gov/state}.
 
 \bibitem[Heymans et~al.(2014)Heymans, Eales, and Franceys]{heymans2014limits}
 C.~Heymans, K.~Eales, and R.~Franceys.
@@ -208,5 +239,10 @@ W.~Violette.
 \newblock Optimal pricing and informal sharing: Evidence from piped water in
   manila.
 \newblock \emph{Unpublished Manuscript}, 2019.
+
+\bibitem[Wakker(2008)]{wakker2008explaining}
+P.~P. Wakker.
+\newblock Explaining the characteristics of the power (crra) utility family.
+\newblock \emph{Health economics}, 17\penalty0 (12):\penalty0 1329--1344, 2008.
 
 \end{thebibliography}

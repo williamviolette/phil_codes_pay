@@ -63,13 +63,13 @@ sum del_id
 write "${tables}share_del.tex" `=r(mean)*100' 1 "%12.0g"
 
 
-* do "${subcode}descriptive_table_print_3_groups.do"
+do "${subcode}descriptive_table_print_3_groups.do"
 
 global dtable_name "all"
 do "${subcode}descriptive_table_print.do"
 	
 
-	*preserve
+	preserve
 		keep if tcd_max==1 & a6==1
 
 		 do "${subcode}export_moments.do"
@@ -77,7 +77,8 @@ do "${subcode}descriptive_table_print.do"
 	     global dtable_name "stayers"
 		 do "${subcode}descriptive_table_print.do"
 	
-	*restore
+	restore
+
 
 
 

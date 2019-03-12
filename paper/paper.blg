@@ -6,45 +6,45 @@ Database file #1: ref.bib
 Warning--empty journal in anand2014consuming
 Warning--empty journal in hannagan2015income
 Warning--empty journal in komives2006distributional
-You've used 33 entries,
+You've used 39 entries,
             2773 wiz_defined-function locations,
-            769 strings with 9212 characters,
-and the built_in function-call counts, 13528 in all, are:
-= -- 1240
-> -- 671
-< -- 27
-+ -- 232
-- -- 198
-* -- 1039
-:= -- 2110
-add.period$ -- 98
-call.type$ -- 33
-change.case$ -- 167
-chr.to.int$ -- 32
-cite$ -- 69
-duplicate$ -- 636
-empty$ -- 1168
-format.name$ -- 263
-if$ -- 2800
+            807 strings with 10282 characters,
+and the built_in function-call counts, 16109 in all, are:
+= -- 1477
+> -- 802
+< -- 31
++ -- 277
+- -- 237
+* -- 1244
+:= -- 2501
+add.period$ -- 116
+call.type$ -- 39
+change.case$ -- 198
+chr.to.int$ -- 38
+cite$ -- 81
+duplicate$ -- 748
+empty$ -- 1395
+format.name$ -- 312
+if$ -- 3340
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 30
-newline$ -- 172
-num.names$ -- 132
-pop$ -- 303
+missing$ -- 34
+newline$ -- 202
+num.names$ -- 156
+pop$ -- 365
 preamble$ -- 1
-purify$ -- 132
+purify$ -- 157
 quote$ -- 0
-skip$ -- 483
+skip$ -- 574
 stack$ -- 0
-substring$ -- 542
-swap$ -- 28
+substring$ -- 660
+swap$ -- 34
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 353
+type$ -- 419
 warning$ -- 3
-while$ -- 140
+while$ -- 166
 width$ -- 0
-write$ -- 423
+write$ -- 499
 (There were 3 warnings)
