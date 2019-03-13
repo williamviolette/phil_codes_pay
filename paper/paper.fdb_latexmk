@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex paper"] 1552502930 "paper.aux" "paper.bbl" "paper" 1552503029
+["bibtex paper"] 1552502930 "paper.aux" "paper.bbl" "paper" 1552504230
   "/usr/local/texlive/2015/texmf-dist/bibtex/bst/natbib/abbrvnat.bst" 1233624470 26532 66bed5cc59495faaa3f9ae9af9fa5e42 ""
-  "paper.aux" 1552503028 13813 f8aadc6f8a8c61088f2259e29b6fb6ed ""
+  "paper.aux" 1552504229 13813 f8aadc6f8a8c61088f2259e29b6fb6ed ""
   "paper.bcf" 0 -1 0 ""
   "ref.bib" 1552499153 10954 6e801e0f5c1f3c2366d8b56f41ef2dca ""
   (generated)
-  "paper.blg"
   "paper.bbl"
-["pdflatex"] 1552503027 "paper.tex" "paper.pdf" "paper" 1552503029
+  "paper.blg"
+["pdflatex"] 1552504228 "paper.tex" "paper.pdf" "paper" 1552504230
   "./tables/connected_visit_hazard.pdf" 1549492370 18808 df483f2bf23c27e29b401d2ca7da2ff4 ""
   "./tables/connected_visit_hazard_all.pdf" 1550258752 18773 41872c5ee88d46c39230dad14bab8bac ""
   "./tables/line_ar.pdf" 1550023577 17868 6352cdd0ae3c52444e5cf9560f690a45 ""
@@ -269,9 +269,9 @@
   "/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1432479641 1764542 91654ba72bdb667e84ea24f076ae16d8 ""
   "/usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt" 1432479681 3849859 39a7d258195bde2394e244961601fbc5 ""
   "/usr/local/texlive/2015/texmf.cnf" 1432479636 577 0d611272082f3cdb8e80e09a3c69cf07 ""
-  "paper.aux" 1552503028 13813 f8aadc6f8a8c61088f2259e29b6fb6ed ""
+  "paper.aux" 1552504229 13813 f8aadc6f8a8c61088f2259e29b6fb6ed ""
   "paper.bbl" 1552502930 10157 4603c5da8823c6714730969de1b86148 "bibtex paper"
-  "paper.tex" 1552503027 105647 02e2acbb58e206e9f23bca043cb55760 ""
+  "paper.tex" 1552504226 105753 ad89b50863b440aaa9a4cd8a5dfe0def ""
   "tables/SHH_drop.tex" 1549122082 7 bb3db89d92162c2e50107563867a49de ""
   "tables/U_nl.tex" 1552242940 6 e7f486868c61ecbf3f337f99a34fe96d ""
   "tables/U_nl_abs.tex" 1552242940 5 36c18aa9caf761672a02a29d31c99420 ""
@@ -403,6 +403,6 @@
   "tables/wse.tex" 1550185605 501 8c70223347a667afcf2edb8600157c3f ""
   "tables/y_avg.tex" 1549999691 6 0b2f241d911a87b649fcacde1969eb7a ""
   (generated)
-  "paper.log"
-  "paper.aux"
   "paper.pdf"
+  "paper.aux"
+  "paper.log"
