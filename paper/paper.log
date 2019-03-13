@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  12 MAR 2019 18:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  13 MAR 2019 14:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1080,22 +1080,37 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10.95> not available
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 89.
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 98.
  [1] (./tables/U_nl_abs.tex) (./tables/U_nl_abs_usd.tex)
-(./tables/U_nl_per.tex) (./tables/U_ppe_abs.tex) (./tables/U_ppe_abs_usd.tex)
-(./tables/U_pp_abs.tex) (./tables/U_pp_abs_usd.tex) [2] [3]
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 127.
+(./tables/U_nl_per.tex)
+Overfull \hbox (6.67036pt too wide) in paragraph at lines 110--111
+\OT1/ppl/m/n/12 (hold-ing all else equal), con-sumer wel-fare drops by 52.4 PhP
+ (or 1.2 USD) per household-
+ []
 
-(./tables/descriptives_all.tex) (./tables/total_hhs_all.tex)
-(./tables/obs_per_hh_all.tex) (./tables/total_obs_all.tex) (./tables/center.tex
-) (./tables/maynilad.tex) (./tables/atm.tex) (./tables/days_delinquent_all.tex)
-(./tables/bill_all.tex) (./tables/pay_size_all.tex) (./tables/pay_freq.tex)
-(./tables/balance_all.tex) [4] (./tables/y_avg.tex) (./tables/save_avg.tex)
-(./tables/balance_inc.tex) (./tables/balance_save.tex)
-(./tables/balance_inc_20_all.tex) (./tables/disc_notice.tex)
-(./tables/disc_count.tex) (./tables/tcd_id_mean.tex)
-(./tables/tcd_id_ar_cond.tex) [5] (./tables/days_pay_under_30.tex)
+(./tables/U_ppe_abs.tex) (./tables/U_ppe_abs_usd.tex) (./tables/U_pp_abs.tex)
+(./tables/U_pp_abs_usd.tex) (./tables/U_ppe_abs_usd_per.tex)
+(./tables/U_pp_abs_usd_per.tex) [2]
+Overfull \hbox (5.53192pt too wide) in paragraph at lines 124--125
+\OT1/ppl/m/n/12 Over this time-frame, the to-tal num-ber of con-nec-tions in-cr
+eased from 900,000 to 1,500,000
+ []
+
+[3]
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 140.
+ (./tables/descriptives_all.tex) (./tables/total_hhs_all.tex)
+(./tables/obs_per_hh_all.tex) (./tables/total_obs_all.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[4] (./tables/center.tex) (./tables/maynilad.tex) (./tables/atm.tex)
+(./tables/days_delinquent_all.tex) (./tables/bill_all.tex)
+(./tables/pay_size_all.tex) (./tables/pay_freq.tex) (./tables/balance_all.tex)
+(./tables/y_avg.tex) (./tables/save_avg.tex) (./tables/balance_inc.tex)
+(./tables/balance_save.tex) (./tables/balance_inc_20_all.tex) [5]
+(./tables/disc_notice.tex) (./tables/disc_count.tex) (./tables/tcd_id_mean.tex)
+(./tables/tcd_id_ar_cond.tex) (./tables/days_pay_under_30.tex)
 (./tables/days_pay_average.tex) (./tables/enough_time.tex)
 (./tables/days_rec_average.tex)
 <tables/connected_visit_hazard_all.pdf, id=29, 397.485pt x 289.08pt>
@@ -1103,128 +1118,128 @@ File: tables/connected_visit_hazard_all.pdf Graphic file (type pdf)
 
 <use tables/connected_visit_hazard_all.pdf>
 Package pdftex.def Info: tables/connected_visit_hazard_all.pdf used on input li
-ne 153.
+ne 168.
 (pdftex.def)             Requested size: 278.2376pt x 202.35461pt.
  (./tables/descriptives_3_groups.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[6 <./tables/connected_visit_hazard_all.pdf>] (./tables/pcd_hh.tex)
-<tables/line_disconnection.pdf, id=44, 397.485pt x 289.08pt>
+[6] [7 <./tables/connected_visit_hazard_all.pdf>] (./tables/pcd_hh.tex)
+<tables/line_disconnection.pdf, id=47, 397.485pt x 289.08pt>
 File: tables/line_disconnection.pdf Graphic file (type pdf)
 
 <use tables/line_disconnection.pdf>
-Package pdftex.def Info: tables/line_disconnection.pdf used on input line 188.
+Package pdftex.def Info: tables/line_disconnection.pdf used on input line 203.
 (pdftex.def)             Requested size: 223.09955pt x 163.75201pt.
 
-<tables/line_bal.pdf, id=46, 397.485pt x 289.08pt>
+<tables/line_bal.pdf, id=49, 397.485pt x 289.08pt>
 File: tables/line_bal.pdf Graphic file (type pdf)
  <use tables/line_bal.pdf>
-Package pdftex.def Info: tables/line_bal.pdf used on input line 196.
+Package pdftex.def Info: tables/line_bal.pdf used on input line 211.
 (pdftex.def)             Requested size: 223.09955pt x 163.75201pt.
 
-<tables/line_ar.pdf, id=48, 397.485pt x 289.08pt>
+<tables/line_ar.pdf, id=51, 397.485pt x 289.08pt>
 File: tables/line_ar.pdf Graphic file (type pdf)
  <use tables/line_ar.pdf>
-Package pdftex.def Info: tables/line_ar.pdf used on input line 204.
+Package pdftex.def Info: tables/line_ar.pdf used on input line 219.
 (pdftex.def)             Requested size: 223.09955pt x 163.75201pt.
 
-<tables/line_pay.pdf, id=50, 397.485pt x 289.08pt>
+<tables/line_pay.pdf, id=53, 397.485pt x 289.08pt>
 File: tables/line_pay.pdf Graphic file (type pdf)
  <use tables/line_pay.pdf>
-Package pdftex.def Info: tables/line_pay.pdf used on input line 212.
+Package pdftex.def Info: tables/line_pay.pdf used on input line 227.
 (pdftex.def)             Requested size: 223.09955pt x 163.75201pt.
 
-<tables/line_c.pdf, id=52, 397.485pt x 289.08pt>
+<tables/line_c.pdf, id=55, 397.485pt x 289.08pt>
 File: tables/line_c.pdf Graphic file (type pdf)
  <use tables/line_c.pdf>
-Package pdftex.def Info: tables/line_c.pdf used on input line 220.
+Package pdftex.def Info: tables/line_c.pdf used on input line 235.
 (pdftex.def)             Requested size: 223.09955pt x 163.75201pt.
 
-Underfull \hbox (badness 2735) in paragraph at lines 227--227
+Underfull \hbox (badness 2735) in paragraph at lines 242--242
 []\OT1/ppl/b/n/12 Figure 2. |\OT1/ppl/m/n/10.95 Mean Out-comes
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 227--227
+Underfull \hbox (badness 10000) in paragraph at lines 242--242
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 227--227
+Underfull \hbox (badness 10000) in paragraph at lines 242--242
 \OT1/ppl/m/n/10.95 Figures in-clude all house-
  []
 
 
-Underfull \hbox (badness 1303) in paragraph at lines 227--227
+Underfull \hbox (badness 1303) in paragraph at lines 242--242
 \OT1/ppl/m/n/10.95 holds with delin-quency vis-its.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 227--227
+Underfull \hbox (badness 10000) in paragraph at lines 242--242
 \OT1/ppl/m/n/10.95 monthly pay-ments in-clude
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 227--227
+Underfull \hbox (badness 10000) in paragraph at lines 242--242
 \OT1/ppl/m/n/10.95 ze-ros when no pay-ment is
  []
 
-[7]
-Overfull \hbox (5.05959pt too wide) in paragraph at lines 232--233
+
+Overfull \hbox (5.05959pt too wide) in paragraph at lines 247--248
 []\OT1/ppl/m/n/12 To in-ves-ti-gate how house-holds re-spond to delin-quency vi
 s-its, Fig-ure 2 plots monthly
  []
 
 (./tables/am_2.tex) (./tables/am_20.tex) (./tables/am6_2.tex)
 (./tables/am6_20.tex)
-Overfull \hbox (0.2357pt too wide) in paragraph at lines 234--235
+Overfull \hbox (0.2357pt too wide) in paragraph at lines 249--250
 []\OT1/ppl/m/n/12 Immediately fol-low-ing the first delin-quency visit, monthly
  pay-ments spike as many
  []
 
-(./tables/amar_2.tex) (./tables/amar_2a.tex) (./tables/c_avg.tex)
-(./tables/c_std.tex) [8] [9 <./tables/line_disconnection.pdf> <./tables/line_ba
-l.pdf> <./tables/line_ar.pdf> <./tables/line_pay.pdf> <./tables/line_c.pdf>]
-[10] [11]
-Overfull \hbox (48.74013pt too wide) in paragraph at lines 327--327
+[8] [9 <./tables/line_disconnection.pdf> <./tables/line_bal.pdf> <./tables/line
+_ar.pdf> <./tables/line_pay.pdf> <./tables/line_c.pdf>] (./tables/amar_2.tex)
+(./tables/amar_2a.tex) (./tables/c_avg.tex) (./tables/c_std.tex) [10] [11]
+[12]
+Overfull \hbox (48.74013pt too wide) in paragraph at lines 358--358
 [] 
  []
 
-[12] [13] (./tables/wse.tex) (./tables/weq_opt.tex) (./tables/cut_point3.tex)
-(./tables/wse.tex) (./tables/weq_opt.tex) (./tables/cut_point3.tex) [14]
-[15] (./tables/irate.tex) (./tables/p_int.tex) (./tables/p_slope.tex)
+[13] [14] (./tables/wse.tex) (./tables/weq_opt.tex) (./tables/cut_point3.tex)
+(./tables/wse.tex) (./tables/weq_opt.tex) (./tables/cut_point3.tex) [15]
+[16] (./tables/irate.tex) (./tables/p_int.tex) (./tables/p_slope.tex)
 (./tables/y_avg.tex) (./tables/prob_caught.tex)
-Overfull \hbox (3.18768pt too wide) in paragraph at lines 413--414
+Overfull \hbox (3.18768pt too wide) in paragraph at lines 443--444
 []\OT1/ppl/m/n/12 Average con-sump-tion pri-mar-ily iden-ti-fies house-hold wa-
 ter pref-er-ences. With Cobb-
  []
 
-[16] (./tables/disc_notice.tex) (./tables/par_nA.tex) (./tables/par_sigA.tex)
+[17] (./tables/disc_notice.tex) (./tables/par_nA.tex) (./tables/par_sigA.tex)
 (./tables/par_Amin.tex) (./tables/par_Amax.tex) (./tables/par_nB.tex)
 (./tables/par_sigB.tex) (./tables/par_Bmin.tex) (./tables/par_totalsize.tex)
-[17] (./tables/par_n_iter.tex) (./tables/est_alpha.tex) (./tables/est_theta.tex
+[18] (./tables/par_n_iter.tex) (./tables/est_alpha.tex) (./tables/est_theta.tex
 ) (./tables/est_theta_per.tex) (./tables/est_fc.tex)
 (./tables/est_irate_per.tex) (./tables/est_irate_annual_per.tex)
-(./tables/est_irate_per.tex) (./tables/est_irate_annual_per.tex) [18]
+(./tables/est_irate_per.tex) (./tables/est_irate_annual_per.tex) [19]
 (./tables/est_alpha.tex) (./tables/est_sd_alpha.tex) (./tables/est_theta.tex)
 (./tables/est_sd_theta.tex) (./tables/est_fc.tex) (./tables/est_sd_fc.tex)
 (./tables/est_irate.tex) (./tables/est_sd_irate.tex) (./tables/est_hhs.tex)
 (./tables/est_obs.tex) (./tables/table_fit_est.tex) (./tables/table_fit_out.tex
-) [19] [20] <tables/new_deaton_graph.pdf, id=163, 397.485pt x 289.08pt>
+) [20] [21] <tables/new_deaton_graph.pdf, id=166, 397.485pt x 289.08pt>
 File: tables/new_deaton_graph.pdf Graphic file (type pdf)
 
 <use tables/new_deaton_graph.pdf>
-Package pdftex.def Info: tables/new_deaton_graph.pdf used on input line 519.
+Package pdftex.def Info: tables/new_deaton_graph.pdf used on input line 549.
 (pdftex.def)             Requested size: 437.23485pt x 317.98897pt.
  (./tables/par_n_iter.tex)
-(./tables/par_n_iter.tex) [21 <./tables/new_deaton_graph.pdf>]
-Overfull \hbox (9.72806pt too wide) in paragraph at lines 532--533
+(./tables/par_n_iter.tex) [22 <./tables/new_deaton_graph.pdf>]
+Overfull \hbox (9.72806pt too wide) in paragraph at lines 562--563
 []\OT1/ppl/m/n/12 The fourth panel in-di-cates house-hold wa-ter us-age pat-ter
 ns over the same 100 months.
  []
 
-[22] (./tables/U_nl_abs.tex) (./tables/U_nl_abs_usd.tex) (./tables/U_nl_abs.tex
+[23] (./tables/U_nl_abs.tex) (./tables/U_nl_abs_usd.tex) (./tables/U_nl_abs.tex
 ) (./tables/bill_all.tex) (./tables/U_nl_per.tex) (./tables/c_h_nl_drop.tex)
 (./tables/bill_inc_all.tex) (./tables/U_nl.tex) (./tables/U_ppe.tex)
 (./tables/U_pp.tex) (./tables/c_h2.tex) (./tables/c_nl2.tex)
@@ -1232,22 +1247,22 @@ ns over the same 100 months.
 (./tables/p_int2.tex) (./tables/p_int_ppe2.tex) (./tables/p_int_pp2.tex)
 (./tables/delinquency_cost.tex) (./tables/delinquency_cost.tex)
 (./tables/visit_cost.tex) (./tables/visit_cost.tex) (./tables/coste.tex)
-(./tables/coste.tex) [23] (./tables/irate.tex) (./tables/coste.tex)
-(./tables/prob_caught.tex) (./tables/visit_cost.tex) [24]
+(./tables/coste.tex) [24] (./tables/irate.tex) (./tables/coste.tex)
+(./tables/prob_caught.tex) (./tables/visit_cost.tex) [25]
 (./tables/dc_per_month_account.tex) (./tables/out_bal.tex)
 (./tables/delinquency_cost.tex) (./tables/delinquency_cost.tex)
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 590.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 620.
 
-Overfull \hbox (5.21991pt too wide) in paragraph at lines 590--591
+Overfull \hbox (5.21991pt too wide) in paragraph at lines 620--621
 \OT1/ppl/m/n/12 any in-cen-tives that house-holds may face to over-con-sume in 
 their fi-nal months
  []
 
-[25] (./tables/U_ppe_abs.tex) (./tables/delinquency_cost.tex) [26]
+[26] (./tables/U_ppe_abs.tex) (./tables/delinquency_cost.tex) [27]
 (./tables/p_increase_per.tex) (./tables/delinquency_cost.tex)
-(./tables/c_h_pp_drop.tex) (./tables/U_pp_abs.tex) [27] (./tables/U_nl_per.tex)
-(./tables/U_ppe_abs_usd.tex) (./tables/U_pp_abs_usd.tex) [28] [29]
+(./tables/c_h_pp_drop.tex) (./tables/U_pp_abs.tex) [28] (./tables/U_nl_per.tex)
+(./tables/U_ppe_abs_usd.tex) (./tables/U_pp_abs_usd.tex) [29]
 (./tables/tcd_predict.tex) (./tables/date_N.tex) (./tables/am_N.tex) [30]
 (./tables/date_N.tex) (./tables/class_drop.tex) (./tables/pay_drop.tex)
 (./tables/chigh_drop.tex) (./tables/amount_drop.tex) (./tables/bal_drop.tex)
@@ -1264,7 +1279,7 @@ File: tables/connected_visit_hazard.pdf Graphic file (type pdf)
 
 <use tables/connected_visit_hazard.pdf>
 Package pdftex.def Info: tables/connected_visit_hazard.pdf used on input line 8
-36.
+64.
 (pdftex.def)             Requested size: 278.2376pt x 202.35461pt.
  [33] (./tables/bill_all.tex)
 (./tables/out_bal.tex)
@@ -1272,21 +1287,22 @@ Package pdftex.def Info: tables/connected_visit_hazard.pdf used on input line 8
 File: tables/line_disc_graph.pdf Graphic file (type pdf)
 
 <use tables/line_disc_graph.pdf>
-Package pdftex.def Info: tables/line_disc_graph.pdf used on input line 851.
+Package pdftex.def Info: tables/line_disc_graph.pdf used on input line 880.
 (pdftex.def)             Requested size: 278.2376pt x 202.35461pt.
  [34 <./tables/connected_visit_hazard.pdf>]
 (./paper.bbl [35 <./tables/line_disc_graph.pdf>]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 95.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 102.
+
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ) [36]) [37]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 886.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 886.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 915.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 915.
 
 (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 886.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 886.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 915.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 915.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1297,13 +1313,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 21529 strings out of 493089
- 380575 string characters out of 6134842
- 461014 words of memory out of 5000000
- 24024 multiletter control sequences out of 15000+600000
+ 21542 strings out of 493089
+ 380880 string characters out of 6134842
+ 461123 words of memory out of 5000000
+ 24031 multiletter control sequences out of 15000+600000
  116231 words of font info for 313 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 59i,24n,94p,1625b,643s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 59i,24n,94p,1662b,643s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texl
@@ -1324,7 +1340,7 @@ texlive/2015/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive
 exmf-dist/fonts/type1/urw/palatino/uplri8a.pfb></usr/local/texlive/2015/texmf-d
 ist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/
 type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (38 pages, 391367 bytes).
+Output written on paper.pdf (38 pages, 393232 bytes).
 PDF statistics:
  329 PDF objects out of 1000 (max. 8388607)
  232 compressed objects within 3 object streams

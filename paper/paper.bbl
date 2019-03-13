@@ -1,4 +1,4 @@
-\begin{thebibliography}{39}
+\begin{thebibliography}{41}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -72,6 +72,13 @@ A.~Deaton.
 A.~Demirguc-Kunt, L.~Klapper, D.~Singer, S.~Ansar, and J.~Hess.
 \newblock Global findex database 2017.
 \newblock Technical report, The World Bank, 2018.
+
+\bibitem[Diakit{\'e} et~al.(2009)Diakit{\'e}, Semenov, and
+  Thomas]{diakite2009proposal}
+D.~Diakit{\'e}, A.~Semenov, and A.~Thomas.
+\newblock A proposal for social pricing of water supply in c{\^o}te d'ivoire.
+\newblock \emph{Journal of Development Economics}, 88\penalty0 (2):\penalty0
+  258--268, 2009.
 
 \bibitem[Dupas and Robinson(2013{\natexlab{a}})]{dupas2013don}
 P.~Dupas and J.~Robinson.
@@ -221,6 +228,12 @@ J.~E. Stiglitz.
 \newblock Peer monitoring and credit markets.
 \newblock \emph{The world bank economic review}, 4\penalty0 (3):\penalty0
   351--366, 1990.
+
+\bibitem[Strand and Walker(2005)]{strand2005water}
+J.~Strand and I.~Walker.
+\newblock Water markets and demand in central american cities.
+\newblock \emph{Environment and Development Economics}, 10\penalty0
+  (03):\penalty0 313--335, 2005.
 
 \bibitem[Szab{\'o}(2015)]{szabo2015value}
 A.~Szab{\'o}.

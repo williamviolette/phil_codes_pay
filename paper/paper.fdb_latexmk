@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex paper"] 1552428187 "paper.aux" "paper.bbl" "paper" 1552428538
+["bibtex paper"] 1552502930 "paper.aux" "paper.bbl" "paper" 1552503029
   "/usr/local/texlive/2015/texmf-dist/bibtex/bst/natbib/abbrvnat.bst" 1233624470 26532 66bed5cc59495faaa3f9ae9af9fa5e42 ""
-  "paper.aux" 1552428537 13136 7dc85a5d2cca068285baccdfc1cfc488 ""
+  "paper.aux" 1552503028 13813 f8aadc6f8a8c61088f2259e29b6fb6ed ""
   "paper.bcf" 0 -1 0 ""
-  "ref.bib" 1552417601 10357 f02b3e204bff91033c525a24e7c1999f ""
+  "ref.bib" 1552499153 10954 6e801e0f5c1f3c2366d8b56f41ef2dca ""
   (generated)
   "paper.blg"
   "paper.bbl"
-["pdflatex"] 1552428537 "paper.tex" "paper.pdf" "paper" 1552428538
+["pdflatex"] 1552503027 "paper.tex" "paper.pdf" "paper" 1552503029
   "./tables/connected_visit_hazard.pdf" 1549492370 18808 df483f2bf23c27e29b401d2ca7da2ff4 ""
   "./tables/connected_visit_hazard_all.pdf" 1550258752 18773 41872c5ee88d46c39230dad14bab8bac ""
   "./tables/line_ar.pdf" 1550023577 17868 6352cdd0ae3c52444e5cf9560f690a45 ""
@@ -269,9 +269,9 @@
   "/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1432479641 1764542 91654ba72bdb667e84ea24f076ae16d8 ""
   "/usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt" 1432479681 3849859 39a7d258195bde2394e244961601fbc5 ""
   "/usr/local/texlive/2015/texmf.cnf" 1432479636 577 0d611272082f3cdb8e80e09a3c69cf07 ""
-  "paper.aux" 1552428537 13136 7dc85a5d2cca068285baccdfc1cfc488 ""
-  "paper.bbl" 1552428187 9609 9ce20ef55616f92b37881696c05194ea "bibtex paper"
-  "paper.tex" 1552428536 101906 ad0ada715222dbf1a828216b65a483fd ""
+  "paper.aux" 1552503028 13813 f8aadc6f8a8c61088f2259e29b6fb6ed ""
+  "paper.bbl" 1552502930 10157 4603c5da8823c6714730969de1b86148 "bibtex paper"
+  "paper.tex" 1552503027 105647 02e2acbb58e206e9f23bca043cb55760 ""
   "tables/SHH_drop.tex" 1549122082 7 bb3db89d92162c2e50107563867a49de ""
   "tables/U_nl.tex" 1552242940 6 e7f486868c61ecbf3f337f99a34fe96d ""
   "tables/U_nl_abs.tex" 1552242940 5 36c18aa9caf761672a02a29d31c99420 ""
@@ -280,9 +280,11 @@
   "tables/U_pp.tex" 1552242940 7 c5ae235aee25ef5361b49e5f57188afd ""
   "tables/U_pp_abs.tex" 1552242940 6 f07ed974cd5ecb2b3ac4e16cd0c97b8d ""
   "tables/U_pp_abs_usd.tex" 1552327834 4 410c93b29152aa408f31884ce93b7ce5 ""
+  "tables/U_pp_abs_usd_per.tex" 1552433275 6 e60673bdbe5831ced90f50ce6f6bac96 ""
   "tables/U_ppe.tex" 1552242536 6 fd9039820357154deb60ccb6c9d8b6a9 ""
   "tables/U_ppe_abs.tex" 1552242536 5 e2a232f1f20f5e43a76cc3e3275eec05 ""
   "tables/U_ppe_abs_usd.tex" 1552327559 4 6527da533ace4cb4473cc907f265f170 ""
+  "tables/U_ppe_abs_usd_per.tex" 1552433272 5 8998ac41e1e82de04ac9670f678d8663 ""
   "tables/am6_2.tex" 1550071096 2 9bf31c7ff062936a96d3c8bd1f8f2ff3 ""
   "tables/am6_20.tex" 1550071096 1 a87ff679a2f3e71d9181a67b7542122c ""
   "tables/am_2.tex" 1550071095 2 1ff1de774005f8da13f42943881c655f ""

@@ -87,6 +87,7 @@ end
     dc_prob = csvread(strcat(folder,'dc_per_month_account.csv'));
     visit_price = 200;
     erate = 45;
+    popadj = 2.4*12;
     
 data_moments = [  c_avg; c_std; bal_avg; bal_std; bal_corr; am1; am2; am3; am4; amar1; amar2; amar3; amar4 ];
 
@@ -525,6 +526,9 @@ if counter==1
             fileID = fopen(strcat(cd_dir,'U_ppe_abs_usd.tex'),'w');
         fprintf(fileID,'%s\n',strcat(num2str(abs(U_ppe)/erate,'%5.1f')));
     fclose(fileID);
+    fileID = fopen(strcat(cd_dir,'U_ppe_abs_usd_per.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str((abs(U_ppe)/erate)*popadj,'%5.1f')));
+    fclose(fileID);    
  fileID = fopen(strcat(cd_dir,'c_h_ppe_drop.tex'),'w');
         fprintf(fileID,'%s\n',strcat(num2str(100*abs((c_h-c_ppe)/c_h),'%5.1f')));
     fclose(fileID);
@@ -644,7 +648,9 @@ if counter==1
      fileID = fopen(strcat(cd_dir,'U_pp_abs_usd.tex'),'w');
         fprintf(fileID,'%s\n',strcat(num2str(abs(U_pp)/erate,'%5.1f')));
     fclose(fileID);
-    
+     fileID = fopen(strcat(cd_dir,'U_pp_abs_usd_per.tex'),'w');
+        fprintf(fileID,'%s\n',strcat(num2str((abs(U_pp)/erate)*popadj,'%5.1f')));
+    fclose(fileID);    
     
     fileID = fopen(strcat(cd_dir,'c_h.tex'),'w');
         fprintf(fileID,'%s\n',strcat(num2str(c_h,'%5.1f')));
