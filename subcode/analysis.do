@@ -10,7 +10,7 @@ prog define write
 	file close newfile
 end
 
-do "${subcode}table_print.do"
+* do "${subcode}table_print.do"
 
 	import delimited using "${moments}y_avg.csv", clear delimiter(",")
 	sum v1

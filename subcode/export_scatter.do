@@ -64,16 +64,6 @@ sum amar2a
 	drop amar2 amar2a
 
 
-cap program drop sp
-prog define sp
-	preserve
-		`4'
-		egen mv = mean(`2'), by(`3')
-		bys `3': g dn=_n
-		`1' mv `3' if dn==1
-	restore
-end
-
 
 
 cap program drop sp2
@@ -107,15 +97,47 @@ global xlab = "Months to First Delinquency Visit"
 * sp2 "paid_pay" "line" pay T1d aa a6 "keep if T1d!=." "Mean Monthly Payment (PhP)"  "${xlab}" "${fulllab}" "${templab}"
 
 
-sp2 "disconnection" "line" am T1d aa a6 "keep if T1d!=."  "Share Disconnected" "${xlab}" "${fulllab}" "${templab}"
+cap program drop sp
+prog define sp
+	global textsize "large"
+	preserve
+		`4'
+		egen mv = mean(`2'), by(`3')
+		bys `3': g dn=_n
+		twoway line mv `3' if dn==1, lp(solid) lc(gs0) lw(thick)  ///
+		plotr(lw(medthick ))  xlabel(, labsize(${textsize})) ylabel(, labsize(${textsize})) ///
+		ytitle("`5'", size(${large})) xtitle("`6'", size(${textsize}))  ///
+		legend(off) xline(0, lw(thin)lp(shortdash))
 
-sp2 "bal" "line" bal T1d aa a6 "keep if T1d!=."  "Mean Unpaid Balance (PhP)"  "${xlab}" "${fulllab}" "${templab}"
+	    graph export  "${tables}line1_`1'.pdf", as(pdf) replace
+	restore
+end
 
-sp2 "ar" "line" ar T1d aa a6 "keep if T1d!=." "Mean Days Overdue" "${xlab}" "${fulllab}" "${templab}"
 
-sp2 "pay" "line" pay T1d aa a6 "keep if T1d!=." "Mean Monthly Payment (PhP)"  "${xlab}" "${fulllab}" "${templab}"
 
-sp2 "c" "line" c T1d aa a6 "keep if T1d!=." "Mean Consumption for Connected HHs (m3)"  "${xlab}" "${fulllab}" "${templab}"
+sp "disconnection" am T1d  "keep if T1d!=. & a6==1"  "Share Disconnected" "${xlab}" 
+
+sp "bal" bal T1d  "keep if T1d!=. & a6==1"  "Mean Unpaid Balance (PhP)"  "${xlab}" 
+
+sp "ar" ar T1d  "keep if T1d!=. & a6==1"  "Mean Days Overdue"  "${xlab}" 
+
+sp "pay" pay T1d  "keep if T1d!=. & a6==1"   "Mean Monthly Payment (PhP)"  "${xlab}" 
+
+sp "c" c T1d  "keep if T1d!=. & a6==1"  "Mean Consumption for Connected HHs (m3)"  "${xlab}" 
+
+
+
+
+
+* sp2 "disconnection" "line" am T1d aa a6 "keep if T1d!=."  "Share Disconnected" "${xlab}" "${fulllab}" "${templab}"
+
+* sp2 "bal" "line" bal T1d aa a6 "keep if T1d!=."  "Mean Unpaid Balance (PhP)"  "${xlab}" "${fulllab}" "${templab}"
+
+* sp2 "ar" "line" ar T1d aa a6 "keep if T1d!=." "Mean Days Overdue" "${xlab}" "${fulllab}" "${templab}"
+
+* sp2 "pay" "line" pay T1d aa a6 "keep if T1d!=." "Mean Monthly Payment (PhP)"  "${xlab}" "${fulllab}" "${templab}"
+
+* sp2 "c" "line" c T1d aa a6 "keep if T1d!=." "Mean Consumption for Connected HHs (m3)"  "${xlab}" "${fulllab}" "${templab}"
 
 
 

@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex paper"] 1553881420 "paper.aux" "paper.bbl" "paper" 1553883114
+["bibtex microcredit_bils_wjv"] 1553883465 "microcredit_bils_wjv.aux" "microcredit_bils_wjv.bbl" "microcredit_bils_wjv" 1553884579
   "/usr/local/texlive/2015/texmf-dist/bibtex/bst/natbib/abbrvnat.bst" 1233624470 26532 66bed5cc59495faaa3f9ae9af9fa5e42 ""
-  "paper.aux" 1553883114 13831 7c2133b0de29c2870872d2bb5b25e817 ""
-  "paper.bcf" 0 -1 0 ""
+  "microcredit_bils_wjv.aux" 1553884579 13831 7c2133b0de29c2870872d2bb5b25e817 ""
+  "microcredit_bils_wjv.bcf" 0 -1 0 ""
   "ref.bib" 1552499153 10954 6e801e0f5c1f3c2366d8b56f41ef2dca ""
   (generated)
-  "paper.blg"
-  "paper.bbl"
-["pdflatex"] 1553883113 "paper.tex" "paper.pdf" "paper" 1553883114
+  "microcredit_bils_wjv.bbl"
+  "microcredit_bils_wjv.blg"
+["pdflatex"] 1553884578 "microcredit_bils_wjv.tex" "microcredit_bils_wjv.pdf" "microcredit_bils_wjv" 1553884579
   "./tables/connected_visit_hazard.pdf" 1549492370 18808 df483f2bf23c27e29b401d2ca7da2ff4 ""
   "./tables/connected_visit_hazard_all.pdf" 1550258752 18773 41872c5ee88d46c39230dad14bab8bac ""
   "./tables/line1_ar.pdf" 1553879998 15436 8582b270695c60584a1d6223835016de ""
@@ -269,9 +269,9 @@
   "/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1432479641 1764542 91654ba72bdb667e84ea24f076ae16d8 ""
   "/usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt" 1432479681 3849859 39a7d258195bde2394e244961601fbc5 ""
   "/usr/local/texlive/2015/texmf.cnf" 1432479636 577 0d611272082f3cdb8e80e09a3c69cf07 ""
-  "paper.aux" 1553883114 13831 7c2133b0de29c2870872d2bb5b25e817 ""
-  "paper.bbl" 1553881420 10157 4603c5da8823c6714730969de1b86148 "bibtex paper"
-  "paper.tex" 1553883113 104794 e92722b25e02cfd01908598095380b8a ""
+  "microcredit_bils_wjv.aux" 1553884579 13831 7c2133b0de29c2870872d2bb5b25e817 ""
+  "microcredit_bils_wjv.bbl" 1553883465 10157 4603c5da8823c6714730969de1b86148 "bibtex microcredit_bils_wjv"
+  "microcredit_bils_wjv.tex" 1553884576 104880 9b7e82dd0f2fdd3984786444299363f5 ""
   "tables/SHH_drop.tex" 1549122082 7 bb3db89d92162c2e50107563867a49de ""
   "tables/U_nl.tex" 1552242940 6 e7f486868c61ecbf3f337f99a34fe96d ""
   "tables/U_nl_abs.tex" 1552242940 5 36c18aa9caf761672a02a29d31c99420 ""
@@ -401,6 +401,6 @@
   "tables/wse.tex" 1550185605 501 8c70223347a667afcf2edb8600157c3f ""
   "tables/y_avg.tex" 1549999691 6 0b2f241d911a87b649fcacde1969eb7a ""
   (generated)
-  "paper.aux"
-  "paper.pdf"
-  "paper.log"
+  "microcredit_bils_wjv.log"
+  "microcredit_bils_wjv.aux"
+  "microcredit_bils_wjv.pdf"
