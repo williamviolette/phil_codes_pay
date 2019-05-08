@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex paper"] 1553881420 "paper.aux" "paper.bbl" "paper" 1553883114
+["bibtex paper"] 1557327377 "paper.aux" "paper.bbl" "paper" 1557328192
   "/usr/local/texlive/2015/texmf-dist/bibtex/bst/natbib/abbrvnat.bst" 1233624470 26532 66bed5cc59495faaa3f9ae9af9fa5e42 ""
-  "paper.aux" 1553883114 13831 7c2133b0de29c2870872d2bb5b25e817 ""
+  "paper.aux" 1557328192 14268 448850c83cca192229620ee29e52c103 ""
   "paper.bcf" 0 -1 0 ""
   "ref.bib" 1552499153 10954 6e801e0f5c1f3c2366d8b56f41ef2dca ""
   (generated)
   "paper.blg"
   "paper.bbl"
-["pdflatex"] 1553883113 "paper.tex" "paper.pdf" "paper" 1553883114
+["pdflatex"] 1557328190 "paper.tex" "paper.pdf" "paper" 1557328192
   "./tables/connected_visit_hazard.pdf" 1549492370 18808 df483f2bf23c27e29b401d2ca7da2ff4 ""
   "./tables/connected_visit_hazard_all.pdf" 1550258752 18773 41872c5ee88d46c39230dad14bab8bac ""
   "./tables/line1_ar.pdf" 1553879998 15436 8582b270695c60584a1d6223835016de ""
@@ -269,9 +269,9 @@
   "/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1432479641 1764542 91654ba72bdb667e84ea24f076ae16d8 ""
   "/usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt" 1432479681 3849859 39a7d258195bde2394e244961601fbc5 ""
   "/usr/local/texlive/2015/texmf.cnf" 1432479636 577 0d611272082f3cdb8e80e09a3c69cf07 ""
-  "paper.aux" 1553883114 13831 7c2133b0de29c2870872d2bb5b25e817 ""
-  "paper.bbl" 1553881420 10157 4603c5da8823c6714730969de1b86148 "bibtex paper"
-  "paper.tex" 1553883113 104794 e92722b25e02cfd01908598095380b8a ""
+  "paper.aux" 1557328192 14268 448850c83cca192229620ee29e52c103 ""
+  "paper.bbl" 1557327378 10157 4603c5da8823c6714730969de1b86148 "bibtex paper"
+  "paper.tex" 1557328190 108972 7b2c95c12594a1c823028c2789dd2875 ""
   "tables/SHH_drop.tex" 1549122082 7 bb3db89d92162c2e50107563867a49de ""
   "tables/U_nl.tex" 1552242940 6 e7f486868c61ecbf3f337f99a34fe96d ""
   "tables/U_nl_abs.tex" 1552242940 5 36c18aa9caf761672a02a29d31c99420 ""
@@ -388,6 +388,7 @@
   "tables/save_avg.tex" 1547751075 5 67e4d189f202dc2f05a7136c700100b0 ""
   "tables/table_fit_est.tex" 1550694539 79 f584f94241c0e4bba467dd36b377c3c1 ""
   "tables/table_fit_out.tex" 1550699359 102 1c2d64e19e73cff0b7a426338a13b627 ""
+  "tables/table_lfs_analysis.tex" 1557328146 610 727b877b0bf7e29a393cdf3183462311 ""
   "tables/tcd_id_ar_cond.tex" 1550006963 4 1030cbe28e9ecf427ac796a8e62a00ef ""
   "tables/tcd_id_mean.tex" 1550006963 4 b9535af4bc9b1226c5a4b76d46e3d3cc ""
   "tables/tcd_predict.tex" 1549495200 2809 4e867cbe462bc3872e7c035b59033528 ""
@@ -401,6 +402,6 @@
   "tables/wse.tex" 1550185605 501 8c70223347a667afcf2edb8600157c3f ""
   "tables/y_avg.tex" 1549999691 6 0b2f241d911a87b649fcacde1969eb7a ""
   (generated)
+  "paper.log"
   "paper.aux"
   "paper.pdf"
-  "paper.log"

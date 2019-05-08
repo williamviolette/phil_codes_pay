@@ -62,7 +62,6 @@
 %With billing data from piped water in Manila, this paper documents that .. HARD TO GET A CLEAN FACT ABOUT THE CREDIT OFFERED THROUGH UNPAID BILLS
 % WORTH GETTING INTO WATER PROVIDERS AS GREAT CREDITORS??  WOULD BE NICE TO HIGHLIGHT THE TRADE-OFF...
 % Public utilities often tolerate large amounts of unpaid bills each month.  
-
 Delaying bill payments to public utilities may provide an important source of credit to households.  With billing data from a water utility in Manila, Philippines, this paper builds a consumption and savings model to estimate demand for both water and credit.  Estimates suggest that households value billing flexibility from the water utility as much as \input{tables/U_nl_per}\unskip\% of an average water bill.  I then analyze the welfare effects of popular proposals to reduce delinquency by requiring upfront payments.  Simulations find that upfront payments do not produce enough cost savings to justify their negative impacts on household consumption smoothing.
 
 %are unable to recoup enough revenue to compensate for their negative effects on household consumption smoothing.
@@ -257,12 +256,40 @@ Another hypothesis may be that households choose to stop paying when they leave 
 
 
 
+\section{Income Shocks, Usage, and Payment Patterns}
+
+One way to test whether households use delayed bill payments as a form of credit is to examine how household consumption and payment patterns vary with temporary income shocks.  Consumption smoothing theory predicts that households respond to temporary income shocks by adjusting their borrowing and saving in order to maintain stable levels of consumption (\cite{deaton1991saving}).  Under this theory, temporary income shocks are predicted to be weakly correlated with consumption, but strongly correlated with savings.
+
+To test these implications, I construct a proxy for temporary income shocks using the Quarterly Labor Force Survey, which includes information on employment and hours worked as well as basic demographics for households in four submunicipalities of Manila quarterly from 2009 to 2015.  I merge average employment and hours worked according to submunicipality, date, and ten 5-year age-bins with the billing records using the age of the connection owner reported in the connection survey.  This exercise results in 800 unique age-bin by submunicipality by quarter observations.  To create a proxy for income shocks, I first-difference average employment and hours worked at the quarterly level in the same age-bin and submunicipality. 
+
+\begin{table}[!ht]
+\small
+\centering
+\caption{Correlations of Income Shocks with Usage and Payment Patterns}\label{table:lfsanalysis}
+\vspace{-2mm}
+% \resizebox{.8\linewidth}{!}{
+\begin{tabular}{lccc}
+\toprule
+ & \small (1) & \small (2)  & \small (3) \\
+ & \small $\Delta$ Usage & \small  $\Delta$ Payments  & \small  $\Delta$ Delinquency \\[.5em]
+ \toprule
+\input{tables/table_lfs_analysis}
+\bottomrule
+\multicolumn{4}{l}{\footnotesize \textsuperscript{c} p$<$0.10,\textsuperscript{b} p$<$0.05,\textsuperscript{a} p$<$0.01 } \\
+\multicolumn{4}{l}{\footnotesize Calendar quarter-year fixed effects are included.} \\[-.2em]
+\multicolumn{4}{l}{\footnotesize Standard errors are clustered at the age-bin, submunicipality level} \\[-.2em]
+\multicolumn{4}{l}{\footnotesize (40 units).  All measures are normalized in terms of standard} \\[-.2em]
+\multicolumn{4}{l}{\footnotesize deviations.  } 
+\end{tabular}
+\end{table}
+
+Table~\ref{table:lfsanalysis} provides correlations between changes in employment and hours worked with contemporaneous changes in three outcomes: water consumption, whether a payment is made, and whether the household is over 60 days delinquent.  All measures are normalized in terms of standard deviations so that the coefficients are directly comparable.  All correlations additionally control for calendar-quarter fixed effects and standard errors are clustered at the age-bin, submunicipality level.  Column (1) finds almost zero correlation of consumption patterns with changes in average employment and hours worked.  By contrast, columns (2) and (3) indicate that increases in both employment and hours worked are correlated with higher rates of payment, which translate into lower levels of delinquency.  These correlations are statistically significant for employment changes.  
+
+These results provide suggestive evidence of consumption smoothing where households flexibly adjust their payment patterns in response to income shocks while maintaining the same levels of water consumption.  This interpretation relies on the assumption that labor market shocks are uncorrelated with consumption and payment patterns except through their effects on household income.  Without data linking these income shock proxies to actual changes in household income, it is difficult to interpret the magnitude of these effects in economic terms.  Moreover, matching coarse labor market averages by age and submunicipality is likely to produce substantial measurement error, biasing these correlations towards zero.  To overcome these limitations, I specify an structural model of consumption smoothing in Section~\ref{section:model} to assess the extent to which households use delayed bill payments as a source of credit.
 
 
 
-
-
-
+%This assumption may not be satisfied in cases where greater employment lowers the transaction costs of paying the bill each month.
 
 %The administrative data indicate that \input{tables/share_pay_3_months}\unskip\% resolve their outstanding balances following a notice.
 
