@@ -1,5 +1,5 @@
 function [util1,util2,util3,util4,w1,w2,w3,w4] = ...
-         gen_dc_4s(A,B,D,Aprime,Bprime,Dprime,r_high,r_lend,r_water,water_lending,Y_high,Y_low,p1,p2,p1d,p2d,pd,alpha,k_high,k_low,lambda_high,lambda_low)
+         gen_dc_4se(A,B,D,Aprime,Bprime,Dprime,r_high,r_lend,r_water,water_lending,Y_high,Y_low,p1,p2,p1d,p2d,pd,alpha,k_high,k_low,lambda_high,lambda_low)
 
 
 
@@ -10,45 +10,50 @@ else
     r_w = r_water; 
 end
 
-
-
 Aprime_inc = (Aprime./(1+r_high)).*(Aprime<=0) + (Aprime./(1+r_lend)).*(Aprime>0);  %% UNCHANGED
 
-Bprime_inc = (Bprime./(1+r_w)).*(Bprime>=B) + (B./(1+r_w)).*(Bprime<B); %% capped at B because the rest is raised through L
+Bprime_inc = (Bprime.*(Bprime>=B) + B.*(Bprime<B))./(1+r_w); %% capped at B because the rest is raised through L
 
-L          = 0.*(Bprime>=B) + ((Bprime - B)./(1+r_w)).*(Bprime<B); %% need to raise Bprime-B (or zero)
-
-
-    
 cc = (D==0).*(Dprime==0); 
 cd = (D==0).*(Dprime==1);
 dc = (D==1).*(Dprime==0);
 dd = (D==1).*(Dprime==1);
-    
-p1f = p1.*cc + p1d.*cd + p1.*dc + p1d.*dd;
-p2f = p2.*cc + p2d.*cd + p2.*dc + p2d.*dd;
 
-Lf_12 = L.*cc + 0.*cd + 0.*dc + 0.*dd;
+if p1==p1d && p2==p2d
+    p1f = p1;
+    p2f = p2;
+else
+    p1f = p1.*cc + p1d.*cd + p1.*dc + p1d.*dd;
+    p2f = p2.*cc + p2d.*cd + p2.*dc + p2d.*dd;
+end
+
+Lf_12 = ((Bprime - B)./(1+r_w)).*(Bprime<B).*cc ;
+
+y_34f = (A-Aprime_inc + B)     + (-Bprime_inc).*(cd+dd) - pd.*(cd+dd) ;
+
+y_12f =  y_34f + (-1.*Bprime_inc).*cc  ;
 
 
-Lf_34 = L.*0; 
-
-y_12f = (A-Aprime_inc + B-Bprime_inc).*cc + (A-Aprime_inc + B-Bprime_inc - pd).*cd + ...
-        (A-Aprime_inc + B).*dc            + (A-Aprime_inc + B-Bprime_inc - pd).*dd ;
-
-y_34f = (A-Aprime_inc + B).*cc            + (A-Aprime_inc + B-Bprime_inc - pd).*cd + ...
-        (A-Aprime_inc + B).*dc            + (A-Aprime_inc + B-Bprime_inc - pd).*dd ;    
-
-
-debt_12 = 1;
-[util1,w1] = u_dk(Lf_12,debt_12,alpha,p1f,p2f, Y_high + y_12f, lambda_high,k_high);
-[util2,w2] = u_dk(Lf_12,debt_12,alpha,p1f,p2f, Y_low  + y_12f, lambda_low,k_low);
+if nargout>4
+    debt_12 = 1;
+    [util1,w1] = u_dk(Lf_12,debt_12,alpha,p1f,p2f, Y_high + y_12f, lambda_high,k_high);
+    [util2,w2] = u_dk(Lf_12,debt_12,alpha,p1f,p2f, Y_low  + y_12f, lambda_low,k_low);
  
-debt_34 = 0;
-[util3,w3] = u_dk(Lf_34,debt_34,alpha,p1f,p2f,Y_high + y_34f, lambda_high,k_high);
-[util4,w4] = u_dk(Lf_34,debt_34,alpha,p1f,p2f,Y_low  + y_34f, lambda_low,k_low);
+    debt_34 = 0;
+    [util3,w3] = u_dk(0,debt_34,alpha,p1f,p2f,Y_high + y_34f, lambda_high,k_high);
+    [util4,w4] = u_dk(0,debt_34,alpha,p1f,p2f,Y_low  + y_34f, lambda_low,k_low);
+else
+        debt_12 = 1;
+        [util1] = u_dk(Lf_12,debt_12,alpha,p1f,p2f, Y_high + y_12f, lambda_high,k_high);
+        [util2] = u_dk(Lf_12,debt_12,alpha,p1f,p2f, Y_low  + y_12f, lambda_low,k_low);
 
+        debt_34 = 0;
+        [util3] = u_dk(0,debt_34,alpha,p1f,p2f,Y_high + y_34f, lambda_high,k_high);
+        [util4] = u_dk(0,debt_34,alpha,p1f,p2f,Y_low  + y_34f, lambda_low,k_low);
+end
     
+
+
 % [cc_1,cc_w1] = u_dk(L,1,   alpha,p1,p2,   Y + A-Aprime_inc + B-Bprime_inc  , lambda_high,k_high);
 % [cd_1,cd_w1] = u_dk(L.*0,0,alpha,p1c,p2c, Y + A-Aprime_inc + B-Bprime_inc , lambda_high,k_high);
 % [dc_1,dc_w1] = u_dk(L.*0,0,alpha,p1c,p2c, Y + A-Aprime_inc + B   , lambda_high,k_high);
@@ -76,16 +81,15 @@ debt_34 = 0;
     %%% payoff: (p1c, p2c)  + (B - Bprime_inc (NO L))  UCOST pd
 
 
+% cc : (1:No/2,1:No/2)
+% cd : ((No/2) +1:end,1:No/2)
+% dc : (1:No/2,(No/2) +1:end)
+% dd : ((No/2) +1:end,(No/2) +1:end)
 
 
 
 
-
-
-
-
-
-  % TEST
+% TEST
 %{
 % k_high=0;
 % k_low=0;
@@ -123,3 +127,10 @@ Bprime = -7835
 
 % r_water = 0
 %}
+
+
+
+
+
+
+  

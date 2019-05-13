@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  8 MAY 2019 11:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  9 MAY 2019 11:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1214,7 +1214,7 @@ Overfull \hbox (0.2357pt too wide) in paragraph at lines 250--251
 on.pdf> <./tables/line1_bal.pdf> <./tables/line1_ar.pdf> <./tables/line1_pay.pd
 f> <./tables/line1_c.pdf>] (./tables/c_avg.tex) (./tables/c_std.tex) [10]
 (./tables/table_lfs_analysis.tex) [11] [12] [13]
-Overfull \hbox (48.74013pt too wide) in paragraph at lines 390--390
+Overfull \hbox (48.74013pt too wide) in paragraph at lines 387--387
 [] 
  []
 
@@ -1222,7 +1222,7 @@ Overfull \hbox (48.74013pt too wide) in paragraph at lines 390--390
 (./tables/wse.tex) (./tables/weq_opt.tex) (./tables/cut_point3.tex) [16]
 [17] (./tables/irate.tex) (./tables/p_int.tex) (./tables/p_slope.tex)
 (./tables/y_avg.tex) (./tables/prob_caught.tex)
-Overfull \hbox (3.18768pt too wide) in paragraph at lines 475--476
+Overfull \hbox (3.18768pt too wide) in paragraph at lines 472--473
 []\OT1/ppl/m/n/12 Average con-sump-tion pri-mar-ily iden-ti-fies house-hold wa-
 ter pref-er-ences. With Cobb-
  []
@@ -1242,11 +1242,11 @@ ter pref-er-ences. With Cobb-
 File: tables/new_deaton_graph.pdf Graphic file (type pdf)
 
 <use tables/new_deaton_graph.pdf>
-Package pdftex.def Info: tables/new_deaton_graph.pdf used on input line 581.
+Package pdftex.def Info: tables/new_deaton_graph.pdf used on input line 578.
 (pdftex.def)             Requested size: 437.23485pt x 317.98897pt.
  (./tables/par_n_iter.tex)
 (./tables/par_n_iter.tex) [23 <./tables/new_deaton_graph.pdf>]
-Overfull \hbox (9.72806pt too wide) in paragraph at lines 594--595
+Overfull \hbox (9.72806pt too wide) in paragraph at lines 591--592
 []\OT1/ppl/m/n/12 The fourth panel in-di-cates house-hold wa-ter us-age pat-ter
 ns over the same 100 months.
  []
@@ -1264,9 +1264,9 @@ ns over the same 100 months.
 (./tables/dc_per_month_account.tex) (./tables/out_bal.tex)
 (./tables/delinquency_cost.tex) (./tables/delinquency_cost.tex)
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 652.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 649.
 
-Overfull \hbox (5.21991pt too wide) in paragraph at lines 652--653
+Overfull \hbox (5.21991pt too wide) in paragraph at lines 649--650
 \OT1/ppl/m/n/12 any in-cen-tives that house-holds may face to over-con-sume in 
 their fi-nal months
  []
@@ -1278,12 +1278,12 @@ their fi-nal months
 (./tables/tcd_predict.tex) (./tables/date_N.tex) (./tables/am_N.tex) [31]
 (./tables/date_N.tex) (./tables/class_drop.tex) (./tables/pay_drop.tex)
 (./tables/chigh_drop.tex) (./tables/amount_drop.tex) (./tables/bal_drop.tex)
-(./tables/paylh_drop.tex) (./tables/month_drop.tex) (./tables/SHH_drop.tex)
-(./tables/am_N.tex) [32] (./tables/veq_opt.tex) (./tables/cut_point3.tex)
-(./tables/veq_opt.tex) (./tables/cut_point3.tex) (./tables/f_10.tex)
-(./tables/f_11.tex) (./tables/c_12.tex) (./tables/c_21.tex) (./tables/c_41.tex)
-(./tables/c_61.tex) (./tables/c_81.tex) (./tables/c_101.tex)
-(./tables/c_151.tex) (./tables/c_200.tex) [33] (./tables/price_reg.tex)
+(./tables/paylh_drop.tex) (./tables/month_drop.tex) (./tables/am_N.tex)
+[32] (./tables/veq_opt.tex) (./tables/cut_point3.tex) (./tables/veq_opt.tex)
+(./tables/cut_point3.tex) (./tables/f_10.tex) (./tables/f_11.tex)
+(./tables/c_12.tex) (./tables/c_21.tex) (./tables/c_41.tex) (./tables/c_61.tex)
+(./tables/c_81.tex) (./tables/c_101.tex) (./tables/c_151.tex)
+(./tables/c_200.tex) [33] (./tables/price_reg.tex)
 (./tables/descriptives_stayers.tex) (./tables/total_hhs_stayers.tex)
 (./tables/obs_per_hh_stayers.tex) (./tables/total_obs_stayers.tex)
 <tables/connected_visit_hazard.pdf, id=226, 397.485pt x 289.08pt>
@@ -1291,7 +1291,7 @@ File: tables/connected_visit_hazard.pdf Graphic file (type pdf)
 
 <use tables/connected_visit_hazard.pdf>
 Package pdftex.def Info: tables/connected_visit_hazard.pdf used on input line 8
-96.
+93.
 (pdftex.def)             Requested size: 278.2376pt x 202.35461pt.
  [34] (./tables/bill_all.tex)
 (./tables/out_bal.tex)
@@ -1299,7 +1299,7 @@ Package pdftex.def Info: tables/connected_visit_hazard.pdf used on input line 8
 File: tables/line_disc_graph.pdf Graphic file (type pdf)
 
 <use tables/line_disc_graph.pdf>
-Package pdftex.def Info: tables/line_disc_graph.pdf used on input line 912.
+Package pdftex.def Info: tables/line_disc_graph.pdf used on input line 909.
 (pdftex.def)             Requested size: 278.2376pt x 202.35461pt.
  [35 <./tables/connected_visit_hazard.pdf>]
 (./paper.bbl [36 <./tables/line_disc_graph.pdf>]
@@ -1309,12 +1309,12 @@ LaTeX Font Info:    Try loading font information for OT1+pcr on input line 102.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ) [37]) [38]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 947.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 947.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 944.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 944.
 
 (./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 947.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 947.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 944.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 944.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1325,8 +1325,8 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 21549 strings out of 493089
- 380979 string characters out of 6134842
+ 21546 strings out of 493089
+ 380931 string characters out of 6134842
  461226 words of memory out of 5000000
  24032 multiletter control sequences out of 15000+600000
  119205 words of font info for 322 fonts, out of 8000000 for 9000
@@ -1352,7 +1352,7 @@ texlive/2015/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive
 exmf-dist/fonts/type1/urw/palatino/uplri8a.pfb></usr/local/texlive/2015/texmf-d
 ist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/
 type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (39 pages, 379704 bytes).
+Output written on paper.pdf (39 pages, 379692 bytes).
 PDF statistics:
  332 PDF objects out of 1000 (max. 8388607)
  234 compressed objects within 3 object streams

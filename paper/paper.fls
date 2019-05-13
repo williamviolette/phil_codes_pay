@@ -916,8 +916,6 @@ INPUT tables/paylh_drop.tex
 INPUT tables/paylh_drop.tex
 INPUT tables/month_drop.tex
 INPUT tables/month_drop.tex
-INPUT tables/SHH_drop.tex
-INPUT tables/SHH_drop.tex
 INPUT tables/am_N.tex
 INPUT tables/am_N.tex
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/vf/public/newtx/ntxsy7.vf

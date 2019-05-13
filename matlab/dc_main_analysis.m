@@ -11,7 +11,7 @@ real_data     = 1     ;
 second_output = 0     ;
 est_many      = 0     ;
 est_tables    = 0     ;
-counter       = 1     ;
+counter       = 0     ;
 
 bs            = 0 ; % bootstrap option
 br      = [3 4] ; % rep interval
@@ -34,8 +34,8 @@ if bs==1
     p1 = bmat(1,:);
     p2 = bmat(2,:);
     prob_caught = bmat(3,:);
-    prob_caught = .05.*ones(size(prob_caught,1),size(prob_caught,2))  %%% HAVE HIGH PROB OF GETTING CAUGHT
-    prob_caught = .05; %%% HAVE HIGH PROB OF GETTING CAUGHT
+    % prob_caught = .05.*ones(size(prob_caught,1),size(prob_caught,2))  %%% HAVE HIGH PROB OF GETTING CAUGHT
+    % prob_caught = .05; %%% HAVE HIGH PROB OF GETTING CAUGHT
     
     c_avg = bmat(4,:);
     c_std = bmat(5,:);
@@ -76,7 +76,7 @@ else
     p2        = csvread(strcat(folder,'p_slope.csv'));
 
     prob_caught = csvread(strcat(folder,'prob_caught.csv'));
-    prob_caught = .05  %%% HAVE HIGH PROB OF GETTING CAUGHT
+    % prob_caught = .05  %%% HAVE HIGH PROB OF GETTING CAUGHT
 
 end
 
@@ -98,73 +98,57 @@ data_moments = [  c_avg; c_std; bal_avg; bal_std; bal_corr; am1; am2; am3; am4; 
 
 %prob_caught=.05;
 
-n = 5000;  %%% GRID SIZE AFFECTS THE MAXIMUM !!!!!!!
-    fileID = fopen(strcat(cd_dir,'par_n_iter.tex'),'w');
-        fprintf(fileID,'%s\n',num2sepstr(n,'%5.0f')); 
-        fclose(fileID);
+n = 5000;  %%% GRID SIZE AFFECTS THE MAXIMUM !!!!!!!  previously 5000, now just 2000
+%     fileID = fopen(strcat(cd_dir,'par_n_iter.tex'),'w');
+%         fprintf(fileID,'%s\n',num2sepstr(n,'%5.0f')); 
+%         fclose(fileID);
 
-nA = 25 ;
-    fileID = fopen(strcat(cd_dir,'par_nA.tex'),'w');
-        fprintf(fileID,'%s\n',num2sepstr(nA,'%5.0f')); 
-        fclose(fileID);
+nA = 10 ;  %%% previously 25, 25
 sigA = 10000 ;
-    fileID = fopen(strcat(cd_dir,'par_sigA.tex'),'w');
-        fprintf(fileID,'%s\n',num2sepstr(sigA,'%5.0f')); 
-        fclose(fileID);
-
-Agrid = 0 + sqrt(2)*sigA*erfinv(2*((1:nA)'./(nA+1))-1);
-Agrid = round(Agrid,0);
-%hist(Agrid,100)
-    fileID = fopen(strcat(cd_dir,'par_Amin.tex'),'w');
-        fprintf(fileID,'%s\n',num2sepstr(min(Agrid),'%5.0f')); 
-        fclose(fileID);
-    fileID = fopen(strcat(cd_dir,'par_Amax.tex'),'w');
-        fprintf(fileID,'%s\n',num2sepstr(max(Agrid),'%5.0f')); 
-        fclose(fileID);
-
-nB = 25 ;
+nB = 10 ;
 sigB = 3800 ;
-    fileID = fopen(strcat(cd_dir,'par_sigB.tex'),'w');
-        fprintf(fileID,'%s\n',num2sepstr(sigB,'%5.0f')); 
-        fclose(fileID);
-Bgrid = 0 + sqrt(2)*sigB*erfinv(2*((1:nB)'./(2.*nB+1))-1);
-Bgrid =round(sort(-1.*abs(Bgrid),'descend'),0);
-Bgrid = [0;Bgrid];
-    fileID = fopen(strcat(cd_dir,'par_Bmin.tex'),'w');
-        fprintf(fileID,'%s\n',num2sepstr(min(Bgrid),'%5.0f')); 
-        fclose(fileID);
-    fileID = fopen(strcat(cd_dir,'par_Bmax.tex'),'w');
-        fprintf(fileID,'%s\n',num2sepstr(max(Bgrid),'%5.0f')); 
-        fclose(fileID);
-nB=size(Bgrid,1);
-    fileID = fopen(strcat(cd_dir,'par_nB.tex'),'w');
-        fprintf(fileID,'%s\n',num2sepstr(nB,'%5.0f')); 
-        fclose(fileID);
-%hist(Bgrid,100)
-
 nD = 2;
 
-Aprime_r = repmat(Agrid,1,nA);
-A_r = repmat(Agrid,1,nA)';
-Bprime_r = repmat(Bgrid,1,nB);
-B_r = repmat(Bgrid,1,nB)';
 
-A_r1      = repelem(A_r,nB,nB);
-Aprime_r1 = repelem(Aprime_r,nB,nB);
-B_r1      = repmat(B_r,nA,nA);
-Bprime_r1 = repmat(Bprime_r,nA,nA);
+[A,Aprime,B,Bprime,D,Dprime] = grid_start(nA,sigA,nB,sigB,nD) ; 
 
-A = repmat(A_r1,nD,nD);
-B = repmat(B_r1,nD,nD);
-Aprime = repmat(Aprime_r1,nD,nD);
-Bprime = repmat(Bprime_r1,nD,nD);
 
-D = [ zeros( size(A_r1,1).*nD , size(A_r1,1) )  ...
-      ones( size(A_r1,1).*nD , size(A_r1,1) ) ] ;
-Dprime = D';  
-    fileID = fopen(strcat(cd_dir,'par_totalsize.tex'),'w');
-        fprintf(fileID,'%s\n',num2sepstr(size(D,1),'%5.0f')); 
-        fclose(fileID);  
+
+%     fileID = fopen(strcat(cd_dir,'par_sigB.tex'),'w');
+%         fprintf(fileID,'%s\n',num2sepstr(sigB,'%5.0f')); 
+%         fclose(fileID);
+
+%     fileID = fopen(strcat(cd_dir,'par_nA.tex'),'w');
+%         fprintf(fileID,'%s\n',num2sepstr(nA,'%5.0f')); 
+%         fclose(fileID);
+
+%     fileID = fopen(strcat(cd_dir,'par_sigA.tex'),'w');
+%         fprintf(fileID,'%s\n',num2sepstr(sigA,'%5.0f')); 
+%         fclose(fileID);
+
+
+%hist(Agrid,100)
+%     fileID = fopen(strcat(cd_dir,'par_Amin.tex'),'w');
+%         fprintf(fileID,'%s\n',num2sepstr(min(Agrid),'%5.0f')); 
+%         fclose(fileID);
+%     fileID = fopen(strcat(cd_dir,'par_Amax.tex'),'w');
+%         fprintf(fileID,'%s\n',num2sepstr(max(Agrid),'%5.0f')); 
+%         fclose(fileID);
+
+% fileID = fopen(strcat(cd_dir,'par_Bmin.tex'),'w');
+%         fprintf(fileID,'%s\n',num2sepstr(min(Bgrid),'%5.0f')); 
+%         fclose(fileID);
+%     fileID = fopen(strcat(cd_dir,'par_Bmax.tex'),'w');
+%         fprintf(fileID,'%s\n',num2sepstr(max(Bgrid),'%5.0f')); 
+%         fclose(fileID);
+%     fileID = fopen(strcat(cd_dir,'par_nB.tex'),'w');
+%         fprintf(fileID,'%s\n',num2sepstr(nB,'%5.0f')); 
+%         fclose(fileID);
+%hist(Bgrid,100)
+
+%     fileID = fopen(strcat(cd_dir,'par_totalsize.tex'),'w');
+%         fprintf(fileID,'%s\n',num2sepstr(size(D,1),'%5.0f')); 
+%         fclose(fileID);  
 
 %%%% set grid right!!
 
@@ -183,9 +167,16 @@ pd = 200;
 given    =   [ r_lend    0      .04         0            0.2         0       .024      .02     y_avg p1  p2  pd   n   10  0 ];
 
 
+
+
 %oldgiven=   [ r_lend    0      .04         0            0.3         0       .018      .02     y_avg p1  p2  pd   n   10  0 ];
 
-   
+
+%%% TEST CODE HERE !!! %%%
+
+[h,US] = dc_obj(given,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s)
+
+
   
 %{a
 if second_output == 1
@@ -224,6 +215,8 @@ if second_output == 1
     round(R,2)
     round([data],2)
 end
+
+
 
 
 %%%%%%%%% ESTIMATION %%%%%%%%%%

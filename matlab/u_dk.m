@@ -14,20 +14,26 @@ if debt==1
     
     util  = v_reg_dk(L,alpha,k,p1,p2,y).*(L>=L_cut) + ...
           vb.*(L<L_cut);
-
-    w   = w_reg_dk(L,alpha,k,p1,p2,y).*(L>=L_cut) + ...  %%% less negative!
-          w_b_dk(L,p1,p2).*(L<L_cut);   %%% more negative !
+      
+    if nargout>1
+        w   = w_reg_dk(L,alpha,k,p1,p2,y).*(L>=L_cut) + ...  %%% less negative!
+              w_b_dk(L,p1,p2).*(L<L_cut);   %%% more negative !
+    end
     %w   = w_reg_dk(L,alpha,p1,p2,y).*(L>=L_cut) + ...  %%% less negative!
     %      w_b_dk(L,p1,p2).*(L<L_cut);   %%% more negative !
 
 else
     util  = v_reg_dk(L,alpha,k,p1,p2,y);
-    w   = w_reg_dk(L,alpha,k,p1,p2,y);
+    if nargout>1
+        w   = w_reg_dk(L,alpha,k,p1,p2,y);
+    end
     %w   = w_reg_dk(L,alpha,p1,p2,y);
 end
 
 util(y<=0)=-1000000;
-util(w<0)=-1000000;
+if nargout>1
+    util(w<0)=-1000000;
+end
 
 if lambda~=0 && lambda~=1
     util = util.*lambda;  
