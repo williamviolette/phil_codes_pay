@@ -1,4 +1,4 @@
-function [A,Aprime,B,Bprime,D,Dprime] = grid_start(nA,sigA,nB,sigB,nD)
+function [A,Aprime,B,Bprime,D,Dprime] = grid_start(nA,sigA,nB,sigB,nD,refinement)
 
 nBa=nB-1;
 
@@ -29,3 +29,15 @@ Bprime = repmat(Bprime_r1,nD,nD);
 D = [ zeros( size(A_r1,1).*nD , size(A_r1,1) )  ...
       ones( size(A_r1,1).*nD , size(A_r1,1) ) ] ;
 Dprime = D';  
+
+if refinement==1
+    [A,Aprime,B,Bprime,D,Dprime] = refine(A,Aprime,B,Bprime,D,Dprime) ;
+end
+
+
+
+
+% A,A(:,test)
+
+
+

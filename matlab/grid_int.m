@@ -1,4 +1,4 @@
-function [A,Aprime,B,Bprime,D,Dprime,nA,nB] = grid_int(nA,sigA,nB,sigB,nD, int_size)
+function [A,Aprime,B,Bprime,D,Dprime,nA,nB] = grid_int(nA,sigA,nB,sigB,nD, int_size,refinement)
 
 nBa=nB-1;
 
@@ -34,6 +34,10 @@ Bprime = repmat(Bprime_r1,nD,nD);
 D = [ zeros( size(A_r1,1).*nD , size(A_r1,1) )  ...
       ones( size(A_r1,1).*nD , size(A_r1,1) ) ] ;
 Dprime = D';  
+
+if refinement==1
+    [A,Aprime,B,Bprime,D,Dprime] = refine(A,Aprime,B,Bprime,D,Dprime) ;
+end
 
 nA = size(Agrid,1);
 nB = size(Bgrid,1);

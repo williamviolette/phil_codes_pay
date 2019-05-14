@@ -450,8 +450,8 @@ INPUT tables/U_pp_abs_usd_per.tex
 INPUT tables/U_pp_abs_usd_per.tex
 INPUT tables/descriptives_all.tex
 INPUT tables/descriptives_all.tex
-INPUT tables/total_hhs_all.tex
-INPUT tables/total_hhs_all.tex
+INPUT tables/total_hhs_stayers.tex
+INPUT tables/total_hhs_stayers.tex
 INPUT tables/obs_per_hh_all.tex
 INPUT tables/obs_per_hh_all.tex
 INPUT tables/total_obs_all.tex

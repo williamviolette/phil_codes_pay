@@ -129,6 +129,11 @@ duplicates drop w_id w_shsn w_hcn, force
 save "${fies}temp1.dta", replace
 
 
+import delimited using  "${fies}FAMILY INCOME AND EXPENDITURE SURVEY (2015) VOLUME 2 - HOUSEHOLD DETAILS AND HOUSING CHARACTERISTICS - raw data.csv", delimiter(",") clear
+
+keep if w_regn=="Region XIII - NCR"
+
+
 
 import delimited using "${fies}FAMILY INCOME AND EXPENDITURE SURVEY (2015) VOLUME 2 - TOTALS OF INCOME AND EXPENDITURE - raw data.csv", delimiter(",") clear
 

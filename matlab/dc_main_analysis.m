@@ -9,38 +9,64 @@ cd_dir ='/Users/williamviolette/Documents/Philippines/phil_analysis/phil_codes_p
 
 real_data     = 1     ;
 second_output = 0     ;
-est_many      = 0     ;
+est_many      = 1     ;
 est_tables    = 0     ;
 counter       = 0     ;
 
 bs            = 0 ; % bootstrap option
 br      = [3 4] ; % rep interval
 br_est  = [1 2] ;
+int_size = 2; % number of interpolations
+Fset = 2;     % number of Chow iterations
+refinement =1 ; % refine the number of stuff
+prob_caught_sim = 0 ;
+
+one_price       = 0;
 
 marginal_cost = 5;
 ppinst = 51;
-
-fileID = fopen(strcat(cd_dir,'breps.tex'),'w');
-        fprintf(fileID,'%s\n',num2str(br(2),'%5.0f')); 
-        fclose(fileID);
         
 s=1; % 1 adds amar moments
 
 mult_set = [  1  ];
 
+%%% refine est: n,8000 nA,8 nB,8 one run,2.86s  total,1482s est  : 0.00999719545886186          0.20936753044794        0.0305679439809489          186.940162736175
+%%% refine est: n,8000 nA,7 nB,7 one run,2.08s  total,
+
+%%% refine est: n,8000 nA,4 nB,4 one run,1.15s  total,263s est   : 0.0082459593512591         0.206349551895979        0.0344387679922885          191.276497204238
+%%% refine est: n,10000 nA,4 nB,4 one run,1.15s  total,214s est  : 0.00846661771927642          0.21708577762795        0.0309834203143979          204.089802134792
+%%% refine est: n,20000 nA,4 nB,4 one run,1.49s  total,300s est  : 0.00917935145792283         0.229700672268095        0.0309756300297088          184.423288245618
+
+
+
+n = 20000; 
+nA = 4 ;  %%% previously 25, 25 (7 takes 1608 (28*28*2=1568)) (8 takes 3702 (32*32*2=4096))
+nB = 4 ;
+
+sigA = 18000 ;
+%sigB = 3800 ;
+sigB = 5000 ;
+nD = 2;
+
 
 if bs==1
     bmat = csvread(strcat(folder,'B.csv'));
-    p1 = bmat(1,:);
-    p2 = bmat(2,:);
+    if one_price==1
+        p1 = bmat(1,:);
+        p2 = 0;
+    else
+        p1 = bmat(1,:);
+        p2 = bmat(2,:);
+    end
+        
     prob_caught = bmat(3,:);
     % prob_caught = .05.*ones(size(prob_caught,1),size(prob_caught,2))  %%% HAVE HIGH PROB OF GETTING CAUGHT
     % prob_caught = .05; %%% HAVE HIGH PROB OF GETTING CAUGHT
     
-    c_avg = bmat(4,:);
-    c_std = bmat(5,:);
-    bal_avg = bmat(6,:);
-    bal_std = bmat(7,:);
+    c_avg    = bmat(4,:);
+    c_std    = bmat(5,:);
+    bal_avg  = bmat(6,:);
+    bal_std  = bmat(7,:);
     bal_corr = bmat(8,:);
     
     am1 = bmat(10,:); %%% start with plus 2! fix this later?!
@@ -72,9 +98,13 @@ else
     amar3       = csvread(strcat(folder,'amar3.csv'));
     amar4       = csvread(strcat(folder,'amar4.csv'));
 
-    p1        = csvread(strcat(folder,'p_int.csv'));
-    p2        = csvread(strcat(folder,'p_slope.csv'));
-
+    if one_price==1
+        p1        = csvread(strcat(folder,'p_avg.csv'));
+        p2        = 0;
+    else
+        p1        = csvread(strcat(folder,'p_int.csv'));
+        p2        = csvread(strcat(folder,'p_slope.csv'));
+    end
     prob_caught = csvread(strcat(folder,'prob_caught.csv'));
     % prob_caught = .05  %%% HAVE HIGH PROB OF GETTING CAUGHT
 
@@ -96,75 +126,25 @@ data_moments = [  c_avg; c_std; bal_avg; bal_std; bal_corr; am1; am2; am3; am4; 
 
 
 
-%prob_caught=.05;
-
-n = 5000;  %%% GRID SIZE AFFECTS THE MAXIMUM !!!!!!!  previously 5000, now just 2000
-%     fileID = fopen(strcat(cd_dir,'par_n_iter.tex'),'w');
-%         fprintf(fileID,'%s\n',num2sepstr(n,'%5.0f')); 
-%         fclose(fileID);
-
-nA = 10 ;  %%% previously 25, 25
-sigA = 10000 ;
-nB = 10 ;
-sigB = 3800 ;
-nD = 2;
-
-
-[A,Aprime,B,Bprime,D,Dprime] = grid_start(nA,sigA,nB,sigB,nD) ; 
-
-
-
-%     fileID = fopen(strcat(cd_dir,'par_sigB.tex'),'w');
-%         fprintf(fileID,'%s\n',num2sepstr(sigB,'%5.0f')); 
-%         fclose(fileID);
-
-%     fileID = fopen(strcat(cd_dir,'par_nA.tex'),'w');
-%         fprintf(fileID,'%s\n',num2sepstr(nA,'%5.0f')); 
-%         fclose(fileID);
-
-%     fileID = fopen(strcat(cd_dir,'par_sigA.tex'),'w');
-%         fprintf(fileID,'%s\n',num2sepstr(sigA,'%5.0f')); 
-%         fclose(fileID);
-
-
-%hist(Agrid,100)
-%     fileID = fopen(strcat(cd_dir,'par_Amin.tex'),'w');
-%         fprintf(fileID,'%s\n',num2sepstr(min(Agrid),'%5.0f')); 
-%         fclose(fileID);
-%     fileID = fopen(strcat(cd_dir,'par_Amax.tex'),'w');
-%         fprintf(fileID,'%s\n',num2sepstr(max(Agrid),'%5.0f')); 
-%         fclose(fileID);
-
-% fileID = fopen(strcat(cd_dir,'par_Bmin.tex'),'w');
-%         fprintf(fileID,'%s\n',num2sepstr(min(Bgrid),'%5.0f')); 
-%         fclose(fileID);
-%     fileID = fopen(strcat(cd_dir,'par_Bmax.tex'),'w');
-%         fprintf(fileID,'%s\n',num2sepstr(max(Bgrid),'%5.0f')); 
-%         fclose(fileID);
-%     fileID = fopen(strcat(cd_dir,'par_nB.tex'),'w');
-%         fprintf(fileID,'%s\n',num2sepstr(nB,'%5.0f')); 
-%         fclose(fileID);
-%hist(Bgrid,100)
-
-%     fileID = fopen(strcat(cd_dir,'par_totalsize.tex'),'w');
-%         fprintf(fileID,'%s\n',num2sepstr(size(D,1),'%5.0f')); 
-%         fclose(fileID);  
-
-%%%% set grid right!!
 
 n_states=4;
 prob = [(1-prob_caught).*ones(n_states,n_states/2) (prob_caught).*ones(n_states,n_states/2)]./(n_states./2); 
-
 s0 = 1;  
-[chain,state] = markov(prob,n,s0);
+
+if prob_caught_sim >0
+    prob_sim = [(1-prob_caught_sim).*ones(n_states,n_states/2) (prob_caught_sim).*ones(n_states,n_states/2)]./(n_states./2);
+    [chain,state] = markov(prob_sim,n,s0);
+else
+    [chain,state] = markov(prob,n,s0);
+end
 
 format long g
 
 
-pd = 200;
+
     % given :  r_lend , r_water, r_high ,  lambda (U) ,   theta (y), gamma (a), alpha , beta_up , Y , p1, p2 ,pd,  n , metric, waterlend,
            %    1         2       3         4             5          6         7        8       9    10  11  12       %    
-given    =   [ r_lend    0      .04         0            0.2         0       .024      .02     y_avg p1  p2  pd   n   10  0 ];
+given    =   [ r_lend    0      .01         0            0.21        0       .031      .02     y_avg p1  p2  180   n   10  0 ];
 
 
 
@@ -174,10 +154,18 @@ given    =   [ r_lend    0      .04         0            0.2         0       .02
 
 %%% TEST CODE HERE !!! %%%
 
-[h,US] = dc_obj(given,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s)
+tic
+    [h,US,~,nA1,nB1,A1,B1] = dc_obj_chow(given,prob,nA,sigA,nB,sigB,nD,chain,s,int_size,Fset,refinement);
+    h
+    US
+    nA1
+    nB1
+    unique(A1)
+    unique(B1)
+toc
 
 
-  
+
 %{a
 if second_output == 1
 
@@ -185,17 +173,19 @@ if second_output == 1
     
     data = data_moments;
 
-    %S = [ .04  ];
-    S = [ 0 .02  .04  .06  .08 ]
+    %S = [ .04  ]; %  .04  .06
+    S = [ 0 .01 .02 .03  ]
     %S = [ 0  .03  .05 ];
     H = zeros(size(data,1),size(S,2));
     U = zeros(1,size(S,2));
+    tic
     for ss = 1:size(S,2)
         given(3) = S(ss);
-        [h,US] =  dc_obj(given,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
+        [h,US] =  dc_obj_chow(given,prob,nA,sigA,nB,sigB,nD,chain,s,int_size,Fset,refinement);
         H(:,ss)=h;
         U(1,ss)=US;
     end
+    toc
 
     fileID = fopen(strcat(folder,'kcompn_main_','lambda_',num2str(given(4),'%6.2f'), ...
                              '_theta_',num2str(given(5),'%6.2f'), ...
@@ -212,8 +202,11 @@ if second_output == 1
     fprintf(fileID,[repmat('%6.2f\t', 1, size([data], 2)) '\n'], [data]');
     fclose(fileID);
     
-    round(R,2)
-    round([data],2)
+    om = [ 1 3   6 7 8 9   10 11 12 13    ];  %%% moments to use!
+    om = [ 1 3   6 7 8 9   10 11 12 13    ];  %%% moments to use!
+    
+    round(R(om+1,:),2)
+    round([data_moments(om)],2)
 end
 
 
@@ -291,9 +284,9 @@ else %%%%% HERE IS TRUE ESTIMATE!
 
     weights =  eye(size(option_moments,2))./(data.^2) ;   % normalize moments to be between zero and one (matters quite a bit)
     ag = given(1,option);    
-    obj = @(a1)dc_objopt(a1,given,data,option,option_moments,weights,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
+    obj = @(a1)dc_objopt_chow(a1,given,data,option,option_moments,weights,prob,nA,sigA,nB,sigB,nD,chain,s,int_size,Fset,refinement);
 
-
+    
     if est_many == 1
             %%% run mamy starting values! %%%
         R = zeros(size(mult_set,2),size(option,2));
@@ -302,7 +295,9 @@ else %%%%% HERE IS TRUE ESTIMATE!
             for k = 1:size(mult_set,2)
                 ag
                 mult_set(k).*ag
+                tic
                 res = fminsearch(obj,mult_set(k).*ag)
+                toc
                     %[~,mom_pred]=m_1loan3_objopt(res,given,data,option,option_moments,weights,prob,A,Aprime,Agrid,inA,minA,nA,chain);
                     %weights_new = inv(mom_pred*mom_pred'); %%% optimal weighting matrix runs fine
                     %obj_new = @(a1)m_1loan3_objopt(a1,given,data,option,option_moments,weights_new,prob,A,Aprime,Agrid,inA,minA,nA,chain);
@@ -311,7 +306,7 @@ else %%%%% HERE IS TRUE ESTIMATE!
 
                 res_out = given
                 res_out(option) = res_new
-                output1 =  dc_obj(res_out,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s)
+                output1 =  dc_obj_chow(res_out,prob,nA,sigA,nB,sigB,nD,chain,s,int_size,Fset,refinement)
                 OUTPUT(k,:) = output1
                 R(k,:) = res_new;
                 OBJ_VAL(k,:) = obj(res_new);
@@ -730,6 +725,67 @@ if counter==1
 
     %}
 end
+
+
+%%%% PRINTING PARAMETERS
+
+%prob_caught=.05;
+
+% fileID = fopen(strcat(cd_dir,'breps.tex'),'w');
+%         fprintf(fileID,'%s\n',num2str(br(2),'%5.0f')); 
+%         fclose(fileID);
+%         
+ %%% GRID SIZE AFFECTS THE MAXIMUM !!!!!!!  previously 5000, now just 2000
+%     fileID = fopen(strcat(cd_dir,'par_n_iter.tex'),'w');
+%         fprintf(fileID,'%s\n',num2sepstr(n,'%5.0f')); 
+%         fclose(fileID);
+
+
+
+% [A,Aprime,B,Bprime,D,Dprime] = grid_start(nA,sigA,nB,sigB,nD) ; 
+
+
+
+%     fileID = fopen(strcat(cd_dir,'par_sigB.tex'),'w');
+%         fprintf(fileID,'%s\n',num2sepstr(sigB,'%5.0f')); 
+%         fclose(fileID);
+
+%     fileID = fopen(strcat(cd_dir,'par_nA.tex'),'w');
+%         fprintf(fileID,'%s\n',num2sepstr(nA,'%5.0f')); 
+%         fclose(fileID);
+
+%     fileID = fopen(strcat(cd_dir,'par_sigA.tex'),'w');
+%         fprintf(fileID,'%s\n',num2sepstr(sigA,'%5.0f')); 
+%         fclose(fileID);
+
+
+%hist(Agrid,100)
+%     fileID = fopen(strcat(cd_dir,'par_Amin.tex'),'w');
+%         fprintf(fileID,'%s\n',num2sepstr(min(Agrid),'%5.0f')); 
+%         fclose(fileID);
+%     fileID = fopen(strcat(cd_dir,'par_Amax.tex'),'w');
+%         fprintf(fileID,'%s\n',num2sepstr(max(Agrid),'%5.0f')); 
+%         fclose(fileID);
+
+% fileID = fopen(strcat(cd_dir,'par_Bmin.tex'),'w');
+%         fprintf(fileID,'%s\n',num2sepstr(min(Bgrid),'%5.0f')); 
+%         fclose(fileID);
+%     fileID = fopen(strcat(cd_dir,'par_Bmax.tex'),'w');
+%         fprintf(fileID,'%s\n',num2sepstr(max(Bgrid),'%5.0f')); 
+%         fclose(fileID);
+%     fileID = fopen(strcat(cd_dir,'par_nB.tex'),'w');
+%         fprintf(fileID,'%s\n',num2sepstr(nB,'%5.0f')); 
+%         fclose(fileID);
+%hist(Bgrid,100)
+
+%     fileID = fopen(strcat(cd_dir,'par_totalsize.tex'),'w');
+%         fprintf(fileID,'%s\n',num2sepstr(size(D,1),'%5.0f')); 
+%         fclose(fileID);  
+
+%%%% set grid right!!
+
+
+
 
 
 

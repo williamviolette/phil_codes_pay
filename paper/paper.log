@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  9 MAY 2019 11:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  14 MAY 2019 15:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1111,7 +1111,7 @@ eased from 900,000 to 1,500,000
 [3]
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 141.
- (./tables/descriptives_all.tex) (./tables/total_hhs_all.tex)
+ (./tables/descriptives_all.tex) (./tables/total_hhs_stayers.tex)
 (./tables/obs_per_hh_all.tex) (./tables/total_obs_all.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1325,8 +1325,8 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 21546 strings out of 493089
- 380931 string characters out of 6134842
+ 21545 strings out of 493089
+ 380926 string characters out of 6134842
  461226 words of memory out of 5000000
  24032 multiletter control sequences out of 15000+600000
  119205 words of font info for 322 fonts, out of 8000000 for 9000

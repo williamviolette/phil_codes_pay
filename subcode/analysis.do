@@ -68,7 +68,7 @@ do "${subcode}descriptive_table_print_3_groups.do"
 global dtable_name "all"
 do "${subcode}descriptive_table_print.do"
 	
-/*
+
 	preserve
 		keep if tcd_max==1 & a6==1
 
