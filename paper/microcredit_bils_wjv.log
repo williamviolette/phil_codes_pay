@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  29 MAR 2019 14:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  16 MAY 2019 16:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -890,17 +890,14 @@ Package footmisc Info: Declaring symbol style lamport* on input line 903.
 Package footmisc Info: Declaring symbol style lamport*-robust on input line 924
 .
 )
-(./microcredit_bils_wjv.aux
-
-LaTeX Warning: Label `table:tcd_predict' multiply defined.
-
-)
+(./microcredit_bils_wjv.aux)
 \openout1 = `microcredit_bils_wjv.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 47.
 LaTeX Font Info:    Try loading font information for OML+ntxmi on input line 47
 .
- (/usr/local/texlive/2015/texmf-dist/tex/latex/newtx/omlntxmi.fd
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/newtx/omlntxmi.fd
 File: omlntxmi.fd 2012/03/22 Fontinst v1.933 font definitions for OML/ntxmi.
 )
 LaTeX Font Info:    ... okay on input line 47.
@@ -1081,16 +1078,138 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10.95> not available
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 100.
- [1] (./tables/U_nl_abs.tex) (./tables/U_nl_abs_usd.tex)
-(./tables/U_nl_per.tex)
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 102.
+
+
+Package natbib Warning: Citation `morduch1995income' on page 1 undefined on inp
+ut line 102.
+
+
+Package natbib Warning: Citation `banerjee2007economic' on page 1 undefined on 
+input line 102.
+
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 102.
+
+Package natbib Warning: Citation `komives2006distributional' on page 1 undefine
+d on input line 102.
+
+
+Package natbib Warning: Citation `jack2016borrowing' on page 1 undefined on inp
+ut line 104.
+
+
+Package natbib Warning: Citation `jack2014risk' on page 1 undefined on input li
+ne 104.
+
+
+Package natbib Warning: Citation `laffont2005regulation' on page 1 undefined on
+ input line 104.
+
+
+Package natbib Warning: Citation `kojima2016making' on page 1 undefined on inpu
+t line 106.
+
+
+Package natbib Warning: Citation `heymans2014limits' on page 1 undefined on inp
+ut line 106.
+
+
+Package natbib Warning: Citation `jack2016charging' on page 1 undefined on inpu
+t line 106.
+
+[1] (./tables/U_nl_abs.tex) (./tables/U_nl_abs_usd.tex) (./tables/U_nl_per.tex)
+
 Overfull \hbox (6.67036pt too wide) in paragraph at lines 112--113
 \OT1/ppl/m/n/12 (hold-ing all else equal), con-sumer wel-fare drops by 52.4 PhP
  (or 1.2 USD) per household-
  []
 
+
+Package natbib Warning: Citation `laffont2005regulation' on page 2 undefined on
+ input line 114.
+
 (./tables/U_ppe_abs.tex) (./tables/U_ppe_abs_usd.tex) (./tables/U_pp_abs.tex)
 (./tables/U_pp_abs_usd.tex) (./tables/U_ppe_abs_usd_per.tex)
 (./tables/U_pp_abs_usd_per.tex) [2]
+
+Package natbib Warning: Citation `mcrae2015infrastructure' on page 3 undefined 
+on input line 118.
+
+
+Package natbib Warning: Citation `szabo2015value' on page 3 undefined on input 
+line 118.
+
+
+Package natbib Warning: Citation `jack2016charging' on page 3 undefined on inpu
+t line 118.
+
+
+Package natbib Warning: Citation `jack2015pay' on page 3 undefined on input lin
+e 118.
+
+
+Package natbib Warning: Citation `szabo2015reducing' on page 3 undefined on inp
+ut line 118.
+
+
+Package natbib Warning: Citation `morduch1999microfinance' on page 3 undefined 
+on input line 118.
+
+
+Package natbib Warning: Citation `morduch1995income' on page 3 undefined on inp
+ut line 118.
+
+
+Package natbib Warning: Citation `cull2009microfinance' on page 3 undefined on 
+input line 118.
+
+
+Package natbib Warning: Citation `dupas2013savings' on page 3 undefined on inpu
+t line 118.
+
+
+Package natbib Warning: Citation `jack2016borrowing' on page 3 undefined on inp
+ut line 118.
+
+
+Package natbib Warning: Citation `karlan2009expanding' on page 3 undefined on i
+nput line 118.
+
+
+Package natbib Warning: Citation `gine2014group' on page 3 undefined on input l
+ine 118.
+
+
+Package natbib Warning: Citation `deaton1991saving' on page 3 undefined on inpu
+t line 118.
+
+
+Package natbib Warning: Citation `gourinchas2002consumption' on page 3 undefine
+d on input line 118.
+
+
+Package natbib Warning: Citation `laibson2007estimating' on page 3 undefined on
+ input line 118.
+
+
+LaTeX Warning: Reference `section:model' on page 3 undefined on input line 120.
+
+
+
+LaTeX Warning: Reference `section:estimation' on page 3 undefined on input line
+ 120.
+
+
+LaTeX Warning: Reference `section:counterfactuals' on page 3 undefined on input
+ line 120.
+
+
+LaTeX Warning: Reference `section:conclusion' on page 3 undefined on input line
+ 120.
+
+
 Overfull \hbox (5.1708pt too wide) in paragraph at lines 126--127
 \OT1/ppl/m/n/12 Measuring credit through de-layed wa-ter bill pay-ments re-quir
 es in-for-ma-tion on monthly
@@ -1109,10 +1228,29 @@ eased from 900,000 to 1,500,000
  []
 
 [3]
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 142.
- (./tables/descriptives_all.tex) (./tables/total_hhs_all.tex)
+
+Package natbib Warning: Citation `wjv' on page 4 undefined on input line 130.
+
+
+Package natbib Warning: Citation `wjv' on page 4 undefined on input line 130.
+
+
+LaTeX Warning: Reference `table:sampleconstruction' on page 4 undefined on inpu
+t line 130.
+
+
+LaTeX Warning: Reference `appendix:sampleconstruction' on page 4 undefined on i
+nput line 130.
+
+(./tables/descriptives_all.tex) (./tables/total_hhs_all.tex)
 (./tables/obs_per_hh_all.tex) (./tables/total_obs_all.tex)
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 153.
+
+
+LaTeX Warning: Reference `appendix:sampleconstruction' on page 4 undefined on i
+nput line 153.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -1120,11 +1258,24 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 (./tables/days_delinquent_all.tex) (./tables/bill_all.tex)
 (./tables/pay_size_all.tex) (./tables/pay_freq.tex) (./tables/balance_all.tex)
 (./tables/y_avg.tex) (./tables/save_avg.tex) (./tables/balance_inc.tex)
-(./tables/balance_save.tex) (./tables/balance_inc_20_all.tex) [5]
-(./tables/disc_notice.tex) (./tables/disc_count.tex) (./tables/tcd_id_mean.tex)
-(./tables/tcd_id_ar_cond.tex) (./tables/days_pay_under_30.tex)
-(./tables/days_pay_average.tex) (./tables/enough_time.tex)
-(./tables/days_rec_average.tex)
+(./tables/balance_save.tex)
+
+Package natbib Warning: Citation `cull2009microfinance' on page 5 undefined on 
+input line 161.
+
+(./tables/balance_inc_20_all.tex) [5] (./tables/disc_notice.tex)
+(./tables/disc_count.tex) (./tables/tcd_id_mean.tex)
+(./tables/tcd_id_ar_cond.tex)
+
+LaTeX Warning: Reference `figure:dc_hazard' on page 6 undefined on input line 1
+63.
+
+
+LaTeX Warning: Reference `table:tcd_predict' on page 6 undefined on input line 
+163.
+
+(./tables/days_pay_under_30.tex) (./tables/days_pay_average.tex)
+(./tables/enough_time.tex) (./tables/days_rec_average.tex)
 <tables/connected_visit_hazard_all.pdf, id=29, 397.485pt x 289.08pt>
 File: tables/connected_visit_hazard_all.pdf Graphic file (type pdf)
 
@@ -1133,230 +1284,913 @@ Package pdftex.def Info: tables/connected_visit_hazard_all.pdf used on input li
 ne 170.
 (pdftex.def)             Requested size: 278.2376pt x 202.35461pt.
  (./tables/descriptives_3_groups.tex)
+! Misplaced \noalign.
+\bottomrule ->\noalign 
+                       {\ifnum 0=`}\fi \@aboverulesep =\aboverulesep \global...
+l.183 \bottomrule
+                 
+I expect to see \noalign only after the \cr of
+an alignment. Proceed, and I'll ignore this case.
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+! Missing } inserted.
+<inserted text> 
+                }
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
 
-[6] [7 <./tables/connected_visit_hazard_all.pdf>] (./tables/pcd_hh.tex)
-<tables/line1_disconnection.pdf, id=47, 397.485pt x 289.08pt>
-File: tables/line1_disconnection.pdf Graphic file (type pdf)
+! Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
 
-<use tables/line1_disconnection.pdf>
-Package pdftex.def Info: tables/line1_disconnection.pdf used on input line 205.
+! Missing } inserted.
+<inserted text> 
+                }
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
 
-(pdftex.def)             Requested size: 223.09955pt x 163.75201pt.
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
 
-<tables/line1_bal.pdf, id=49, 397.485pt x 289.08pt>
-File: tables/line1_bal.pdf Graphic file (type pdf)
- <use tables/line1_bal.pdf>
-Package pdftex.def Info: tables/line1_bal.pdf used on input line 213.
-(pdftex.def)             Requested size: 223.09955pt x 163.75201pt.
+! Missing } inserted.
+<inserted text> 
+                }
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
 
-<tables/line1_ar.pdf, id=51, 397.485pt x 289.08pt>
-File: tables/line1_ar.pdf Graphic file (type pdf)
- <use tables/line1_ar.pdf>
-Package pdftex.def Info: tables/line1_ar.pdf used on input line 221.
-(pdftex.def)             Requested size: 223.09955pt x 163.75201pt.
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
 
-<tables/line1_pay.pdf, id=53, 397.485pt x 289.08pt>
-File: tables/line1_pay.pdf Graphic file (type pdf)
- <use tables/line1_pay.pdf>
-Package pdftex.def Info: tables/line1_pay.pdf used on input line 229.
-(pdftex.def)             Requested size: 223.09955pt x 163.75201pt.
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
 
-<tables/line1_c.pdf, id=55, 397.485pt x 289.08pt>
-File: tables/line1_c.pdf Graphic file (type pdf)
- <use tables/line1_c.pdf>
-Package pdftex.def Info: tables/line1_c.pdf used on input line 237.
-(pdftex.def)             Requested size: 223.09955pt x 163.75201pt.
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
 
-Underfull \hbox (badness 2735) in paragraph at lines 244--244
-[]\OT1/ppl/b/n/12 Figure 2. |\OT1/ppl/m/n/10.95 Mean Out-comes
- []
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
 
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
 
-Underfull \hbox (badness 10000) in paragraph at lines 244--244
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
 
- []
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
 
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
 
-Underfull \hbox (badness 10000) in paragraph at lines 244--244
-\OT1/ppl/m/n/10.95 Stayers in-clude only house-
- []
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
 
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
 
-Underfull \hbox (badness 1107) in paragraph at lines 244--244
-\OT1/ppl/m/n/10.95 holds who ex-pe-ri-ence at least
- []
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
 
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
 
-Underfull \hbox (badness 1048) in paragraph at lines 244--244
-\OT1/ppl/m/n/10.95 one delin-quency visit and are
- []
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
 
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
 
-Underfull \hbox (badness 1629) in paragraph at lines 244--244
-\OT1/ppl/m/n/10.95 pay-ments in-clude ze-ros when
- []
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
 
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
 
-Overfull \hbox (5.05959pt too wide) in paragraph at lines 249--250
-[]\OT1/ppl/m/n/12 To in-ves-ti-gate how house-holds re-spond to delin-quency vi
-s-its, Fig-ure 2 plots monthly
- []
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
 
-(./tables/am6_2.tex) (./tables/am6_20.tex)
-Overfull \hbox (0.2357pt too wide) in paragraph at lines 251--252
-[]\OT1/ppl/m/n/12 Immediately fol-low-ing the first delin-quency visit, monthly
- pay-ments spike as many
- []
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
 
-(./tables/amar_2.tex) (./tables/amar_2a.tex) [8] [9 <./tables/line1_disconnecti
-on.pdf> <./tables/line1_bal.pdf> <./tables/line1_ar.pdf> <./tables/line1_pay.pd
-f> <./tables/line1_c.pdf>] (./tables/c_avg.tex) (./tables/c_std.tex) [10]
-[11] [12]
-Overfull \hbox (48.74013pt too wide) in paragraph at lines 360--360
-[] 
- []
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
 
-[13] (./tables/wse.tex) (./tables/weq_opt.tex) (./tables/cut_point3.tex)
-(./tables/wse.tex) (./tables/weq_opt.tex) (./tables/cut_point3.tex) [14]
-[15] (./tables/irate.tex) (./tables/p_int.tex) (./tables/p_slope.tex)
-(./tables/y_avg.tex) (./tables/prob_caught.tex)
-Overfull \hbox (3.18768pt too wide) in paragraph at lines 445--446
-[]\OT1/ppl/m/n/12 Average con-sump-tion pri-mar-ily iden-ti-fies house-hold wa-
-ter pref-er-ences. With Cobb-
- []
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
 
-[16] (./tables/disc_notice.tex) [17] (./tables/par_nA.tex)
-(./tables/par_sigA.tex) (./tables/par_Amin.tex) (./tables/par_Amax.tex)
-(./tables/par_nB.tex) (./tables/par_sigB.tex) (./tables/par_Bmin.tex)
-(./tables/par_totalsize.tex) (./tables/par_n_iter.tex) (./tables/est_alpha.tex)
-(./tables/est_theta.tex) (./tables/est_theta_per.tex) [18] (./tables/est_fc.tex
-) (./tables/est_irate_per.tex) (./tables/est_irate_annual_per.tex)
-(./tables/est_irate_per.tex) (./tables/est_irate_annual_per.tex)
-(./tables/est_alpha.tex) (./tables/est_sd_alpha.tex) (./tables/est_theta.tex)
-(./tables/est_sd_theta.tex) (./tables/est_fc.tex) (./tables/est_sd_fc.tex)
-(./tables/est_irate.tex) (./tables/est_sd_irate.tex) (./tables/est_hhs.tex)
-(./tables/est_obs.tex) [19] (./tables/table_fit_est.tex)
-(./tables/table_fit_out.tex) [20]
-<tables/new_deaton_graph.pdf, id=163, 397.485pt x 289.08pt>
-File: tables/new_deaton_graph.pdf Graphic file (type pdf)
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
 
-<use tables/new_deaton_graph.pdf>
-Package pdftex.def Info: tables/new_deaton_graph.pdf used on input line 551.
-(pdftex.def)             Requested size: 437.23485pt x 317.98897pt.
- (./tables/par_n_iter.tex) [21]
-(./tables/par_n_iter.tex) [22 <./tables/new_deaton_graph.pdf>]
-Overfull \hbox (9.72806pt too wide) in paragraph at lines 564--565
-[]\OT1/ppl/m/n/12 The fourth panel in-di-cates house-hold wa-ter us-age pat-ter
-ns over the same 100 months.
- []
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
 
-(./tables/U_nl_abs.tex) (./tables/U_nl_abs_usd.tex) (./tables/U_nl_abs.tex)
-(./tables/bill_all.tex) (./tables/U_nl_per.tex) [23] (./tables/c_h_nl_drop.tex)
-(./tables/bill_inc_all.tex) (./tables/U_nl.tex) (./tables/U_ppe.tex)
-(./tables/U_pp.tex) (./tables/c_h2.tex) (./tables/c_nl2.tex)
-(./tables/c_ppe2.tex) (./tables/c_pp2.tex) (./tables/p_int2.tex)
-(./tables/p_int2.tex) (./tables/p_int_ppe2.tex) (./tables/p_int_pp2.tex)
-(./tables/delinquency_cost.tex) (./tables/delinquency_cost.tex)
-(./tables/visit_cost.tex) (./tables/visit_cost.tex) (./tables/coste.tex)
-(./tables/coste.tex) [24] (./tables/irate.tex) (./tables/coste.tex)
-(./tables/prob_caught.tex) (./tables/visit_cost.tex) [25]
-(./tables/dc_per_month_account.tex) (./tables/out_bal.tex)
-(./tables/delinquency_cost.tex) (./tables/delinquency_cost.tex)
-LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 622.
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
 
-Overfull \hbox (5.21991pt too wide) in paragraph at lines 622--623
-\OT1/ppl/m/n/12 any in-cen-tives that house-holds may face to over-con-sume in 
-their fi-nal months
- []
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
 
-[26] (./tables/U_ppe_abs.tex) (./tables/delinquency_cost.tex) [27]
-(./tables/p_increase_per.tex) (./tables/delinquency_cost.tex)
-(./tables/c_h_pp_drop.tex) (./tables/U_pp_abs.tex) [28] (./tables/U_nl_per.tex)
-(./tables/U_ppe_abs_usd.tex) (./tables/U_pp_abs_usd.tex) [29]
-(./tables/tcd_predict.tex) (./tables/date_N.tex) (./tables/am_N.tex) [30]
-(./tables/date_N.tex) (./tables/class_drop.tex) (./tables/pay_drop.tex)
-(./tables/chigh_drop.tex) (./tables/amount_drop.tex) (./tables/bal_drop.tex)
-(./tables/paylh_drop.tex) (./tables/month_drop.tex) (./tables/SHH_drop.tex)
-(./tables/am_N.tex) [31] (./tables/veq_opt.tex) (./tables/cut_point3.tex)
-(./tables/veq_opt.tex) (./tables/cut_point3.tex) (./tables/f_10.tex)
-(./tables/f_11.tex) (./tables/c_12.tex) (./tables/c_21.tex) (./tables/c_41.tex)
-(./tables/c_61.tex) (./tables/c_81.tex) (./tables/c_101.tex)
-(./tables/c_151.tex) (./tables/c_200.tex) [32] (./tables/price_reg.tex)
-(./tables/descriptives_stayers.tex) (./tables/total_hhs_stayers.tex)
-(./tables/obs_per_hh_stayers.tex) (./tables/total_obs_stayers.tex)
-<tables/connected_visit_hazard.pdf, id=223, 397.485pt x 289.08pt>
-File: tables/connected_visit_hazard.pdf Graphic file (type pdf)
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
 
-<use tables/connected_visit_hazard.pdf>
-Package pdftex.def Info: tables/connected_visit_hazard.pdf used on input line 8
-66.
-(pdftex.def)             Requested size: 278.2376pt x 202.35461pt.
- [33] (./tables/bill_all.tex)
-(./tables/out_bal.tex)
-<tables/line_disc_graph.pdf, id=227, 397.485pt x 289.08pt>
-File: tables/line_disc_graph.pdf Graphic file (type pdf)
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
 
-<use tables/line_disc_graph.pdf>
-Package pdftex.def Info: tables/line_disc_graph.pdf used on input line 882.
-(pdftex.def)             Requested size: 278.2376pt x 202.35461pt.
- [34 <./tables/connected_visit_hazard.pdf>]
-(./microcredit_bils_wjv.bbl [35 <./tables/line_disc_graph.pdf>]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 102.
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
 
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
 
-(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [36]) [37]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 917.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 917.
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
 
-(./microcredit_bils_wjv.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 917.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 917.
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
 
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
 
-LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 0.5pt have occurred.
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
 
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
 
-LaTeX Warning: There were multiply-defined labels.
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
 
- ) 
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I can't figure out why you would want to use a tab mark
+or \cr or \span just now. If something like a right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Missing \cr inserted.
+<inserted text> 
+                \cr 
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+I'm guessing that you meant to end an alignment here.
+
+! Misplaced \cr.
+<inserted text> \cr 
+                    
+l.184 \multicolumn
+                  {4}{l}{\scriptsize ``Never Visited'' includes HHs that nev...
+(That makes 100 errors; please try again.) 
 Here is how much of TeX's memory you used:
- 21536 strings out of 493089
- 380995 string characters out of 6134842
- 461132 words of memory out of 5000000
- 24031 multiletter control sequences out of 15000+600000
- 116231 words of font info for 313 fonts, out of 8000000 for 9000
+ 20848 strings out of 493089
+ 368872 string characters out of 6134842
+ 448880 words of memory out of 5000000
+ 23783 multiletter control sequences out of 15000+600000
+ 72424 words of font info for 197 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 59i,24n,94p,1689b,643s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
-xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/
-texlive/2015/texmf-dist/fonts/type1/public/newtx/rntxmi.pfb></usr/local/texlive
-/2015/texmf-dist/fonts/type1/public/newtx/rntxmi5.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/newtx/rntxmi7.pfb></usr/local/texlive/2015/texmf-
-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/local/texlive/2015/texmf-dist/f
-onts/type1/public/newtx/rtxmi5.pfb></usr/local/texlive/2015/texmf-dist/fonts/ty
-pe1/public/newtx/rtxmi7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
-lic/txfonts/rtxr.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/new
-tx/txex-bar.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/txfonts/
-txex.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/txfonts/txmia.p
-fb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></us
-r/local/texlive/2015/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/
-texlive/2015/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive
-/2015/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2015/t
-exmf-dist/fonts/type1/urw/palatino/uplri8a.pfb></usr/local/texlive/2015/texmf-d
-ist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/
-type1/urw/times/utmri8a.pfb>
-Output written on microcredit_bils_wjv.pdf (38 pages, 375852 bytes).
-PDF statistics:
- 329 PDF objects out of 1000 (max. 8388607)
- 232 compressed objects within 3 object streams
- 0 named destinations out of 1000 (max. 500000)
- 88 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 59i,11n,94p,1689b,432s stack positions out of 5000i,500n,10000p,200000b,80000s
 
+!  ==> Fatal error occurred, no output PDF file produced!

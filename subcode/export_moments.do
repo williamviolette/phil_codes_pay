@@ -65,9 +65,10 @@
 
 
 
-
-
-
+*** balance 95th percentile bound
+	sum bal if bal>=0, detail
+	write "${moments}Bb.csv" `=r(p95)' 1 "%12.0g"
+	write "${tables}Bb.tex" `=r(p95)' 1 "%12.0fc"
 
 *** Disconnection rate
 	sum tcd_id if ar_lag>31

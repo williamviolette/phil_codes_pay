@@ -129,9 +129,46 @@ duplicates drop w_id w_shsn w_hcn, force
 save "${fies}temp1.dta", replace
 
 
+import delimited using "${fies}FAMILY INCOME AND EXPENDITURE SURVEY (2015) VOLUME 2 - NONFOOD EXPENDITURE - raw data.csv", delimiter(",") clear
+
+keep if w_regn=="Region XIII - NCR"
+
+destring todisbcashloan, replace force
+destring todisbdeposits, replace force
+
+* sum todisbdeposits, detail
+
+*** THIS IS RIGHT
+replace todisbdeposits = todisbdeposits/6
+sum todisbdeposits, detail
+global deposits = `=r(p95)'
+
+*** THIS IS PARTIALLY RIGHT?! THIS IS PAYING LOANS BACK! 
+replace todisbcashloan = todisbcashloan/6
+sum todisbcashloan, detail 
+global cashloan= `=r(p95)'
+
+
+	write "${moments}Ab.csv" `=$deposits + $cashloan' 1 "%12.0g"
+	write "${tables}Ab.tex" `=$deposits + $cashloan' 1 "%12.0fc"
+
+
+
+import delimited using  "${fies}FAMILY INCOME AND EXPENDITURE SURVEY (2015) VOLUME 2 - INCOME AND OTHER RECEIPTS - raw data.csv", delimiter(",") clear
+
+
+
+
+* preserve
+* keep w_regn w_id w_shsn w_hcn
+* save "${fies}id2015.dta", replace
+* restore
+
+
 import delimited using  "${fies}FAMILY INCOME AND EXPENDITURE SURVEY (2015) VOLUME 2 - HOUSEHOLD DETAILS AND HOUSING CHARACTERISTICS - raw data.csv", delimiter(",") clear
 
 keep if w_regn=="Region XIII - NCR"
+
 
 
 

@@ -1,8 +1,8 @@
-function [h,mom,est_mom] = dc_objopt_chow(a,given,data,option,option_moments,weights,prob,nA,sigA,nB,sigB,nD,chain,s,int_size,Fset,refinement)
+function [h,mom,est_mom] = dc_objopt_chow(a,given,data,option,option_moments,weights,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven)
 
 given(option)=a; % put guess in given
 
-est_mom =dc_obj_chow(given,prob,nA,sigA,nB,sigB,nD,chain,s,int_size,Fset,refinement);
+est_mom =dc_obj_chow(given,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven);
 
 mom = (est_mom(option_moments)-data);
 

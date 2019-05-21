@@ -1,14 +1,20 @@
-function [A,Aprime,B,Bprime,D,Dprime] = grid_start(nA,sigA,nB,sigB,nD,refinement)
+function [A,Aprime,B,Bprime,D,Dprime] = grid_start(nA,sigA,Alb,Aub,nB,sigB,Blb,nD,refinement)
 
-nBa=nB-1;
+% nBa=nB-1;
+% 
+% Agrid = 0 + sqrt(2)*sigA*erfinv(2*((1:nA)'./(nA+1))-1);
+% Agrid = round(Agrid,0);
+% 
+% Bgrid = 0 + sqrt(2)*sigB*erfinv(2*((1:nBa)'./(2.*nBa+1))-1);
+% Bgrid =round(sort(-1.*abs(Bgrid),'descend'),0);
+% Bgrid = [0;Bgrid];
 
-Agrid = 0 + sqrt(2)*sigA*erfinv(2*((1:nA)'./(nA+1))-1);
-Agrid = round(Agrid,0);
-
-Bgrid = 0 + sqrt(2)*sigB*erfinv(2*((1:nBa)'./(2.*nBa+1))-1);
-Bgrid =round(sort(-1.*abs(Bgrid),'descend'),0);
-Bgrid = [0;Bgrid];
-
+if sigA>0
+    [Agrid,Bgrid]=grid_id(nA,sigA,Alb,Aub,nB,sigB,Blb);
+else
+    Agrid = ((0:(nA-1))./(nA-1))'.*(Aub - Alb) + Alb ;
+    Bgrid = ((0:(nB-1))./(nB-1))'.*(0 - Blb) + Blb ;
+end
 
 Aprime_r = repmat(Agrid,1,nA);
 A_r = repmat(Agrid,1,nA)';

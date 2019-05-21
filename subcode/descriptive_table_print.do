@@ -150,6 +150,32 @@ print_mean total_obs_${dtable_name} tobs "%10.0fc" 1
    file close newfile
     * "\bottomrule" _n 
 
+
+global cat_num=2
+ global cat_group = "mean sd"
+
+    file open newfile using "${tables}descriptives_pres_${dtable_name}.tex", write replace
+*    print_table_start
+*    file write newfile " & Mean & SD & Min & 25th & 75th & Max \\ " _n  
+
+      print_1_cg "Usage (m3)" c  "%10.1fc"
+      print_1_cg "Bill" amount  "%10.0fc" 
+      print_1_cg "Unpaid Balance" bal "%10.0fc"   
+      print_1_cg "Share of Months with Payment" p0 "%10.2fc"       
+      * print_1_cg "Payment Size" pays  "%10.0fc"      
+      print_1_cg "Days Delinquent" ar  "%10.1fc"
+      print_1_cg "Delinquency Visits per HH" tcds   "%10.2fc"
+      print_1_cg "Share of Months Disconnected" am   "%10.2fc"
+
+*      print_blank
+*      print_obs "Total Households" cobs "%10.0fc" 
+*      print_obs "Mean Obs. per Household" conN "%10.1fc" 
+*      print_obs "Total Obs." tobs "%10.0fc" 
+
+*    file write newfile "\end{tabu}" _n
+   file close newfile
+    * "\bottomrule" _n 
+
 drop cobs conN tobs p0 pays bal_y bal_s cobs_id
 
 

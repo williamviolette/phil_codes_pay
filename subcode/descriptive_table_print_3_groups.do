@@ -1,6 +1,13 @@
 * descriptive_table_print.do
 
 
+cap prog drop print_blank
+program print_blank
+    forvalues r=1/$cat_num {
+    file write newfile  " & "
+    }    
+    file write newfile " \\ " _n
+end
 
 
 

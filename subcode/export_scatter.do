@@ -106,7 +106,7 @@ prog define sp
 		bys `3': g dn=_n
 		twoway line mv `3' if dn==1, lp(solid) lc(gs0) lw(thick)  ///
 		plotr(lw(medthick ))  xlabel(, labsize(${textsize})) ylabel(, labsize(${textsize})) ///
-		ytitle("`5'", size(${large})) xtitle("`6'", size(${textsize}))  ///
+		ytitle("`5'", size(${textsize})) xtitle("`6'", size(${textsize}))  ///
 		legend(off) xline(0, lw(thin)lp(shortdash))
 
 	    graph export  "${tables}line1_`1'.pdf", as(pdf) replace
@@ -115,13 +115,59 @@ end
 
 
 
+cap program drop sp2
+prog define sp2
+	global textsize "large"
+	preserve
+		`7'
+		g `3'_1 = `3' if `5'==1
+		egen mv_1 = mean(`3'_1), by(`4')
+		g `3'_2 = `3' if `6'==1
+		egen mv_2 = mean(`3'_2), by(`4')
+		bys `4': g dn=_n
+		twoway `2' mv_1 `4' if dn==1, lp(solid) lc(gs0) lw(thick) || ///
+		 `2' mv_2 `4' if dn==1,     plotr(lw(medthick ))  ///
+		  lp(dash) lc(gs6) lw(thick)  ///
+		  ylabel(,labsize(large)) xlabel(,labsize(large)) ///
+		  ytitle("`8'", size(${textsize})) xtitle("`9'", size(${textsize})) ///
+		  legend(pos(`12') ring(0) col(1) lab(1 "`10'") lab(2 "`11'") ///
+		   size(medium)) xline(0, lw(thin)lp(shortdash))
+	    graph export  "${tables}line_`1'.pdf", as(pdf) replace
+	restore
+end
+
+
+g conn = am==0
+
+g t90_id = T1d==0 & ar>90 & ar<.
+egen t90=max(t90_id), by(conacct)
+g tnot90 = t90==0
+
+g c0 = c 
+replace c0=0 if c==.
+
+
+sp2 "conn" line conn T1d tnot90 t90  "keep if T1d!=. & a6==1"  "Share Connected" "${xlab}"  "<90 days overdue" ">90 days overdue" 7
+
+
+sp2 "disconnection" line am T1d tnot90 t90  "keep if T1d!=. & a6==1"  "Share Disconnected" "${xlab}"  "<90 days overdue" ">90 days overdue" 10
+
+sp2 "pay" line pay T1d tnot90 t90  "keep if T1d!=. & a6==1"  "Monthly Payments (PhP)" "${xlab}"  "<90 days overdue" ">90 days overdue" 10
+
+sp2 "c" line c0 T1d tnot90 t90  "keep if T1d!=. & a6==1"  "Consumption (m3)" "${xlab}"  "<90 days overdue" ">90 days overdue" 7
+
+
+
+
 sp "disconnection" am T1d  "keep if T1d!=. & a6==1"  "Share Disconnected" "${xlab}" 
+
+sp "pay" pay T1d  "keep if T1d!=. & a6==1"   "Monthly Payments (PhP)"  "${xlab}" 
+
 
 sp "bal" bal T1d  "keep if T1d!=. & a6==1"  "Mean Unpaid Balance (PhP)"  "${xlab}" 
 
 sp "ar" ar T1d  "keep if T1d!=. & a6==1"  "Mean Days Overdue"  "${xlab}" 
 
-sp "pay" pay T1d  "keep if T1d!=. & a6==1"   "Mean Monthly Payment (PhP)"  "${xlab}" 
 
 sp "c" c T1d  "keep if T1d!=. & a6==1"  "Mean Consumption for Connected HHs (m3)"  "${xlab}" 
 

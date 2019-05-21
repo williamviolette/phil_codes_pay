@@ -158,11 +158,11 @@ use "${temp}temp_descriptives.dta", clear
 	writeN month_drop
 
 * Keep single households
-	* NN
-	* keep if SHH==1
-	* global SHH_N = `=_N'
-	* write "${tables}SHH_N.tex" `=${SHH_N}' 1 "%12.0fc"
-	* writeN SHH_drop
+	NN
+	keep if SHH==1
+	global SHH_N = `=_N'
+	write "${tables}SHH_N.tex" `=${SHH_N}' 1 "%12.0fc"
+	writeN SHH_drop
 
 * Clean disconnection data   *** address holes
 	replace dc = 0 if dc==.
@@ -202,6 +202,11 @@ use "${temp}temp_descriptives.dta", clear
 	merge  m:1 conacct using "${temp}mcf_ba.dta"
 	drop if _merge==2
 	drop _merge
+
+		*** HOUSEHOLD CORRECTION HERE ***
+		
+	* replace c = c/SHH 
+	* NEED TO ALSO DIVIDE PAYMENTS, AND MAKE ASSUMPTIONS ON CREDIT ACROSS HOUSEHOLDS
 
 save "${temp}temp_descriptives_2.dta", replace
 

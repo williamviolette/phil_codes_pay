@@ -1,4 +1,4 @@
-function    [h,util,sim,nA,nB,A,B] = dc_obj_chow(given,prob,nA,sigA,nB,sigB,nD,chain,s,int_size,Fset,refinement)
+function    [h,util,sim,nA,nB,A,B,vstart] = dc_obj_chow(given,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven)
 
 
 
@@ -33,14 +33,24 @@ p2d = p2;
 k_high = gamma;
 k_low  = -gamma;
 
-[A,Aprime,B,Bprime,D,Dprime] = grid_start(nA,sigA,nB,sigB,nD,refinement);
+[A,Aprime,B,Bprime,D,Dprime] = grid_start(nA,sigA,Alb,Aub,nB,sigB,Blb,nD,refinement);
 
 [util1,util2,util3,util4] = ...
          gen_dc_4se(A,B,D,Aprime,Bprime,Dprime,r_high,r_lend,r_water,water_lending,Y_high,Y_low,p1,p2,p1d,p2d,pd,alpha,k_high,k_low,lambda_high,lambda_low);
 
-v       = zeros(size(A,1),size(prob,1));
+if sum(size(vgiven))>2
+    v = vgiven;
+else
+    v       = zeros(size(A,1),size(prob,1));
+end
+
 
 [v,decis]=opt_loop(v,util1,util2,util3,util4,beta,prob,metric);
+
+if nargout>7 
+    vstart = v;
+end
+
 
 
 for f =1:Fset
@@ -51,10 +61,8 @@ for f =1:Fset
            grid_int_v(v(:,3),nA,nB,int_size) ...
            grid_int_v(v(:,4),nA,nB,int_size)];
    end
-    
-        [A,Aprime,B,Bprime,D,Dprime,nA,nB] = grid_int(nA,sigA,nB,sigB,nD, int_size,refinement);   
+        [A,Aprime,B,Bprime,D,Dprime,nA,nB] = grid_int(nA,sigA,Alb,Aub,nB,sigB,Blb,nD, int_size,refinement);   
    if refinement==1
-
         v=[l_int_target(v(:,1),size(A,1)) ...
            l_int_target(v(:,1),size(A,1)) ...
            l_int_target(v(:,1),size(A,1)) ...
@@ -74,7 +82,7 @@ end
 % Imark=1;
 % for ii = 1:n-1
 %     Inext = decis(Imark,chain(ii));
-%     vv(Inext)=1;
+%     vv(Inext)=vv(Inext)+1;
 %     Imark = Inext;
 % end
 % 
@@ -159,10 +167,12 @@ d_post_pre3 = mean(controls(state_pre3>=3,4));
 
 dd_mom=[d_post; d_post_pre; d_post_pre2; d_post_pre3];
 
+% corr_moment = corr(w_debt(dd~=1),C(dd~=1));
+corr_moment = 0;
 
 h = [mean(mean(C(dd~=1))); std(C(dd~=1));  ...
     mean(w_debt(dd~=1));  std(w_debt(dd~=1)); ...
-    corr(w_debt(dd~=1),C(dd~=1)); ...
+    corr_moment; ...
     dd_mom ];
 
 
