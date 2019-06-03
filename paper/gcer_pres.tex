@@ -344,6 +344,166 @@
 
 
 
+
+
+
+
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Paying water bills in Manila}
+
+\begin{enumerate}
+
+
+\item The avg HH is 85 days behind on their payments
+  \begin{itemize}
+    \item Avg HH's unpaid water bills = 5\% monthly HH income
+ %   \item Two main reasons: Inconvenient to pay every month and Consumption smoothing
+  \end{itemize}
+\vspace{3mm}
+
+\item No interest is charged on delinquent bills 
+% and many options for paying \\
+% { \footnotesize (gas stations, convenient stores, phone, online, or via ATM kiosks) }
+
+\vspace{3mm}
+
+% \item After 60 days of delinquency, regulations permit disconnection
+\item The utility visits delinquent HHs and makes a take-it or leave-it offer: \\ pay now or become disconnected % sudden take-it-or-leave-it offer
+\vspace{.5mm}
+  \begin{itemize}
+    \item Visits are rare (4\% of HH-months given $>$60 days delinquent)
+    % \item HHs pay immediately to avoid disconnection
+    % \item Others disconnect until they can afford to reconnect
+  \end{itemize}
+
+\vspace{3mm}
+
+\item To reconnect, HHs pay a small one-time fee and all unpaid bills
+\vspace{.5mm}
+  \begin{itemize}
+    \item When HHs change residences, they rarely pay their outstanding bills 
+  \end{itemize}
+
+\end{enumerate}
+
+
+\end{frame}
+
+
+
+
+%------------------------------------------------
+
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Data and Sample}
+
+\begin{itemize}
+  \item Data
+    \begin{itemize}
+      \item Monthly billing records per connection 2010-15 \\
+      (usage, payments, and delinquency visits)
+      \vspace{2mm}
+      \item Merge to survey data on $\sim$50,000 connections \\
+      (number of HHs sharing a connection and demographics for the owner)
+    \end{itemize}
+    \vspace{2mm}
+  \item Sample
+    \begin{itemize}
+      \item Model single HH decisions
+        \begin{itemize}
+          \item Keep residential connections that serve a single HH (67\%) 
+          \vspace{1mm}
+        \end{itemize}
+      \item Use delinquency visits for identification
+        \begin{itemize}
+          \item Keep HHs with visits (31\%) 
+        \end{itemize}
+         \vspace{1mm}
+      \item Drop HHs that move
+        \begin{itemize}
+          \item Drop if disconnected for the last 6 months of the sample (10\%) 
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+% %------------------------------------------------
+
+% \begin{frame}
+% \frametitle{Descriptives}
+
+% % \Wider{
+% % \begin{table}[H]
+% % \centering
+% % %\caption{Descriptives}\label{table:descriptives_stayers}
+% % \vspace{-2mm}
+% % % \resizebox{1.05\linewidth}{!}{
+% % \begin{tabular}{l*{1}{cccccc}}
+% % \toprule
+% %  & Mean & SD & Min & 25th & 75th & Max  \\
+% % \midrule
+% % \input{tables/descriptives_stayers}
+% % \bottomrule
+% % \multicolumn{7}{c}{Total Households: \input{tables/total_hhs_stayers}  Obs. per Household: \input{tables/obs_per_hh_stayers} Total Obs.: \input{tables/total_obs_stayers}}
+% % \end{tabular}
+% % %}
+% % \end{table}
+% % }
+
+% % \begin{table}[H]
+% % \centering
+% % \vspace{-2mm}
+% % \begin{tabular}{l*{1}{cc}}
+% % % \toprule
+% %  & Mean & SD  \\
+% % \midrule
+% % \input{tables/descriptives_pres_stayers}
+% % % \bottomrule
+% % \end{tabular}
+% % % }
+% % \end{table}
+
+% \begin{itemize}
+% \item Avg water bill is 761 PhP while avg unpaid balance is 2,416 PhP ($\sim$5\% of HH income)
+% \vspace{.8mm}
+% \item HHs pay in 60\% of months
+% \vspace{.8mm}
+% \item There are 1.32 delinquency visits per HH on avg
+% \vspace{.8mm}
+% \item Sample has \input{tables/total_hhs_stayers}HHs with \input{tables/obs_per_hh_stayers}obs per HH for \input{tables/total_obs_stayers}total obs 
+% \end{itemize}
+
+% \vspace{3mm}
+% 45 Philippine Peso (PhP) = 1 US Dollar \\
+% Avg monthly HH Income \input{tables/y_avg}PhP \\
+% % \begin{itemize}
+% % \item Why do households pay late? (convenience, consumption smoothing)
+% % \end{itemize}
+
+% \end{frame}
+
+
+%------------------------------------------------
+%------------------------------------------------
+
+\begin{frame}
+\frametitle{Avg share connected around 1st delinquency visit}
+\Wider[4em]{
+\begin{figure}
+\centering
+%\includegraphics[scale=.47]{tables/line1_pay.pdf}
+\includegraphics[scale=.7]{tables/line_conn.pdf}
+\end{figure}
+}
+\end{frame}
+
 %------------------------------------------------
 %------------------------------------------------
 
@@ -395,119 +555,6 @@ B_{t-1} &-  p(w_t) w_t \leq B_{t} \leq 0
 
 \end{itemize}
 
-\end{frame}
-
-
-
-
-
-
-%------------------------------------------------
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Data and Sample}
-
-\begin{itemize}
-  \item Data
-    \begin{itemize}
-      \item Monthly billing records per connection 2010-15 \\
-      (usage, payments, and delinquency visits)
-      \vspace{2mm}
-      \item Merge to survey data on $\sim$50,000 connections \\
-      (number of HHs sharing a connection and demographics for the owner)
-    \end{itemize}
-    \vspace{2mm}
-  \item Sample
-    \begin{itemize}
-      \item Model single HH decisions
-        \begin{itemize}
-          \item Keep residential connections that serve a single HH (67\%) 
-          \vspace{1mm}
-        \end{itemize}
-      \item Use delinquency visits for identification
-        \begin{itemize}
-          \item Keep HHs with visits (31\%) 
-        \end{itemize}
-         \vspace{1mm}
-      \item Drop HHs that move
-        \begin{itemize}
-          \item Drop if disconnected for the last 6 months of the sample (10\%) 
-        \end{itemize}
-    \end{itemize}
-\end{itemize}
-
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Descriptives}
-
-% \Wider{
-% \begin{table}[H]
-% \centering
-% %\caption{Descriptives}\label{table:descriptives_stayers}
-% \vspace{-2mm}
-% % \resizebox{1.05\linewidth}{!}{
-% \begin{tabular}{l*{1}{cccccc}}
-% \toprule
-%  & Mean & SD & Min & 25th & 75th & Max  \\
-% \midrule
-% \input{tables/descriptives_stayers}
-% \bottomrule
-% \multicolumn{7}{c}{Total Households: \input{tables/total_hhs_stayers}  Obs. per Household: \input{tables/obs_per_hh_stayers} Total Obs.: \input{tables/total_obs_stayers}}
-% \end{tabular}
-% %}
-% \end{table}
-% }
-
-% \begin{table}[H]
-% \centering
-% \vspace{-2mm}
-% \begin{tabular}{l*{1}{cc}}
-% % \toprule
-%  & Mean & SD  \\
-% \midrule
-% \input{tables/descriptives_pres_stayers}
-% % \bottomrule
-% \end{tabular}
-% % }
-% \end{table}
-
-\begin{itemize}
-\item Avg water bill is 761 PhP while avg unpaid balance is 2,416 PhP ($\sim$5\% of HH income)
-\vspace{.8mm}
-\item HHs pay in 60\% of months
-\vspace{.8mm}
-\item There are 1.32 delinquency visits per HH on avg
-\vspace{.8mm}
-\item Sample has \input{tables/total_hhs_stayers}HHs with \input{tables/obs_per_hh_stayers}obs per HH for \input{tables/total_obs_stayers}total obs 
-\end{itemize}
-
-\vspace{3mm}
-45 Philippine Peso (PhP) = 1 US Dollar \\
-Avg monthly HH Income \input{tables/y_avg}PhP \\
-% \begin{itemize}
-% \item Why do households pay late? (convenience, consumption smoothing)
-% \end{itemize}
-
-\end{frame}
-
-
-%------------------------------------------------
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Avg share connected around 1st delinquency visit}
-\Wider[4em]{
-\begin{figure}
-\centering
-%\includegraphics[scale=.47]{tables/line1_pay.pdf}
-\includegraphics[scale=.7]{tables/line_conn.pdf}
-\end{figure}
-}
 \end{frame}
 
 
@@ -693,39 +740,39 @@ Thank you!
 
 
 
-\begin{frame}
-\frametitle{Other outcomes relative to 1st visit}
-\Wider[4em]{
-\begin{figure}
-\centering
-\includegraphics[scale=.47]{tables/line_pay.pdf}
-\includegraphics[scale=.47]{tables/line_c.pdf}
-\end{figure}
-\begin{itemize}
-  \item Avg payments only include positive payments
-\end{itemize}
-}
-\end{frame}
+% \begin{frame}
+% \frametitle{Other outcomes relative to 1st visit}
+% \Wider[4em]{
+% \begin{figure}
+% \centering
+% \includegraphics[scale=.47]{tables/line_pay.pdf}
+% \includegraphics[scale=.47]{tables/line_c.pdf}
+% \end{figure}
+% \begin{itemize}
+%   \item Avg payments only include positive payments
+% \end{itemize}
+% }
+% \end{frame}
 
 
-%------------------------------------------------
-%------------------------------------------------
+% %------------------------------------------------
+% %------------------------------------------------
 
-\begin{frame}
-\frametitle{Solving the model with a value function approach}
+% \begin{frame}
+% \frametitle{Solving the model with a value function approach}
 
-\begin{align*}
-V(X_t,z_t) \,=\, &max_{x_t,w_t}  \,\,\, u(x_t,w_t) \,+\,\, (1+\delta)^{-1} \, E \Big[\, V(X_{t+1}|z_{t})\,\Big| z_{t+1}, T_{t,t+1} \Big]
-\\
-s.t.& \\
-x_t & \, + \, p(w_t) w_t \, = \, y_t  \, + \, S_t \\
-B_{t-1}-p&(w_t) w_t (1-D_{t}) \leq B_{t} \leq 0  \\
-\\
-X_t &= [x_{t},w_{t},A_{t},B_{t},D_{t}] \hspace{2mm}\text{ chosen by HH }  \\
- z_t &= [y_t,visit_t]  \\
-T_{t,t+1} &= [ 0.5\pi \,\,\,\, 0.5(1-\pi)\,\,\,\,  0.5\pi\,\,\,\,  0.5(1-\pi) ] \times [ 1 \,\,\,\, 1\,\,\,\,  1 \,\,\,\, 1 ]^{\text{T}}
-% \text{simple transition matrix } \\ 
-\end{align*}
+% \begin{align*}
+% V(X_t,z_t) \,=\, &max_{x_t,w_t}  \,\,\, u(x_t,w_t) \,+\,\, (1+\delta)^{-1} \, E \Big[\, V(X_{t+1}|z_{t})\,\Big| z_{t+1}, T_{t,t+1} \Big]
+% \\
+% s.t.& \\
+% x_t & \, + \, p(w_t) w_t \, = \, y_t  \, + \, S_t \\
+% B_{t-1}-p&(w_t) w_t (1-D_{t}) \leq B_{t} \leq 0  \\
+% \\
+% X_t &= [x_{t},w_{t},A_{t},B_{t},D_{t}] \hspace{2mm}\text{ chosen by HH }  \\
+%  z_t &= [y_t,visit_t]  \\
+% T_{t,t+1} &= [ 0.5\pi \,\,\,\, 0.5(1-\pi)\,\,\,\,  0.5\pi\,\,\,\,  0.5(1-\pi) ] \times [ 1 \,\,\,\, 1\,\,\,\,  1 \,\,\,\, 1 ]^{\text{T}}
+% % \text{simple transition matrix } \\ 
+% \end{align*}
 
 
 % \vspace{2mm}
@@ -733,7 +780,7 @@ T_{t,t+1} &= [ 0.5\pi \,\,\,\, 0.5(1-\pi)\,\,\,\,  0.5\pi\,\,\,\,  0.5(1-\pi) ] 
 % \item Choices observed in the data : usage ($w_t$), bills ($B_t$), and disc. ($D_t$)
 % \end{itemize}
 
-\end{frame}
+% \end{frame}
 
 
 
