@@ -1,4 +1,4 @@
-function    [h,util,sim,nA,nB,A,B,vstart] = dc_obj_chow(given,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven)
+function    [h,util,sim,nA,nB,A,B,vstart] = dc_obj_chow_pol(given,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven,pol)
 
 
 
@@ -67,11 +67,19 @@ for f =1:Fset
            l_int_target(v(:,1),size(A,1)) ...
            l_int_target(v(:,1),size(A,1)) ...
            l_int_target(v(:,1),size(A,1)) ];
+        decis=[ l_int_target(decis(:,1),size(A,1)) ...
+                l_int_target(decis(:,1),size(A,1)) ...
+                l_int_target(decis(:,1),size(A,1)) ...
+                l_int_target(decis(:,1),size(A,1)) ];
    end
    
     [util1,util2,util3,util4] = ...
          gen_dc_4se(A,B,D,Aprime,Bprime,Dprime,r_high,r_lend,r_water,water_lending,Y_high,Y_low,p1,p2,p1d,p2d,pd,alpha,k_high,k_low,lambda_high,lambda_low);
-    [v,decis]=opt_loop(v,util1,util2,util3,util4,beta,prob,metric);
+    if pol==1
+        [v,decis]=opt_loop_pol(v,decis,util1,util2,util3,util4,beta,prob,metric);
+    else
+        [v,decis]=opt_loop(v,util1,util2,util3,util4,beta,prob,metric);
+    end
     
 end
 

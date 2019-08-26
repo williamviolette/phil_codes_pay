@@ -11,7 +11,7 @@ real_data     = 1     ;
 second_output = 0     ;
 pick_sv       = 0     ;
 est_many      = 0     ;
-est_tables    = 1     ;
+est_tables    = 0     ;
 counter       = 0     ;
 
 bs            = 0 ; % bootstrap option
@@ -66,8 +66,8 @@ mult_set = [  1  ];
 %%%% is it sensitive to theta?
 
 n = 10000; 
-nA = 7  %%% previously 25, 25 (7 takes 1608 (28*28*2=1568)) (8 takes 3702 (32*32*2=4096))
-nB = 7 
+nA = 15  %%% previously 25, 25 (7 takes 1608 (28*28*2=1568)) (8 takes 3702 (32*32*2=4096))
+nB = 15 
 
 Alb = -1.*csvread(strcat(folder,'Ab.csv'));
 Aub = csvread(strcat(folder,'Ab.csv'));
@@ -213,11 +213,19 @@ given=       [ r_lend    0      .02         0            0.35        0      .026
     %     unique(A1)
     %     unique(B1)
     toc
+    
+    disp ' value iteration ' 
     tic
         [h,US,~,nA1,nB1,A1,B1]         = dc_obj_chow(given,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven);
     toc
 
+    disp ' policy iteration ' 
+    pol=1;
+    tic
+        [h,US,~,nA1,nB1,A1,B1]         = dc_obj_chow_pol(given,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven,pol);
+    toc
 
+    
 
 if pick_sv == 1
 
