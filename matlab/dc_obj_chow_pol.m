@@ -150,36 +150,36 @@ for ii = 1:n-1
 end
 
 
-S = [0;states(1:end-1,2)];
-
-A_1 = controls(:,2);
-A_0 = [0;controls(1:end-1,2)];
-
-B_1 = controls(:,3);
-B_0 = [0;controls(1:end-1,3)];
-
-D_1 = controls(:,4);
-D_0 = [0;controls(1:end-1,4)];
-
-
-scatter(A_0(D_0==0 & S==1 & B_0==0),A_1(D_0==0 & S==1 & B_0==0))
-
-
-scatter(A_0(D_0==0 & S==1 & B_0==0),A_1(D_0==0 & S==1 & B_0==0))
-
-
-scatter(A_0(D_0==0 & S==1 & B_0<0),A_1(D_0==0 & S==1 & B_0<0))
-
-
-scatter(A_0(S==2 & D_0==1)+B_0(S==2 & D_0==1),D_1(S==2 & D_0==1))
-
-
-
-plot(states(:,1),controls(:,2))
-
-scatter(states(states(:,2)==1 & controls(:,3)==0,1),controls(states(:,2)==1 & controls(:,3)==0,2))
-
-scatter(states(states(:,2)==1 ,1),controls(states(:,2)==1,3))
+% S = [0;states(1:end-1,2)];
+% 
+% A_1 = controls(:,2);
+% A_0 = [0;controls(1:end-1,2)];
+% 
+% B_1 = controls(:,3);
+% B_0 = [0;controls(1:end-1,3)];
+% 
+% D_1 = controls(:,4);
+% D_0 = [0;controls(1:end-1,4)];
+% 
+% 
+% scatter(A_0(D_0==0 & S==1 & B_0==0),A_1(D_0==0 & S==1 & B_0==0))
+% 
+% 
+% scatter(A_0(D_0==0 & S==1 & B_0==0),A_1(D_0==0 & S==1 & B_0==0))
+% 
+% 
+% scatter(A_0(D_0==0 & S==1 & B_0<0),A_1(D_0==0 & S==1 & B_0<0))
+% 
+% 
+% scatter(A_0(S==2 & D_0==1)+B_0(S==2 & D_0==1),D_1(S==2 & D_0==1))
+% 
+% 
+% 
+% plot(states(:,1),controls(:,2))
+% 
+% scatter(states(states(:,2)==1 & controls(:,3)==0,1),controls(states(:,2)==1 & controls(:,3)==0,2))
+% 
+% scatter(states(states(:,2)==1 ,1),controls(states(:,2)==1,3))
 
 % scatter(controls(states(:,2)==1 ,1) + states(states(:,2)==1 ,3),controls(states(:,2)==1,3))
 

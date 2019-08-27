@@ -1,7 +1,8 @@
 function [v,decis]=opt_loop_pol(v,decis,util1,util2,util3,util4,beta,prob,metric)
 
+i = 0;
 while metric > 1e-7
-
+i = i + 1
       [tv1,tdecis1]=max(util1 + beta.*repmat(v*prob(1,:)',1,size(util1,1)));
       [tv2,tdecis2]=max(util2 + beta.*repmat(v*prob(2,:)',1,size(util1,1)));
       [tv3,tdecis3]=max(util3 + beta.*repmat(v*prob(3,:)',1,size(util1,1)));

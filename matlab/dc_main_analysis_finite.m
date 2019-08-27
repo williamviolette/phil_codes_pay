@@ -10,7 +10,7 @@ cd_dir ='/Users/williamviolette/Documents/Philippines/phil_analysis/phil_codes_p
 real_data     = 1     ;
 second_output = 0     ;
 pick_sv       = 0     ;
-est_many      = 0     ;
+est_many      = 1     ;
 est_tables    = 0     ;
 counter       = 0     ;
 
@@ -22,7 +22,7 @@ Fset     = 2;     % number of Chow iterations
 refinement =1 ; % refine the number of stuff
 prob_caught_sim = 0 ;
 
-one_price       = 0;
+one_price       = 1 ;
 
 marginal_cost = 5;
 ppinst = 51;
@@ -31,43 +31,12 @@ s=1; % 1 adds amar moments
 
 mult_set = [  1  ];
 
-%%% refine est: n,8000  nA,8 nB,8 one run,2.86s  total,1482s est  : 0.00999719545886186          0.20936753044794        0.0305679439809489          186.940162736175
-%%% refine est: n,8000  nA,7 nB,7 one run,2.08s  total,
 
-%%% refine est: n,8000  nA,4 nB,4 one run,1.15s  total,263s est   : 0.0082459593512591         0.206349551895979        0.0344387679922885          191.276497204238
-%%% refine est: n,10000 nA,4 nB,4 one run,1.15s  total,214s est  : 0.00846661771927642          0.21708577762795        0.0309834203143979          204.089802134792
-%%% refine est: n,20000 nA,4 nB,4 one run,1.49s  total,300s est  : 0.00917935145792283         0.229700672268095        0.0309756300297088          184.423288245618
-
-%%% alpha, r, pd
-% 4n, .82s, 400s
-% 6n, .93s, 182s
-% 7a,7b, 1.2s, 4o, 4m,  890s  0.00687099456787109      0.342904357910156     0.0223438510894775          210
-% 8a,8b, 1.6s, 4o, 4m, 2654s  0.00923959374427795      0.28075626373291      0.0257720718383789          172.5
-% 8a,8b, 1.6s, 4o,10m, 1119s  0.0108501559495926       0.264359741210938     0.0201444396972656          74
-% 5a,8b, 1.6s, 4o,4m,  1161s  0.0051939731836319       0.340272216796875     0.0255288848876953          138
-
-% 9a,9b, 3.2s, 4o, 6m, 3141s  0.010084400177002        0.264434127807617        0.0252093443870544          147
-% 8a,8b, 1.6s, 4o, 6m, 1840s  0.00968910217285156      0.278489379882813        0.0257682571411133          138.5
-% 6a,6b, 1.0s, 4o, 6m, 461s   0.0101792311668396       0.2798779296875          0.025755859375              138
-
-
-%%% FIXED THE lending rate
-% 6a,6b, , 4o, 6m, 1068s D.01  0.0260908889770508         0.374820499420166         0.0219125518798828                     -22.5
-% 4a,4b, , 4o, 4m, 839s  D.015 0.0212795925140381         0.319558410644531         0.025053955078125                       -86
-% 4a,4b, , 4o, 4m, 1060s D.015 0.00805168271064758        0.404805450439453        0.0246228942871094                        91
-% 6a,6b, , 4o, 4m, 980   D.015 0.0225921165943146         0.3403564453125         0.0242452392578125                       164
-% 7a,7b, , 4o, 4m, 685   D.015 0.0219416809082031         0.341806030273437         0.023702956199646                       150
-
-
-
-%%% ALL ARE VERY CLOSE! VERY NICE! !! 
-
-
-%%%% is it sensitive to theta?
+%%%% is it sensitive to theta?    previously 25, 25 (7 takes 1608 (28*28*2=1568)) (8 takes 3702 (32*32*2=4096))
 
 n = 10000; 
-nA = 15  %%% previously 25, 25 (7 takes 1608 (28*28*2=1568)) (8 takes 3702 (32*32*2=4096))
-nB = 15 
+nA = 14 %%%  3,3: 572s  5,5: 176s (46it, 319fun)  7,7: 350s (84it, 555fun)   
+nB = 14 %%%  8,8: 500s (136it, 859fun)  10,10: 660s (164it, 1009fun)  14,14: 369s (70it, 454fun)  20, 20:  1180s (104it, 656fun)
 
 Alb = -1.*csvread(strcat(folder,'Ab.csv'));
 Aub = csvread(strcat(folder,'Ab.csv'));
@@ -193,8 +162,9 @@ format long g
 %given=       [ r_lend    0      .03         0            0.28        0      .026      .02     y_avg p1  p2  170   n   10  0 ];
 
 %given=       [ r_lend    0      .02         0            0.28        0      .026      .01     y_avg p1  p2  170   n   10  0 ];
-given=       [ r_lend    0      .02         0            0.35        0      .026      .015     y_avg p1(1)  p2(1)  170   n   10  0 ];
+% \given=       [ r_lend    0      .02         0            0.35        0      .026      .015     y_avg p1(1)  p2(1)  170   n   10  0 ];
 
+given=       [ r_lend    0      .0115        0            0.41        0      .019      .015     y_avg p1(1)  p2(1)  200   n   10  0 ];
 
 
 %oldgiven=   [ r_lend    0      .04         0            0.3         0       .018      .02     y_avg p1  p2  pd   n   10  0 ];
@@ -206,24 +176,17 @@ given=       [ r_lend    0      .02         0            0.35        0      .026
 
     tic
     vgiven=0;
-        [h,US,~,nA1,nB1,A1,B1,vgiven] = dc_obj_chow(given,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven);
+        [h,US,~,nA1,nB1,A1,B1] =dc_obj_chow_pol_finite(given,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
+
         round(h(option_moments),2)
     %     nA1
     %     nB1
     %     unique(A1)
     %     unique(B1)
     toc
-% %     
-disp ' value iteration ' 
-     tic
-         [h,US,~,nA1,nB1,A1,B1]         = dc_obj_chow(given,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven);
-     toc
-% % 
-     disp ' policy iteration ' 
-     pol=1;
-    tic
-        [h,US,~,nA1,nB1,A1,B1]         = dc_obj_chow_pol(given,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven,pol);
-    toc
+    
+    
+    
 
 if pick_sv == 1
 
@@ -283,8 +246,8 @@ if bs~=1
 
     weights =  eye(size(option_moments,2))./(data.^2) ;   % normalize moments to be between zero and one (matters quite a bit)
     ag = given(1,option);    
-    obj = @(a1)dc_objopt_chow(a1,given,data,option,option_moments,weights,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven);
-
+    obj = @(a1)dc_objopt_chow_finite(a1,given,data,option,option_moments,weights,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
+%   obj = @(a1)dc_objopt_chow_finite(a1,given,data,option,option_moments,weights,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven);
     
     if est_many == 1
             %%% run mamy starting values! %%%
@@ -319,11 +282,11 @@ if bs~=1
 %         OBJ_VAL
 % 
 %         [OUTPUT' data_moments']
-% 
-%         [~,ind]=min(OBJ_VAL);
+
+        [~,ind]=min(OBJ_VAL);
         estimates = R(ind,:);
 % 
-        csvwrite(strcat(folder,'estimates.csv'),estimates)
+%       csvwrite(strcat(folder,'estimates.csv'),estimates)
     end
     
 else %%% HERE IS BOOSTRAPPED
