@@ -42,6 +42,8 @@ k_low  = -gamma;
    
 
     v = zeros(size(A,1),4)   ;
+    
+%     v = -100000.*(Aprime(:,1)<0).*ones(size(A,1),4);
           
     T = 80;
     Acc = 155;
@@ -87,16 +89,17 @@ k_low  = -gamma;
 
 %%%%% POLICY SIM ! %%%%%%
 
-[Im,Jm] = find(B==0 & A==min(min(abs(A))) & A>0 & D==0);
+% [Im,Jm] = find(B==0 & A==min(min(abs(A))) & A>0 & D==0);
+[Im,Jm] = find(B==0 & A==0 & D==0,1);
 
 states   = zeros(Acc*Tsim-1,2);
 controls = zeros(Acc*Tsim-1,5);
 
 for jj = 1:Tsim
 
-    Athis = A(Im(1),Jm(1));
-    Bthis = B(Im(1),Jm(1));
-    Dthis = D(Im(1),Jm(1));
+    Athis = A(Im,Jm);
+    Bthis = B(Im,Jm);
+    Dthis = D(Im,Jm);
     Imark = Jm(1);
     
     for ii = 1:Acc
@@ -130,39 +133,7 @@ for jj = 1:Tsim
     end
 end
 
-%   [controls repmat([1:Acc]',Tsim,1)]
-
-
-
-% for ii = 1:(n-1)
-%     if ii<(n-1)-T +1
-%         Inext = mDecis(Imark,chain(ii),1);
-%     else
-%         ii_alt= ii - ((n-1)-T);  
-%         Inext = mDecis(Imark,chain(ii),ii_alt);
-%     end
-%     %Inext
-%     %Inext = decis(Imark,chain(ii));
-%     Ap = Aprime(Inext,1);
-%     Bp = Bprime(Inext,1);
-%     Dp = Dprime(Inext,1);
-%     Imark  = Inext;
-%     
-%     [~,~,~,~,...
-%              w1,w2,w3,w4] = ...
-%          gen_dc_4se(Athis,Bthis,Dthis,Ap,Bp,Dp,r_high,r_lend,r_water,water_lending,Y_high,Y_low,p1,p2,p1d,p2d,pd,alpha,k_high,k_low,lambda_high,lambda_low);
-%     
-%          cons_full = [w1 w2 w3 w4];
-%     
-%     cons = cons_full(chain(ii));
-%     
-%     states(ii,:) = [ Athis chain(ii) ];
-%     controls(ii,:) = [ cons Ap Bp Dp];
-%     Athis = Ap;
-%     Bthis = Bp;
-%     Dthis = Dp;
-% end
-
+%%%   [controls repmat([1:Acc]',Tsim,1)]
 
 
 

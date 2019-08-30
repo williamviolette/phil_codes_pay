@@ -1,10 +1,13 @@
 
 
-global data_prep   = 0
+global data_prep   = 1
 global data_prep_2 = 1
 
 
 if $data_prep == 1 {
+
+	* do fies_projection.do
+
 	use "${temp}ar_temp_pay.dta", clear
 		duplicates drop conacct date, force
 			merge 1:m conacct date using "${temp}bill_temp_pay.dta"
@@ -34,23 +37,28 @@ if $data_prep == 1 {
 			*drop if date<cnn_min
 			*drop cnn cnn_min
 		g ts = ba==.
-			egen bam=max(ba), by(conacct)
+			gegen bam=max(ba), by(conacct)
 			replace ba = bam
 			drop bam
 
-			merge m:1 conacct using "${temp}paws_temp.dta"
+			fmerge m:1 conacct using "${temp}paws_temp.dta"
 			drop if _merge==2
 			drop _merge
 
-			merge m:1 conacct using "${temp}paws_dc.dta"
+			fmerge m:1 barangay_id using "${temp}barangay_merge.dta"
+			keep if _merge==3
+			drop _merge
+
+			fmerge m:1 conacct using "${temp}paws_dc.dta"
 			drop if _merge==2
 			drop _merge
 
-			merge m:1 conacct using "${phil_folder}promissory_note/temp/date_c.dta"
+			fmerge m:1 conacct using "${phil_folder}promissory_note/temp/date_c.dta"
 			drop if _merge==2
 			drop _merge
 
 			drop if date<date_c
+
 
 	save "${temp}temp_descriptives.dta", replace
 }
@@ -158,11 +166,11 @@ use "${temp}temp_descriptives.dta", clear
 	writeN month_drop
 
 * Keep single households
-	NN
-	keep if SHH==1
-	global SHH_N = `=_N'
-	write "${tables}SHH_N.tex" `=${SHH_N}' 1 "%12.0fc"
-	writeN SHH_drop
+	* NN
+	* keep if SHH==1
+	* global SHH_N = `=_N'
+	* write "${tables}SHH_N.tex" `=${SHH_N}' 1 "%12.0fc"
+	* writeN SHH_drop
 
 * Clean disconnection data   *** address holes
 	replace dc = 0 if dc==.
@@ -199,7 +207,7 @@ use "${temp}temp_descriptives.dta", clear
 
 	order conacct date c amount bal pay ar tcd_id dc 
 
-	merge  m:1 conacct using "${temp}mcf_ba.dta"
+	fmerge  m:1 conacct using "${temp}mcf_ba.dta"
 	drop if _merge==2
 	drop _merge
 

@@ -1,6 +1,6 @@
 function [A,Aprime,B,Bprime,D,Dprime] = refine(A,Aprime,B,Bprime,D,Dprime)
 
-                % either save and NO water borrow, or borrow from both
+% either save and NO water borrow, or borrow from both
 % (A>0 & B==0) |  (A<=0 & B<=0)                
 % test = (A>0 & B<0 & D==0);
 test = (A>0 & B<0);
@@ -16,8 +16,8 @@ Bprime = Bprime(arbitrage,arbitrage);
 D = D(arbitrage,arbitrage);
 Dprime = Dprime(arbitrage,arbitrage);
 
-                % either don't disconnect, or disconnect but have some
-                % water borrowing
+% either don't disconnect, or disconnect but have some
+% water borrowing
 dc_with_no_bal=find(max( (B~=0 & D==1) | (D==0) ) );
 
 A = A(dc_with_no_bal,dc_with_no_bal);
@@ -33,16 +33,16 @@ Dprime = Dprime(dc_with_no_bal,dc_with_no_bal);
         %%% HERE IS A LITTLE MORE AMBITIOUS ! NO CASES WITH D==1 AND
         %%% A>1/2 min A AND B>1/2 min B
         
-test_a = ( (A>.5*A(1,1) | B>.5*B(1,1)) & D==1);
-test1_a=test_a==0;
-arbitrage_a=find(max((test1_a)));
+% test_a = ( (A>.5*A(1,1) | B>.5*B(1,1)) & D==1);
+% test1_a=test_a==0;
+% arbitrage_a=find(max((test1_a)));
+% 
+% A = A(arbitrage_a,arbitrage_a);
+% Aprime = Aprime(arbitrage_a,arbitrage_a);
+% 
+% B = B(arbitrage_a,arbitrage_a);
+% Bprime = Bprime(arbitrage_a,arbitrage_a);
+% 
+% D = D(arbitrage_a,arbitrage_a);
+% Dprime = Dprime(arbitrage_a,arbitrage_a);
 
-A = A(arbitrage_a,arbitrage_a);
-Aprime = Aprime(arbitrage_a,arbitrage_a);
-
-B = B(arbitrage_a,arbitrage_a);
-Bprime = Bprime(arbitrage_a,arbitrage_a);
-
-D = D(arbitrage_a,arbitrage_a);
-Dprime = Dprime(arbitrage_a,arbitrage_a);
-        

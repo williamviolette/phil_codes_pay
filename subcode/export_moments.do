@@ -1,6 +1,35 @@
 * export_moments
 
 
+
+	*** THIS IS RIGHT
+	
+	sum todisbdeposits, detail
+	global deposits = `=r(p95)'
+	sum todisbcashloan, detail 
+	global cashloan= `=r(p95)'
+
+	write "${moments}Ab.csv" `=$deposits + $cashloan' 1 "%12.0g"
+	write "${tables}Ab.tex" `=$deposits + $cashloan' 1 "%12.0fc"
+
+	forvalues r=1/3 {
+		sum todisbdeposits if inc_t==`r', detail
+		global deposits = `=r(p95)'
+		sum todisbcashloan if inc_t==`r', detail 
+		global cashloan= `=r(p95)'
+
+		write "${moments}Ab_t`r'.csv" `=$deposits + $cashloan' 1 "%12.0g"
+		write "${tables}Ab_t`r'.tex" `=$deposits + $cashloan' 1 "%12.0fc"
+	}
+
+
+
+	forvalues r=1/3 {
+	sum inc if inc_t==`r', detail
+	write "${moments}y_avg_t`r'.csv" `=r(mean)' 0.1 "%12.0g"
+	write "${tables}y_avg_t`r'.tex" `=r(mean)' 0.1 "%12.0g"
+	}
+
 	write "${tables}est_obs.tex" `=_N' 1 "%12.0fc"
 
 	preserve
@@ -10,6 +39,7 @@
 	restore
 
 *** Price
+	cap drop p_avg
 	g p_avg = amount/c
 	sum p_avg
 	write "${moments}p_avg.csv" `=r(mean)' 0.1 "%12.0g"
@@ -66,14 +96,28 @@
 
 
 *** balance 95th percentile bound
-	sum bal if bal>=0, detail
+	sum bal if bal>0, detail
 	write "${moments}Bb.csv" `=r(p95)' 1 "%12.0g"
 	write "${tables}Bb.tex" `=r(p95)' 1 "%12.0fc"
 
-*** Disconnection rate
+	forvalues r=1/3 {
+		sum bal if bal>0 & inc_t==`r', detail
+		write "${moments}Bb_t`r'.csv" `=r(p95)' 1 "%12.0g"
+		write "${tables}Bb_t`r'.tex" `=r(p95)' 1 "%12.0fc"
+	}
+
+
+
+*** Disconnection rate by income
 	sum tcd_id if ar_lag>31
 		write "${moments}prob_caught.csv" `=r(mean)' 0.0001 "%12.4g"
 		write "${tables}prob_caught.tex" `=r(mean)*100' 0.01 "%12.2fc"
+	
+	forvalues r=1/3 {
+		sum tcd_id if ar_lag>31 & inc_t==`r'
+		write "${moments}prob_caught_t`r'.csv" `=r(mean)' 0.0001 "%12.4g"
+		write "${tables}prob_caught_t`r'.tex" `=r(mean)*100' 0.01 "%12.2fc"
+	}
 
 
 *** Consumption
@@ -81,24 +125,48 @@
 		write "${moments}c_avg.csv" `=r(mean)' 0.1 "%12.0g"
 		write "${tables}c_avg.tex" `=r(mean)' 0.1 "%12.0g"
 
+	forvalues r=1/3 {
+		sum c if inc_t==`r', detail
+		write "${moments}c_avg_t`r'.csv" `=r(mean)' 0.1 "%12.0g"
+		write "${tables}c_avg_t`r'.tex" `=r(mean)' 0.1 "%12.0g"
+	}
+
+
+
 	egen c_i = mean(c), by(conacct)
 	g c_norm = c - c_i
 	sum c_norm, detail
 	write "${moments}c_std.csv" `=r(sd)' 0.1 "%12.0g" 
 	write "${tables}c_std.tex" `=r(sd)' 0.1 "%12.0g" 
+	forvalues r=1/3 {
+		sum c_norm if inc_t==`r', detail
+		write "${moments}c_std_t`r'.csv" `=r(sd)' 0.1 "%12.0g" 
+		write "${tables}c_std_t`r'.tex" `=r(sd)' 0.1 "%12.0g" 		
+	}
 	drop c_i c_norm
 
 *** Balance
 	sum bal
 	write "${moments}bal_avg.csv" `=r(mean)' 0.1 "%12.0g"
 	write "${tables}bal_avg.tex" `=r(mean)' 0.1 "%12.0g"
+	forvalues r=1/3 {
+		sum bal if inc_t==`r'
+		write "${moments}bal_avg_t`r'.csv" `=r(mean)' 0.1 "%12.0g"
+		write "${tables}bal_avg_t`r'.tex" `=r(mean)' 0.1 "%12.0g"
+	}
 
 	egen bal_i = mean(bal), by(conacct)
 	g bal_norm = bal - bal_i
 	sum bal_norm 
 	write "${moments}bal_std.csv" `=r(sd)' 0.1 "%12.0g"
 	write "${tables}bal_std.tex" `=r(sd)' 0.1 "%12.0g"
+	forvalues r=1/3 {
+		sum bal_norm if inc_t==`r'
+		write "${moments}bal_std_t`r'.csv" `=r(sd)' 0.1 "%12.0g"
+		write "${tables}bal_std_t`r'.tex" `=r(sd)' 0.1 "%12.0g"
+	}
 	drop bal_i bal_norm
+
 
 	corr bal c
 	matrix C = r(C)
@@ -106,6 +174,13 @@
 	write "${moments}bal_corr.csv" `cv' 0.001 "%12.0g"
 	write "${tables}bal_corr.tex" `cv' 0.001 "%12.0g"
 
+	forvalues r=1/3 {
+		corr bal c if inc_t==`r'
+		matrix C = r(C)
+		local cv "C[1,2]"
+		write "${moments}bal_corr_t`r'.csv" `cv' 0.001 "%12.0g"
+		write "${tables}bal_corr_t`r'.tex" `cv' 0.001 "%12.0g"
+	}
 
 *** Disconnection rate
 	forvalues i=0/5 {
@@ -113,6 +188,10 @@
 		by conacct: g am`i' = am if tcd_id[_n-`i']==1
 		sum am`i', detail
 		write "${moments}am`i'.csv" `=r(mean)' 0.0001 "%12.4g"
+		forvalues r=1/3 {
+			sum am`i' if inc_t==`r', detail
+			write "${moments}am`i'_t`r'.csv" `=r(mean)' 0.0001 "%12.4g"
+		}
 	}
 	sum am0
 	sum am1
@@ -128,6 +207,11 @@
 		by conacct: g amar`i' = am if tcd_id[_n-`i']==1 & ar[_n-`i']>90
 		sum amar`i', detail
 		write "${moments}amar`i'.csv" `=r(mean)' 0.0001 "%12.4g"
+
+		forvalues r=1/3 {
+		sum amar`i' if inc_t==`r', detail
+		write "${moments}amar`i'_t`r'.csv" `=r(mean)' 0.0001 "%12.4g"
+		}
 	}
 	sum amar0
 	sum amar1

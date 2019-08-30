@@ -1,13 +1,6 @@
 function [A,Aprime,B,Bprime,D,Dprime,nA,nB] = grid_int(nA,sigA,Alb,Aub,nB,sigB,Blb,nD, int_size,refinement)
 
-% nBa=nB-1;
-% 
-% Agrid = 0 + sqrt(2)*sigA*erfinv(2*((1:nA)'./(nA+1))-1);
-% Agrid = round(Agrid,0);
-% 
-% Bgrid = 0 + sqrt(2)*sigB*erfinv(2*((1:nBa)'./(2.*nBa+1))-1);
-% Bgrid =round(sort(-1.*abs(Bgrid),'descend'),0);
-% Bgrid = [0;Bgrid];
+
 
 if sigA>0
     [Agrid,Bgrid]=grid_id(nA,sigA,Alb,Aub,nB,sigB,Blb);
@@ -16,19 +9,25 @@ else
     Bgrid = ((0:(nB-1))./(nB-1))'.*(0 - Blb) + Blb ;
 end
 
-Agrid = l_int(Agrid,int_size);
+if int_size>1
+    Agrid = l_int(Agrid,int_size);
+end
+
+if isempty(find(Agrid==0,1))
+   Agrid = [Agrid(1:size(Agrid,1)/2); 0; Agrid((size(Agrid,1)/2)+1:end)];
+end
 nA_temp= size(Agrid,1);
 
 
-Bgrid = l_int(Bgrid,int_size);
+if int_size>1
+    Bgrid = l_int(Bgrid,int_size);
+end
 nB_temp = size(Bgrid,1);
-
 
 Aprime_r = repmat(Agrid,1,nA_temp);
 A_r = repmat(Agrid,1,nA_temp)';
 Bprime_r = repmat(Bgrid,1,nB_temp);
 B_r = repmat(Bgrid,1,nB_temp)';
-
 
 A_r1      = repelem(A_r,nB_temp,nB_temp);
 Aprime_r1 = repelem(Aprime_r,nB_temp,nB_temp);

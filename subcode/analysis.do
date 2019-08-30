@@ -12,55 +12,70 @@ end
 
 * do "${subcode}table_print.do"
 
-	import delimited using "${moments}y_avg.csv", clear delimiter(",")
-	sum v1
-	global y_avg = `r(mean)'
+	* import delimited using "${moments}y_avg.csv", clear delimiter(",")
+	* sum v1
+	* global y_avg = `r(mean)'
 
-	import delimited using "${moments}save_avg.csv", clear delimiter(",")
-	sum v1
-	global save_avg = `r(mean)'
+	* import delimited using "${moments}save_avg.csv", clear delimiter(",")
+	* sum v1
+	* global save_avg = `r(mean)'
 
-	import delimited using "${moments}y_p20.csv", clear delimiter(",")
-	sum v1
-	global y_p20 = `r(mean)'
+	* import delimited using "${moments}y_p20.csv", clear delimiter(",")
+	* sum v1
+	* global y_p20 = `r(mean)'
 
-
-
-**** DO A BETTER JOB OF ROOTING OUT PERMANENT DISCONNECTIONS?!
 
 use "${temp}temp_descriptives_2.dta", clear
 
-g l6_id = amount!=. & date>=659
-egen l6=sum(l6_id), by(conacct)
+*** Income definition
+egen inc_t = cut(inc), group(3)
+replace inc_t=inc_t+1
 
+*** Leavers
+g l6_id = amount!=. & date>=659
+gegen l6=sum(l6_id), by(conacct)
+
+g pcd_id = dc==2
+egen pcd = max(pcd_id), by(conacct)
+drop pcd_id
+
+g a6= l6==6 & pcd!=1
+g leaver = a6!=1
+
+*** Leaver cleaning
+sort conacct date
+by conacct: g dc_enter = amount[_n-1]!=. & amount[_n]==. & amount[_n+1]==.
+g dc_date_id = date if dc_enter==1
+gegen dc_date = max(dc_date_id), by(conacct)
+	replace c   = . if date>dc_date  & leaver==1
+	replace bal = . if date>dc_date  & leaver==1
+	replace ar  = . if date>dc_date  & leaver==1
+drop dc_date dc_date_id
+
+*** Data definitions
 sort conacct date
 by conacct: g ar_lag = ar[_n-1]
 
 egen ams=sum(am), by(conacct)	
 egen tcds=sum(tcd_id), by(conacct)
 
-g pcd_id = dc==2
-egen pcd = max(pcd_id), by(conacct)
-drop pcd_id
 
 *** count PCD'd HOUSEHOLDS!
-	cap drop cnn
-	sort conacct date
-	by conacct: g cnn=_n
-	count if l6==6 & pcd==1 & cnn==1
-	write "${tables}pcd_hh.tex" `=r(N)' 1 "%12.0g"
-	drop cnn
+	* cap drop cnn
+	* sort conacct date
+	* by conacct: g cnn=_n
+	* count if l6==6 & pcd==1 & cnn==1
+	* write "${tables}pcd_hh.tex" `=r(N)' 1 "%12.0g"
+	* drop cnn
 
 
-g a6= l6==6 & pcd!=1
-g leaver = a6!=1
-g aa=1
 
 
-cap drop del_id
-g del_id = ar>31 & ar<.
-sum del_id 
-write "${tables}share_del.tex" `=r(mean)*100' 1 "%12.0g"
+
+* cap drop del_id
+* g del_id = ar>31 & ar<.
+* sum del_id 
+* write "${tables}share_del.tex" `=r(mean)*100' 1 "%12.0g"
 
 
 * do "${subcode}descriptive_table_print_3_groups.do"
@@ -69,15 +84,15 @@ write "${tables}share_del.tex" `=r(mean)*100' 1 "%12.0g"
 * do "${subcode}descriptive_table_print.do"
 	
 
-	preserve
-		keep if tcd_max==1 & a6==1
+	* preserve
+	* 	keep if tcd_max==1 & a6==1
 
-		 * do "${subcode}export_moments.do"
+		 do "${subcode}export_moments.do"
 	     
 	  *    global dtable_name "stayers"
 		 * do "${subcode}descriptive_table_print.do"
 	
-	restore
+	* restore
 
 
 

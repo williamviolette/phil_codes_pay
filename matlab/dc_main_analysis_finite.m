@@ -10,19 +10,20 @@ cd_dir ='/Users/williamviolette/Documents/Philippines/phil_analysis/phil_codes_p
 real_data     = 1     ;
 second_output = 0     ;
 pick_sv       = 0     ;
-est_many      = 1     ;
+short_est     = 1     ;
+est_many      = 0     ;
 est_tables    = 0     ;
 counter       = 0     ;
 
 bs            = 0 ; % bootstrap option
 br       = [1 10] ; % rep interval
 br_est   = [1 10] ;
-int_size = 2; % number of interpolations
+int_size = 1; % number of interpolations
 Fset     = 2;     % number of Chow iterations
 refinement =1 ; % refine the number of stuff
 prob_caught_sim = 0 ;
 
-one_price       = 1 ;
+one_price       = 0 ;
 
 marginal_cost = 5;
 ppinst = 51;
@@ -35,221 +36,169 @@ mult_set = [  1  ];
 %%%% is it sensitive to theta?    previously 25, 25 (7 takes 1608 (28*28*2=1568)) (8 takes 3702 (32*32*2=4096))
 
 n = 10000; 
-nA = 14 %%%  3,3: 572s  5,5: 176s (46it, 319fun)  7,7: 350s (84it, 555fun)   
-nB = 14 %%%  8,8: 500s (136it, 859fun)  10,10: 660s (164it, 1009fun)  14,14: 369s (70it, 454fun)  20, 20:  1180s (104it, 656fun)
-
-Alb = -1.*csvread(strcat(folder,'Ab.csv'));
-Aub = csvread(strcat(folder,'Ab.csv'));
-Blb = -1.*csvread(strcat(folder,'Bb.csv'));
+nA = 20 %%%  3,3: 572s  5,5: 176s (46it, 319fun)  7,7: 350s (84it, 555fun)   
+nB = 20 %%%  8,8: 500s (136it, 859fun)  10,10: 660s (164it, 1009fun)  14,14: 369s (70it, 454fun)  20, 20:  1180s (104it, 656fun)
 
 sigA = 0;
 sigB = 0;
 nD   = 2;
 
-
-
-
 %%%%%%%%% ESTIMATION %%%%%%%%%%
 
+ inc_t = 3;  %%% which inc to estimate1
+ 
 option = [ 3 5 7 12 ];   %%% what to estimate
 
 % option = [ 3 7 12 ];   %%% what to estimate
-
-%option_moments = [ 1 2 3 4 6 7 ];
-% option_moments = [ 1 3   6 7 8 9   10 11 12 13    ];  %%% moments to use!
-
-%option_moments = [  1 3   6 7   10 11    ];  %%% moments to use!
-
-option_moments  = [ 1 3   6    10     ];  %%% moments to use!
-
-%option_moments = [ 1  ];  %%% moments to use!
-
-
-
-
-
-if bs==1
-    bmat = csvread(strcat(folder,'B.csv'));
-    if one_price==1
-        p1 = bmat(1,:);
-        p2 = 0;
-    else
-        p1 = bmat(1,:);
-        p2 = bmat(2,:);
-    end
-        
-    % prob_caught = bmat(3,:);
-    % prob_caught = .05.*ones(size(prob_caught,1),size(prob_caught,2))  %%% HAVE HIGH PROB OF GETTING CAUGHT
-    % prob_caught = .05; %%% HAVE HIGH PROB OF GETTING CAUGHT
+   
     
-    c_avg    = bmat(4,:);
-    c_std    = bmat(5,:);
-    bal_avg  = bmat(6,:);
-    bal_std  = bmat(7,:);
-    bal_corr = bmat(8,:);
     
-    am1 = bmat(10,:); %%% start with plus 2! fix this later?!
-    am2 = bmat(11,:);
-    am3 = bmat(12,:);
-    am4 = bmat(13,:);
-    
-    amar1 = bmat(16,:); %%% same plus 2 here too
-    amar2 = bmat(17,:); 
-    amar3 = bmat(18,:); 
-    amar4 = bmat(19,:); 
-         
-else
-    %%% import key stats
-    c_avg     = csvread(strcat(folder,'c_avg.csv'));
-    c_std     = csvread(strcat(folder,'c_std.csv'));
-    bal_avg   = csvread(strcat(folder,'bal_avg.csv'));
-    bal_std   = csvread(strcat(folder,'bal_std.csv'));
-    bal_corr  = csvread(strcat(folder,'bal_corr.csv'));
-    
-    am1       = csvread(strcat(folder,'am1.csv')); %%% start with 1 not zero!!!!
-    am2       = csvread(strcat(folder,'am2.csv'));
-    am3       = csvread(strcat(folder,'am3.csv'));
-    am4       = csvread(strcat(folder,'am4.csv'));
+option_moments  = [ 1 2 3 4 ];  %%% moments to use!
 
-    amar1       = csvread(strcat(folder,'amar1.csv'));
-    amar2       = csvread(strcat(folder,'amar2.csv'));
-    amar3       = csvread(strcat(folder,'amar3.csv'));
-    amar4       = csvread(strcat(folder,'amar4.csv'));
+% option_moments  = [ 1  ];  %%% moments to use!
 
-    if one_price==1
-        p1        = csvread(strcat(folder,'p_avg.csv'));
-        p2        = 0;
-    else
-        p1        = csvread(strcat(folder,'p_int.csv'));
-        p2        = csvread(strcat(folder,'p_slope.csv'));
-    end
-%     prob_caught = csvread(strcat(folder,'prob_caught.csv'));
-    % prob_caught = .05  %%% HAVE HIGH PROB OF GETTING CAUGHT
+option_moments_est = [1 3 6 10];
 
-end
+% option_moments_est = [1 ];
 
-    prob_caught = csvread(strcat(folder,'prob_caught.csv'));
-    
-    y_avg       = csvread(strcat(folder,'y_avg.csv'));
-    delinquency_cost = csvread(strcat(folder,'delinquency_cost.csv'));
-    r_lend      = csvread(strcat(folder,'irate.csv'));
-    r_lend      = ((1+r_lend)^(1/12)) - 1;
-    dc_prob     = csvread(strcat(folder,'dc_per_month_account.csv'));
+
+
     visit_price = 200;
     erate = 45;
     popadj = 2.4*12;
     
-data_moments = [  c_avg; c_std; bal_avg; bal_std; bal_corr; am1; am2; am3; am4; amar1; amar2; amar3; amar4 ];
-
-
-
-
-
-
+[c_avg,c_std,bal_avg,bal_std,bal_corr,...
+    am1,am2,am3,am4,...
+    amar1,amar2,amar3,amar4,...
+    y_avg,Aub,Alb,Blb,...
+    p1,p2,prob_caught,...
+    delinquency_cost,r_lend,dc_prob] ...
+        = import_to_matlab_t3(folder,one_price);
+    
+% data_moments = [  c_avg; c_std; bal_avg; bal_std; bal_corr; am1; am2; am3; am4; amar1; amar2; amar3; amar4 ];
+data_moments = [ c_avg; bal_avg; (am1+am2)./2 ; (amar1+amar2)./2]  ;
 
 n_states=4;
 prob = [(1-prob_caught).*ones(n_states,n_states/2) (prob_caught).*ones(n_states,n_states/2)]./(n_states./2); 
 s0 = 1;  
-
 [chain,state] = markov(prob,n,s0);
 
 format long g
 
-
-
     % given :  r_lend , r_water, r_high ,  lambda (U) ,   theta (y), gamma (a), alpha , beta_up , Y , p1, p2 ,pd,  n , metric, waterlend,
-           %    1         2       3         4             5          6         7        8       9    10  11  12       %    
-%given=       [ r_lend    0      .03         0            0.28        0      .026      .02     y_avg p1  p2  170   n   10  0 ];
+           %    1         2       3         4         5           6         7        8       9    10  11  12       %    
+%given=       [ r_lend    0      .03         0        0.28        0      .026      .02     y_avg p1  p2  170   n   10  0 ];
 
-%given=       [ r_lend    0      .02         0            0.28        0      .026      .01     y_avg p1  p2  170   n   10  0 ];
-% \given=       [ r_lend    0      .02         0            0.35        0      .026      .015     y_avg p1(1)  p2(1)  170   n   10  0 ];
+%given=       [ r_lend    0      .02         0        0.28        0      .026      .01     y_avg p1  p2  170   n   10  0 ];
+% \given=     [ r_lend    0      .02         0        0.35        0      .026      .015     y_avg p1(1)  p2(1)  170   n   10  0 ];
 
-given=       [ r_lend    0      .0115        0            0.41        0      .019      .015     y_avg p1(1)  p2(1)  200   n   10  0 ];
-
-
-%oldgiven=   [ r_lend    0      .04         0            0.3         0       .018      .02     y_avg p1  p2  pd   n   10  0 ];
-% new oldgiven    =   [ r_lend    0      .01         0            0.21        0       .031      .02     y_avg p1  p2  180   n   10  0 ];
+given=       [  r_lend    0      .02        0         0.39        0      .037      .015     y_avg(1)  p1(1)  p2(1)  100   n   10  0; ...
+                r_lend    0      .02        0         0.39        0      .029     .015     y_avg(2)  p1(1)  p2(1)  100   n   10  0; ...
+                r_lend    0      .02        0         0.39        0      .02      .015     y_avg(3)  p1(1)  p2(1)  100   n   10  0 ];
 
 
-%%% TEST CODE HERE !!! %%%
-
-
-    tic
-    vgiven=0;
-        [h,US,~,nA1,nB1,A1,B1] =dc_obj_chow_pol_finite(given,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
-
-        round(h(option_moments),2)
-    %     nA1
-    %     nB1
-    %     unique(A1)
-    %     unique(B1)
-    toc
-    
-    
-    
-
-if pick_sv == 1
-
-
-%     S = [.003     .005   .01; ...
-%          0.2    0.2   0.2; ...
-%         0.025     .025    .025; ...
-%         150     150    150  ]';
-    
-    S = [.01     .0101   .012 ; ...
-         0.2    0.2   0.2; ...
-        .025     .025    .025; ...
-        170     170    170  ]';
-    
-    if real_data == 1
-        data = data_moments(option_moments); % need to transpose here
-    else
-        data = h(option_moments);
-    end
-
-    weights =  eye(size(option_moments,2))./(data.^2) ;   % normalize moments to be between zero and one (matters quite a bit)
-    ag = given(1,option);    
-    obj = @(a1)dc_objopt_chow(a1,given,data,option,option_moments,weights,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven);
-    
-    H = zeros(size(data,1),size(S,1));
-    U = zeros(1,size(S,1));
-    tic
-    for ss = 1:size(S,1)
-        a = S(ss,:);
-        [US] =  obj(a);
-        given1 = given;
-        given1(option)=a;
-        [h] =  dc_obj_chow(given1,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven);
-        H(:,ss)=h(option_moments);
-        U(1,ss)=US;
-    end
-    toc
-    
-    R = [H;U];
-    S'
-    round(R,2)
-    round([data_moments(option_moments)],2)
+if real_data == 1
+            data = data_moments(option_moments,:); % need to transpose here
+else
+            data = h(option_moments,:);
 end
+            
 
 
-%{a
+%%% TESTING GROUNDS 
+
+%         
+% given1 = given;
+% 
+% nA1 = 30;
+% nB1 = 30;
+% 
+% f_int = 5;
+% r_int = 5;
+% f_s = linspace(0,500,f_int);
+% r_s = linspace(.01,.03,r_int);
+% 
+% mom_s = zeros(f_int*r_int,5);
+% 
+% h_t = zeros(f_int,r_int);
+% 
+% data_t = round(data(option_moments,inc_t),1);
+
+% for f = 1:f_int
+%     tic
+%     for r = 1:r_int
+%         
+%         given_t = given1(inc_t,:);
+%         given_t(12) = f_s(f);
+%         given_t(3) = r_s(r);
+%         
+%         [est_mom]=dc_obj_chow_pol_finite(given_t(inc_t,:),prob,nA1,sigA,Alb(inc_t),Aub(inc_t),nB1,sigB,Blb(inc_t),nD,chain,s,int_size,refinement);
+%     
+%         h_t(f,r)=sum((round(est_mom(option_moments_est),1) - data_t).^2./(data_t));
+%     end
+%     toc
+% end
+% 
+% surf(h_t)
+
+
+tic
+[est_mom,~,~,~,~,A1,B1]=dc_obj_chow_pol_finite(given(inc_t,:),prob,nA,sigA,Alb(inc_t),Aub(inc_t),nB,sigB,Blb(inc_t),nD,chain,s,int_size,refinement);
+toc
+
+round(est_mom(option_moments_est),1)
+round(data(option_moments,inc_t),1)
+% 
 
 
 
-if bs~=1 
-   
-    if real_data == 1
-        data = data_moments(option_moments); % need to transpose here
-    else
-        data = h(option_moments);
+
+
+
+    if short_est==1
+
+
+        weights =  eye(size(data(:,inc_t),1))./(data(:,inc_t).^2) ;   % normalize moments to be between zero and one (matters quite a bit)
+        ag = given(inc_t,option);    
+        obj = @(a1)dc_objopt_chow_finite(a1,given(inc_t,:),data(:,inc_t),option,option_moments_est,weights,prob,nA,sigA,Alb(inc_t),Aub(inc_t),nB,sigB,Blb(inc_t),nD,chain,s,int_size,refinement);
+
+        disp ' old obj: ' 
+                    obj(ag)
+                    disp ' '
+                    disp 'pattern search ... '
+                    tic
+                    [res,fval,~,Output] = patternsearch(obj,ag)
+                    fprintf('The number of iterations was : %d\n', Output.iterations);
+                    fprintf('The number of function evaluations was : %d\n', Output.funccount);
+                    toc
+                    [~,~,est_mom]=obj(res);
+                    disp   '   truth               estimates   ' 
+                    [ round(data(:,inc_t),2)  round(est_mom,2) ]
+                    disp ' psearch done ! :)'
+
+    
+
     end
-
-    weights =  eye(size(option_moments,2))./(data.^2) ;   % normalize moments to be between zero and one (matters quite a bit)
-    ag = given(1,option);    
-    obj = @(a1)dc_objopt_chow_finite(a1,given,data,option,option_moments,weights,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
-%   obj = @(a1)dc_objopt_chow_finite(a1,given,data,option,option_moments,weights,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven);
+   
+    
+    
+    
+    
     
     if est_many == 1
+    
+    if real_data == 1
+        data = data_moments(option_moments,:); % need to transpose here
+    else
+        data = h(option_moments,:);
+    end
+
+    weights =  eye(size(data(:),1))./(data(:).^2) ;   % normalize moments to be between zero and one (matters quite a bit)
+    ag = given(:,option);    
+    obj = @(a1)dc_objopt_inc_finite(a1,given,data,option,option_moments,weights,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
+
+    
+
             %%% run mamy starting values! %%%
         R = zeros(size(mult_set,2),size(option,2));
         OBJ_VAL = zeros(size(mult_set,2),1);
@@ -289,65 +238,65 @@ if bs~=1
 %       csvwrite(strcat(folder,'estimates.csv'),estimates)
     end
     
-else %%% HERE IS BOOSTRAPPED
-     for j=br(1):br(2)
-        
-        pd = 200;
-        
-        %given    =   [ r_lend    0      .04         0            0.2         0       .024      .02     y_avg  p1(j)  p2(j)  pd   n   10  0 ];
-        given=       [ r_lend    0      .02         0            0.35        0      .026      .015     y_avg p1(j)  p2(j)  170   n   10  0 ];
 
-        rng(j);
-        s0 = 1;  
-        [chain1,state1] = markov(prob,n,s0);
 
-        data = data_moments(option_moments, j ); % need to transpose here
+    
+    
+    
+    
+    
+    
+    
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALL OLD STUFF  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALL OLD STUFF 
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALL OLD STUFF  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALL OLD STUFF 
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALL OLD STUFF  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALL OLD STUFF 
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALL OLD STUFF  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALL OLD STUFF 
+     
+if pick_sv == 1
 
-        weights =  eye(size(option_moments,2))./(data.^2) ;   % normalize moments to be between zero and one (matters quite a bit)
-        ag = given(1,option);    
-        obj = @(a1)dc_objopt_chow(a1,given,data,option,option_moments,weights,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven);
 
-        if est_many == 1
-                %%% run mamy starting values! %%%
-            R = zeros(size(mult_set,2),size(option,2));
-            OBJ_VAL = zeros(size(mult_set,2),1);
-            OUTPUT = zeros(size(data_moments,1),size(mult_set,2));
-                for k = 1:size(mult_set,2)
-                    ag
-                    mult_set(k).*ag
+%     S = [.003     .005   .01; ...
+%          0.2    0.2   0.2; ...
+%         0.025     .025    .025; ...
+%         150     150    150  ]';
+    
+    S = [.01     .0101   .012 ; ...
+         0.2    0.2   0.2; ...
+        .025     .025    .025; ...
+        170     170    170  ]';
+    
+    if real_data == 1
+        data = data_moments(option_moments,:); % need to transpose here
+    else
+        data = h(option_moments,:);
+    end
 
-                    disp ' old obj: ' 
-                    obj(ag)
-                    disp ' '
-                    disp 'pattern search ... '
-                    tic
-                    [res,fval,~,Output] = patternsearch(obj,mult_set(k).*ag)
-                    fprintf('The number of iterations was : %d\n', Output.iterations);
-                    fprintf('The number of function evaluations was : %d\n', Output.funccount);
-                    toc
-                    [~,~,est_mom]=obj(res);
-                    round(est_mom,2)
-                    disp ' psearch done ! :)'
-                    round(data,2)
-
-                    res_new = res;
-
-                    R(k,:) = res_new;
-                    OBJ_VAL(k,:) = obj(res_new);
-                end
-
-            mult_set'.*ag
-            R
-            OBJ_VAL
-
-            [~,ind]=min(OBJ_VAL);
-            estimates = R(ind,:);
-
-            csvwrite(strcat(folder,'estimates_',num2str(j),'.csv'),estimates)
-        end
-     end
+    weights =  eye(size(data(:),1))./(data(:).^2) ;   % normalize moments to be between zero and one (matters quite a bit)
+    ag = given(1,option);    
+    obj = @(a1)dc_objopt_chow(a1,given,data,option,option_moments,weights,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven);
+    
+    H = zeros(size(data,1),size(S,1));
+    U = zeros(1,size(S,1));
+    tic
+    for ss = 1:size(S,1)
+        a = S(ss,:);
+        [US] =  obj(a);
+        given1 = given;
+        given1(option)=a;
+        [h] =  dc_obj_chow(given1,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven);
+        H(:,ss)=h(option_moments);
+        U(1,ss)=US;
+    end
+    toc
+    
+    R = [H;U];
+    S'
+    round(R,2)
+    round([data_moments(option_moments)],2)
 end
 
+
+%{a
 
 if est_tables==1
     
