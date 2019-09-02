@@ -2,6 +2,7 @@
 
 
 
+
 	*** THIS IS RIGHT
 	
 	sum todisbdeposits, detail
@@ -185,9 +186,10 @@
 *** Disconnection rate
 	forvalues i=0/5 {
 		sort conacct date
-		by conacct: g am`i' = am if tcd_id[_n-`i']==1
-		sum am`i', detail
+		by conacct: g am`i' = am if tcd_id[_n-`i']==1 
+		sum am`i' , detail
 		write "${moments}am`i'.csv" `=r(mean)' 0.0001 "%12.4g"
+		
 		forvalues r=1/3 {
 			sum am`i' if inc_t==`r', detail
 			write "${moments}am`i'_t`r'.csv" `=r(mean)' 0.0001 "%12.4g"
@@ -205,11 +207,11 @@
 	forvalues i=0/5 {
 		sort conacct date
 		by conacct: g amar`i' = am if tcd_id[_n-`i']==1 & ar[_n-`i']>90
-		sum amar`i', detail
+		sum amar`i' , detail
 		write "${moments}amar`i'.csv" `=r(mean)' 0.0001 "%12.4g"
 
 		forvalues r=1/3 {
-		sum amar`i' if inc_t==`r', detail
+		sum amar`i' if inc_t==`r'  , detail
 		write "${moments}amar`i'_t`r'.csv" `=r(mean)' 0.0001 "%12.4g"
 		}
 	}

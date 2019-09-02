@@ -50,7 +50,7 @@ gegen dc_date = max(dc_date_id), by(conacct)
 	replace c   = . if date>dc_date  & leaver==1
 	replace bal = . if date>dc_date  & leaver==1
 	replace ar  = . if date>dc_date  & leaver==1
-drop dc_date dc_date_id
+drop dc_date_id
 
 *** Data definitions
 sort conacct date
@@ -84,15 +84,15 @@ egen tcds=sum(tcd_id), by(conacct)
 * do "${subcode}descriptive_table_print.do"
 	
 
-	* preserve
-	* 	keep if tcd_max==1 & a6==1
+	preserve
+	  keep if date+12<dc_date
 
 		 do "${subcode}export_moments.do"
 	     
 	  *    global dtable_name "stayers"
 		 * do "${subcode}descriptive_table_print.do"
 	
-	* restore
+	restore
 
 
 

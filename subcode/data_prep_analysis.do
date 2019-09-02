@@ -1,6 +1,6 @@
 
 
-global data_prep   = 1
+global data_prep   = 0
 global data_prep_2 = 1
 
 

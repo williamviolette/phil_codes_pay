@@ -10,7 +10,8 @@ cd_dir ='/Users/williamviolette/Documents/Philippines/phil_analysis/phil_codes_p
 real_data     = 1     ;
 second_output = 0     ;
 pick_sv       = 0     ;
-short_est     = 1     ;
+short_est     = 0     ;
+full_est      = 0     ;
 est_many      = 0     ;
 est_tables    = 0     ;
 counter       = 0     ;
@@ -28,7 +29,7 @@ one_price       = 0 ;
 marginal_cost = 5;
 ppinst = 51;
         
-s=1; % 1 adds amar moments
+s=155; % sets account length
 
 mult_set = [  1  ];
 
@@ -36,8 +37,8 @@ mult_set = [  1  ];
 %%%% is it sensitive to theta?    previously 25, 25 (7 takes 1608 (28*28*2=1568)) (8 takes 3702 (32*32*2=4096))
 
 n = 10000; 
-nA = 20 %%%  3,3: 572s  5,5: 176s (46it, 319fun)  7,7: 350s (84it, 555fun)   
-nB = 20 %%%  8,8: 500s (136it, 859fun)  10,10: 660s (164it, 1009fun)  14,14: 369s (70it, 454fun)  20, 20:  1180s (104it, 656fun)
+nA = 30 %%%  3,3: 572s  5,5: 176s (46it, 319fun)  7,7: 350s (84it, 555fun)   
+nB = 30 %%%  8,8: 500s (136it, 859fun)  10,10: 660s (164it, 1009fun)  14,14: 369s (70it, 454fun)  20, 20:  1180s (104it, 656fun)
 
 sigA = 0;
 sigB = 0;
@@ -45,7 +46,7 @@ nD   = 2;
 
 %%%%%%%%% ESTIMATION %%%%%%%%%%
 
- inc_t = 3;  %%% which inc to estimate1
+inc_t  = 2;  %%% which inc to estimate1
  
 option = [ 3 5 7 12 ];   %%% what to estimate
 
@@ -53,13 +54,10 @@ option = [ 3 5 7 12 ];   %%% what to estimate
    
     
     
-option_moments  = [ 1 2 3 4 ];  %%% moments to use!
-
-% option_moments  = [ 1  ];  %%% moments to use!
-
-option_moments_est = [1 3 6 10];
-
-% option_moments_est = [1 ];
+option_moments       = [ 1 2 3 4 ];  %%% moments to use!
+% option_moments     = [ 1       ];
+option_moments_est   = [ 1 2 3 4 ];
+% option_moments_est = [ 1       ];
 
 
 
@@ -92,9 +90,9 @@ format long g
 %given=       [ r_lend    0      .02         0        0.28        0      .026      .01     y_avg p1  p2  170   n   10  0 ];
 % \given=     [ r_lend    0      .02         0        0.35        0      .026      .015     y_avg p1(1)  p2(1)  170   n   10  0 ];
 
-given=       [  r_lend    0      .02        0         0.39        0      .037      .015     y_avg(1)  p1(1)  p2(1)  100   n   10  0; ...
-                r_lend    0      .02        0         0.39        0      .029     .015     y_avg(2)  p1(1)  p2(1)  100   n   10  0; ...
-                r_lend    0      .02        0         0.39        0      .02      .015     y_avg(3)  p1(1)  p2(1)  100   n   10  0 ];
+given=       [  r_lend    0      .02        0         0.39        0      .037     .015     y_avg(1)  p1(1)  p2(1)  170   n   10  0; ...
+                r_lend    0      .02        0         0.39        0      .029     .015     y_avg(2)  p1(1)  p2(1)  150   n   10  0; ...
+                r_lend    0      .02        0         0.49        0      .017     .015     y_avg(3)  p1(1)  p2(1)  170   n   10  0 ];
 
 
 if real_data == 1
@@ -102,67 +100,27 @@ if real_data == 1
 else
             data = h(option_moments,:);
 end
-            
-
-
-%%% TESTING GROUNDS 
-
-%         
-% given1 = given;
-% 
-% nA1 = 30;
-% nB1 = 30;
-% 
-% f_int = 5;
-% r_int = 5;
-% f_s = linspace(0,500,f_int);
-% r_s = linspace(.01,.03,r_int);
-% 
-% mom_s = zeros(f_int*r_int,5);
-% 
-% h_t = zeros(f_int,r_int);
-% 
-% data_t = round(data(option_moments,inc_t),1);
-
-% for f = 1:f_int
-%     tic
-%     for r = 1:r_int
-%         
-%         given_t = given1(inc_t,:);
-%         given_t(12) = f_s(f);
-%         given_t(3) = r_s(r);
-%         
-%         [est_mom]=dc_obj_chow_pol_finite(given_t(inc_t,:),prob,nA1,sigA,Alb(inc_t),Aub(inc_t),nB1,sigB,Blb(inc_t),nD,chain,s,int_size,refinement);
-%     
-%         h_t(f,r)=sum((round(est_mom(option_moments_est),1) - data_t).^2./(data_t));
-%     end
-%     toc
-% end
-% 
-% surf(h_t)
-
+           
+% given = given(inc_t,:)
+% Alb = Alb(inc_t)
+% Aub = Aub(inc_t)
+% Blb = Blb(inc_t)
 
 tic
 [est_mom,~,~,~,~,A1,B1]=dc_obj_chow_pol_finite(given(inc_t,:),prob,nA,sigA,Alb(inc_t),Aub(inc_t),nB,sigB,Blb(inc_t),nD,chain,s,int_size,refinement);
 toc
 
-round(est_mom(option_moments_est),1)
-round(data(option_moments,inc_t),1)
-% 
-
-
+round(est_mom(option_moments_est),2)
+round(data(option_moments,inc_t),2)
 
 
 
 
     if short_est==1
-
-
         weights =  eye(size(data(:,inc_t),1))./(data(:,inc_t).^2) ;   % normalize moments to be between zero and one (matters quite a bit)
         ag = given(inc_t,option);    
         obj = @(a1)dc_objopt_chow_finite(a1,given(inc_t,:),data(:,inc_t),option,option_moments_est,weights,prob,nA,sigA,Alb(inc_t),Aub(inc_t),nB,sigB,Blb(inc_t),nD,chain,s,int_size,refinement);
-
-        disp ' old obj: ' 
+                    disp ' old obj: ' 
                     obj(ag)
                     disp ' '
                     disp 'pattern search ... '
@@ -175,9 +133,32 @@ round(data(option_moments,inc_t),1)
                     disp   '   truth               estimates   ' 
                     [ round(data(:,inc_t),2)  round(est_mom,2) ]
                     disp ' psearch done ! :)'
-
+    end
+   
+   
     
+    if full_est==1
+        for i =1:3
+            weights =  eye(size(data(:,i),1))./(data(:,i).^2) ;   % normalize moments to be between zero and one (matters quite a bit)
+            ag = given(i,option);    
+            obj = @(a1)dc_objopt_chow_finite(a1,given(i,:),data(:,i),option,option_moments_est,weights,prob,nA,sigA,Alb(i),Aub(i),nB,sigB,Blb(i),nD,chain,s,int_size,refinement);
 
+                        disp ' old obj: ' 
+                        obj(ag)
+                        disp ' '
+                        disp 'pattern search ... '
+                        tic
+                        [res,fval,~,Output] = patternsearch(obj,ag)
+                        fprintf('The number of iterations was : %d\n', Output.iterations);
+                        fprintf('The number of function evaluations was : %d\n', Output.funccount);
+                        toc
+                        [~,~,est_mom]=obj(res);
+                        disp   '   truth               estimates   ' 
+                        [ round(data(:,inc_t),2)  round(est_mom,2) ]
+                        disp ' psearch done ! :)'
+                        
+            csvwrite(strcat(folder,'estimates_t',string(i),'.csv'),res)
+        end
     end
    
     
@@ -185,118 +166,14 @@ round(data(option_moments,inc_t),1)
     
     
     
-    if est_many == 1
-    
-    if real_data == 1
-        data = data_moments(option_moments,:); % need to transpose here
-    else
-        data = h(option_moments,:);
-    end
-
-    weights =  eye(size(data(:),1))./(data(:).^2) ;   % normalize moments to be between zero and one (matters quite a bit)
-    ag = given(:,option);    
-    obj = @(a1)dc_objopt_inc_finite(a1,given,data,option,option_moments,weights,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
-
-    
-
-            %%% run mamy starting values! %%%
-        R = zeros(size(mult_set,2),size(option,2));
-        OBJ_VAL = zeros(size(mult_set,2),1);
-        OUTPUT = zeros(size(mult_set,2),size(data_moments,2));
-            for k = 1:size(mult_set,2)
-                ag
-                mult_set(k).*ag
-
-                disp ' old obj: ' 
-                obj(ag)
-                disp ' '
-                disp 'pattern search ... '
-                tic
-                [res,fval,~,Output] = patternsearch(obj,mult_set(k).*ag)
-                fprintf('The number of iterations was : %d\n', Output.iterations);
-                fprintf('The number of function evaluations was : %d\n', Output.funccount);
-                toc
-                [~,~,est_mom]=obj(res);
-                round(est_mom,2)
-                disp ' psearch done ! :)'
-                round(data,2)
-                res_new = res;          
-                R(k,:) = res_new;
-                OBJ_VAL(k,:) = obj(res_new);
-
-            end
-
-%         mult_set'.*ag
-%         R
-%         OBJ_VAL
-% 
-%         [OUTPUT' data_moments']
-
-        [~,ind]=min(OBJ_VAL);
-        estimates = R(ind,:);
-% 
-%       csvwrite(strcat(folder,'estimates.csv'),estimates)
-    end
-    
-
-
     
     
     
-    
-    
-    
-    
-     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALL OLD STUFF  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALL OLD STUFF 
-     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALL OLD STUFF  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALL OLD STUFF 
-     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALL OLD STUFF  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALL OLD STUFF 
-     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALL OLD STUFF  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALL OLD STUFF 
-     
-if pick_sv == 1
-
-
-%     S = [.003     .005   .01; ...
-%          0.2    0.2   0.2; ...
-%         0.025     .025    .025; ...
-%         150     150    150  ]';
-    
-    S = [.01     .0101   .012 ; ...
-         0.2    0.2   0.2; ...
-        .025     .025    .025; ...
-        170     170    170  ]';
-    
-    if real_data == 1
-        data = data_moments(option_moments,:); % need to transpose here
-    else
-        data = h(option_moments,:);
-    end
-
-    weights =  eye(size(data(:),1))./(data(:).^2) ;   % normalize moments to be between zero and one (matters quite a bit)
-    ag = given(1,option);    
-    obj = @(a1)dc_objopt_chow(a1,given,data,option,option_moments,weights,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven);
-    
-    H = zeros(size(data,1),size(S,1));
-    U = zeros(1,size(S,1));
-    tic
-    for ss = 1:size(S,1)
-        a = S(ss,:);
-        [US] =  obj(a);
-        given1 = given;
-        given1(option)=a;
-        [h] =  dc_obj_chow(given1,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven);
-        H(:,ss)=h(option_moments);
-        U(1,ss)=US;
-    end
-    toc
-    
-    R = [H;U];
-    S'
-    round(R,2)
-    round([data_moments(option_moments)],2)
-end
-
 
 %{a
+
+
+%%%% Do more with the fit, especially at the end of the series!
 
 if est_tables==1
     
@@ -401,29 +278,38 @@ end
 if counter==1
 
     %%% pull in estimates
-    estimates = csvread(strcat(folder,'estimates.csv'));
+    estimates = [csvread(strcat(folder,'estimates_t1.csv')); ...
+                 csvread(strcat(folder,'estimates_t2.csv')); ...
+                 csvread(strcat(folder,'estimates_t3.csv'))];
+    
     res_out = given;
-    res_out(option)=estimates;
+    res_out(:,option)=estimates;
 
     %%% current
-    %[h,util,simc] = dc_obj(res_out,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
-    [h,util,simc] = dc_obj_chow(res_out,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven);
-    c_h = h(1);
-   
+    
+    [h,util, h_t1,h_t2,h_t3, simc_t1,simc_t2,simc_t3]           =run3(res_out,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
+    
+%     [h,util,simc] = dc_obj_chow(res_out,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven);
+    c_h = h(1) ;
+    
     %%% value of 10 PhP
     res_poor = res_out;
-    res_poor(9) = res_out(9) - 10;
-    %[~,util_poor] =dc_obj(res_poor,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
-    [~,util_poor] =dc_obj_chow(res_poor,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven);
-    du_dy10 = (util-util_poor)/10;    
+    res_poor(:,9) = res_out(:,9) - 10;
+
+    [h_poor,util_poor] =run3(res_poor,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
+    
+    du_dy10 = (mean(util)-mean(util_poor))/10;    
+    du_dy10_t = (util-util_poor)/10;    
+    
     
     %%% utility loss from no loans
     res_nl = res_out;
-	res_nl(2) = .8;
+	res_nl(:,2) = .8;
     % [h_nl,util_nl] = dc_obj(res_nl,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s)   ; 
-    [h_nl,util_nl] = dc_obj_chow(res_nl,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven)  ; 
+    [h_nl,util_nl, h_nl_t1,h_nl_t2,h_nl_t3, simc_nl_t1,simc_nl_t2,simc_nl_t3] =run3(res_nl,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
     
-    U_nl = (util_nl-util)/du_dy10
+    U_nl = (mean(util_nl)-mean(util))/du_dy10
+    U_nl_t = (util_nl-util)./du_dy10_t
     c_nl = h_nl(1);
     
     
@@ -433,54 +319,145 @@ if counter==1
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             
     %%% lendingcost
-    lend_costd = abs(mean(simc(:,3))).*r_lend;
+    lend_cost        =  mean([mean(abs(simc_t1(:,3))) ...
+                              mean(abs(simc_t2(:,3))) ...
+                              mean(abs(simc_t3(:,3)))]).*r_lend;
     
-    %%% water use at baseline
-    wwd = mean(simc(:,1));    
-    wwr = mean((p1 - marginal_cost +p2.*simc(:,1)).*simc(:,1));
+    delinquency_cost =  mean([mean(abs(simc_t1(simc_t1(:,6)==s,3))) ...
+                              mean(abs(simc_t2(simc_t2(:,6)==s,3))) ...
+                              mean(abs(simc_t3(simc_t3(:,6)==s,3)))])./s ;
     
-    simc_pre = [0 0 0 0 0;  simc(1:(size(simc,1)-1),:)];
-    visit_costd=visit_price.*(size(simc(simc_pre(:,3)<0 & simc(:,5)>2,:),1)/size(simc,1));
+    wwr = mean(mean([(p1 - marginal_cost + p2.*simc_t1(:,1)).*simc_t1(:,1) ...
+                     (p1 - marginal_cost + p2.*simc_t2(:,1)).*simc_t2(:,1) ...
+                     (p1 - marginal_cost + p2.*simc_t3(:,1)).*simc_t3(:,1) ]));
+    
+    visit_cost =mean([  visit_price.*(size(simc_t1([0 ;  simc_t1(1:(size(simc_t1,1)-1),3)]<0 & simc_t1(:,5)>2,1),1)/size(simc_t1,1)) ...
+                        visit_price.*(size(simc_t2([0 ;  simc_t2(1:(size(simc_t2,1)-1),3)]<0 & simc_t2(:,5)>2,1),1)/size(simc_t2,1)) ...
+                        visit_price.*(size(simc_t3([0 ;  simc_t3(1:(size(simc_t3,1)-1),3)]<0 & simc_t3(:,5)>2,1),1)/size(simc_t3,1)) ]) ;
     
     res_nle = res_out;
-	res_nle(2) = .8;
-    res_nle(9)=res_out(9) - delinquency_cost;
+	res_nle(:,2) = .8;
     
-    coste = abs(mean(simc(:,3))).*r_lend;
+    rev_goale = wwr - (lend_cost + delinquency_cost + visit_cost ) ;
     
-    rev_goale = wwr - (coste + delinquency_cost  + visit_costd) ;
-    
-    Pgride = (0:.01:.04)' ;
+    Pgride = (0:.01:.1)' ;
     Re = zeros(size(Pgride,1),1);
+    rev_new = zeros(size(Pgride,1),1);
+    
     for i=1:size(Pgride,1)
         p1ne = p1+Pgride(i);
         res_nle_temp=res_nle;
-        res_nle_temp(10) = p1ne;
+        res_nle_temp(:,10) = p1ne;
         
-        %[~,~,simc_temp] = dc_obj(res_nle_temp,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
-        [~,~,simc_temp] = dc_obj_chow(res_nle_temp,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven) ;
-        reve = mean((p1ne - marginal_cost +p2.*simc_temp(:,1)).*simc_temp(:,1));
+        [~,~, ~,~,~, simc_nle_t1,simc_nle_t2,simc_nle_t3] =run3(res_nle_temp,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
+    
+%         lend_cost_nle        =  mean([mean(abs(simc_nle_t1(:,3))) ...
+%                                       mean(abs(simc_nle_t2(:,3))) ...
+%                                       mean(abs(simc_nle_t3(:,3)))]).*r_lend;
+    
+%        delinquency_cost_nle =  mean([mean(abs(simc_nle_t1(simc_nle_t1(:,6)==s,3))) ...
+%                                       mean(abs(simc_nle_t2(simc_nle_t2(:,6)==s,3))) ...
+%                                       mean(abs(simc_nle_t3(simc_nle_t3(:,6)==s,3)))])./s ;
+
+         wwr_nle = mean(mean([(p1ne - marginal_cost + p2.*simc_nle_t1(:,1)).*simc_nle_t1(:,1) ...
+                              (p1ne - marginal_cost + p2.*simc_nle_t2(:,1)).*simc_nle_t2(:,1) ...
+                              (p1ne - marginal_cost + p2.*simc_nle_t3(:,1)).*simc_nle_t3(:,1) ]));
+
+%         visit_cost_nle =mean([  visit_price.*(size(simc_nle_t1([0 ;  simc_nle_t1(1:(size(simc_nle_t1,1)-1),3)]<0 & simc_nle_t1(:,5)>2,1),1)/size(simc_nle_t1,1)) ...
+%                                 visit_price.*(size(simc_nle_t2([0 ;  simc_nle_t2(1:(size(simc_nle_t2,1)-1),3)]<0 & simc_nle_t2(:,5)>2,1),1)/size(simc_nle_t2,1)) ...
+%                                 visit_price.*(size(simc_nle_t3([0 ;  simc_nle_t3(1:(size(simc_nle_t3,1)-1),3)]<0 & simc_nle_t3(:,5)>2,1),1)/size(simc_nle_t3,1)) ]) ;
+
+        rev_nle = wwr_nle ;
         %wwe = w_reg_dk(0,res_nle(7),0,p1ne,p2,y_avg);
         %reve = (p1ne - marginal_cost + p2.*wwe).*wwe;
-        Re(i,1) = abs(reve - rev_goale);
+        Re(i,1) = abs(rev_nle - rev_goale);
+        rev_new(i,1)=rev_nle;
     end
+    
     plot(Pgride,Re);
     [~,inde]=min(Re);
     Pgride(inde)
-    
+  
     p1ce=p1+Pgride(inde);
    
     res_ppe =res_nle;
-    res_ppe(10) = p1ce;
+    res_ppe(:,10) = p1ce;
+   
+    [h_ppe,util_ppe] =run3(res_ppe,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
     
-    %[h_ppe,util_ppe] = dc_obj(res_ppe,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
-    [h_ppe,util_ppe] = dc_obj_chow(res_ppe,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven) ;
-    
-    U_ppe = (util_ppe-util)/du_dy10;
+    U_ppe_t = (util_ppe-util)./du_dy10_t
+    U_ppe = (mean(util_ppe) -mean(util))./du_dy10
     c_ppe = h_ppe(1);
     
     
-        fileID = fopen(strcat(cd_dir,'U_ppe.tex'),'w');
+    
+    %%% %%% pre-paid %%% %%% 
+    %%% current revenue
+    
+%     rev_goal = wwr - delinquency_cost + ppinst - coste - visit_costd;
+    
+    res_pp_start = res_out;
+	res_pp_start(:,2) = .8;
+    res_pp_start(:,9) = res_out(:,9) - delinquency_cost;
+    
+    
+    Pgrid = (5.5:.2:6.5)' ;
+    Rpp = zeros(size(Pgrid,1),1);
+    revpp=zeros(size(Pgrid,1),1);
+    
+    for i=1:size(Pgrid,1)
+        p1n = p1+Pgrid(i);
+        res_pp_temp=res_pp_start;
+        res_pp_temp(:,10) = p1n;
+        
+        [~,~, ~,~,~, simc_pp_t1,simc_pp_t2,simc_pp_t3] =run3(res_pp_temp,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
+    
+%         lend_cost_pp        =  mean([mean(abs(simc_pp_t1(:,3))) ...
+%                                       mean(abs(simc_pp_t2(:,3))) ...
+%                                       mean(abs(simc_pp_t3(:,3)))]).*r_lend;
+
+        wwr_pp = mean(mean([(p1n - marginal_cost + p2.*simc_pp_t1(:,1)).*simc_pp_t1(:,1) ...
+                             (p1n - marginal_cost + p2.*simc_pp_t2(:,1)).*simc_pp_t2(:,1) ...
+                             (p1n - marginal_cost + p2.*simc_pp_t3(:,1)).*simc_pp_t3(:,1) ]));
+
+%         visit_cost_pp =mean([  visit_price.*(size(simc_pp_t1([0 ;  simc_pp_t1(1:(size(simc_pp_t1,1)-1),3)]<0 & simc_pp_t1(:,5)>2,1),1)/size(simc_pp_t1,1)) ...
+%                                 visit_price.*(size(simc_pp_t2([0 ;  simc_pp_t2(1:(size(simc_pp_t2,1)-1),3)]<0 & simc_pp_t2(:,5)>2,1),1)/size(simc_pp_t2,1)) ...
+%                                 visit_price.*(size(simc_pp_t3([0 ;  simc_pp_t3(1:(size(simc_pp_t3,1)-1),3)]<0 & simc_pp_t3(:,5)>2,1),1)/size(simc_pp_t3,1)) ]) ;
+
+        
+        %[~,~,simc_temp_pp] = dc_obj(res_pp_temp,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
+        %         [~,~,simc_temp_pp] = dc_obj_chow(res_pp_temp,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven) ;
+        %         rev = mean((p1n - marginal_cost +p2.*simc_temp_pp(:,1)).*simc_temp_pp(:,1));
+        
+%         p1n = p1+Pgrid(i);
+        %ww = w_reg_dk(0,res_out(7),0,p1n,p2,y_avg);
+        %rev = (p1n - marginal_cost + p2.*ww).*ww;
+        rev_pp = wwr_pp - ( ppinst );
+        Rpp(i,1) = abs(rev_pp - rev_goale);
+        revpp(i,1) = rev_pp;
+    end
+    plot(Pgrid,Rpp);
+    [~,ind]=min(Rpp);
+    Pgrid(ind)
+    
+    p1c=p1+Pgrid(ind);
+    
+    res_pp=res_pp_start; % with pre-paid meters, don't get delinquency or loan, but get lower marginal price!
+    res_pp(:,10)=p1c;
+    
+    %[h_pp,util_pp] = dc_obj(res_pp,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
+        %     [h_pp,util_pp] = dc_obj_chow(res_pp,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven) ;
+    [h_pp,util_pp] =run3(res_pp,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
+    
+    U_pp_t = (util_pp-util)./du_dy10_t
+    U_pp = (mean(util_pp)-mean(util))/mean(du_dy10)
+    c_pp = h_pp(1);
+    
+    
+
+    
+    
+    fileID = fopen(strcat(cd_dir,'U_ppe.tex'),'w');
         fprintf(fileID,'%s\n',strcat(num2str(U_ppe,'%5.1f')));
     fclose(fileID);
         fileID = fopen(strcat(cd_dir,'U_ppe_abs.tex'),'w');
@@ -530,60 +507,13 @@ if counter==1
     fclose(fileID);
     
     
-    %%% %%% pre-paid %%% %%% 
-    %%% current revenue
-    %%%%% NOTE!!!! THIS IS AN AVERAGE CONSUMPTION CHANGE!! NOTE!!!!!!
-    %ww = w_reg_dk(0,res_out(7),0,p1,p2, y_avg );
-    
-    rev_goal = wwr - delinquency_cost + ppinst - coste - visit_costd;
-    
-    res_pp_start = res_out;
-	res_pp_start(2) = .8;
-    res_pp_start(9) = res_out(9) - delinquency_cost;
-    
-    
-    Pgrid = (6:.2:7)' ;
-    R = zeros(size(Pgrid,1),1);
-    for i=1:size(Pgrid,1)
-        p1n = p1+Pgrid(i);
-        res_pp_temp=res_pp_start;
-        res_pp_temp(10) = p1n;
         
-        %[~,~,simc_temp_pp] = dc_obj(res_pp_temp,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
-        [~,~,simc_temp_pp] = dc_obj_chow(res_pp_temp,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven) ;
-        rev = mean((p1n - marginal_cost +p2.*simc_temp_pp(:,1)).*simc_temp_pp(:,1));
-        
-        p1n = p1+Pgrid(i);
-        %ww = w_reg_dk(0,res_out(7),0,p1n,p2,y_avg);
-        %rev = (p1n - marginal_cost + p2.*ww).*ww;
-        R(i,1) = abs(rev - rev_goal);
-    end
-    plot(Pgrid,R);
-    [~,ind]=min(R);
-    Pgrid(ind)
-    
-    p1c=p1+Pgrid(ind);
-    
-    res_pp=res_pp_start; % with pre-paid meters, don't get delinquency or loan, but get lower marginal price!
-    res_pp(10)=p1c;
-    
-    %[h_pp,util_pp] = dc_obj(res_pp,prob,A,Aprime,nA,B,Bprime,nB,D,Dprime,nD,chain,s);
-    [h_pp,util_pp] = dc_obj_chow(res_pp,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven) ;
-    
-    U_pp = (util_pp-util)/du_dy10;
-    c_pp = h_pp(1);
-    
-    
-    
     estimates_c = [0 1 1 ; c_h c_nl c_pp ;  0 U_nl U_pp  ; delinquency_cost delinquency_cost 0;  p1 p1 p1c];
     
 
     %fprintf(fileID,'%s\n','\begin{tabular}{lccc}');
     %fprintf(fileID,'%s\n','& Current & No Water Credit & No Water Credit and \\');
     %fprintf(fileID,'%s\n','&         &                  & Revenue Neutral \\');
-
-    
-        
     
     amount_avg     = csvread(strcat(folder,'bill_all.csv'));
     
@@ -668,33 +598,6 @@ if counter==1
     fclose(fileID);
     
     
-    %%%% OUT-DATED TABLE STUFF %%%%
-    
-    fileID = fopen(strcat(cd_dir,'counter_usage.tex'),'w');
-        fprintf(fileID,'%s\n',strcat('Mean Usage (m3) &',num2str(c_h,'%5.1f'),'&', num2str(c_nl,'%5.1f'),'&', num2str(c_pp,'%5.1f'),'\\'));
-    fclose(fileID);
-        
-    fileID = fopen(strcat(cd_dir,'counter_cv.tex'),'w');
-        fprintf(fileID,'%s\n',strcat('Compensating Variation (PhP)  &',' & ',num2str(U_nl,'%5.1f'),'&', num2str(U_pp,'%5.1f'),'\\'));
-    fclose(fileID);
-    
-    fileID = fopen(strcat(cd_dir,'counter_price.tex'),'w');
-        fprintf(fileID,'%s\n',strcat('Price Intercept (PhP)  &',num2str(p1,'%5.1f'),'&', num2str(p1,'%5.1f'),'&', num2str(p1c,'%5.1f'),'\\'));
-    fclose(fileID);
-    
-    fileID = fopen(strcat(cd_dir,'counter_fixed.tex'),'w');
-       fprintf(fileID,'%s\n',strcat('Fixed Savings (PhP)  &',num2str(delinquency_cost,'%5.1f'),'&', num2str(delinquency_cost,'%5.1f'),'&', num2str(0,'%5.0f'),'\\'));
-    fclose(fileID);    
-    
-        
-    fileID = fopen(strcat(cd_dir,'counter_price_nomid.tex'),'w');
-        fprintf(fileID,'%s\n',strcat('Price Intercept (PhP)  &',num2str(p1,'%5.1f'),'& &', num2str(p1c,'%5.1f'),'\\'));
-    fclose(fileID);
-    
-    fileID = fopen(strcat(cd_dir,'counter_fixed_nomid.tex'),'w');
-       fprintf(fileID,'%s\n',strcat('Fixed Savings (PhP)  &',num2str(delinquency_cost,'%5.1f'),'& &', num2str(0,'%5.0f'),'\\'));
-    fclose(fileID);    
-    
        %fprintf(fileID,'%s\n','\end{tabular} '); 
 
 
@@ -762,6 +665,56 @@ end
 %%%% set grid right!!
 
 
+
+
+    
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALL OLD STUFF  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALL OLD STUFF 
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALL OLD STUFF  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALL OLD STUFF 
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALL OLD STUFF  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALL OLD STUFF 
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALL OLD STUFF  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ALL OLD STUFF 
+%      
+% if pick_sv == 1
+% 
+% 
+% %     S = [.003     .005   .01; ...
+% %          0.2    0.2   0.2; ...
+% %         0.025     .025    .025; ...
+% %         150     150    150  ]';
+%     
+%     S = [.01     .0101   .012 ; ...
+%          0.2    0.2   0.2; ...
+%         .025     .025    .025; ...
+%         170     170    170  ]';
+%     
+%     if real_data == 1
+%         data = data_moments(option_moments,:); % need to transpose here
+%     else
+%         data = h(option_moments,:);
+%     end
+% 
+%     weights =  eye(size(data(:),1))./(data(:).^2) ;   % normalize moments to be between zero and one (matters quite a bit)
+%     ag = given(1,option);    
+%     obj = @(a1)dc_objopt_chow(a1,given,data,option,option_moments,weights,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven);
+%     
+%     H = zeros(size(data,1),size(S,1));
+%     U = zeros(1,size(S,1));
+%     tic
+%     for ss = 1:size(S,1)
+%         a = S(ss,:);
+%         [US] =  obj(a);
+%         given1 = given;
+%         given1(option)=a;
+%         [h] =  dc_obj_chow(given1,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven);
+%         H(:,ss)=h(option_moments);
+%         U(1,ss)=US;
+%     end
+%     toc
+%     
+%     R = [H;U];
+%     S'
+%     round(R,2)
+%     round([data_moments(option_moments)],2)
+% end
 
 
 
@@ -918,3 +871,100 @@ plot(Cgridd,(Ud(ind_min)-util)/du_dy10)
 % % %     round([data_moments(om)],2)
 % % % end
 
+
+
+% OLD EST MANY !! 
+% 
+%     if est_many == 1
+%     
+%     if real_data == 1
+%         data = data_moments(option_moments,:); % need to transpose here
+%     else
+%         data = h(option_moments,:);
+%     end
+% 
+%     weights =  eye(size(data(:),1))./(data(:).^2) ;   % normalize moments to be between zero and one (matters quite a bit)
+%     ag = given(:,option);    
+%     obj = @(a1)dc_objopt_inc_finite(a1,given,data,option,option_moments,weights,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
+% 
+%     
+% 
+%             %%% run mamy starting values! %%%
+%         R = zeros(size(mult_set,2),size(option,2));
+%         OBJ_VAL = zeros(size(mult_set,2),1);
+%         OUTPUT = zeros(size(mult_set,2),size(data_moments,2));
+%             for k = 1:size(mult_set,2)
+%                 ag
+%                 mult_set(k).*ag
+% 
+%                 disp ' old obj: ' 
+%                 obj(ag)
+%                 disp ' '
+%                 disp 'pattern search ... '
+%                 tic
+%                 [res,fval,~,Output] = patternsearch(obj,mult_set(k).*ag)
+%                 fprintf('The number of iterations was : %d\n', Output.iterations);
+%                 fprintf('The number of function evaluations was : %d\n', Output.funccount);
+%                 toc
+%                 [~,~,est_mom]=obj(res);
+%                 round(est_mom,2)
+%                 disp ' psearch done ! :)'
+%                 round(data,2)
+%                 res_new = res;          
+%                 R(k,:) = res_new;
+%                 OBJ_VAL(k,:) = obj(res_new);
+% 
+%             end
+% 
+% %         mult_set'.*ag
+% %         R
+% %         OBJ_VAL
+% % 
+% %         [OUTPUT' data_moments']
+% 
+%         [~,ind]=min(OBJ_VAL);
+%         estimates = R(ind,:);
+% % 
+% %       csvwrite(strcat(folder,'estimates.csv'),estimates)
+%     end
+%     
+% 
+% 
+%     
+
+
+%%% TESTING GROUNDS 
+
+%         
+% given1 = given;
+% 
+% nA1 = 30;
+% nB1 = 30;
+% 
+% f_int = 5;
+% r_int = 5;
+% f_s = linspace(0,500,f_int);
+% r_s = linspace(.01,.03,r_int);
+% 
+% mom_s = zeros(f_int*r_int,5);
+% 
+% h_t = zeros(f_int,r_int);
+% 
+% data_t = round(data(option_moments,inc_t),1);
+
+% for f = 1:f_int
+%     tic
+%     for r = 1:r_int
+%         
+%         given_t = given1(inc_t,:);
+%         given_t(12) = f_s(f);
+%         given_t(3) = r_s(r);
+%         
+%         [est_mom]=dc_obj_chow_pol_finite(given_t(inc_t,:),prob,nA1,sigA,Alb(inc_t),Aub(inc_t),nB1,sigB,Blb(inc_t),nD,chain,s,int_size,refinement);
+%     
+%         h_t(f,r)=sum((round(est_mom(option_moments_est),1) - data_t).^2./(data_t));
+%     end
+%     toc
+% end
+% 
+% surf(h_t)
