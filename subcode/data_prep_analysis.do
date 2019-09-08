@@ -53,6 +53,10 @@ if $data_prep == 1 {
 			drop if _merge==2
 			drop _merge
 
+			fmerge m:1 conacct using "${temp}paws_edu.dta"
+			drop if _merge==2
+			drop _merge
+
 			fmerge m:1 conacct using "${phil_folder}promissory_note/temp/date_c.dta"
 			drop if _merge==2
 			drop _merge

@@ -12,20 +12,62 @@ end
 
 * do "${subcode}table_print.do"
 
-	* import delimited using "${moments}y_avg.csv", clear delimiter(",")
-	* sum v1
-	* global y_avg = `r(mean)'
-
-	* import delimited using "${moments}save_avg.csv", clear delimiter(",")
-	* sum v1
-	* global save_avg = `r(mean)'
-
-	* import delimited using "${moments}y_p20.csv", clear delimiter(",")
-	* sum v1
-	* global y_p20 = `r(mean)'
 
 
 use "${temp}temp_descriptives_2.dta", clear
+
+
+tab edu
+
+
+g edu_low = edu<10
+tab edu, g(edu_t)
+
+g edu_hs = edu<=11
+replace edu_hs = . if edu==.
+
+g edu_sc = edu>=12 & edu<=13
+replace edu_sc = . if edu==.
+
+g hhemp_r = hhemp/hhsize
+replace hhemp_r = 1 if hhemp_r>1
+
+g hht = SHO + hhsize
+
+reg c hht if hht<=12
+
+g cp = c/hht
+g amp = amount/hht
+
+reg cp hht if hht<=15
+
+
+reg cp edu_low low_skill age inc i.hht if hht<=15
+
+
+reg c inc 
+
+reg c inc i.hht
+reg cp inc i.hht
+
+reg amp inc if hht<=15 & amp>0 & amp<700
+reg amount inc if hht<=15 & amount>0 & amount<5000
+
+
+reg c i.SHO if SHO<=10
+coefplot, vertical
+
+
+
+
+
+reg c SHO if SHO<=10
+
+
+reg c hhemp_r i.SHH i.SHO i.hhsize
+
+reg c low_skill edu_hs edu_sc i.hhsize i.hhemp
+
 
 *** Income definition
 egen inc_t = cut(inc), group(3)
@@ -69,6 +111,12 @@ egen tcds=sum(tcd_id), by(conacct)
 	* drop cnn
 
 
+sum amount, detail
+write "${moments}bill_all.csv" `=r(mean)' 1 "%12.0g"
+forvalues r=1/3 {
+	sum amount if inc_t==`r', detail
+	write "${moments}bill_all_t`r'.csv" `=r(mean)' 1 "%12.0g"
+}
 
 
 
@@ -158,3 +206,18 @@ end
 
 
 graph_trend am tcd_id conacct aa " keep if T1!=. & l12==12 & tcds==1 " "i.date"
+
+
+
+	* import delimited using "${moments}y_avg.csv", clear delimiter(",")
+	* sum v1
+	* global y_avg = `r(mean)'
+
+	* import delimited using "${moments}save_avg.csv", clear delimiter(",")
+	* sum v1
+	* global save_avg = `r(mean)'
+
+	* import delimited using "${moments}y_p20.csv", clear delimiter(",")
+	* sum v1
+	* global y_p20 = `r(mean)'
+

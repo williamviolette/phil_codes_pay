@@ -591,23 +591,30 @@ Eliminating credit access also decreases mean usage by \input{tables/c_h_nl_drop
 \centering
 \caption{Counterfactual Policies}\label{table:counter}
 \resizebox{\columnwidth}{!}{%
-\begin{tabular}{l*{1}{cccc}}
+\begin{tabular}{l*{1}{CCCC}}
 \toprule
- & (1) & (2) & (3) & (4) \\
- & Current & No Water   & No Water Borrowing    & Prepaid Metering \\
- &         & Borrowing  & and Revenue Neutral      & and Revenue Neutral   \\
-\midrule   
-Compensating Variation (PhP) & --- & \input{tables/U_nl} & \input{tables/U_ppe}  & \input{tables/U_pp} \\
-Mean Usage (m3) & \input{tables/c_h2} & \input{tables/c_nl2}  & \input{tables/c_ppe2} & \input{tables/c_pp2} \\
- &         &           &         &  \\
- Water Borrowing Interest Rate & 0\% & 100\% & 100\% & ---  \\
+&  & (1)  & (2) & (3) \\
+& Income Tercile & Current   & No Water Borrowing    & Prepaid Metering \\
+\midrule
+Compensating Variation (PhP) &   &  & \input{tables/U_ppe}  & \input{tables/U_pp} \\[.2em]
+ 						     & T1 &  & \input{tables/U_ppe_t1}  & \input{tables/U_pp_t1} \\
+							 & T2 &  & \input{tables/U_ppe_t2}  & \input{tables/U_pp_t2} \\
+							 & T3 &  & \input{tables/U_ppe_t3}  & \input{tables/U_pp_t3} \\[.5em]
+Mean Usage (m3) 			 &   & \input{tables/c_h}  & \input{tables/c_ppe} & \input{tables/c_pp} \\[.2em]
+							 & T1 & \input{tables/c_h_t1}  & \input{tables/c_ppe_t1} & \input{tables/c_pp_t1} \\
+							 & T2 & \input{tables/c_h_t2}  & \input{tables/c_ppe_t2} & \input{tables/c_pp_t2} \\
+							 & T3 & \input{tables/c_h_t3}  & \input{tables/c_ppe_t3} & \input{tables/c_pp_t3} \\
+ &         &              &  \\
+ % Water Borrowing Interest Rate & 0\% & 100\% & 100\% & ---  \\
 %Adjustments to stay revenue neutral  & & \\
-Price Intercept $p_1$ (PhP/m3) & \input{tables/p_int2} & \input{tables/p_int2} &  \input{tables/p_int_ppe2} & \input{tables/p_int_pp2} \\
-Disconnection Rebate (PhP) & \input{tables/delinquency_cost} & \input{tables/delinquency_cost}  & 0 & 0 \\
-Delinquency Visit Cost (PhP) & \input{tables/visit_cost} & \input{tables/visit_cost}  & 0 & 0 \\
-Opp. Cost of Lending (PhP) & \input{tables/coste} & \input{tables/coste} & 0 & 0 \\
-Marginal Cost (PhP/m3) & 5 & 5 & 5 & 5 \\
-Additional Metering Cost (PhP) & 0 & 0 & 0 & 51 \\
+Price Intercept (PhP/m3) & & \input{tables/p_int2} &  \input{tables/p_int_ppe2} & \input{tables/p_int_pp2} \\
+
+Credit Supply Costs (PhP) & & \input{tables/total_costs}  & 0 & 0 \\
+% Disconnection Rebate (PhP) & \input{tables/delinquency_cost} & \input{tables/delinquency_cost}  & 0 & 0 \\
+% Delinquency Visit Cost (PhP) & \input{tables/visit_cost} & \input{tables/visit_cost}  & 0 & 0 \\
+% Opp. Cost of Lending (PhP) & \input{tables/coste} & \input{tables/coste} & 0 & 0 \\
+Marginal Cost (PhP/m3) & & 5  & 5 & 5 \\
+Additional Metering Cost (PhP) & & 0  & 0 & \input{tables/ppinst} \\
 %\input{tables/counter_price_nomid}
 %\input{tables/counter_fixed_nomid}
 \bottomrule

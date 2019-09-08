@@ -18,6 +18,7 @@ import delimited using "${fies}FAMILY INCOME AND EXPENDITURE SURVEY (2015) VOLUM
 
 keep if w_regn=="Region XIII - NCR"
 
+destring twatersupply, replace force
 destring todisbcashloan, replace force
 destring todisbdeposits, replace force
 keep if  todisbcashloan!=. | todisbdeposits!=.
@@ -25,7 +26,7 @@ keep if  todisbcashloan!=. | todisbdeposits!=.
 replace todisbcashloan = todisbcashloan/6
 replace todisbdeposits = todisbdeposits/6
 
-keep w_id w_shsn w_hcn todisbcashloan todisbdeposits
+keep w_id w_shsn w_hcn todisbcashloan todisbdeposits twatersupply
 
 save "${fies}hh_loans.dta", replace
 
@@ -95,8 +96,19 @@ g hhemp_f = employed_pay + employed_prof
 g age_f = age
 
 
+g twa6 = twatersupply/6
+replace twa6 = . if twa6>5000
+
 destring barangay_id, replace force
 drop if barangay_id==.
+
+
+areg twa6 inc  i.hhsize_f  i.hhemp_f age_f if inc<=50000, a(barangay_id) r
+
+
+areg twa6 inc  i.hhsize_f  i.hhemp_f age_f if inc<=50000, a(barangay_id) r
+
+
 fcollapse inc  todisbcashloan todisbdeposits, by(barangay_id)
 
 

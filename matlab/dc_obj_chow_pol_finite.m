@@ -144,11 +144,11 @@ end
 
 tm = 12;
 
-C_m  = reshape(controls(:,1),[Acc,size(controls(:,5),1)/Acc]);
-w_debt_m = -1.*reshape(controls(:,3),[Acc,size(controls(:,5),1)/Acc]);
-dd_m = reshape(controls(:,4),[Acc,size(controls(:,5),1)/Acc]);
-state_m  = reshape(controls(:,5),[Acc,size(controls(:,5),1)/Acc]);
-ind_m = reshape(controls(:,6),[Acc,size(controls(:,5),1)/Acc]);
+C_m         = reshape(controls(:,1),[Acc,size(controls(:,5),1)/Acc]);
+w_debt_m    = -1.*reshape(controls(:,3),[Acc,size(controls(:,5),1)/Acc]);
+dd_m        = reshape(controls(:,4),[Acc,size(controls(:,5),1)/Acc]);
+state_m     = reshape(controls(:,5),[Acc,size(controls(:,5),1)/Acc]);
+ind_m       = reshape(controls(:,6),[Acc,size(controls(:,5),1)/Acc]);
 
 wd=  ([zeros(1,size(controls(:,5),1)/Acc); w_debt_m(1:end-1,:)]>0 & ...
       [zeros(2,size(controls(:,5),1)/Acc); w_debt_m(1:end-2,:)]>0 & ...
@@ -161,12 +161,14 @@ wd1= ([zeros(2,size(controls(:,5),1)/Acc); w_debt_m(1:end-2,:)]>0 & ...
 state_m1 = [zeros(1,size(controls(:,5),1)/Acc); state_m(1:end-1,:)];
   
   
-h = [  mean(mean(C_m(dd_m~=1 & ind_m<=Acc-tm))); ...
-       mean(w_debt_m(dd_m~=1 & ind_m<=Acc-tm)); ...
+h = [    mean(mean(C_m(dd_m~=1 & ind_m<=Acc-tm))); ...
+         mean(w_debt_m(dd_m~=1 & ind_m<=Acc-tm)); ...
        ( mean(dd_m(state_m>=3 & ind_m<=Acc-tm)) +  mean(dd_m(state_m1>=3 & ind_m<=Acc-tm)) )./2 ;
        ( mean(dd_m(state_m>=3 & wd==1 & ind_m<=Acc-tm)) + mean(dd_m(state_m1>=3 & wd1==1 & ind_m<=Acc-tm)) )./2  ]; 
 
-   
+%        median(w_debt_m(dd_m~=1 & ind_m<=Acc-tm)); ...
+%        mean(w_debt_m(dd_m~=1 & ind_m<=Acc-tm)); ...
+
 if nargout>1
     util = sum(mean(v).*mean(prob));
 end

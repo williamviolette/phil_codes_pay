@@ -1,4 +1,26 @@
 
+
+
+use "${data}paws/clean/full_sample_with_edu.dta", clear
+
+keep conacct edu*extra
+
+foreach var of varlist edu*extra {
+	destring `var', replace force
+	replace `var'=. if `var'>15
+}
+
+egen edu_max = rowmax(edu*)
+
+
+egen edu=max(edu), by(conacct)
+keep conacct edu
+duplicates drop conacct, force
+
+save "${temp}paws_edu.dta", replace
+
+/*
+
 #delimit;
 local bill_query "";
 forvalues r = 1/12 {;

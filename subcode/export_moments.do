@@ -3,7 +3,10 @@
 
 
 
+
 	*** THIS IS RIGHT
+
+
 	
 	sum todisbdeposits, detail
 	global deposits = `=r(p95)'
@@ -154,6 +157,15 @@
 		sum bal if inc_t==`r'
 		write "${moments}bal_avg_t`r'.csv" `=r(mean)' 0.1 "%12.0g"
 		write "${tables}bal_avg_t`r'.tex" `=r(mean)' 0.1 "%12.0g"
+	}
+
+	sum bal, detail
+	write "${moments}bal_med.csv" `=r(p50)' 0.1 "%12.0g"
+	write "${tables}bal_med.tex" `=r(p50)' 0.1 "%12.0g"
+	forvalues r=1/3 {
+		sum bal if inc_t==`r', detail
+		write "${moments}bal_med_t`r'.csv" `=r(p50)' 0.1 "%12.0g"
+		write "${tables}bal_med_t`r'.tex" `=r(p50)' 0.1 "%12.0g"
 	}
 
 	egen bal_i = mean(bal), by(conacct)

@@ -9,7 +9,7 @@ function [h,util, ...
 [h_t3,~,simc_t3] = dc_obj_chow_pol_finite(given(3,:),prob,nA,sigA,Alb(3),Aub(3),nB,sigB,Blb(3),nD,chain,s,int_size,refinement);
 
 
-h = mean([h_t1 h_t2 h_t3],2);
+h = [h_t1 h_t2 h_t3];
 util = [mean(simc_t1(:,7)) mean(simc_t2(:,7)) mean(simc_t3(:,7))];
 
 
