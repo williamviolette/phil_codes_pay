@@ -14,17 +14,19 @@ short_est     = 0     ;
 full_est      = 0     ;
 est_many      = 0     ;
 est_tables    = 0     ;
-counter       = 0     ;
+counter       = 1     ;
+
+given_sim     = 1     ;
 
 bs            = 0 ; % bootstrap option
 br       = [1 10] ; % rep interval
 br_est   = [1 10] ;
 int_size = 1; % number of interpolations
 Fset     = 2;     % number of Chow iterations
-refinement =1 ; % refine the number of stuff
+refinement      = 1 ; % refine the number of stuff
 prob_caught_sim = 0 ;
 
-one_price       = 1 ;
+one_price       = 0 ;
 
 marginal_cost = 5;
 ppinst = 51;
@@ -46,7 +48,7 @@ nD   = 2;
 
 %%%%%%%%% ESTIMATION %%%%%%%%%%
 
-inc_t  = 3;  %%% which inc to estimate1
+inc_t  = 1;  %%% which inc to estimate1
  
 option = [ 3 5 7 12 ];   %%% what to estimate
 
@@ -85,24 +87,51 @@ s0 = 1;
 
 format long g
 
-    % given :  r_lend , r_water, r_high ,  lambda (U) ,   theta (y), gamma (a), alpha , beta_up , Y , p1, p2 ,pd,  n , metric, waterlend,
+    % given :  r_lend , r_water, r_high ,  shock  ,   inc shock, int,  alpha , beta_up , Y , p1, p2 ,pd,  n , curve, waterlend,
            %    1         2       3         4         5           6         7        8       9    10  11  12       %    
 %given=       [ r_lend    0      .03         0        0.28        0      .026      .02     y_avg p1  p2  170   n   10  0 ];
 
 %given=       [ r_lend    0      .02         0        0.28        0      .026      .01     y_avg p1  p2  170   n   10  0 ];
 % \given=     [ r_lend    0      .02         0        0.35        0      .026      .015     y_avg p1(1)  p2(1)  170   n   10  0 ];
 
-given=       [  r_lend    0      .02        0         0.3        0      .037     .015     y_avg(1)  p1(1)  p2(1)  170   n   10  0; ...
-                r_lend    0      .02        0         0.3        0      .029     .015     y_avg(2)  p1(1)  p2(1)  150   n   10  0; ...
-                r_lend    0      .02        0         0.3        0      .017     .015     y_avg(3)  p1(1)  p2(1)  170   n   10  0 ];
+% given=       [  r_lend    0      .02        0         0.3        0      .037     .015     y_avg(1)  p1(1)  p2(1)  170   1   10  0; ...
+%                 r_lend    0      .02        0         0.3        0      .029     .015     y_avg(2)  p1(1)  p2(1)  150   1   10  0; ...
+%                 r_lend    0      .02        0         0.3        0      .017     .015     y_avg(3)  p1(1)  p2(1)  170   1   10  0 ];
 
             
             
-given=       [  r_lend    0      .02        0         0.42        38      .5     .015     y_avg(1)  p1(1)  p2(1)  130   n   10  0; ...
-                r_lend    0      .02        0         0.42        38      .5     .015     y_avg(2)  p1(1)  p2(1)  130   n   10  0; ...
-                r_lend    0      .02        0         0.42        38      .5     .015     y_avg(3)  p1(1)  p2(1)  130   n   10  0 ];
+% given=       [  r_lend    0      .02        3         0         38      .5     .015     y_avg(1)  p1(1)  p2(1)  130   n   1  0; ...
+%                 r_lend    0      .02        3         0         38      .5     .015     y_avg(2)  p1(1)  p2(1)  130   n   1  0; ...
+%                 r_lend    0      .02        3         0         38      .5     .015     y_avg(3)  p1(1)  p2(1)  130   n   1  0 ];
+     
+
+% given=       [  r_lend    0      .02        0         .4         38      .5     .015     y_avg(1)  p1(1)  p2(1)  130   n   1  0; ...
+%                 r_lend    0      .02        0         .4         38      .5     .015     y_avg(2)  p1(1)  p2(1)  130   n   1  0; ...
+%                 r_lend    0      .02        0         .4         38      .5     .015     y_avg(3)  p1(1)  p2(1)  130   n   1  0 ];
+
             
 
+% r_slope =(.2 - r_lend)./( Aub/2) ;
+
+
+r_slope =(.01 - r_lend)./(( Aub/2).^2) ;
+
+
+given=       [  r_lend    0      r_lend      0        .3         0      .037     .015     y_avg(1)  p1(1)  p2(1)  130   n   1.5 r_slope(1) 0; ...
+                r_lend    0      r_lend      0        .3         0      .026     .015     y_avg(2)  p1(1)  p2(1)  130   n   1.5 r_slope(2) 0; ...
+                r_lend    0      r_lend      0        .3         0      .012     .015     y_avg(3)  p1(1)  p2(1)  130   n   1.5 r_slope(3) 0 ];
+
+            
+% r_slope =[0   0  0];
+% % 
+% given=       [  r_lend    0      .01    0         .4         0      .037     .015     y_avg(1)  p1(1)  p2(1)  100   n   1.5 r_slope(1) 0; ...
+%                 r_lend    0      .01    0         .4         0      .029     .015     y_avg(2)  p1(1)  p2(1)  100   n   1.5 r_slope(2) 0; ...
+%                 r_lend    0      .01    0         .4         0      .012     .015     y_avg(3)  p1(1)  p2(1)  100   n   1.5 r_slope(3) 0 ];
+
+            
+csvwrite(strcat(folder,'given.csv'),given);
+                        
+            
 if real_data == 1
             data = data_moments(option_moments,:); % need to transpose here
 else
@@ -114,13 +143,15 @@ end
 % Aub = Aub(inc_t)
 % Blb = Blb(inc_t)
 
+
 tic
-[est_mom,~,~,~,~,A1,B1]=dc_obj_chow_pol_finite(given(inc_t,:),prob,nA,sigA,Alb(inc_t),Aub(inc_t),nB,sigB,Blb(inc_t),nD,chain,s,int_size,refinement);
+[est_mom,~,controls,~,~,A1,B1]=dc_obj_chow_pol_finite(given(inc_t,:),prob,nA,sigA,Alb(inc_t),Aub(inc_t),nB,sigB,Blb(inc_t),nD,chain,s,int_size,refinement);
 toc
 
 round(est_mom(option_moments_est),2)
 round(data(option_moments,inc_t),2)
 
+sum(controls(:,2)==min(controls(:,2)))
 
 
 
@@ -186,9 +217,13 @@ round(data(option_moments,inc_t),2)
 if est_tables==1
     
     %%% Estimates table
-    estimates = csvread(strcat(folder,'estimates.csv'));
-    res_out = given;
-    res_out(option)=estimates;
+    if given_sim==0
+        estimates = csvread(strcat(folder,'estimates.csv'));
+        res_out = given;
+        res_out(option)=estimates;
+    else
+        estimates = csvread(strcat(folder,'given.csv'));
+    end
     
     est_boot=[];
     for h=br_est(1):br_est(2)
@@ -285,13 +320,21 @@ end
 
 if counter==1
 
-    %%% pull in estimates
-    estimates = [csvread(strcat(folder,'estimates_t1.csv')); ...
+    if given_sim==0
+        estimates = [csvread(strcat(folder,'estimates_t1.csv')); ...
                  csvread(strcat(folder,'estimates_t2.csv')); ...
                  csvread(strcat(folder,'estimates_t3.csv'))];
+        res_out = given;
+        res_out(:,option)=estimates;
+    else
+        res_out = csvread(strcat(folder,'given.csv'));
+    end
     
-    res_out = given;
-    res_out(:,option)=estimates;
+        
+    %%% pull in estimates
+    
+    
+    
 
     %%% current
     [h,util, h_t1,h_t2,h_t3, simc_t1,simc_t2,simc_t3]           =run3(res_out,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
@@ -311,12 +354,22 @@ if counter==1
     %%% utility loss from no loans
     res_nl = res_out;
 	res_nl(:,2) = .8;
-    [h_nl,util_nl, h_nl_t1,h_nl_t2,h_nl_t3, simc_nl_t1,simc_nl_t2,simc_nl_t3] =run3(res_nl,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
+    [h_nl,util_nl, h_nl_t1,h_nl_t2,h_nl_t3, simc_nl_t1,simc_nl_t2,simc_nl_t3] =run3(res_nl,prob,nA,sigA, Alb  ,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
     
+    disp ' no lending : '
     U_nl = (mean(util_nl)-mean(util))/du_dy10
     U_nl_t = (util_nl-util)./du_dy10_t
+    
+    
+    [h_nlb,util_nlb, h_nl_t1b,h_nl_t2b,h_nl_t3b, simc_nl_t1b,simc_nl_t2b,simc_nl_t3b] =run3(res_nl,prob,nA,sigA, Alb + Blb  ,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
+  
+    disp ' no lending with borrow constraint : '
+    U_nlb = (mean(util_nlb)-mean(util))/du_dy10
+    U_nl_tb = (util_nlb-util)./du_dy10_t
+    
 %     c_nl = h_nl(1);
     
+%{
     
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -425,6 +478,7 @@ if counter==1
     U_pp_t = (util_pp-util)./du_dy10_t
     U_pp = (mean(util_pp)-mean(util))/mean(du_dy10)
 
+%}
     %     c_pp = h_pp(1);
     %fprintf(fileID,'%s\n','\end{tabular} '); 
     %[~] = counter_print(estimates_c,cd_dir);

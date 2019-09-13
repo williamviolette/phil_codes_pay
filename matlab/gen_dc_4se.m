@@ -34,25 +34,45 @@ y_34f = (A-Aprime_inc + B)     + (-Bprime_inc).*(cd+dd) - pd.*(cd+dd) ;
 y_12f =  y_34f + (-1.*Bprime_inc).*cc  ;
 
 
-if nargout>4
-    debt_12 = 1;
-    [util1,w1] = u_dk(Lf_12,debt_12,alpha,p1f,p2f, Y_high + y_12f, lambda_high,k_high);
-    [util2,w2] = u_dk(Lf_12,debt_12,alpha,p1f,p2f, Y_low  + y_12f, lambda_low,k_low);
- 
-    debt_34 = 0;
-    [util3,w3] = u_dk(0,debt_34,alpha,p1f,p2f,Y_high + y_34f, lambda_high,k_high);
-    [util4,w4] = u_dk(0,debt_34,alpha,p1f,p2f,Y_low  + y_34f, lambda_low,k_low);
-else
+if k_high==0 && k_low==0
+    if nargout>4
         debt_12 = 1;
-        [util1] = u_dk(Lf_12,debt_12,alpha,p1f,p2f, Y_high + y_12f, lambda_high,k_high);
-        [util2] = u_dk(Lf_12,debt_12,alpha,p1f,p2f, Y_low  + y_12f, lambda_low,k_low);
+        [util1,w1] = u_dk(Lf_12,debt_12,alpha,p1f,p2f, Y_high + y_12f, lambda_high,k_high);
+        [util2,w2] = u_dk(Lf_12,debt_12,alpha,p1f,p2f, Y_low  + y_12f, lambda_low,k_low);
 
         debt_34 = 0;
-        [util3] = u_dk(0,debt_34,alpha,p1f,p2f,Y_high + y_34f, lambda_high,k_high);
-        [util4] = u_dk(0,debt_34,alpha,p1f,p2f,Y_low  + y_34f, lambda_low,k_low);
-end
-    
+        [util3,w3] = u_dk(0,debt_34,alpha,p1f,p2f,Y_high + y_34f, lambda_high,k_high);
+        [util4,w4] = u_dk(0,debt_34,alpha,p1f,p2f,Y_low  + y_34f, lambda_low,k_low);
+    else
+            debt_12 = 1;
+            [util1] = u_dk(Lf_12,debt_12,alpha,p1f,p2f, Y_high + y_12f, lambda_high,k_high);
+            [util2] = u_dk(Lf_12,debt_12,alpha,p1f,p2f, Y_low  + y_12f, lambda_low,k_low);
 
+            debt_34 = 0;
+            [util3] = u_dk(0,debt_34,alpha,p1f,p2f,Y_high + y_34f, lambda_high,k_high);
+            [util4] = u_dk(0,debt_34,alpha,p1f,p2f,Y_low  + y_34f, lambda_low,k_low);
+    end
+    
+else
+    if nargout>4
+        debt_12 = 1;
+        [util1,w1] = u_ql(Lf_12,debt_12,alpha,p1f,p2f, Y_high + y_12f, lambda_high,k_high);
+        [util2,w2] = u_ql(Lf_12,debt_12,alpha,p1f,p2f, Y_low  + y_12f, lambda_low,k_low);
+
+        debt_34 = 0;
+        [util3,w3] = u_ql(0,debt_34,alpha,p1f,p2f,Y_high + y_34f, lambda_high,k_high);
+        [util4,w4] = u_ql(0,debt_34,alpha,p1f,p2f,Y_low  + y_34f, lambda_low,k_low);
+    else
+            debt_12 = 1;
+            [util1] = u_ql(Lf_12,debt_12,alpha,p1f,p2f, Y_high + y_12f, lambda_high,k_high);
+            [util2] = u_ql(Lf_12,debt_12,alpha,p1f,p2f, Y_low  + y_12f, lambda_low,k_low);
+
+            debt_34 = 0;
+            [util3] = u_ql(0,debt_34,alpha,p1f,p2f,Y_high + y_34f, lambda_high,k_high);
+            [util4] = u_ql(0,debt_34,alpha,p1f,p2f,Y_low  + y_34f, lambda_low,k_low);
+    end
+    
+end
 
 % [cc_1,cc_w1] = u_dk(L,1,   alpha,p1,p2,   Y + A-Aprime_inc + B-Bprime_inc  , lambda_high,k_high);
 % [cd_1,cd_w1] = u_dk(L.*0,0,alpha,p1c,p2c, Y + A-Aprime_inc + B-Bprime_inc , lambda_high,k_high);

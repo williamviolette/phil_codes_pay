@@ -7,6 +7,41 @@
 * use "${temp}paws_edu.dta", clear
 
 
+use "${data}backup_cbms/2011/pasay_final2011_hh.dta", clear
+
+
+
+replace ave_water=. if ave_water>3000
+
+
+replace totin = totin/12
+sum totin, detail
+
+replace totin=. if totin>55000
+
+
+areg ave_water totin , a(brgy)
+
+
+
+areg ave_water totin i.hsize , a(brgy)
+
+areg ave_water totin, a(brgy)
+
+
+reg ave_water totin
+
+
+
+
+
+
+
+
+
+
+
+
 use "${database}clean/mcf/2011/mcf_112011.dta", clear
 	keep if ba=="0700" | ba=="1100"
 	keep if billclass=="0001"

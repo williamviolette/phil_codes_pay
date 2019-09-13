@@ -9,6 +9,8 @@ prog define write
 end
 
 
+* (( .482*(0 + 9.9)/2  ) +  ( .188*(10 + 19.9)/2  ) +  ( .077*(20 + 29.9)/2  )  +  ( .089*(30 + 39.9)/2  ) +  ( .015*(50 + 59.9)/2  ) )/(.482+.188+.077+.089+.015)
+
 global fies_load = 0
 
 if $fies_load == 1 {
@@ -26,7 +28,7 @@ keep if  todisbcashloan!=. | todisbdeposits!=.
 replace todisbcashloan = todisbcashloan/6
 replace todisbdeposits = todisbdeposits/6
 
-keep w_id w_shsn w_hcn todisbcashloan todisbdeposits twatersupply
+keep w_id w_shsn w_hcn todisbcashloan todisbdeposits twatersupply rfact
 
 save "${fies}hh_loans.dta", replace
 
@@ -96,11 +98,47 @@ g hhemp_f = employed_pay + employed_prof
 g age_f = age
 
 
+g twa12 = twatersupply/12
+replace twa12 = . if twa12>5000
+
 g twa6 = twatersupply/6
+g tw0 = twa6
+
 replace twa6 = . if twa6>5000
+
+replace tw0=0 if tw0==.
+replace tw0=. if tw0>5000 & tw0<.
+
 
 destring barangay_id, replace force
 drop if barangay_id==.
+
+
+reg twa12 inc  if inc<=50000, r
+
+
+reg twa12 inc  i.hhsize_f  i.hhemp_f age_f [pweight = rfact] if inc<=50000, r
+
+areg twa12 inc  i.hhsize_f  i.hhemp_f age_f [pweight = rfact] if inc<=50000, r a(barangay_id)
+
+
+reg inc i.hhsize_f i.hhemp_f i.age_f  [pweight = rfact] if inc<=100000, r
+
+
+areg inc i.hhsize_f i.hhemp_f i.age_f  [pweight = rfact] if inc<=100000, r a(barangay_id)
+
+
+reg twa6 inc  i.hhsize_f  i.hhemp_f age_f [pweight = rfact] if inc<=50000, r
+
+
+reg tw0 inc  i.hhsize_f  i.hhemp_f age_f [pweight = rfact] if inc<=50000, r
+
+
+reg twa6 inc  i.hhsize_f  i.hhemp_f age_f if inc<=50000, r
+
+
+reg twa6 inc if inc<=80000, r
+
 
 
 areg twa6 inc  i.hhsize_f  i.hhemp_f age_f if inc<=50000, a(barangay_id) r

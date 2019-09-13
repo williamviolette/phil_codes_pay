@@ -5,7 +5,7 @@ function    [h,util,sim,nA,nB,A,B] = dc_obj_chow_pol_finite(given,prob,nA,sigA,A
 r_lend          = given(1,1);
 r_water         = given(1,2);
 r_high          = given(1,3);
-lambda          = given(1,4);
+gamma_shock     = given(1,4);
 theta           = given(1,5);
 gamma           = given(1,6);
 alpha           = given(1,7);
@@ -15,13 +15,24 @@ p1              = given(1,10);
 p2              = given(1,11);
 pd              = given(1,12);
 n               = given(1,13);
-metric          = given(1,14);
-water_lending   = given(1,15);
+curve           = given(1,14);
+r_slope         = given(1,15);
+water_lending   = given(1,16);
+
+% gamma_shock = 0
+% gamma = 0
+% alpha = .018
+% theta = .4
+% curve = 1.2
 
 beta = 1/( 1 + beta_up );
 
-lambda_high = 1+lambda;
-lambda_low  = 1-lambda;
+lambda_high = 1 ;
+lambda_low  = 1 ;
+
+k_high =  gamma + gamma_shock;
+k_low   = gamma - gamma_shock;
+
 
 Y_high = Y.*(1+theta) ;  % high value for income
 Y_low  = Y.*(1-theta) ;  % low value for income
@@ -29,22 +40,17 @@ Y_low  = Y.*(1-theta) ;  % low value for income
 p1d = p1;
 p2d = p2;
 
-k_high =  gamma;
-k_low  = -gamma;
-
 
    [A,Aprime,B,Bprime,D,Dprime,nA,nB] = grid_int(nA,sigA,Alb,Aub,nB,sigB,Blb,nD, int_size,refinement);
-       
-   
    
     [util1,util2,util3,util4] = ...
-         gen_dc_4se(A,B,D,Aprime,Bprime,Dprime,r_high,r_lend,r_water,water_lending,Y_high,Y_low,p1,p2,p1d,p2d,pd,alpha,k_high,k_low,lambda_high,lambda_low);
-   
+         gen_curve(A,B,D,Aprime,Bprime,Dprime,r_high,r_slope,r_lend,r_water,water_lending,Y_high,Y_low,p1,p2,p1d,p2d,pd,alpha,k_high,k_low,lambda_high,lambda_low,curve);
 
-    v = zeros(size(A,1),4)   ;
+%     v = zeros(size(A,1),4)   ;
+    v = -100000.*(Aprime(:,1)<0).*ones(size(Aprime,1),4);
     
     if r_water>.6
-        v = -100000.*(Bprime(:,1)<0).*ones(size(Bprime,1),4);
+        v = -100000.*(Bprime(:,1)<0).*ones(size(Bprime,1),4) + v;
     end  
     
     T = 80;
@@ -121,7 +127,7 @@ for jj = 1:Tsim
 
         [u1,u2,u3,u4,...
                  w1,w2,w3,w4] = ...
-             gen_dc_4se(Athis,Bthis,Dthis,Ap,Bp,Dp,r_high,r_lend,r_water,water_lending,Y_high,Y_low,p1,p2,p1d,p2d,pd,alpha,k_high,k_low,lambda_high,lambda_low);
+             gen_curve(Athis,Bthis,Dthis,Ap,Bp,Dp,r_high,r_slope,r_lend,r_water,water_lending,Y_high,Y_low,p1,p2,p1d,p2d,pd,alpha,k_high,k_low,lambda_high,lambda_low,curve);
 
              u_full = [u1 u2 u3 u4];
              cons_full = [w1 w2 w3 w4];
