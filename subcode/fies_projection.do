@@ -11,6 +11,11 @@ end
 
 * (( .482*(0 + 9.9)/2  ) +  ( .188*(10 + 19.9)/2  ) +  ( .077*(20 + 29.9)/2  )  +  ( .089*(30 + 39.9)/2  ) +  ( .015*(50 + 59.9)/2  ) )/(.482+.188+.077+.089+.015)
 
+* ( .5*5 + .2*15+.075*25 + .089*35 )/(.5+.2+.075+.089)
+
+* ( .5*5 + .2*1+.075*1   + .089*1  )/(.5+.2+.075+.089)
+
+
 global fies_load = 0
 
 if $fies_load == 1 {
@@ -81,21 +86,51 @@ save "${fies}fies_merged.dta", replace
 
 use "${fies}fies_merged.dta", clear
 
-
-
 g barangay_id_st = string(w_id,"%14.0g")
 g barangay_id = substr(barangay_id_st,1,7)
-
+destring barangay_id, replace force
 
 g inc = toinc/12
-g hhsize_f = members
+g hhsize = members
 
 destring employed_pay employed_prof, replace force
 replace employed_pay =0 if employed_pay==.
 replace employed_prof=0 if employed_prof==.
 
-g hhemp_f = employed_pay + employed_prof
-g age_f = age
+g hhemp = employed_pay + employed_prof
+
+g ln_inc = log(inc)
+
+reg ln_inc i.hhsize i.hhemp i.age i.barangay_id, r
+
+est save "${fies}inc_projection", replace
+
+
+
+
+/*
+
+
+areg inc i.hhsize_f i.hhemp_f i.age_f , r  a(barangay_id)
+
+
+
+
+* g edu_f = hgc 
+* g edu=3
+* replace edu = 1 if ///
+* 			regexm(hgc,"No Grade")==1 | ///
+* 			regexm(hgc,"Primary")==1 | ///
+* 			regexm(hgc,"Elementary")==1 | ///
+* 			regexm(hgc,"High School")==1 | ///
+* 			regexm(hgc,"Grade ")==1 | ///
+* 			regexm(hgc,"Preschool ")==1 
+* replace edu = 2 if ///
+* 			regexm(hgc,"First Year College")==1 | ///
+* 			regexm(hgc,"Second Year College")==1 | ///
+* 			regexm(hgc,"Third Year College ")==1 | ///
+* 			regexm(hgc,"Fourth Year College")==1 
+
 
 
 g twa12 = twatersupply/12
@@ -115,6 +150,11 @@ drop if barangay_id==.
 
 
 reg twa12 inc  if inc<=50000, r
+
+
+
+areg inc i.hhemp_f i.age_f [pweight = rfact], r a(barangay_id)
+
 
 
 reg twa12 inc  i.hhsize_f  i.hhemp_f age_f [pweight = rfact] if inc<=50000, r

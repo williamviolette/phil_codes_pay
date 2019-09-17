@@ -1,5 +1,6 @@
 
 
+
 clear
 rng(1)
 
@@ -14,9 +15,9 @@ short_est     = 0     ;
 full_est      = 0     ;
 est_many      = 0     ;
 est_tables    = 0     ;
-counter       = 1     ;
+counter       = 0     ;
 
-given_sim     = 1     ;
+given_sim     = 0     ;
 
 bs            = 0 ; % bootstrap option
 br       = [1 10] ; % rep interval
@@ -39,8 +40,8 @@ mult_set = [  1  ];
 %%%% is it sensitive to theta?    previously 25, 25 (7 takes 1608 (28*28*2=1568)) (8 takes 3702 (32*32*2=4096))
 
 n = 10000; 
-nA = 30 %%%  3,3: 572s  5,5: 176s (46it, 319fun)  7,7: 350s (84it, 555fun)   
-nB = 30 %%%  8,8: 500s (136it, 859fun)  10,10: 660s (164it, 1009fun)  14,14: 369s (70it, 454fun)  20, 20:  1180s (104it, 656fun)
+nA = 18 %%%  3,3: 572s  5,5: 176s (46it, 319fun)  7,7: 350s (84it, 555fun)   
+nB = 18 %%%  8,8: 500s (136it, 859fun)  10,10: 660s (164it, 1009fun)  14,14: 369s (70it, 454fun)  20, 20:  1180s (104it, 656fun)
 
 sigA = 0;
 sigB = 0;
@@ -48,9 +49,11 @@ nD   = 2;
 
 %%%%%%%%% ESTIMATION %%%%%%%%%%
 
-inc_t  = 1;  %%% which inc to estimate1
+inc_t  = 3 ;  %%% which inc to estimate1
  
-option = [ 3 5 7 12 ];   %%% what to estimate
+option = [  7 12 14  ];   %%% what to estimate
+
+% option = [ 3 5 7 12 ];   %%% what to estimate
 
 % option = [ 3 7 12 ];   %%% what to estimate
    
@@ -87,46 +90,21 @@ s0 = 1;
 
 format long g
 
-    % given :  r_lend , r_water, r_high ,  shock  ,   inc shock, int,  alpha , beta_up , Y , p1, p2 ,pd,  n , curve, waterlend,
+    % given :  r_lend , r_water, r_high ,  shock  ,   inc shock, int,  alpha , beta_up , Y , p1, p2 ,pd,  n ,   curve, r_slope, waterlend,
            %    1         2       3         4         5           6         7        8       9    10  11  12       %    
 %given=       [ r_lend    0      .03         0        0.28        0      .026      .02     y_avg p1  p2  170   n   10  0 ];
 
-%given=       [ r_lend    0      .02         0        0.28        0      .026      .01     y_avg p1  p2  170   n   10  0 ];
-% \given=     [ r_lend    0      .02         0        0.35        0      .026      .015     y_avg p1(1)  p2(1)  170   n   10  0 ];
-
-% given=       [  r_lend    0      .02        0         0.3        0      .037     .015     y_avg(1)  p1(1)  p2(1)  170   1   10  0; ...
-%                 r_lend    0      .02        0         0.3        0      .029     .015     y_avg(2)  p1(1)  p2(1)  150   1   10  0; ...
-%                 r_lend    0      .02        0         0.3        0      .017     .015     y_avg(3)  p1(1)  p2(1)  170   1   10  0 ];
-
-            
-            
-% given=       [  r_lend    0      .02        3         0         38      .5     .015     y_avg(1)  p1(1)  p2(1)  130   n   1  0; ...
-%                 r_lend    0      .02        3         0         38      .5     .015     y_avg(2)  p1(1)  p2(1)  130   n   1  0; ...
-%                 r_lend    0      .02        3         0         38      .5     .015     y_avg(3)  p1(1)  p2(1)  130   n   1  0 ];
-     
-
-% given=       [  r_lend    0      .02        0         .4         38      .5     .015     y_avg(1)  p1(1)  p2(1)  130   n   1  0; ...
-%                 r_lend    0      .02        0         .4         38      .5     .015     y_avg(2)  p1(1)  p2(1)  130   n   1  0; ...
-%                 r_lend    0      .02        0         .4         38      .5     .015     y_avg(3)  p1(1)  p2(1)  130   n   1  0 ];
-
-            
-
-% r_slope =(.2 - r_lend)./( Aub/2) ;
-
-
 r_slope =(.01 - r_lend)./(( Aub/2).^2) ;
 
-
-given=       [  r_lend    0      r_lend      0        .3         0      .037     .015     y_avg(1)  p1(1)  p2(1)  130   n   1.5 r_slope(1) 0; ...
-                r_lend    0      r_lend      0        .3         0      .026     .015     y_avg(2)  p1(1)  p2(1)  130   n   1.5 r_slope(2) 0; ...
-                r_lend    0      r_lend      0        .3         0      .012     .015     y_avg(3)  p1(1)  p2(1)  130   n   1.5 r_slope(3) 0 ];
-
+given=       [  r_lend    0      r_lend      0        .4         0      .037     .015     y_avg(1)  p1(1)  p2(1)  130   n   1.5 r_slope(1) 0; ...
+                r_lend    0      r_lend      0        .4         0      .026     .015     y_avg(2)  p1(1)  p2(1)  130   n   1.5 r_slope(2) 0; ...
+                r_lend    0      r_lend      0        .4         0      .015     .015     y_avg(3)  p1(1)  p2(1)  130   n   1.5 r_slope(3) 0 ];
             
 % r_slope =[0   0  0];
 % % 
-% given=       [  r_lend    0      .01    0         .4         0      .037     .015     y_avg(1)  p1(1)  p2(1)  100   n   1.5 r_slope(1) 0; ...
-%                 r_lend    0      .01    0         .4         0      .029     .015     y_avg(2)  p1(1)  p2(1)  100   n   1.5 r_slope(2) 0; ...
-%                 r_lend    0      .01    0         .4         0      .012     .015     y_avg(3)  p1(1)  p2(1)  100   n   1.5 r_slope(3) 0 ];
+% given=       [  r_lend    0      .01       0         .4         0      .037     .015     y_avg(1)  p1(1)  p2(1)  100   n   1.5 r_slope(1) 0; ...
+%                 r_lend    0      .01       0         .4         0      .029     .015     y_avg(2)  p1(1)  p2(1)  100   n   1.5 r_slope(2) 0; ...
+%                 r_lend    0      .01       0         .4         0      .012     .015     y_avg(3)  p1(1)  p2(1)  100   n   1.5 r_slope(3) 0 ];
 
             
 csvwrite(strcat(folder,'given.csv'),given);
@@ -142,7 +120,6 @@ end
 % Alb = Alb(inc_t)
 % Aub = Aub(inc_t)
 % Blb = Blb(inc_t)
-
 
 tic
 [est_mom,~,controls,~,~,A1,B1]=dc_obj_chow_pol_finite(given(inc_t,:),prob,nA,sigA,Alb(inc_t),Aub(inc_t),nB,sigB,Blb(inc_t),nD,chain,s,int_size,refinement);
@@ -361,14 +338,17 @@ if counter==1
     U_nl_t = (util_nl-util)./du_dy10_t
     
     
-    [h_nlb,util_nlb, h_nl_t1b,h_nl_t2b,h_nl_t3b, simc_nl_t1b,simc_nl_t2b,simc_nl_t3b] =run3(res_nl,prob,nA,sigA, Alb + Blb  ,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
-  
-    disp ' no lending with borrow constraint : '
-    U_nlb = (mean(util_nlb)-mean(util))/du_dy10
-    U_nl_tb = (util_nlb-util)./du_dy10_t
+%     [h_nlb,util_nlb, h_nl_t1b,h_nl_t2b,h_nl_t3b, simc_nl_t1b,simc_nl_t2b,simc_nl_t3b] =run3(res_nl,prob,nA,sigA, Alb + Blb  ,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
+%   
+%     disp ' no lending with borrow constraint : '
+%     U_nlb = (mean(util_nlb)-mean(util))/du_dy10
+%     U_nl_tb = (util_nlb-util)./du_dy10_t
     
+
 %     c_nl = h_nl(1);
     
+
+
 %{
     
 

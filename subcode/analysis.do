@@ -16,6 +16,13 @@ end
 
 use "${temp}temp_descriptives_2.dta", clear
 
+est use "${fies}inc_projection"
+
+predict inc1, xb
+
+g inc_est=exp(inc1)
+
+reg amount inc_est
 
 tab edu
 

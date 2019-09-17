@@ -30,7 +30,7 @@ beta = 1/( 1 + beta_up );
 lambda_high = 1 ;
 lambda_low  = 1 ;
 
-k_high =  gamma + gamma_shock;
+k_high  =  gamma + gamma_shock;
 k_low   = gamma - gamma_shock;
 
 
