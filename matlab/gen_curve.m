@@ -41,22 +41,43 @@ y_12f =  y_34f + (-1.*Bprime_inc).*cc  ;
 
 
 if k_high==0 && k_low==0
-    if nargout>4
-        debt_12 = 1;
-        [util1,w1] = u_dkc(Lf_12,debt_12,alpha,p1f,p2f, Y_high + y_12f, lambda_high,k_high);
-        [util2,w2] = u_dkc(Lf_12,debt_12,alpha,p1f,p2f, Y_low  + y_12f, lambda_low,k_low);
-
-        debt_34 = 0;
-        [util3,w3] = u_dkc(0,debt_34,alpha,p1f,p2f,Y_high + y_34f, lambda_high,k_high);
-        [util4,w4] = u_dkc(0,debt_34,alpha,p1f,p2f,Y_low  + y_34f, lambda_low,k_low);
-    else
+    if lambda_high==1 && lambda_low==1
+        if nargout>4
             debt_12 = 1;
-            [util1] = u_dkc(Lf_12,debt_12,alpha,p1f,p2f, Y_high + y_12f, lambda_high,k_high);
-            [util2] = u_dkc(Lf_12,debt_12,alpha,p1f,p2f, Y_low  + y_12f, lambda_low,k_low);
+            [util1,w1] = u_dkc(Lf_12,debt_12,alpha,p1f,p2f, Y_high + y_12f, lambda_high,k_high);
+            [util2,w2] = u_dkc(Lf_12,debt_12,alpha,p1f,p2f, Y_low  + y_12f, lambda_low,k_low);
 
             debt_34 = 0;
-            [util3] = u_dkc(0,debt_34,alpha,p1f,p2f,Y_high + y_34f, lambda_high,k_high);
-            [util4] = u_dkc(0,debt_34,alpha,p1f,p2f,Y_low  + y_34f, lambda_low,k_low);
+            [util3,w3] = u_dkc(0,debt_34,alpha,p1f,p2f,Y_high + y_34f, lambda_high,k_high);
+            [util4,w4] = u_dkc(0,debt_34,alpha,p1f,p2f,Y_low  + y_34f, lambda_low,k_low);
+        else
+                debt_12 = 1;
+                [util1] = u_dkc(Lf_12,debt_12,alpha,p1f,p2f, Y_high + y_12f, lambda_high,k_high);
+                [util2] = u_dkc(Lf_12,debt_12,alpha,p1f,p2f, Y_low  + y_12f, lambda_low,k_low);
+
+                debt_34 = 0;
+                [util3] = u_dkc(0,debt_34,alpha,p1f,p2f,Y_high + y_34f, lambda_high,k_high);
+                [util4] = u_dkc(0,debt_34,alpha,p1f,p2f,Y_low  + y_34f, lambda_low,k_low);
+        end
+    else
+         if nargout>4
+            debt_12 = 1;
+            [util1,w1] = u_dkc(Lf_12,debt_12,alpha+lambda_high,p1f,p2f, Y_high + y_12f, 1,k_high);
+            [util2,w2] = u_dkc(Lf_12,debt_12,alpha+lambda_low,p1f,p2f, Y_low  + y_12f, 1,k_low);
+
+            debt_34 = 0;
+            [util3,w3] = u_dkc(0,debt_34,alpha+lambda_high,p1f,p2f,Y_high + y_34f, 1,k_high);
+            [util4,w4] = u_dkc(0,debt_34,alpha+lambda_low,p1f,p2f,Y_low  + y_34f, 1,k_low);
+        else
+                debt_12 = 1;
+                [util1] = u_dkc(Lf_12,debt_12,alpha+lambda_high,p1f,p2f, Y_high + y_12f, 1,k_high);
+                [util2] = u_dkc(Lf_12,debt_12,alpha+lambda_low,p1f,p2f, Y_low  + y_12f, 1,k_low);
+
+                debt_34 = 0;
+                [util3] = u_dkc(0,debt_34,alpha+lambda_high,p1f,p2f,Y_high + y_34f, 1,k_high);
+                [util4] = u_dkc(0,debt_34,alpha+lambda_low,p1f,p2f,Y_low  + y_34f, 1,k_low);
+        end
+        
     end
     
 else

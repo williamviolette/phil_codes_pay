@@ -1,9 +1,13 @@
 
 
 
+
 ******************
 **** SETTINGS ****
 ******************
+
+set maxvar 20000
+
 
 global phil_folder="/Users/williamviolette/Documents/Philippines/"
 global subcode="${phil_folder}phil_analysis/phil_codes_pay/subcode/"

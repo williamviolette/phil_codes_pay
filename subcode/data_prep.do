@@ -5,16 +5,19 @@ use "${data}paws/clean/full_sample_with_edu.dta", clear
 
 keep conacct edu*extra
 
+g high_school = 0
+g college = 0
 foreach var of varlist edu*extra {
 	destring `var', replace force
 	replace `var'=. if `var'>15
+	replace high_school = high_school+1 if `var'<=11
+	replace college = college+1 if `var'>11 & `var'<.
 }
 
 egen edu_max = rowmax(edu*)
 
-
-egen edu=max(edu), by(conacct)
-keep conacct edu
+egen edu=max(edu_max), by(conacct)
+keep conacct edu high_school college
 duplicates drop conacct, force
 
 save "${temp}paws_edu.dta", replace

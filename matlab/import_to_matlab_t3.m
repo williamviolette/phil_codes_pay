@@ -1,9 +1,10 @@
 function [c_avg,c_std,bal_avg,bal_med,bal_std,bal_corr,...
+    am_d, am_d4,...
     am1,am2,am3,am4,...
     amar1,amar2,amar3,amar4,...
-    y_avg,Aub,Alb,Blb,...
+    y_avg,y_cv,Aub,Alb,Blb,...
     p1,p2,prob_caught,...
-    delinquency_cost,r_lend,dc_prob] ...
+    delinquency_cost,r_lend,dc_prob,r_high] ...
         = import_to_matlab_t3(folder,one_price)
 
     
@@ -14,6 +15,10 @@ function [c_avg,c_std,bal_avg,bal_med,bal_std,bal_corr,...
     bal_med   = [csvread(strcat(folder,'bal_med_t1.csv')) csvread(strcat(folder,'bal_med_t2.csv')) csvread(strcat(folder,'bal_med_t3.csv'))];
     bal_std   = [csvread(strcat(folder,'bal_std_t1.csv')) csvread(strcat(folder,'bal_std_t2.csv')) csvread(strcat(folder,'bal_std_t3.csv'))];
     bal_corr  = [csvread(strcat(folder,'bal_corr_t1.csv')) csvread(strcat(folder,'bal_corr_t2.csv')) csvread(strcat(folder,'bal_corr_t3.csv'))];
+    
+
+    am_d       = [csvread(strcat(folder,'am_d_t1.csv')) csvread(strcat(folder,'am_d_t2.csv')) csvread(strcat(folder,'am_d_t3.csv'))]; 
+    am_d4       = [csvread(strcat(folder,'am_d4_t1.csv')) csvread(strcat(folder,'am_d4_t2.csv')) csvread(strcat(folder,'am_d4_t3.csv'))]; 
     
     am1       = [csvread(strcat(folder,'am1_t1.csv')) csvread(strcat(folder,'am1_t2.csv')) csvread(strcat(folder,'am1_t3.csv'))]; %%% start with 1 not zero!!!!
     am2       = [csvread(strcat(folder,'am2_t1.csv')) csvread(strcat(folder,'am2_t2.csv')) csvread(strcat(folder,'am2_t3.csv'))];
@@ -27,18 +32,28 @@ function [c_avg,c_std,bal_avg,bal_med,bal_std,bal_corr,...
 
 
 
-    y_avg       = [csvread(strcat(folder,'y_avg_t1.csv')) csvread(strcat(folder,'y_avg_t2.csv')) csvread(strcat(folder,'y_avg_t3.csv'))];
+    y_avg     = [csvread(strcat(folder,'y_avg_t1.csv'))  csvread(strcat(folder,'y_avg_t2.csv'))  csvread(strcat(folder,'y_avg_t3.csv'))];
+%   y_cv      = [csvread(strcat(folder,'cv_adj_t1.csv')) csvread(strcat(folder,'cv_adj_t2.csv')) csvread(strcat(folder,'cv_adj_t3.csv'))];
 
+    y_cv      = csvread(strcat(folder,'cv_single.csv'));
+
+        
     Aub = [csvread(strcat(folder,'Ab_t1.csv'))  csvread(strcat(folder,'Ab_t2.csv'))  csvread(strcat(folder,'Ab_t3.csv'))]; 
+    Aub = [Aub mean(Aub)];
+    
     Alb = -1.*Aub;
     Blb = -1.*[csvread(strcat(folder,'Bb_t1.csv')) csvread(strcat(folder,'Bb_t2.csv')) csvread(strcat(folder,'Bb_t3.csv'))];
-
+    Blb = [Blb mean(Blb)];
+    
     prob_caught = csvread(strcat(folder,'prob_caught.csv'));
 
 
     delinquency_cost = csvread(strcat(folder,'delinquency_cost.csv'));
-    r_lend      = csvread(strcat(folder,'irate.csv'));
-    r_lend      = ((1+r_lend)^(1/12)) - 1;
+    
+    r_high = csvread(strcat(folder,'irate.csv'));
+    r_lend = csvread(strcat(folder,'save_rate.csv'));
+%     r_lend      = csvread(strcat(folder,'irate.csv'));
+%     r_lend      = ((1+r_lend)^(1/12)) - 1;
     dc_prob     = csvread(strcat(folder,'dc_per_month_account.csv'));
     
     if one_price==1

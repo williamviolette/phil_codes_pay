@@ -10,8 +10,9 @@ function [h,util, ...
 
 
 h = [h_t1 h_t2 h_t3];
-util = [mean(simc_t1(:,7)) mean(simc_t2(:,7)) mean(simc_t3(:,7))];
 
+util = [mean(simc_t1(:,7)) mean(simc_t2(:,7)) mean(simc_t3(:,7))];
+% util = [util1 util2 util3];
 
 
 

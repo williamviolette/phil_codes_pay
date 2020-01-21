@@ -1,7 +1,7 @@
 
 
-global mergevars = "age mun date"
-
+global mergevars = " age mun date college "
+global clustervars = " age mun college "
 
 use "${lfs}lfs.dta", clear
 
@@ -10,11 +10,19 @@ use "${lfs}lfs.dta", clear
 	destring mun, replace force
 	g date = ym(svyyr,svymo)
 
+	g grd = c09_grd
+	destring grd, replace force
+
+	g college_id= grd>4 & grd<.
+	egen college=max(college_id), by(reg stratum psu hhnum)
+
 	keep if c05_rel == 1
 	egen age = cut(c07_age), at(20(5)70)
 	drop if age==.
 
-	local outcomes "wage emp hrs want_more look_for_hrs look_for_work"
+	g pay = c27_pbsc
+
+	local outcomes "wage emp hrs earnings want_more look_for_hrs look_for_work"
 	** HOURS 
 	* ren c22_phrs hrs * primary occupation hours
 	* total hours 
@@ -27,6 +35,15 @@ use "${lfs}lfs.dta", clear
 	** WAGE
 	ren c27_pbsc wage
 	replace wage=. if wage>2000
+
+	g earnings = wage*5 if hrs<=40
+	replace earnings = wage*6 if hrs>40 & hrs<=50
+	replace earnings = wage*7 if hrs>50 & hrs<.
+
+	replace earnings=0 if earnings==.
+	replace earnings=. if earnings>6000
+
+	replace earnings = earnings*4
 
 	** WANT MORE 
 	g want_more = 0 if c23_pwmr==2
@@ -62,8 +79,8 @@ save "${lfs}output.dta", replace
 
 use "${temp}temp_descriptives_2.dta", clear
 
-
-
+	drop college
+	g college = edu>=12 & edu<.
 
 	replace age = age + (date-590)/12 if wave==3
 	replace age = age + (date-602)/12 if wave==4
@@ -72,7 +89,6 @@ use "${temp}temp_descriptives_2.dta", clear
 	ren age age_true
 	egen age = cut(age_true), at(20(5)70)
 	keep if age!=.
-
 
 	g bst=string(barangay_id)
 	g mun = substr(bst,1,2)
@@ -90,7 +106,8 @@ use "${temp}temp_descriptives_2.dta", clear
 		ren date date_q
 		ren date_true date
 
-	g age_mun = mun*1000+age
+		egen cluster_var = group($clustervars)
+	* g age_mun = mun*1000+age
 	replace wage = wage*20
 	
 	
@@ -110,7 +127,7 @@ g del = ar>=61 & ar<720
  	g p=pay>0 & pay<.
 
 	sort conacct date
-	foreach var of varlist c pay del ar amount p wage emp hrs want_more look_for_hrs look_for_work {
+	foreach var of varlist c pay del ar amount p wage emp hrs want_more look_for_hrs look_for_work earnings {
 		by conacct: g `var'_ch = `var'[_n]-`var'[_n-1]
 	}
 
@@ -135,6 +152,7 @@ g del = ar>=61 & ar<720
 	end
 
 
+
 *	demeaning c "if c_ch>-50 & c_ch<50"
 
 	demeaning c
@@ -144,7 +162,7 @@ g del = ar>=61 & ar<720
 	demeaning hrs
 	demeaning emp
 	demeaning want_more
-
+	demeaning earnings
 
 	global X "{\tim}"
 
@@ -156,15 +174,52 @@ lab var hrs_ch1 "$\Delta$ Hours worked"
 lab var want_more_ch1 "$\Delta$ Want more hours"
 
 est clear
-foreach o in c_ch1 p_ch1 del_ch1 {
+foreach o in c_ch1 p_ch1 del_ch1  {
 	*  want_more_ch1 leave out for now...
-		reg `o'  emp_ch1 hrs_ch1 i.date, r cluster(age_mun)
+		reg `o'  earnings_ch1 i.date, r cluster(cluster_var)
 		*sum `o' if e(sample)==1 , detail
 	  	*estadd scalar Mean = `=r(mean)'
 		eststo `o'
 }
 
 
+gegen amount_m = mean(amount), by(cluster_var date)
+gegen pay_m = mean(pay), by(cluster_var date)
+duplicates drop cluster_var date, force
+
+sort cluster_var date
+by cluster_var: g amount_m_ch = amount_m[_n]-amount_m[_n-1]
+by cluster_var: g pay_m_ch = pay_m[_n]-pay_m[_n-1]
+
+* reg amount_m_ch  earnings_ch i.date, r cluster(cluster_var)
+* reg pay_m_ch  earnings_ch i.date, r cluster(cluster_var)
+
+
+lab var earnings_ch " $\Delta$ Income "
+
+
+reg amount_m_ch  earnings_ch i.date, r cluster(cluster_var)
+eststo amount_m_ch
+sum amount_m if e(sample)==1, detail
+estadd scalar varmean = `r(mean)'
+
+reg pay_m_ch  earnings_ch i.date, r cluster(cluster_var)
+eststo pay_m_ch
+sum pay_m if e(sample)==1, detail
+estadd scalar varmean = `r(mean)'
+
+
+estout amount_m_ch pay_m_ch using "${tables}table_lfs_analysis.tex", replace  style(tex) ///
+	keep(  earnings_ch   )  ///
+		varlabels(, el(  earnings_ch "[0.2em]") )  label noomitted ///
+		  mlabels(,none)   collabels(none)  cells( b(fmt(4) star ) se(par fmt(4)) ) ///
+		  stats( varmean r2 N , labels( "Mean" "$\text{R}^{2}$" "N"  )   fmt( %12.0fc %12.3fc %12.0fc  )   ) ///
+		  starlevels(  "\textsuperscript{c}" 0.10    "\textsuperscript{b}" 0.05  "\textsuperscript{a}" 0.01) 
+
+
+
+
+/*
 	estout using "${tables}table_lfs_analysis.tex", replace  style(tex) ///
 	keep(  emp_ch1 hrs_ch1   )  ///
 		varlabels(,  el(  emp_ch1 "[0.1em]" hrs_ch1 "[0.1em]"  ))  label noomitted ///

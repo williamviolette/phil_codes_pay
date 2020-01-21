@@ -1,7 +1,7 @@
 \documentclass[12pt]{article}
 
 % TEMPLATE DEFAULT PACKAGES
-\usepackage{amssymb,amsmath,amsfonts,eurosym,geometry,ulem,graphicx,color,setspace,sectsty,comment,natbib,pdflscape,array,adjustbox}
+\usepackage{amssymb,amsmath,amsfonts,eurosym,geometry,ulem,graphicx,color,setspace,sectsty,comment,natbib,pdflscape,array,adjustbox,threeparttable}
 
 % ADDED PACKAGES FOR THIS MANUSCRIPT
 \usepackage{palatino,newtxmath,multirow,titlesec,threeparttable,tabu,booktabs,titlesec,threeparttable,mathtools,bm,bbm,subcaption,pdflscape,tcolorbox,mathrsfs,float}
@@ -108,13 +108,64 @@ This paper proceeds with Section~\ref{section:data} describing the water billing
 
 % Describe notice of disconnection in more detail here??? and  NO DO IT LATER~! PLEASE!!!!
 
-Measuring credit through delayed water bill payments requires information on monthly water bills at the household-level.  This paper relies primarily on water utility records collected as part of a research partnership with one of the two regulated utilities in Metro Manila, Philippines where each utility is responsible for serving their assigned geographic half of Metro Manila.  This utility provided access to monthly billing records for each connection as well as detailed information covering the regulatory structure and costs of production.  The monthly billing records include meter readings, billing amount, outstanding balances, and payments spanning January, 2010 to May, 2015.  Over this timeframe, the total number of connections increased from 900,000 to 1,500,000 as the water utility expanded service access.  Water connections are split into four categories: residential (90\%), semi-business (4\%), commercial (5\%), and industrial (1\%).  Since this research focuses on household decisions, only connections coded as residential are included in the analysis.  
+Measuring credit through delayed water bill payments requires information on water consumption and bill payments at the household-level as well as features of the credit environment in Manila.  % As well as information on the credit environment facing households
 
-Since multiple households often share the same connections in Manila, the billing data is merged to survey data \todo[color=green]{Using address or individual?} that measures the number of households using each connection as well as demographics for the household that owns the connection.  Conducted every two years between 2008 and 2012, the survey data cover a total of nearly 50,000 water connections.  Connection survey documentation indicates that surveyors used stratified random sampling where the number of connections surveyed was proportional to the census population in the smallest administrative census region, making this survey roughly representative of the population of piped water users.  
+Water consumption and bill payments come from water utility records collected as part of a research partnership with one of the two regulated utilities in Metro Manila, Philippines where each utility is responsible for serving their assigned geographic half of Metro Manila.  This utility provided access to monthly billing records for each connection as well as detailed information covering the regulatory structure and costs of production.  Monthly billing records include meter readings, billing amount, outstanding balances, and payments spanning January, 2010 to May, 2015.  Over this period, the total number of connections increased from 900,000 to 1,500,000 as the water utility expanded service access.  Water connections are split into four categories: residential (90\%), semi-business (4\%), commercial (5\%), and industrial (1\%).  
 
-Using this survey data, the analysis is further limited to connections that each serve a single household in order to ensure that billing data for each connection maps directly into the consumption and savings decisions of a single household.\todo[color=green]{Its not clear from identification strategy that I need to drop them, too much detail, just do generalizability sentence at the end.}  Previous research from \cite{wjv} finds that sharing a connection with multiple households increases the costs of consuming water for each household, which affects each household's water demand.  \cite{wjv} also finds that households using a connection individually tend to have higher water demand, larger household sizes, and greater likelihood of living in single houses (as opposed to duplexes or apartments) in comparison to households sharing water connections.  These differences may limit the generalizability of the findings outside of this subpopulation in Manila.  This sample restriction also ensures that household-level data and connection-level data\todo[color=green]{Do you know if its the same HH over time? (no, but make that clear!)} can be referred to interchangeably.  Table~\ref{table:sampleconstruction} in Appendix~\ref{appendix:sampleconstruction} includes more details on how the sample is constructed for the analysis. 
+To focus on household decisions, the analysis includes only residential connections that are identified as serving a single household (31\% of all connections), according to survey data on a random cross-section of 50,000 water connections between 2008 and 2012.  Survey data also include demographics for households that own their water connections.  Households using connections tend to be larger and wealthier than households that share connections with other households according to previous research (\cite{wjv}).  Table~\ref{table:sampleconstruction} in Appendix~\ref{appendix:sampleconstruction} includes more details on how the final sample is constructed for the analysis.
+% This sample restriction ensures that connection-level is equal to household-level.
 
-Because the connection survey data does not include income measures, average monthly income for households in Manila is taken from the 2015 Family Income and Expenditure Survey.  The average interest rate for the Philippines is calibrated from the World Bank Databank (2010-2015).\todo[color=green]{How is this merged?!}
+Since the analysis focuses on the borrowing and savings behavior of a representative household, additional data sources serve to characterize the borrowing and saving environment in Manila.  Average household income is calculated using the  2015 Family Income and Expenditure Survey, which covers 4,130 households in Metro Manila.  Interest rates for borrowing and saving come from the 2014 Consumer Finance Survey in Metro Manila as well as the World Bank Databank (2010-2015) for the Philippines.  
+
+
+
+% To exclude connection-level survey data, which measure the number of households using each connection as well as demographics for the household that owns the connection.  Conducted every two years between 2008 and 2012, the survey covers a cross-section of nearly 50,000 water connections.  Documentation indicates that surveyors used stratified random sampling where the number of connections surveyed was proportional to the census population in the smallest administrative census region, making this survey roughly representative of the population of piped water users.  To examine the consumption and savings behavior of individual households, the analysis is limited to surveyed connections that serve only one household (31\% of surveyed connections), which tend to serve larger, wealthier households according to previous research (\cite{wjv}).  This sample restriction also ensures that connection-level is equal to household-level.
+
+
+
+
+
+
+
+% Measuring household income for water users requires two-steps: in the first step, billing data are merged with connection-level survey data on household demographics.  In the second step, household income is imputed with household location and demographics using additional survey data on household income.
+
+% The first step uses connection-level survey data, which measure the number of households using each connection as well as demographics for the household that owns the connection.  Conducted every two years between 2008 and 2012, the survey covers a cross-section of nearly 50,000 water connections.  Documentation indicates that surveyors used stratified random sampling where the number of connections surveyed was proportional to the census population in the smallest administrative census region, making this survey roughly representative of the population of piped water users.  To examine the consumption and savings behavior of individual households, the analysis is limited to surveyed connections that serve only one household (31\% of surveyed connections), which tend to serve larger, wealthier households according to previous research (\cite{wjv}).  This sample restriction also ensures that connection-level is equal to household-level.
+
+
+
+
+% Since multiple households often share the same connections in Manila, 
+
+
+
+% The second step leverages the 2015 Family Income and Expenditure Survey, which covers 2,528 households across 216 wards that overlap with the connection survey.  This cross-sectional survey collects detailed information on household income, demographics, and measures of credit usage.  The analysis is further limited to data from these 216 geographic wards (18\% of wards covered by the connection-level survey).\footnote{Wards in the Philippines are known as ``Barangays,'' and have average populations of 7,600 people in Metro Manila.}  Income is imputed with a linear regression of indicators for each household size, each number of employed household members, each age of household head, each ward, and each dwelling type (duplex, single-house, and apartment).  Log-income is used for imputation both to prevent negative values for imputed incomes and to match the right-skewed distribution of household income.\footnote{The imputation procedure results in an $\text{R}^{2}$ of 0.48.}  
+
+
+
+% Since the distribution of household income  and ensure that imputed incomes are positive.
+% To impute household income, 
+
+% Since connection survey data do not include income measures, household income is imputed from household survey data according to demographics and location.  The household survey data 
+
+
+% Household income is imputed using household demographics and location from connection-level survey data and separate household survey data.  
+
+% The billing data is merged at the water connection level to survey data that measures the number of households using each connection as well as demographics for the household that owns the connection.  Conducted every two years between 2008 and 2012, the survey data cover a total of nearly 50,000 water connections.  Connection survey documentation indicates that surveyors used stratified random sampling where the number of connections surveyed was proportional to the census population in the smallest administrative census region, making this survey roughly representative of the population of piped water users.  
+
+% To analyze consumption and savings decisions at the household level,  
+% The analysis focuses on 
+
+% the analysis is further limited to connections that each serve a single household in order to ensure that billing data for each connection maps directly into the consumption and savings decisions of a single household.\todo[color=green]{Its not clear from identification strategy that I need to drop them, too much detail, just do generalizability sentence at the end.}  
+
+% Previous research from \cite{wjv} finds that sharing a connection with multiple households increases the costs of consuming water for each household, which affects each household's water demand.  \cite{wjv} also finds that households using a connection individually tend to have higher water demand, larger household sizes, and greater likelihood of living in single houses (as opposed to duplexes or apartments) in comparison to households sharing water connections.  These differences may limit the generalizability of the findings outside of this subpopulation in Manila.  
+
+% This sample restriction also ensures that household-level data and connection-level data\todo[color=green]{Do you know if its the same HH over time? (no, but make that clear!)} can be referred to interchangeably.  Table~\ref{table:sampleconstruction} in Appendix~\ref{appendix:sampleconstruction} includes more details on how the sample is constructed for the analysis. 
+
+% Because the connection survey data does not include income measures, average monthly income for households in Manila is taken from the 2015 Family Income and Expenditure Survey.  
+
+% % Mention later: average interest rate, and other calibrations 
+% % The average interest rate for the Philippines is calibrated from the World Bank Databank (2010-2015).
+
 
 \section{Credit through Delayed Water Bill Payments}\label{section:descriptives}
 
@@ -122,157 +173,192 @@ Because the connection survey data does not include income measures, average mon
 % Each month, households consume \input{tables/usage_all}m3 of piped water on average, which totals an average monthly bill of \input{tables/bill_all}PhP as shown in Table~\ref{table:descriptives_all}.  Given an average monthly income in Manila of \input{tables/y_avg}PhP and savings rate of \input{tables/save_avg}PhP,  monthly water bills reach a modest average of \input{tables/bill_inc_all}\unskip\% of income and \input{tables/bill_sav_all}\unskip\% of savings.  
 
 
+% \begin{table}[h!] % PUT IN DEMOGRAPHICS PLEASE ?!?!?
+% \centering
+% \caption{Mean Characteristics}\label{table:descriptives_all}
+% \vspace{-2mm}
+% \begin{tabular}{l*{1}{cccccc}}
+% \toprule
+%  & Mean & SD & Min & 25th & 75th & Max  \\
+% \midrule
+% \input{tables/descriptives_all}
+% \bottomrule \\ [-.8em]
+% \multicolumn{7}{l}{Total Households: \input{tables/total_hhs_stayers}  Obs. per Household: \input{tables/obs_per_hh_all} Total Obs.: \input{tables/total_obs_all}} \\
+% \multicolumn{7}{l}{\scriptsize Bill, Unpaid Balance, and Payment Size are in PhP per household-month.  45 PhP $\sim$ 1 USD} \\[-.5em]
+% \multicolumn{7}{l}{\scriptsize Negative bills and balances generally arise from refunds for billing or payment errors.}  \\[-.5em]
+% \multicolumn{7}{l}{\scriptsize See Appendix~\ref{appendix:sampleconstruction} for more details on the sample construction.} 
+% \end{tabular}
+% \end{table}\todo[color=green]{Move this down after the description}
+
+
+%%% NOTES FROM TOWNSEND PAPER ! %%%
+% For the purposes of this partial equilibrium analysis, this borrowing constraint is exogenous.
+% It is not a natural borrowing constraint as in Aiyagari (1994) and therefore somewhat ad
+% hoc, but such a constraint can arise endogenously in models with limited commitment (see
+% Wright (2002)) or where lenders have rights to garnish a fraction of future wages (e.g.,
+% Lochner and Monge-Naranjo (2008))
+
+
+
+Delayed water bill payments may provide a reliable source of low-cost credit to households because (1) the utility tolerates high rates of delinquency before disconnecting water service and (2) the utility is prohibited from charging any interest on outstanding balances. 
+
+At the end of each month, the utility sends meter readers who record monthly consumption for each connection and then use a mobile device to print and deliver the bill to households in person.  Households are then expected to pay the bill by the end of the month.  Households have many options to pay their bills with \input{tables/center}\unskip\% using small payment centers (mall kiosks, gas stations, convenience stores, etc.), \input{tables/maynilad}\unskip\% paying at local utility offices, and \input{tables/atm}\unskip\% paying over phone, online, or via ATM kiosks.\footnote{Statistics are calculated from the connection survey.}  
+
+Despite easy payment mechanisms, households rarely pay their bills on time.  Table~\ref{table:descriptives_all} provides summary statistics on the usage, billing, and payment patterns of all households.  On average, households are \input{tables/days_delinquent_all}days behind in their payments.  Households also make large, infrequent payments.  While the average bill is \input{tables/bill_all}PhP per month, payment sizes average \input{tables/pay_size_all}PhP and households make payments in only \input{tables/pay_freq}\unskip\% of months.  These payment patterns leave an average total outstanding balance of \input{tables/balance_all}PhP per month.  For reference, 1 USD is worth around 45 PhP over this period.
+
+
+NEED TO DESCRIBE INCOME HERE!
+
+
+% \todo[color=red]{ A what about procrastination? 
+% in the us when i paid utilities via direct pay online, i would always pay on time. here in mex, you can't do that so emilio and i are always delinquent on our bills but only cause we lazy a.f. to go to the 7-eleven to pay. deal with this later?}
+
+% \todo[color=red]{isn't this huge?}
+% \todo[color=red  ]{A so there's a 60 day grace period? any chance hhs know this and pay in 60 day intervals?}   Check!
+% \todo[color=green]{Do you not see visits in the larger dataset? Table 2 has visits for the full sample}
+
+% Regulations also require the utility to issue written statements notifying households that their connections will be disconnected in 7 days if their outstanding balances remain delinquent.  
+
+
+% \input{tables/tcd_id_ar_cond}
+% After bills have remained delinquent for at least 60 days, the government regulator permits the utility to visit delinquent households to disconnect their water service, further referred to as a ``delinquency visit.''  
+After bills have remained delinquent for over a month, the utility visits some delinquent households to disconnect their water service unless households immediately pay their bills, further referred to as a \textit{delinquency visit}.  Delinquency visits often surprise households.   Likely due to time and travel costs, delinquency visits are relatively rare, occurring in only \input{tables/prob_caught}\unskip\% of months where households are over a month delinquent.  This rate ranges from \input{tables/prob_caught_min}\unskip\% to \input{tables/prob_caught_max}\unskip\% across the 12 business areas and is positively correlated with outstanding balances.  Over the course of the sample, \input{tables/tcd_max}\unskip\% of households ultimately receive delinquency visits.  
+
+% Only \input{tables/disc_notice}\unskip\% of households report that they received advanced notice before disconnection.
+
+% Appendix Table~\ref{table:tcd_predict} predicts delinquency visits with days overdue, outstanding balance, and household characteristics, finding strong correlations with all predictors.
+
+
+
+% finding that days overdue and delinquent balances are strongly correlated with visits while areas with lower socioeconomic status face higher probabilities of delinquency visits. % more to say here about magnitudes?!   %%% out of \input{tables/paws_accounts}total included respondents in the connection survey.
+
+% \input{tables/tcd_id_mean}\unskip\% of household-month observations.  This probability increases to 
+% Appendix Figure~\ref{figure:dc_hazard} plots the share of household-months with delinquency visits according to days overdue.  The risk of delinquency visits spikes at 61 days overdue before settling to around 2.5\% at higher levels of delinquency.  
+
+Households respond to delinquency visits in three ways.  
+
+1)  Following \input{tables/tcd_share_pay}\unskip\%  of delinquency visits, households immediately pay their outstanding bills and avoid disconnection.
+
+2)  Following \input{tables/tcd_share_dc}\unskip\% of delinquency visits, households do not pay their outstanding bills, are disconnected within two months of the visit, and never reconnect during the sample period.  I refer to these events as \textit{permanent disconnections}.  Disconnection typically involves placing a metal lock on the water meter that stops any flow.  These households may have already planned to change dwellings, switch to a different water source, or leave Manila at the time that they receive a delinquency visit.  Households that permanently disconnect often leave large outstanding balances that are never repaid averaging \input{tables/out_bal}PhP, which is over 10 times the average water bill. \, Since 0.13\% of households permanently disconnect each month on average,\footnote{The disconnection rate is calculated (1) for households that connect between 2007 and 2011 during the connection survey and (2) for disconnections occurring between 2012 and May, 2014 to ensure that any disconnections last for at least a year until the sample ends in June, 2015.} the average household remains connected for around 32 years assuming a constant rate over time.\footnote{This constant rate is consistent with a weak observed correlation between the permanent disconnection rate and calendar months of -0.0033.}  Therefore, unpaid outstanding balances average 18.5 PhP per household-month or 2.8\% of the average water bill.
+
+% These unpaid balances impose a financial burden on the utility.  % In total, by the end of the sample, \% of households remain disconnected. 
+
+3)  Following \input{tables/tcd_share_rec}\unskip\% of delinquency visits, households do not pay their outstanding bills and are disconnected within two months of the visit; however, these households later pay their outstanding bills and reconnect during the sample period.  I refer to these events as \textit{temporary disconnections}.  While households often try to negotiate for additional time to pay their outstanding balances, \input{tables/days_pay_under_30}\unskip\% of households are required to pay within 30 days and the average grace period is \input{tables/days_pay_average}days.  As a result, only \input{tables/enough_time}\unskip\% of households report having ``enough time'' to make their payments.  While temporarily disconnected, these households likely substitute to alternative water sources including sharing with neighbors, using from deepwells, or purchasing from local water vendors.  On average, households wait \input{tables/t_rec}months before reconnecting.  In order to reconnect, households must pay a small, one-time fee of 200 PhP on top of settling any outstanding balances.  Households report being reconnected \input{tables/days_rec_average}days on average after full payment.  
+
+Among delinquency visits that occur when households are over three months overdue on their bills,  \input{tables/tcd_share_rec_3}\unskip\% result in temporary disconnections and these households wait \input{tables/t_rec_3}months on average before reconnecting.  By contrast, when households are under three months overdue, only \input{tables/tcd_share_rec_3l}\unskip\% result in temporary disconnections and these households wait \input{tables/t_rec_3l}months on average before reconnecting.  This pattern is consistent with households facing credit constraints.  When households are confronted with small debts to keep water service, they quickly pay to remain connected to service.  Yet, when households must pay large debts to keep water service, many households delay payment for many months while they save income.  This pattern suggests that households do not have access to low-cost credit, which would allow them to maintain water service.  
+
+% When households face small debts, they are more likely to pay instead of disconnecting.  
+
+
+ % among visits that occur when households are less than three months overdue, only \input{tables/tcd_share_rec_l}\unskip\% result in households being disconnected within two months only to later reconnect during the sample period.
+
+
+% 1) \textbf{No Disconnection} \hspace{.2em} \input{tables/tcd_share_pay}\unskip\% immediately pay their outstanding bill to avoid disconnection.
+
+% 2) \textbf{Permanent Disconnection} \hspace{.2em} \input{tables/tcd_share_dc}\unskip\% disconnect within two months of a visit and never reconnect during the sample.  Disconnection typically involves placing a metal lock on the water meter that stops any flow.  These households may have already planned to change dwellings, switch to a new water source, or leave Manila at the time that they received a delinquency visit.  Households that permanently disconnect often leave large outstanding balances that are never repaid during the sample and average \input{tables/out_bal}PhP.  These unpaid balances impose a financial burden on the utility.  % In total, by the end of the sample, \% of households remain disconnected. 
+
+% 3) \textbf{Temporary Disconnection} \hspace{.2em} \input{tables/tcd_share_rec}\unskip\% disconnect within two months of a visit and reconnect later in the sample.  In order to reconnect, households must pay a small, one-time fee of 200 PhP on top of settling any outstanding balances.\footnote{In the connection survey, households report being reconnected \input{tables/days_rec_average}days on average after full payment.}  While households often negotiate for additional time to pay their outstanding balances,  only \input{tables/enough_time}\unskip\% of households report having ``enough time'' to make their payments.\footnote{\input{tables/days_pay_under_30}\unskip\% of households report agreeing to pay within 30 days and the average grace period is \input{tables/days_pay_average}days.}
+
+
+% For households who fail to pay, 
+
+% \begin{enumerate}
+% 	\item \textbf{Immediate Reconnection}:  In response to a visit, \input{tables/tcd_share_pay}\unskip\% of households pay their outstanding bill immediately to avoid disconnection.
+% 	\item \textbf{Permanent Disconnection}: \input{tables/tcd_share_dc}\unskip\% disconnect within two months of a visit and never reconnect during the sample.  These households may have already planned to change dwellings, switch to a new water source, or leave Manila at the time that they received a delinquency visit.  Households that permanently disconnect often leave large outstanding balances that are never repaid during the sample averaging \input{tables/out_bal}PhP. % In total, by the end of the sample, \% of households remain disconnected. 
+% 	\item \textbf{Temporary Disconnection}:  \input{tables/tcd_share_rec}\unskip\% disconnect within two months of a visit and reconnect later. While households often negotiate for additional time to pay their outstanding balances,  only \input{tables/enough_time}\unskip\% of households report having ``enough time'' to make their payments.\footnote{\input{tables/days_pay_under_30}\unskip\% of households report agreeing to pay within 30 days and the average grace period is \input{tables/days_pay_average}days.}
+% \end{enumerate}  
+
+
+
+% Households respond to delinquency visits in three ways.  First, households immediately pay to reconnect (\% ) , (2)    \% of households disconnect 
+
+
+% are especially likely when 
+
+% permanently (ie. once disconnected, these households remain disconnected for the remainder of the sample).  \% of these permanent disconnections occur within one 
+
+% keeps observations one year before permanent disconnection
+
+
+
+
 \begin{table}[h!] % PUT IN DEMOGRAPHICS PLEASE ?!?!?
 \centering
 \caption{Mean Characteristics}\label{table:descriptives_all}
 \vspace{-2mm}
+\begin{threeparttable}
 \begin{tabular}{l*{1}{cccccc}}
 \toprule
- & Mean & SD & Min & 25th & 75th & Max  \\
+ & Mean & Std. Dev. & Min &  25th & 75th & Max \\
 \midrule
 \input{tables/descriptives_all}
+% \input{tables/descriptives_usage_groups}
+% OLD \\
+% \input{tables/descriptives_inc_groups}
 \bottomrule \\ [-.8em]
-\multicolumn{7}{l}{Total Households: \input{tables/total_hhs_stayers}  Obs. per Household: \input{tables/obs_per_hh_all} Total Obs.: \input{tables/total_obs_all}} \\
-\multicolumn{7}{l}{\scriptsize Bill, Unpaid Balance, and Payment Size are in PhP per household-month.  45 PhP $\sim$ 1 USD} \\[-.5em]
-\multicolumn{7}{l}{\scriptsize Negative bills and balances generally arise from refunds for billing or payment errors.}  \\[-.5em]
-\multicolumn{7}{l}{\scriptsize See Appendix~\ref{appendix:sampleconstruction} for more details on the sample construction.} 
+% \multicolumn{5}{l}{Total Households: \input{tables/total_hhs_stayers}  Obs. per Household: \input{tables/obs_per_hh_all} Total Obs.: \input{tables/total_obs_all}} \\
+% \multicolumn{5}{l}{\scriptsize Bill, Unpaid Balance, and Payment Size are in PhP per household-month.  45 PhP $\sim$ 1 USD} \\[-.5em]
+% \multicolumn{5}{l}{\scriptsize Negative bills and balances generally arise from refunds for billing or payment errors.}  \\[-.5em]
+% \multicolumn{5}{l}{\scriptsize See Appendix~\ref{appendix:sampleconstruction} for more details on the sample construction.} 
 \end{tabular}
-\end{table}\todo[color=green]{Move this down after the description}
-
-Delayed water bill payments may provide a reliable source of low-cost credit to households because (1) the utility tolerates high rates of delinquency before disconnecting water service and (2) the utility is prohibited from charging any interest on outstanding balances. 
-
-At the end of each month, the utility sends meter readers who record monthly consumption for each connection and then use a mobile device to print and deliver the bill to households in person.  Households are then expected to pay the bill by the end of the month.  Households have many options to pay their bills with \input{tables/center}\unskip\% using small payment centers (mall kiosks, gas stations, convenience stores, etc.), \input{tables/maynilad}\unskip\% paying at local utility offices, and \input{tables/atm}\unskip\% paying over phone, online, or via ATM kiosks.\footnote{Statistics are calculated from the connection survey.}  Despite easy payment mechanisms, households rarely pay their bills on time.  Table~\ref{table:descriptives_all} provides summary statistics on the usage, billing, and payment patterns of all households.  On average, households are \input{tables/days_delinquent_all}days behind in their payments.  Households also make large, infrequent payments.  While the average bill is \input{tables/bill_all}PhP per month, payment sizes average \input{tables/pay_size_all}PhP and households make payments in only \input{tables/pay_freq}\unskip\% of months.  These payment patterns leave an average total outstanding balance of \input{tables/balance_all}PhP per month.  For reference, 1 USD is worth around 45 PhP over this period.\todo[color=red]{ A what about procrastination? 
-in the us when i paid utilities via direct pay online, i would always pay on time. here in mex, you can't do that so emilio and i are always delinquent on our bills but only cause we lazy a.f. to go to the 7-eleven to pay. }
-
-Given average monthly household incomes of \input{tables/y_avg}PhP and savings of \input{tables/save_avg}PhP, delinquent water bills are equal to \input{tables/balance_inc}\unskip\% of income and \input{tables/balance_save}\unskip\% of savings.  As a benchmark, \cite{cull2009microfinance} survey microfinance institutions throughout the developing world and find that median yearly loan sizes are equal to 48\% of monthly income of households at the 20th income percentile for loans from nongovernmental organizations (NGOs), 160\% for loans from nonbank financial institutions, and 224\% for loans from banks.  Given that the average delinquent water bill is equal to \input{tables/balance_inc_20_all}\unskip\% of household income at the 20th income percentile, these descriptives suggest that households could approach similar loan sizes with somewhere between 5 and 22 months\todo[color=red]{isn't this huge?} of delinquent water bills.   Moreover, microfinance loans charge high yearly interest ranging from 25\% for NGOs to 13\% for banks.  In comparison, unpaid water bills are interest-free although households face the risk that they will be disconnected for delinquency. %\footnote{This calculation assumes that average delinquent balances across the population are similar for households in the bottom 20th income percentile.}
-
-After bills have remained delinquent for at least 60 days, the government regulator permits the utility to visit delinquent households to disconnect their water service.  \todo[color=red]{A so there's a 60 day grace period? any chance hhs know this and pay in 60 day intervals?}  Regulations also require the utility to issue written statements to households, notifying them that their connections will be disconnected in 7 days if their outstanding balances remain delinquent.  In practice, only \input{tables/disc_notice}\unskip\% of disconnected households report receiving advanced notice.\footnote{All percentages are calculated from \input{tables/disc_count}connection survey respondents who report being visited for disconnection in the past year.  }\todo[color=green]{Do you not see visits in the larger dataset? Table 2 has visits for the full sample}  Likely due to time and travel costs, delinquency visits are relatively rare in practice, occurring in only \input{tables/tcd_id_mean}\unskip\% of household-month observations.  This probability increases to \input{tables/tcd_id_ar_cond}\unskip\% for household-months where households are over 60 days overdue.  Figure~\ref{figure:dc_hazard} plots the share of household-months with delinquency visits according to days overdue.  The risk of delinquency visits spikes at 61 days overdue before settling to around 2.5\% at higher levels of delinquency.  Appendix Table~\ref{table:tcd_predict} predicts delinquency visits with days overdue, outstanding balance, and household characteristics.  This exercise finds that days overdue and delinquent balances are strongly and independently correlated with visits while demographic indicators have weaker associations. % more to say here about magnitudes?!   %%% out of \input{tables/paws_accounts}total included respondents in the connection survey.
-
-When utility staff conduct delinquency visits, households often negotiate for additional time to pay their outstanding balances.  \input{tables/days_pay_under_30}\unskip\% of households report agreeing to pay within 30 days and the average grace period is \input{tables/days_pay_average}days; however, only \input{tables/enough_time}\unskip\% of households report having ``enough time'' to make their payments.  For households who fail to pay, disconnection typically involves placing a metal lock on the water meter that stops any flow.  In order to reconnect, households must pay a small, one-time fee of 200 PhP on top of settling any outstanding balances.  The utility is then required to restore service within 2 days of receiving full reconnection payment.  In the survey data, households report being reconnected \input{tables/days_rec_average}days on average after full payment.
-
-\begin{figure}
-\centering
-\caption{Share of Households that Receive a Delinquency Visit \\ depending on Days Delinquent in the Previous Month}\label{figure:dc_hazard}
-\includegraphics[scale=.7]{tables/connected_visit_hazard_all.pdf}
-\end{figure}
-
-% \begin{table}[h!]
-% \centering
-% \caption{Mean Characteristics by Delinquency Visit Status}\label{table:descriptives_3g}
-% \vspace{-2mm}
-% \begin{tabular}{l*{1}{ccc}}
-% \toprule
-%  & Never Visited & Stayers & Leavers  \\
-% % &   &         &        \\
-% \midrule
-% \input{tables/descriptives_3_groups}
-% \bottomrule
-% \multicolumn{4}{l}{\scriptsize ``Never Visited'' includes HHs that never receive a delinquency visit.}\\  [-.5em]
-% \multicolumn{4}{l}{\scriptsize ``Stayers'' includes HHs with $\geq$1 visit and are connected for the last 6 months.}\\ [-.5em]
-% \multicolumn{4}{l}{\scriptsize ``Leavers'' includes HHs with $\geq$1 visit and are disconnected for $\geq$1 of the last 6 months.}\\ [-.5em]
-% \multicolumn{4}{l}{\scriptsize Bill, Unpaid Balance, and Payment Size are in PhP/month.} 
-% \end{tabular}
-% \end{table}
-
-Table~\ref{table:descriptives_3g} provides mean characteristics according to whether and how households respond to delinquency visits over the course of the sample.  The first column, ``Never Visited,'' includes households that never receive a delinquency visit.  Since delinquency visits are relatively rare, the majority of observations fall into this category.  The second and third columns include households that receive at least one delinquency visit.   The second column, ``Stayers,'' also requires that households are connected for the final 6 months of the sample while the third column, ``Leavers,'' includes households that are disconnected for at least one of the final 6 months of the sample.\todo[color=green]{Do you mean all of the last six months? (no but clarify!)}
-
-Leavers are predominantly composed of households that permanently disconnect over the sample period, which likely occurs when households move out of their residences.  These households often leave large outstanding balances that are almost never repaid due to difficulties tracking households across locations.  Frequent delinquency visits allow the utility to minimize this lost revenue.  % incentivize households to regularly pay and By incentivizing households to pay, 
-
-Stayers include households that remain connected at the end of the sample\todo[color=green]{Why define by the end of the sample and not just ever?} despite receiving at least one delinquency visit over the duration.\footnote{Stayers also exclude \input{tables/pcd_hh}households that the utility has flagged as ``permanently disconnected.''}  Compared to households that are never visited, stayers have much higher outstanding balances and days delinquent.  Their payments also occur less frequently but have larger average sizes.  Stayers spend 3\% of the sample period disconnected from service.  While temporarily disconnected, these households likely substitute to alternative water sources including sharing with neighbors, using from deepwells, or purchasing from local water vendors.\footnote{Table~\ref{table:descriptives_3g} indicates that even for households that are never visited, they remain disconnected during 1\% of months.  These disconnections include (1) households that receive a delinquency visit before the start of the sample (but later reconnected) and (2) households that notify the utility about their moving plans in advance and therefore, do not receive a delinquency visit before disconnecting.}  Stayers also have slightly larger household sizes, younger heads of household, and greater incidence of low-skilled employment than never visited households.  These demographic patterns are consistent with lower-income households having greater difficulty paying their bills on time.
-
-
-\begin{figure*}[hbtp]
-    \centering
-    \vspace{2mm}
-    \begin{subfigure}[b]{0.49\textwidth}
-        \centering
-        \caption[]{\small Share Disconnected}  
-        \vspace{-1mm}
-        \includegraphics[width=\textwidth,trim={.2cm .2cm .2cm 0cm}, clip=true]{tables/line1_disconnection}
-        \label{fig:line_disc}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.49\textwidth}  
-        \centering 
-        \caption[]{\small Delinquent Balance}
-        \vspace{-1mm}
-        \includegraphics[width=\textwidth,trim={.2cm .2cm .2cm 0cm}, clip=true]{tables/line1_bal}
-        \label{fig:line_bal}
-    \end{subfigure}
-    \vskip 1mm \vskip 0pt
-    \begin{subfigure}[b]{0.49\textwidth}
-        \centering
-        \caption[]{\small Days Overdue}
-        \vspace{-1mm}
-        \includegraphics[width=\textwidth,trim={.2cm .2cm .2cm 0cm}, clip=true]{tables/line1_ar}
-        \label{fig:line_ar}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.49\textwidth}  
-        \centering
-        \caption[]{\small Monthly Payment}  
-        \vspace{-1mm}
-        \includegraphics[width=\textwidth,trim={.2cm .2cm .2cm 0cm}, clip=true]{tables/line1_pay}
-        \label{fig:line_pay}
-    \end{subfigure}
-    \vskip 1mm \vskip 0pt
-    \begin{subfigure}[b]{.49\textwidth}  
-        \centering
-        \caption[]{\small Average Consumption} 
-        \vspace{-1mm}
-        \includegraphics[width=\textwidth,trim={.2cm .2cm .2cm 0cm}, clip=true]{tables/line1_c}  
-        \label{fig:line_c}
-    \end{subfigure}
-    \hfill \hspace{.02\textwidth}
-    \begin{minipage}{0.47\textwidth}   
-    \vspace{-6cm}
-    \caption[]
-    {\small Mean Outcomes around First Delinquency Visit for ``Stayers'' \\  \\  Stayers include only households who experience at least one delinquency visit and are connected for the last 6 months of the sample.  Mean monthly payments include zeros when no payment is made. } \label{fig:line_graphs}
-    \end{minipage}
-\end{figure*} 
-
-
-To investigate how households respond to delinquency visits, Figure~\ref{fig:line_graphs} plots monthly mean outcomes in months relative to the first delinquency visit for each stayer household.  In the months just preceding a visit, monthly payments (Figure~\ref{fig:line_pay}) decrease suddenly, leading to corresponding increases in unpaid balances (Figure~\ref{fig:line_bal}) and days overdue (Figure~\ref{fig:line_ar}).  Average consumption (Figure~\ref{fig:line_c}) increases as well.
-
-Immediately following the first delinquency visit, monthly payments spike as many households pay their full outstanding balances to prevent any disconnection.  Despite these payments, the average share disconnected (Figure~\ref{fig:line_disc}) also spikes to \input{tables/am6_2}\unskip\% before quickly decreasing as households pay for reconnection.  Two years after a visit the disconnection rate remains around \input{tables/am6_20}\unskip\%, which likely captures households that continue experiencing delinquency visits over the course of the sample.
-
-This descriptive evidence indicates that many households choose to disconnect for long periods before finally paying for reconnection.  \todo[color=green]{Why would they want immediate reconnection if water is as fungible as you think it is?  Previously it sounded like there are lots of substitutes for water.  Credit constraints not necessary to explain it}This behavior is consistent with households facing credit-constraints, which prevent them from taking a low-cost loan to fund immediate reconnection.  Instead, households may substitute to lower-quality alternative sources of water until they can save enough income for reconnection.  Credit constraints would additionally predict that the most delinquent households at the time of the visit may be the most likely to disconnect following a visit.  The data support this hypothesis, finding that the share disconnected two months after a visit is \input{tables/amar_2}\unskip\% for stayers that are over 90 days delinquent at the time of the visit.  The corresponding share for stayers under 90 days delinquent shrinks to \input{tables/amar_2a}\unskip\%.
-
-Another hypothesis may be that households choose to stop paying when they leave their homes for vacation or overseas work.  This mechanism would likely predict a large decrease in water consumption in the months preceding delinquency visits.  \todo[color=green]{This is your hook move it earlier; otherwise not necessarily credit constraints; put in intro!!} Instead, consumption rises consistently between 24 and 2 months before a visit.\footnote{By contrast, Appendix~\ref{appendix:permanentdc} plots consumption relative to permanent disconnections and finds larger increases in water consumption just prior to permanently disconnecting.}  This consumption rise is consistent with households substituting toward water consumption in months where they are credit constrained.\todo[color=orange]{D selling water?}  \todo[color=red]{ but couldn't it also be consistent with hhs knowing that they're gonna stop paying and so they consume more cause they know they not paying for it? } Consumption then drops one month before, during, and after a visit, before quickly returning to an average level.  This dip in consumption likely corresponds to connections that are disconnected for less than a month before being reconnected and having their consumption recorded for that month.  Overall, this variation is relatively small given a mean consumption for stayers of \input{tables/c_avg}m3 with a standard deviation of \input{tables/c_std}\unskip.  Moreover, delinquency visits are relatively rare, which may make their exact timing difficult for households to predict.  \todo[color=red]{i'm confused about something. the stats suggest that hhs can be very delinquent with almost 2 months on average. but visits are very unlikely. so then what happens? why would they start paying again? and wouldn't this lead to a situation where hhs just never repay and eventually it becomes profitable for the firm to visit them?}
+\begin{tablenotes}
+\footnotesize
+\item  45 PhP $\sim$ 1 USD \,\, Std. Dev. refers to standard deviation.  25th and 75th refer to percentiles.  Bills, Unpaid Balances, and Payment Sizes are in PhP per household-month.  Negative bills and balances generally arise from refunds for billing or payment errors.  See Appendix~\ref{appendix:sampleconstruction} for more details on the sample construction.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
 
 
 
+\section{Descriptive Evidence of Consumption Smoothing}
 
-\section{Income Shocks, Usage, and Payment Patterns}
-
-One way to test whether households use delayed bill payments as a form of credit is to examine how household consumption and payment patterns vary with temporary income shocks.  Consumption smoothing theory predicts that households respond to temporary income shocks by adjusting their borrowing and saving in order to maintain stable levels of consumption (\cite{deaton1991saving}).  Under this theory, temporary income shocks are predicted to be weakly correlated with consumption, but strongly correlated with savings.
-
-To test these implications, I construct a proxy for temporary income shocks using the Quarterly Labor Force Survey, which includes information on employment and hours worked as well as basic demographics for households in four submunicipalities of Manila quarterly from 2009 to 2015.  I merge average employment and hours worked according to submunicipality, date, and ten 5-year age-bins with the billing records using the age of the connection owner reported in the connection survey.  This exercise results in 800 unique age-bin by submunicipality by quarter observations.  To create a proxy for income shocks, I first-difference average employment and hours worked at the quarterly level in the same age-bin and submunicipality. 
+If households are able to smooth consumption through borrowing and saving, then temporary fluctuations in income should  affect borrowing and saving, but not consumption(\cite{deaton1991saving}).  I test this theory with water consumption and water bill payments according to the following equation  
+\begin{align*}
+\Delta Y_{bq} = \beta\, \Delta \textsc{Income}_{bq} \,+\, \gamma_q \,+\varepsilon_{bq}
+\end{align*}
+where $\textsc{Income}_{bq}$ is proxied by the quarterly change in average labor earnings from Quarterly Labor Force Surveys where $q$ indexes 28 quarters from 2009 to 2015.  Average earnings are computed for 80 unique bins, $b$, defined by combinations of sub-municipalities (4), age in 5 year intervals (10), and whether college educated (2) in order to merge individuals from the Labor Force Survey to individuals water connection owners from the water connection survey.  $\Delta Y_{bq}$ is the quarterly change in either average water consumption (measured by the water bill in PhP) or average water bill payments (in PhP) by bin.  Standard errors are clustered at the bin level.
 
 \begin{table}[!ht]
 \small
 \centering
-\caption{Correlations of Income Shocks with Usage and Payment Patterns}\label{table:lfsanalysis}
+\begin{threeparttable}
+\caption{Correlations of Income with Usage and Payment Patterns}\label{table:lfsanalysis}
 \vspace{-2mm}
 % \resizebox{.8\linewidth}{!}{
-\begin{tabular}{lccc}
+\begin{tabular}{lcc}
 \toprule
- & \small (1) & \small (2)  & \small (3) \\
- & \small $\Delta$ Usage & \small  $\Delta$ Payments  & \small  $\Delta$ Delinquency \\[.5em]
+ & \small (1) & \small (2)  \\
+ & \small $\Delta$ Consumption & \small $\Delta$ Payment \\[.5em]
  \toprule
 \input{tables/table_lfs_analysis}
 \bottomrule
-\multicolumn{4}{l}{\footnotesize \textsuperscript{c} p$<$0.10,\textsuperscript{b} p$<$0.05,\textsuperscript{a} p$<$0.01 } \\
-\multicolumn{4}{l}{\footnotesize Calendar quarter-year fixed effects are included.} \\[-.2em]
-\multicolumn{4}{l}{\footnotesize Standard errors are clustered at the age-bin, submunicipality level} \\[-.2em]
-\multicolumn{4}{l}{\footnotesize (40 units).  All measures are normalized in terms of standard} \\[-.2em]
-\multicolumn{4}{l}{\footnotesize deviations.  } 
 \end{tabular}
+\begin{tablenotes}
+\footnotesize
+\item All units are in PhP.  Quarterly fixed effects are included.  Standard errors are clustered by age-group, sub-municipality, and whether college educated (80 units).  \textsuperscript{c} p$<$0.10,\textsuperscript{b} p$<$0.05,\textsuperscript{a} p$<$0.01 
+\end{tablenotes}
+\end{threeparttable}
 \end{table}
 
-Table~\ref{table:lfsanalysis} provides correlations between changes in employment and hours worked with contemporaneous changes in three outcomes: water consumption, whether a payment is made, and whether the household is over 60 days delinquent.  All measures are normalized in terms of standard deviations so that the coefficients are directly comparable.  All correlations additionally control for calendar-quarter fixed effects and standard errors are clustered at the age-bin, submunicipality level.  Column (1) finds almost zero correlation of consumption patterns with changes in average employment and hours worked.  By contrast, columns (2) and (3) indicate that increases in both employment and hours worked are correlated with higher rates of payment, which translate into lower levels of delinquency.  These correlations are statistically significant for employment changes.  
+Column (1) of Table~\ref{table:lfsanalysis} finds a positive but statistically insignificant correlation between income and consumption.  Due to measurement error in income, the small point estimate of 0.0007 is likely to underestimate this correlation.  Measurement error in income is probable both because only around 55 incomes are observed per quarter-bin in the Labor Force Survey and because bins are constructed from coarse demographic categories that may only loosely reflect household incomes.  Despite this potential measurement error, Column (2) of Table~\ref{table:lfsanalysis} finds a statistically significant correlation between bill payments and income that is six times larger than the correlation between income and consumption.  These results provide suggestive evidence of consumption smoothing where households flexibly adjust their payment patterns in response to income shocks while maintaining the same levels of water consumption.  
 
-These results provide suggestive evidence of consumption smoothing where households flexibly adjust their payment patterns in response to income shocks while maintaining the same levels of water consumption.  This interpretation relies on the assumption that labor market shocks are uncorrelated with consumption and payment patterns except through their effects on household income.  Without data linking these income shock proxies to actual changes in household income, it is difficult to interpret the magnitude of these effects in economic terms.  Moreover, matching coarse labor market averages by age and submunicipality is likely to produce substantial measurement error, biasing these correlations towards zero.  To overcome these limitations, I specify an structural model of consumption smoothing in Section~\ref{section:model} to assess the extent to which households use delayed bill payments as a source of credit.
+%%%% WHAT AM I ARGUING AGAINST?! laziness and inconvinience 
+
+ % This interpretation relies on the assumption that labor market shocks are uncorrelated with consumption and payment patterns except through their effects on household income.   To overcome limitations in identification and measurement, I specify a structural model of consumption smoothing in Section~\ref{section:model} to assess the extent to which households value delaying bill payments as a source of credit.
+
+
+% provides correlations between changes in the income proxy and contemporaneous changes in monthly water usage in terms of Pesos and monthly payment also in Pesos.  On average, pesos of usage equal pesos of payment, consistent with households eventually paying their bills.  All correlations additionally control for calendar-quarter fixed effects and standard errors are clustered at the age-bin, sub-municipality, education level.  Column (1) finds a small, statistically insignificant correlation between water usage and income: an increase in the income proxy of one standard deviation (2,552 PhP) is correlated with 2.3 PhP greater water consumption.  By contrast, column (2) finds a much larger and statistically significant correlation between bill payments and income: an increase of one standard deviation in the income proxy is associated with 6.89 PhP greater water consumption.  Matching coarse labor market averages by age, sub-municipality, and education levels is likely to produce substantial measurement error in proxying for income shocks, which likely biases these correlations towards zero.  Therefore, these correlations may underestimate the relationship between income, consumption, and payment patterns.
+
+
+
+
+
+   % By contrast, columns (2) and (3) indicate that increases in both employment and hours worked are correlated with higher rates of payment, which translate into lower levels of delinquency.  These correlations are statistically significant for employment changes.  
+
+% All measures are normalized in terms of standard deviations so that the coefficients are directly comparable.  
+
+
+% Without data linking these income shock proxies to actual changes in household income, it is difficult to interpret the magnitude of these effects in economic terms.  Moreover, 
 
 
 
@@ -308,12 +394,15 @@ These results provide suggestive evidence of consumption smoothing where househo
 %\subsection{Setting up the Household's Problem}
 %Time horizon etc.  Ignore disconnecting households.. 
 
+To quantify the implications of different billing policies for household welfare, I construct a simple model of household borrowing, saving, and water consumption decisions over time.  This approach follows from the standard intertemporal utility maximization problem developed by \cite{deaton1991saving}.
 
-To model household borrowing and decisions saving alongside water demand, I start from a standard intertemporal utility maximization problem as developed by \cite{deaton1991saving}.  This approach assumes an infinite time horizon where households choose water usage, borrowing, and savings in each period to maximize current and expected future utility.  Household expected utility is given by the following equation
+% To model household borrowing and decisions saving alongside water demand, I start from a standard intertemporal utility maximization problem as developed by \cite{deaton1991saving}.  This approach assumes an infinite time horizon where households choose water usage, borrowing, and savings in each period to maximize current and expected future utility.  
+
+In this model, households first move to Manila in month 1 and then choose how much to borrow and save as well as how much water and other goods to consume each month until they leave the city in month $T$.  Household expected utility in each month $t$ is given by the following equation
 \begin{align}\label{eq:u}
-E_t \Big[ \sum_{\tau = t}^{\infty} (1+\delta)^{t-\tau} u(w_{\tau},x_{\tau})   \Big]
+E_t \Big[ \sum_{\tau = t}^{T} (1+\delta)^{t-\tau} u(w_{\tau},x_{\tau})   \Big]
 \end{align}
-where utility in each period $t$ is expressed as an increasing and concave function of water usage, $w_{t}$, and consumption of all other goods, which are collapsed into a single bundle, $x_{t}$.  Households have a rate of time preference $\delta \in (0,1)$.  In each period, households face a budget constraint as follows
+where utility is expressed as an increasing and concave function of monthly water usage, $w_{t}$, and consumption of all other goods, which are collapsed into a single bundle, $x_{t}$.  Households have a rate of time preference $\delta \in (0,1)$.  In each period, households face a budget constraint as follows
 \begin{align}\label{eq:bc}
 x_t \, + \, p(w_t) w_t \, &= \, y_t \, - D_{t+1} f  \, + \, S_t \, - \, S_{t+1}
 \end{align}
@@ -422,7 +511,9 @@ Given indirect utility in each period and a discount rate that is assumed to be 
 
 \section{Estimation and Results}\label{section:estimation}    % https://www.cgdev.org/blog/compartamos-context
 
-The goal of the estimation strategy is to map variation in payment behavior, temporary disconnections, and monthly consumption into estimates of income variation, borrowing costs, and preferences for water.  \todo[color=green]{Say this earlier!}Since identification relies heavily on the household's behaviors in response to delinquency visits, the estimation sample is limited to ``stayers'' --- households that experience delinquency visits but remain connected for the last six months of the sample as described in Section~\ref{section:descriptives}.  Table~\ref{table:descriptives_stayers} of Appendix~\ref{appendix:stayerdescriptives} includes detailed descriptive statistics for stayer households and Figure~\ref{figure:dc_hazardstayers} provides the probability of receiving a delinquency visit conditional on the days delinquent in the previous month for stayers.  Focusing on stayers may limit the generalizability of the results, especially given that stayers somewhat differ demographically from the population of households as shown in Table~\ref{table:descriptives_3g}.
+The goal of the estimation strategy is to map variation in payment behavior, temporary disconnections, and monthly consumption into estimates of income variation, borrowing costs, and preferences for water.  \todo[color=green]{Say this earlier!}Since identification relies heavily on the household's behaviors in response to delinquency visits, the estimation sample is limited to ``stayers'' --- households that experience delinquency visits but remain connected for the last six months of the sample as described in Section~\ref{section:descriptives}.  
+
+Table~\ref{table:descriptives_stayers} of Appendix~\ref{appendix:stayerdescriptives} includes detailed descriptive statistics for stayer households and Figure~\ref{figure:dc_hazardstayers} provides the probability of receiving a delinquency visit conditional on the days delinquent in the previous month for stayers.  Focusing on stayers may limit the generalizability of the results, especially given that stayers somewhat differ demographically from the population of households as shown in Table~\ref{table:descriptives_3g}.
 
 Table~\ref{table:calibratedparam} describes parameters that are assumed or calibrated prior to estimation.  The monthly savings interest rate is calibrated to the prevailing interest rate in the Philippines over this time period.  The estimation assumes a monthly discount rate of 2\%, which implies an annual discount rate of 26.8\% and falls in the range of recent structural and experimental estimates.\footnote{\cite{andreoni2012estimating} estimate rates between 25\% and 35\% in an experimental setting and confirm exponential discounting.  \cite{laibson2007estimating} use a similar consumption-savings structural approach and recover a discount rate of around 15\%.  \cite{gourinchas2002consumption} use a similar structural approach finding a lower discount rate of around 5\%.}  Since this discount rate is assumed to exceed the savings interest rate, households are able to solve for a well-defined value function.
 
@@ -719,8 +810,6 @@ In focusing on the role of consumption smoothing, this approach abstracts away f
 % to typical conventional mechanical meter, about US$50.   96.2\% of costs for large systems.  average of 7 year life span (assume the same for both)
 
 
-
-
 % \cite{northeast2014} predict rapid increases in prepaid electricity meters throughout Sub-Saharan Africa.  
 
 % \cite{heymans2014limits}
@@ -742,22 +831,30 @@ In focusing on the role of consumption smoothing, this approach abstracts away f
 \section{Appendix}
 
 
-\subsection{Predicting Delinquency Visits}
+% \subsection{Households Receiving a Delinquency Visit}
+% \begin{figure}
+% \centering
+% \caption{Share of Households that Receive a Delinquency Visit \\ depending on Days Delinquent in the Previous Month}\label{figure:dc_hazard}
+% \includegraphics[scale=.7]{tables/connected_visit_hazard_all.pdf}
+% \end{figure}
 
-\begin{table}[H]
-\small
-\centering
-\caption{ Linear Probability of Receiving a Delinquency Visit }\label{table:tcd_predict}
-\vspace{-2mm}
-\begin{tabular}{lCCC}
-\toprule
-& \small (1) & \small (2) & \small (3)  \\
-\midrule 
-\input{tables/tcd_predict}
-\bottomrule
-\multicolumn{4}{l}{\footnotesize Std. errors clustered at the HH-level. \textsuperscript{c} p$<$0.10,\textsuperscript{b} p$<$0.05,\textsuperscript{a} p$<$0.01 }
-\end{tabular}
-\end{table}
+
+% \subsection{Predicting Delinquency Visits}
+
+% \begin{table}[H]
+% \small
+% \centering
+% \caption{ Linear Probability of Receiving a Delinquency Visit }\label{table:tcd_predict}
+% \vspace{-2mm}
+% \begin{tabular}{lCCC}
+% \toprule
+% & \small (1) & \small (2) & \small (3)  \\
+% \midrule 
+% \input{tables/tcd_predict}
+% \bottomrule
+% \multicolumn{4}{l}{\footnotesize Std. errors clustered at the HH-level. \textsuperscript{c} p$<$0.10,\textsuperscript{b} p$<$0.05,\textsuperscript{a} p$<$0.01 }
+% \end{tabular}
+% \end{table}
 
 
 \subsection{Sample Construction}\label{appendix:sampleconstruction}
@@ -832,16 +929,16 @@ v^{*} &=
 \toprule
 Usage (m3) & Price (PhP) \\
 \midrule
-Under  10    &   \input{tables/f_10}/conn. \\
-Over  10     &   \input{tables/f_11}/conn. \\
-Next   10    &   \input{tables/c_12}/cu.m. \\
-Next    20   &   \input{tables/c_21}/cu.m. \\
-Next   20    &   \input{tables/c_41}/cu.m. \\
-Next    20   &   \input{tables/c_61}/cu.m. \\
-Next    20   &   \input{tables/c_81}/cu.m. \\
-Next    50   &   \input{tables/c_101}/cu.m. \\
-Next   50    &   \input{tables/c_151}/cu.m. \\
-Over  200    &   \input{tables/c_200}/cu.m. \\
+Under   10    &   \input{tables/f_10}/conn. \\
+Over    10    &   \input{tables/f_11}/conn. \\
+Next    10    &   \input{tables/c_12}/cu.m. \\
+Next    20    &   \input{tables/c_21}/cu.m. \\
+Next    20    &   \input{tables/c_41}/cu.m. \\
+Next    20    &   \input{tables/c_61}/cu.m. \\
+Next    20    &   \input{tables/c_81}/cu.m. \\
+Next    50    &   \input{tables/c_101}/cu.m. \\
+Next    50    &   \input{tables/c_151}/cu.m. \\
+Over   200    &   \input{tables/c_200}/cu.m. \\
 \bottomrule
 \multicolumn{2}{l}{\scriptsize Mean tariff 2010-2015 with value added tax. }\\[-.5em]
 \multicolumn{2}{l}{\scriptsize ``conn.'' refers to connection. }\\[-.5em]
@@ -868,48 +965,108 @@ Table~\ref{table:tarifftrue} provides the monthly tariff structure as it is pres
 
 
 
-\subsection{Stayer Descriptives}\label{appendix:stayerdescriptives}
+
+% \subsection{Disconnection when Visited and Delinquent}\label{appendix:delinquent}
+
+% \begin{table}[H]
+% \centering
+% \caption{Effect of days delinquent when visited on disconnection in 1 or 2 months following a visit}\label{table:delinquent}
+% \vspace{-2mm}
+% \begin{threeparttable}
+% \begin{tabular}{l*{1}{cc}}
+% \toprule
+%  & (1) & (2) \\
+% \midrule
+% \input{tables/ar_robust}
+% \bottomrule
+% \end{tabular}
+% \begin{tablenotes}
+% \item 
+% \end{tablenotes}
+% \end{threeparttable}
+% \end{table}
 
 
-\begin{table}[H]
-\centering
-\caption{Descriptives for Stayers}\label{table:descriptives_stayers}
-\vspace{-2mm}
-\begin{tabular}{l*{1}{cccccc}}
-\toprule
- & Mean & SD & Min & 25th & 75th & Max  \\
-\midrule
-\input{tables/descriptives_stayers}
-\bottomrule
-\multicolumn{7}{c}{Total Households: \input{tables/total_hhs_stayers}  Obs. per Household: \input{tables/obs_per_hh_stayers} Total Obs.: \input{tables/total_obs_stayers}}
-\end{tabular}
-\end{table}
 
-\begin{figure}[H]
-\centering
-\caption{Stayers Share of Households that Receive a Delinquency Visit \\ depending on Days Delinquent in the Previous Month}\label{figure:dc_hazardstayers}
-\includegraphics[scale=.7]{tables/connected_visit_hazard.pdf} \\
-{ \footnotesize Only stayer households. }
-\end{figure}
+% \begin{figure}[H]
+% \centering
+% \caption{Stayers Share of Households that Receive a Delinquency Visit \\ depending on Days Delinquent in the Previous Month}\label{figure:dc_hazardstayers}
+% \includegraphics[scale=.7]{tables/connected_visit_hazard.pdf} \\
+% { \footnotesize Only stayer households. }
+% \end{figure}
+
+
+
+
+% \subsection{Stayer Descriptives}\label{appendix:stayerdescriptives}
+
+% \begin{table}[H]
+% \centering
+% \caption{Descriptives for Stayers}\label{table:descriptives_stayers}
+% \vspace{-2mm}
+% \begin{tabular}{l*{1}{cccccc}}
+% \toprule
+%  & Mean & SD & Min & 25th & 75th & Max  \\
+% \midrule
+% \input{tables/descriptives_stayers}
+% \bottomrule
+% \multicolumn{7}{c}{Total Households: \input{tables/total_hhs_stayers}  Obs. per Household: \input{tables/obs_per_hh_stayers} Total Obs.: \input{tables/total_obs_stayers}}
+% \end{tabular}
+% \end{table}
+
+% \begin{figure}[H]
+% \centering
+% \caption{Stayers Share of Households that Receive a Delinquency Visit \\ depending on Days Delinquent in the Previous Month}\label{figure:dc_hazardstayers}
+% \includegraphics[scale=.7]{tables/connected_visit_hazard.pdf} \\
+% { \footnotesize Only stayer households. }
+% \end{figure}
 
 % \subsection{Discussion of the Discount Rate}
+
 
 
 \subsection{Usage Before Permanent Disconnection}\label{appendix:permanentdc}
 
 %%% DISCUSS AVERAGE LENGTH OF ACCOUNTS IN THE SAMPLE!!!
 
-Figure~\ref{figure:dc_permanent} plots average usage across households according to the number of months before these households permanently disconnect. Average consumption increases in the months leading up to permanent disconnection.  This increase is likely due to some households using water as if they faced a zero marginal price since they know that they will never pay their bills.  With an average bill of \input{tables/bill_all}PhP/month, leaving an outstanding balance of \input{tables/out_bal}PhP at permanent disconnection is equal to enjoying an average of around 18 months of free water consumption.
+% Figure~\ref{figure:dc_permanent} plots average usage across households according to the number of months before these households permanently disconnect. Average consumption increases in the months leading up to permanent disconnection.  This increase is likely due to some households using water as if they faced a zero marginal price since they know that they will never pay their bills.  With an average bill of \input{tables/bill_all}PhP/month, leaving an outstanding balance of \input{tables/out_bal}PhP at permanent disconnection is equal to enjoying an average of around 18 months of free water consumption.
 
 \begin{figure}[H]
 \centering
 \caption{Average Usage in Months Before Permanent Disconnection}\label{figure:dc_permanent}
 \includegraphics[scale=.7]{tables/line_disc_graph.pdf} \\
-{ \footnotesize Negative months indicate months before permanent disconnections. }
+{ \footnotesize Permanent disconnection is defined as households disconnecting and remaining disconnected for the at least the last two years of the sample.  Negative months indicate months leading up to permanent disconnection.  Months with zero usage are dropped because households may leave months with zero consumption before the company disconnects them. }
 \end{figure}
 
 
+\subsection{Income Coefficient of Variation}\label{appendix:cvcalc}
 
+\begin{table}[H]
+\centering
+\caption{Income Coefficient of Variation Estimates}\label{table:cvcalc}
+\vspace{-2mm}
+\begin{tabular}{l*{1}{cc}}
+\toprule
+ & (1) & (2)  \\
+  & Raw & Adjusted  \\ \midrule
+All & \input{tables/cv} & \input{tables/cv_adj} \\
+\\
+By Income Tercile \\
+T1 & \input{tables/cv_t1} & \input{tables/cv_adj_t1} \\ 
+T2 & \input{tables/cv_t2} & \input{tables/cv_adj_t2} \\ 
+T3 & \input{tables/cv_t3} & \input{tables/cv_adj_t3} \\ 
+Demographic/Occupation Controls  & No & Yes \\
+Households & \input{tables/cbms_hhs} & \input{tables/cbms_hhs} \\
+Years & 2008, 2011 & 2008, 2011 \\
+\bottomrule
+\multicolumn{3}{l}{\footnotesize The Coefficient of Variation (CV) for each household (HH) is $ \frac{ 2 \mid y_{2011} \,\, - \,\, y_{2008} \mid  }{y_{2011} \,\,+\,\, y_{2008}}  $    } \\[-.3em]
+\multicolumn{3}{l}{\footnotesize where $y$ is HH income. Estimates take the mean CV across HHs. } \\[-.5em]
+\multicolumn{3}{l}{\footnotesize   Income terciles are computed by mean HH income.} \\[-.2em]
+\multicolumn{3}{l}{\footnotesize   Adjusted CV is $ \frac{ 2 \mid \overline{y}_{2011} \,\, - \,\, \overline{y}_{2008} \mid  }{y_{2011} \,\,+\,\, y_{2008}}  $  where $\overline{\text{y}}$ is  residual income controlling for} \\[-.3em]
+\multicolumn{3}{l}{\footnotesize  HH employment by skill-level, oldest HH age, HH size by education,  } \\[-.5em]
+\multicolumn{3}{l}{\footnotesize year, and HH fixed effects.  } \\
+\end{tabular}
+\end{table}
 
 
 % \subsection{Sampling of the Connection Survey}\label{appendix:pawssampling}

@@ -154,7 +154,7 @@ print_mean total_obs_${dtable_name} tobs "%10.0fc" 1
 global cat_num=2
  global cat_group = "mean sd"
 
-    file open newfile using "${tables}descriptives_pres_${dtable_name}.tex", write replace
+    file open newfile using "${tables}descriptives_new_${dtable_name}.tex", write replace
 *    print_table_start
 *    file write newfile " & Mean & SD & Min & 25th & 75th & Max \\ " _n  
 

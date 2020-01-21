@@ -21,6 +21,11 @@ global fies_load = 0
 if $fies_load == 1 {
 
 
+* import delimited using "${fies}FAMILY INCOME AND EXPENDITURE SURVEY (2015) VOLUME 2 - INCOME AND OTHER RECEIPTS - raw data.csv", delimiter(",") clear
+
+* keep if w_regn=="Region XIII - NCR"
+
+
 import delimited using "${fies}FAMILY INCOME AND EXPENDITURE SURVEY (2015) VOLUME 2 - NONFOOD EXPENDITURE - raw data.csv", delimiter(",") clear
 
 keep if w_regn=="Region XIII - NCR"
@@ -84,27 +89,177 @@ save "${fies}fies_merged.dta", replace
 * 	write "${tables}Ab.tex" `=$deposits + $cashloan' 1 "%12.0fc"
 
 
+import delimited using "${moments}sd_ratio.csv", clear
+global sd_ratio = v1[1]
+
 use "${fies}fies_merged.dta", clear
 
 g barangay_id_st = string(w_id,"%14.0g")
 g barangay_id = substr(barangay_id_st,1,7)
 destring barangay_id, replace force
 
+* merge m:1 barangay_id using "${temp}barangay_full.dta"
+
 g inc = toinc/12
 g hhsize = members
+
 
 destring employed_pay employed_prof, replace force
 replace employed_pay =0 if employed_pay==.
 replace employed_prof=0 if employed_prof==.
 
+g house_1 = regexm(bldg_type,"Multi-unit")==1
+g house_2 = regexm(bldg_type,"Single house")==1
+
 g hhemp = employed_pay + employed_prof
 
 g ln_inc = log(inc)
 
-reg ln_inc i.hhsize i.hhemp i.age i.barangay_id, r
-
+reg ln_inc house_1 house_2 i.hhsize i.hhemp i.age i.barangay_id, r
 est save "${fies}inc_projection", replace
 
+* sum inc if inc>500 & inc<200000, detail
+* sum inc if inc>=`=r(p1)' & inc<=`=r(p99)', detail
+
+g exp = ttotex/12
+replace exp=. if exp<500 | exp>200000
+replace inc=. if inc<500 | inc>200000
+
+g save = inc - exp
+
+
+
+mean inc [pweight = rfact]
+estat sd
+
+mat def mm = r(mean)
+mat def vv = r(sd)
+mat list mm
+mat list vv
+
+write "${moments}y_avg.csv" `=mm[1,1]' .1 "%12.0g"
+write "${tables}y_avg.tex"  `=mm[1,1]' .1 "%12.0fc"
+
+write "${moments}cv_single.csv" `=vv[1,1]*$sd_ratio/mm[1,1]' .001 "%12.3g"
+write "${tables}cv_single.tex"  `=vv[1,1]*$sd_ratio/mm[1,1]' .001 "%12.3fc"
+
+
+	_pctile inc [pweight=rfact], p(20)
+
+	write "${moments}y_p20.csv" `=r(r1)' 1 "%12.0g"
+	write "${tables}y_p20.tex" `=r(r1)' 1 "%12.0fc"
+
+	mean save [pweight = rfact]
+	mat def M=e(b)
+	write "${moments}save_avg.csv" `=M[1,1]' 1 "%12.0g"
+	write "${tables}save_avg.tex" `=M[1,1]' 1 "%12.0fc"
+
+	g ss_rate = save/inc
+	mean ss_rate [pweight = rfact]
+	mat def M=e(b)
+	write "${moments}save_rate.csv" `=M[1,1]' 1 "%12.2g"	
+	write "${tables}save_rate.tex" `=M[1,1]' 1 "%12.2fc"	
+
+
+/*
+
+destring tspecocc, replace force
+replace tspecocc=0 if tspecocc==.
+
+egen empc = group(cw)
+
+
+* cap drop inc_c
+* g inc_c = inc if inc>6000 & inc<150000
+
+
+reg inc house_1 house_2 i.hhsize i.hhemp i.age i.barangay_id, r
+predict inc_pred, residuals
+egen inc_t = cut(inc_pred), group(3)
+replace inc_t= inc_t+1
+
+
+
+
+
+forvalues r=1/3 {
+	preserve
+	keep if inc_t==`r'
+
+cap drop inc_c
+g inc_c = inc if inc>6000 & inc<150000
+sum inc_c, detail
+
+disp `=r(mean)'
+disp `=r(sd)'
+disp `=r(sd)/r(mean)'
+restore
+}
+
+
+
+
+
+/*
+
+
+global extra_controls=""
+foreach var of varlist roof walls tenure num_bed toilet electric water  {
+	cap drop gg_`var'
+	egen gg_`var' = group(`var')
+	global extra_controls = " $extra_controls i.gg_`var' "
+}
+
+global extra_controls_2=""
+foreach var of varlist radio_qty tv_qty cd_qty stereo_qty ref_qty wash_qty aircon_qty car_qty landline_qty cellphone_qty pc_qty oven_qty motor_banca_qty motorcycle_qty  {
+	cap drop gg_`var'
+	gen gg_`var' = `var' 
+	destring gg_`var', replace force
+	replace gg_`var'=0 if gg_`var'==.
+	global extra_controls_2 = " $extra_controls_2 gg_`var' "
+}
+
+
+
+reg inc i.empc i.house_1 i.house_2 i.hhsize i.hhemp i.age $extra_controls $extra_controls_2 i.barangay_id, r
+
+
+reg inc i.empc i.hhsize i.hhemp i.age , r
+
+* reg inc i.empc i.house_1 i.house_2 i.hhsize i.hhemp i.age  i.barangay_id, r
+
+
+
+
+
+
+
+
+
+cap drop inc_resid
+predict inc_resid, residuals
+
+qui sum inc, detail
+global inc_m = `=r(mean)'
+qui sum inc_resid, detail
+global inc_sd = `=r(sd)'
+disp " CV : "
+disp `=$inc_sd/$inc_m'
+
+
+
+
+forvalues r=1/3 {
+qui sum inc if inc_t==`r', detail
+global inc_m = `=r(mean)'
+qui sum inc_resid  if inc_t==`r', detail
+global inc_sd = `=r(sd)'
+disp " CV : "
+disp `=$inc_sd/$inc_m'
+}
+
+
+* i.hhsize i.hhemp i.age 
 
 
 

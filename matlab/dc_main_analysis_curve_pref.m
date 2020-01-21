@@ -17,7 +17,7 @@ est_many      = 0     ;
 est_tables    = 0     ;
 counter       = 0     ;
 
-given_sim     = 0     ;
+given_sim     = 1     ;
 
 bs            = 0 ; % bootstrap option
 br       = [1 10] ; % rep interval
@@ -36,33 +36,24 @@ s=155; % sets account length
 
 mult_set = [  1  ];
 
-
-%%%% is it sensitive to theta?    previously 25, 25 (7 takes 1608 (28*28*2=1568)) (8 takes 3702 (32*32*2=4096))
-
-n = 10000; 
-nA = 18 %%%  3,3: 572s  5,5: 176s (46it, 319fun)  7,7: 350s (84it, 555fun)   
-nB = 18 %%%  8,8: 500s (136it, 859fun)  10,10: 660s (164it, 1009fun)  14,14: 369s (70it, 454fun)  20, 20:  1180s (104it, 656fun)
+n  = 10000; 
+nA = 40    %%%  
+nB = 40    %%%  
 
 sigA = 0;
 sigB = 0;
 nD   = 2;
 
+
 %%%%%%%%% ESTIMATION %%%%%%%%%%
 
-inc_t  = 3 ;  %%% which inc to estimate1
- 
-option = [  7 12 14  ];   %%% what to estimate
+option = [  7 8 12 14  ];  %%% what to estimate
 
 % option = [ 3 5 7 12 ];   %%% what to estimate
-
-% option = [ 3 7 12 ];   %%% what to estimate
+% option = [ 3 7 12   ];   %%% what to estimate
    
-    
-    
 option_moments       = [ 1 2 3 4 ];  %%% moments to use!
-% option_moments     = [ 1       ];
 option_moments_est   = [ 1 2 3 4 ];
-% option_moments_est = [ 1       ];
 
 
 
@@ -71,15 +62,16 @@ option_moments_est   = [ 1 2 3 4 ];
     popadj = 2.4*12;
     
 [c_avg,c_std,bal_avg,bal_med,bal_std,bal_corr,...
+    am_d, am_d4,...
     am1,am2,am3,am4,...
     amar1,amar2,amar3,amar4,...
-    y_avg,Aub,Alb,Blb,...
+    y_avg,y_cv,Aub,Alb,Blb,...
     p1,p2,prob_caught,...
     delinquency_cost,r_lend,dc_prob] ...
         = import_to_matlab_t3(folder,one_price);
     
 % data_moments = [  c_avg; c_std; bal_avg; bal_std; bal_corr; am1; am2; am3; am4; amar1; amar2; amar3; amar4 ];
-data_moments = [ c_avg; bal_avg; (am1+am2)./2 ; (amar1+amar2)./2]  ;
+data_moments = [ c_avg; bal_avg; am_d; am_d4 ]  ;
 % data_moments = [ c_avg; bal_med; (am1+am2)./2 ; (amar1+amar2)./2]  ;
 
 
@@ -91,21 +83,37 @@ s0 = 1;
 format long g
 
     % given :  r_lend , r_water, r_high ,  shock  ,   inc shock, int,  alpha , beta_up , Y , p1, p2 ,pd,  n ,   curve, r_slope, waterlend,
-           %    1         2       3         4         5           6         7        8       9    10  11  12       %    
+           %    1         2        3         4         5           6         7        8       9    10  11  12       %    
 %given=       [ r_lend    0      .03         0        0.28        0      .026      .02     y_avg p1  p2  170   n   10  0 ];
 
-r_slope =(.01 - r_lend)./(( Aub/2).^2) ;
+% Alb1 = Alb;
 
-given=       [  r_lend    0      r_lend      0        .4         0      .037     .015     y_avg(1)  p1(1)  p2(1)  130   n   1.5 r_slope(1) 0; ...
-                r_lend    0      r_lend      0        .4         0      .026     .015     y_avg(2)  p1(1)  p2(1)  130   n   1.5 r_slope(2) 0; ...
-                r_lend    0      r_lend      0        .4         0      .015     .015     y_avg(3)  p1(1)  p2(1)  130   n   1.5 r_slope(3) 0 ];
+Alb = -2.*y_avg ;
+Aub =  2.*y_avg ;
+
+
+r_slope =[0 0 0] ;
+r_high = .094;
+
+% r_slope =(.01 - r_lend)./( (y_avg./2).^2 ) ;
+% r_slope = [0 0 0];
+% r_lend = .08;
+
+inc_t  =  1  ;  %%% which inc to estimate1
+ 
+given=       [  r_lend    0      r_high      0        y_cv       0      .033    .034     y_avg(1)  p1(1)  p2(1)  200   n  3.2  r_slope(1) 0; ...
+                r_lend    0      r_high      0        y_cv       0      .027    .018     y_avg(2)  p1(1)  p2(1)  125   n  2.4  r_slope(2) 0; ...
+                r_lend    0      r_high      0        y_cv       0      .018    .02      y_avg(3)  p1(1)  p2(1)  140   n  2.5  r_slope(3) 0  ];
             
-% r_slope =[0   0  0];
-% % 
-% given=       [  r_lend    0      .01       0         .4         0      .037     .015     y_avg(1)  p1(1)  p2(1)  100   n   1.5 r_slope(1) 0; ...
-%                 r_lend    0      .01       0         .4         0      .029     .015     y_avg(2)  p1(1)  p2(1)  100   n   1.5 r_slope(2) 0; ...
-%                 r_lend    0      .01       0         .4         0      .012     .015     y_avg(3)  p1(1)  p2(1)  100   n   1.5 r_slope(3) 0 ];
-
+            
+%%% WITH SMALL R_LEND
+% given=       [  r_lend    0      r_lend      0        y_cv       0      .033    .021     y_avg(1)  p1(1)  p2(1)  120   n  2.8  r_slope(1) 0; ...
+%                 r_lend    0      r_lend      0        y_cv       0      .027    .018     y_avg(2)  p1(1)  p2(1)  125   n  2.4  r_slope(2) 0; ...
+%                 r_lend    0      r_lend      0        y_cv       0      .018    .02      y_avg(3)  p1(1)  p2(1)  140   n  2.5  r_slope(3) 0  ];  
+%  given=       [  r_lend    0      r_lend      .001        .4         0      .037     0     y_avg(1)  p1(1)  p2(1)  130   n   1.5 r_slope(1) 0; ...
+%                  r_lend    0      r_lend      .001        .4         0      .026     0     y_avg(2)  p1(1)  p2(1)  130   n   1.5 r_slope(2) 0; ...
+%                  r_lend    0      r_lend      .001        .4         0      .015     0     y_avg(3)  p1(1)  p2(1)  130   n   1.5 r_slope(3) 0 ];
+            
             
 csvwrite(strcat(folder,'given.csv'),given);
                         
@@ -128,9 +136,34 @@ toc
 round(est_mom(option_moments_est),2)
 round(data(option_moments,inc_t),2)
 
+disp ' A loan '
 sum(controls(:,2)==min(controls(:,2)))
 
+disp ' A savings '
+sum(controls(:,2)==max(controls(:,2)))
 
+
+
+%%% TEST BORRING LIMIT %%%  LOOKS OK!
+given_nb = given;
+given_nb(:,2)=.8;
+[est_mom,~,controls,~,~,A1,B1]=dc_obj_chow_pol_finite(given_nb(inc_t,:),prob,nA,sigA,Alb(inc_t),Aub(inc_t),nB,sigB,Blb(inc_t),nD,chain,s,int_size,refinement);
+
+round(est_mom(option_moments_est),2)
+round(data(option_moments,inc_t),2)
+
+disp ' A loan (No Borrowing) '
+sum(controls(:,2)==min(controls(:,2)))
+
+disp ' A savings (No Borrowing) '
+sum(controls(:,2)==max(controls(:,2)))
+
+
+
+
+
+% controls(controls(:,2)==max(controls(:,2)),6)
+% mean(controls(:,2)<0)
 
     if short_est==1
         weights =  eye(size(data(:,inc_t),1))./(data(:,inc_t).^2) ;   % normalize moments to be between zero and one (matters quite a bit)
@@ -170,7 +203,7 @@ sum(controls(:,2)==min(controls(:,2)))
                         toc
                         [~,~,est_mom]=obj(res);
                         disp   '   truth               estimates   ' 
-                        [ round(data(:,inc_t),2)  round(est_mom,2) ]
+                        [ round(data(:,i),2)  round(est_mom,2) ]
                         disp ' psearch done ! :)'
                         
             csvwrite(strcat(folder,'estimates_t',string(i),'.csv'),res)
@@ -266,7 +299,7 @@ if est_tables==1
     fileID = fopen(strcat(cd_dir,'table_fit_est_dc.tex'),'w');  
         fprintf(fileID,'%s\n',strcat('\multicolumn{1}{r}{ $\text{Visited}_{t-1}$ } &',num2str(output_data(6),'%5.2f'),'&', num2str(output(6),'%5.2f'),'\\'));
         fprintf(fileID,'%s\n',strcat('\multicolumn{1}{r}{ $\text{Visited}_{t-2}$ } &',num2str(output_data(7),'%5.2f'),'&', num2str(output(7),'%5.2f'),'\\'));
-        fprintf(fileID,'%s\n',strcat('\multicolumn{1}{r}{ $\text{Visited}_{t-3}$ }  &',num2str(output_data(8),'%5.2f'),'&', num2str(output(8),'%5.2f'),'\\'));
+        fprintf(fileID,'%s\n',strcat('\multicolumn{1}{r}{ $\text{Visited}_{t-3}$ } &',num2str(output_data(8),'%5.2f'),'&', num2str(output(8),'%5.2f'),'\\'));
         fprintf(fileID,'%s\n',strcat('\multicolumn{1}{r}{ $\text{Visited}_{t-4}$ } &',num2str(output_data(9),'%5.2f'),'&', num2str(output(9),'%5.2f'),'\\'));
 
         fprintf(fileID,'%s\n',strcat('\multicolumn{1}{r}{$\text{Visited \& 90+ days overdue}_{t-1}$ } &',num2str(output_data(10),'%5.2f'),'&', num2str(output(10),'%5.2f'),'\\'));
@@ -307,16 +340,10 @@ if counter==1
         res_out = csvread(strcat(folder,'given.csv'));
     end
     
-        
-    %%% pull in estimates
-    
-    
-    
-
     %%% current
     [h,util, h_t1,h_t2,h_t3, simc_t1,simc_t2,simc_t3]           =run3(res_out,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
    
-%     c_h = h(1) ;
+%   c_h = h(1) ;
     
     %%% value of 10 PhP
     res_poor = res_out;
@@ -331,18 +358,24 @@ if counter==1
     %%% utility loss from no loans
     res_nl = res_out;
 	res_nl(:,2) = .8;
-    [h_nl,util_nl, h_nl_t1,h_nl_t2,h_nl_t3, simc_nl_t1,simc_nl_t2,simc_nl_t3] =run3(res_nl,prob,nA,sigA, Alb  ,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
+    [h_nl,util_nl, h_nl_t1,h_nl_t2,h_nl_t3, simc_nl_t1,simc_nl_t2,simc_nl_t3] =run3(res_nl,prob,nA,sigA, Alb ,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
     
     disp ' no lending : '
-    U_nl = (mean(util_nl)-mean(util))/du_dy10
-    U_nl_t = (util_nl-util)./du_dy10_t
+    
+    %     mean(util_nl)-mean(util)
+    
+    %     U_nl = (mean(util_nl)-mean(util))/du_dy10
+
+    
+    U_nl_t = ((util_nl.*1000000000)-(util.*1000000000))./(du_dy10_t.*1000000000)
+    mean(U_nl_t)
     
     
-%     [h_nlb,util_nlb, h_nl_t1b,h_nl_t2b,h_nl_t3b, simc_nl_t1b,simc_nl_t2b,simc_nl_t3b] =run3(res_nl,prob,nA,sigA, Alb + Blb  ,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
-%   
-%     disp ' no lending with borrow constraint : '
-%     U_nlb = (mean(util_nlb)-mean(util))/du_dy10
-%     U_nl_tb = (util_nlb-util)./du_dy10_t
+     [h_nlb,util_nlb, h_nl_t1b,h_nl_t2b,h_nl_t3b, simc_nl_t1b,simc_nl_t2b,simc_nl_t3b] =run3(res_nl,prob,nA,sigA, Alb + Blb  ,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
+   
+     disp ' no lending with borrow constraint : '
+     U_nlb = (mean(util_nlb)-mean(util))/du_dy10
+     U_nl_tb = (util_nlb-util)./du_dy10_t
     
 
 %     c_nl = h_nl(1);
@@ -455,7 +488,7 @@ if counter==1
     
     [h_pp,util_pp] =run3(res_pp,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
     
-    U_pp_t = (util_pp-util)./du_dy10_t
+    U_pp_t = ((util_pp.*1000000)-(util.*1000000))./(du_dy10_t.*1000000)
     U_pp = (mean(util_pp)-mean(util))/mean(du_dy10)
 
 %}

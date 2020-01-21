@@ -46,7 +46,7 @@ if $data_prep == 1 {
 			drop _merge
 
 			fmerge m:1 barangay_id using "${temp}barangay_merge.dta"
-			keep if _merge==3
+			drop if _merge==2
 			drop _merge
 
 			fmerge m:1 conacct using "${temp}paws_dc.dta"
@@ -94,7 +94,20 @@ end
 
 use "${temp}temp_descriptives.dta", clear
 
+	* preserve
+	* 	keep barangay_id
+	* 	duplicates drop
+	* 	save "${temp}barangay_full.dta", replace
+	* restore
+
+	* keep if inc!=.
+
+	* merge m:1 barangay_id using "${temp}cbms_barangays.dta"
+	* keep if _merge==3
+	* drop _merge
+
 * Keep valid dates 
+	keep if date>date_c
 	keep if date>=602
 	drop if date==653
 	global date_N = `=_N'
@@ -103,7 +116,6 @@ use "${temp}temp_descriptives.dta", clear
 
 
 * Keep residential
-
 	egen max_class = max(class), by(conacct)
 	keep if max_class==1
 	drop max_class
@@ -129,32 +141,66 @@ use "${temp}temp_descriptives.dta", clear
 	replace pay = 0 if pay==.
 
 * Missing balance and small balance equal to zero ; keeps negative balances
-	replace bal=0 if (bal<=5 & bal>=-5) | bal==.
+	* replace bal=0 if (bal<=10 & bal>=-10) | bal==.
+	replace bal=0 if (bal<=10 & bal>=-10) | bal==.
+
+
+	g amount_r = round(amount,50)
+	g yr = round(date,12)
+	egen amount_r_date = group(amount_r yr)
+	g c_low = c if c<=100
+	egen c_mean=mean(c_low), by(amount_r_date)
+	replace c_mean = round(c_mean,1)
+
+	replace c = c_mean if c>(c_mean+10)  & c<.
+	egen c_max=max(c), by(conacct)
 
 * Outliers
 	NN
-	drop if c>200 & c<.        
+	drop if c_max>200      
 	writeN chigh_drop
+	drop amount_r yr amount_r_date c_low c_mean c_max
+
 
 	NN
-	keep if (amount>=-5000 & amount<=80000) | amount==.
+	egen min_amount = min(amount), by(conacct)
+	drop if min_amount<-5000
+	egen max_amount = max(amount), by(conacct)
+	drop if max_amount>20000
+	* keep if (amount>=-5000 & amount<=80000) | amount==.
 	global amount_N = `=_N'
 	writeN amount_drop
+	drop min_amount max_amount
 
+	* NN
+	* sum bal if bal<0, detail    
+	* drop if bal<-5000
 	NN
-	sum bal if bal<0, detail    
-	drop if bal<-5000
-	sum bal if bal>0, detail
-	drop if bal>80000 & bal<.    
+	egen max_bal =max(bal), by(conacct)
+ 	egen min_bal = min(bal), by(conacct)
+	* sum bal if bal>0, detail
+	drop if max_bal>80000  
+	drop if min_bal<-10000
 	writeN bal_drop
+	drop max_bal
+ 
 
-	NN
-	keep if pay>=-80000 & pay<=80000   
-	global paylh_N=`=_N'
-	writeN paylh_drop
+
+	*** DON'T NEED PAY FILTER ANYMORE
+	* NN
+	replace pay =0 if pay<0
+	egen max_pay = max(pay), by(conacct)
+	keep if max_pay<50000 
+	drop max_pay 
+	* global paylh_N=`=_N'
+	* writeN paylh_drop
+
+
 
 * Adjust ar in line with balance
 *// if balance is zero, then AR should be zero
+	replace ar = ar+30
+	replace ar = 0 if ar==.
 	replace ar = 0 if bal<=0     
 	g pay_shr = (pay)/(bal+amount)  
 * // if payment exceeds balance and amount, then AR should be zero
@@ -162,19 +208,19 @@ use "${temp}temp_descriptives.dta", clear
 	drop pay_shr
 
 * Observe at least 30 months of data
-	NN
-	sort conacct date
-	by conacct: g cN=_N
-	keep if cN>=30
-	drop cN  
-	writeN month_drop
+	* NN
+	* sort conacct date
+	* by conacct: g cN=_N
+	* keep if cN>=30
+	* drop cN  
+	* writeN month_drop
 
 * Keep single households
-	* NN
-	* keep if SHH==1
-	* global SHH_N = `=_N'
-	* write "${tables}SHH_N.tex" `=${SHH_N}' 1 "%12.0fc"
-	* writeN SHH_drop
+	NN
+	keep if SHH==1
+	global SHH_N = `=_N'
+	write "${tables}SHH_N.tex" `=${SHH_N}' 1 "%12.0fc"
+	writeN SHH_drop
 
 * Clean disconnection data   *** address holes
 	replace dc = 0 if dc==.
@@ -205,15 +251,30 @@ use "${temp}temp_descriptives.dta", clear
 	sort conacct date
 	by conacct: g tcd_id=dc[_n-1]!=1 & dc[_n]==1
 	replace tcd_id = 0 if date==602
-	*** dc's on 654 seem suspicious, given that 653 is removed...
 
 	egen tcd_max=max(tcd_id), by(conacct)
 
 	order conacct date c amount bal pay ar tcd_id dc 
 
-	fmerge  m:1 conacct using "${temp}mcf_ba.dta"
+	fmerge  m:1 conacct  using "${temp}mcf_ba.dta"
 	drop if _merge==2
 	drop _merge
+
+
+	cap drop inc
+	est use "${fies}inc_projection"
+	predict inc1, xb
+	g inc=exp(inc1)
+	drop inc1
+
+
+	* est use "${fies}inc_projection"
+	* predict inc1, xb
+	* g inc_fies=exp(inc1)
+	* drop inc1
+	* reg c inc if todisbcashloan!=.
+	* reg c inc_fies if todisbcashloan!=.
+
 
 		*** HOUSEHOLD CORRECTION HERE ***
 		

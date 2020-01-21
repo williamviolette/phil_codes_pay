@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  3 SEP 2019 16:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  18 JAN 2020 18:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -259,7 +259,10 @@ Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \@vwid@loff=\dimen135
 \@vwid@roff=\dimen136
 ))
-(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/palatino.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/threeparttable/threeparttable.sty
+Package: threeparttable 2003/06/13  v 3.0
+\@tempboxb=\box34
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/palatino.sty
 Package: palatino 2005/04/12 PSNFSS-v9.2a (SPQR) 
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/newtx/newtxmath.sty
@@ -353,7 +356,7 @@ LaTeX Info: Redefining \not on input line 1638.
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2011/12/15 v2.10.0 Sectioning titles
-\ttl@box=\box34
+\ttl@box=\box35
 \beforetitleunit=\skip51
 \aftertitleunit=\skip52
 \ttl@plus=\dimen138
@@ -363,10 +366,7 @@ Package: titlesec 2011/12/15 v2.10.0 Sectioning titles
 \titlewidthlast=\dimen141
 \titlewidthfirst=\dimen142
 )
-(/usr/local/texlive/2015/texmf-dist/tex/latex/threeparttable/threeparttable.sty
-Package: threeparttable 2003/06/13  v 3.0
-\@tempboxb=\box35
-) (/usr/local/texlive/2015/texmf-dist/tex/latex/tabu/tabu.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tabu/tabu.sty
 Package: tabu 2011/02/26 v2.8 - flexible LaTeX tabulars (FC)
 \c@taburow=\count109
 \tabu@nbcols=\count110
@@ -956,11 +956,7 @@ Package footmisc Info: Declaring symbol style lamport* on input line 903.
 Package footmisc Info: Declaring symbol style lamport*-robust on input line 924
 .
 )
-(./paper.aux
-
-LaTeX Warning: Label `table:tcd_predict' multiply defined.
-
-)
+(./paper.aux)
 \openout1 = `paper.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 49.
@@ -1822,1001 +1818,573 @@ Overfull \hbox (9.99597pt too wide) in paragraph at lines 105--105
 
 LaTeX Warning: Marginpar on page 3 moved.
 
-
-Overfull \hbox (5.1708pt too wide) in paragraph at lines 111--112
-\OT1/ppl/m/n/12 Measuring credit through de-layed wa-ter bill pay-ments re-quir
-es in-for-ma-tion on monthly
- []
-
-
-Overfull \hbox (1.77461pt too wide) in paragraph at lines 111--112
-\OT1/ppl/m/n/12 ge-o-graphic half of Metro Manila. This util-ity pro-vided ac-c
-ess to monthly billing records
- []
-
-
-Overfull \hbox (5.53192pt too wide) in paragraph at lines 111--112
-\OT1/ppl/m/n/12 Over this time-frame, the to-tal num-ber of con-nec-tions in-cr
-eased from 900,000 to 1,500,000
- []
-
-[3]
-
-LaTeX Warning: Marginpar on page 4 moved.
-
-
-Overfull \hbox (15.2882pt too wide) in paragraph at lines 117--117
-\OT1/ppl/m/n/12 merged?!  
- []
-
-
-Overfull \hbox (15.2882pt too wide) in paragraph at lines 117--117
-\OT1/ppl/m/n/12 merged?!  
- []
-
-
-Overfull \hbox (15.2882pt too wide) in paragraph at lines 117--117
-\OT1/ppl/m/n/12 merged?!  
- []
-
-
-Overfull \hbox (15.2882pt too wide) in paragraph at lines 117--117
-\OT1/ppl/m/n/12 merged?!  
- []
-
-
-LaTeX Warning: Marginpar on page 4 moved.
-
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 127.
-(./tables/descriptives_all.tex) (./tables/total_hhs_stayers.tex)
-(./tables/obs_per_hh_all.tex) (./tables/total_obs_all.tex) [4]
-(./tables/center.tex) (./tables/maynilad.tex) (./tables/atm.tex)
+[3] (./tables/center.tex) (./tables/maynilad.tex) (./tables/atm.tex) [4]
 (./tables/days_delinquent_all.tex) (./tables/bill_all.tex)
 (./tables/pay_size_all.tex) (./tables/pay_freq.tex) (./tables/balance_all.tex)
-Overfull \hbox (0.62434pt too wide) in paragraph at lines 145--145
-\OT1/ppl/m/n/12 would 
- []
-
-
-Overfull \hbox (0.50414pt too wide) in paragraph at lines 145--145
-\OT1/ppl/m/n/12 eleven 
- []
-
-
-Overfull \hbox (0.62434pt too wide) in paragraph at lines 145--145
-\OT1/ppl/m/n/12 would 
- []
-
-
-Overfull \hbox (0.50414pt too wide) in paragraph at lines 145--145
-\OT1/ppl/m/n/12 eleven 
- []
-
-
-Overfull \hbox (0.62434pt too wide) in paragraph at lines 145--145
-\OT1/ppl/m/n/12 would 
- []
-
-
-Overfull \hbox (0.50414pt too wide) in paragraph at lines 145--145
-\OT1/ppl/m/n/12 eleven 
- []
-
-
-Overfull \hbox (0.62434pt too wide) in paragraph at lines 145--145
-\OT1/ppl/m/n/12 would 
- []
-
-
-Overfull \hbox (0.50414pt too wide) in paragraph at lines 145--145
-\OT1/ppl/m/n/12 eleven 
- []
-
-(./tables/y_avg.tex) (./tables/save_avg.tex) (./tables/balance_inc.tex)
-(./tables/balance_save.tex) (./tables/balance_inc_20_all.tex) [5]
-Overfull \hbox (1.3442pt too wide) in paragraph at lines 149--149
-\OT1/ppl/m/n/12 there's 
- []
-
-
-Overfull \hbox (2.37634pt too wide) in paragraph at lines 149--149
-\OT1/ppl/m/n/12 chance 
- []
-
-
-Overfull \hbox (1.3442pt too wide) in paragraph at lines 149--149
-\OT1/ppl/m/n/12 there's 
- []
-
-
-Overfull \hbox (2.37634pt too wide) in paragraph at lines 149--149
-\OT1/ppl/m/n/12 chance 
- []
-
-
-Overfull \hbox (1.3442pt too wide) in paragraph at lines 149--149
-\OT1/ppl/m/n/12 there's 
- []
-
-
-Overfull \hbox (2.37634pt too wide) in paragraph at lines 149--149
-\OT1/ppl/m/n/12 chance 
- []
-
-
-Overfull \hbox (1.3442pt too wide) in paragraph at lines 149--149
-\OT1/ppl/m/n/12 there's 
- []
-
-
-Overfull \hbox (2.37634pt too wide) in paragraph at lines 149--149
-\OT1/ppl/m/n/12 chance 
- []
-
-(./tables/disc_notice.tex) (./tables/disc_count.tex)
-Overfull \hbox (9.32425pt too wide) in paragraph at lines 149--149
-\OT1/ppl/m/n/12 dataset? 
- []
-
-
-Overfull \hbox (9.32425pt too wide) in paragraph at lines 149--149
-\OT1/ppl/m/n/12 dataset? 
- []
-
-
-Overfull \hbox (9.32425pt too wide) in paragraph at lines 149--149
-\OT1/ppl/m/n/12 dataset? 
- []
-
-
-Overfull \hbox (9.32425pt too wide) in paragraph at lines 149--149
-\OT1/ppl/m/n/12 dataset? 
- []
-
-(./tables/tcd_id_mean.tex) (./tables/tcd_id_ar_cond.tex)
-
-LaTeX Warning: Marginpar on page 6 moved.
-
-(./tables/days_pay_under_30.tex) (./tables/days_pay_average.tex)
-(./tables/enough_time.tex) (./tables/days_rec_average.tex)
-<tables/connected_visit_hazard_all.pdf, id=29, 397.485pt x 289.08pt>
-File: tables/connected_visit_hazard_all.pdf Graphic file (type pdf)
-
-<use tables/connected_visit_hazard_all.pdf>
-Package pdftex.def Info: tables/connected_visit_hazard_all.pdf used on input li
-ne 156.
-(pdftex.def)             Requested size: 278.2376pt x 202.35461pt.
-
-
-LaTeX Warning: Reference `table:descriptives_3g' on page 6 undefined on input l
-ine 177.
-
-
-Overfull \hbox (11.44824pt too wide) in paragraph at lines 177--177
-\OT1/ppl/m/n/12 months? 
- []
-
-
-Overfull \hbox (11.44824pt too wide) in paragraph at lines 177--177
-\OT1/ppl/m/n/12 months? 
- []
-
-
-Overfull \hbox (11.44824pt too wide) in paragraph at lines 177--177
-\OT1/ppl/m/n/12 months? 
- []
-
-
-Overfull \hbox (11.44824pt too wide) in paragraph at lines 177--177
-\OT1/ppl/m/n/12 months? 
- []
-
-[6] (./tables/pcd_hh.tex)
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 181.
-
-
-LaTeX Warning: Reference `table:descriptives_3g' on page 7 undefined on input l
-ine 181.
-
-
-LaTeX Warning: Marginpar on page 7 moved.
-
-[7 <./tables/connected_visit_hazard_all.pdf>]
-<tables/line1_disconnection.pdf, id=47, 397.485pt x 289.08pt>
-File: tables/line1_disconnection.pdf Graphic file (type pdf)
-
-<use tables/line1_disconnection.pdf>
-Package pdftex.def Info: tables/line1_disconnection.pdf used on input line 191.
-
-(pdftex.def)             Requested size: 223.09955pt x 163.75201pt.
-
-<tables/line1_bal.pdf, id=49, 397.485pt x 289.08pt>
-File: tables/line1_bal.pdf Graphic file (type pdf)
- <use tables/line1_bal.pdf>
-Package pdftex.def Info: tables/line1_bal.pdf used on input line 199.
-(pdftex.def)             Requested size: 223.09955pt x 163.75201pt.
-
-<tables/line1_ar.pdf, id=51, 397.485pt x 289.08pt>
-File: tables/line1_ar.pdf Graphic file (type pdf)
- <use tables/line1_ar.pdf>
-Package pdftex.def Info: tables/line1_ar.pdf used on input line 207.
-(pdftex.def)             Requested size: 223.09955pt x 163.75201pt.
-
-<tables/line1_pay.pdf, id=53, 397.485pt x 289.08pt>
-File: tables/line1_pay.pdf Graphic file (type pdf)
- <use tables/line1_pay.pdf>
-Package pdftex.def Info: tables/line1_pay.pdf used on input line 215.
-(pdftex.def)             Requested size: 223.09955pt x 163.75201pt.
-
-<tables/line1_c.pdf, id=55, 397.485pt x 289.08pt>
-File: tables/line1_c.pdf Graphic file (type pdf)
- <use tables/line1_c.pdf>
-Package pdftex.def Info: tables/line1_c.pdf used on input line 223.
-(pdftex.def)             Requested size: 223.09955pt x 163.75201pt.
-
-Underfull \hbox (badness 2735) in paragraph at lines 230--230
-[]\OT1/ppl/b/n/12 Figure 2. |\OT1/ppl/m/n/10.95 Mean Out-comes
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 230--230
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 230--230
-\OT1/ppl/m/n/10.95 Stayers in-clude only house-
- []
-
-
-Underfull \hbox (badness 1107) in paragraph at lines 230--230
-\OT1/ppl/m/n/10.95 holds who ex-pe-ri-ence at least
- []
-
+(./tables/prob_caught.tex) (./tables/prob_caught_min.tex)
+(./tables/prob_caught_max.tex) (./tables/tcd_max.tex)
+(./tables/tcd_share_pay.tex) (./tables/tcd_share_dc.tex) (./tables/out_bal.tex)
+[5] (./tables/tcd_share_rec.tex) (./tables/days_pay_under_30.tex)
+(./tables/days_pay_average.tex) (./tables/enough_time.tex) (./tables/t_rec.tex)
+(./tables/days_rec_average.tex) (./tables/tcd_share_rec_3.tex)
+(./tables/t_rec_3.tex) (./tables/tcd_share_rec_3l.tex) (./tables/t_rec_3l.tex)
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 287.
 
-Underfull \hbox (badness 1048) in paragraph at lines 230--230
-\OT1/ppl/m/n/10.95 one delin-quency visit and are
- []
-
-
-Underfull \hbox (badness 1629) in paragraph at lines 230--230
-\OT1/ppl/m/n/10.95 pay-ments in-clude ze-ros when
- []
-
-
-Overfull \hbox (5.05959pt too wide) in paragraph at lines 235--236
-[]\OT1/ppl/m/n/12 To in-ves-ti-gate how house-holds re-spond to delin-quency vi
-s-its, Fig-ure 2 plots monthly
- []
-
-(./tables/am6_2.tex) (./tables/am6_20.tex)
-Overfull \hbox (0.2357pt too wide) in paragraph at lines 237--238
-[]\OT1/ppl/m/n/12 Immediately fol-low-ing the first delin-quency visit, monthly
- pay-ments spike as many
- []
-
-
-Overfull \hbox (0.62434pt too wide) in paragraph at lines 239--239
-\OT1/ppl/m/n/12 would 
- []
-
-
-Overfull \hbox (12.27632pt too wide) in paragraph at lines 239--239
-\OT1/ppl/m/n/12 sounded 
- []
-
-
-Overfull \hbox (5.22015pt too wide) in paragraph at lines 239--239
-\OT1/ppl/m/n/12 straints 
- []
-
-
-Overfull \hbox (0.62434pt too wide) in paragraph at lines 239--239
-\OT1/ppl/m/n/12 would 
- []
-
-
-Overfull \hbox (12.27632pt too wide) in paragraph at lines 239--239
-\OT1/ppl/m/n/12 sounded 
- []
-
-
-Overfull \hbox (5.22015pt too wide) in paragraph at lines 239--239
-\OT1/ppl/m/n/12 straints 
- []
-
-
-Overfull \hbox (0.62434pt too wide) in paragraph at lines 239--239
-\OT1/ppl/m/n/12 would 
- []
-
-
-Overfull \hbox (12.27632pt too wide) in paragraph at lines 239--239
-\OT1/ppl/m/n/12 sounded 
- []
-
-
-Overfull \hbox (5.22015pt too wide) in paragraph at lines 239--239
-\OT1/ppl/m/n/12 straints 
- []
-
-
-Overfull \hbox (0.62434pt too wide) in paragraph at lines 239--239
-\OT1/ppl/m/n/12 would 
- []
-
-
-Overfull \hbox (12.27632pt too wide) in paragraph at lines 239--239
-\OT1/ppl/m/n/12 sounded 
- []
-
-
-Overfull \hbox (5.22015pt too wide) in paragraph at lines 239--239
-\OT1/ppl/m/n/12 straints 
- []
-
-(./tables/amar_2.tex) (./tables/amar_2a.tex)
-Overfull \hbox (8.22015pt too wide) in paragraph at lines 241--241
-\OT1/ppl/m/n/12 straints; 
- []
-
-
-Overfull \hbox (8.22015pt too wide) in paragraph at lines 241--241
-\OT1/ppl/m/n/12 straints; 
- []
+(./tables/descriptives_all.tex)
 
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-Overfull \hbox (8.22015pt too wide) in paragraph at lines 241--241
-\OT1/ppl/m/n/12 straints; 
+[6] (./tables/table_lfs_analysis.tex)
+Underfull \hbox (badness 1028) in paragraph at lines 424--425
+[]\OT1/ppl/m/n/10 All units are in PhP. Quar-terly fixed ef-
  []
 
 
-Overfull \hbox (8.22015pt too wide) in paragraph at lines 241--241
-\OT1/ppl/m/n/12 straints; 
+Underfull \hbox (badness 1533) in paragraph at lines 424--425
+\OT1/ppl/m/n/10 fects are in-cluded. Stan-dard er-rors are
  []
 
-
-Overfull \hbox (10.176pt too wide) in paragraph at lines 241--241
-\OT1/ppl/m/n/12 couldn't 
- []
-
-
-Overfull \hbox (2.92813pt too wide) in paragraph at lines 241--241
-\OT1/ppl/m/n/12 they're 
- []
-
-
-Overfull \hbox (10.176pt too wide) in paragraph at lines 241--241
-\OT1/ppl/m/n/12 couldn't 
- []
-
-
-Overfull \hbox (2.92813pt too wide) in paragraph at lines 241--241
-\OT1/ppl/m/n/12 they're 
- []
-
-
-Overfull \hbox (10.176pt too wide) in paragraph at lines 241--241
-\OT1/ppl/m/n/12 couldn't 
- []
-
-
-Overfull \hbox (2.92813pt too wide) in paragraph at lines 241--241
-\OT1/ppl/m/n/12 they're 
- []
-
-
-Overfull \hbox (10.176pt too wide) in paragraph at lines 241--241
-\OT1/ppl/m/n/12 couldn't 
- []
-
-
-Overfull \hbox (2.92813pt too wide) in paragraph at lines 241--241
-\OT1/ppl/m/n/12 they're 
- []
-
-(./tables/c_avg.tex) (./tables/c_std.tex)
-Overfull \hbox (6.12032pt too wide) in paragraph at lines 241--241
-\OT1/ppl/m/n/12 months 
- []
-
-
-Overfull \hbox (0.62434pt too wide) in paragraph at lines 241--241
-\OT1/ppl/m/n/12 would 
- []
-
-
-Overfull \hbox (14.85602pt too wide) in paragraph at lines 241--241
-\OT1/ppl/m/n/12 wouldn't 
- []
-
-
-Overfull \hbox (6.12032pt too wide) in paragraph at lines 241--241
-\OT1/ppl/m/n/12 months 
- []
-
-
-Overfull \hbox (0.62434pt too wide) in paragraph at lines 241--241
-\OT1/ppl/m/n/12 would 
- []
-
-
-Overfull \hbox (14.85602pt too wide) in paragraph at lines 241--241
-\OT1/ppl/m/n/12 wouldn't 
- []
-
-
-Overfull \hbox (6.12032pt too wide) in paragraph at lines 241--241
-\OT1/ppl/m/n/12 months 
- []
-
-
-Overfull \hbox (0.62434pt too wide) in paragraph at lines 241--241
-\OT1/ppl/m/n/12 would 
- []
-
-
-Overfull \hbox (14.85602pt too wide) in paragraph at lines 241--241
-\OT1/ppl/m/n/12 wouldn't 
+[7] [8]
+Overfull \hbox (8.86818pt too wide) in paragraph at lines 503--503
+\OT1/ppl/m/n/12 through 
  []
 
 
-Overfull \hbox (6.12032pt too wide) in paragraph at lines 241--241
-\OT1/ppl/m/n/12 months 
+Overfull \hbox (8.86818pt too wide) in paragraph at lines 503--503
+\OT1/ppl/m/n/12 through 
  []
 
 
-Overfull \hbox (0.62434pt too wide) in paragraph at lines 241--241
-\OT1/ppl/m/n/12 would 
+Overfull \hbox (8.86818pt too wide) in paragraph at lines 503--503
+\OT1/ppl/m/n/12 through 
  []
 
 
-Overfull \hbox (14.85602pt too wide) in paragraph at lines 241--241
-\OT1/ppl/m/n/12 wouldn't 
+Overfull \hbox (8.86818pt too wide) in paragraph at lines 503--503
+\OT1/ppl/m/n/12 through 
  []
-
-
-LaTeX Warning: Marginpar on page 8 moved.
 
-[8] [9 <./tables/line1_disconnection.pdf> <./tables/line1_bal.pdf> <./tables/li
-ne1_ar.pdf> <./tables/line1_pay.pdf> <./tables/line1_c.pdf>]
+[9]
 
 LaTeX Warning: Marginpar on page 10 moved.
 
 
-LaTeX Warning: Marginpar on page 10 moved.
+Overfull \hbox (48.74013pt too wide) in paragraph at lines 549--549
+[] 
+ []
 
-
-LaTeX Warning: Marginpar on page 10 moved.
-
-(./tables/table_lfs_analysis.tex) [10] [11] [12]
-Overfull \hbox (8.86818pt too wide) in paragraph at lines 330--330
-\OT1/ppl/m/n/12 through 
+[10]
+Overfull \hbox (15.66022pt too wide) in paragraph at lines 570--570
+\OT1/ppl/m/n/12 Douglas?  
  []
 
 
-Overfull \hbox (8.86818pt too wide) in paragraph at lines 330--330
-\OT1/ppl/m/n/12 through 
+Overfull \hbox (15.66022pt too wide) in paragraph at lines 570--570
+\OT1/ppl/m/n/12 Douglas?  
  []
 
 
-Overfull \hbox (8.86818pt too wide) in paragraph at lines 330--330
-\OT1/ppl/m/n/12 through 
+Overfull \hbox (15.66022pt too wide) in paragraph at lines 570--570
+\OT1/ppl/m/n/12 Douglas?  
  []
 
 
-Overfull \hbox (8.86818pt too wide) in paragraph at lines 330--330
-\OT1/ppl/m/n/12 through 
+Overfull \hbox (15.66022pt too wide) in paragraph at lines 570--570
+\OT1/ppl/m/n/12 Douglas?  
+ []
+
+[11]
+
+LaTeX Warning: Marginpar on page 12 moved.
+
+(./tables/wse.tex) (./tables/weq_opt.tex) (./tables/cut_point3.tex)
+(./tables/wse.tex) (./tables/weq_opt.tex) (./tables/cut_point3.tex)
+Overfull \hbox (7.8843pt too wide) in paragraph at lines 592--592
+\OT1/ppl/m/n/12 money?  
+ []
+
+
+Overfull \hbox (7.8843pt too wide) in paragraph at lines 592--592
+\OT1/ppl/m/n/12 money?  
+ []
+
+
+Overfull \hbox (7.8843pt too wide) in paragraph at lines 592--592
+\OT1/ppl/m/n/12 money?  
+ []
+
+
+Overfull \hbox (7.8843pt too wide) in paragraph at lines 592--592
+\OT1/ppl/m/n/12 money?  
+ []
+
+[12]
+Overfull \hbox (0.62434pt too wide) in paragraph at lines 594--594
+\OT1/ppl/m/n/12 would 
+ []
+
+
+Overfull \hbox (6.9843pt too wide) in paragraph at lines 594--594
+\OT1/ppl/m/n/12 maybe? 
+ []
+
+
+Overfull \hbox (0.62434pt too wide) in paragraph at lines 594--594
+\OT1/ppl/m/n/12 would 
+ []
+
+
+Overfull \hbox (6.9843pt too wide) in paragraph at lines 594--594
+\OT1/ppl/m/n/12 maybe? 
+ []
+
+
+Overfull \hbox (0.62434pt too wide) in paragraph at lines 594--594
+\OT1/ppl/m/n/12 would 
+ []
+
+
+Overfull \hbox (6.9843pt too wide) in paragraph at lines 594--594
+\OT1/ppl/m/n/12 maybe? 
+ []
+
+
+Overfull \hbox (0.62434pt too wide) in paragraph at lines 594--594
+\OT1/ppl/m/n/12 would 
+ []
+
+
+Overfull \hbox (6.9843pt too wide) in paragraph at lines 594--594
+\OT1/ppl/m/n/12 maybe? 
  []
 
 
 LaTeX Warning: Marginpar on page 13 moved.
 
+
+LaTeX Warning: Reference `table:descriptives_stayers' on page 13 undefined on i
+nput line 600.
+
+
+LaTeX Warning: Reference `appendix:stayerdescriptives' on page 13 undefined on 
+input line 600.
+
+
+LaTeX Warning: Reference `figure:dc_hazardstayers' on page 13 undefined on inpu
+t line 600.
+
+
+LaTeX Warning: Reference `table:descriptives_3g' on page 13 undefined on input 
+line 600.
+
 [13]
-Overfull \hbox (48.74013pt too wide) in paragraph at lines 376--376
-[] 
- []
-
-[14]
-Overfull \hbox (15.66022pt too wide) in paragraph at lines 397--397
-\OT1/ppl/m/n/12 Douglas?  
- []
-
-
-Overfull \hbox (15.66022pt too wide) in paragraph at lines 397--397
-\OT1/ppl/m/n/12 Douglas?  
- []
-
-
-Overfull \hbox (15.66022pt too wide) in paragraph at lines 397--397
-\OT1/ppl/m/n/12 Douglas?  
- []
-
-
-Overfull \hbox (15.66022pt too wide) in paragraph at lines 397--397
-\OT1/ppl/m/n/12 Douglas?  
- []
-
-(./tables/wse.tex) (./tables/weq_opt.tex) (./tables/cut_point3.tex)
-(./tables/wse.tex) (./tables/weq_opt.tex) (./tables/cut_point3.tex)
-Overfull \hbox (7.8843pt too wide) in paragraph at lines 419--419
-\OT1/ppl/m/n/12 money?  
- []
-
-
-Overfull \hbox (7.8843pt too wide) in paragraph at lines 419--419
-\OT1/ppl/m/n/12 money?  
- []
-
-
-Overfull \hbox (7.8843pt too wide) in paragraph at lines 419--419
-\OT1/ppl/m/n/12 money?  
- []
-
-
-Overfull \hbox (7.8843pt too wide) in paragraph at lines 419--419
-\OT1/ppl/m/n/12 money?  
- []
-
-[15]
-
-LaTeX Warning: Marginpar on page 16 moved.
-
-
-Overfull \hbox (0.62434pt too wide) in paragraph at lines 421--421
-\OT1/ppl/m/n/12 would 
- []
-
-
-Overfull \hbox (6.9843pt too wide) in paragraph at lines 421--421
-\OT1/ppl/m/n/12 maybe? 
- []
-
-
-Overfull \hbox (0.62434pt too wide) in paragraph at lines 421--421
-\OT1/ppl/m/n/12 would 
- []
-
-
-Overfull \hbox (6.9843pt too wide) in paragraph at lines 421--421
-\OT1/ppl/m/n/12 maybe? 
- []
-
-
-Overfull \hbox (0.62434pt too wide) in paragraph at lines 421--421
-\OT1/ppl/m/n/12 would 
- []
-
-
-Overfull \hbox (6.9843pt too wide) in paragraph at lines 421--421
-\OT1/ppl/m/n/12 maybe? 
- []
-
-
-Overfull \hbox (0.62434pt too wide) in paragraph at lines 421--421
-\OT1/ppl/m/n/12 would 
- []
-
-
-Overfull \hbox (6.9843pt too wide) in paragraph at lines 421--421
-\OT1/ppl/m/n/12 maybe? 
- []
-
-
-LaTeX Warning: Reference `table:descriptives_3g' on page 16 undefined on input 
-line 425.
-
-
-LaTeX Warning: Marginpar on page 16 moved.
-
-[16]
-Overfull \hbox (8.25604pt too wide) in paragraph at lines 431--431
+Overfull \hbox (8.25604pt too wide) in paragraph at lines 606--606
 \OT1/ppl/m/n/12 thought 
  []
 
 
-Overfull \hbox (8.25604pt too wide) in paragraph at lines 431--431
+Overfull \hbox (8.25604pt too wide) in paragraph at lines 606--606
 \OT1/ppl/m/n/12 thought 
  []
 
 
-Overfull \hbox (8.25604pt too wide) in paragraph at lines 431--431
+Overfull \hbox (8.25604pt too wide) in paragraph at lines 606--606
 \OT1/ppl/m/n/12 thought 
  []
 
 
-Overfull \hbox (8.25604pt too wide) in paragraph at lines 431--431
+Overfull \hbox (8.25604pt too wide) in paragraph at lines 606--606
 \OT1/ppl/m/n/12 thought 
  []
 
 (./tables/irate.tex) (./tables/p_int.tex) (./tables/p_slope.tex)
 (./tables/y_avg.tex) (./tables/prob_caught.tex)
-Overfull \hbox (3.18768pt too wide) in paragraph at lines 461--462
+Overfull \hbox (3.18768pt too wide) in paragraph at lines 636--637
 []\OT1/ppl/m/n/12 Average con-sump-tion pri-mar-ily iden-ti-fies house-hold wa-
 ter pref-er-ences. With Cobb-
  []
 
-[17]
-Overfull \hbox (1.65637pt too wide) in paragraph at lines 464--464
+
+LaTeX Warning: Marginpar on page 14 moved.
+
+
+Overfull \hbox (1.65637pt too wide) in paragraph at lines 639--639
 \OT1/ppl/m/n/12 maybe 
  []
 
 
-Overfull \hbox (2.37634pt too wide) in paragraph at lines 464--464
+Overfull \hbox (2.37634pt too wide) in paragraph at lines 639--639
 \OT1/ppl/m/n/12 chance 
  []
 
 
-Overfull \hbox (7.46416pt too wide) in paragraph at lines 464--464
+Overfull \hbox (7.46416pt too wide) in paragraph at lines 639--639
 \OT1/ppl/m/n/12 caught?  
  []
 
 
-Overfull \hbox (1.65637pt too wide) in paragraph at lines 464--464
+Overfull \hbox (1.65637pt too wide) in paragraph at lines 639--639
 \OT1/ppl/m/n/12 maybe 
  []
 
 
-Overfull \hbox (2.37634pt too wide) in paragraph at lines 464--464
+Overfull \hbox (2.37634pt too wide) in paragraph at lines 639--639
 \OT1/ppl/m/n/12 chance 
  []
 
 
-Overfull \hbox (7.46416pt too wide) in paragraph at lines 464--464
+Overfull \hbox (7.46416pt too wide) in paragraph at lines 639--639
 \OT1/ppl/m/n/12 caught?  
  []
 
 
-Overfull \hbox (1.65637pt too wide) in paragraph at lines 464--464
+Overfull \hbox (1.65637pt too wide) in paragraph at lines 639--639
 \OT1/ppl/m/n/12 maybe 
  []
 
 
-Overfull \hbox (2.37634pt too wide) in paragraph at lines 464--464
+Overfull \hbox (2.37634pt too wide) in paragraph at lines 639--639
 \OT1/ppl/m/n/12 chance 
  []
 
 
-Overfull \hbox (7.46416pt too wide) in paragraph at lines 464--464
+Overfull \hbox (7.46416pt too wide) in paragraph at lines 639--639
 \OT1/ppl/m/n/12 caught?  
  []
 
 
-Overfull \hbox (1.65637pt too wide) in paragraph at lines 464--464
+Overfull \hbox (1.65637pt too wide) in paragraph at lines 639--639
 \OT1/ppl/m/n/12 maybe 
  []
 
 
-Overfull \hbox (2.37634pt too wide) in paragraph at lines 464--464
+Overfull \hbox (2.37634pt too wide) in paragraph at lines 639--639
 \OT1/ppl/m/n/12 chance 
  []
 
 
-Overfull \hbox (7.46416pt too wide) in paragraph at lines 464--464
+Overfull \hbox (7.46416pt too wide) in paragraph at lines 639--639
 \OT1/ppl/m/n/12 caught?  
  []
 
 
-Overfull \hbox (7.04433pt too wide) in paragraph at lines 465--465
+Overfull \hbox (7.04433pt too wide) in paragraph at lines 640--640
 \OT1/ppl/m/n/12 shocks? 
  []
 
 
-Overfull \hbox (0.62422pt too wide) in paragraph at lines 465--465
+Overfull \hbox (0.62422pt too wide) in paragraph at lines 640--640
 \OT1/ppl/m/n/12 higher 
  []
 
 
-Overfull \hbox (1.05624pt too wide) in paragraph at lines 465--465
+Overfull \hbox (1.05624pt too wide) in paragraph at lines 640--640
 \OT1/ppl/m/n/12 nected 
  []
 
 
-Overfull \hbox (1.7164pt too wide) in paragraph at lines 465--465
+Overfull \hbox (1.7164pt too wide) in paragraph at lines 640--640
 \OT1/ppl/m/n/12 shocks 
  []
 
 
-Overfull \hbox (7.04433pt too wide) in paragraph at lines 465--465
+Overfull \hbox (7.04433pt too wide) in paragraph at lines 640--640
 \OT1/ppl/m/n/12 shocks? 
  []
 
 
-Overfull \hbox (0.62422pt too wide) in paragraph at lines 465--465
+Overfull \hbox (0.62422pt too wide) in paragraph at lines 640--640
 \OT1/ppl/m/n/12 higher 
  []
 
 
-Overfull \hbox (1.05624pt too wide) in paragraph at lines 465--465
+Overfull \hbox (1.05624pt too wide) in paragraph at lines 640--640
 \OT1/ppl/m/n/12 nected 
  []
 
 
-Overfull \hbox (1.7164pt too wide) in paragraph at lines 465--465
+Overfull \hbox (1.7164pt too wide) in paragraph at lines 640--640
 \OT1/ppl/m/n/12 shocks 
  []
 
 
-Overfull \hbox (7.04433pt too wide) in paragraph at lines 465--465
+Overfull \hbox (7.04433pt too wide) in paragraph at lines 640--640
 \OT1/ppl/m/n/12 shocks? 
  []
 
 
-Overfull \hbox (0.62422pt too wide) in paragraph at lines 465--465
+Overfull \hbox (0.62422pt too wide) in paragraph at lines 640--640
 \OT1/ppl/m/n/12 higher 
  []
 
 
-Overfull \hbox (1.05624pt too wide) in paragraph at lines 465--465
+Overfull \hbox (1.05624pt too wide) in paragraph at lines 640--640
 \OT1/ppl/m/n/12 nected 
  []
 
 
-Overfull \hbox (1.7164pt too wide) in paragraph at lines 465--465
+Overfull \hbox (1.7164pt too wide) in paragraph at lines 640--640
 \OT1/ppl/m/n/12 shocks 
  []
 
 
-Overfull \hbox (7.04433pt too wide) in paragraph at lines 465--465
+Overfull \hbox (7.04433pt too wide) in paragraph at lines 640--640
 \OT1/ppl/m/n/12 shocks? 
  []
 
 
-Overfull \hbox (0.62422pt too wide) in paragraph at lines 465--465
+Overfull \hbox (0.62422pt too wide) in paragraph at lines 640--640
 \OT1/ppl/m/n/12 higher 
  []
 
 
-Overfull \hbox (1.05624pt too wide) in paragraph at lines 465--465
+Overfull \hbox (1.05624pt too wide) in paragraph at lines 640--640
 \OT1/ppl/m/n/12 nected 
  []
 
 
-Overfull \hbox (1.7164pt too wide) in paragraph at lines 465--465
+Overfull \hbox (1.7164pt too wide) in paragraph at lines 640--640
 \OT1/ppl/m/n/12 shocks 
  []
 
+[14]
 
-LaTeX Warning: Marginpar on page 18 moved.
-
-
-LaTeX Warning: Marginpar on page 18 moved.
+LaTeX Warning: Marginpar on page 15 moved.
 
 
-Overfull \hbox (8.25604pt too wide) in paragraph at lines 467--467
+Overfull \hbox (8.25604pt too wide) in paragraph at lines 642--642
 \OT1/ppl/m/n/12 thought 
  []
 
 
-Overfull \hbox (8.25604pt too wide) in paragraph at lines 467--467
+Overfull \hbox (8.25604pt too wide) in paragraph at lines 642--642
 \OT1/ppl/m/n/12 thought 
  []
 
 
-Overfull \hbox (8.25604pt too wide) in paragraph at lines 467--467
+Overfull \hbox (8.25604pt too wide) in paragraph at lines 642--642
 \OT1/ppl/m/n/12 thought 
  []
 
 
-Overfull \hbox (8.25604pt too wide) in paragraph at lines 467--467
+Overfull \hbox (8.25604pt too wide) in paragraph at lines 642--642
 \OT1/ppl/m/n/12 thought 
  []
 
 (./tables/disc_notice.tex)
 
-LaTeX Warning: Marginpar on page 18 moved.
+LaTeX Warning: Marginpar on page 15 moved.
 
-[18] (./tables/par_nA.tex) (./tables/par_sigA.tex) (./tables/par_Amin.tex)
+[15] (./tables/par_nA.tex) (./tables/par_sigA.tex) (./tables/par_Amin.tex)
 (./tables/par_Amax.tex) (./tables/par_nB.tex) (./tables/par_sigB.tex)
 (./tables/par_Bmin.tex) (./tables/par_totalsize.tex)
-Overfull \hbox (2.27995pt too wide) in paragraph at lines 490--490
+Overfull \hbox (2.27995pt too wide) in paragraph at lines 665--665
 \OT1/ppl/m/n/12 pletely 
  []
 
 
-Overfull \hbox (2.25635pt too wide) in paragraph at lines 490--490
+Overfull \hbox (2.25635pt too wide) in paragraph at lines 665--665
 \OT1/ppl/m/n/12 choose 
  []
 
 
-Overfull \hbox (2.27995pt too wide) in paragraph at lines 490--490
+Overfull \hbox (2.27995pt too wide) in paragraph at lines 665--665
 \OT1/ppl/m/n/12 pletely 
  []
 
 
-Overfull \hbox (2.25635pt too wide) in paragraph at lines 490--490
+Overfull \hbox (2.25635pt too wide) in paragraph at lines 665--665
 \OT1/ppl/m/n/12 choose 
  []
 
 
-Overfull \hbox (2.27995pt too wide) in paragraph at lines 490--490
+Overfull \hbox (2.27995pt too wide) in paragraph at lines 665--665
 \OT1/ppl/m/n/12 pletely 
  []
 
 
-Overfull \hbox (2.25635pt too wide) in paragraph at lines 490--490
+Overfull \hbox (2.25635pt too wide) in paragraph at lines 665--665
 \OT1/ppl/m/n/12 choose 
  []
 
 
-Overfull \hbox (2.27995pt too wide) in paragraph at lines 490--490
+Overfull \hbox (2.27995pt too wide) in paragraph at lines 665--665
 \OT1/ppl/m/n/12 pletely 
  []
 
 
-Overfull \hbox (2.25635pt too wide) in paragraph at lines 490--490
+Overfull \hbox (2.25635pt too wide) in paragraph at lines 665--665
 \OT1/ppl/m/n/12 choose 
  []
 
 (./tables/par_n_iter.tex)
-Overfull \hbox (7.04433pt too wide) in paragraph at lines 494--494
+Overfull \hbox (7.04433pt too wide) in paragraph at lines 669--669
 \OT1/ppl/m/n/12 shocks?  
  []
 
 
-Overfull \hbox (7.04433pt too wide) in paragraph at lines 494--494
+Overfull \hbox (7.04433pt too wide) in paragraph at lines 669--669
 \OT1/ppl/m/n/12 shocks?  
  []
 
 
-Overfull \hbox (7.04433pt too wide) in paragraph at lines 494--494
+Overfull \hbox (7.04433pt too wide) in paragraph at lines 669--669
 \OT1/ppl/m/n/12 shocks?  
  []
 
 
-Overfull \hbox (7.04433pt too wide) in paragraph at lines 494--494
+Overfull \hbox (7.04433pt too wide) in paragraph at lines 669--669
 \OT1/ppl/m/n/12 shocks?  
  []
 
 (./tables/est_alpha.tex) (./tables/est_theta.tex) (./tables/est_theta_per.tex)
 
-LaTeX Warning: Marginpar on page 19 moved.
+LaTeX Warning: Marginpar on page 16 moved.
 
-[19] (./tables/est_fc.tex) (./tables/est_irate_per.tex)
+[16] (./tables/est_fc.tex) (./tables/est_irate_per.tex)
 (./tables/est_irate_annual_per.tex) (./tables/est_irate_per.tex)
 (./tables/est_irate_annual_per.tex) (./tables/est_alpha.tex)
 (./tables/est_sd_alpha.tex) (./tables/est_theta.tex) (./tables/est_sd_theta.tex
 ) (./tables/est_fc.tex) (./tables/est_sd_fc.tex) (./tables/est_irate.tex)
 (./tables/est_sd_irate.tex) (./tables/est_hhs.tex) (./tables/est_obs.tex)
-Overfull \hbox (85.18726pt too wide) in paragraph at lines 526--526
+Overfull \hbox (85.18726pt too wide) in paragraph at lines 701--701
 \OT1/ppl/m/n/12 model/computations?  
  []
 
 
-Overfull \hbox (85.18726pt too wide) in paragraph at lines 526--526
+Overfull \hbox (85.18726pt too wide) in paragraph at lines 701--701
 \OT1/ppl/m/n/12 model/computations?  
  []
 
 
-Overfull \hbox (85.18726pt too wide) in paragraph at lines 526--526
+Overfull \hbox (85.18726pt too wide) in paragraph at lines 701--701
 \OT1/ppl/m/n/12 model/computations?  
  []
 
 
-Overfull \hbox (85.18726pt too wide) in paragraph at lines 526--526
+Overfull \hbox (85.18726pt too wide) in paragraph at lines 701--701
 \OT1/ppl/m/n/12 model/computations?  
  []
 
-[20] (./tables/table_fit_est.tex) (./tables/table_fit_out.tex) [21]
-Overfull \hbox (4.63245pt too wide) in paragraph at lines 565--565
+[17] (./tables/table_fit_est.tex) (./tables/table_fit_out.tex) [18]
+Overfull \hbox (4.63245pt too wide) in paragraph at lines 740--740
 \OT1/ppl/m/n/12 around 
  []
 
 
-Overfull \hbox (4.88443pt too wide) in paragraph at lines 565--565
+Overfull \hbox (4.88443pt too wide) in paragraph at lines 740--740
 \OT1/ppl/m/n/12 and/or 
  []
 
 
-Overfull \hbox (4.63245pt too wide) in paragraph at lines 565--565
+Overfull \hbox (4.63245pt too wide) in paragraph at lines 740--740
 \OT1/ppl/m/n/12 around 
  []
 
 
-Overfull \hbox (4.88443pt too wide) in paragraph at lines 565--565
+Overfull \hbox (4.88443pt too wide) in paragraph at lines 740--740
 \OT1/ppl/m/n/12 and/or 
  []
 
 
-Overfull \hbox (4.63245pt too wide) in paragraph at lines 565--565
+Overfull \hbox (4.63245pt too wide) in paragraph at lines 740--740
 \OT1/ppl/m/n/12 around 
  []
 
 
-Overfull \hbox (4.88443pt too wide) in paragraph at lines 565--565
+Overfull \hbox (4.88443pt too wide) in paragraph at lines 740--740
 \OT1/ppl/m/n/12 and/or 
  []
 
 
-Overfull \hbox (4.63245pt too wide) in paragraph at lines 565--565
+Overfull \hbox (4.63245pt too wide) in paragraph at lines 740--740
 \OT1/ppl/m/n/12 around 
  []
 
 
-Overfull \hbox (4.88443pt too wide) in paragraph at lines 565--565
+Overfull \hbox (4.88443pt too wide) in paragraph at lines 740--740
 \OT1/ppl/m/n/12 and/or 
  []
 
-<tables/new_deaton_graph.pdf, id=167, 397.485pt x 289.08pt>
+<tables/new_deaton_graph.pdf, id=83, 397.485pt x 289.08pt>
 File: tables/new_deaton_graph.pdf Graphic file (type pdf)
 
 <use tables/new_deaton_graph.pdf>
-Package pdftex.def Info: tables/new_deaton_graph.pdf used on input line 569.
+Package pdftex.def Info: tables/new_deaton_graph.pdf used on input line 744.
 (pdftex.def)             Requested size: 437.23485pt x 317.98897pt.
  (./tables/par_n_iter.tex)
 
-LaTeX Warning: Marginpar on page 22 moved.
+LaTeX Warning: Marginpar on page 19 moved.
 
-[22] (./tables/par_n_iter.tex) [23 <./tables/new_deaton_graph.pdf>]
-Overfull \hbox (48.69554pt too wide) in paragraph at lines 582--582
+[19] (./tables/par_n_iter.tex) [20 <./tables/new_deaton_graph.pdf>]
+Overfull \hbox (48.69554pt too wide) in paragraph at lines 757--757
 \OT1/ppl/m/n/12 lumpy/spikey? 
  []
 
 
-Overfull \hbox (4.9562pt too wide) in paragraph at lines 582--582
+Overfull \hbox (4.9562pt too wide) in paragraph at lines 757--757
 \OT1/ppl/m/n/12 doesn't 
  []
 
 
-Overfull \hbox (21.18005pt too wide) in paragraph at lines 582--582
+Overfull \hbox (21.18005pt too wide) in paragraph at lines 757--757
 \OT1/ppl/m/n/12 smoothly?  
  []
 
 
-Overfull \hbox (48.69554pt too wide) in paragraph at lines 582--582
+Overfull \hbox (48.69554pt too wide) in paragraph at lines 757--757
 \OT1/ppl/m/n/12 lumpy/spikey? 
  []
 
 
-Overfull \hbox (4.9562pt too wide) in paragraph at lines 582--582
+Overfull \hbox (4.9562pt too wide) in paragraph at lines 757--757
 \OT1/ppl/m/n/12 doesn't 
  []
 
 
-Overfull \hbox (21.18005pt too wide) in paragraph at lines 582--582
+Overfull \hbox (21.18005pt too wide) in paragraph at lines 757--757
 \OT1/ppl/m/n/12 smoothly?  
  []
 
 
-Overfull \hbox (48.69554pt too wide) in paragraph at lines 582--582
+Overfull \hbox (48.69554pt too wide) in paragraph at lines 757--757
 \OT1/ppl/m/n/12 lumpy/spikey? 
  []
 
 
-Overfull \hbox (4.9562pt too wide) in paragraph at lines 582--582
+Overfull \hbox (4.9562pt too wide) in paragraph at lines 757--757
 \OT1/ppl/m/n/12 doesn't 
  []
 
 
-Overfull \hbox (21.18005pt too wide) in paragraph at lines 582--582
+Overfull \hbox (21.18005pt too wide) in paragraph at lines 757--757
 \OT1/ppl/m/n/12 smoothly?  
  []
 
 
-Overfull \hbox (48.69554pt too wide) in paragraph at lines 582--582
+Overfull \hbox (48.69554pt too wide) in paragraph at lines 757--757
 \OT1/ppl/m/n/12 lumpy/spikey? 
  []
 
 
-Overfull \hbox (4.9562pt too wide) in paragraph at lines 582--582
+Overfull \hbox (4.9562pt too wide) in paragraph at lines 757--757
 \OT1/ppl/m/n/12 doesn't 
  []
 
 
-Overfull \hbox (21.18005pt too wide) in paragraph at lines 582--582
+Overfull \hbox (21.18005pt too wide) in paragraph at lines 757--757
 \OT1/ppl/m/n/12 smoothly?  
  []
 
 
-Overfull \hbox (9.72806pt too wide) in paragraph at lines 582--583
+Overfull \hbox (9.72806pt too wide) in paragraph at lines 757--758
 [][]\OT1/ppl/m/n/12 The fourth panel in-di-cates house-hold wa-ter us-age pat-t
 erns over the same 100 months.
  []
 
 (./tables/U_nl_abs.tex) (./tables/U_nl_abs_usd.tex) (./tables/U_nl_abs.tex)
-(./tables/bill_all.tex) (./tables/U_nl_per.tex) [24] (./tables/c_h_nl_drop.tex)
+(./tables/bill_all.tex) (./tables/U_nl_per.tex) [21] (./tables/c_h_nl_drop.tex)
 (./tables/bill_inc_all.tex) (./tables/U_ppe.tex) (./tables/U_pp.tex)
 (./tables/U_ppe_t1.tex) (./tables/U_pp_t1.tex) (./tables/U_ppe_t2.tex)
 (./tables/U_pp_t2.tex) (./tables/U_ppe_t3.tex) (./tables/U_pp_t3.tex)
@@ -2825,162 +2393,153 @@ erns over the same 100 months.
 (./tables/c_h_t2.tex) (./tables/c_ppe_t2.tex) (./tables/c_pp_t2.tex)
 (./tables/c_h_t3.tex) (./tables/c_ppe_t3.tex) (./tables/c_pp_t3.tex)
 (./tables/p_int2.tex) (./tables/p_int_ppe2.tex) (./tables/p_int_pp2.tex)
-(./tables/total_costs.tex) (./tables/ppinst.tex) [25] (./tables/irate.tex)
+(./tables/total_costs.tex) (./tables/ppinst.tex) [22] (./tables/irate.tex)
 (./tables/coste.tex) (./tables/prob_caught.tex) (./tables/visit_cost.tex)
-[26] (./tables/dc_per_month_account.tex) (./tables/out_bal.tex)
+[23] (./tables/dc_per_month_account.tex) (./tables/out_bal.tex)
 (./tables/delinquency_cost.tex) (./tables/delinquency_cost.tex)
-Overfull \hbox (4.17616pt too wide) in paragraph at lines 644--644
+Overfull \hbox (4.17616pt too wide) in paragraph at lines 819--819
 \OT1/ppl/m/n/12 rewrite 
  []
 
 
-Overfull \hbox (4.17616pt too wide) in paragraph at lines 644--644
+Overfull \hbox (4.17616pt too wide) in paragraph at lines 819--819
 \OT1/ppl/m/n/12 rewrite 
  []
 
 
-Overfull \hbox (4.17616pt too wide) in paragraph at lines 644--644
+Overfull \hbox (4.17616pt too wide) in paragraph at lines 819--819
 \OT1/ppl/m/n/12 rewrite 
  []
 
 
-Overfull \hbox (4.17616pt too wide) in paragraph at lines 644--644
+Overfull \hbox (4.17616pt too wide) in paragraph at lines 819--819
 \OT1/ppl/m/n/12 rewrite 
  []
 
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 647.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 822.
 
-Overfull \hbox (5.21991pt too wide) in paragraph at lines 647--648
+Overfull \hbox (5.21991pt too wide) in paragraph at lines 822--823
 \OT1/ppl/m/n/12 any in-cen-tives that house-holds may face to over-con-sume in 
 their fi-nal months
  []
 
-[27] (./tables/U_ppe_abs.tex) (./tables/delinquency_cost.tex) [28]
-Overfull \hbox (4.57228pt too wide) in paragraph at lines 675--675
+[24] (./tables/U_ppe_abs.tex) (./tables/delinquency_cost.tex) [25]
+Overfull \hbox (4.57228pt too wide) in paragraph at lines 850--850
 \OT1/ppl/m/n/12 phones 
  []
 
 
-Overfull \hbox (4.57228pt too wide) in paragraph at lines 675--675
+Overfull \hbox (4.57228pt too wide) in paragraph at lines 850--850
 \OT1/ppl/m/n/12 phones 
  []
 
 
-Overfull \hbox (4.57228pt too wide) in paragraph at lines 675--675
+Overfull \hbox (4.57228pt too wide) in paragraph at lines 850--850
 \OT1/ppl/m/n/12 phones 
  []
 
 
-Overfull \hbox (4.57228pt too wide) in paragraph at lines 675--675
+Overfull \hbox (4.57228pt too wide) in paragraph at lines 850--850
 \OT1/ppl/m/n/12 phones 
  []
 
 (./tables/p_increase_per.tex) (./tables/delinquency_cost.tex)
-(./tables/c_h_pp_drop.tex) (./tables/U_pp_abs.tex) [29] (./tables/U_nl_per.tex)
+(./tables/c_h_pp_drop.tex) (./tables/U_pp_abs.tex) [26] (./tables/U_nl_per.tex)
 (./tables/U_ppe_abs_usd.tex) (./tables/U_pp_abs_usd.tex)
-Overfull \hbox (0.62434pt too wide) in paragraph at lines 690--690
+Overfull \hbox (0.62434pt too wide) in paragraph at lines 865--865
 \OT1/ppl/m/n/12 would 
  []
 
 
-Overfull \hbox (3.90034pt too wide) in paragraph at lines 690--690
+Overfull \hbox (3.90034pt too wide) in paragraph at lines 865--865
 \OT1/ppl/m/n/12 oomph 
  []
 
 
-Overfull \hbox (3.7442pt too wide) in paragraph at lines 690--690
+Overfull \hbox (3.7442pt too wide) in paragraph at lines 865--865
 \OT1/ppl/m/n/12 punch- 
  []
 
 
-Overfull \hbox (0.62434pt too wide) in paragraph at lines 690--690
+Overfull \hbox (0.62434pt too wide) in paragraph at lines 865--865
 \OT1/ppl/m/n/12 would 
  []
 
 
-Overfull \hbox (3.90034pt too wide) in paragraph at lines 690--690
+Overfull \hbox (3.90034pt too wide) in paragraph at lines 865--865
 \OT1/ppl/m/n/12 oomph 
  []
 
 
-Overfull \hbox (3.7442pt too wide) in paragraph at lines 690--690
+Overfull \hbox (3.7442pt too wide) in paragraph at lines 865--865
 \OT1/ppl/m/n/12 punch- 
  []
 
 
-Overfull \hbox (0.62434pt too wide) in paragraph at lines 690--690
+Overfull \hbox (0.62434pt too wide) in paragraph at lines 865--865
 \OT1/ppl/m/n/12 would 
  []
 
 
-Overfull \hbox (3.90034pt too wide) in paragraph at lines 690--690
+Overfull \hbox (3.90034pt too wide) in paragraph at lines 865--865
 \OT1/ppl/m/n/12 oomph 
  []
 
 
-Overfull \hbox (3.7442pt too wide) in paragraph at lines 690--690
+Overfull \hbox (3.7442pt too wide) in paragraph at lines 865--865
 \OT1/ppl/m/n/12 punch- 
  []
 
 
-Overfull \hbox (0.62434pt too wide) in paragraph at lines 690--690
+Overfull \hbox (0.62434pt too wide) in paragraph at lines 865--865
 \OT1/ppl/m/n/12 would 
  []
 
 
-Overfull \hbox (3.90034pt too wide) in paragraph at lines 690--690
+Overfull \hbox (3.90034pt too wide) in paragraph at lines 865--865
 \OT1/ppl/m/n/12 oomph 
  []
 
 
-Overfull \hbox (3.7442pt too wide) in paragraph at lines 690--690
+Overfull \hbox (3.7442pt too wide) in paragraph at lines 865--865
 \OT1/ppl/m/n/12 punch- 
  []
 
 
-LaTeX Warning: Marginpar on page 30 moved.
+LaTeX Warning: Marginpar on page 27 moved.
 
-[30] (./tables/tcd_predict.tex) [31] (./tables/date_N.tex) (./tables/am_N.tex)
-[32] (./tables/date_N.tex) (./tables/class_drop.tex) (./tables/pay_drop.tex)
-(./tables/chigh_drop.tex) (./tables/amount_drop.tex) (./tables/bal_drop.tex)
-(./tables/paylh_drop.tex) (./tables/month_drop.tex) (./tables/am_N.tex)
-[33] (./tables/veq_opt.tex) (./tables/cut_point3.tex) (./tables/veq_opt.tex)
-(./tables/cut_point3.tex) (./tables/f_10.tex) (./tables/f_11.tex)
-(./tables/c_12.tex) (./tables/c_21.tex) (./tables/c_41.tex) (./tables/c_61.tex)
-(./tables/c_81.tex) (./tables/c_101.tex) (./tables/c_151.tex)
-(./tables/c_200.tex) [34] (./tables/price_reg.tex)
-(./tables/descriptives_stayers.tex) (./tables/total_hhs_stayers.tex)
-(./tables/obs_per_hh_stayers.tex) (./tables/total_obs_stayers.tex)
-<tables/connected_visit_hazard.pdf, id=229, 397.485pt x 289.08pt>
-File: tables/connected_visit_hazard.pdf Graphic file (type pdf)
-
-<use tables/connected_visit_hazard.pdf>
-Package pdftex.def Info: tables/connected_visit_hazard.pdf used on input line 8
-91.
-(pdftex.def)             Requested size: 278.2376pt x 202.35461pt.
- [35] (./tables/bill_all.tex)
-(./tables/out_bal.tex)
-<tables/line_disc_graph.pdf, id=233, 397.485pt x 289.08pt>
+[27] (./tables/date_N.tex) (./tables/am_N.tex) (./tables/date_N.tex)
+(./tables/class_drop.tex) (./tables/pay_drop.tex) (./tables/chigh_drop.tex)
+(./tables/amount_drop.tex) (./tables/bal_drop.tex) (./tables/paylh_drop.tex)
+(./tables/month_drop.tex) (./tables/am_N.tex) [28] (./tables/veq_opt.tex)
+(./tables/cut_point3.tex) (./tables/veq_opt.tex) (./tables/cut_point3.tex)
+(./tables/f_10.tex) (./tables/f_11.tex) (./tables/c_12.tex) (./tables/c_21.tex)
+(./tables/c_41.tex) (./tables/c_61.tex) (./tables/c_81.tex) (./tables/c_101.tex
+) (./tables/c_151.tex) (./tables/c_200.tex) [29] (./tables/price_reg.tex)
+[30] <tables/line_disc_graph.pdf, id=139, 397.485pt x 289.08pt>
 File: tables/line_disc_graph.pdf Graphic file (type pdf)
 
 <use tables/line_disc_graph.pdf>
-Package pdftex.def Info: tables/line_disc_graph.pdf used on input line 907.
+Package pdftex.def Info: tables/line_disc_graph.pdf used on input line 1121.
 (pdftex.def)             Requested size: 278.2376pt x 202.35461pt.
- [36 <./tables/connected_visit_hazard.pdf>]
-(./paper.bbl [37 <./tables/line_disc_graph.pdf>]
+ (./tables/cv.tex) (./tables/cv_adj.tex)
+(./tables/cv_t1.tex) (./tables/cv_adj_t1.tex) (./tables/cv_t2.tex)
+(./tables/cv_adj_t2.tex) (./tables/cv_t3.tex) (./tables/cv_adj_t3.tex)
+(./tables/cbms_hhs.tex) (./tables/cbms_hhs.tex) [31 <./tables/line_disc_graph.p
+df>] (./paper.bbl [32]
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 102.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [38]) [39]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 942.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 942.
-
-(./paper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 942.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 942.
+) [33] [34])
+[35]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1183.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1183.
+ (./paper.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1183.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1183.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -2989,42 +2548,38 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
- 24565 strings out of 493089
- 453778 string characters out of 6134842
- 570694 words of memory out of 5000000
- 26976 multiletter control sequences out of 15000+600000
- 119814 words of font info for 323 fonts, out of 8000000 for 9000
+ 24445 strings out of 493089
+ 450115 string characters out of 6134842
+ 568756 words of memory out of 5000000
+ 26858 multiletter control sequences out of 15000+600000
+ 125534 words of font info for 338 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  59i,24n,94p,2123b,995s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/
-texlive/2015/texmf-dist/fonts/type1/public/newtx/rntxmi.pfb></usr/local/texlive
-/2015/texmf-dist/fonts/type1/public/newtx/rntxmi5.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/newtx/rntxmi7.pfb></usr/local/texlive/2015/texmf-
-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/local/texlive/2015/texmf-dist/f
-onts/type1/public/newtx/rtxmi5.pfb></usr/local/texlive/2015/texmf-dist/fonts/ty
-pe1/public/newtx/rtxmi7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
-lic/txfonts/rtxr.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/new
-tx/txex-bar.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/txfonts/
-txex.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/txfonts/txmia.p
-fb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></us
-r/local/texlive/2015/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/
-texlive/2015/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive
-/2015/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2015/t
-exmf-dist/fonts/type1/urw/palatino/uplri8a.pfb></usr/local/texlive/2015/texmf-d
-ist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/
-type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (40 pages, 400913 bytes).
+ive/2015/texmf-dist/fonts/type1/public/newtx/rntxmi.pfb></usr/local/texlive/201
+5/texmf-dist/fonts/type1/public/newtx/rntxmi5.pfb></usr/local/texlive/2015/texm
+f-dist/fonts/type1/public/newtx/rntxmi7.pfb></usr/local/texlive/2015/texmf-dist
+/fonts/type1/public/txfonts/rtxmi.pfb></usr/local/texlive/2015/texmf-dist/fonts
+/type1/public/newtx/rtxmi5.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
+public/newtx/rtxmi7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/
+txfonts/rtxr.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/newtx/t
+xex-bar.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/txfonts/txex
+.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/txfonts/txmia.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/201
+5/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2015/texmf
+-dist/fonts/type1/urw/palatino/uplri8a.pfb></usr/local/texlive/2015/texmf-dist/
+fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type
+1/urw/times/utmri8a.pfb>
+Output written on paper.pdf (36 pages, 274344 bytes).
 PDF statistics:
- 335 PDF objects out of 1000 (max. 8388607)
- 236 compressed objects within 3 object streams
+ 230 PDF objects out of 1000 (max. 8388607)
+ 163 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 88 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 23 words of extra memory for PDF output out of 10000 (max. 10000000)
 
