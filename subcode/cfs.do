@@ -55,15 +55,46 @@ use "${data}cfs/cfs.dta", clear
 
 * tab  g31a_percent g32a
 
+
+tab e10a
+
+g amt = e7a_amount
+
+g amt1 = e7a
+replace amt1=subinstr(amt1,",","",.)
+replace amt1 = regexs(1) if regexm(amt1,"([0-9]+)$")
+destring amt1, force replace
+destring amt, replace force
+replace amt = amt1 if amt==.
+
+g amt_low = 0 if amt!=.
+replace amt_low = 1 if amt<10000
+
+tab amt_low if reg==13
+tab e10a if reg==13
+
 cap drop srate
 g srate = .
-replace srate = (1 + (e11a/100))^(1/6)-1     if regexm(e12a,"6 mos")==1
-replace srate = (1 + (e11a/100))^(1/2)-1     if regexm(e12a,"60 days")==1
-replace srate = (1 + (e11a/100))^(1/3)-1     if regexm(e12a,"90 days")==1
-replace srate = (1 + (e11a/100))^(1/1)-1     if regexm(e12a,"Per month")==1
+replace srate = (1 + (e11a/100))^(1/24)-1     if regexm(e12a,"2 years")==1
 replace srate = (1 + (e11a/100))^(1/12)-1     if regexm(e12a,"Yearly")==1
-sum srate, detail
-replace srate=. if srate>=`=r(p99)'
+replace srate = (1 + (e11a/100))^(1/2)-1      if regexm(e12a,"2 months")==1
+replace srate = (1 + (e11a/100))^(1/6)-1      if regexm(e12a,"6 months")==1
+replace srate = (1 + (e11a/100))^(1/4)-1      if regexm(e12a,"4 mos")==1
+replace srate = (1 + (e11a/100))^(1/5)-1      if regexm(e12a,"5 mos")==1
+replace srate = (1 + (e11a/100))^(1/(1/30))-1 if regexm(e12a,"Per day")==1
+replace srate = (1 + (e11a/100))^(1/1)-1      if regexm(e12a,"Per month")==1
+replace srate = (1 + (e11a/100))^(1/3)-1      if regexm(e12a,"Per quarter")==1
+replace srate = (1 + (e11a/100))^(1/.25)-1    if regexm(e12a,"Per week")==1
+replace srate = (1 + (e11a/100))^(1/.5)-1     if regexm(e12a,"15 days")==1
+
+* replace srate = (1 + (e11a/100))^(1/6)-1     if regexm(e12a,"6 mos")==1 & savings==1 & 
+* replace srate = (1 + (e11a/100))^(1/2)-1     if regexm(e12a,"60 days")==1 & savings==1
+* replace srate = (1 + (e11a/100))^(1/3)-1     if regexm(e12a,"90 days")==1 & savings==1
+* replace srate = (1 + (e11a/100))^(1/1)-1     if regexm(e12a,"Per month")==1 & savings==1
+* replace srate = (1 + (e11a/100))^(1/12)-1     if regexm(e12a,"Yearly")==1 & savings==1
+* replace srate=. if srate>=.5
+* sum srate, detail
+* replace srate=. if srate>=`=r(p99)'
 
 replace srate = 0 if e10a!="Yes"
 
@@ -106,9 +137,70 @@ g tot_exp = k13+k14+k15+k16+k17
 replace tot_exp = . if tot_exp>50000
 
 
+g wloan = g19=="Yes"
+
+sum wloan if reg==13, detail
+		write "${tables}wloan.tex" `=`=r(mean)'*100'   .01 "%12.0fc"
+
+sum g21a if reg==13, detail
+		write "${tables}medloansize.tex"`=`=r(p50)''   .01 "%12.0fc"
+		write "${tables}meanloansize.tex"`=`=r(mean)''   .01 "%12.0fc"
+
+
+g l_y = g26a_year*12
+
+g l_m = g26a_month
+replace l_m = l_m+l_y if l_y!=.
+replace l_m = l_y if l_y!=. & l_m==.
+
+sum l_m if reg==13, detail
+		write "${tables}medloanlength.tex"`=`=r(p50)''   .01 "%12.0fc"
+		write "${tables}meanloanlength.tex"`=`=r(mean)''   .01 "%12.0fc"
+
+
+
+
+tab g22a if g22a!="NA"
+g p_to_p = 0 if g22a!="NA"
+replace p_to_p = 1 if regexm(g22a,"Personal loan")==1
+
+sum wloan if reg==13, detail
+		write "${tables}p_to_p.tex" `=`=r(mean)'*100'   .01 "%12.0fc"
+
+
+g loanid = .
+forvalues r = 1/18 {
+	if `r'<10 {
+	replace loanid = `r' if g23a0`r'=="Yes"
+	}
+	else {
+	replace loanid = `r' if g23a`r'=="Yes"
+	}
+}
+
+g money_lender = 0 if loanid!=.
+replace money_lender = 1 if loanid==11
+
+g micro_finance= 0 if loanid!=.
+replace micro_finance = 1 if loanid==15
+
+
+sum money_lender if reg==13, detail
+		write "${tables}money_lender.tex" `=`=r(mean)'*100'   .01 "%12.0fc"
+
+sum micro_finance if reg==13, detail
+		write "${tables}micro_finance.tex" `=`=r(mean)'*100'   .01 "%12.0fc"
+
+
+
+
+
+
+* sum g21a if micro_finance==1
+* sum g21a if money_lender==1
+
 
 sum iratea if reg==13, detail
-
 		write "${moments}irate.csv" `=r(mean)'  .00001 "%12.5g"
 		write "${tables}irate.tex" `=`=r(mean)'*100'   .00001 "%12.1fc"
 

@@ -70,6 +70,8 @@ save "${fies}fies_merged.dta", replace
 }
 
 
+use "${fies}fies_merged.dta", clear
+
 
 
 * sum todisbdeposits, detail
@@ -115,7 +117,7 @@ g hhemp = employed_pay + employed_prof
 
 g ln_inc = log(inc)
 
-reg ln_inc house_1 house_2 i.hhsize i.hhemp i.age i.barangay_id, r
+* reg ln_inc house_1 house_2 i.hhsize i.hhemp i.age i.barangay_id, r
 est save "${fies}inc_projection", replace
 
 * sum inc if inc>500 & inc<200000, detail
@@ -128,8 +130,8 @@ replace inc=. if inc<500 | inc>200000
 g save = inc - exp
 
 
-
-mean inc [pweight = rfact]
+mean inc [pweight = rfact] if regexm(water,"Own use, faucet")==1
+* mean inc [pweight = rfact]
 estat sd
 
 mat def mm = r(mean)

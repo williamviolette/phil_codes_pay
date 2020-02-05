@@ -333,6 +333,7 @@ sum NO_DC, detail
 write "${tables}tcd_share_pay.tex" `=r(mean)*100' .1 "%12.0g"
 sum DC_TEMP, detail
 write "${tables}tcd_share_rec.tex" `=r(mean)*100' .1 "%12.0g"
+write "${moments}tcd_share_rec.csv" `=r(mean)' 0.0001 "%12.4g"
 sum DC_PERM, detail
 write "${tables}tcd_share_dc.tex" `=r(mean)*100' .1 "%12.0g"
 
@@ -340,6 +341,7 @@ sum NO_DC_3, detail
 write "${tables}tcd_share_pay_3.tex" `=r(mean)*100' .1 "%12.0g"
 sum DC_TEMP_3, detail
 write "${tables}tcd_share_rec_3.tex" `=r(mean)*100' .1 "%12.0g"
+write "${moments}tcd_share_rec_3.csv" `=r(mean)' 0.0001 "%12.4g"
 sum DC_PERM_3, detail
 write "${tables}tcd_share_dc_3.tex" `=r(mean)*100' .1 "%12.0g"
 
@@ -417,23 +419,21 @@ write "${tables}t_rec_3l.tex" `=r(mean)' .1 "%12.0g"
 * egen am_d4 = max(am) if tn_g4!=., by(tn_g4 conacct)
 
 
+* sum am_d , detail
+* write "${moments}am_d.csv" `=r(mean)' 0.0001 "%12.4g"
 
+* 	forvalues r=1/3 {
+* 	sum am_d if inc_t==`r', detail
+* 	write "${moments}am_d_t`r'.csv" `=r(mean)' 0.0001 "%12.4g"
+* 	}
 
-sum am_d , detail
-write "${moments}am_d.csv" `=r(mean)' 0.0001 "%12.4g"
+* sum am_d4 , detail
+* write "${moments}am_d4.csv" `=r(mean)' 0.0001 "%12.4g"
 
-	forvalues r=1/3 {
-	sum am_d if inc_t==`r', detail
-	write "${moments}am_d_t`r'.csv" `=r(mean)' 0.0001 "%12.4g"
-	}
-
-sum am_d4 , detail
-write "${moments}am_d4.csv" `=r(mean)' 0.0001 "%12.4g"
-
-	forvalues r=1/3 {
-	sum am_d4 if inc_t==`r', detail
-	write "${moments}am_d4_t`r'.csv" `=r(mean)' 0.0001 "%12.4g"
-	}
+* 	forvalues r=1/3 {
+* 	sum am_d4 if inc_t==`r', detail
+* 	write "${moments}am_d4_t`r'.csv" `=r(mean)' 0.0001 "%12.4g"
+* 	}
 
 
 

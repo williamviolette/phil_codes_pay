@@ -1,6 +1,6 @@
 
 
-global data_prep   = 0
+global data_prep   = 1
 global data_prep_2 = 1
 
 
@@ -61,6 +61,11 @@ if $data_prep == 1 {
 			drop if _merge==2
 			drop _merge
 
+			fmerge 1:1 conacct date using "${temp}paws_temp_date.dta"
+			drop if _merge==2
+			drop _merge
+
+
 			drop if date<date_c
 
 
@@ -94,21 +99,9 @@ end
 
 use "${temp}temp_descriptives.dta", clear
 
-	* preserve
-	* 	keep barangay_id
-	* 	duplicates drop
-	* 	save "${temp}barangay_full.dta", replace
-	* restore
-
-	* keep if inc!=.
-
-	* merge m:1 barangay_id using "${temp}cbms_barangays.dta"
-	* keep if _merge==3
-	* drop _merge
-
 * Keep valid dates 
 	keep if date>date_c
-	keep if date>=602
+	* keep if date>=602
 	drop if date==653
 	global date_N = `=_N'
 	NN
@@ -250,7 +243,8 @@ use "${temp}temp_descriptives.dta", clear
 
 	sort conacct date
 	by conacct: g tcd_id=dc[_n-1]!=1 & dc[_n]==1
-	replace tcd_id = 0 if date==602
+	replace tcd_id = 0 if date==588
+	* replace tcd_id = 0 if date==602
 
 	egen tcd_max=max(tcd_id), by(conacct)
 
@@ -261,11 +255,11 @@ use "${temp}temp_descriptives.dta", clear
 	drop _merge
 
 
-	cap drop inc
-	est use "${fies}inc_projection"
-	predict inc1, xb
-	g inc=exp(inc1)
-	drop inc1
+	* cap drop inc
+	* est use "${fies}inc_projection"
+	* predict inc1, xb
+	* g inc=exp(inc1)
+	* drop inc1
 
 
 	* est use "${fies}inc_projection"

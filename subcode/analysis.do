@@ -33,11 +33,13 @@ import delimited using "${moments}account_length.csv", clear
 global account_length = v1[1]
 
 
+
+
 use "${temp}temp_descriptives_2.dta", clear
 
 *** Income definition
-egen inc_t = cut(inc), group(3)
-replace inc_t=inc_t+1
+* egen inc_t = cut(inc), group(3)
+* replace inc_t=inc_t+1
 
 cap drop am_end
 g am_end = am ==1 & date==664
@@ -63,6 +65,43 @@ gegen dc_date = max(dc_date_id), by(conacct)
 drop dc_date_id
 
 
+
+
+preserve
+	keep if hhsize_paws!=.
+	sort conacct date
+	foreach var of varlist hhemp_paws hhsize_paws amount pay am enough_time  {
+		by conacct: g `var'_ch=`var'[_n]-`var'[_n-1]
+	}
+	xi: reg amount_ch hhsize_paws_ch hhemp_paws_ch , cluster(conacct) robust
+	xi: reg pay_ch hhsize_paws_ch hhemp_paws_ch , cluster(conacct) robust
+	xi: reg am_ch hhsize_paws_ch hhemp_paws_ch , cluster(conacct) robust
+
+	* reg amount_ch hhsize_paws_ch hhemp_paws_ch if hhsize_paws_ch>=-5 & hhsize_paws_ch<=5 & hhemp_paws_ch>=-5 & hhemp_paws_ch<=5, cluster(conacct) robust
+	* reg pay_ch    hhsize_paws_ch hhemp_paws_ch if hhsize_paws_ch>=-5 & hhsize_paws_ch<=5 & hhemp_paws_ch>=-5 & hhemp_paws_ch<=5, cluster(conacct) robust
+restore
+
+
+* preserve
+* 	keep if hhsize_paws!=.
+* 	sort conacct date
+* 	foreach var of varlist hhemp_paws hhsize_paws amount pay am enough_time college_paws high_school_paws {
+* 		by conacct: g `var'_ch=`var'[_n]-`var'[_n-1]
+* 	}
+* 	xi: reg amount_ch hhsize_paws_ch hhemp_paws_ch i.college_paws_ch i.high_school_paws_ch, cluster(conacct) robust
+* 	xi: reg pay_ch hhsize_paws_ch hhemp_paws_ch i.college_paws_ch i.high_school_paws_ch, cluster(conacct) robust
+* 	xi: reg am_ch hhsize_paws_ch hhemp_paws_ch i.college_paws_ch i.high_school_paws_ch, cluster(conacct) robust
+
+* 	* reg amount_ch hhsize_paws_ch hhemp_paws_ch if hhsize_paws_ch>=-5 & hhsize_paws_ch<=5 & hhemp_paws_ch>=-5 & hhemp_paws_ch<=5, cluster(conacct) robust
+* 	* reg pay_ch    hhsize_paws_ch hhemp_paws_ch if hhsize_paws_ch>=-5 & hhsize_paws_ch<=5 & hhemp_paws_ch>=-5 & hhemp_paws_ch<=5, cluster(conacct) robust
+* restore
+
+
+
+
+
+
+
 *** DISCONNECTION RATE!
 
 cap drop dc_enter1
@@ -77,6 +116,7 @@ gegen datet = tag(date)
 * scatter dc_m date if datet==1 & date>=`=tm(2012m1)' & date<=`=tm(2014m5)'
 sum dc_enter1 		if date>=`=tm(2012m1)' & date<=`=tm(2014m5)'
 corr dc_enter1 date if date>=`=tm(2012m1)' & date<=`=tm(2014m5)'
+
 
 
 

@@ -110,10 +110,10 @@ use "${data}backup_cbms/2008/pasay_hhfinal08.dta", clear
 	* areg uni i.min_age if min_age<=40, a(barangay_id) r
 	* areg totin i.min_age if min_age<=40, a(barangay_id) r
 
-
+	ren water water_08
 	g house_1= house=="apartment"
 	g house_2= house=="single"
-		keep barangay_id hcn totin house_1 house_2 low_skill hhemp hhsize age high_school college ave_water  borrow*
+		keep barangay_id hcn water_08 totin house_1 house_2 low_skill hhemp hhsize age high_school college ave_water  borrow*
 
 * occ*
 
@@ -137,6 +137,28 @@ global sd_raw = `=r(sd)'
 * disp `=r(mean)'
 * disp `=r(sd)/r(mean)'
 
+
+sort hcn year
+by hcn: g totin_ch = totin[_n]-totin[_n-1]
+by hcn: g hhsize_ch = hhsize[_n]-hhsize[_n-1]
+by hcn: g hhemp_ch = hhemp[_n]-hhemp[_n-1]
+by hcn: g ave_water_ch = ave_water[_n]-ave_water[_n-1]
+
+
+
+xi: reg ave_water_ch i.year totin_ch i.hhsize_ch i.hhemp_ch, robust cluster(hcn)
+
+
+
+areg ave_water totin i.hhsize i.hhemp i.year, a(hcn) robust cluster(hcn)
+
+
+
+
+areg ave_water totin i.hhsize i.hhemp i.year, a(hcn) robust cluster(hcn)
+
+
+
 qui areg totin, a(hcn)
 cap drop simple_resid
 predict simple_resid, resid
@@ -155,6 +177,8 @@ disp $sd_full/$sd_raw
 write "${moments}sd_ratio.csv" `=$sd_full/$sd_raw' .001 "%12.3g"
 write "${tables}sd_ratio.tex" `=$sd_full/$sd_raw' .001 "%12.3fc"
 
+
+/*
 
 * disp `=`=r(sd)'/$tmean'
 

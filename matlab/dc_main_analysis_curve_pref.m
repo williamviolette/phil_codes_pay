@@ -15,7 +15,7 @@ short_est     = 0     ;
 full_est      = 0     ;
 est_many      = 0     ;
 est_tables    = 0     ;
-counter       = 0     ;
+counter       = 1     ;
 
 given_sim     = 1     ;
 
@@ -32,13 +32,13 @@ one_price       = 0 ;
 marginal_cost = 5;
 ppinst = 51;
         
-s=155; % sets account length
+s=32*12; % sets account length
 
 mult_set = [  1  ];
 
 n  = 10000; 
-nA = 40    %%%  
-nB = 40    %%%  
+nA = 60    %%%  
+nB = 60    %%%  
 
 sigA = 0;
 sigB = 0;
@@ -92,27 +92,21 @@ Alb = -2.*y_avg ;
 Aub =  2.*y_avg ;
 
 
-r_slope =[0 0 0] ;
-r_high = .094;
+r_slope =[0 0 0] ; % r_slope =(.01 - r_lend)./( (y_avg./2).^2 ) ;
+r_high = .0945;
 
-% r_slope =(.01 - r_lend)./( (y_avg./2).^2 ) ;
-% r_slope = [0 0 0];
-% r_lend = .08;
 
-inc_t  =  1  ;  %%% which inc to estimate1
- 
-given=       [  r_lend    0      r_high      0        y_cv       0      .033    .034     y_avg(1)  p1(1)  p2(1)  200   n  3.2  r_slope(1) 0; ...
-                r_lend    0      r_high      0        y_cv       0      .027    .018     y_avg(2)  p1(1)  p2(1)  125   n  2.4  r_slope(2) 0; ...
-                r_lend    0      r_high      0        y_cv       0      .018    .02      y_avg(3)  p1(1)  p2(1)  140   n  2.5  r_slope(3) 0  ];
-            
-            
-%%% WITH SMALL R_LEND
-% given=       [  r_lend    0      r_lend      0        y_cv       0      .033    .021     y_avg(1)  p1(1)  p2(1)  120   n  2.8  r_slope(1) 0; ...
-%                 r_lend    0      r_lend      0        y_cv       0      .027    .018     y_avg(2)  p1(1)  p2(1)  125   n  2.4  r_slope(2) 0; ...
-%                 r_lend    0      r_lend      0        y_cv       0      .018    .02      y_avg(3)  p1(1)  p2(1)  140   n  2.5  r_slope(3) 0  ];  
-%  given=       [  r_lend    0      r_lend      .001        .4         0      .037     0     y_avg(1)  p1(1)  p2(1)  130   n   1.5 r_slope(1) 0; ...
-%                  r_lend    0      r_lend      .001        .4         0      .026     0     y_avg(2)  p1(1)  p2(1)  130   n   1.5 r_slope(2) 0; ...
-%                  r_lend    0      r_lend      .001        .4         0      .015     0     y_avg(3)  p1(1)  p2(1)  130   n   1.5 r_slope(3) 0 ];
+beta_set      = ((1+.40)^(1/12)) - 1
+
+inc_t  =  2  ;  %%% which inc to estimate1
+
+given =        [  r_lend    0      r_high      0        y_cv       0      .033    beta_set y_avg(1)  p1(1)  p2(1)  200   n  3.2  r_slope(1) 0; ...
+                  r_lend    0      r_high      0        y_cv       0      .027    beta_set y_avg(2)  p1(1)  p2(1)  280   n  3.1  r_slope(2) 0; ...
+                  r_lend    0      r_high      0        y_cv       0      .018    beta_set y_avg(3)  p1(1)  p2(1)  140   n  2.5  r_slope(3) 0  ];
+  
+% given=       [  r_lend    0      r_high      0        y_cv       0      .033    .034     y_avg(1)  p1(1)  p2(1)  200   n  3.2  r_slope(1) 0; ...
+%                 r_lend    0      r_high      0        y_cv       0      .027    .036     y_avg(2)  p1(1)  p2(1)  280   n  3.8  r_slope(2) 0; ...
+%                 r_lend    0      r_high      0        y_cv       0      .018    .02      y_avg(3)  p1(1)  p2(1)  140   n  2.5  r_slope(3) 0  ];
             
             
 csvwrite(strcat(folder,'given.csv'),given);
@@ -133,30 +127,32 @@ tic
 [est_mom,~,controls,~,~,A1,B1]=dc_obj_chow_pol_finite(given(inc_t,:),prob,nA,sigA,Alb(inc_t),Aub(inc_t),nB,sigB,Blb(inc_t),nD,chain,s,int_size,refinement);
 toc
 
+disp ' Sim '
 round(est_mom(option_moments_est),2)
+disp ' Data '
 round(data(option_moments,inc_t),2)
 
 disp ' A loan '
 sum(controls(:,2)==min(controls(:,2)))
-
 disp ' A savings '
 sum(controls(:,2)==max(controls(:,2)))
 
 
-
-%%% TEST BORRING LIMIT %%%  LOOKS OK!
-given_nb = given;
-given_nb(:,2)=.8;
-[est_mom,~,controls,~,~,A1,B1]=dc_obj_chow_pol_finite(given_nb(inc_t,:),prob,nA,sigA,Alb(inc_t),Aub(inc_t),nB,sigB,Blb(inc_t),nD,chain,s,int_size,refinement);
-
-round(est_mom(option_moments_est),2)
-round(data(option_moments,inc_t),2)
-
-disp ' A loan (No Borrowing) '
-sum(controls(:,2)==min(controls(:,2)))
-
-disp ' A savings (No Borrowing) '
-sum(controls(:,2)==max(controls(:,2)))
+% 
+% %%% TEST BORRING LIMIT %%%  LOOKS OK!
+% given_nb = given;
+% given_nb(:,2)=.8;
+% [est_mom,~,controls,~,~,A1,B1]=dc_obj_chow_pol_finite(given_nb(inc_t,:),prob,nA,sigA,Alb(inc_t),Aub(inc_t),nB,sigB,Blb(inc_t),nD,chain,s,int_size,refinement);
+% 
+% disp ' Sim  (No Borrowing) '
+% round(est_mom(option_moments_est),2)
+% disp ' Data  (No Borrowing) '
+% round(data(option_moments,inc_t),2)
+% 
+% disp ' A loan (No Borrowing) '
+% sum(controls(:,2)==min(controls(:,2)))
+% disp ' A savings (No Borrowing) '
+% sum(controls(:,2)==max(controls(:,2)))
 
 
 
@@ -371,12 +367,13 @@ if counter==1
     mean(U_nl_t)
     
     
-     [h_nlb,util_nlb, h_nl_t1b,h_nl_t2b,h_nl_t3b, simc_nl_t1b,simc_nl_t2b,simc_nl_t3b] =run3(res_nl,prob,nA,sigA, Alb + Blb  ,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
-   
-     disp ' no lending with borrow constraint : '
-     U_nlb = (mean(util_nlb)-mean(util))/du_dy10
-     U_nl_tb = (util_nlb-util)./du_dy10_t
-    
+%      [h_nlb,util_nlb, h_nl_t1b,h_nl_t2b,h_nl_t3b, simc_nl_t1b,simc_nl_t2b,simc_nl_t3b] =run3(res_nl,prob,nA,sigA, Alb + Blb  ,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
+%    
+%      disp ' no lending with borrow constraint : '
+%      U_nlb = (mean(util_nlb)-mean(util))/du_dy10
+%      U_nl_tb = (util_nlb-util)./du_dy10_t
+%     
+
 
 %     c_nl = h_nl(1);
     

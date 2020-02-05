@@ -3,7 +3,14 @@
 global mergevars = " age mun date college "
 global clustervars = " age mun college "
 
+
 use "${lfs}lfs.dta", clear
+
+	* bys psu hhnum svyyr stratum: g hn=_n==1
+	* gegen hns = sum(hn), by(hhnum psu stratum)
+	* browse if hns==7
+	* sort hhnum svyyr
+	* duplicates tag hhnum psu, g(D)	
 
 	g pst=string(psu)
 	g mun=substr(pst,1,2)

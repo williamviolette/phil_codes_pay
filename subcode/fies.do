@@ -169,6 +169,7 @@ import delimited using  "${fies}FAMILY INCOME AND EXPENDITURE SURVEY (2015) VOLU
 
 keep if w_regn=="Region XIII - NCR"
 
+save "${fies}water1.dta", replace
 
 
 
@@ -179,6 +180,11 @@ keep if w_regn=="Region XIII - NCR"
 merge 1:1 w_id w_shsn w_hcn using "${fies}temp1.dta"
 	keep if _merge==3
 	drop _merge
+
+merge 1:1 w_id w_shsn w_hcn using "${fies}water1.dta"
+	keep if _merge==3
+	drop _merge
+
 
 	replace toinc = toinc/12
 
@@ -197,7 +203,17 @@ sum w if toinc>20000 & toinc<30000
 reg w toinc
 
 
-	sum toinc if toinc<1500000/12 & w_regn=="Region XIII - NCR", detail
+g wat_own = regexm(water,"Own use")==1
+replace wat_own = 2 if regexm(water,"Share")==1
+
+
+sum toinc
+sum toinc if wat_own==1
+
+
+	sum toinc if toinc<1500000/12 & w_regn=="Region XIII - NCR" , detail
+
+	sum toinc if toinc<1500000/12 & w_regn=="Region XIII - NCR" & wat_own==1, detail
 	write "${moments}y_avg.csv" `=r(mean)' 1 "%12.0g"
 	write "${tables}y_avg.tex" `=r(mean)' 1 "%12.0fc"
 

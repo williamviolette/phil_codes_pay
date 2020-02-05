@@ -3,6 +3,48 @@
 
 use "${data}paws/clean/full_sample_with_edu.dta", clear
 
+* keep conacct edu*extra
+
+g high_school = 0
+g college = 0
+foreach var of varlist edu*extra {
+	destring `var', replace force
+	replace `var'=. if `var'>15
+	replace high_school = high_school+1 if `var'<=11
+	replace college = college+1 if `var'>11 & `var'<.
+}
+
+ren shr_hh_extra SHH
+ren shr_num_extra SNUM
+
+g year = substr(interview,1,4)
+g month = substr(interview,6,2)
+
+ren may_exp_extra may
+ren wrs_exp_extra wrs
+
+destring hhemp hhsize SHH SNUM year month may wrs, replace force
+g date= ym(year,month)
+
+g bar=string(barangay,"%18.0g")
+g pasay = regexm(bar,"^7605")
+
+keep conacct college high_school hhemp hhsize date SHH SNUM may wrs pasay
+
+ren * *_paws
+ren conacct_paws conacct
+ren date_paws date
+
+duplicates drop conacct date, force
+
+save "${temp}paws_temp_date.dta", replace
+
+
+/*
+
+
+use "${data}paws/clean/full_sample_with_edu.dta", clear
+
 keep conacct edu*extra
 
 g high_school = 0
