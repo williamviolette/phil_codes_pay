@@ -49,6 +49,9 @@ dl = diff(lan,l)
 
 [ws,xs,ls]  =  solve([dw,dx,dl],[w,x,l])
 
+
+
+
 %[ws,xs,ls,pt,st]  =  solve([dw,dx,dl],[w,x,l],'ReturnConditions',true)
 
 %s1=eval(subs(st,[p1,p2,y,alpha,A,Ap,r],[15,.2,30000,.02,-100,-100,.1]))
@@ -68,6 +71,8 @@ steps=10
 wse = simplify(ws(1,1),'IgnoreAnalyticConstraints',true,'Steps',steps) 
 xse = simplify(xs(1,1),'IgnoreAnalyticConstraints',true,'Steps',steps) 
 
+
+
 % fileID = fopen(strcat(cd_dir,'wse.tex'),'w');
 % fprintf(fileID,'%500s\n',latex(wse));
 % fclose(fileID);
@@ -75,7 +80,7 @@ xse = simplify(xs(1,1),'IgnoreAnalyticConstraints',true,'Steps',steps)
 
 % vse = (1-alpha)*log(xse) + (alpha)*log(wse+k)
 
-vse =  xse - (1/(2*alpha))*(wse - k )^2  
+vse =  xse + alpha*log(wse) 
 
 % fileID = fopen(strcat(cd_dir,'vse.tex'),'w');
 % fprintf(fileID,'%500s\n',latex(vse));
@@ -102,7 +107,6 @@ wst=simplify(wsr0*(p1+p2*wsr0));
 cut_point3 = simplify(solve(-wst-L,L));
 
 % t1=eval(subs(cut_point3,[p1,y,alpha,k],[15,.1,30000,.02,0]))
-
 % [cut_point3,pc,sc] = solve(-m*wsr0*(p1+p2*wsr0) - Ap, Ap,'ReturnConditions',true)
 
 matlabFunction(simplify(cut_point3,'IgnoreAnalyticConstraints',true,'Steps',steps),'File','cut_ql.m')
@@ -129,7 +133,7 @@ eval(subs(xeq_opt,[L,p1,p2,y],[-1000,15,.2,10000]))
 
 % veq_opt = simplify((1-alpha)*log(xeq_opt) + (alpha)*log(weq_opt+k));
 
-veq_opt = simplify( xeq_opt + alpha*log(weq_opt ) );
+veq_opt = simplify( xeq_opt + alpha*log(weq_opt) );
 
 
 % fileID = fopen(strcat(cd_dir,'weq_opt.tex'),'w');

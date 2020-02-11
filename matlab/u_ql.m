@@ -1,4 +1,4 @@
-function [util,w] = u_ql(L,debt,alpha,p1,p2,y,lambda,k)
+function [util,w] = u_ql(L,debt,alpha,p1,p2,y,lambda)
 
     
 if debt==1
@@ -14,25 +14,25 @@ if debt==1
 % lambda = lambda_high;
 % k = k_high;
 
-        L_cut = cut_ql(alpha,k,p1);
+        L_cut = cut_ql(alpha,p1,p2);
 
-        vb = v_b_ql(L,alpha,k,p1,y);
+        vb = v_b_ql(L,alpha,p1,p2,y);
         vb(isinf(vb))=-1000000;
         vb(imag(vb)~=0)=-1000000;
 
-        util  = v_reg_ql(L,alpha,k,p1,y).*(L>=L_cut) + ...
+        util  = v_reg_ql(L,alpha,p1,p2,y).*(L>=L_cut) + ...
               vb.*(L<L_cut);
         util(imag(util)~=0)=-1000000;
         
         if nargout>1
-            w   = w_reg_ql(alpha,k,p1).*(L>=L_cut) + ...  %%% less negative!
-                  w_b_ql(L,p1).*(L<L_cut);   %%% more negative !
+            w   = w_reg_ql(alpha,p1,p2).*(L>=L_cut) + ...  %%% less negative!
+                  w_b_ql(L,p1,p2).*(L<L_cut);   %%% more negative !
         end
 else
-        util  = v_reg_ql(L,alpha,k,p1,y);
+        util  = v_reg_ql(L,alpha,p1,p2,y);
         util(imag(util)~=0)=-1000000;
         if nargout>1
-            w   = w_reg_ql(alpha,k,p1);
+            w   = w_reg_ql(alpha,p1,p2);
         end
         %w   = w_reg_dk(L,alpha,p1,p2,y);
 end

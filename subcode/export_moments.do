@@ -3,82 +3,6 @@
 
 
 
-
-	*** THIS IS RIGHT
-
-
-	* sum inc if inc_t==1
-	* global inc_t1 = `=r(max)'
-	* sum inc if inc_t==2
-	* global inc_t2 = `=r(max)'
-
-	* preserve 
-
-	* 	use "${fies}fies_merged.dta", clear
-
-	* 	g inc = toinc/12
-
-	* 	sum inc, detail
-	* 	global inc_mean = `=r(mean)'
-
-	* 	* g 		inc_t = 1 if inc<=$inc_t1
-	* 	* replace inc_t = 2 if inc>$inc_t1 & inc<=$inc_t2
-	* 	* replace inc_t = 3 if inc>$inc_t2 
-
-	* 	sum todisbdeposits, detail
-	* 	global deposits = `=r(p95)'
-	* 	sum todisbcashloan, detail 
-	* 	global cashloan= `=r(p95)'
-
-	* 	g loan = (todisbdeposits>100  & todisbdeposits<.) | (todisbcashloan>100 & todisbcashloan<.)
-
-	* 	global mult= `=(${deposits} + ${cashloan})/ ${inc_mean}'
-
-	* 	disp $mult
-
-	* restore
-
-
-	* 	sum inc, detail
-	* 	global inc_m = `=r(mean)'
-	* 	write "${moments}Ab.csv" `=$mult*$inc_m'  1 "%12.0g"
-	* 	write "${tables}Ab.tex" `=$mult*$inc_m'  1 "%12.0fc"
-
-	* 	forvalues r=1/3 {
-	* 		sum inc if inc_t==`r', detail
-	* 		global inc_m = `=r(mean)'
-	* 		write "${moments}Ab_t`r'.csv" `=$mult*$inc_m' 1 "%12.0g"
-	* 		write "${tables}Ab_t`r'.tex" `=$mult*$inc_m' 1 "%12.0fc"
-	* 	}
-
-
-		sum todisbdeposits, detail
-		global deposits = `=r(p95)'
-		sum todisbcashloan, detail 
-		global cashloan= `=r(p95)'
-
-		sum inc, detail
-		global inc_m = `=r(mean)'
-		write "${moments}Ab.csv" `=$deposits + $cashloan'  1 "%12.0g"
-		write "${tables}Ab.tex" `=$deposits + $cashloan' 1 "%12.0fc"
-
-		forvalues r=1/3 {
-			sum todisbdeposits if inc_t==`r', detail
-			global deposits = `=r(p95)'
-			sum todisbcashloan if inc_t==`r', detail 
-			global cashloan= `=r(p95)'
-			write "${moments}Ab_t`r'.csv" `=$deposits + $cashloan' 1 "%12.0g"
-			write "${tables}Ab_t`r'.tex" `=$deposits + $cashloan'  1 "%12.0fc"
-		}
-
-
-
-	forvalues r=1/3 {
-	sum inc if inc_t==`r', detail
-	write "${moments}y_avg_t`r'.csv" `=r(mean)' 0.1 "%12.0g"
-	write "${tables}y_avg_t`r'.tex" `=r(mean)' 0.1 "%12.0g"
-	}
-
 	write "${tables}est_obs.tex" `=_N' 1 "%12.0fc"
 
 	preserve
@@ -86,6 +10,7 @@
 		duplicates drop conacct, force
 		write "${tables}est_hhs.tex" `=_N' 1 "%12.0fc"
 	restore
+
 
 *** Price
 	cap drop p_avg
@@ -149,28 +74,16 @@
 	write "${moments}Bb.csv" `=r(p95)' 1 "%12.0g"
 	write "${tables}Bb.tex" `=r(p95)' 1 "%12.0fc"
 
-	forvalues r=1/3 {
-		sum bal if bal>0 & inc_t==`r', detail
-		write "${moments}Bb_t`r'.csv" `=r(p95)' 1 "%12.0g"
-		write "${tables}Bb_t`r'.tex" `=r(p95)' 1 "%12.0fc"
-	}
 
 
 
 *** Disconnection rate by income
-	sum tcd_id if ar_lag>31
+	sum tcd_id if ar_lag>31 
 		write "${moments}prob_caught.csv" `=r(mean)' 0.0001 "%12.4g"
 		write "${tables}prob_caught.tex" `=r(mean)*100' 0.1 "%12.1fc"
-	
-	forvalues r=1/3 {
-		sum tcd_id if ar_lag>31 & inc_t==`r'
-		write "${moments}prob_caught_t`r'.csv" `=r(mean)' 0.0001 "%12.4g"
-		write "${tables}prob_caught_t`r'.tex" `=r(mean)*100' 0.01 "%12.2fc"
-	}
-
 
 cap drop tcd_id_31
-g tcd_id_31 = tcd_id if ar_lag>31
+g tcd_id_31 = tcd_id if ar_lag>31 
 
 cap drop tcd_id_31m
 gegen tcd_id_31m = mean(tcd_id_31), by(ba)
@@ -181,17 +94,14 @@ sum tcd_id_31m, detail
 
 drop tcd_id_31 tcd_id_31m
 
-
 sum tcd_max, detail
 
 		write "${tables}tcd_max.tex" `=r(mean)*100' 1 "%12.0g"
 
 
+
 * sum tcd_id if ar_lag>31  & bal_lag>2000
 * sum tcd_id if ar_lag>31  & bal_lag<2000
-
-
-
 
 
 *** Consumption
@@ -199,55 +109,29 @@ sum tcd_max, detail
 		write "${moments}c_avg.csv" `=r(mean)' 0.1 "%12.0g"
 		write "${tables}c_avg.tex" `=r(mean)' 0.1 "%12.0g"
 
-	forvalues r=1/3 {
-		sum c if inc_t==`r', detail
-		write "${moments}c_avg_t`r'.csv" `=r(mean)' 0.1 "%12.0g"
-		write "${tables}c_avg_t`r'.tex" `=r(mean)' 0.1 "%12.0g"
-	}
-
-
 
 	egen c_i = mean(c), by(conacct)
 	g c_norm = c - c_i
 	sum c_norm, detail
 	write "${moments}c_std.csv" `=r(sd)' 0.1 "%12.0g" 
 	write "${tables}c_std.tex" `=r(sd)' 0.1 "%12.0g" 
-	forvalues r=1/3 {
-		sum c_norm if inc_t==`r', detail
-		write "${moments}c_std_t`r'.csv" `=r(sd)' 0.1 "%12.0g" 
-		write "${tables}c_std_t`r'.tex" `=r(sd)' 0.1 "%12.0g" 		
-	}
 	drop c_i c_norm
+
 
 *** Balance
 	sum bal
 	write "${moments}bal_avg.csv" `=r(mean)' 0.1 "%12.0g"
 	write "${tables}bal_avg.tex" `=r(mean)' 0.1 "%12.0g"
-	forvalues r=1/3 {
-		sum bal if inc_t==`r'
-		write "${moments}bal_avg_t`r'.csv" `=r(mean)' 0.1 "%12.0g"
-		write "${tables}bal_avg_t`r'.tex" `=r(mean)' 0.1 "%12.0g"
-	}
 
 	sum bal, detail
 	write "${moments}bal_med.csv" `=r(p50)' 0.1 "%12.0g"
 	write "${tables}bal_med.tex" `=r(p50)' 0.1 "%12.0g"
-	forvalues r=1/3 {
-		sum bal if inc_t==`r', detail
-		write "${moments}bal_med_t`r'.csv" `=r(p50)' 0.1 "%12.0g"
-		write "${tables}bal_med_t`r'.tex" `=r(p50)' 0.1 "%12.0g"
-	}
 
 	egen bal_i = mean(bal), by(conacct)
 	g bal_norm = bal - bal_i
 	sum bal_norm 
 	write "${moments}bal_std.csv" `=r(sd)' 0.1 "%12.0g"
 	write "${tables}bal_std.tex" `=r(sd)' 0.1 "%12.0g"
-	forvalues r=1/3 {
-		sum bal_norm if inc_t==`r'
-		write "${moments}bal_std_t`r'.csv" `=r(sd)' 0.1 "%12.0g"
-		write "${tables}bal_std_t`r'.tex" `=r(sd)' 0.1 "%12.0g"
-	}
 	drop bal_i bal_norm
 
 
@@ -257,44 +141,7 @@ sum tcd_max, detail
 	write "${moments}bal_corr.csv" `cv' 0.001 "%12.0g"
 	write "${tables}bal_corr.tex" `cv' 0.001 "%12.0g"
 
-	forvalues r=1/3 {
-		corr bal c if inc_t==`r'
-		matrix C = r(C)
-		local cv "C[1,2]"
-		write "${moments}bal_corr_t`r'.csv" `cv' 0.001 "%12.0g"
-		write "${tables}bal_corr_t`r'.tex" `cv' 0.001 "%12.0g"
-	}
 
-
-
-
-
-
-* g tnn = tn
-* by conacct: replace tnn=tnn[_n-1] if tnn==.
-
-* g amg_ind = am if tcd_id[_n-1]==1 | tcd_id[_n-2]==1
-* gegen amg = max(amg_ind), by(conacct tnn)
-* replace amg = . if tnn!=tn
-* gegen AMM = mean(amg), by(ar_lag)
-
-* g amg_ind6 = am if tcd_id[_n-11]==1 | tcd_id[_n-12]==1
-* gegen amg6 = max(amg_ind6), by(conacct tnn)
-* replace amg6 = . if tnn!=tn
-* gegen AMM6 = mean(amg6), by(ar_lag)
-
-* sum amg if ar_lag>0
-* sum amg if ar_lag>91
-
-* gegen arn = tag(ar_lag)
-
-* scatter AMM ar_lag if arn==1 & ar_lag>0 || scatter AMM6 ar_lag if arn==1 & ar_lag>0, 
-
-* drop tn_*
-* drop am_*
-
-
-* drop am_d am_d4 tn_g0 tn_g4 tn_0 tn_4 tn
 
 sort conacct tcd_id date
 by conacct tcd_id: g tn=_n if tcd_id==1
@@ -362,6 +209,9 @@ write "${tables}t_rec_3l.tex" `=r(mean)' .1 "%12.0g"
 
 
 
+
+
+/*
 
 
 * reg dc_months ar_lag i.date if DC_TEMP==1,  cluster(conacct) r

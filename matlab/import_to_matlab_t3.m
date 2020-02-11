@@ -22,7 +22,7 @@ if just_one==1
    
 
     y_avg     = csvread(strcat(folder,'y_avg.csv')) ;
-    y_cv      = csvread(strcat(folder,'cv_single.csv'));
+    y_cv      = csvread(strcat(folder,'y_cv.csv'));
         
     Aub = csvread(strcat(folder,'Ab.csv')); 
 

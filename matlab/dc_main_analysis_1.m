@@ -18,7 +18,7 @@ extra_stats    = 0    ;
 
 diary1 = 0;
 
-for_list = 1 ;
+for_list = 0 ;
 
 second_output = 0     ;
 pick_sv       = 0     ;
@@ -99,8 +99,8 @@ format long g
 %     nA = 20*i    %%%  
 %     nB = 20*i    %%%  
 % else
-    nA = 80
-    nB = 80
+    nA = 40
+    nB = 40
 % end
 
 %%% 20,20:
@@ -118,13 +118,16 @@ Blb =  2.5.*Blb;
 r_slope = 0 ; % r_slope =(.01 - r_lend)./( (y_avg./2).^2 ) ;
 r_high = .0945 ;
 
-beta_set = .03208
+beta_set = .02508
 
-1/((1+beta_set)^(12))
+% 1/((1+beta_set)^(12))
 
 
+% test alpha to hit 24.1 == ((p1-sqrt( 756.*p2.*8.0+p1.^2)).*(-1.0./4.0))./p2
+
+    %             1       2        3       4           5       6      7        8        9     10     11     12   13    14     15       16   
     % given :  r_lend , r_water, r_high ,  FC   ,   inc shock, int,  alpha  , beta_up , Y   , p1,    p2   , pd,  n ,   curve, r_slope, waterlend
-given =        [   0    0      r_high      0        y_cv       0     .0199    beta_set y_avg  p1(1)  p2(1)  230   n    1    r_slope 0];
+given =        [   0    0      r_high      0        y_cv       0      740    beta_set y_avg  p1(1)  p2(1)  180   n    1    r_slope 0];
 
 csvwrite(strcat(folder,'given.csv'),given);
                         
@@ -150,6 +153,40 @@ disp ' A savings '
 sum(controls(:,2)==max(controls(:,2)))
 disp ' B loan '
 sum(controls(:,3)==min(controls(:,3)))
+
+
+
+if extra_stats == 1
+    disp ' DC time to reconnect '
+    pre = [zeros(1,1); controls(1:end-1,4)];
+    sum(controls(:,4)==1)/sum(pre==0 & controls(:,4)==1)
+
+    inc = (controls(:,5)==1 | controls(:,5)==3).*(y_avg+y_cv*y_avg) + (controls(:,5)==2 | controls(:,5)==4).*(y_avg-y_cv*y_avg) ;
+    inc_pre = [0;inc(1:end-1,:)];
+    inc_ch = inc-inc_pre;
+
+    c_pay = controls(:,1).*(p1+p2.*controls(:,1));
+    c_pre = [0;c_pay(1:end-1,1)];
+    c_ch = c_pay(:,1) - c_pre;
+
+    bal_pre =[0;controls(1:end-1,3)];
+    
+    pay = controls(:,3)-bal_pre+c_pay;
+    pay_pre = [0;pay(1:end-1,1)];
+    
+    pay_ch = pay-pay_pre;
+    
+    bal_ch = controls(:,3)-bal_pre;
+
+    disp ' regression estimates of fit '
+%     [r]=fitlm(inc_ch,bal_ch)
+    [r]=fitlm(inc_ch,pay_ch)
+     
+    [r]=fitlm(inc_ch,c_ch)
+
+    est_mom
+    data_moments
+end
 
 
 
@@ -190,11 +227,11 @@ if simple_counter ==1
    
     %%% value of 10 PhP
     res_poor = res_out;
-    res_poor(:,9) = res_out(:,9) - 50;
+    res_poor(:,9) = res_out(:,9) - 100;
 
     [h_poor,util_poor] =run(res_poor,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
 
-    du_dy10_t = (util-util_poor)/50;    
+    du_dy10_t = (util-util_poor)/100;    
     
     %%% utility loss from no loans
     res_nl = res_out;
@@ -210,33 +247,70 @@ end
     
 
 
-
-if extra_stats == 1
-    disp ' DC time to reconnect '
-    pre = [zeros(1,1); controls(1:end-1,4)];
-    sum(controls(:,4)==1)/sum(pre==0 & controls(:,4)==1)
-
-    inc = (controls(:,5)==1 | controls(:,5)==3).*(y_avg+y_cv*y_avg) + (controls(:,5)==2 | controls(:,5)==4).*(y_avg-y_cv*y_avg) ;
-    inc_pre = [0;inc(1:end-1,:)];
-    inc_ch = inc-inc_pre;
-
-    c_pay = controls(:,1).*(p1+p2.*controls(:,1));
-    c_pre = [0;c_pay(1:end-1,1)];
-    c_ch = c_pay(:,1) - c_pre;
-
-    bal_pre =[0;controls(1:end-1,3)];
-    bal_ch = controls(:,3)-bal_pre;
-
-    disp ' regression estimates of fit '
-    [r]=fitlm(inc_ch,bal_ch)
-    [r]=fitlm(inc_ch,c_ch)
-
-    est_mom
-    data_moments
-end
-
-
 % end
+
+
+res_out = csvread(strcat(folder,'given.csv'));
+
+[~,u_pre,sim_pre] = dc_obj_chow_pol_finite(res_out,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
+
+    res_poor = res_out;
+    res_poor(:,9) = res_out(:,9) - 10000;
+
+[~,u_poor,sim_poor] = dc_obj_chow_pol_finite(res_poor,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
+
+u_pre - u_poor
+
+
+
+mean(u_pre(:,:,1))
+mean(u_poor(:,:,1))
+u_pre(:,:,1) - u_poor(:,:,1)
+
+u_ch = (u_pre-u_poor)/1000
+
+
+
+
+
+    res_post = res_out;
+    res_post(:,10) = res_out(:,10) + 2 ;
+
+%     res_post = res_out;
+%     res_post(:,12) = res_out(:,12) + 1000 ;
+
+[~,u_post,sim_post] = dc_obj_chow_pol_finite(res_post,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
+
+(u_pre-u_post)
+
+(u_pre-u_post)/u_ch
+
+
+% mean(sim_post(:,4))
+
+
+
+ %%% current
+    [h,util]           =run(res_out,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
+   
+    %%% value of 10 PhP
+    res_poor = res_out;
+    res_poor(:,9) = res_out(:,9) - 100;
+
+    [h_poor,util_poor] =run(res_poor,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
+
+    du_dy10_t = (util-util_poor)/100;    
+    
+    %%% utility loss from no loans
+    res_nl = res_out;
+	res_nl(:,2) = .8;
+    [h_nl,util_nl] =run(res_nl,prob,nA,sigA, Alb ,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
+    
+    disp ' no lending : '
+    
+    U_nl_t = ((util_nl)-(util))./(du_dy10_t)
+    mean(U_nl_t)
+ 
 
 
 

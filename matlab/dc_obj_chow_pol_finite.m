@@ -27,23 +27,13 @@ water_lending   = given(1,16);
 
 beta = 1/( 1 + beta_up );
 
-
 lambda_high = 1 ;
 lambda_low  = 1 ;
 
-k_high=0;
-k_low=0;
-
-if gamma>0
-   k_high  =  gamma + gamma_shock;
-   k_low   = gamma - gamma_shock;
-elseif gamma_shock~=0
-   k_high = 0;
-   k_low = 0;
+if gamma_shock~=0
    lambda_high = gamma_shock;
    lambda_low  = -1.*gamma_shock;
 end
-
 
 Y_high = Y.*(1+theta) ;  % high value for income
 Y_low  = Y.*(1-theta) ;  % low value for income
@@ -51,12 +41,14 @@ Y_low  = Y.*(1-theta) ;  % low value for income
 p1d = p1;
 p2d = p2;
 
-
    [A,Aprime,B,Bprime,D,Dprime,nA,nB] = grid_int(nA,sigA,Alb,Aub,nB,sigB,Blb,nD, int_size,refinement);
    
-    [util1,util2,util3,util4] = ...
-         gen_curve(A,B,D,Aprime,Bprime,Dprime,r_high,r_slope,r_lend,r_water,water_lending,Y_high,Y_low,p1,p2,p1d,p2d,pd,alpha,k_high,k_low,lambda_high,lambda_low,curve);
+   [util1,util2,util3,util4] = ...
+         gen_curve_ql(A,B,D,Aprime,Bprime,Dprime,r_high,r_slope,r_lend,r_water,water_lending,Y_high,Y_low,p1,p2,p1d,p2d,pd,alpha,lambda_high,lambda_low,curve);
 
+% UA = util1;
+% mean(mean(UA1-UA))
+     
 %     v = zeros(size(A,1),4)   ;
     v = -100000.*(Aprime(:,1)<0).*ones(size(Aprime,1),4);
     
@@ -92,7 +84,7 @@ p2d = p2;
             tdecis=[ tdecis1' tdecis2' tdecis3' tdecis4' ];
 
             tv=[ tv1' tv2' tv3' tv4' ];
-
+%             mV(:,:,t) = v;
             v = tv  ;
 
             mDecis(:,:,t)=tdecis;
@@ -103,7 +95,14 @@ p2d = p2;
             dev(t,1) = mean(mean((mDecis(:,:,t+1)-mDecis(:,:,t)).^2));
         end
     end
-   
+  
+
+    
+%     mValt=mV
+% mV(:,:,1)
+% mValt(:,:,1)
+% mV(:,:,1) - mValt(:,:,1)
+% mean(mV(:,:,1) - mValt(:,:,1))
 % dev
 % mean(mV(:,1,:))
 % plot(1:size(dev,1),dev)
@@ -114,6 +113,12 @@ p2d = p2;
 
 % [Im,Jm] = find(B==0 & A==min(min(abs(A))) & A>0 & D==0);
 [Im,Jm] = find(B==0 & A==0 & D==0,1);
+
+%%%% NEW V SIM %%%%
+
+
+
+
 
 %states  = zeros(Acc*Tsim-1,2);
 controls = zeros(Acc*Tsim-1,7);
@@ -144,13 +149,9 @@ for jj = 1:Tsim
 
         [u1,u2,u3,u4,...
                  w1,w2,w3,w4] = ...
-             gen_curve(Athis,Bthis,Dthis,Ap,Bp,Dp,r_high,r_slope,r_lend,r_water,water_lending,Y_high,Y_low,p1,p2,p1d,p2d,pd,alpha,k_high,k_low,lambda_high,lambda_low,curve);
+             gen_curve_ql(Athis,Bthis,Dthis,Ap,Bp,Dp,r_high,r_slope,r_lend,r_water,water_lending,Y_high,Y_low,p1,p2,p1d,p2d,pd,alpha,lambda_high,lambda_low,curve);
         u_full = [u1 u2 u3 u4];
         u      = u_full(chain(II));
-%         [~,~,~,~,...
-%                  w1,w2,w3,w4] = ...
-%              gen_curve(Athis,Bthis,Dthis,Ap,Bp,Dp,r_high,r_slope,r_lend,r_water,water_lending,Y_high,Y_low,p1,p2,p1d,p2d,pd,alpha,k_high,k_low,lambda_high,lambda_low,curve);
-%         u      = Vnow;
 
         cons_full = [w1 w2 w3 w4];
         cons = cons_full(chain(II));
@@ -194,9 +195,16 @@ h = [    mean(mean(C_m(dd_m~=1 & ind_m<=Acc-tm))); ...
          mean(w_debt_m(dd_m~=1 & ind_m<=Acc-tm)); ...
          mean(dd_m(state_m>=3 & wd1==1 & dd1==0 & ind_m<=Acc-tm)) ; ...
          mean(dd_m(state_m>=3 & wd4==1 & dd1==0 & ind_m<=Acc-tm)) ]; 
-  
+
+% mV(1,1,:)
+     
 if nargout>1
-     util = sum(mean(v).*mean(prob));
+%        util = [ max(max(mV(Jm,:,size(mV,3)))) mean(mean(mV(:,:,size(mV,3)))) mean(mean(mV(Jm,:,size(mV,3)))) Jm mean(mean(C_m)) mean(mean(w_debt_m)) mean(mean(util1))];
+
+%  util = [mV(1,:,1)  mean(mean(controls(:,7)))];
+ util = mV(:,:,1);
+%       util = [sum(mean(mV(:,:,1)).*mean(prob))  mean(mean(controls(:,7)))];
+%     util = prob(1,:)*mV(Jm,:,1)';
 end
 
 if nargout>2
