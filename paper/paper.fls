@@ -679,8 +679,6 @@ INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/boondox/zxxrl7z.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/vf/public/txfonts/txr.vf
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/txfonts/rtxptmr.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/txfonts/rtxr.tfm
-INPUT tables/y_avg.tex
-INPUT tables/y_avg.tex
 INPUT tables/irate.tex
 INPUT tables/irate.tex
 INPUT tables/p_int.tex
@@ -705,8 +703,6 @@ INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/adobe/palatino/pplb7t.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/newtx/ntxbmi5.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/newtx/ntxbsy5.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/newtx/ntxbexx.tfm
-INPUT tables/disc_notice.tex
-INPUT tables/disc_notice.tex
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/vf/public/newtx/ntxsy7.vf
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/txfonts/txsy.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/vf/public/newtx/ntxmia.vf
@@ -734,6 +730,8 @@ INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/txfonts/txsy.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/vf/public/newtx/ntxmi7.vf
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/newtx/rtxmi7.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/newtx/rntxmi7.tfm
+INPUT tables/disc_notice.tex
+INPUT tables/disc_notice.tex
 INPUT tables/par_nA.tex
 INPUT tables/par_nA.tex
 INPUT tables/par_sigA.tex

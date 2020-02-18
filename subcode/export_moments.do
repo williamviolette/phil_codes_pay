@@ -1,6 +1,62 @@
 * export_moments
 
 
+gegen max_bal= max(bal), by(conacct)
+gegen mean_amount = mean(amount), by(conacct)
+
+g bal_shr = bal/max_bal
+replace bal_shr = 0 if bal==0
+
+hist bal_shr if bal_shr>=0 & am!=1, bin(20)   //  consistent with buffer stock!!
+
+g bal_nz = bal!=0 & am!=1
+sort conacct date
+by conacct: g bal_row = bal_nz[_n]==1 & bal_nz[_n-1]==1
+by conacct: g tcd_id_l = tcd_id[_n+1]
+
+sum bal_nz
+sum bal_row   // also consistent with buffer stock!
+ 
+ hist bal_shr if dc_date==date & bal_shr==0
+
+areg c i.ar if am!=1 & c!=0, a(conacct) cluster(conacct) r
+
+sum c if bal==0
+sum c if bal>0 & bal<.
+
+g bm = max_bal==bal
+sum bm if tcd_id==1
+
+g bal0 = bal==0
+sum bal0 if dc_date==date 
+
+sum bal if dc_date!=.
+sum bal if dc_date==date & bal>=0
+sum bal if date<dc_date-10
+sum max_bal if dc_date==date
+
+sum tcd_id if ar_lag>=91 & ar_lag<=240
+sum tcd_id if ar_lag>=91 & ar_lag<=240 & bal_lag>5000 & bal_lag<.
+
+sum tcd_id if ar_lag==91 &  bal_lag<=10*mean_amount & bal_lag<. & date<dc_date
+sum tcd_id if ar_lag==91 &  bal_lag>10*mean_amount & bal_lag<. & date<dc_date
+
+sum tcd_id if ar_lag==91  & bal_lag>10*mean_amount & bal_lag<. & date<dc_date
+sum tcd_id if ar_lag==121 & bal_lag>10*mean_amount & bal_lag<. & date<dc_date
+sum tcd_id if ar_lag>=91  & ar_lag<=240 & bal_lag>12*mean_amount & bal_lag<.
+
+
+
+g bal_0 = 0 if bal!=0
+replace bal_0 = 1 if bal==0
+
+sum bal_0, detail
+write "${moments}bal_0.csv" `=r(mean)' 0.0001 "%12.4g"
+
+sum bal if dc_date==date
+write "${moments}bal_end.csv" `=r(mean)' 0.1 "%12.0g"
+
+
 
 
 	write "${tables}est_obs.tex" `=_N' 1 "%12.0fc"
@@ -78,12 +134,12 @@
 
 
 *** Disconnection rate by income
-	sum tcd_id if ar_lag>31 
+	sum tcd_id if ar_lag>61 
 		write "${moments}prob_caught.csv" `=r(mean)' 0.0001 "%12.4g"
 		write "${tables}prob_caught.tex" `=r(mean)*100' 0.1 "%12.1fc"
 
 cap drop tcd_id_31
-g tcd_id_31 = tcd_id if ar_lag>31 
+g tcd_id_31 = tcd_id if ar_lag>61
 
 cap drop tcd_id_31m
 gegen tcd_id_31m = mean(tcd_id_31), by(ba)

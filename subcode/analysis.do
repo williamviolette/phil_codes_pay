@@ -68,6 +68,8 @@ gegen dc_date = max(dc_date_id), by(conacct)
 drop dc_date_id
 
 
+
+
 do smoothing_test.do
 
 
