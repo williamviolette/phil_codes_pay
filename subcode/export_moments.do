@@ -53,6 +53,13 @@ replace bal_0 = 1 if bal==0
 sum bal_0, detail
 write "${moments}bal_0.csv" `=r(mean)' 0.0001 "%12.4g"
 
+g bal_small = 0 if bal!=.
+replace bal_small = 1 if bal<200
+
+sum bal_small if dc_date==date
+
+sum bal if bal>0 & dc_date==date
+
 sum bal if dc_date==date
 write "${moments}bal_end.csv" `=r(mean)' 0.1 "%12.0g"
 

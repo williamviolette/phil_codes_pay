@@ -13,7 +13,8 @@ real_data      = 1    ;
 
 simple_counter = 0    ;
 given_sim      = 1    ;
-short_est      = 1    ;
+short_est               = 0    ;
+short_est_pattern       = 0    ;
 extra_stats    = 0    ;
 
 diary1 = 0;
@@ -57,10 +58,19 @@ nD   = 2;
 
 %%%%%%%%% ESTIMATION %%%%%%%%%%
 
-option = [ 7 8 12 17 18   ];   %%% what to estimate
+% option = [ 7 8 12 17 18   ];   %%% what to estimate
+% option_moments       = [ 1 2 3 4 5 ];  %%% moments to use!
+% option_moments_est   = [ 1 2 3 4 5 ];
+
    
+  %  alpha pd pc 
+option = [ 7 12 17 ];   %%% what to estimate
+lb = [ 40 10  .01 ];
+ub = [ 80 400 .99 ];
+
 option_moments       = [ 1 2 3 4 5 ];  %%% moments to use!
 option_moments_est   = [ 1 2 3 4 5 ];
+
 inc_t=1;
 
     visit_price = 200;
@@ -87,7 +97,7 @@ format long g
 %     nB = 20*i    %%%  
 % else
     nA = 20
-    nB = 100
+    nB = 80
 % end
 
 %%% 20,20:
@@ -110,7 +120,7 @@ beta_set   = .005
 
     %             1       2        3         4         5       6      7     8        9     10  11   12   13  14    15   16     17  18              
     % given :  r_lend , r_water, r_high, hasscost, inc shock, untie, alpha, beta_up , Y   , p1, p2 , pd,  n, curve, fee, vhass pc  pm
-given =        [   0     0       r_high       0      y_cv      0     55   beta_set  y_avg   p1  p2   100  n    1     0    0    .15  .5    ];
+given =        [   0     0       r_high       0      y_cv      0     53    beta_set  y_avg   p1  p2   100  n    1     0    0  .15  .21    ];
 
 csvwrite(strcat(folder,'given.csv'),given);
                         
@@ -144,10 +154,8 @@ disp ' B loan average '
 mean(controls(controls(:,6)==s,3))
 
 
-if short_est==1
-%         options = optimoptions('patternsearch','Display','iter','PlotFcn',@psplotbestf);
-%         options = optimoptions('patternsearch','Display','iter','PlotFcn',@psplotdistance,'MaxTime',200);
-        options = optimoptions('patternsearch','Display','iter','PlotFcn',@psplotdistance,'MaxFunctionEvaluations',4,'MaxIterations',4);
+if short_est_pattern==1
+        options = optimoptions('patternsearch','Display','iter','MaxFunctionEvaluations',100,'MaxIterations',10,'InitialMeshSize',.075,'UseParallel',true);
         weights =  eye(size(data,1))./(data.^2) ;   % normalize moments to be between zero and one (matters quite a bit)
         ag = given(option);    
         obj_run = @(a1)objopt(a1,given,data,option,option_moments_est,weights,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,s,int_size,refinement);
@@ -156,14 +164,7 @@ if short_est==1
                     disp ' '
                     disp 'pattern search ... '
                     tic
-                    A = [];
-                    b = [];
-                    Aeq = [];
-                    beq = [];
-                    lb = [];
-                    ub = [];
-                    nonlcon = [];
-                    [res,fval,~,Output] = patternsearch(obj_run,ag,A,b,Aeq,beq,lb,ub,nonlcon,options)
+                    [res,fval,~,Output] = patternsearch(obj_run,ag,[],[],[],[],lb,ub,[],options)
                     fprintf('The number of iterations was : %d\n', Output.iterations);
                     fprintf('The number of function evaluations was : %d\n', Output.funccount);
                     toc
@@ -171,8 +172,36 @@ if short_est==1
                     disp   '   truth               estimates   ' 
                     [ round(data(:,1),2)  round(est_mom,2) ]
                     disp ' psearch done ! :)'
+%        csvwrite(strcat(folder,'pattern_estimates.csv'),res)
 end
    
+
+
+
+
+
+
+
+if short_est==1
+        options = optimoptions('surrogateopt','Display','iter','MaxFunctionEvaluations',20,'InitialPoints',given(option));
+        weights =  eye(size(data,1))./(data.^2) ;   % normalize moments to be between zero and one (matters quite a bit)
+        ag = given(option);    
+        obj_run = @(a1)objopt(a1,given,data,option,option_moments_est,weights,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,s,int_size,refinement);
+                    disp ' old obj: ' 
+                    obj_run(ag)
+                    disp ' '
+                    disp 'surrogate opt ... '
+                    tic
+                    [res,fval,~,Output] = surrogateopt(obj_run,lb,ub,options)
+                    toc
+                    [~,~,est_mom]=obj_run(res);
+                    disp   '   truth               estimates   ' 
+                    [ round(data(:,1),2)  round(est_mom,2) ]
+                    disp ' psearch done ! :)'
+end
+
+
+
 
     
 

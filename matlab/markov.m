@@ -31,14 +31,14 @@ if r ~= c;
 end;
 %
 for k=1:r;
-  if sum(T(k,:)) ~= 1;
-   disp('error using markov function')
-    disp(['row ',num2str(k),' does not sum to one']);
-    disp(' it sums to :'); 
-    disp([ sum(T(k,:)) ]); 
-    disp(['normalizing row ',num2str(k),'']);
-    T(k,:)=T(k,:)/sum(T(k,:));
-  end;
+%   if sum(T(k,:)) ~= 1;
+%    disp('error using markov function')
+%     disp(['row ',num2str(k),' does not sum to one']);
+%     disp(' it sums to :'); 
+%     disp([ sum(T(k,:)) ]); 
+%     disp(['normalizing row ',num2str(k),'']);
+%     T(k,:)=T(k,:)/sum(T(k,:));
+%   end;
 end;
 [v1 v2]=size(V);
 if v1 ~= 1 |v2 ~=r

@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex paper"] 1582051857 "paper.aux" "paper.bbl" "paper" 1582051868
+["bibtex paper"] 1582052535 "paper.aux" "paper.bbl" "paper" 1582063889
   "/usr/local/texlive/2015/texmf-dist/bibtex/bst/natbib/abbrvnat.bst" 1233624470 26532 66bed5cc59495faaa3f9ae9af9fa5e42 ""
-  "paper.aux" 1582051866 25474 7667fa7a0472a37a0ebf435103f35458 ""
+  "paper.aux" 1582053183 25477 cd1fbc493dbd7f5950f248ef2b615888 ""
   "paper.bcf" 0 -1 0 ""
   "ref.bib" 1552499153 10954 6e801e0f5c1f3c2366d8b56f41ef2dca ""
   (generated)
   "paper.bbl"
   "paper.blg"
-["pdflatex"] 1582051857 "paper.tex" "paper.pdf" "paper" 1582051868
+["pdflatex"] 1582053176 "paper.tex" "paper.pdf" "paper" 1582063889
   "./tables/line_disc_graph.pdf" 1572020640 14739 77f01d8b7fe9107798d5a6ce21b63b6a ""
   "./tables/new_deaton_graph.pdf" 1550696288 24193 e98a4b9429b39929ad7532b51839151d ""
   "/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -273,9 +273,9 @@
   "/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1432479641 1764542 91654ba72bdb667e84ea24f076ae16d8 ""
   "/usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt" 1432479681 3849859 39a7d258195bde2394e244961601fbc5 ""
   "/usr/local/texlive/2015/texmf.cnf" 1432479636 577 0d611272082f3cdb8e80e09a3c69cf07 ""
-  "paper.aux" 1582051866 25474 7667fa7a0472a37a0ebf435103f35458 ""
-  "paper.bbl" 1582051857 10157 4603c5da8823c6714730969de1b86148 "bibtex paper"
-  "paper.tex" 1582051845 137833 2e5577711731fd89ad76354107b5b1bd ""
+  "paper.aux" 1582053183 25477 cd1fbc493dbd7f5950f248ef2b615888 ""
+  "paper.bbl" 1582052536 10157 4603c5da8823c6714730969de1b86148 "bibtex paper"
+  "paper.tex" 1582063013 138458 0185677a105318fd2f10e349bbfb0778 ""
   "tables/U_nl_abs.tex" 1567541009 5 0aad768dc54bbb4b37192951a17afa21 ""
   "tables/U_nl_abs_usd.tex" 1567541818 4 d39d8df974f8d45e3d23499dc20ea763 ""
   "tables/U_nl_per.tex" 1567541009 2 84bc3da1b3e33a18e8d5e1bdd7a18d7a ""
@@ -407,6 +407,6 @@
   "tables/wloan.tex" 1579626308 2 c20ad4d76fe97759aa27a0c99bff6710 ""
   "tables/y_avg.tex" 1581954722 6 f5c9f970e1aa953f3df07cfa34eb312b ""
   (generated)
-  "paper.pdf"
   "paper.log"
   "paper.aux"
+  "paper.pdf"

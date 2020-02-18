@@ -294,22 +294,22 @@ Further negative income shocks may induce households to borrow beyond their curr
 
 With some probability, the utility conducts collection attempts, which confront indebted households with a choice: pay their debts or disconnect and use an alternative water source.  Since the alternative water source may involve an additional fixed cost each month, households with small debts simply prefer to pay their debts and stay connected either by taking out a costly loan or by lowering their consumption this month.  Households with large debts decide to disconnect in order to avoid taking out a large loan or experiencing a sharp drop in consumption this month.  Once disconnected, households begin accumulating savings to eventually pay their debts and reconnect to service.
 
-Just before leaving Manila, households have an incentive to accumulate large unpaid bills since the utility is unable to collect on these bills.  In these months, households may also have an incentive to disconnect in response to collection attempts.
+Just before changing dwellings, households have an incentive to accumulate large unpaid bills since the utility is unable to collect on these bills if households leave Manila.  In these months, households may also have an incentive to disconnect in response to collection attempts.
 
-To formally model household borrowing and savings decisions, I start from a standard intertemporal utility maximization problem as developed by \cite{deaton1991saving}.  This approach assumes an infinite time horizon where households choose water usage, borrowing, and savings in each period to maximize current and expected future utility.  
+To formally model household borrowing and savings decisions, I start from a standard intertemporal utility maximization problem as developed by \cite{deaton1991saving}.  This approach assumes an infinite time horizon where households choose water usage, borrowing, and savings in each month to maximize current and expected future utility.  
 
 Households first move to Manila in month 1 and then choose their consumption of water and other goods as well as how much to borrow and save each month until they leave the city in month $T$.  Household expected utility in each month $t$ is given by the following equation
 \begin{align}\label{eq:u}
 \begin{split}
 E_t \Big[ \sum_{\tau = t}^{T} (1+\delta)^{t-\tau} \,\frac{u(w_{\tau},x_{\tau})^{1-\gamma}}{1-\gamma}   \Big]\\
-u(w_{\tau},x_{\tau}) = \alpha \, log(w_{\tau}) + x_{\tau}
+u(w_{\tau},x_{\tau}) =  x_{\tau} -  \frac{1}{2} (w_{\tau} - \alpha)^2
 \end{split} 
 \end{align}
-where households have a rate of time preference $\delta \in (0,1)$.  Households have quasi-linear preferences over water consumption, $w_{t}$, and a bundle of other goods, $x_{t}$, given by $\alpha \in (0,1)$.  Quasi-linear preferences assume that income has no effect on consumption consistent with descriptive evidence that fluctuations in household employment are uncorrelated with water spending.  Households are assumed to have constant relative risk aversion for consumption across months given by $\gamma$.
+where households have a rate of time preference $\delta \in (0,1)$.  Households have quadratic preferences over water consumption, $w_{t}$, and a bundle of other goods, $x_{t}$.  $\alpha$ captures household's water satiation point each month, capturing the intuition that households are likely to consume a finite amount of water even if the price is zero.  Quadratic preferences also assume that income has no effect on consumption consistent with descriptive evidence that fluctuations in household employment are uncorrelated with water spending.  Households are assumed to have constant relative risk aversion for consumption across months given by $\gamma$.
 
 % \footnote{\cite{wjv} finds an average price elasticity of 0.84 in this setting while \cite{szabo2015value} finds an average price elasticity of 0.98 in South Africa.  Other studies find elasticities ranging from 0.01 to 0.81 (\cite{diakite2009proposal}, \cite{strand2005water}).} 
 
-In each period, households face a budget constraint as follows
+In each month, households face a budget constraint as follows
 \begin{align}\label{eq:bc}
 \begin{split}
 x_t \, + \, p w_t \, &= \, y_t \, - (1-C_{t+1})f  \, + \,  A_t  - \dfrac{A_{t+1}}{1+r}   \, + \,  B_t - B_{t+1} 
@@ -317,7 +317,7 @@ x_t \, + \, p w_t \, &= \, y_t \, - (1-C_{t+1})f  \, + \,  A_t  - \dfrac{A_{t+1}
 \end{align}
 where $p$ captures the price of water, which is assumed to depend linearly on water consumption to approximate the tariff in Manila, $p=p_1+p_2w_t$.   The price of the bundle of other goods, $x_t$, is normalized to one.  $y_t$ represents household income each month which takes a value of $(1+\theta)\bar{y}$ with probability $\pi$ and a value of $(1-\theta)\bar{y}$ with probability $(1-\pi)$ where $\pi \in (0,1)$ and $\theta  \in (0,1)$.  
 
-Households choose whether to remain connected in the next period given by $C_{t+1}$.  When households are disconnected ($C_{t+1}=0$), they are assumed to face fixed cost $f$ each month.  Since temporarily disconnected households are likely to share with neighbors or purchase from local vendors who resell piped water, they are assumed to face the same marginal prices as connected households.
+Households choose whether to remain connected in the next month given by $C_{t+1}$.  When households are disconnected ($C_{t+1}=0$), they are assumed to face fixed cost $f$ each month.  Since temporarily disconnected households are likely to share with neighbors or purchase from local vendors who resell piped water, they are assumed to face the same marginal prices as connected households.
 
 % talk about savings earlier!
 Households can use asset, $A$, for borrowing and saving.  $A_t$ captures debt (when $A_t<0$) or savings (when $A_t>0$) inherited from the previous month.  $A_{t+1}$ captures how much debt or savings to pass onto the following month.  Households are assumed to earn zero interest from saving consistent with low access to interest-bearing bank accounts in Manila.\footnote{Among households in the 2014 Consumer Finance Survey, 21\% have bank accounts, 14\% have bank accounts that pay interest, and 6\% have accounts that pay interest and balances over 10,000 PhP, which is the minimum balance need to earn interest.  The Philippines National Bank lists an interest rate of 0.1\% on savings accounts above 10,000 PhP (accessed Jan. 28th, 2020).} Households face interest rate $r_h$ when borrowing so that  $r=r_h$ if $A_{t+1}<0$ (and $r = 0$ if $A_{t+1}\geq 0$).  Households are assumed to pay all debts or enjoy all savings from this asset before leaving Manila so that $A_{T}=0$.  Households are also assumed to face a borrowing constraint such that $A_{t+1}\geq\overline{A}$, which prevents households from infinitely borrowing.
@@ -337,10 +337,12 @@ The borrowing constraint creates the following four cases:
 
 \textbf{Case 2:} If there is a collection attempt ($v_t=1$) and the household is connected ($C_t=1$) and chooses to stay connected ($C_{t+1}=1$), then the household needs to pay off their existing debt and cannot borrow from their water bill this month so that $B_{t+1} = 0$.
 
-\textbf{Case 3:} If the household chooses to be disconnect in the next month ($C_{t+1}=0$) likely in response to a collection attempt, then the household avoids paying existing debt but faces an additional fixed cost of $f$ per period from using from a temporary water source.  In this case, the borrowing constraint reduces to $ B_{t+1} \geq B_t$ ensuring that households can only borrow up to their existing water debt.  
+\textbf{Case 3:} If the household chooses to be disconnect in the next month ($C_{t+1}=0$) likely in response to a collection attempt, then the household avoids paying existing debt but faces an additional fixed cost of $f$ per month from using from a temporary water source.  In this case, the borrowing constraint reduces to $ B_{t+1} \geq B_t$ ensuring that households can only borrow up to their existing water debt.  
 
 \textbf{Case 4:} If the household is disconnected ($C_t=0$) and chooses to reconnect ($C_{t+1}=1$), then the household needs to pay off their existing debt and cannot borrow from their water bill this month so that $B_{t+1} = 0$.  
 % given their optimal choices of water, $w_t$, other goods, $x_t$, standard assets, $A_{t+1}$, water borrowing, $B_{t+1}$, and connection decision, $C_{t+1}$
+
+Households also face an additional borrowing constraint, $\overline{B} \leq B_{t+1}$, which prevents households from borrowing indefinitely.  In the last month $T$, households learn that they will move to either a new home in Manila (with probability $\chi$) in which case the need to pay their outstanding bills ($B_T=0$) or leave Manila (with probability $(1-\chi)$) in which case they can leave bills unpaid $\overline{B}\leq B_T \leq0$
 
 The household's maximization problem can then be written recursively where households solve for a value function, $V_t(.)$, over four possible states given by $s_{t}$: (1) high income and collection attempt with probability $\pi\lambda$, (2) high income and no collection attempt with probability $\pi(1-\lambda)$, (3) low income and collection attempt with probability $(1-\pi)\lambda$, and (4) low income and no collection attempt with probability $(1-\pi)(1-\lambda)$.  Given these states, the recursive problem can be written as follows
 \begin{align*}
@@ -361,13 +363,13 @@ with equations (\ref{eq:bc}) and (\ref{eq:borrowingconstraint}) holding each mon
 
 
 
-\textbf{Step 1:} For each possible choice of assets, $A_{t+1}$ and $B_{t+1}$, and connection status, $C_{t+1}$, households maximize utility over water, $w_t$, and other goods, $x_t$, subject to their budget constraint and borrowing constraint.  Let $Y_t$ equal total income and assets.\footnote{$Y_t=\, $}  Within each month, households maximize utility given by $ \alpha\, log(w_{t}) + x_t $ such that the budget constraint and borrowing constraint hold.
+\textbf{Step 1:} For each possible choice of assets, $A_{t+1}$ and $B_{t+1}$, and connection status, $C_{t+1}$, households maximize utility over water, $w_t$, and other goods, $x_t$, subject to their budget constraint and borrowing constraint.  Let $Y_t$ equal total income and assets.\footnote{$Y_t=\, $}  Within each month, households maximize utility given by $ x_t -  \frac{1}{2} (w_t - \alpha)^2 $ such that the budget constraint and borrowing constraint hold.
 % \begin{align*}
 % max_{w_t,x_t}& \,\,\, \alpha\, log(w_{t}) + x_t  \\
 % x_t \, &+ \, (p_1+p_2w_t)w_t \, = y_t \, - (1-C_{t+1})f  \, + \,  A_t  - \dfrac{A_{t+1}}{1+r}   \, + \,  B_t - B_{t+1}    \\
 % B_{t+1} &\geq (1-v_t)  C_{t} C_{t+1} (B_t -(p_1+p_2w_t)w_t) + (1-C_{t+1})B_t 
 % \end{align*}
-When the borrowing constraint does not bind, then households reach an interior solution under quasi-linear preferences and prices, $p=p_1+p_2$, given by $w_t^{*} =  \frac{( p_1 + 8 \alpha p_2 )^{.5} - p_1}{4p_2}$.  The borrowing constraint does not bind when connected households have small unpaid bills (ie. $B_{t+1}$ is small).  Households also consume $w_t^{*}$ in months where $w_t$ does not affect the borrowing constraint such as when households are disconnected or when households receive collection attempts.
+When the borrowing constraint does not bind, then households reach an interior solution under quasi-linear preferences and prices, $p=p_1+p_2w_t$, given by $w_t^{*} =  \frac{ \alpha - p_1}{2p_2 + 1}$.  The borrowing constraint does not bind when connected households have small unpaid bills (ie. $B_{t+1}$ is small).  Households also consume $w_t^{*}$ in months where $w_t$ does not affect the borrowing constraint such as when households are disconnected or when households receive collection attempts.
 
 % Water consumption also has no effect on the borrowing constraint when households are disconnected 
 % or when households are disconnected
@@ -382,7 +384,7 @@ When connected households want to use large unpaid bills as a source of credit (
 
 % Solving this equation for $B_{t+1}$ and substituting $Y_t =  \overline{Y}_t-(B_t-B_{t+1})$ produces a threshold level of borrowing, $\overline{B}_{t+1}= B_t + \frac{p_1}{8p_2} ( p_1 + (p_1 + \frac{8 \alpha p_2 \overline{Y}_t}{(1-\alpha)})^{.5}) -\frac{\alpha \overline{Y}_t}{2(1-\alpha)}$ where if $B_{t+1} \geq \overline{B}_{t+1}$ (ie. less negative), then households consume $w_t^{*}$ but if $B_{t+1} < \overline{B}_{t+1}$ (ie. more negative), then households consume $\overline{w}_t$.  These choices fully characterize household utility given all possible choices of assets.
 
-\textbf{Step 2:}  Given optimal consumption choices of $w_t$ and $x_t$, households then choose their assets and whether to remain connected each month to maximize $V_t(.)$.  $V_t(.)$ can be solved by working backwards from period $T$ where $A_T = 0$.  Since households are assumed to have positive time preferences ($\delta>0$) and zero interest on their savings, households have an incentive to consume their initial assets until they reach their borrowing constraints (\cite{deaton1991saving}).  
+\textbf{Step 2:}  Given optimal consumption choices of $w_t$ and $x_t$, households then choose their assets and whether to remain connected each month to maximize $V_t(.)$.  $V_t(.)$ can be solved by working backwards from month $T$ where $A_T = 0$.  Since households are assumed to have positive time preferences ($\delta>0$) and zero interest on their savings, households have an incentive to consume their initial assets until they reach their borrowing constraints (\cite{deaton1991saving}).  
 
 
 % \subsection{Model Intuition}

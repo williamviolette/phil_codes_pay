@@ -1,25 +1,24 @@
-function [h]=print_estimates(folder,est_boot,e_temp)
+function [h]=print_estimates(folder,estimate_file)
 
 
 
  %%% Estimates table
     if given_sim==0
-        estimates = csvread(strcat(folder,'estimates.csv'));
+        estimates = csvread(strcat(folder,estimate_file));
         res_out = given;
         res_out(option)=estimates;
     else
         estimates = csvread(strcat(folder,'given.csv'));
     end
     
-    est_boot=[];
-    for h=br_est(1):br_est(2)
-        e_temp = csvread(strcat(folder,'estimates_',num2str(h),'.csv'));
-        est_boot = [est_boot; e_temp];
-    end
-    
-    
-    est_var = std(est_boot);
-    
+%     est_boot=[];
+%     for h=br_est(1):br_est(2)
+%         e_temp = csvread(strcat(folder,'estimates_',num2str(h),'.csv'));
+%         est_boot = [est_boot; e_temp];
+%     end
+        
+%     est_var = std(est_boot);
+%     
     %%% PRINT ESTIMATES
     %[~]=est_print(estimates,cd_dir);
     fileID = fopen(strcat(cd_dir,'est_alpha.tex'),'w');
@@ -32,6 +31,7 @@ function [h]=print_estimates(folder,est_boot,e_temp)
     fileID = fopen(strcat(cd_dir,'est_beta.tex'),'w');
         fprintf(fileID,'%s\n',num2str(estimates(2),'%5.4f')); 
         fclose(fileID);
+        
         
     fileID = fopen(strcat(cd_dir,'est_alpha.tex'),'w');
         fprintf(fileID,'%s\n',num2str(estimates(3),'%5.3f')); 
