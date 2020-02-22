@@ -30,11 +30,13 @@ if untied==0
         y_12f = y_12f-(Bprime<0).*h;
     end
     if vh>0
-       y_34f = y_34f - (Bprime<0).*(cc+cd).*vh;
+       y_34f = y_34f - (B<0).*(cc+cd).*vh;
     end
-    if fee>0
-        y_34f = y_34f-fee.*(cc+dc);
-        y_12f = y_12f-fee.*(cc+dc);  
+    if fee~=0
+        y_34f = y_34f-fee;
+%         .*(cc+dc);
+        y_12f = y_12f-fee;
+%         .*(cc+dc);  
     end
     
     
@@ -58,7 +60,7 @@ if untied==0
 else
 
     y_12f = (A-Aprime_inc + B-Bprime);
-    if fee>0
+    if fee~=0
         y_12f = y_12f-fee;  
     end
         

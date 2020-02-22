@@ -11,27 +11,12 @@ cd_dir ='/Users/williamviolette/Documents/Philippines/phil_analysis/phil_codes_p
 
 real_data      = 1    ;
 
-simple_counter = 0    ;
 given_sim      = 1    ;
-short_est               = 0    ;
-short_est_pattern       = 0    ;
-extra_stats    = 0    ;
-
-diary1 = 0;
-
-for_list = 0 ;
-
-second_output = 0     ;
-pick_sv       = 0     ;
-full_est      = 0     ;
-est_many      = 0     ;
-est_tables    = 0     ;
-counter       = 0     ;
+short_est_pattern = 0 ;
+results        = 0    ;
+boot           = 0    ;
 
 
-if diary1==1
-    diary '/Users/williamviolette/Documents/Philippines/phil_analysis/phil_temp_pay/moments/myDiaryFile';
-end
 
 bs            = 0 ; % bootstrap option
 br       = [1 10] ; % rep interval
@@ -50,26 +35,22 @@ s=32*12; % sets account length
 
 mult_set = [  1  ];
 
-n  = 100000; 
+n  = 10000; 
+rng(1);
+X=rand(n-1,1);
 sigA = 0;
 sigB = 0;
 nD   = 2;
 
+ver = '';
 
-%%%%%%%%% ESTIMATION %%%%%%%%%%
-
-% option = [ 7 8 12 17 18   ];   %%% what to estimate
-% option_moments       = [ 1 2 3 4 5 ];  %%% moments to use!
-% option_moments_est   = [ 1 2 3 4 5 ];
-
-   
   %  alpha pd pc 
 option = [ 7 12 17 ];   %%% what to estimate
 lb = [ 40 10  .01 ];
 ub = [ 80 400 .99 ];
 
-option_moments       = [ 1 2 3 4 5 ];  %%% moments to use!
-option_moments_est   = [ 1 2 3 4 5 ];
+option_moments       = [ 1 2 3   ];  %%% moments to use!
+option_moments_est   = [ 1 2 3   ];
 
 inc_t=1;
 
@@ -78,7 +59,8 @@ inc_t=1;
     popadj = 2.4*12;
     
 [c_avg,c_std,bal_avg,bal_med,bal_std,bal_corr,...
-    bal_0,bal_end,...
+    dc_shr,...
+    bal_0,bal_end,bal_0_end,...
     am_d, am_d4,...
     am1,am2,am3,am4,...
     amar1,amar2,amar3,amar4,...
@@ -87,29 +69,15 @@ inc_t=1;
     delinquency_cost,r_lend,dc_prob] ...
         = import_to_matlab_t3(folder,one_price,1);
     
-data_moments = [ c_avg; bal_avg; am_d; bal_0; bal_end ] ;
+data_moments = [ c_avg; bal_avg; dc_shr; am_d; bal_0; bal_end ] ;
 
 format long g
 
-%%%%% KEY SET %%%%%
-% if for_list == 1
-%     nA = 20*i    %%%  
-%     nB = 20*i    %%%  
-% else
-    nA = 20
-    nB = 80
-% end
+    nA = 40
+    nB = 40
 
-%%% 20,20:
-% 1.2 sec per iteration, 48 iterations, 214 seconds
-% res =0.0161106479167938                     0.033                       580
-
-Alb = -3.*y_avg ;
+Alb = -2.*y_avg ;
 Aub =  3.*y_avg ;
-% Blb =  4.*Blb ;
-% Blb = -15000 ;
-Blb = -20000
-
 
 %%% annual rate of 5.75%, which implies a monthly interest rate of .0047
 r_lend     = .0047 ;
@@ -117,12 +85,26 @@ r_high     = .0945 ;
 
 % beta_set = .02508  % 1/((1+beta_set)^(12))
 beta_set   = .005
+if strcmp(ver,'bhigh')==1
+    beta_set = .01
+end
+if strcmp(ver,'blow')==1
+    beta_set = .0025
+end
+% (1+.01)^(12)-1   % 1/(1+x) = 1/((1+d)^12)
 
-    %             1       2        3         4         5       6      7     8        9     10  11   12   13  14    15   16     17  18              
-    % given :  r_lend , r_water, r_high, hasscost, inc shock, untie, alpha, beta_up , Y   , p1, p2 , pd,  n, curve, fee, vhass pc  pm
-given =        [   0     0       r_high       0      y_cv      0     53    beta_set  y_avg   p1  p2   100  n    1     0    0  .15  .21    ];
+    %             1       2        3         4         5       6      7     8        9      10  11   12   13  14     15   16     17       18   19            
+    % given :  r_lend , r_water, r_high, hasscost, inc shock, untie, alpha, beta_up , Y   , p1, p2 , pd,  n, curve, fee, vhass   pc       pm   Blb 
+given =        [   0     0       r_high    0        y_cv      0      54    beta_set  y_avg  p1  p2   178  n    1     0      0  .1822  .001 Blb   ];
+if strcmp(ver,'bhigh')==1
+    given =    [   0     0       r_high    0        y_cv      0      54    beta_set  y_avg  p1  p2   190  n    1     0      0    .24 bal_0_end Blb   ];
+end
+if strcmp(ver,'blow')==1
+    given =    [   0     0       r_high    0        y_cv      0      55    beta_set  y_avg  p1  p2   150  n    1     0      0    .16 bal_0_end Blb   ];
+end
 
-csvwrite(strcat(folder,'given.csv'),given);
+
+% csvwrite(strcat(folder,'given.csv'),given);
                         
             
 if real_data == 1
@@ -132,7 +114,7 @@ else
 end
    
 tic
-[est_mom,ucon,controls,~,~,A1,B1]=obj(given,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,s,int_size,refinement);
+[est_mom,ucon,controls,~,~,A1,B1]=obj(given,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
 toc
 
 disp ' Sim '
@@ -153,12 +135,14 @@ sum(controls(controls(:,6)==s,3)==min(controls(controls(:,6)==s,3)))/sum(control
 disp ' B loan average '
 mean(controls(controls(:,6)==s,3))
 
+         
+
 
 if short_est_pattern==1
-        options = optimoptions('patternsearch','Display','iter','MaxFunctionEvaluations',100,'MaxIterations',10,'InitialMeshSize',.075,'UseParallel',true);
+        options = optimoptions('patternsearch','Display','iter','MaxFunctionEvaluations',200,'MaxIterations',30,'InitialMeshSize',1,'UseParallel',true);
         weights =  eye(size(data,1))./(data.^2) ;   % normalize moments to be between zero and one (matters quite a bit)
         ag = given(option);    
-        obj_run = @(a1)objopt(a1,given,data,option,option_moments_est,weights,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,s,int_size,refinement);
+        obj_run = @(a1)objopt(a1,given,data,option,option_moments_est,weights,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
                     disp ' old obj: ' 
                     obj_run(ag)
                     disp ' '
@@ -172,198 +156,64 @@ if short_est_pattern==1
                     disp   '   truth               estimates   ' 
                     [ round(data(:,1),2)  round(est_mom,2) ]
                     disp ' psearch done ! :)'
-%        csvwrite(strcat(folder,'pattern_estimates.csv'),res)
+         csvwrite(strcat(folder,'pattern_estimates_',ver,'.csv'),res)
+         
+    rb=zeros(4,3);
+    if boot==1
+        for i=1:size(rb,1)
+            rng(i);
+            X1=rand(n-1,1);
+            c_avg     = csvread(strcat(folder,'c_avg_',num2str(i),'.csv'))  ;
+            bal_avg   = csvread(strcat(folder,'bal_avg_',num2str(i),'.csv'));
+            dc_shr = csvread(strcat(folder,'dc_shr_',num2str(i),'.csv'));
+            data_moments_boot = [ c_avg; bal_avg; dc_shr ]
+
+            data = data_moments_boot(option_moments,:);
+
+            options = optimoptions('patternsearch','Display','iter','MaxFunctionEvaluations',200,'MaxIterations',30,'InitialMeshSize',1,'UseParallel',true);
+            weights =  eye(size(data,1))./(data.^2) ;   % normalize moments to be between zero and one (matters quite a bit)
+            ag = given(option);    
+            obj_run = @(a1)objopt(a1,given,data,option,option_moments_est,weights,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X1);
+                        disp ' old obj: ' 
+                        obj_run(ag)
+                        disp ' '
+                        disp 'pattern search ... '
+                        tic
+                        [res,fval,~,Output] = patternsearch(obj_run,ag,[],[],[],[],lb,ub,[],options)
+                        fprintf('The number of iterations was : %d\n', Output.iterations);
+                        fprintf('The number of function evaluations was : %d\n', Output.funccount);
+                        toc
+                        [~,~,est_mom]=obj_run(res);
+                        disp   '   truth               estimates   ' 
+                        [ round(data(:,1),2)  round(est_mom,2) ]
+                        disp ' psearch done ! :)'
+             csvwrite(strcat(folder,'pattern_estimates_',ver,'_',num2str(i),'.csv'),res)
+        end
+    end 
 end
-   
-
-
-
-
-
-
-
-if short_est==1
-        options = optimoptions('surrogateopt','Display','iter','MaxFunctionEvaluations',20,'InitialPoints',given(option));
-        weights =  eye(size(data,1))./(data.^2) ;   % normalize moments to be between zero and one (matters quite a bit)
-        ag = given(option);    
-        obj_run = @(a1)objopt(a1,given,data,option,option_moments_est,weights,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,s,int_size,refinement);
-                    disp ' old obj: ' 
-                    obj_run(ag)
-                    disp ' '
-                    disp 'surrogate opt ... '
-                    tic
-                    [res,fval,~,Output] = surrogateopt(obj_run,lb,ub,options)
-                    toc
-                    [~,~,est_mom]=obj_run(res);
-                    disp   '   truth               estimates   ' 
-                    [ round(data(:,1),2)  round(est_mom,2) ]
-                    disp ' psearch done ! :)'
-end
-
-
 
 
     
+
+if results==1
+    rb=zeros(4,3);
+    if boot==1
+        for i = 1:size(rb,1)
+           rb(i,:) =  csvread(strcat(folder,'pattern_estimates_',ver,'_',num2str(i),'.csv'));
+        end
+    end
+    r = csvread(strcat(folder,'pattern_estimates_',ver,'.csv'));
+
+    j=print_estimates(cd_dir,r,rb,ver);
+    j=fit_print(cd_dir,r,ver,given,option,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
+    j=counterfactuals_fixedcost(cd_dir,r,ver,given,option,ppinst,r_lend,visit_price,marginal_cost,p1,p2,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
+end
+
+
+
+
 
 %{
-
-% unique(controls(:,2))
-% unique(controls(:,3))
-
-
-disp ' PRE UTILITY DERIVATIVE '
-[rev_goal,lend_cost,delinquency_cost,visit_cost,wwr]=cost_calc(controls,r_lend,visit_price,marginal_cost,p1,p2,s);
-
-res_poor = given ;
-res_poor(:,9) = given(:,9) - 1000;
-[~,u_poor,sim_poor] = obj(res_poor,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,s,int_size,refinement);
-
-u_ch = (ucon-u_poor)/1000;
-
-
-disp ' UN-TIED '
-    resu = given;
-    resu(:,6)=1;
-    [~,uu_ut,simu] = obj(resu,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,s,int_size,refinement);
-    disp 'utility from untied'
-    (ucon-uu_ut)/u_ch
-   
-    rev_goal_u = cost_calc(simu,r_lend,visit_price,marginal_cost,p1,p2,s);
-    disp 'Pre-Post: Rev'
-    rev_goal-rev_goal_u
-    
-    resu_c = resu;
-    resu_c(:,15)=rev_goal - rev_goal_u ;
-    [~,uu_c,simu_c] =obj(resu_c,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,s,int_size,refinement);
-    disp 'compensated utility from untied'
-    (ucon-uu_c)/u_ch
-   
-
-disp ' NO-LOAN '
-
-    res_nl = given;
-    res_nl(:,2) = .8;
-    [~,u_nl,sim_nl] =obj(res_nl,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,s,int_size,refinement);
-    disp 'utility from no loan'
-    (ucon-u_nl)/u_ch
-
-    [rev_goal_nl,~,~,~,wwr_nl] = cost_calc(sim_nl,r_lend,visit_price,marginal_cost,p1,p2,s);
-    disp 'Pre-Post: Rev'
-    rev_goal-rev_goal_nl
-  
-    R = rev_goal;
-    as =given(:,7);
-    mc = marginal_cost;
-    p2s = p2;
-    p1s = p1;
-    p1_new = (as + mc - 2*p2s*(as^2 - 2*as*mc + mc^2 - 4*R - 4*R*p2s)^(1/2) + 2*mc*p2s - (as^2 - 2*as*mc + mc^2 - 4*R - 4*R*p2s)^(1/2))/(2*(p2s + 1))
-
-    res_nlc = res_nl;
-    res_nl(:,10) = p1_new;
-    [~,u_nlc,sim_nlc] =obj(res_nl,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,s,int_size,refinement);
-    disp 'compensated utility from no loan'
-    (ucon-u_nlc)/u_ch
-    
-    
-    
-    
-    
-disp ' Optimal Visit Rate'
-
-    res_ov = given;
-    res_ov(:,17) = .1;
-    [~,u_ov,sim_ov] =obj(res_ov,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,s,int_size,refinement);
-    disp 'utility from ovisit rate'
-    (ucon-u_ov)/u_ch
-
-    [rev_goal_ov,~,~,~,wwr_ov] = cost_calc(sim_ov,r_lend,visit_price,marginal_cost,p1,p2,s);
-
-    disp ' how much cash to raise?'
-    rev_goal-rev_goal_ov
-    
-    inflator = mean(sim_ov(:,1)) - (given(7)-p1)./(p2.*2+1) ; %%% how much extra water do you use?
-    
-    R =  rev_goal + (wwr_ov-rev_goal_ov);
-    I = inflator;
-    as = given(:,7);
-    mc = marginal_cost;
-    p2s = p2;
-    p1_ov =  (I + as + mc + 2*I*p2s - 2*p2s*(4*I^2*p2s^2 + 4*I^2*p2s + I^2 + 4*I*as*p2s + 2*I*as - 4*I*mc*p2s - 2*I*mc + as^2 - 2*as*mc + mc^2 - 4*R*p2s - 4*R)^(1/2) + 2*mc*p2s - (4*I^2*p2s^2 + 4*I^2*p2s + I^2 + 4*I*as*p2s + 2*I*as - 4*I*mc*p2s - 2*I*mc + as^2 - 2*as*mc + mc^2 - 4*R*p2s - 4*R)^(1/2))/(2*(p2s + 1));
-  
-    res_ovc = res_ov;
-    res_ovc(:,10) = p1_ov;
-    [~,u_ovc,sim_ovc] =obj(res_ovc,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,s,int_size,refinement);
-    disp 'compensated utility from ovisit rate'
-    (ucon-u_ovc)/u_ch
-    
-    [rev_goal_ovc,~,~,~,wwr_ovc] = cost_calc(sim_ovc,r_lend,visit_price,marginal_cost,p1_ov,p2,s);
-
-    rev_goal-rev_goal_ovc
-    
-     
-
-Ogride = (.02:.02:.12)' ;
-Uov = zeros(size(Ogride,1),1);
-Pov = zeros(size(Ogride,1),1);
-Rov = zeros(size(Ogride,1),1);
-
-for i=1:size(Ogride,1)
-       
-    disp ' Optimal Visit Rate'
-
-    res_ov = given;
-    res_ov(:,17) = Ogride(i);
-    [~,u_ov,sim_ov] =obj(res_ov,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,s,int_size,refinement);
-    disp 'utility from ovisit rate'
-    (ucon-u_ov)/u_ch
-
-    [rev_goal_ov,~,~,~,wwr_ov] = cost_calc(sim_ov,r_lend,visit_price,marginal_cost,p1,p2,s);
-
-    disp ' how much cash to raise?'
-    rev_goal-rev_goal_ov
-    
-    inflator = mean(sim_ov(:,1)) - (given(7)-p1)./(p2.*2+1) ; %%% how much extra water do you use?
-    
-    R =  rev_goal + (wwr_ov-rev_goal_ov);
-    I = inflator;
-    as = given(:,7);
-    mc = marginal_cost;
-    p2s = p2;
-    p1_ov =  (I + as + mc + 2*I*p2s - 2*p2s*(4*I^2*p2s^2 + 4*I^2*p2s + I^2 + 4*I*as*p2s + 2*I*as - 4*I*mc*p2s - 2*I*mc + as^2 - 2*as*mc + mc^2 - 4*R*p2s - 4*R)^(1/2) + 2*mc*p2s - (4*I^2*p2s^2 + 4*I^2*p2s + I^2 + 4*I*as*p2s + 2*I*as - 4*I*mc*p2s - 2*I*mc + as^2 - 2*as*mc + mc^2 - 4*R*p2s - 4*R)^(1/2))/(2*(p2s + 1));
-  
-    res_ovc = res_ov;
-    res_ovc(:,10) = p1_ov;
-    [~,u_ovc,sim_ovc] =obj(res_ovc,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,s,int_size,refinement);
-    disp 'compensated utility from ovisit rate'
-    (ucon-u_ovc)/u_ch
-    
-    [rev_goal_ovc,~,~,~,wwr_ovc] = cost_calc(sim_ovc,r_lend,visit_price,marginal_cost,p1_ov,p2,s);
-
-    Uov(i,1) = (ucon-u_ovc)/u_ch;
-    Rov(i,1) = rev_goal-rev_goal_ovc;
-    Pov(i,1) = p1_ov;
-end
-    
-    
-
-
-    
-    
-    
-    
-    
-
-
-
-
-
-
-
-if diary1==1 
-    diary off
-end
-
-
 
    
     
@@ -879,3 +729,57 @@ if counter==1
 %  wse = (as-p1s)./(p2s.*2.0+1.0)
 %  rr = wse*(p1s+p2s*wse)
 %  solve(rr-R,p2s)
+
+
+
+%%% SUPER USEFUL GRID TEST THAT DEFINITELY CONFIRMS 50 50 AND EVEN 40 40
+% gt = [20:10:60]' ;
+% res = zeros(size(gt,1),5)
+% for i=1:size(gt,1)
+%     nA = gt(i) 
+%     nB = gt(i)
+%     tic
+%     [est_mom,ucon,controls,~,~,A1,B1]=obj(given,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
+%     toc
+%     res(i,:)=est_mom';
+% end
+% res
+
+%         weights =  eye(size(data,1))./(data.^2) ;   % normalize moments to be between zero and one (matters quite a bit)
+%         ag = given(option);    
+%         obj_run = @(a1)objopt(a1,given,data,option,option_moments_est,weights,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,s,int_size,refinement);
+%         obj_run(ag)
+                    
+
+
+
+
+
+
+
+
+
+
+% if short_est==1
+%         options = optimoptions('surrogateopt','Display','iter','MaxFunctionEvaluations',20,'InitialPoints',given(option));
+%         weights =  eye(size(data,1))./(data.^2) ;   % normalize moments to be between zero and one (matters quite a bit)
+%         ag = given(option);    
+%         obj_run = @(a1)objopt(a1,given,data,option,option_moments_est,weights,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,s,int_size,refinement);
+%                     disp ' old obj: ' 
+%                     obj_run(ag)
+%                     disp ' '
+%                     disp 'surrogate opt ... '
+%                     tic
+%                     [res,fval,~,Output] = surrogateopt(obj_run,lb,ub,options)
+%                     toc
+%                     [~,~,est_mom]=obj_run(res);
+%                     disp   '   truth               estimates   ' 
+%                     [ round(data(:,1),2)  round(est_mom,2) ]
+%                     disp ' psearch done ! :)'
+% end
+% 
+% 
+
+
+
+

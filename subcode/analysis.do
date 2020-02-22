@@ -70,13 +70,13 @@ drop dc_date_id
 
 
 
-do smoothing_test.do
+do smoothing_test.do  // THERE IS AN ISSUE WITH HOW MEANS ARE CALCULATED!! (USE R(sample!))
 
 
 
 
 *** KEY KEEP! ***	
-keep if date>=600
+keep if date>=603
 
 
 *** DISCONNECTION RATE!
@@ -95,9 +95,55 @@ sum dc_enter1 		if date>=`=tm(2012m1)' & date<=`=tm(2014m5)'
 corr dc_enter1 date if date>=`=tm(2012m1)' & date<=`=tm(2014m5)'
 
 
+replace disc_count=0 if disc_count==.
+g am_pre = am if date<dc_date
+gegen amm = max(am_pre), by(conacct)
+
+
+do export_moments.do
+
+set seed 10
+forvalues r = 1/10 {
+	global tag = "_`r'"
+	preserve
+		keep conacct
+		duplicates drop conacct, force
+		bsample
+		duplicates tag conacct, g(D)
+		duplicates drop conacct, force
+		replace D = D+1 
+		save "${temp}boot_temp.dta", replace
+	restore
+
+	preserve
+		merge m:1 conacct using "${temp}boot_temp.dta"
+		keep if _merge==3
+		drop _merge
+
+		expand D
+		sort conacct date	
+		by conacct date: g ns = _n
+
+		sort conacct ns date
+		order conacct ns date
+
+		do export_essential.do
+	restore
+
+}
 
 
 
+
+g TD = date-dc_date
+
+
+gegen balTD = mean(bal), by(TD)
+gegen tagTD = tag(TD)
+
+
+
+scatter balTD TD if tagTD==1 & TD<=0 & TD>=-6
 
 
 * g DC = date>=dc_date

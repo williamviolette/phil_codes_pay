@@ -1,68 +1,47 @@
 * export_moments
 
 
-gegen max_bal= max(bal), by(conacct)
-gegen mean_amount = mean(amount), by(conacct)
 
-g bal_shr = bal/max_bal
-replace bal_shr = 0 if bal==0
-
-hist bal_shr if bal_shr>=0 & am!=1, bin(20)   //  consistent with buffer stock!!
-
-g bal_nz = bal!=0 & am!=1
-sort conacct date
-by conacct: g bal_row = bal_nz[_n]==1 & bal_nz[_n-1]==1
-by conacct: g tcd_id_l = tcd_id[_n+1]
-
-sum bal_nz
-sum bal_row   // also consistent with buffer stock!
- 
- hist bal_shr if dc_date==date & bal_shr==0
-
-areg c i.ar if am!=1 & c!=0, a(conacct) cluster(conacct) r
-
-sum c if bal==0
-sum c if bal>0 & bal<.
-
-g bm = max_bal==bal
-sum bm if tcd_id==1
-
-g bal0 = bal==0
-sum bal0 if dc_date==date 
-
-sum bal if dc_date!=.
-sum bal if dc_date==date & bal>=0
-sum bal if date<dc_date-10
-sum max_bal if dc_date==date
-
-sum tcd_id if ar_lag>=91 & ar_lag<=240
-sum tcd_id if ar_lag>=91 & ar_lag<=240 & bal_lag>5000 & bal_lag<.
-
-sum tcd_id if ar_lag==91 &  bal_lag<=10*mean_amount & bal_lag<. & date<dc_date
-sum tcd_id if ar_lag==91 &  bal_lag>10*mean_amount & bal_lag<. & date<dc_date
-
-sum tcd_id if ar_lag==91  & bal_lag>10*mean_amount & bal_lag<. & date<dc_date
-sum tcd_id if ar_lag==121 & bal_lag>10*mean_amount & bal_lag<. & date<dc_date
-sum tcd_id if ar_lag>=91  & ar_lag<=240 & bal_lag>12*mean_amount & bal_lag<.
+sum am if date<dc_date, detail
+write "${moments}dc_shr.csv" `=r(mean)' 0.0001 "%12.4g"
+write "${tables}dc_shr.tex"  `=r(mean)' 0.0001 "%12.4fc"
+write "${tables}dc_shr_per.tex" `=100*`=r(mean)'' 0.1 "%12.1fc"
 
 
 
 g bal_0 = 0 if bal!=0
 replace bal_0 = 1 if bal==0
-
 sum bal_0, detail
 write "${moments}bal_0.csv" `=r(mean)' 0.0001 "%12.4g"
+write "${tables}bal_0.tex" `=r(mean)' 0.01 "%12.2fc"
+write "${tables}bal_0_per.tex" `=100*r(mean)' 0.1 "%12.0fc"
 
-g bal_small = 0 if bal!=.
-replace bal_small = 1 if bal<200
+sum bal_0 if dc_date==date
+write "${moments}bal_0_end.csv" `=r(mean)' 0.0001 "%12.4g"
+write "${tables}bal_0_end.tex" `=r(mean)' 0.01 "%12.2fc"
+write "${tables}bal_0_end_per.tex" `=100*r(mean)' 0.1 "%12.0fc"
 
-sum bal_small if dc_date==date
-
-sum bal if bal>0 & dc_date==date
 
 sum bal if dc_date==date
 write "${moments}bal_end.csv" `=r(mean)' 0.1 "%12.0g"
+write "${tables}bal_end.tex" `=r(mean)' 0.1 "%12.0fc"
 
+
+
+*** Consumption
+	sum c, detail
+		write "${moments}c_avg.csv" `=r(mean)' 0.1 "%12.0g"
+		write "${tables}c_avg.tex" `=r(mean)' 0.1 "%12.0g"
+
+
+*** Balance
+	sum bal
+	write "${moments}bal_avg.csv" `=r(mean)' 0.1 "%12.0g"
+	write "${tables}bal_avg.tex" `=r(mean)' 1 "%12.0g"
+
+	sum bal, detail
+	write "${moments}bal_med.csv" `=r(p50)' 0.1 "%12.0g"
+	write "${tables}bal_med.tex" `=r(p50)' 0.1 "%12.0g"
 
 
 
@@ -71,7 +50,7 @@ write "${moments}bal_end.csv" `=r(mean)' 0.1 "%12.0g"
 	preserve
 		keep conacct
 		duplicates drop conacct, force
-		write "${tables}est_hhs.tex" `=_N' 1 "%12.0fc"
+			write "${tables}est_hhs.tex" `=_N' 1 "%12.0fc"
 	restore
 
 
@@ -80,7 +59,9 @@ write "${moments}bal_end.csv" `=r(mean)' 0.1 "%12.0g"
 	g p_avg = amount/c
 	sum p_avg
 	write "${moments}p_avg.csv" `=r(mean)' 0.1 "%12.0g"
+
 	write "${tables}p_avg.tex" `=r(mean)' 0.1 "%12.0g"
+
 
 	reg p_avg c
 	est sto preg
@@ -91,8 +72,10 @@ write "${moments}bal_end.csv" `=r(mean)' 0.1 "%12.0g"
 	write "${moments}p_int.csv" `=p_int' 0.001 "%12.0g"
 	write "${moments}p_slope.csv" `=p_slope' 0.001 "%12.0g"
 
+
 	write "${tables}p_int.tex" `=p_int' 0.1 "%12.1fc"
 	write "${tables}p_slope.tex" `=p_slope' 0.1 "%12.1fc"
+
 
 	lab var c "Usage (m3)"
 
@@ -133,9 +116,9 @@ write "${moments}bal_end.csv" `=r(mean)' 0.1 "%12.0g"
 
 
 *** balance 95th percentile bound
-	sum bal if bal>0, detail
-	write "${moments}Bb.csv" `=r(p95)' 1 "%12.0g"
-	write "${tables}Bb.tex" `=r(p95)' 1 "%12.0fc"
+	sum bal, detail
+	write "${moments}Bb.csv" `=r(p99)' 1 "%12.0g"
+	write "${tables}Bb.tex" `=r(p99)' 1 "%12.0fc"
 
 
 
@@ -165,44 +148,6 @@ sum tcd_max, detail
 
 * sum tcd_id if ar_lag>31  & bal_lag>2000
 * sum tcd_id if ar_lag>31  & bal_lag<2000
-
-
-*** Consumption
-	sum c, detail
-		write "${moments}c_avg.csv" `=r(mean)' 0.1 "%12.0g"
-		write "${tables}c_avg.tex" `=r(mean)' 0.1 "%12.0g"
-
-
-	egen c_i = mean(c), by(conacct)
-	g c_norm = c - c_i
-	sum c_norm, detail
-	write "${moments}c_std.csv" `=r(sd)' 0.1 "%12.0g" 
-	write "${tables}c_std.tex" `=r(sd)' 0.1 "%12.0g" 
-	drop c_i c_norm
-
-
-*** Balance
-	sum bal
-	write "${moments}bal_avg.csv" `=r(mean)' 0.1 "%12.0g"
-	write "${tables}bal_avg.tex" `=r(mean)' 0.1 "%12.0g"
-
-	sum bal, detail
-	write "${moments}bal_med.csv" `=r(p50)' 0.1 "%12.0g"
-	write "${tables}bal_med.tex" `=r(p50)' 0.1 "%12.0g"
-
-	egen bal_i = mean(bal), by(conacct)
-	g bal_norm = bal - bal_i
-	sum bal_norm 
-	write "${moments}bal_std.csv" `=r(sd)' 0.1 "%12.0g"
-	write "${tables}bal_std.tex" `=r(sd)' 0.1 "%12.0g"
-	drop bal_i bal_norm
-
-
-	corr bal c
-	matrix C = r(C)
-	local cv "C[1,2]"
-	write "${moments}bal_corr.csv" `cv' 0.001 "%12.0g"
-	write "${tables}bal_corr.tex" `cv' 0.001 "%12.0g"
 
 
 
@@ -269,6 +214,55 @@ sum dc_months if DC_TEMP_3==1, detail
 write "${tables}t_rec_3.tex" `=r(mean)' .1 "%12.0g"
 sum dc_months if DC_TEMP_3l==1, detail
 write "${tables}t_rec_3l.tex" `=r(mean)' .1 "%12.0g"
+
+
+
+/*
+
+* gegen max_bal= max(bal), by(conacct)
+* gegen mean_amount = mean(amount), by(conacct)
+
+* g bal_shr = bal/max_bal
+* replace bal_shr = 0 if bal==0
+
+* hist bal_shr if bal_shr>=0 & am!=1, bin(20)   //  consistent with buffer stock!!
+
+* g bal_nz = bal!=0 & am!=1
+* sort conacct date
+* by conacct: g bal_row = bal_nz[_n]==1 & bal_nz[_n-1]==1
+* by conacct: g tcd_id_l = tcd_id[_n+1]
+
+* sum bal_nz
+* sum bal_row   // also consistent with buffer stock!
+ 
+*  hist bal_shr if dc_date==date & bal_shr==0
+
+* areg c i.ar if am!=1 & c!=0, a(conacct) cluster(conacct) r
+
+* sum c if bal==0
+* sum c if bal>0 & bal<.
+
+* g bm = max_bal==bal
+* sum bm if tcd_id==1
+
+* g bal0 = bal==0
+* sum bal0 if dc_date==date 
+
+* sum bal if dc_date!=.
+* sum bal if dc_date==date & bal>=0
+* sum bal if date<dc_date-10
+* sum max_bal if dc_date==date
+
+* sum tcd_id if ar_lag>=91 & ar_lag<=240
+* sum tcd_id if ar_lag>=91 & ar_lag<=240 & bal_lag>5000 & bal_lag<.
+
+* sum tcd_id if ar_lag==91 &  bal_lag<=10*mean_amount & bal_lag<. & date<dc_date
+* sum tcd_id if ar_lag==91 &  bal_lag>10*mean_amount & bal_lag<. & date<dc_date
+
+* sum tcd_id if ar_lag==91  & bal_lag>10*mean_amount & bal_lag<. & date<dc_date
+* sum tcd_id if ar_lag==121 & bal_lag>10*mean_amount & bal_lag<. & date<dc_date
+* sum tcd_id if ar_lag>=91  & ar_lag<=240 & bal_lag>12*mean_amount & bal_lag<.
+
 
 
 

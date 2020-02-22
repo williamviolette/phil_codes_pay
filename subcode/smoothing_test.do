@@ -33,7 +33,9 @@ preserve
 	sort conacct date
 	by conacct: replace amount = amount[_n-1] if date==595
 	by conacct: replace amount = amount[_n-1] if date==593
-	
+	by conacct: replace am = am[_n-1] if date==595
+	by conacct: replace am = am[_n-1] if date==593
+
 	keep if hhsize_paws!=.
 	sort conacct date
 	foreach var of varlist hhemp_paws hhsize_paws amount pay am enough_time  {
@@ -119,7 +121,7 @@ restore
 
 
 
-estout amount_ch pay_ch am_ch inc_ch using "${tables}table_panel_analysis.tex", replace  style(tex) ///
+estout amount_ch pay_ch inc_ch using "${tables}table_panel_analysis.tex", replace  style(tex) ///
 	keep( hhemp_paws_ch hhsize_paws_ch   ) order(hhemp_paws_ch hhsize_paws_ch) ///
 		varlabels(hhemp_paws_ch "$\Delta$ Working Members" hhsize_paws_ch "$\Delta$ Total Members", el(  hhemp_paws_ch "[0.5em]" hhsize_paws_ch "[0.5em]") )  label noomitted ///
 		  mlabels(,none)   collabels(none)  cells( b(fmt(2) star ) se(par fmt(2)) ) ///

@@ -1,6 +1,6 @@
 
 
-global data_prep   = 0
+global data_prep   = 1
 global data_prep_2 = 1
 
 
@@ -109,7 +109,7 @@ use "${temp}temp_descriptives.dta", clear
 
 
 * Keep residential
-	egen max_class = max(class), by(conacct)
+	gegen max_class = max(class), by(conacct)
 	keep if max_class==1
 	drop max_class
 	writeN class_drop
@@ -124,7 +124,7 @@ use "${temp}temp_descriptives.dta", clear
 
 * Keep only accounts with payment records
 	g p1 = pay>0 & pay<.
-	egen ps=sum(p1), by(conacct)
+	gegen ps=sum(p1), by(conacct)
 	NN
 	keep if ps>3
 	drop ps p1  
@@ -140,9 +140,9 @@ use "${temp}temp_descriptives.dta", clear
 
 	g amount_r = round(amount,50)
 	g yr = round(date,12)
-	egen amount_r_date = group(amount_r yr)
+	gegen amount_r_date = group(amount_r yr)
 	g c_low = c if c<=100
-	egen c_mean=mean(c_low), by(amount_r_date)
+	gegen c_mean=mean(c_low), by(amount_r_date)
 	replace c_mean = round(c_mean,1)
 
 	replace c = c_mean if c>(c_mean+10)  & c<.
@@ -156,9 +156,9 @@ use "${temp}temp_descriptives.dta", clear
 
 
 	NN
-	egen min_amount = min(amount), by(conacct)
+	gegen min_amount = min(amount), by(conacct)
 	drop if min_amount<-5000
-	egen max_amount = max(amount), by(conacct)
+	gegen max_amount = max(amount), by(conacct)
 	drop if max_amount>20000
 	* keep if (amount>=-5000 & amount<=80000) | amount==.
 	global amount_N = `=_N'
@@ -169,8 +169,8 @@ use "${temp}temp_descriptives.dta", clear
 	* sum bal if bal<0, detail    
 	* drop if bal<-5000
 	NN
-	egen max_bal =max(bal), by(conacct)
- 	egen min_bal = min(bal), by(conacct)
+	gegen max_bal =max(bal), by(conacct)
+ 	gegen min_bal = min(bal), by(conacct)
 	* sum bal if bal>0, detail
 	drop if max_bal>80000  
 	drop if min_bal<-10000
@@ -182,7 +182,7 @@ use "${temp}temp_descriptives.dta", clear
 	*** DON'T NEED PAY FILTER ANYMORE
 	* NN
 	replace pay =0 if pay<0
-	egen max_pay = max(pay), by(conacct)
+	gegen max_pay = max(pay), by(conacct)
 	keep if max_pay<50000 
 	drop max_pay 
 	* global paylh_N=`=_N'
@@ -226,7 +226,7 @@ use "${temp}temp_descriptives.dta", clear
 * Disconnection measure
 	g am=amount==.
 	g aml = amount==. & date>=652
-	egen amls = sum(aml), by(conacct)
+	gegen amls = sum(aml), by(conacct)
 	g am12 = amls==12
 	drop aml amls
 
@@ -246,7 +246,7 @@ use "${temp}temp_descriptives.dta", clear
 	replace tcd_id = 0 if date==588
 	* replace tcd_id = 0 if date==602
 
-	egen tcd_max=max(tcd_id), by(conacct)
+	gegen tcd_max=max(tcd_id), by(conacct)
 
 	order conacct date c amount bal pay ar tcd_id dc 
 

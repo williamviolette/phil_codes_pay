@@ -1,6 +1,7 @@
 
 
 
+
 use "${data}paws/clean/full_sample_with_edu.dta", clear
 
 * keep conacct edu*extra
@@ -187,7 +188,7 @@ g over_charge = regexm(billing_error,"Mahal na singil")==1
 
 destring disc_times_extra, replace force
 keep if disc_times_extra!=.  // keep only disconnect
-drop if disc_times_extra==0
+* drop if disc_times_extra==0
 ren disc_times_extra disc_count
 
 g disc_note = 1 if disc_notice == "Hindi"
