@@ -1,6 +1,230 @@
 
 
 
+* #delimit;
+* local bill_query "";
+* forvalues r = 1/12 {;
+* 	local bill_query "`bill_query' 
+* 	SELECT A.*, `r' AS ba
+* 	FROM mcf_`r' AS A
+* 	JOIN (SELECT DISTINCT conacct FROM neighborp) AS B 
+* 		ON A.conacct = B.conacct
+* 	";
+* 	if `r'!=12{;
+* 		local bill_query "`bill_query' UNION ALL";
+* 	};
+* };
+* clear;
+* #delimit cr;
+* odbc load, exec("`bill_query'")  dsn("phil") clear  
+* save "${temp}mcf_temp_neighbor.dta", replace
+
+
+
+#delimit;
+local bill_query "";
+forvalues r = 1/12 {;
+	local bill_query "`bill_query' 
+	SELECT A.*,  B.conacctp, B.rank, `r' AS ba
+	FROM mcf_`r' AS A
+	JOIN (SELECT * FROM neighborp_50) AS B 
+		ON A.conacct = B.conacct
+	";
+	if `r'!=12{;
+		local bill_query "`bill_query' UNION ALL";
+	};
+};
+clear;
+#delimit cr;
+
+odbc load, exec("`bill_query'")  dsn("phil") clear  
+
+save "${temp}mcf_temp_neighbor_big.dta", replace
+
+
+
+use "${temp}mcf_temp_neighbor_big.dta", clear
+
+sort conacctp conacct date 
+by conacctp conacct: g id = date[_n-1]+1==date[_n]
+drop if id==1
+drop id
+
+forvalues r=1/50 {
+	g r_`r'_id = 1 if rank==`r'
+	gegen r_`r' = sum(r_`r'_id), by(conacctp date)
+	drop r_`r'_id
+}
+
+keep conacctp date r_*
+duplicates drop conacctp date, force
+ren conacctp conacct
+
+save "${temp}neighbor_dc_full.dta", replace 
+
+
+
+/*
+
+
+
+use  "${temp}mcf_temp_neighbor.dta", clear
+	keep if dc==1
+	gegen min_date = min(date), by(conacct)
+	keep if date==min_date
+	drop min_date
+	keep date conacct
+	duplicates drop conacct, force
+	drop if date<600
+
+save "${temp}mcf_temp_neighbor_date.dta", replace
+
+
+
+
+**** **** **** 
+
+	replace dc = 0 if dc==.
+	sort conacct date
+	by conacct: g dch = dc[_n-1]==1 & dc==0 & dc[_n+1]==1
+		* Tab dch   // only 661 cases, so pretty clean
+	replace dc = 1 if dch==1
+	drop dch
+
+
+use  "${temp}mcf_temp_neighbor.dta", clear
+	keep if dc==1
+	gegen min_date = min(date), by(conacct)
+	keep if date==min_date
+	drop min_date
+	keep date conacct
+	duplicates drop conacct, force
+	drop if date<600
+
+save "${temp}mcf_temp_neighbor_date_full.dta", replace
+
+
+
+
+local bill_query " SELECT * FROM neighborp "
+odbc load, exec("`bill_query'")  dsn("phil") clear 
+
+	merge m:1 conacct using "${temp}mcf_temp_neighbor_date.dta"
+	keep if _merge==3
+	drop _merge
+
+g date_5_id= date if rank<=5
+g date_10_id = date if rank>5
+ren date date_id
+
+gegen date_dc    = min(date_id), by(conacctp)
+gegen date_5_dc  = min(date_5_id), by(conacctp)
+gegen date_10_dc = min(date_10_id), by(conacctp)
+
+forvalues r=1/10 {
+	g date_`r'r_id = date_id if rank==`r'
+	gegen date_`r'r_dc = min(date_`r'r_id), by(conacctp)
+}
+
+keep conacctp date_dc date_5_dc date_10_dc date_*r_dc
+ren conacctp conacct
+duplicates drop conacct, force
+
+save "${temp}neighbor_dc.dta", replace
+
+
+
+
+local bill_query " SELECT * FROM neighborp"
+odbc load, exec("`bill_query'")  dsn("phil") clear 
+
+	merge m:1 conacct using "${temp}mcf_temp_neighbor_date.dta"
+	keep if _merge==3
+	drop _merge
+drop conacct
+drop 
+forvalues r=1/10 {
+	g `r'_id = rank==`r'
+	gegen date_`r'r_dc = sum(`r'_id), by(conacct date)
+}
+
+keep conacctp date_*r_dc
+ren conacctp conacct
+duplicates drop conacct, force
+
+save "${temp}neighbor_dc_date.dta", replace
+
+
+
+/*
+
+foreach v in bacoor cal_1000 muntin para pasay qc_04 qc_09 qc_12 so_cal tondo val samp {
+
+	* local v "pasay"
+	use "${billingdata}`v'_mcf_2009_2015.dta", clear
+
+	drop if MR_NOTE==""
+	keep year month conacct MR_NOTE
+	g mr=regexs(1) if regexm(MR_NOTE,"^([0-9]+)")
+	destring mr year month, replace force
+	keep if mr!=.
+	g date=ym(year,month)
+	duplicates drop conacct date, force
+	keep conacct date mr
+	save "${temp}mr_`v'.dta", replace
+}
+
+global NN = 0
+foreach v in bacoor cal_1000 muntin para pasay qc_04 qc_09 qc_12 so_cal tondo val samp  {
+	if $NN==0 {
+		use "${temp}mr_`v'.dta", clear
+	}
+	else {
+		append using "${temp}mr_`v'.dta"
+	}
+	global NN=$NN+1
+}
+duplicates drop conacct date, force
+save "${temp}mr.dta", replace
+
+
+**** MISSING ON 3 of 2013!! ****
+
+
+
+
+*  01 - Mother Meter/Official Meter |         21        0.10        0.10
+*           03 - Obstructed Meter | 
+*          04 - Meter Reversibly Connecte |         40        0.18        0.28
+*         04 - Meter Reversibly Connected |        245        1.12        1.40
+*          07 - Can t Locate Meter / Addr |         15        0.07        1.47
+*       07 - Can't Locate Meter / Address |        115        0.53        2.00
+*                  10 - With Illegalities |
+*                           11 - No Water |         26        0.12        2.12
+*               12 - Closed Water Service |      3,241       14.86       16.97
+* 13 - vacant lot
+*                       14 - Vacant House |          8        0.04       17.01
+*        15 - Building Under Construction |          4        0.02       17.03
+*          19 - Suspected W/ Illegalities |
+*              20 - Backward Registration |        139        0.64       17.67
+*                           21 - No Meter |      1,486        6.81       24.48
+*                    22 - Defective Meter |      5,275       24.18       48.65
+*          26 - Interchange Meter / Readi |        168        0.77       49.42
+*        26 - Interchange Meter / Reading |      1,073        4.92       54.34
+*                          29 - New Meter |      8,609       39.46       93.80
+*           32 - Inappropriate Batch (Out |          9        0.04       93.84
+* 32 - Inappropriate Batch (Out Of Route) |         69        0.32       94.16
+*                        33 - Reconnected |         11        0.05       94.21
+*                       52 - Not Existing |      1,070        4.90       99.12
+*                   53 - TCD Found Active |        160        0.73       99.85
+* 99 - Present Rdg is less than Previou..
+
+
+
+
+/*
+
+
 
 use "${data}paws/clean/full_sample_with_edu.dta", clear
 

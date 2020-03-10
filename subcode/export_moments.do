@@ -2,6 +2,70 @@
 
 
 
+*** NEW DISCONNECTION STATS 
+
+* days_pay days_rec leak over_charge enough_time
+
+g dc_pos = 0 if disc_count>0 & disc_count<.
+replace dc_ind 
+
+
+g am_pdc = am if date<dc_date
+gegen am_max = max(am_pdc), by(conacct)
+
+
+
+
+
+
+cap drop dc_ind
+g dc_ind = 0 if disc_count!=.
+replace dc_ind = 1 if disc_count>0 & disc_count<.
+sum dc_ind, detail
+write "${tables}disc_paws.tex" `=100*`=r(mean)'' 0.1 "%12.0g"
+
+
+
+g bal_lag_nz = bal_lag!=0
+sum bal_lag_nz if am_pdc==1
+write "${tables}bal_lag_am.tex" `=100*`=r(mean)'' 0.1 "%12.0g"
+
+
+
+
+
+
+
+g am_alt = am==1 & ar_lag>0
+
+sum disc_count, detail
+
+g dc_paws = 0 if disc_count!=.
+replace dc_paws = 1 if disc_count>0 & disc_count<.
+
+g am_alt_pdc = am_alt if date<dc_date
+gegen am_alt_max = max(am_alt_pdc), by(conacct)
+
+sort conacct date
+by conacct: g am_enter=am[_n-1]==0 & am[_n]==1
+
+g tcd_pre=0
+sort conacct date
+forvalues r=1/12 {
+	by conacct: replace tcd_pre = 1 if tcd_id[_n-`r']==1
+}
+
+tab am_pdc tcd_pre
+tab ar_lag am_enter 
+
+*** *** ****
+
+
+
+
+
+
+
 sum am if date<dc_date, detail
 write "${moments}dc_shr.csv" `=r(mean)' 0.0001 "%12.4g"
 write "${tables}dc_shr.tex"  `=r(mean)' 0.0001 "%12.4fc"

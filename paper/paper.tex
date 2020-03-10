@@ -110,7 +110,12 @@ This paper proceeds with Section~\ref{section:data} describing the water billing
 
 Measuring creditab wt through delayed water bill payments requires information on water consumption and bill payments at the household-level as well as features of the credit environment in Manila.  % As well as information on the credit environment facing households
 
-Water consumption and bill payments come from water utility records collected as part of a research partnership with one of the two regulated utilities in Metro Manila, Philippines where each utility is responsible for serving their assigned geographic half of Metro Manila.  This utility provided access to monthly billing records for each connection as well as detailed information covering the regulatory structure and costs of production.  Monthly billing records include meter readings, billing amount, outstanding balances, and payments spanning January, 2008 to May, 2015.  Over this period, the total number of connections increased from 900,000 to 1,500,000 as the water utility expanded service access.  Water connections are split into four categories: residential (90\%), semi-business (4\%), commercial (5\%), and industrial (1\%).  
+Water consumption and bill payments come from water utility records collected as part of a research partnership with one of the two regulated utilities in Metro Manila, Philippines where each utility is responsible for serving their assigned geographic half of Metro Manila.  This utility provided access to monthly billing records for each connection as well as detailed information covering the regulatory structure and costs of production.  Monthly billing records include meter readings, billing amount, outstanding balances, and payments spanning January, 2008 to May, 2015. 
+
+Disconnection is defined as months with missing values for usage.  Months with zero recorded consumption are not considered disconnected.  Since households face a 200 PhP reconnection charge but a 
+
+
+Over this period, the total number of connections increased from 900,000 to 1,500,000 as the water utility expanded service access.  Water connections are split into four categories: residential (90\%), semi-business (4\%), commercial (5\%), and industrial (1\%).  
 
 To examine household demographics, connections are linked to a water connection survey conducted independently to monitor the quality of the utility's service.  The survey randomly interviewed households with water connections covering 15,000 households in 2008, 24,000 households in 2010, and 23,000 households in 2012.  Since the survey followed a similar sampling design across rounds, 13\% of households were interviewed in two waves and 1.4\% of households were interviewed in three waves while remaining households were interviewed in one wave.  To focus on household decisions, the analysis includes only residential connections that are identified in this survey as serving a single household (31\% of all connections).  The connection survey also includes demographics for households that own their water connections.  Households using connections alone tend to be larger and wealthier than households that share connections with other households according to previous research (\cite{wjv}).  Table~\ref{table:sampleconstruction} in Appendix~\ref{appendix:sampleconstruction} includes more details on how the final sample is constructed for the analysis.
 % This sample restriction ensures that connection-level is equal to household-level.
@@ -179,13 +184,38 @@ In Manila, Households have poor access to credit: 1\% have credit cards, 3.8\% h
 
 Delaying water bill payments may provide a reliable source of low-cost credit to households because the water utility often tolerates high rates of delinquency before disconnecting water service and the utility is prohibited from charging any interest on outstanding balances.  Consistent with this theory, households are \input{tables/days_delinquent_all}days behind in their payments on average.  Households also make large, infrequent payments.  Table~\ref{table:descriptives_all} provides summary statistics on household consumption, billing, and payments.  While the average bill is \input{tables/bill_all}PhP per month, payment sizes average \input{tables/pay_size_all}PhP and households make payments in only \input{tables/pay_freq}\unskip\% of months.  These payment patterns leave an average total outstanding balance of \input{tables/balance_all}PhP per month.  With average monthly incomes of \input{tables/y_avg}PhP, households spend around 2\% of their income on water while unpaid water bills total around 3.5\% of their income.\footnote{Author's calculations with the 2015 Family Income and Expenditure Survey.}  In comparison, all-purpose loans average \input{tables/meanloansize}PhP with an average period of \input{tables/meanloanlength}months.\footnote{For reference, 1 USD is worth around 45 PhP over this period.}  
 
-  
+The utility enforces payment by conducting ``collection attempts.''  The utility visits households that are at least one month delinquent and disconnects water service if these households do not immediately pay their bills.\footnote{Disconnection typically involves placing a metal lock on the water meter that stops any flow.}  While households often try to negotiate for additional time to pay their bills, \input{tables/days_pay_under_30}\unskip\% of households report having to pay within 30 days and the average grace period is \input{tables/days_pay_average}days.  As a result, only \input{tables/enough_time}\unskip\% of households report having ``enough time'' to make their payments, which may be in part due to poor credit access in Manila.  While disconnected, households likely substitute to alternative water sources including sharing with neighbors, using from deepwells, or purchasing from local water vendors.  
 
-The utility enforces payment by visiting households that are at least one month delinquent and disconnecting their water service if these households do not immediately pay their bills.\footnote{Disconnection typically involves placing a metal lock on the water meter that stops any flow.}  Likely due to time and travel costs, these collection attempts are relatively rare, occurring in only \input{tables/prob_caught}\unskip\% of months where households are at least a month delinquent.\footnote{This rate ranges from \input{tables/prob_caught_min}\unskip\% to \input{tables/prob_caught_max}\unskip\% across the 12 business areas and is positively correlated with outstanding balances.  \input{tables/tcd_max}\unskip\% of households receive a collection attempt at some point during the sample.}  \input{tables/tcd_share_pay}\unskip\% of collection attempts result in immediate payment while 28\% result in disconnection within two months.  While households often try to negotiate for additional time to pay their bills, \input{tables/days_pay_under_30}\unskip\% of households report having to pay within 30 days and the average grace period is \input{tables/days_pay_average}days.  As a result, only \input{tables/enough_time}\unskip\% of households report having ``enough time'' to make their payments, which may be in part due to poor credit access in Manila.  While disconnected, households likely substitute to alternative water sources including sharing with neighbors, using from deepwells, or purchasing from local water vendors.  
+In the 2012 wave of the water connection survey, \input{tables/disc_paws}\% of households report having been disconnected for delinquency.  The billing records from 2010 to 2015 find  .
+
+
+
+These households may have already planned to change dwellings or leave Manila at the time that they receive a collection attempt.  Households that permanently disconnect often leave large outstanding balances that are never repaid averaging \input{tables/out_bal}PhP, which is over 10 times the average water bill.  Since 0.13\% of households permanently disconnect each month on average,\footnote{The disconnection rate is calculated (1) for households that connect between 2007 and 2011, which covers the connection survey and (2) for disconnections occurring between Jan, 2012 and May, 2014 to ensure that any disconnections last for at least a year before the sample ends in June, 2015.} the average household remains connected for around 32 years assuming a constant rate over time.\footnote{This constant rate is consistent with a weak observed correlation between the permanent disconnection rate and calendar months of -0.0033.}  Therefore, unpaid outstanding balances average 18.5 PhP per household-month or 2.8\% of the average water bill.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Likely due to time and travel costs, these collection attempts are relatively rare, occurring in only \input{tables/prob_caught}\unskip\% of months where households are at least a month delinquent.\footnote{This rate ranges from \input{tables/prob_caught_min}\unskip\% to \input{tables/prob_caught_max}\unskip\% across the 12 business areas and is positively correlated with outstanding balances.  \input{tables/tcd_max}\unskip\% of households receive a collection attempt at some point during the sample.}  \input{tables/tcd_share_pay}\unskip\% of collection attempts result in immediate payment while 28\% result in disconnection within two months.  
+
+
 
 % (\input{tables/tcd_share_rec}\unskip\% of total attempts)
 % The remaining \input{tables/tcd_share_dc}\unskip\% result
-Among collection attempts that lead to disconnection, 64\% result in households reconnecting by paying their outstanding bills as well as a 200 PhP fee.  These households choose to reconnect an average of \input{tables/t_rec}months after disconnection.  The remaining 36\% result in households remaining permanently disconnected throughout the sample period. These households may have already planned to change dwellings, switch to a different water source, or leave Manila at the time that they receive a collection attempt.  Households that permanently disconnect often leave large outstanding balances that are never repaid averaging \input{tables/out_bal}PhP, which is over 10 times the average water bill.  Since 0.13\% of households permanently disconnect each month on average,\footnote{The disconnection rate is calculated (1) for households that connect between 2007 and 2011, which covers the connection survey and (2) for disconnections occurring between Jan, 2012 and May, 2014 to ensure that any disconnections last for at least a year before the sample ends in June, 2015.} the average household remains connected for around 32 years assuming a constant rate over time.\footnote{This constant rate is consistent with a weak observed correlation between the permanent disconnection rate and calendar months of -0.0033.}  Therefore, unpaid outstanding balances average 18.5 PhP per household-month or 2.8\% of the average water bill.
+Among collection attempts that lead to disconnection, 64\% result in households reconnecting by paying their outstanding bills as well as a 200 PhP fee.  These households choose to reconnect an average of \input{tables/t_rec}months after disconnection.  The remaining 36\% result in households remaining permanently disconnected throughout the sample period. 
+
+
+
 
 
 \begin{table}[h!] % PUT IN DEMOGRAPHICS PLEASE ?!?!?
@@ -284,7 +314,7 @@ Appendix~\ref{appendix:alternativeincome} confirms similar results by linking th
 %\subsection{Setting up the Household's Problem}
 %Time horizon etc.  Ignore disconnecting households.. 
 
-To quantify the implications of different billing policies for household welfare, I construct a simple model of household borrowing, saving, and water consumption decisions over time.
+To quantify the implications of different billing policies for household welfare, I construct a simple model of household borrowing, saving, and water consumption decisions over time.  This approach builds on a standard buffer-stock savings model as developed by \cite{deaton1991saving}.
 
 In this model, households first move to Manila and begin consuming piped water.  As households receive positive income shocks, they accumulate precautionary savings to insure against future negative income shocks.  In these months, households simply consume water according to their preferences and pay their bills.
 
@@ -294,9 +324,9 @@ Further negative income shocks may induce households to borrow beyond their curr
 
 With some probability, the utility conducts collection attempts, which confront indebted households with a choice: pay their debts or disconnect and use an alternative water source.  Since the alternative water source may involve an additional fixed cost each month, households with small debts simply prefer to pay their debts and stay connected either by taking out a costly loan or by lowering their consumption this month.  Households with large debts decide to disconnect in order to avoid taking out a large loan or experiencing a sharp drop in consumption this month.  Once disconnected, households begin accumulating savings to eventually pay their debts and reconnect to service.
 
-Just before changing dwellings, households have an incentive to accumulate large unpaid bills since the utility is unable to collect on these bills if households leave Manila.  In these months, households may also have an incentive to disconnect in response to collection attempts.
+At some point, households learn whether they will move to a new dwelling in Manila or leave Manila.  Households that plan to stay in Manila must pay their full balance before moving because it is likely that the utility will recognize them at their new address.  Households that plan to leave Manila do not need to bay their outstanding debts before leaving.  Therefore just before changing dwellings, these households have an incentive to accumulate large unpaid bills since the utility is unable to collect on these bills if households leave Manila.  In these months, households may also have a strong incentive to disconnect in response to collection attempts.
 
-To formally model household borrowing and savings decisions, I start from a standard intertemporal utility maximization problem as developed by \cite{deaton1991saving}.  This approach assumes an infinite time horizon where households choose water usage, borrowing, and savings in each month to maximize current and expected future utility.  
+To formally model household borrowing and savings decisions, I start from a standard intertemporal utility maximization problem as developed by \cite{deaton1991saving}.  This approach assumes a finite time horizon where households choose water usage, borrowing, and savings in each month to maximize current and expected future utility.  
 
 Households first move to Manila in month 1 and then choose their consumption of water and other goods as well as how much to borrow and save each month until they leave the city in month $T$.  Household expected utility in each month $t$ is given by the following equation
 \begin{align}\label{eq:u}
@@ -324,7 +354,7 @@ Households can use asset, $A$, for borrowing and saving.  $A_t$ captures debt (w
 
 Households can also borrow by delaying payments to their water bills.  $B_t$ ($\leq0$) captures unpaid bills inherited from the previous month.  $B_{t+1}$ ($\leq0$) describes how much water debt to pass onto the following month (by delaying payment of the current bill).  Households must satisfy the following borrowing constraint each month, which ensures that water debt must be less than this month's bill and unpaid bills from previous months
 \begin{align}\label{eq:borrowingconstraint}
-B_{t+1} &\geq (1-v_t)  C_{t} C_{t+1} (B_t -pw_t) + (1-C_{t+1})B_t 
+B_{t+1} &\geq (1-v_t)  C_{t} C_{t+1} (B_t -pw_t) + (1-C_{t+1})B_t  \geq \overline{B}
 \end{align}
 
 
@@ -333,16 +363,18 @@ The choice of $B_{t+1}$ depends on whether households receive a collection attem
 
 The borrowing constraint creates the following four cases:
 
-\textbf{Case 1:} If there is no collection attempt ($v_t=0$) and the household is connected ($C_{t}=1$) and chooses to stay connected ($C_{t+1}=1$), then the household can borrow up to their existing water debt plus their bill this month so that the borrowing constraint equals $B_{t+1}\geq B_t -  p w_t $.
+\textbf{Case 1:} If there is no collection attempt ($v_t=0$) and the household is connected ($C_{t}=1$) and chooses to stay connected ($C_{t+1}=1$), then the household can borrow up to their existing water debt plus their bill this month so that the borrowing constraint equals $B_{t+1}\geq B_t -  p w_t $.\footnote{Note: borrowing is given by negative values for $B_t$ and $B_{t+1}$}
 
-\textbf{Case 2:} If there is a collection attempt ($v_t=1$) and the household is connected ($C_t=1$) and chooses to stay connected ($C_{t+1}=1$), then the household needs to pay off their existing debt and cannot borrow from their water bill this month so that $B_{t+1} = 0$.
+\textbf{Case 2:} If there is a collection attempt ($v_t=1$) and the household is connected ($C_t=1$) and chooses to stay connected ($C_{t+1}=1$), then the household needs to pay their existing debt and cannot borrow from their water bill this month so that $B_{t+1} = 0$.
 
-\textbf{Case 3:} If the household chooses to be disconnect in the next month ($C_{t+1}=0$) likely in response to a collection attempt, then the household avoids paying existing debt but faces an additional fixed cost of $f$ per month from using from a temporary water source.  In this case, the borrowing constraint reduces to $ B_{t+1} \geq B_t$ ensuring that households can only borrow up to their existing water debt.  
+\textbf{Case 3:} If the household chooses to be disconnected in the next month ($C_{t+1}=0$) likely in response to a collection attempt, then the household avoids paying the existing debt but faces an additional fixed cost of $f$ per month to use a temporary water source.  In this case, the borrowing constraint reduces to $ B_{t+1} \geq B_t$ ensuring that households can only borrow up to their existing water debt.  
 
 \textbf{Case 4:} If the household is disconnected ($C_t=0$) and chooses to reconnect ($C_{t+1}=1$), then the household needs to pay off their existing debt and cannot borrow from their water bill this month so that $B_{t+1} = 0$.  
 % given their optimal choices of water, $w_t$, other goods, $x_t$, standard assets, $A_{t+1}$, water borrowing, $B_{t+1}$, and connection decision, $C_{t+1}$
 
-Households also face an additional borrowing constraint, $\overline{B} \leq B_{t+1}$, which prevents households from borrowing indefinitely.  In the last month $T$, households learn that they will move to either a new home in Manila (with probability $\chi$) in which case the need to pay their outstanding bills ($B_T=0$) or leave Manila (with probability $(1-\chi)$) in which case they can leave bills unpaid $\overline{B}\leq B_T \leq0$
+Households also face an additional borrowing constraint, $ B_{t+1} \geq \overline{B}$, which prevents households from borrowing indefinitely.  
+
+In the month $\overline{T}$, households learn where they will move at time $T$. With probability $\chi$, households learn that they will move to a new home in Manila at time $T$ in which case the need to pay their outstanding bills before moving (ie. $B_T=0$).  With probability $(1-\chi)$, they will leave Manila at time $T$ in which case they can leave bills unpaid with no consequence (ie. $0\geq B_T \geq \overline{B}$).
 
 The household's maximization problem can then be written recursively where households solve for a value function, $V_t(.)$, over four possible states given by $s_{t}$: (1) high income and collection attempt with probability $\pi\lambda$, (2) high income and no collection attempt with probability $\pi(1-\lambda)$, (3) low income and collection attempt with probability $(1-\pi)\lambda$, and (4) low income and no collection attempt with probability $(1-\pi)(1-\lambda)$.  Given these states, the recursive problem can be written as follows
 \begin{align}
@@ -352,9 +384,7 @@ V_t(X_{t},s_t) &= max_{w_t,x_{t}} \,\,\, \frac{u(w_{\tau},x_{\tau})^{1-\gamma}}{
 X_t &= [w_t,x_t,A_{t+1},B_{t+1},C_{t+1}] 
 \end{split}
 \end{align}
-with equations (\ref{eq:bc}) and (\ref{eq:borrowingconstraint}) holding each month.  This problem can be solved in two steps: 
-
-% (1) choosing $w_t$ and $x_t$ to maximize utility given each possible choice of assets, and (2) given optimal choices of $w_t$ and $x_t$, choosing assets to maximize $V_t(.)$ by iterating backwards from month $T$.
+with equations (\ref{eq:bc}) and (\ref{eq:borrowingconstraint}) holding each month.\footnote{At time $\overline{T}$, households learn about whether they will move $in$ or $out$ of Manila at time, $T$, meaning that $E \Big[\, V(X_{t+1},s_{t+1})\Big] =  \chi E \Big[\,V_{in}(X_{t+1},s_{t+1})\Big] + (1-\chi) E\Big[V_{out}(X_{t+1},s_{t+1})\Big]$.}  This problem can be solved in two steps: % (1) choosing $w_t$ and $x_t$ to maximize utility given each possible choice of assets, and (2) given optimal choices of $w_t$ and $x_t$, choosing assets to maximize $V_t(.)$ by iterating backwards from month $T$.
 
 
 \textbf{Step 1:} For each possible choice of assets, $A_{t+1}$ and $B_{t+1}$, and connection status, $C_{t+1}$, households maximize utility over water, $w_t$, and other goods, $x_t$, subject to their budget constraint and borrowing constraint.  Within each month, households maximize utility given by $ x_t -  \frac{1}{2} (w_t - \alpha)^2 $ such that the budget constraint and borrowing constraint hold.  When the borrowing constraint does not bind, then households reach an interior solution under quasi-linear preferences and prices, $p=p_1+p_2w_t$, given by $w_t^{*} =  \frac{ \alpha - p_1}{2p_2 + 1}$.  The borrowing constraint does not bind when connected households have small unpaid bills (ie. $B_{t+1}$ is small).  Households also consume $w_t^{*}$ in months where $w_t$ does not affect the borrowing constraint such as when households are disconnected or when households receive collection attempts.
@@ -382,7 +412,10 @@ Mean monthly income, $\overline{y}$, is calibrated to average income in the hous
 
 The estimation also assumes parameters for household time-preferences.  First, the monthly discount rate $\delta$ is assumed to equal 0.005, which implies an annual discount rate of 6\%. This discount rate is in range of estimates from similar structural dynamic models.\footnote{In US contexts,\cite{gourinchas2002consumption} use a similar structural approach finding a lower discount rate of around 5\% while \cite{laibson2007estimating} recover a discount rate of around 15\%.}  Second, the coefficient of relative risk aversion $\gamma$ is set equal to 1, which is approximated by the natural logarithm and falls within a wide range of estimates from the literature.\footnote{The literature provides a range of estimates for $\gamma$ which are above, below, and around one.  \cite{barseghyan2013nature} use insurance choices in the US to estimate a $\gamma$ between 0.21 and 0.37 while  \cite{beetsma2001measuring} use a natural experiment from a game show to estimate $\gamma$ ranging from 0.42 to 6.99.  \cite{carvalho2016effect} leverage an experimental setting in Nepal to estimate $\rho$ equal to 0.63.  Given these estimates, assuming $\rho$ equal to one implies a moderate curvature of the utility function and is relatively close to a comparable estimate from a development economics setting.}
 
-Households are assumed to remain in Manila for 384 months before disconnecting, consistent with a 0.13\% rate of permanent disconnection rate for households in the sample.  Upon disconnection, \input{tables/bal_0_end_per}\unskip\% of households pay all of their remaining balances, which calibrates the share $\chi$ of households that are assumed to move to a new dwelling within Manila.
+Households are assumed to remain in Manila for $T=384$ months before disconnecting, consistent with a 0.13\% rate of permanent disconnection each month as observed in the sample.  Upon disconnection, \input{tables/bal_0_end_per}\unskip\% of households pay all of their remaining balances, which calibrates the share $\chi$ of households that are assumed to move to a new dwelling within Manila.  Moreover, households are assumed to learn about their 
+
+
+
 
 The estimation routine solves the household's problem in equation (\ref{eq:valmax}) through backwards induction.  In the last month $T=384$, the routine finds the combination of water and standard assets that maximize utility under the constraint that households must pay their standard debt and also may have to pay their water debt depending on whether they plan to stay in Manila (which occurs with probability $\chi$).  Taking these choices as given, the routine then steps back to month $T-1$ and finds the combination of assets (and connection status) that maximizes current utility plus discounted future utility.  Repeating this process brings households to a steady state mapping of current assets/connection status to future assets/connection status.  
 
@@ -536,13 +569,13 @@ Eliminating credit access also decreases mean usage by \input{tables/c_h_nl_drop
 \begin{tabular}{l*{1}{CCCC}}
 \toprule
  & (1)     & (2)        & (3)                         & (4) \\
- & Current & Prepaid Metering   &  Optimal Collection Visits  &  Utility as a Bank  \\
+ & Current & Prepaid Metering   &  Revenue Neutral Collection Rate  &  Utility as a Bank  \\
 \midrule
-Compensating Variation  &   & \input{tables/cv_comp_nlpp}  & \input{tables/cv_comp_opt}  & \input{tables/cv_comp_ut} \\[.2em]
-Consumption 			 &   \input{tables/cons_val_reg} & \input{tables/cons_val_nlpp}    &  \input{tables/cons_val_opt} &  \input{tables/cons_val_ut} \\[.2em]
-Outstanding Balance  & \input{tables/debt_reg} & \input{tables/debt_nlpp}    &  \input{tables/debt_opt} &  \input{tables/debt_ut} \\[.2em]
-Fixed Price  & 0 & \input{tables/fee_nlpp}    &  \input{tables/fee_opt} &  \input{tables/fee_ut} \\[.2em]
-Collection Risk & \input{tables/vrate_reg}& \input{tables/vrate_nlpp}  & \input{tables/vrate_opt} & \input{tables/vrate_ut} \\
+Compensating Variation  &   & \input{tables/cv_comp_nlpp_b}  & \input{tables/cv_comp_opt_b}  & \input{tables/cv_comp_ut_b} \\[.2em]
+Consumption 			 &   \input{tables/cons_val_reg_b} & \input{tables/cons_val_nlpp_b}    &  \input{tables/cons_val_opt_b} &  \input{tables/cons_val_ut_b} \\[.2em]
+Outstanding Balance  & \input{tables/debt_reg_b} & \input{tables/debt_nlpp_b}    &  \input{tables/debt_opt_b} &  \input{tables/debt_ut_b} \\[.2em]
+Fixed Price  & 0 & \input{tables/fee_nlpp_b}    &  \input{tables/fee_opt_b} &  \input{tables/fee_ut} \\[.2em]
+Collection Rate & \input{tables/vrate_reg_b}& \input{tables/vrate_nlpp_b}  & \input{tables/vrate_opt_b} & \input{tables/vrate_ut_b} \\
 \bottomrule
 \multicolumn{5}{l}{ \scriptsize  All values are at the household-month level. }
 \end{tabular}

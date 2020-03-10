@@ -35,6 +35,7 @@ disp ' UN-TIED '
     disp 'compensated utility from untied'
     (ucon_uc-ucon)/u_ch
     
+    
 
 
 disp ' NO-LOAN '
@@ -59,13 +60,33 @@ disp ' NO-LOAN '
     res_nlcp = res_nl;
     res_nlcp(:,15) = rev_goal - (rev_goal_nl-ppinst);
     [~,ucon_nlpp,sim_nlpp] =obj(res_nlcp,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
-    disp 'compensated utility from no loan'
+    disp 'compensated utility from no loan pre-paid'
     (ucon_nlpp-ucon)/u_ch
   
 
-Ogride = (.01:.01:.05)' ;
+    
+% disp ' HALF-RATE '
+%     res_hf = given;
+%     res_hf(:,17)=given(:,17)/2;
+%     [~,ucon_hf,sim_hf] = obj(res_hf,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
+%     disp 'utility from half rate '
+%     (ucon_hf-ucon)/u_ch
+%    
+%     [rev_goal_hf,lend_cost_hf,delinquency_cost_hf,visit_cost_hf,wwr_hf] = cost_calc(sim_hf,r_lend,visit_price,marginal_cost,p1,p2,s);
+%     disp 'Pre-Post: Rev'
+%     rev_goal-rev_goal_hf
+%     
+%     res_hfc = res_hf;
+%     res_hfc(:,15)=rev_goal - rev_goal_hf ;
+%     [~,ucon_hfc,sim_hfc] =obj(res_hfc,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
+%     disp 'compensated utility from half rate'
+%     (ucon_hfc-ucon)/u_ch
+    
+    
+Ogride = (.02:.005:.04)' ;
 Uov = zeros(size(Ogride,1),1);
 Rov = zeros(size(Ogride,1),1);
+
 
 for i=1:size(Ogride,1)
        
@@ -77,7 +98,7 @@ for i=1:size(Ogride,1)
     disp 'utility from ovisit rate'
     (u_ov-ucon)/u_ch
 
-    [rev_goal_ov,~,~,~,wwr_ov] = cost_calc(sim_ov,r_lend,visit_price,marginal_cost,p1,p2,s);
+    [rev_goal_ov,lend_cost_ov,delinquency_cost_ov,visit_cost_ov,wwr_ov] = cost_calc(sim_ov,r_lend,visit_price,marginal_cost,p1,p2,s);
 
     disp ' how much cash to raise?'
     rev_goal-rev_goal_ov
@@ -96,7 +117,7 @@ for i=1:size(Ogride,1)
 end
 
 
-[~,maxO]=max(Uov);
+[~,maxO]=min(abs(Rov));
 Oopt = Ogride(maxO);
 
 

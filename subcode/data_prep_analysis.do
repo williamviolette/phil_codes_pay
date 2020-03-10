@@ -28,7 +28,7 @@ if $data_prep == 1 {
 
 			merge 1:m conacct date using "${temp}ar_bal_temp_pay.dta"
 			drop _merge
-		duplicates drop conacct date, force		
+		duplicates drop conacct date, force				
 
 		tsset conacct date
 		tsfill, full
@@ -65,6 +65,9 @@ if $data_prep == 1 {
 			drop if _merge==2
 			drop _merge
 
+			fmerge 1:1 conacct date using "${temp}mr.dta"
+			drop if _merge==2
+			drop _merge
 
 			drop if date<date_c
 
@@ -136,7 +139,6 @@ use "${temp}temp_descriptives.dta", clear
 * Missing balance and small balance equal to zero ; keeps negative balances
 	* replace bal=0 if (bal<=10 & bal>=-10) | bal==.
 	replace bal=0 if (bal<=10 & bal>=-10) | bal==.
-
 
 	g amount_r = round(amount,50)
 	g yr = round(date,12)
