@@ -1,6 +1,9 @@
 
 
 
+
+***** GENERATE NEIGHBOR MEASURES
+
 * #delimit;
 * local bill_query "";
 * forvalues r = 1/12 {;
@@ -18,6 +21,84 @@
 * #delimit cr;
 * odbc load, exec("`bill_query'")  dsn("phil") clear  
 * save "${temp}mcf_temp_neighbor.dta", replace
+
+
+#delimit;
+local bill_query "";
+forvalues r = 1/12 {;
+	local bill_query "`bill_query' 
+	SELECT A.*
+	FROM mcf_`r' AS A
+	";
+	if `r'!=12{;
+		local bill_query "`bill_query' UNION ALL";
+	};
+};
+clear;
+#delimit cr;
+
+
+odbc load, exec("`bill_query'")  dsn("phil") clear  
+
+sort conacct date 
+by conacct: g id = date[_n-1]+1==date[_n]
+drop if id==1
+drop id
+drop if date<603
+
+merge m:1 conacct using "${temp}mru_total.dta"
+	keep if _merge==3
+	drop _merge
+
+bys date mru: g mdc = _N
+bys date mru: g mdcn= _n
+keep if mdcn==1
+
+keep date mru mdc
+
+save "${temp}dc_mru_full.dta", replace
+
+
+
+
+
+
+
+/*
+
+*** CREATE COMPREHENSIVE DC MRU LIST ***
+
+foreach v in bacoor cal_1000 muntin para pasay qc_04 qc_09 qc_12 so_cal tondo val samp {
+
+	* local v "pasay"
+	use "${billingdata}`v'_mcf_2009_2015.dta", clear
+	keep conacct mru
+	drop if conacct==.
+	destring mru, replace force
+	drop if mru==.
+	duplicates drop conacct, force
+	save "${temp}mru_`v'.dta", replace
+}
+
+use "${temp}mru_bacoor.dta", clear
+foreach v in  cal_1000 muntin para pasay qc_04 qc_09 qc_12 so_cal tondo val samp  {
+	append using "${temp}mru_`v'.dta"
+}
+duplicates drop conacct, force
+
+save "${temp}mru_total.dta", replace
+
+
+
+
+
+
+
+
+/*
+
+
+
 
 
 
@@ -50,10 +131,30 @@ by conacctp conacct: g id = date[_n-1]+1==date[_n]
 drop if id==1
 drop id
 
+merge m:1 conacct using "${temp}mcf_mru.dta"
+	drop if _merge==2
+	drop _merge
+ren conacct conacct_store
+ren mru mru_store
+ren conacctp conacct
+merge m:1 conacct using "${temp}mcf_mru.dta"
+	drop if _merge==2
+	drop _merge
+ren conacct conacctp
+ren mru mrup
+ren mru_store mru
+ren conacct_store conacct
+
+g mru_no_match = mru!=mrup & mru!=. & mrup!=.
+
 forvalues r=1/50 {
 	g r_`r'_id = 1 if rank==`r'
 	gegen r_`r' = sum(r_`r'_id), by(conacctp date)
 	drop r_`r'_id
+
+	g r_`r'_mru_id = 1 if rank==`r' & mru_no_match==1
+	gegen r_`r'_no_mru = sum(r_`r'_mru_id), by(conacctp date)
+	drop r_`r'_mru_id
 }
 
 keep conacctp date r_*
@@ -66,7 +167,7 @@ save "${temp}neighbor_dc_full.dta", replace
 
 /*
 
-
+*** GENERATE MORE NEIGHBOR MEASURES
 
 use  "${temp}mcf_temp_neighbor.dta", clear
 	keep if dc==1
@@ -156,8 +257,54 @@ save "${temp}neighbor_dc_date.dta", replace
 
 
 
+
+**** MAKE PAY DATE ! ****
+**** MAKE PAY DATE ! ****
+**** MAKE PAY DATE ! ****
+* foreach v in bacoor cal_1000 muntin para pasay qc_04 qc_09 qc_12 so_cal tondo val samp {
+
+* 	* local v "pasay"
+* 	use "${billingdata}`v'_coll_2008_2015.dta", clear
+
+* 	keep conacct postdate month year totalpymnt
+* 	drop if year=="2008" | year=="2009"
+* 	drop if conacct==.
+
+* 	gegen mt=max(totalpymnt), by(conacct month year)
+* 	keep if totalpymnt==mt
+* 	drop mt
+* 	duplicates drop conacct month year, force
+
+* 	g pd=postdate
+* 	destring pd, replace force
+* 	format pd %td
+
+* 	g pd_year = substr(postdate,1,4) if pd==.
+* 	g pd_month = substr(postdate,6,2) if pd==.
+* 	g pd_day   = substr(postdate,9,2) if pd==.
+* 	destring pd_year pd_month pd_day year month, replace force
+
+* 	g pd_date = mdy(pd_month,pd_day,pd_year)
+* 	format pd_date %td
+* 	replace pd_date = pd if pd_date==.
+* 	ren pd_date date_day
+
+* 	keep conacct year month date_day
+* 	save "${temp}pay_day_`v'.dta", replace
+* }
+
+* use "${temp}pay_day_bacoor.dta", clear
+* foreach v in  cal_1000 muntin para pasay qc_04 qc_09 qc_12 so_cal tondo val samp  {
+* 	append using "${temp}pay_day_`v'.dta"
+* }
+
+
+
+
+
 /*
 
+*** ADD MRNOTE AS A MEASURE FOR DISCONNECTION (DOESNT WORK WELL BUT BACKS UP OTHER MEASURE)
 foreach v in bacoor cal_1000 muntin para pasay qc_04 qc_09 qc_12 so_cal tondo val samp {
 
 	* local v "pasay"
@@ -468,6 +615,14 @@ use "/Users/williamviolette/Documents/Philippines/database/clean/mcf/2010/mcf_10
 	drop if ba1==. | conacct==.
 	duplicates drop conacct, force
 save "${temp}mcf_ba.dta", replace
+
+
+use "/Users/williamviolette/Documents/Philippines/database/clean/mcf/2010/mcf_102010.dta", clear
+	keep conacct mru
+	destring mru, replace force
+	drop if mru==. | conacct==.
+	duplicates drop conacct, force
+save "${temp}mcf_mru.dta", replace
 
 
 

@@ -83,44 +83,145 @@ save  "${temp}temp_descriptives_3.dta", replace
 
 
 
+
+
+
+
 use  "${temp}temp_descriptives_3.dta", clear
+
+merge m:1 conacct using "${temp}mru_total.dta"
+	keep if _merge==3
+	drop _merge
+merge m:1 mru date using "${temp}dc_mru_full.dta"
+	drop if _merge==2
+	drop _merge
+replace mdc=0 if mdc==.
+
 
 merge m:1 conacct date using "${temp}neighbor_dc_full.dta"
 	drop if _merge==2
 	g m1= _merge==3
 	drop _merge
+	gegen nd = max(m1), by(conacct)
+	drop m1
+	foreach var of varlist r_* {
+		replace `var'=0 if `var'==. & nd==1
+	}
+	drop nd
 
-gegen nd = max(m1), by(conacct)
-drop m1
 
-foreach var of varlist r_* {
-	replace `var'=0 if `var'==. & nd==1
+g mdc1 = mdc>0 & mdc<.
+
+
+forvalues r=1/10 {
+	g mdco_`r' = mdc==`r'
 }
+g mdcbig=mdc>10 & mdc<.
+
+g mdc3big = mdc>3 & mdc<.
+
+
+areg pay tcd_id mdco_* mdcbig i.date, a(conacct) cluster(conacct) 
+
+
+
+
+areg pay tcd_id mdco_* mdcbig r_1 r_2 r_3 i.date, a(conacct) cluster(conacct) 
+
+
+* areg pay tcd_id mdc i.date, a(conacct) cluster(conacct) 
+
+
+
 
 
 g r_1_dc_id = date if r_1==1
 gegen r_1_dc = min(r_1_dc_id), by(conacct)
-
-g r_50_dc_id = date if r_50==1
-gegen r_50_dc = min(r_50_dc_id), by(conacct)
-
-
 g T=date-r_1_dc
-g T50 = date-r_50_dc
 gegen tg = tag(T)
-gegen tg50=tag(T50)
 
 gegen pm = mean(pay), by(T)
 gegen arm=mean(ar), by(T)
+gegen amm=mean(am), by(T)
 
+
+g r_1_dc_nm_id = date if r_1_no_mru==1
+gegen r_1_dc_nm = min(r_1_dc_nm_id), by(conacct)
+g T_nm=date-r_1_dc_nm
+gegen tg_nm = tag(T_nm)
+
+gegen pm_nm = mean(pay), by(T_nm)
+
+
+
+global ns = 2
+
+g r_${ns}_dc_id = date if r_${ns}==1
+gegen r_${ns}_dc = min(r_${ns}_dc_id), by(conacct)
+g T_${ns}=date-r_${ns}_dc
+gegen tg_${ns} = tag(T_${ns})
+
+gegen pm_${ns} = mean(pay), by(T_${ns})
+
+g r_${ns}_dc_nm_id = date if r_${ns}_no_mru==1
+gegen r_${ns}_dc_nm = min(r_${ns}_dc_nm_id), by(conacct)
+g T_${ns}_nm=date-r_${ns}_dc_nm
+gegen tg_${ns}_nm = tag(T_${ns}_nm)
+
+gegen pm_${ns}_nm = mean(pay), by(T_${ns}_nm)
+
+twoway  scatter pm_${ns}_nm T_${ns}_nm if tg_${ns}_nm==1 & T_${ns}_nm>=-12 & T_${ns}_nm<=12 || ///
+		scatter pm_${ns} T_${ns} if tg_${ns}==1 & T_${ns}>=-12 & T_${ns}<=12 
+
+
+
+
+twoway  scatter pm_5_nm T_5_nm if tg_5_nm==1 & T_5_nm>=-12 & T_5_nm<=12 || ///
+		scatter pm_5 T_5 if tg_5==1 & T_5>=-12 & T_5<=12 
+
+
+twoway  scatter pm_nm T_nm if tg_nm==1 & T_nm>=-12 & T_nm<=12 || ///
+		scatter pm_5 T_5 if tg_5==1 & T_5>=-12 & T_5<=12 
+
+
+
+g r_50_dc_id = date if r_50==1
+gegen r_50_dc = min(r_50_dc_id), by(conacct)
+g T50 = date-r_50_dc
+gegen tg50=tag(T50)
 gegen pm50 = mean(pay), by(T50)
 gegen arm50=mean(ar), by(T50)
+
+
+
+cap drop id
+cap drop mid
+cap drop am_ndc
+cap drop amm_ndc
+cap drop pay_ndc
+cap drop pm_ndc
+
+g id = tcd_id==1
+* g id = tcd_id==1 & T>=-36 & T<=36
+
+gegen mid = max(id), by(conacct)
+
+g am_ndc = am if  mid==0
+g pay_ndc = pay if mid==0
+gegen amm_ndc = mean(am_ndc), by(T)
+gegen pm_ndc = mean(pay_ndc), by(T)
+
+scatter pm_ndc T if tg==1 & T>=-12 & T<=12
+
+scatter amm_ndc T if tg==1 & T>=-12 & T<=12
+
 
 
 scatter pm T if tg==1 & T>=-12 & T<=12
 scatter pm50 T50 if tg50==1 & T50>=-12 & T50<=12
 
 
+scatter amm T if tg==1 & T>=-12 & T<=12
 
 
 scatter arm T if tg==1 & T>=-12 & T<=12

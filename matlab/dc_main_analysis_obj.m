@@ -77,7 +77,7 @@ r_lend     = .0047 ;
 r_high     = .0945 ;
 
 % beta_set = .02508  % 1/((1+beta_set)^(12))
-beta_set   = .01
+beta_set   = .005
 if strcmp(ver,'bhigh')==1
     beta_set = .01
 end
@@ -90,12 +90,12 @@ end
 
     %             1       2        3         4         5       6      7     8         9      10  11   12   13  14     15    16     17     18      19    20  21                
     % given :  r_lend , r_water, r_high, hasscost, inc shock, untie, alpha, beta_up , Y   ,  p1, p2 , pd,  n, curve, fee,  vhass   pc     pm      Blb   Tg  sp     
-given =        [   0     0       r_high      0        y_cv      0      50   beta_set  y_avg  p1  p2   413  n    1     0     0    .042  bal_0_end  Blb   12  .8 ];
+given =        [   0     0       r_high      0        y_cv      0      50   beta_set  y_avg  p1  p2   190  n    1     0     0    .24  bal_0_end  Blb   12  .8 ];
 if strcmp(ver,'bhigh')==1
-    given =    [   0     0       r_high      0        y_cv      0      54   beta_set  y_avg  p1  p2   190  n    1     0     0   .24   bal_0_end Blb   ];
+    given =    [   0     0       r_high      0        y_cv      0      54   beta_set  y_avg  p1  p2   190  n    1     0     0    .24   bal_0_end Blb   ];
 end
 if strcmp(ver,'blow')==1
-    given =    [   0     0       r_high      0        y_cv      0      55   beta_set  y_avg  p1  p2   150  n    1     0     0   .16   bal_0_end Blb   ];
+    given =    [   0     0       r_high      0        y_cv      0      55   beta_set  y_avg  p1  p2   150  n    1     0     0    .16   bal_0_end Blb   ];
 end
 
 
