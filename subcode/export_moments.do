@@ -6,14 +6,50 @@
 
 * days_pay days_rec leak over_charge enough_time
 
+cap drop bal_0
+g bal_0 = 0       if bal!=0 & dc_date==date & date!=.
+replace bal_0 = 1 if bal==0 & dc_date==date & date!=.
+sum bal_0, detail
+write "${tables}bal_0.tex" `=100*`=r(mean)'' 1 "%12.0fc"
+write "${tables}bal_n0.tex" `=100*(1-`=r(mean)')' 1 "%12.0fc"
+
+
+* g bal_0 = 0 if bal!=0
+* replace bal_0 = 1 if bal==0
+* sum bal_0, detail
+* write "${moments}bal_0.csv" `=r(mean)' 0.0001 "%12.4g"
+* write "${tables}bal_0.tex" `=r(mean)' 0.01 "%12.2fc"
+* write "${tables}bal_0_per.tex" `=100*r(mean)' 0.1 "%12.0fc"
+
+* sum bal_0 if dc_date==date
+* write "${moments}bal_0_end.csv" `=r(mean)' 0.0001 "%12.4g"
+* write "${tables}bal_0_end.tex" `=r(mean)' 0.01 "%12.2fc"
+* write "${tables}bal_0_end_per.tex" `=100*r(mean)' 0.1 "%12.0fc"
+
+
+gegen tcd_ids=sum(tcd_id), by(conacct)
+gegen tag_con = tag(conacct)
+sum tcd_ids if tag_con==1, detail
+write "${tables}tcd_per_hh.tex" `=`=r(mean)'' 0.1 "%12.1fc"
+
+
+
+g mdcp = mdc>0 & mdc<.
+sum mdcp, detail
+write "${tables}mdcp.tex" `=100*`=r(mean)'' 1 "%12.0fc"
+
+g mdcp5 = mdc>=5 & mdc<.
+sum mdcp5, detail
+write "${tables}mdcp5.tex" `=100*`=r(mean)'' 1 "%12.0fc"
+
+
+
 g dc_pos = 0 if disc_count>0 & disc_count<.
 replace dc_ind 
 
 
 g am_pdc = am if date<dc_date
 gegen am_max = max(am_pdc), by(conacct)
-
-
 
 
 
@@ -73,17 +109,6 @@ write "${tables}dc_shr_per.tex" `=100*`=r(mean)'' 0.1 "%12.1fc"
 
 
 
-g bal_0 = 0 if bal!=0
-replace bal_0 = 1 if bal==0
-sum bal_0, detail
-write "${moments}bal_0.csv" `=r(mean)' 0.0001 "%12.4g"
-write "${tables}bal_0.tex" `=r(mean)' 0.01 "%12.2fc"
-write "${tables}bal_0_per.tex" `=100*r(mean)' 0.1 "%12.0fc"
-
-sum bal_0 if dc_date==date
-write "${moments}bal_0_end.csv" `=r(mean)' 0.0001 "%12.4g"
-write "${tables}bal_0_end.tex" `=r(mean)' 0.01 "%12.2fc"
-write "${tables}bal_0_end_per.tex" `=100*r(mean)' 0.1 "%12.0fc"
 
 
 sum bal if dc_date==date

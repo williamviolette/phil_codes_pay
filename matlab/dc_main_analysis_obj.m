@@ -42,8 +42,8 @@ option = [ 7 12 17 ];   %%% what to estimate
 lb = [ 40 10  .01 ];
 ub = [ 80 400 .99 ];
 
-option_moments       = [ 1 2 3 4 5  ];  %%% moments to use!
-option_moments_est   = [ 1 2 3 4 5  ];
+option_moments       = [ 1 2 3  ];  %%% moments to use!
+option_moments_est   = [ 1 2 3  ];
 
 inc_t=1;
 
@@ -70,7 +70,7 @@ format long g
     nB = 40
 
 Alb = -2.*y_avg ;
-Aub =  1.*y_avg ;
+Aub =  2.*y_avg ;
 
 %%% annual rate of 5.75%, which implies a monthly interest rate of .0047
 r_lend     = .0047 ;
@@ -90,7 +90,7 @@ end
 
     %             1       2        3         4         5       6      7     8         9      10  11   12   13  14     15    16     17     18      19    20  21                
     % given :  r_lend , r_water, r_high, hasscost, inc shock, untie, alpha, beta_up , Y   ,  p1, p2 , pd,  n, curve, fee,  vhass   pc     pm      Blb   Tg  sp     
-given =        [   0     0       r_high      0        y_cv      0      50   beta_set  y_avg  p1  p2   190  n    1     0     0    .24  bal_0_end  Blb   12  .8 ];
+given =        [   0     0       r_high      0        y_cv      0      54   beta_set  y_avg  p1  p2   270  n    1     0     0    .24   bal_0_end  Blb   12  .8 ];
 if strcmp(ver,'bhigh')==1
     given =    [   0     0       r_high      0        y_cv      0      54   beta_set  y_avg  p1  p2   190  n    1     0     0    .24   bal_0_end Blb   ];
 end
