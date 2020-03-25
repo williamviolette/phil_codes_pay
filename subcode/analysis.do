@@ -82,6 +82,8 @@ keep if date>=603
 save  "${temp}temp_descriptives_3.dta", replace
 
 
+use "${temp}temp_descriptives_3.dta", clear
+
 *** DISCONNECTION RATE!
 
 cap drop dc_enter1
@@ -100,6 +102,8 @@ corr dc_enter1 date if date>=`=tm(2012m1)' & date<=`=tm(2014m5)'
 
 
 
+* global dtable_name "all"
+* do "${subcode}descriptive_table_print.do"
 
 do export_moments.do
 
@@ -136,15 +140,15 @@ forvalues r = 1/10 {
 
 
 
-g TD = date-dc_date
+* g TD = date-dc_date
 
 
-gegen balTD = mean(bal), by(TD)
-gegen tagTD = tag(TD)
+* gegen balTD = mean(bal), by(TD)
+* gegen tagTD = tag(TD)
+
+* scatter balTD TD if tagTD==1 & TD<=0 & TD>=-36
 
 
-
-scatter balTD TD if tagTD==1 & TD<=0 & TD>=-36
 
 
 * g DC = date>=dc_date
@@ -371,25 +375,7 @@ forvalues r=1/3 {
 
 * do "${subcode}descriptive_table_print_3_groups.do"
 
-global dtable_name "all"
-do "${subcode}descriptive_table_print.do"
 	
-
-
-
-
-* do "${subcode}descriptive_table_print_groups.do"
-
-	* preserve
-	  drop if date>=dc_date-12  &  leaver==1
-
-		 do "${subcode}export_moments.do"
-	     
-	  *    global dtable_name "stayers"
-		 * do "${subcode}descriptive_table_print.do"
-	
-	* restore
-
 
 
 

@@ -19,6 +19,8 @@ ytitle("Average Unpaid Balance (PhP)") xlabel(-36(12)0)
 
 graph export "${tables}pay_to_dc_graph.png", as(png) replace
 
+
+
 * gegen m_c = mean(c), by(T)
 * twoway scatter m_bal T if Ttag==1 & T>=-36 & T<=0 || scatter m_c T if Ttag==1 & T>=-36 & T<=0, yaxis(2)
 

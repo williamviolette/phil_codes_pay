@@ -21,20 +21,9 @@ prob_caught     = given(1,17);
 prob_move       = given(1,18);
 Blb             = given(1,19);
 Tg              = given(1,20);
-prob_sub        = given(1,21);
-
-
-
 
 prob = [(1-prob_caught) (1-prob_caught) (prob_caught) (prob_caught)]./2; 
 
-if prob_sub>0
-    probs = [(1-prob_sub) (1-prob_sub) (prob_sub) (prob_sub)]./2;
-else
-    probs=prob;
-end
-    
-    
 chain =  1.*(X(:,1)<=prob(1)) + ...
          2.*(X(:,1)>prob(1) & X(:,1)<=prob(1)+prob(2)) + ...
          3.*(X(:,1)>prob(1)+prob(2) & X(:,1)<=prob(1)+prob(2)+prob(3)) + ...
@@ -86,35 +75,35 @@ Y_low  = Y.*(1-theta) ;  % low value for income
     
     for t = T:-1:1
             if t==T
-                    [tv1,tdecis1]=max(util1 - M_dl_end + beta.*repmat(v*probs',1,size(util1,1)));
-                    [tv2,tdecis2]=max(util2 - M_dl_end + beta.*repmat(v*probs',1,size(util1,1)));
-                    [tv3,tdecis3]=max(util3 - M_dl_end + beta.*repmat(v*probs',1,size(util1,1)));
-                    [tv4,tdecis4]=max(util4 - M_dl_end + beta.*repmat(v*probs',1,size(util1,1)));
+                    [tv1,tdecis1]=max(util1 - M_dl_end + beta.*repmat(v*prob',1,size(util1,1)));
+                    [tv2,tdecis2]=max(util2 - M_dl_end + beta.*repmat(v*prob',1,size(util1,1)));
+                    [tv3,tdecis3]=max(util3 - M_dl_end + beta.*repmat(v*prob',1,size(util1,1)));
+                    [tv4,tdecis4]=max(util4 - M_dl_end + beta.*repmat(v*prob',1,size(util1,1)));
                     
-                    [tv1a,tdecis1a]=max(util1 - M_dl_end - M_move   + beta.*repmat(va*probs',1,size(util1,1)));
-                    [tv2a,tdecis2a]=max(util2 - M_dl_end - M_move   + beta.*repmat(va*probs',1,size(util1,1)));
-                    [tv3a,tdecis3a]=max(util3 - M_dl_end - M_move   + beta.*repmat(va*probs',1,size(util1,1)));
-                    [tv4a,tdecis4a]=max(util4 - M_dl_end - M_move   + beta.*repmat(va*probs',1,size(util1,1)));
+                    [tv1a,tdecis1a]=max(util1 - M_dl_end - M_move   + beta.*repmat(va*prob',1,size(util1,1)));
+                    [tv2a,tdecis2a]=max(util2 - M_dl_end - M_move   + beta.*repmat(va*prob',1,size(util1,1)));
+                    [tv3a,tdecis3a]=max(util3 - M_dl_end - M_move   + beta.*repmat(va*prob',1,size(util1,1)));
+                    [tv4a,tdecis4a]=max(util4 - M_dl_end - M_move   + beta.*repmat(va*prob',1,size(util1,1)));
               elseif t<T && t>T-Tg
-                    [tv1,tdecis1]=max(util1 - M_dl  + beta.*repmat(v*probs',1,size(util1,1)));
-                    [tv2,tdecis2]=max(util2 - M_dl  + beta.*repmat(v*probs',1,size(util1,1)));
-                    [tv3,tdecis3]=max(util3 - M_dl  + beta.*repmat(v*probs',1,size(util1,1)));
-                    [tv4,tdecis4]=max(util4 - M_dl  + beta.*repmat(v*probs',1,size(util1,1)));
+                    [tv1,tdecis1]=max(util1 - M_dl  + beta.*repmat(v*prob',1,size(util1,1)));
+                    [tv2,tdecis2]=max(util2 - M_dl  + beta.*repmat(v*prob',1,size(util1,1)));
+                    [tv3,tdecis3]=max(util3 - M_dl  + beta.*repmat(v*prob',1,size(util1,1)));
+                    [tv4,tdecis4]=max(util4 - M_dl  + beta.*repmat(v*prob',1,size(util1,1)));
                     
-                    [tv1a,tdecis1a]=max(util1 - M_dl  + beta.*repmat(va*probs',1,size(util1,1)));
-                    [tv2a,tdecis2a]=max(util2 - M_dl  + beta.*repmat(va*probs',1,size(util1,1)));
-                    [tv3a,tdecis3a]=max(util3 - M_dl  + beta.*repmat(va*probs',1,size(util1,1)));
-                    [tv4a,tdecis4a]=max(util4 - M_dl  + beta.*repmat(va*probs',1,size(util1,1)));
+                    [tv1a,tdecis1a]=max(util1 - M_dl  + beta.*repmat(va*prob',1,size(util1,1)));
+                    [tv2a,tdecis2a]=max(util2 - M_dl  + beta.*repmat(va*prob',1,size(util1,1)));
+                    [tv3a,tdecis3a]=max(util3 - M_dl  + beta.*repmat(va*prob',1,size(util1,1)));
+                    [tv4a,tdecis4a]=max(util4 - M_dl  + beta.*repmat(va*prob',1,size(util1,1)));
               elseif t==T-Tg
-                    [tv1,tdecis1]=max(util1 - M_dl + beta.*repmat((1-prob_move).*(v*probs') + (prob_move).*(va*probs'),1,size(util1,1)));
-                    [tv2,tdecis2]=max(util2 - M_dl + beta.*repmat((1-prob_move).*(v*probs') + (prob_move).*(va*probs'),1,size(util1,1)));
-                    [tv3,tdecis3]=max(util3 - M_dl + beta.*repmat((1-prob_move).*(v*probs') + (prob_move).*(va*probs'),1,size(util1,1)));
-                    [tv4,tdecis4]=max(util4 - M_dl + beta.*repmat((1-prob_move).*(v*probs') + (prob_move).*(va*probs'),1,size(util1,1)));
+                    [tv1,tdecis1]=max(util1 - M_dl + beta.*repmat((1-prob_move).*(v*prob') + (prob_move).*(va*prob'),1,size(util1,1)));
+                    [tv2,tdecis2]=max(util2 - M_dl + beta.*repmat((1-prob_move).*(v*prob') + (prob_move).*(va*prob'),1,size(util1,1)));
+                    [tv3,tdecis3]=max(util3 - M_dl + beta.*repmat((1-prob_move).*(v*prob') + (prob_move).*(va*prob'),1,size(util1,1)));
+                    [tv4,tdecis4]=max(util4 - M_dl + beta.*repmat((1-prob_move).*(v*prob') + (prob_move).*(va*prob'),1,size(util1,1)));
               else
-                [tv1,tdecis1]=max(util1 + beta.*repmat(v*probs',1,size(util1,1)));
-                [tv2,tdecis2]=max(util2 + beta.*repmat(v*probs',1,size(util1,1)));
-                [tv3,tdecis3]=max(util3 + beta.*repmat(v*probs',1,size(util1,1)));
-                [tv4,tdecis4]=max(util4 + beta.*repmat(v*probs',1,size(util1,1)));
+                [tv1,tdecis1]=max(util1 + beta.*repmat(v*prob',1,size(util1,1)));
+                [tv2,tdecis2]=max(util2 + beta.*repmat(v*prob',1,size(util1,1)));
+                [tv3,tdecis3]=max(util3 + beta.*repmat(v*prob',1,size(util1,1)));
+                [tv4,tdecis4]=max(util4 + beta.*repmat(v*prob',1,size(util1,1)));
             end
                 tdecis=[ tdecis1' tdecis2' tdecis3' tdecis4' ];
                 tv=[ tv1' tv2' tv3' tv4' ];
@@ -191,7 +180,7 @@ tm = 12;
     
 h = [    mean(controls(:,1)); ...
          mean(-1.*controls(:,3)); ...
-         mean(controls(:,4)==1); ...
+         mean(controls(:,4)==1);
          mean(controls([0; controls(1:end-1,3)]<0 & controls(:,5)>=3 & controls(:,6)<Acc-tm & controls(:,6)~=1 & [0; controls(1:end-1,4)]~=1,4)) ; ...
          mean(controls(:,3)==0); ...
          mean(abs(controls(controls(:,6)==s,3)))   ];

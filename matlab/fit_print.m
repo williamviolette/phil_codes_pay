@@ -23,8 +23,8 @@ function h = fit_print(cd_dir,r,ver,given,option,nA,sigA,Alb,Aub,nB,sigB,nD,s,in
     
     pay = controls(:,3)-bal_pre+c_pay;
     
-    pay_corr_sim = corr(pay(controls(:,6)>1 & controls(:,6)<s),inc(controls(:,6)>1 & controls(:,6)<s));
-    use_corr_sim = corr(c_pay(controls(:,6)>1 & controls(:,6)<s),inc(controls(:,6)>1 & controls(:,6)<s));
+    pay_corr_sim = corr(pay(controls(:,6)>1 & controls(:,6)<s),inc(controls(:,6)>1 & controls(:,6)<s))
+    use_corr_sim = corr(c_pay(controls(:,6)>1 & controls(:,6)<s),inc(controls(:,6)>1 & controls(:,6)<s))
     
     wnum(cd_dir,strcat('fit_pay_corr_',ver,'.tex'),pay_corr_sim,'%5.2f')
     wnum(cd_dir,strcat('fit_use_corr_',ver,'.tex'),use_corr_sim,'%5.2f')

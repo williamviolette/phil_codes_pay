@@ -124,6 +124,31 @@ print_mean total_hhs_${dtable_name} cobs "%10.0fc" 1
 print_mean obs_per_hh_${dtable_name} conN "%10.1fc" 1
 print_mean total_obs_${dtable_name} tobs "%10.0fc" 1
 
+preserve
+  use "${temp}cbms_temp_2011.dta", clear
+
+  append using "${temp}cbms_temp_2008.dta"
+
+  egen sm=max(source_water), by(hcn)
+
+  sort hcn date
+  by hcn: g T=_n
+  gegen TM=max(T), by(hcn)
+  keep if TM==2
+  cap drop cobs_id
+  cap drop cobs
+  sort conacct date
+  by conacct: g cobs_id = _n==1
+  egen cobs=sum(cobs_id)
+
+  cap drop tobs
+  g tobs=_N
+
+  print_mean total_inc_hhs_${dtable_name} cobs "%10.0fc" 1
+  print_mean total_inc_obs_${dtable_name} tobs "%10.0fc" 1
+restore
+
+
 
  global cat_num=6
  global cat_group = "mean sd min p25 p75 max"
@@ -162,7 +187,7 @@ global cat_num=2
       print_1_cg "Bill" amount  "%10.0fc" 
       print_1_cg "Unpaid Balance" bal "%10.0fc"   
       print_1_cg "Share of Months with Payment" p0 "%10.2fc"       
-      * print_1_cg "Payment Size" pays  "%10.0fc"      
+      print_1_cg "Payment Size" pays  "%10.0fc"      
       print_1_cg "Days Delinquent" ar  "%10.1fc"
       print_1_cg "Delinquency Visits per HH" tcds   "%10.2fc"
       print_1_cg "Share of Months Disconnected" am   "%10.2fc"

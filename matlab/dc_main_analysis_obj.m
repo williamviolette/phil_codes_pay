@@ -12,9 +12,9 @@ cd_dir ='/Users/williamviolette/Documents/Philippines/phil_analysis/phil_codes_p
 real_data      = 1    ;
 given_sim      = 1    ;
 
-est_pattern    = 0 ;
+est_pattern    = 0    ;
 results        = 0    ;
-boot           = 0    ;
+boot           = 1    ;
 br             = 10   ; % reps
 
 int_size = 1; % number of interpolations
@@ -109,8 +109,7 @@ else
 end
    
 tic
-% [est_mom,ucon,controls,~,~,A1,B1]=obj(given,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
-[est_mom,ucon,controls,~,~,A1,B1]=obj_tgr(given,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
+[est_mom,ucon,controls,~,~,A1,B1]=obj(given,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
 toc
 
 disp ' A loan '
@@ -136,31 +135,31 @@ round(data(option_moments),2)
 
 
 if est_pattern==1
-        options = optimoptions('patternsearch','Display','iter','MaxFunctionEvaluations',200,'MaxIterations',30,'InitialMeshSize',1,'UseParallel',true);
-        weights =  eye(size(data,1))./(data.^2) ;   % normalize moments to be between zero and one (matters quite a bit)
-        ag = given(option);    
-        obj_run = @(a1)objopt(a1,given,data,option,option_moments_est,weights,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
-                    disp ' old obj: ' 
-                    obj_run(ag)
-                    disp ' '
-                    disp 'pattern search ... '
-                    tic
-                    [res,fval,~,Output] = patternsearch(obj_run,ag,[],[],[],[],lb,ub,[],options)
-                    fprintf('The number of iterations was : %d\n', Output.iterations);
-                    fprintf('The number of function evaluations was : %d\n', Output.funccount);
-                    toc
-                    [~,~,est_mom]=obj_run(res);
-                    disp   '   truth               estimates   ' 
-                    [ round(data(:,1),2)  round(est_mom,2) ]
-                    disp ' psearch done ! :)'
-         csvwrite(strcat(folder,'pattern_estimates_',ver,'.csv'),res)
+%         options = optimoptions('patternsearch','Display','iter','MaxFunctionEvaluations',200,'MaxIterations',30,'InitialMeshSize',1,'UseParallel',true);
+%         weights =  eye(size(data,1))./(data.^2) ;   % normalize moments to be between zero and one (matters quite a bit)
+%         ag = given(option);    
+%         obj_run = @(a1)objopt(a1,given,data,option,option_moments_est,weights,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
+%                     disp ' old obj: ' 
+%                     obj_run(ag)
+%                     disp ' '
+%                     disp 'pattern search ... '
+%                     tic
+%                     [res,fval,~,Output] = patternsearch(obj_run,ag,[],[],[],[],lb,ub,[],options)
+%                     fprintf('The number of iterations was : %d\n', Output.iterations);
+%                     fprintf('The number of function evaluations was : %d\n', Output.funccount);
+%                     toc
+%                     [~,~,est_mom]=obj_run(res);
+%                     disp   '   truth               estimates   ' 
+%                     [ round(data(:,1),2)  round(est_mom,2) ]
+%                     disp ' psearch done ! :)'
+%          csvwrite(strcat(folder,'pattern_estimates_',ver,'.csv'),res)
          
     rb=zeros(br,size(option_moments,2));
     
     if boot==1
         for i=1:size(rb,1)
             rng(i);
-            X1=rand(n-1,1);
+            X1=rand(n-1,2);
             c_avg     = csvread(strcat(folder,'c_avg_',num2str(i),'.csv'))  ;
             bal_avg   = csvread(strcat(folder,'bal_avg_',num2str(i),'.csv'));
             dc_shr = csvread(strcat(folder,'dc_shr_',num2str(i),'.csv'));
@@ -199,10 +198,13 @@ if results==1
         for i = 1:size(rb,1)
            rb(i,:) =  csvread(strcat(folder,'pattern_estimates_',ver,'_',num2str(i),'.csv'));
         end
+    else
+        rb=zeros(size(rb,1),size(rb,2));
     end
     r = csvread(strcat(folder,'pattern_estimates_',ver,'.csv'));
 
-%     j=print_estimates(cd_dir,r,rb,ver);
+   
+%    j=print_estimates(cd_dir,r,rb,ver);
 %     j=fit_print(cd_dir,r,ver,given,option,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
 if given_sim==1
     r= given(option);

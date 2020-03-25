@@ -75,10 +75,9 @@ preserve
 
 	sort hcn date
 	by hcn: g T=_n
-
 	gegen TM=max(T), by(hcn)
-
 	keep if TM==2
+
 	replace bill=. if bill==0
 
 	sort hcn T
@@ -124,8 +123,8 @@ restore
 estout amount_ch pay_ch inc_ch using "${tables}table_panel_analysis.tex", replace  style(tex) ///
 	keep( hhemp_paws_ch hhsize_paws_ch   ) order(hhemp_paws_ch hhsize_paws_ch) ///
 		varlabels(hhemp_paws_ch "$\Delta$ Working Members" hhsize_paws_ch "$\Delta$ Total Members", el(  hhemp_paws_ch "[0.5em]" hhsize_paws_ch "[0.5em]") )  label noomitted ///
-		  mlabels(,none)   collabels(none)  cells( b(fmt(2) star ) se(par fmt(2)) ) ///
-		  stats( varmean r2 N , labels( "Mean" "$\text{R}^{2}$" "N"  )   fmt( %12.2fc %12.3fc %12.0fc  )   ) ///
+		  mlabels(,none)   collabels(none)  cells( b(fmt(1) star ) se(par fmt(1)) ) ///
+		  stats( varmean r2 N , labels( "Mean" "$\text{R}^{2}$" "N"  )   fmt( %12.1fc %12.3fc %12.0fc  )   ) ///
 		  starlevels(  "\textsuperscript{c}" 0.10    "\textsuperscript{b}" 0.05  "\textsuperscript{a}" 0.01) 
 
 

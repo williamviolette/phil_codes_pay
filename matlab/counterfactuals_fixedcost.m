@@ -65,25 +65,31 @@ disp ' NO-LOAN '
   
 
     
-% disp ' HALF-RATE '
-%     res_hf = given;
-%     res_hf(:,17)=given(:,17)/2;
-%     [~,ucon_hf,sim_hf] = obj(res_hf,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
-%     disp 'utility from half rate '
-%     (ucon_hf-ucon)/u_ch
-%    
-%     [rev_goal_hf,lend_cost_hf,delinquency_cost_hf,visit_cost_hf,wwr_hf] = cost_calc(sim_hf,r_lend,visit_price,marginal_cost,p1,p2,s);
-%     disp 'Pre-Post: Rev'
-%     rev_goal-rev_goal_hf
-%     
-%     res_hfc = res_hf;
-%     res_hfc(:,15)=rev_goal - rev_goal_hf ;
-%     [~,ucon_hfc,sim_hfc] =obj(res_hfc,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
-%     disp 'compensated utility from half rate'
-%     (ucon_hfc-ucon)/u_ch
+disp ' HALF-RATE '
+    res_hf = given;
+    res_hf(:,17)=given(:,17)/2;
+    [~,ucon_hf,sim_hf] = obj(res_hf,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
+    disp 'utility from half rate '
+    (ucon_hf-ucon)/u_ch
+   
+    [rev_goal_hf,lend_cost_hf,delinquency_cost_hf,visit_cost_hf,wwr_hf] = cost_calc(sim_hf,r_lend,visit_price,marginal_cost,p1,p2,s);
+    disp 'Pre-Post: Rev'
+    rev_goal-rev_goal_hf
     
+    res_hfc = res_hf;
+    res_hfc(:,15)=rev_goal - rev_goal_hf ;
+    [~,ucon_hfc,sim_hfc] =obj(res_hfc,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
+    disp 'compensated utility from half rate'
+    (ucon_hfc-ucon)/u_ch
     
-Ogride = (.02:.005:.04)' ;
+  
+disp ' B loan (last DC)'
+sum(sim_hfc(sim_hfc(:,6)==s,3)==min(sim_hfc(sim_hfc(:,6)==s,3)))/sum(sim_hfc(:,6)==s)
+
+
+    
+Ogride = (.005:.005:.02)' ;
+Uov_pre = zeros(size(Ogride,1),1);
 Uov = zeros(size(Ogride,1),1);
 Rov = zeros(size(Ogride,1),1);
 
@@ -111,10 +117,17 @@ for i=1:size(Ogride,1)
     disp 'compensated utility from ovisit rate'
     (u_ovc-ucon)/u_ch
     
+    Uov_pre(i,1) = (u_ov-ucon)/u_ch;
     Uov(i,1) = (u_ovc-ucon)/u_ch;
     Rov(i,1) = rev_goal-rev_goal_ov;
 
 end
+
+
+disp ' B loan (last DC)'
+sum(sim_ovc(sim_ovc(:,6)==s,3)==min(sim_ovc(sim_ovc(:,6)==s,3)))/sum(sim_ovc(:,6)==s)
+% sum(sim_ovc(sim_ovc(:,6)==s,3)==max(sim_ovc(sim_ovc(:,6)==s,3)))/sum(sim_ovc(:,6)==s)
+
 
 
 [~,maxO]=min(abs(Rov));
