@@ -13,8 +13,8 @@ real_data      = 1    ;
 given_sim      = 1    ;
 
 est_pattern    = 0    ;
-results        = 0    ;
-boot           = 1    ;
+results        = 1    ;
+boot           = 0    ;
 br             = 10   ; % reps
 
 int_size = 1; % number of interpolations
@@ -35,7 +35,7 @@ sigA = 0;
 sigB = 0;
 nD   = 2;
 
-ver = 'b';
+
 
   %  alpha pd pc 
 option = [ 7 12 17 ];   %%% what to estimate
@@ -76,6 +76,25 @@ Aub =  2.*y_avg ;
 r_lend     = .0047 ;
 r_high     = .0945 ;
 
+
+
+for L=0
+
+ver = 'b';
+if L==1
+    ver = 'bhigh';
+end
+if L==2
+    ver = 'blow';
+end
+if L==3
+    ver = 'chigh';
+end
+if L==4
+    ver = 'clow';
+end
+
+
 % beta_set = .02508  % 1/((1+beta_set)^(12))
 beta_set   = .005
 if strcmp(ver,'bhigh')==1
@@ -90,14 +109,19 @@ end
 
     %             1       2        3         4         5       6      7     8         9      10  11   12   13  14     15    16     17     18      19    20  21                
     % given :  r_lend , r_water, r_high, hasscost, inc shock, untie, alpha, beta_up , Y   ,  p1, p2 , pd,  n, curve, fee,  vhass   pc     pm      Blb   Tg  sp     
-given =        [   0     0       r_high      0        y_cv      0      54   beta_set  y_avg  p1  p2   270  n    1     0     0    .24   bal_0_end  Blb   12  .8 ];
+given =        [   0     0       r_high      0        y_cv      0      54   beta_set  y_avg  p1  p2   325  n    1     0     0    .22   bal_0_end  Blb   12  .8 ];
 if strcmp(ver,'bhigh')==1
-    given =    [   0     0       r_high      0        y_cv      0      54   beta_set  y_avg  p1  p2   190  n    1     0     0    .24   bal_0_end Blb   ];
+    given =    [   0     0       r_high      0        y_cv      0      54   beta_set  y_avg  p1  p2   370  n    1     0     0    .24   bal_0_end  Blb   12  .8 ];
 end
 if strcmp(ver,'blow')==1
-    given =    [   0     0       r_high      0        y_cv      0      55   beta_set  y_avg  p1  p2   150  n    1     0     0    .16   bal_0_end Blb   ];
+    given =    [   0     0       r_high      0        y_cv      0      54   beta_set  y_avg  p1  p2   340  n    1     0     0    .20   bal_0_end  Blb   12  .8 ];
 end
-
+if strcmp(ver,'chigh')==1
+    given =    [   0     0       r_high      0        y_cv      0      53.5 beta_set  y_avg  p1  p2   380  n    2    0     0     .215  bal_0_end  Blb   12  .8 ];
+end
+if strcmp(ver,'clow')==1
+    given =    [   0     0       r_high      0        y_cv      0      54.5 beta_set  y_avg  p1  p2   310  n    .5    0     0    .23   bal_0_end  Blb   12  .8 ];
+end
 
 % csvwrite(strcat(folder,'given.csv'),given);
                         
@@ -128,31 +152,31 @@ disp ' B loan average '
 mean(controls(controls(:,6)==s,3))
 
 disp ' Sim '
-round(est_mom(option_moments_est),2)
+round(est_mom(option_moments_est),3)
 disp ' Data '
-round(data(option_moments),2)
+round(data(option_moments),3)
        
 
 
 if est_pattern==1
-%         options = optimoptions('patternsearch','Display','iter','MaxFunctionEvaluations',200,'MaxIterations',30,'InitialMeshSize',1,'UseParallel',true);
-%         weights =  eye(size(data,1))./(data.^2) ;   % normalize moments to be between zero and one (matters quite a bit)
-%         ag = given(option);    
-%         obj_run = @(a1)objopt(a1,given,data,option,option_moments_est,weights,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
-%                     disp ' old obj: ' 
-%                     obj_run(ag)
-%                     disp ' '
-%                     disp 'pattern search ... '
-%                     tic
-%                     [res,fval,~,Output] = patternsearch(obj_run,ag,[],[],[],[],lb,ub,[],options)
-%                     fprintf('The number of iterations was : %d\n', Output.iterations);
-%                     fprintf('The number of function evaluations was : %d\n', Output.funccount);
-%                     toc
-%                     [~,~,est_mom]=obj_run(res);
-%                     disp   '   truth               estimates   ' 
-%                     [ round(data(:,1),2)  round(est_mom,2) ]
-%                     disp ' psearch done ! :)'
-%          csvwrite(strcat(folder,'pattern_estimates_',ver,'.csv'),res)
+        options = optimoptions('patternsearch','Display','iter','MaxFunctionEvaluations',200,'MaxIterations',30,'InitialMeshSize',1,'UseParallel',true);
+        weights =  eye(size(data,1))./(data.^2) ;   % normalize moments to be between zero and one (matters quite a bit)
+        ag = given(option);    
+        obj_run = @(a1)objopt(a1,given,data,option,option_moments_est,weights,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
+                    disp ' old obj: ' 
+                    obj_run(ag)
+                    disp ' '
+                    disp 'pattern search ... '
+                    tic
+                    [res,fval,~,Output] = patternsearch(obj_run,ag,[],[],[],[],lb,ub,[],options)
+                    fprintf('The number of iterations was : %d\n', Output.iterations);
+                    fprintf('The number of function evaluations was : %d\n', Output.funccount);
+                    toc
+                    [~,~,est_mom]=obj_run(res);
+                    disp   '   truth               estimates   ' 
+                    [ round(data(:,1),2)  round(est_mom,2) ]
+                    disp ' psearch done ! :)'
+         csvwrite(strcat(folder,'pattern_estimates_',ver,'.csv'),res)
          
     rb=zeros(br,size(option_moments,2));
     
@@ -190,6 +214,8 @@ if est_pattern==1
 end
 
 
+
+
     
 
 if results==1
@@ -204,16 +230,16 @@ if results==1
     r = csvread(strcat(folder,'pattern_estimates_',ver,'.csv'));
 
    
-%    j=print_estimates(cd_dir,r,rb,ver);
-%     j=fit_print(cd_dir,r,ver,given,option,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
+    j=print_estimates(cd_dir,r,rb,ver);
+%      j=fit_print(cd_dir,r,ver,given,option,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
 if given_sim==1
     r= given(option);
 end
-    j=counterfactuals_fixedcost(cd_dir,r,ver,given,option,ppinst,r_lend,visit_price,marginal_cost,p1,p2,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
+    j=counterfactuals_price(cd_dir,r,ver,given,option,ppinst,r_lend,visit_price,marginal_cost,p1,p2,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
 end
 
 
-
+end
 
 
 

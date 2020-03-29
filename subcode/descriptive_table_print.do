@@ -55,6 +55,21 @@ program print_mean
     file close newfile    
 end
 
+
+cap prog drop print_mean_sd
+program print_mean_sd
+    qui sum `2', detail 
+    local value=string(`=r(mean)*`4'',"`3'")
+    file open newfile using "${tables}`1'_mean.tex", write replace
+    file write newfile "`value'"
+    file close newfile    
+
+    local value=string(`=r(sd)*`4'',"`3'")
+    file open newfile using "${tables}`1'_sd.tex", write replace
+    file write newfile "`value'"
+    file close newfile    
+end
+
 cap prog drop print_mean_csv
 program print_mean_csv
     qui sum `2', detail 
@@ -104,9 +119,6 @@ print_mean bill_sav_${dtable_name} bill_sav "%10.1fc" 100
   drop bill_sav
 
 
-
-print_mean tcd_per_account_${dtable_name} tcds "%10.1fc" 1
-
 cap drop cobs_id
 cap drop cobs
 sort conacct date
@@ -129,16 +141,14 @@ preserve
 
   append using "${temp}cbms_temp_2008.dta"
 
-  egen sm=max(source_water), by(hcn)
-
   sort hcn date
   by hcn: g T=_n
   gegen TM=max(T), by(hcn)
   keep if TM==2
   cap drop cobs_id
   cap drop cobs
-  sort conacct date
-  by conacct: g cobs_id = _n==1
+  sort hcn date
+  by hcn: g cobs_id = _n==1
   egen cobs=sum(cobs_id)
 
   cap drop tobs
@@ -148,60 +158,76 @@ preserve
   print_mean total_inc_obs_${dtable_name} tobs "%10.0fc" 1
 restore
 
+cap drop amA
+g amA = am if date<dc_date
 
 
- global cat_num=6
- global cat_group = "mean sd min p25 p75 max"
 
-    file open newfile using "${tables}descriptives_${dtable_name}.tex", write replace
-*    print_table_start
-*    file write newfile " & Mean & SD & Min & 25th & 75th & Max \\ " _n  
-
-      print_1_cg "Usage (m3)" c  "%10.1fc"
-      print_1_cg "Bill" amount  "%10.0fc" 
-      print_1_cg "Unpaid Balance" bal "%10.0fc"   
-      print_1_cg "Share of Months with Payment" p0 "%10.2fc"       
-      print_1_cg "Payment Size" pays  "%10.0fc"      
-      print_1_cg "Days Delinquent" ar  "%10.1fc"
-      print_1_cg "Delinquency Visits per HH" tcds   "%10.2fc"
-      print_1_cg "Share of Months Disconnected" am   "%10.2fc"
-
-*      print_blank
-*      print_obs "Total Households" cobs "%10.0fc" 
-*      print_obs "Mean Obs. per Household" conN "%10.1fc" 
-*      print_obs "Total Obs." tobs "%10.0fc" 
-
-*    file write newfile "\end{tabu}" _n
-   file close newfile
-    * "\bottomrule" _n 
+      print_mean_sd table_c c  "%10.0fc" 1
+      print_mean_sd table_amount amount  "%10.0fc" 1
+      print_mean_sd table_bal bal "%10.0f"   1
+      print_mean_sd table_pays pays  "%10.0f"  1    
+      preserve
+        use "${temp}cbms_temp_2011.dta", clear
+        append using "${temp}cbms_temp_2008.dta"
+        sort hcn date
+        by hcn: g T=_n
+        gegen TM=max(T), by(hcn)
+        keep if TM==2
+      print_mean_sd table_inc inc  "%10.0f" 1
+      restore
+      print_mean_sd table_p0 p0 "%10.3fc" 1      
+      print_mean_sd table_shr_dc amA   "%10.3fc" 1
 
 
-global cat_num=2
- global cat_group = "mean sd"
-
-    file open newfile using "${tables}descriptives_new_${dtable_name}.tex", write replace
-*    print_table_start
-*    file write newfile " & Mean & SD & Min & 25th & 75th & Max \\ " _n  
-
-      print_1_cg "Usage (m3)" c  "%10.1fc"
-      print_1_cg "Bill" amount  "%10.0fc" 
-      print_1_cg "Unpaid Balance" bal "%10.0fc"   
-      print_1_cg "Share of Months with Payment" p0 "%10.2fc"       
-      print_1_cg "Payment Size" pays  "%10.0fc"      
-      print_1_cg "Days Delinquent" ar  "%10.1fc"
-      print_1_cg "Delinquency Visits per HH" tcds   "%10.2fc"
-      print_1_cg "Share of Months Disconnected" am   "%10.2fc"
-
-*      print_blank
-*      print_obs "Total Households" cobs "%10.0fc" 
-*      print_obs "Mean Obs. per Household" conN "%10.1fc" 
-*      print_obs "Total Obs." tobs "%10.0fc" 
-
-*    file write newfile "\end{tabu}" _n
-   file close newfile
-    * "\bottomrule" _n 
-
-drop cobs conN tobs p0 pays bal_y bal_s cobs_id
 
 
+* global cat_num=2
+*  global cat_group = "mean sd"
+
+*     file open newfile using "${tables}descriptives_new_${dtable_name}.tex", write replace
+
+*       print_1_cg "Consumption (m3)" c  "%10.0fc"
+*       print_1_cg "Bill" amount  "%10.0fc" 
+*       print_1_cg "Unpaid Balance" bal "%10.0f"   
+*       print_1_cg "Payment Size" pays  "%10.0f"      
+*       preserve
+*         use "${temp}cbms_temp_2011.dta", clear
+*         append using "${temp}cbms_temp_2008.dta"
+*         sort hcn date
+*         by hcn: g T=_n
+*         gegen TM=max(T), by(hcn)
+*         keep if TM==2
+*       print_1_cg "Income" inc  "%10.0f"
+*       restore
+*       print_1_cg "Share with Payments" p0 "%10.3fc"       
+*       print_1_cg "Share Temporarily Disconnected" amA   "%10.3fc"
+
+*    file close newfile
+
+* drop cobs conN tobs p0 pays bal_y bal_s cobs_id amA
+
+
+
+
+
+*  global cat_num=6
+*  global cat_group = "mean sd min p25 p75 max"
+*     file open newfile using "${tables}descriptives_${dtable_name}.tex", write replace
+* *    print_table_start
+* *    file write newfile " & Mean & SD & Min & 25th & 75th & Max \\ " _n  
+*       print_1_cg "Usage (m3)" c  "%10.1fc"
+*       print_1_cg "Bill" amount  "%10.0fc" 
+*       print_1_cg "Unpaid Balance" bal "%10.0fc"   
+*       print_1_cg "Share of Months with Payment" p0 "%10.2fc"       
+*       print_1_cg "Payment Size" pays  "%10.0fc"      
+*       print_1_cg "Days Delinquent" ar  "%10.1fc"
+*       print_1_cg "Share of Months Disconnected" am   "%10.2fc"
+* *      print_blank
+* *      print_obs "Total Households" cobs "%10.0fc" 
+* *      print_obs "Mean Obs. per Household" conN "%10.1fc" 
+* *      print_obs "Total Obs." tobs "%10.0fc" 
+* *    file write newfile "\end{tabu}" _n
+*    file close newfile
+*     * "\bottomrule" _n 
 

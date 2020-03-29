@@ -42,6 +42,10 @@ g mdcp5 = mdc>=5 & mdc<.
 sum mdcp5, detail
 write "${tables}mdcp5.tex" `=100*`=r(mean)'' 1 "%12.0fc"
 
+g mdcp4 = mdc>=4 & mdc<.
+sum mdcp4, detail
+write "${tables}mdcp4.tex" `=100*`=r(mean)'' 1 "%12.0fc"
+
 
 
 g dc_pos = 0 if disc_count>0 & disc_count<.
@@ -114,7 +118,10 @@ write "${tables}dc_shr_per.tex" `=100*`=r(mean)'' 0.1 "%12.1fc"
 sum bal if dc_date==date
 write "${moments}bal_end.csv" `=r(mean)' 0.1 "%12.0g"
 write "${tables}bal_end.tex" `=r(mean)' 0.1 "%12.0fc"
+write "${tables}bal_end_sd.tex" `=r(sd)' 0.1 "%12.0fc"
 
+write "${tables}bal_end_nc.tex" `=r(mean)' 0.1 "%12.0f"
+write "${tables}bal_end_sd_nc.tex" `=r(sd)' 0.1 "%12.0f"
 
 
 *** Consumption
@@ -299,201 +306,11 @@ write "${tables}tcd_share_dc_3l.tex" `=r(mean)*100' .1 "%12.0g"
 
 sum dc_months if DC_TEMP==1, detail
 write "${tables}t_rec.tex" `=r(mean)' .1 "%12.0g"
+write "${tables}t_rec_sd.tex" `=r(sd)' .1 "%12.0g"
 sum dc_months if DC_TEMP_3==1, detail
 write "${tables}t_rec_3.tex" `=r(mean)' .1 "%12.0g"
 sum dc_months if DC_TEMP_3l==1, detail
 write "${tables}t_rec_3l.tex" `=r(mean)' .1 "%12.0g"
 
-
-
-/*
-
-* gegen max_bal= max(bal), by(conacct)
-* gegen mean_amount = mean(amount), by(conacct)
-
-* g bal_shr = bal/max_bal
-* replace bal_shr = 0 if bal==0
-
-* hist bal_shr if bal_shr>=0 & am!=1, bin(20)   //  consistent with buffer stock!!
-
-* g bal_nz = bal!=0 & am!=1
-* sort conacct date
-* by conacct: g bal_row = bal_nz[_n]==1 & bal_nz[_n-1]==1
-* by conacct: g tcd_id_l = tcd_id[_n+1]
-
-* sum bal_nz
-* sum bal_row   // also consistent with buffer stock!
- 
-*  hist bal_shr if dc_date==date & bal_shr==0
-
-* areg c i.ar if am!=1 & c!=0, a(conacct) cluster(conacct) r
-
-* sum c if bal==0
-* sum c if bal>0 & bal<.
-
-* g bm = max_bal==bal
-* sum bm if tcd_id==1
-
-* g bal0 = bal==0
-* sum bal0 if dc_date==date 
-
-* sum bal if dc_date!=.
-* sum bal if dc_date==date & bal>=0
-* sum bal if date<dc_date-10
-* sum max_bal if dc_date==date
-
-* sum tcd_id if ar_lag>=91 & ar_lag<=240
-* sum tcd_id if ar_lag>=91 & ar_lag<=240 & bal_lag>5000 & bal_lag<.
-
-* sum tcd_id if ar_lag==91 &  bal_lag<=10*mean_amount & bal_lag<. & date<dc_date
-* sum tcd_id if ar_lag==91 &  bal_lag>10*mean_amount & bal_lag<. & date<dc_date
-
-* sum tcd_id if ar_lag==91  & bal_lag>10*mean_amount & bal_lag<. & date<dc_date
-* sum tcd_id if ar_lag==121 & bal_lag>10*mean_amount & bal_lag<. & date<dc_date
-* sum tcd_id if ar_lag>=91  & ar_lag<=240 & bal_lag>12*mean_amount & bal_lag<.
-
-
-
-
-
-
-/*
-
-
-* reg dc_months ar_lag i.date if DC_TEMP==1,  cluster(conacct) r
-* areg dc_months ar_lag i.date if DC_TEMP==1,  cluster(conacct) r a(conacct)
-
-
-
-* lab var ar_lag "Days Delinquent"
-
-* reg DC_TEMP ar_lag i.date if tcd_id==1 & ar_lag>31 & date<664 & leaver==0,  cluster(conacct) r
-
-* est sto dc_temp
-* estadd local ctrl1 ""
-* estadd local ctrl2 "\checkmark"
-* sum DC_TEMP if e(sample)==1, detail
-* estadd scalar Mean=`=r(mean)'
-
-* areg DC_TEMP ar_lag  i.date if tcd_id==1 & ar_lag>31 & date<664 & leaver==0, absorb(conacct) cluster(conacct) r
-
-* est sto dc_temp_fe
-* estadd local ctrl1 "\checkmark"
-* estadd local ctrl2 "\checkmark"
-* sum DC_TEMP if e(sample)==1, detail
-* estadd scalar Mean=`=r(mean)'
-
-* estout dc_temp dc_temp_fe using "${tables}dc_reg.tex", replace  style(tex) ///
-*     order( ar_lag  )   keep( ar_lag )     label ///
-*       noomitted     mlabels(none)    collabels(none) ///
-*       cells( b(fmt(5) star ) se(par fmt(5)) ) ///
-*       stats( Mean ctrl1 ctrl2 r2 N,  ///
-*     labels(  "Mean Temp. Disc." "Household FE" "Year-Month FE" "R$^2$"   "N"  ) ///
-*         fmt( %9.2fc   %18s %18s %12.3fc   %12.0fc  )   ) ///
-*     starlevels(  "\textsuperscript{c}" 0.10    "\textsuperscript{b}" 0.05  "\textsuperscript{a}" 0.01) 
-
-
-
-
-
-* sum amg if ar_lag>31 & tcd_id==1
-* sum amg if ar_lag>91 & tcd_id==1
-
-* sort conacct date
-* g tn_0  = tn if ar_lag>31 & dc_enter!=1
-* g tn_4 = tn if ar_lag>91 & dc_enter!=1
-
-* g tn_g0=.
-* g tn_g4=.
-
-* 	forvalues i=1/2 {
-* 		by conacct: replace tn_g0 = tn_0[_n-`i'] if tcd_id[_n-`i']==1
-* 		by conacct: replace tn_g4 = tn_4[_n-`i'] if tcd_id[_n-`i']==1
-* 	}
-
-* egen am_d = max(am) if tn_g0!=., by(tn_g0 conacct)
-* egen am_d4 = max(am) if tn_g4!=., by(tn_g4 conacct)
-
-
-* sum am_d , detail
-* write "${moments}am_d.csv" `=r(mean)' 0.0001 "%12.4g"
-
-* 	forvalues r=1/3 {
-* 	sum am_d if inc_t==`r', detail
-* 	write "${moments}am_d_t`r'.csv" `=r(mean)' 0.0001 "%12.4g"
-* 	}
-
-* sum am_d4 , detail
-* write "${moments}am_d4.csv" `=r(mean)' 0.0001 "%12.4g"
-
-* 	forvalues r=1/3 {
-* 	sum am_d4 if inc_t==`r', detail
-* 	write "${moments}am_d4_t`r'.csv" `=r(mean)' 0.0001 "%12.4g"
-* 	}
-
-
-
-
-
-
-	
-
-		* by conacct: g tcd_time`i' = am if tcd_id[_n-`i']==1 
-
-*** Disconnection rate
-	forvalues i=0/5 {
-		sort conacct date
-		by conacct: g am`i' = am if tcd_id[_n-`i']==1 
-		sum am`i' , detail
-		write "${moments}am`i'.csv" `=r(mean)' 0.0001 "%12.4g"
-		
-		forvalues r=1/3 {
-			sum am`i' if inc_t==`r', detail
-			write "${moments}am`i'_t`r'.csv" `=r(mean)' 0.0001 "%12.4g"
-		}
-	}
-	sum am0
-	sum am1
-	sum am2
-	sum am3
-	sum am4
-	sum am5
-
-
-
-
-*** Disconnection rate : big balance
-	forvalues i=0/5 {
-		sort conacct date
-		by conacct: g amar`i' = am if tcd_id[_n-`i']==1 & ar[_n-`i']>90
-		sum amar`i' , detail
-		write "${moments}amar`i'.csv" `=r(mean)' 0.0001 "%12.4g"
-
-		forvalues r=1/3 {
-		sum amar`i' if inc_t==`r'  , detail
-		write "${moments}amar`i'_t`r'.csv" `=r(mean)' 0.0001 "%12.4g"
-		}
-	}
-	sum amar0
-	sum amar1
-	sum amar2
-	sum amar3
-	sum amar4
-	sum amar5
-
-
-egen am_t = rowmax(am0 am1 am2)
-
-
-
-* preserve
-* 	keep if leaver==1
-* 	sum amar0
-* 	sum amar1
-* 	sum amar2
-* 	sum amar3
-* 	sum amar4
-* 	sum amar5
-* restore
 
 

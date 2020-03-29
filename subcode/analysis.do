@@ -84,6 +84,19 @@ save  "${temp}temp_descriptives_3.dta", replace
 
 use "${temp}temp_descriptives_3.dta", clear
 
+
+merge m:1 conacct using "${temp}mru_total.dta"
+	drop if _merge==2
+	drop _merge
+
+merge m:1 mru date using "${temp}dc_mru_full.dta"
+	drop if _merge==2
+	drop _merge
+
+replace mdc=0 if mdc==.
+
+
+
 *** DISCONNECTION RATE!
 
 cap drop dc_enter1
@@ -101,8 +114,7 @@ corr dc_enter1 date if date>=`=tm(2012m1)' & date<=`=tm(2014m5)'
 
 
 
-
-* global dtable_name "all"
+global dtable_name "all"
 * do "${subcode}descriptive_table_print.do"
 
 do export_moments.do

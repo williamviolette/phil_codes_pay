@@ -182,13 +182,13 @@ use "${temp}temp_descriptives.dta", clear
 
 
 	*** DON'T NEED PAY FILTER ANYMORE
-	* NN
+	NN
 	replace pay =0 if pay<0
 	gegen max_pay = max(pay), by(conacct)
 	keep if max_pay<50000 
 	drop max_pay 
-	* global paylh_N=`=_N'
-	* writeN paylh_drop
+	global paylh_N=`=_N'
+	writeN paylh_drop
 
 
 
@@ -257,6 +257,12 @@ use "${temp}temp_descriptives.dta", clear
 	drop _merge
 
 
+	preserve
+		keep if date>=603
+		writeN datedrop
+		write "${tables}full_obs.tex" `=_N' 1 "%12.0fc"
+	restore
+	
 	* cap drop inc
 	* est use "${fies}inc_projection"
 	* predict inc1, xb

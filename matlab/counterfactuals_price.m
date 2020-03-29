@@ -61,24 +61,139 @@ disp ' HALF-RATE '
     as = given(:,7);
     mc = marginal_cost;
     p2s = p2;
-    p1_hf =  (I + as + mc + 2*I*p2s - 2*p2s*(4*I^2*p2s^2 + 4*I^2*p2s + I^2 + 4*I*as*p2s + 2*I*as - 4*I*mc*p2s - 2*I*mc + as^2 - 2*as*mc + mc^2 - 4*R*p2s - 4*R)^(1/2) + 2*mc*p2s - (4*I^2*p2s^2 + 4*I^2*p2s + I^2 + 4*I*as*p2s + 2*I*as - 4*I*mc*p2s - 2*I*mc + as^2 - 2*as*mc + mc^2 - 4*R*p2s - 4*R)^(1/2))/(2*(p2s + 1));
+    p1_hft =  (I + as + mc + 2*I*p2s - 2*p2s*(4*I^2*p2s^2 + 4*I^2*p2s + I^2 + 4*I*as*p2s + 2*I*as - 4*I*mc*p2s - 2*I*mc + as^2 - 2*as*mc + mc^2 - 4*R*p2s - 4*R)^(1/2) + 2*mc*p2s - (4*I^2*p2s^2 + 4*I^2*p2s + I^2 + 4*I*as*p2s + 2*I*as - 4*I*mc*p2s - 2*I*mc + as^2 - 2*as*mc + mc^2 - 4*R*p2s - 4*R)^(1/2))/(2*(p2s + 1));
       
+    
+    Ogride = (-1:.25:-.25)' ;
+    R_ov = zeros(size(Ogride,1),1);
+    P_ov = zeros(size(Ogride,1),1);
+    
+    for i=1:size(Ogride,1)
+        p1r =p1_hft + Ogride(i);
+            res_hfr = res_hf;
+            res_hfr(:,10) = p1r;
+            [~,ucon_hfr,sim_hfr] =obj(res_hfr,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
+            disp 'compensated utility price from half rate'
+            (ucon_hfr-ucon)/u_ch
+            [rev_goal_hfr] = cost_calc(sim_hfr,r_lend,visit_price,marginal_cost,p1r,p2,s);
+            disp 'Pre-Post: Rev'
+        R_ov(i)=rev_goal-rev_goal_hfr;
+        P_ov(i)=p1r;
+    end
+    
+    [~,R_ind]=min(abs(R_ov));
+    p1_hf = P_ov(R_ind);
+    
     res_hfcp = res_hf;
     res_hfcp(:,10) = p1_hf;
     [~,ucon_hfcp,sim_hfcp] =obj(res_hfcp,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
     disp 'compensated utility price from half rate'
     (ucon_hfcp-ucon)/u_ch
     
-    [rev_goal_hfcp,lend_cost_hfcp,delinquency_cost_hfcp,visit_cost_hfcp,wwr_hfcp] = cost_calc(sim_nlcp,r_lend,visit_price,marginal_cost,p1_hf,p2,s);
+    [rev_goal_hfcp,lend_cost_hfcp,delinquency_cost_hfcp,visit_cost_hfcp,wwr_hfcp] = cost_calc(sim_hfcp,r_lend,visit_price,marginal_cost,p1_hf,p2,s);
     disp 'Pre-Post: Rev'
     rev_goal-rev_goal_hfcp
  
+
+    
+  
+
+    
+    
+
 h=counterfactuals_price_print(cd_dir,strcat('reg_',ver),res_poor(17),ucon,u_ch,ucon,ucon,sim,sim,rev_goal,rev_goal,lend_cost,delinquency_cost,visit_cost,wwr,s,given);
 h=counterfactuals_price_print(cd_dir,strcat('nl_',ver),0,ucon,u_ch,ucon_nl,ucon_nlcp,sim_nl,sim_nlcp,rev_goal,rev_goal_nlcp,lend_cost_nlcp,delinquency_cost_nlcp,visit_cost_nlcp,wwr_nlcp,s,res_nlcp);
 h=counterfactuals_price_print(cd_dir,strcat('hf_',ver),res_poor(17)/2,ucon,u_ch,ucon_hf,ucon_hfcp,sim_hf,sim_hfcp,rev_goal,rev_goal_hfcp,lend_cost_hfcp,delinquency_cost_hfcp,visit_cost_hfcp,wwr_hfcp,s,res_hfcp);
 
 
 out=0;
+
+
+% 
+% 
+% disp ' HALF-RATE RAISED BB!! '
+%     res_hr = given;
+%     res_hr(:,19)=given(:,19)*1.5;
+%     res_hr(:,17)=given(:,17)/2;
+%     [~,ucon_hr,sim_hr] = obj(res_hr,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
+%     disp 'utility from half rate '
+%     (ucon_hr-ucon)/u_ch
+%    
+%     [rev_goal_hr,lend_cost_hr,delinquency_cost_hr,visit_cost_hr,wwr_hr] = cost_calc(sim_hr,r_lend,visit_price,marginal_cost,p1,p2,s);
+%     disp 'Pre-Post: Rev'
+%     rev_goal-rev_goal_hf
+%     
+%     R =  rev_goal + (wwr_hr-rev_goal_hr);
+%     I = mean(sim_hf(:,1)) - (given(7)-p1)./(p2.*2+1);  %%% how much extra water do you use?
+%     as = given(:,7);
+%     mc = marginal_cost;
+%     p2s = p2;
+%     p1_hrt =  (I + as + mc + 2*I*p2s - 2*p2s*(4*I^2*p2s^2 + 4*I^2*p2s + I^2 + 4*I*as*p2s + 2*I*as - 4*I*mc*p2s - 2*I*mc + as^2 - 2*as*mc + mc^2 - 4*R*p2s - 4*R)^(1/2) + 2*mc*p2s - (4*I^2*p2s^2 + 4*I^2*p2s + I^2 + 4*I*as*p2s + 2*I*as - 4*I*mc*p2s - 2*I*mc + as^2 - 2*as*mc + mc^2 - 4*R*p2s - 4*R)^(1/2))/(2*(p2s + 1));
+%       
+%     
+%     Ogride = (-1:.25:-.25)' ;
+%     R_ov = zeros(size(Ogride,1),1);
+%     P_ov = zeros(size(Ogride,1),1);
+%     
+%     for i=1:size(Ogride,1)
+%         p1r =p1_hrt + Ogride(i);
+%             res_hfr = res_hr;
+%             res_hfr(:,10) = p1r;
+%             [~,ucon_hfr,sim_hfr] =obj(res_hfr,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
+%             disp 'compensated utility price from half rate'
+%             (ucon_hfr-ucon)/u_ch
+%             [rev_goal_hfr] = cost_calc(sim_hfr,r_lend,visit_price,marginal_cost,p1r,p2,s);
+%             disp 'Pre-Post: Rev'
+%         R_ov(i)=rev_goal-rev_goal_hfr;
+%         P_ov(i)=p1r;
+%     end
+%     
+%     [~,R_ind]=min(abs(R_ov));
+%     p1_hr = P_ov(R_ind);
+%     
+%     res_hrcp = res_hr;
+%     res_hrcp(:,10) = p1_hr;
+%     [~,ucon_hrcp,sim_hrcp] =obj(res_hrcp,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
+%     disp 'compensated utility price from half rate'
+%     (ucon_hrcp-ucon)/u_ch
+%     
+%     [rev_goal_hrcp,lend_cost_hrcp,delinquency_cost_hfcp,visit_cost_hrcp,wwr_hrcp] = cost_calc(sim_hrcp,r_lend,visit_price,marginal_cost,p1_hr,p2,s);
+%     disp 'Pre-Post: Rev'
+%     rev_goal-rev_goal_hrcp
+%  
+
+
+
+
+
+
+
+
+
+
+
+
+
+%         %%% DO ANOTHER ONE %%%
+%     R =  rev_goal + (wwr_hfcp-rev_goal_hfcp);
+%     I = mean(sim_hfcp(:,1)) - (given(7)-p1_hf)./(p2.*2+1);  %%% how much extra water do you use?
+%     as = given(:,7);
+%     mc = marginal_cost;
+%     p2s = p2;
+%     p1_hf =  (I + as + mc + 2*I*p2s - 2*p2s*(4*I^2*p2s^2 + 4*I^2*p2s + I^2 + 4*I*as*p2s + 2*I*as - 4*I*mc*p2s - 2*I*mc + as^2 - 2*as*mc + mc^2 - 4*R*p2s - 4*R)^(1/2) + 2*mc*p2s - (4*I^2*p2s^2 + 4*I^2*p2s + I^2 + 4*I*as*p2s + 2*I*as - 4*I*mc*p2s - 2*I*mc + as^2 - 2*as*mc + mc^2 - 4*R*p2s - 4*R)^(1/2))/(2*(p2s + 1));
+%           
+%     res_hfcp = res_hf;
+%     res_hfcp(:,10) = p1_hf;
+%     [~,ucon_hfcp,sim_hfcp] =obj(res_hfcp,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
+%     disp 'compensated utility price from half rate'
+%     (ucon_hfcp-ucon)/u_ch
+%     
+%     [rev_goal_hfcp,lend_cost_hfcp,delinquency_cost_hfcp,visit_cost_hfcp,wwr_hfcp] = cost_calc(sim_hfcp,r_lend,visit_price,marginal_cost,p1_hf,p2,s);
+%     disp 'Pre-Post: Rev'
+%     rev_goal-rev_goal_hfcp    
+%     
+
+
 
 
 %     syms p1s p2s as R
