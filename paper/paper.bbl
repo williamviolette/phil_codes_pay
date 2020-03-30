@@ -1,4 +1,4 @@
-\begin{thebibliography}{41}
+\begin{thebibliography}{43}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -49,6 +49,14 @@ T.~Besley and S.~Coate.
 \newblock \emph{Journal of development economics}, 46\penalty0 (1):\penalty0
   1--18, 1995.
 
+\bibitem[Buford and Campbell(2020)]{bufordcampbell2020}
+T.~Buford and S.~Campbell.
+\newblock Some towns still haven’t halted utility shut-offs for unpaid water
+  bills during coronavirus, even as federal lawmakers demand it.
+\newblock \emph{ProPublica}, Mar 2020.
+\newblock URL
+  \url{https://www.propublica.org/article/some-towns-still-havent-halted-utility-shut-offs-for-unpaid-water-bills-during-coronavirus-even-as-federal-lawmakers-demand-it}.
+
 \bibitem[Carvalho et~al.(2016)Carvalho, Prina, and Sydnor]{carvalho2016effect}
 L.~S. Carvalho, S.~Prina, and J.~Sydnor.
 \newblock The effect of saving on risk attitudes and intertemporal choices.
@@ -79,6 +87,14 @@ D.~Diakit{\'e}, A.~Semenov, and A.~Thomas.
 \newblock A proposal for social pricing of water supply in c{\^o}te d'ivoire.
 \newblock \emph{Journal of Development Economics}, 88\penalty0 (2):\penalty0
   258--268, 2009.
+
+\bibitem[Domingo(2020)]{domingo2020}
+R.~W. Domingo.
+\newblock Water, power firms give customers 30-day extension on payment of
+  bills.
+\newblock \emph{Inquirer}, Mar 2020.
+\newblock URL
+  \url{https://newsinfo.inquirer.net/1243964/water-power-firms-give-customers-30-day-extension-on-payment-of-bills}.
 
 \bibitem[Dupas and Robinson(2013{\natexlab{a}})]{dupas2013don}
 P.~Dupas and J.~Robinson.

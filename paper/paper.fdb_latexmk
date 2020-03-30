@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex paper"] 1585521343 "paper.aux" "paper.bbl" "paper" 1585521345
+["bibtex paper"] 1585600495 "paper.aux" "paper.bbl" "paper" 1585600496
   "/usr/local/texlive/2015/texmf-dist/bibtex/bst/natbib/abbrvnat.bst" 1233624470 26532 66bed5cc59495faaa3f9ae9af9fa5e42 ""
-  "paper.aux" 1585521345 20832 5629743c9b454f15e3fb460b5bb8af8c ""
+  "paper.aux" 1585600496 12779 8f56251ce00f52b744d391e05cfc8b3e ""
   "paper.bcf" 0 -1 0 ""
-  "ref.bib" 1552499153 10954 6e801e0f5c1f3c2366d8b56f41ef2dca ""
+  "ref.bib" 1585574516 11679 cf240138d6aa2eb36d19845cbf8c4791 ""
   (generated)
-  "paper.bbl"
   "paper.blg"
-["pdflatex"] 1585521343 "paper.tex" "paper.pdf" "paper" 1585521345
+  "paper.bbl"
+["pdflatex"] 1585600495 "paper.tex" "paper.pdf" "paper" 1585600496
   "./tables/pay_to_dc_graph.png" 1584800588 125211 a11ad807d7b5968315a2ddf1c6c70226 ""
   "/Users/williamviolette/Library/texlive/2015/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk" 1463681486 8424 20a3ec31fe61eb1c99489d863a858b51 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -280,23 +280,14 @@
   "/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1432479641 1764542 91654ba72bdb667e84ea24f076ae16d8 ""
   "/usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt" 1432479681 3849859 39a7d258195bde2394e244961601fbc5 ""
   "/usr/local/texlive/2015/texmf.cnf" 1432479636 577 0d611272082f3cdb8e80e09a3c69cf07 ""
-  "paper.aux" 1585521345 20832 5629743c9b454f15e3fb460b5bb8af8c ""
-  "paper.bbl" 1585521343 10157 4603c5da8823c6714730969de1b86148 "bibtex paper"
-  "paper.tex" 1585521338 129269 5be5dc332b09919b0cd1533e2950ca46 ""
+  "paper.aux" 1585600496 12779 8f56251ce00f52b744d391e05cfc8b3e ""
+  "paper.bbl" 1585600495 10914 96ea1e72f664400f7ae9647b3a540018 "bibtex paper"
+  "paper.tex" 1585600493 119838 a511b22495a5b32862a1da87a334d159 ""
   "tables/Aborr_abs_hf_b.tex" 1585491438 4 63a5060ae60be54c548b22f85e50e533 ""
   "tables/Aborr_abs_nl_b.tex" 1585491438 4 d1ca62983fb9a3d15d1f09530de99858 ""
   "tables/Aborr_abs_reg_b.tex" 1585491438 4 9947c7f0524965d901fb6f43b1274695 ""
   "tables/Bb.tex" 1585234297 6 a6baf06e6736f388ab269d63faf97da0 ""
   "tables/SHH_drop.tex" 1585511617 7 9b9c70e062f79b36beabe1a579e58d0b ""
-  "tables/U_nl_abs.tex" 1567541009 5 0aad768dc54bbb4b37192951a17afa21 ""
-  "tables/U_nl_abs_usd.tex" 1567541818 4 d39d8df974f8d45e3d23499dc20ea763 ""
-  "tables/U_nl_per.tex" 1567541009 2 84bc3da1b3e33a18e8d5e1bdd7a18d7a ""
-  "tables/U_pp_abs.tex" 1567541009 6 4ebc24e02e5c2f17bf636e380f77fe96 ""
-  "tables/U_pp_abs_usd.tex" 1567541009 4 484cc042c65cbc34668bb467ae6437f7 ""
-  "tables/U_pp_abs_usd_per.tex" 1567541009 6 267cca2b73b276822da4f8c5db1081b5 ""
-  "tables/U_ppe_abs.tex" 1567541009 5 d3c87aac9de0d73c7bb4a1a09656578b ""
-  "tables/U_ppe_abs_usd.tex" 1567541009 4 d39d8df974f8d45e3d23499dc20ea763 ""
-  "tables/U_ppe_abs_usd_per.tex" 1567541009 5 c227e1e7a635b769917715e7ef05fc77 ""
   "tables/am_N.tex" 1585511619 9 0bc09ab222566714b6dce91e7c545350 ""
   "tables/amount_drop.tex" 1585511611 6 92a9558da97b86810f2ba9c8053af167 ""
   "tables/atm.tex" 1549985630 1 eccbc87e4b5ce2fe28308fd9f2a7baf3 ""
@@ -445,6 +436,6 @@
   "tables/y_avg.tex" 1585055611 6 f5c9f970e1aa953f3df07cfa34eb312b ""
   "tables/y_cv.tex" 1585055611 4 d284a49733de0dd8d970adbe76be9b2b ""
   (generated)
-  "paper.aux"
   "paper.log"
   "paper.pdf"
+  "paper.aux"
