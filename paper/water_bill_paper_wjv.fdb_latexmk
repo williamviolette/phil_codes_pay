@@ -1,13 +1,12 @@
 # Fdb version 3
-["bibtex paper"] 1585616904 "paper.aux" "paper.bbl" "paper" 1585616905
+["bibtex water_bill_paper_wjv"] 1585616979 "water_bill_paper_wjv.aux" "water_bill_paper_wjv.bbl" "water_bill_paper_wjv" 1585616980
   "/usr/local/texlive/2015/texmf-dist/bibtex/bst/natbib/abbrvnat.bst" 1233624470 26532 66bed5cc59495faaa3f9ae9af9fa5e42 ""
-  "paper.aux" 1585616905 12775 fc0d653345c2e11d59ccf7cdf66bbd0a ""
-  "paper.bcf" 0 -1 0 ""
   "ref.bib" 1585574516 11679 cf240138d6aa2eb36d19845cbf8c4791 ""
+  "water_bill_paper_wjv.aux" 1585616980 12775 fc0d653345c2e11d59ccf7cdf66bbd0a ""
+  "water_bill_paper_wjv.bcf" 0 -1 0 ""
   (generated)
-  "paper.blg"
-  "paper.bbl"
-["pdflatex"] 1585616904 "paper.tex" "paper.pdf" "paper" 1585616905
+  "water_bill_paper_wjv.bbl"
+["pdflatex"] 1585616979 "water_bill_paper_wjv.tex" "water_bill_paper_wjv.pdf" "water_bill_paper_wjv" 1585616980
   "./tables/pay_to_dc_graph.png" 1584800588 125211 a11ad807d7b5968315a2ddf1c6c70226 ""
   "/Users/williamviolette/Library/texlive/2015/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk" 1463681486 8424 20a3ec31fe61eb1c99489d863a858b51 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -280,9 +279,6 @@
   "/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1432479641 1764542 91654ba72bdb667e84ea24f076ae16d8 ""
   "/usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt" 1432479681 3849859 39a7d258195bde2394e244961601fbc5 ""
   "/usr/local/texlive/2015/texmf.cnf" 1432479636 577 0d611272082f3cdb8e80e09a3c69cf07 ""
-  "paper.aux" 1585616905 12775 fc0d653345c2e11d59ccf7cdf66bbd0a ""
-  "paper.bbl" 1585616904 10914 96ea1e72f664400f7ae9647b3a540018 "bibtex paper"
-  "paper.tex" 1585616899 119986 e1e4d9c5fec2586c09a1c09bed08c5c8 ""
   "tables/Aborr_abs_hf_b.tex" 1585491438 4 63a5060ae60be54c548b22f85e50e533 ""
   "tables/Aborr_abs_nl_b.tex" 1585491438 4 d1ca62983fb9a3d15d1f09530de99858 ""
   "tables/Aborr_abs_reg_b.tex" 1585491438 4 9947c7f0524965d901fb6f43b1274695 ""
@@ -434,7 +430,10 @@
   "tables/wloan.tex" 1579626308 2 c20ad4d76fe97759aa27a0c99bff6710 ""
   "tables/y_avg.tex" 1585055611 6 f5c9f970e1aa953f3df07cfa34eb312b ""
   "tables/y_cv.tex" 1585055611 4 d284a49733de0dd8d970adbe76be9b2b ""
+  "water_bill_paper_wjv.aux" 1585616980 12775 fc0d653345c2e11d59ccf7cdf66bbd0a ""
+  "water_bill_paper_wjv.bbl" 1585616979 10914 96ea1e72f664400f7ae9647b3a540018 "bibtex water_bill_paper_wjv"
+  "water_bill_paper_wjv.tex" 1585616973 119986 e1e4d9c5fec2586c09a1c09bed08c5c8 ""
   (generated)
-  "paper.pdf"
-  "paper.aux"
-  "paper.log"
+  "water_bill_paper_wjv.log"
+  "water_bill_paper_wjv.aux"
+  "water_bill_paper_wjv.pdf"
