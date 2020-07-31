@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  30 MAR 2020 21:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  22 APR 2020 07:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1144,7 +1144,7 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10.95> not available
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 124.
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 92.
 
 [1] [2] [3] (./tables/total_inc_hhs_all.tex) (./tables/irate.tex)
 (./tables/wloan.tex) (./tables/money_lender.tex) (./tables/micro_finance.tex)
@@ -1152,7 +1152,7 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
 (./tables/days_delinquent_all.tex) (./tables/balance_all.tex)
 (./tables/meanloansize.tex) (./tables/meanloanlength.tex) (./tables/y_avg.tex)
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 202.
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 162.
 
 (./tables/table_c_mean.tex) (./tables/table_c_sd.tex)
 (./tables/table_amount_mean.tex) (./tables/table_amount_sd.tex)
@@ -1168,20 +1168,25 @@ LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
 (./tables/out_bal.tex) (./tables/bal_0.tex) (./tables/tcd_per_hh.tex)
 (./tables/t_rec.tex) (./tables/mdcp.tex) (./tables/mdcp4.tex) [6]
 (./tables/center.tex) (./tables/maynilad.tex) (./tables/atm.tex)
-Overfull \hbox (9.44292pt too wide) in paragraph at lines 291--292
+Overfull \hbox (9.44292pt too wide) in paragraph at lines 251--252
 \OT1/ppl/m/n/12 changes are more cor-re-lated with bill pay-ments than with con
 -sump-tion by us-ing changes
  []
 
-[7] (./tables/table_panel_analysis.tex) [8] [9] [10] [11]
-Overfull \hbox (8.25153pt too wide) in paragraph at lines 392--393
+[7] (./tables/table_panel_analysis.tex)
+Underfull \hbox (badness 1622) in paragraph at lines 275--276
+[]\OT1/ppl/m/n/10 This ta-ble re-ports re-sults of re-gress-ing changes in
+ []
+
+[8] [9] [10] [11]
+Overfull \hbox (8.25153pt too wide) in paragraph at lines 353--354
 []\OT1/ppl/m/n/12 The house-hold's max-i-miza-tion prob-lem can then be writ-te
 n re-cur-sively where house-
  []
 
 [12] [13] (./tables/y_avg.tex) (./tables/y_cv.tex) (./tables/irate.tex)
 [14] (./tables/bal_0.tex) [15] (./tables/Bb.tex)
-Overfull \hbox (7.2681pt too wide) in paragraph at lines 439--440
+Overfull \hbox (7.2681pt too wide) in paragraph at lines 400--401
 []\OT1/ppl/m/n/12 The es-ti-ma-tion strat-egy uses a sim-u-lated method of mo-m
 ents ap-proach. This method
  []
@@ -1198,63 +1203,57 @@ ents ap-proach. This method
 (./tables/table_shr_dc_mean_b.tex) (./tables/t_rec.tex)
 (./tables/table_t_rec_mean_b.tex) (./tables/bal_end_nc.tex)
 (./tables/table_bal_end_mean_b.tex) [18] (./tables/fit_pay_corr.tex)
-(./tables/fit_use_corr.tex) (./tables/lend_cost_reg_b.tex)
-(./tables/del_cost_reg_b.tex) [19] (./tables/visit_cost_reg_b.tex)
-LaTeX Font Info:    Try loading font information for U+bbm on input line 536.
+(./tables/fit_use_corr.tex) [19] (./tables/lend_cost_reg_b.tex)
+(./tables/del_cost_reg_b.tex) (./tables/visit_cost_reg_b.tex)
+LaTeX Font Info:    Try loading font information for U+bbm on input line 497.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-)
-(./tables/rev_goal_reg_b.tex) [20] (./tables/p1_reg_b.tex)
-(./tables/p1_nl_b.tex) (./tables/lend_cost_sum_reg_b.tex)
-(./tables/lend_cost_sum_nl_b.tex) (./tables/lend_cost_sum_hf_b.tex)
-(./tables/visit_cost_reg_b.tex) (./tables/visit_cost_nl_b.tex)
-(./tables/visit_cost_hf_b.tex) (./tables/mc_cost_reg_b.tex)
-(./tables/mc_cost_nl_b.tex) (./tables/mc_cost_hf_b.tex)
-(./tables/rev_goal_reg_b.tex) (./tables/rev_goal_reg_b.tex)
+) [20]
 (./tables/rev_goal_reg_b.tex) (./tables/p1_reg_b.tex) (./tables/p1_nl_b.tex)
-(./tables/p1_hf_b.tex) (./tables/cv_comp_nl_b.tex) [21]
-(./tables/cv_comp_nl_b.tex) (./tables/cv_comp_hf_b.tex)
-(./tables/cons_reg_b.tex) (./tables/cons_nl_b.tex) (./tables/cons_hf_b.tex)
-(./tables/cons_val_reg_b.tex) (./tables/cons_val_nl_b.tex)
-(./tables/cons_val_hf_b.tex) (./tables/debt_reg_b.tex) (./tables/debt_nl_b.tex)
-(./tables/debt_hf_b.tex) (./tables/Aborr_abs_reg_b.tex)
-(./tables/Aborr_abs_nl_b.tex) (./tables/Aborr_abs_hf_b.tex)
+(./tables/lend_cost_sum_reg_b.tex) (./tables/lend_cost_sum_nl_b.tex)
+(./tables/lend_cost_sum_hf_b.tex) (./tables/visit_cost_reg_b.tex)
+(./tables/visit_cost_nl_b.tex) (./tables/visit_cost_hf_b.tex)
+(./tables/mc_cost_reg_b.tex) (./tables/mc_cost_nl_b.tex)
+(./tables/mc_cost_hf_b.tex) (./tables/rev_goal_reg_b.tex)
+(./tables/rev_goal_reg_b.tex) (./tables/rev_goal_reg_b.tex)
+(./tables/p1_reg_b.tex) (./tables/p1_nl_b.tex) (./tables/p1_hf_b.tex)
 
 LaTeX Font Warning: Font shape `U/bbm/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 615.
+(Font)              size <5> substituted on input line 539.
 
-[22] (./tables/p1_hf_b.tex) [23] [24] [25] (./tables/date_N.tex)
-(./tables/full_obs.tex) (./tables/date_N.tex) (./tables/class_drop.tex)
-(./tables/pay_drop.tex) (./tables/chigh_drop.tex) (./tables/amount_drop.tex)
-(./tables/bal_drop.tex) (./tables/paylh_drop.tex) (./tables/SHH_drop.tex)
-(./tables/datedrop.tex) (./tables/full_obs.tex) [26] [27]
-(./tables/table_visit_pay_robust.tex) [28]
-<tables/pay_to_dc_graph.png, id=114, 891.83188pt x 648.4225pt>
+[21] (./tables/cv_comp_nl_b.tex) (./tables/cv_comp_nl_b.tex)
+(./tables/cv_comp_hf_b.tex) (./tables/cons_reg_b.tex) (./tables/cons_nl_b.tex)
+(./tables/cons_hf_b.tex) (./tables/cons_val_reg_b.tex)
+(./tables/cons_val_nl_b.tex) (./tables/cons_val_hf_b.tex)
+(./tables/debt_reg_b.tex) (./tables/debt_nl_b.tex) (./tables/debt_hf_b.tex)
+(./tables/Aborr_abs_reg_b.tex) (./tables/Aborr_abs_nl_b.tex)
+(./tables/Aborr_abs_hf_b.tex) [22] [23] (./tables/p1_hf_b.tex) [24] [25]
+[26] (./tables/date_N.tex) (./tables/full_obs.tex) (./tables/date_N.tex)
+(./tables/class_drop.tex) (./tables/pay_drop.tex) (./tables/chigh_drop.tex)
+(./tables/amount_drop.tex) (./tables/bal_drop.tex) (./tables/paylh_drop.tex)
+(./tables/SHH_drop.tex) (./tables/datedrop.tex) (./tables/full_obs.tex)
+[27] [28] (./tables/table_visit_pay_robust_1.tex) [29]
+<tables/pay_to_dc_graph.png, id=117, 891.83188pt x 648.4225pt>
 File: tables/pay_to_dc_graph.png Graphic file (type png)
 
 <use tables/pay_to_dc_graph.png>
-Package pdftex.def Info: tables/pay_to_dc_graph.png used on input line 826.
+Package pdftex.def Info: tables/pay_to_dc_graph.png used on input line 788.
 (pdftex.def)             Requested size: 356.72644pt x 259.3644pt.
- [29 <./tables/pay_to_dc_graph.png>]
+ [30 <./tables/pay_to_dc_graph.png>]
 (./tables/f_10.tex) (./tables/f_11.tex) (./tables/c_12.tex) (./tables/c_21.tex)
 (./tables/c_41.tex) (./tables/c_61.tex) (./tables/c_81.tex) (./tables/c_101.tex
-) (./tables/c_151.tex) (./tables/c_200.tex) (./tables/price_reg.tex) [30]
-(./tables/table_lfs_analysis.tex)
-Underfull \hbox (badness 1028) in paragraph at lines 933--934
-[]\OT1/ppl/m/n/10 All units are in PhP. Quar-terly fixed ef-
+) (./tables/c_151.tex) (./tables/c_200.tex)
+Underfull \hbox (badness 1242) in paragraph at lines 850--851
+\OT1/ppl/m/n/10 sive of the value added tax.
  []
 
-
-Underfull \hbox (badness 1533) in paragraph at lines 933--934
-\OT1/ppl/m/n/10 fects are in-cluded. Stan-dard er-rors are
- []
-
+(./tables/price_reg.tex) [31] (./tables/table_lfs_analysis.tex) [32]
 (./tables/y_avg.tex) (./tables/y_cv.tex) (./tables/irate.tex)
 (./tables/p_int.tex) (./tables/p_slope.tex)
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 971.
- (./tables/bal_0.tex) [31]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 949.
+ (./tables/bal_0.tex)
 (./tables/table_c_sd.tex) (./tables/table_c_sd_b.tex)
 (./tables/table_amount_sd.tex) (./tables/table_bill_sd_b.tex)
 (./tables/table_bal_sd.tex) (./tables/table_bal_sd_b.tex)
@@ -1262,13 +1261,13 @@ LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
 (./tables/table_p0_sd.tex) (./tables/table_p0_sd_b.tex)
 (./tables/table_shr_dc_sd.tex) (./tables/table_shr_dc_sd_b.tex)
 (./tables/t_rec_sd.tex) (./tables/table_t_rec_sd_b.tex)
-(./tables/bal_end_sd_nc.tex) (./tables/table_bal_end_sd_b.tex) [32]
-Overfull \hbox (15.3228pt too wide) in paragraph at lines 1009--1010
+(./tables/bal_end_sd_nc.tex) (./tables/table_bal_end_sd_b.tex) [33]
+Overfull \hbox (15.3228pt too wide) in paragraph at lines 988--989
 \OT1/ppl/m/n/12 in-stalling this new tech-nol-ogy. Hey-mans et al. [2014] sur-v
 eyed eight large wa-ter providers
  []
 
-(./tables/est_alpha_b.tex) (./tables/est_alpha_bhigh.tex)
+[34] (./tables/est_alpha_b.tex) (./tables/est_alpha_bhigh.tex)
 (./tables/est_alpha_blow.tex) (./tables/est_alpha_chigh.tex)
 (./tables/est_alpha_clow.tex) (./tables/est_fc_b.tex)
 (./tables/est_fc_bhigh.tex) (./tables/est_fc_blow.tex)
@@ -1279,8 +1278,8 @@ eyed eight large wa-ter providers
 (./tables/cv_comp_nl_blow.tex) (./tables/cv_comp_nl_chigh.tex)
 (./tables/cv_comp_nl_clow.tex) (./tables/cv_comp_hf_b.tex)
 (./tables/cv_comp_hf_bhigh.tex) (./tables/cv_comp_hf_blow.tex)
-(./tables/cv_comp_hf_chigh.tex) (./tables/cv_comp_hf_clow.tex) [33]
-(./water_bill_paper_wjv.bbl [34]
+(./tables/cv_comp_hf_chigh.tex) (./tables/cv_comp_hf_clow.tex)
+(./water_bill_paper_wjv.bbl [35]
 Missing character: There is no â in font pplr7t!
 Missing character: There is no € in font pplr7t!
 Missing character: There is no ™ in font pplr7t!
@@ -1306,12 +1305,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 92--98
 30 -[] day -[] extension -[]
  []
 
-[35] [36]) [37]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1134.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1134.
+[36] [37]) [38]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1114.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1114.
  (./water_bill_paper_wjv.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1134.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1134.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1114.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1114.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1319,13 +1318,13 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 24303 strings out of 493089
- 446033 string characters out of 6134842
- 519300 words of memory out of 5000000
- 26639 multiletter control sequences out of 15000+600000
- 126271 words of font info for 348 fonts, out of 8000000 for 9000
+ 24271 strings out of 493089
+ 445728 string characters out of 6134842
+ 516414 words of memory out of 5000000
+ 26625 multiletter control sequences out of 15000+600000
+ 114662 words of font info for 316 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 59i,18n,94p,1927b,550s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 59i,18n,94p,1933b,550s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc} </Users/will
 iamviolette/Library/texlive/2015/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600
 pk></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pf
@@ -1333,22 +1332,21 @@ b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/newtx/rntxmi.pfb></usr/l
 ocal/texlive/2015/texmf-dist/fonts/type1/public/newtx/rntxmi7.pfb></usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/local/texlive
-/2015/texmf-dist/fonts/type1/public/newtx/rtxmi5.pfb></usr/local/texlive/2015/t
-exmf-dist/fonts/type1/public/newtx/rtxmi7.pfb></usr/local/texlive/2015/texmf-di
-st/fonts/type1/public/txfonts/rtxr.pfb></usr/local/texlive/2015/texmf-dist/font
-s/type1/public/newtx/txex-bar.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
-e1/public/txfonts/txex.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publ
-ic/txfonts/txmia.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/txf
-onts/txsy.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/courier/ucrr8
-a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/lo
-cal/texlive/2015/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb></usr/local/te
-xlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015
-/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on water_bill_paper_wjv.pdf (38 pages, 308666 bytes).
+/2015/texmf-dist/fonts/type1/public/newtx/rtxmi7.pfb></usr/local/texlive/2015/t
+exmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/local/texlive/2015/texmf-di
+st/fonts/type1/public/newtx/txex-bar.pfb></usr/local/texlive/2015/texmf-dist/fo
+nts/type1/public/txfonts/txex.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
+e1/public/txfonts/txmia.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
+lic/txfonts/txsy.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/courie
+r/ucrr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/palatino/uplb8
+a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on water_bill_paper_wjv.pdf (39 pages, 304195 bytes).
 PDF statistics:
- 213 PDF objects out of 1000 (max. 8388607)
- 150 compressed objects within 2 object streams
+ 212 PDF objects out of 1000 (max. 8388607)
+ 149 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

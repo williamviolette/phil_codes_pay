@@ -1,14 +1,14 @@
 function [A,Aprime,B,Bprime,D,Dprime,nA,nB] = grid_int_full(nA,sigA,Alb,Aub,nB,sigB,Blb,nD, int_size,refinement,untied)
 
-int_size=0
-nA=10
-sigA=0
-Alb=-100
-Aub=100
-nB=100
-sigB=0
-Blb=-200
-nD=2
+% int_size=0
+% nA=10
+% sigA=0
+% Alb=-100
+% Aub=100
+% nB=100
+% sigB=0
+% Blb=-200
+% nD=2
 
 if sigA>0
     [Agrid,Bgrid]=grid_id(nA,sigA,Alb,Aub,nB,sigB,Blb);

@@ -14,7 +14,7 @@ given_sim      = 1    ;
 
 est_pattern    = 0    ;
 results        = 1    ;
-boot           = 0    ;
+boot           = 1    ;
 br             = 10   ; % reps
 
 int_size = 1; % number of interpolations
@@ -235,7 +235,7 @@ if results==1
 if given_sim==1
     r= given(option);
 end
-    j=counterfactuals_price(cd_dir,r,ver,given,option,ppinst,r_lend,visit_price,marginal_cost,p1,p2,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
+%     j=counterfactuals_price(cd_dir,r,ver,given,option,ppinst,r_lend,visit_price,marginal_cost,p1,p2,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
 end
 
 
