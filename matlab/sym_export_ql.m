@@ -47,6 +47,8 @@ dl = diff(lan,l)
 
 [ws,xs,ls]  =  solve([dw,dx,dl],[w,x,l])
 
+subs(x - (1/(2*alpha))*(w - k )^2 ,[x,w],[xs,ws])
+
 %[ws,xs,ls,pt,st]  =  solve([dw,dx,dl],[w,x,l],'ReturnConditions',true)
 
 %s1=eval(subs(st,[p1,p2,y,alpha,A,Ap,r],[15,.2,30000,.02,-100,-100,.1]))

@@ -786,6 +786,8 @@ INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/bbm/bbm12.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/bbm/bbm9.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/bbm/bbm7.tfm
+INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/bbm/bbm10.tfm
+INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/bbm/bbm5.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/vf/adobe/palatino/pplri7t.vf
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/adobe/palatino/pplri8r.tfm
 INPUT tables/rev_goal_reg_b.tex
@@ -824,8 +826,6 @@ INPUT tables/p1_nl_b.tex
 INPUT tables/p1_nl_b.tex
 INPUT tables/p1_hf_b.tex
 INPUT tables/p1_hf_b.tex
-INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/bbm/bbm10.tfm
-INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/bbm/bbm5.tfm
 INPUT tables/cv_comp_nl_b.tex
 INPUT tables/cv_comp_nl_b.tex
 INPUT tables/cv_comp_nl_b.tex
