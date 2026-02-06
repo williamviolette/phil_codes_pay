@@ -1,5 +1,6 @@
 
 clear
+octave_setup;
 rng(1)
 
 folder ='/Users/williamviolette/Documents/Philippines/phil_analysis/phil_temp_pay/moments/';
@@ -116,7 +117,11 @@ if est == 1
             weights_new = inv(mom_pred*mom_pred'); %%% optimal weighting matrix runs fine
 
             obj_new = @(a1)m_1loan3_lend_objopt(a1,given,data,option,option_moments,weights_new,prob,A,Aprime,Agrid,inA,minA,nA,chain);
-            res_new = fminunc(obj_new,res)
+            try
+                res_new = fminunc(obj_new,res);
+            catch
+                res_new = fminsearch(obj_new,res);
+            end
 
             res_out = given
             res_out(option) = res_new
@@ -133,7 +138,11 @@ if est == 1
         weights_new = inv(mom_pred*mom_pred'); %%% optimal weighting matrix runs fine
 
         obj_new = @(a1)m_1loan3_lend_objopt(a1,given,data,option,option_moments,weights_new,prob,A,Aprime,Agrid,inA,minA,nA,chain);
-        res_new = fminunc(obj_new,res)
+        try
+            res_new = fminunc(obj_new,res);
+        catch
+            res_new = fminsearch(obj_new,res);
+        end
 
         res_out = given
         res_out(option) = res_new
