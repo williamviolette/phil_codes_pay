@@ -2,6 +2,7 @@
 
 
 clear
+octave_setup;
 rng(1)
 
 folder ='/Users/williamviolette/Documents/Philippines/phil_analysis/phil_temp_pay/moments/';

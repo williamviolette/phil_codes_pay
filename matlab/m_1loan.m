@@ -2,10 +2,11 @@
 
 
 clear
+octave_setup;
 close all
 format short g
-! rm consav.out
-diary consav.out; 
+system('rm -f consav.out');
+diary consav.out;
 disp('A SIMPLE CONSUMPTION-SAVING MODEL');
 disp('');
 
