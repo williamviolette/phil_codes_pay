@@ -109,37 +109,45 @@ end
 %%%%% POLICY SIM ! %%%%%%
 
 
+%%% Phase 1: simulate policy path using indices only (fast, no gen_dc_4se)
+Inext_all = zeros(n-1,1);
 Imark = 1;
-Athis = A(Imark,1);  % initial asset levels
-Bthis = B(Imark,1);  % initial asset levels
-Dthis = D(Imark,1);
-%Athis = 0;  % initial asset levels
-%Bthis = 0;  % initial asset levels
-
-states   = zeros(n-1,2);
-controls = zeros(n-1,4);
-
 for ii = 1:n-1
     Inext = decis(Imark,chain(ii));
-    Ap = Aprime(Inext,1);
-    Bp = Bprime(Inext,1);
-    Dp = Dprime(Inext,1);
-    Imark  = Inext;
-    
-    [~,~,~,~,...
-             w1,w2,w3,w4] = ...
-         gen_dc_4se(Athis,Bthis,Dthis,Ap,Bp,Dp,r_high,r_lend,r_water,water_lending,Y_high,Y_low,p1,p2,p1d,p2d,pd,alpha,k_high,k_low,lambda_high,lambda_low);
-    
-         cons_full = [w1 w2 w3 w4];
-    
-    cons = cons_full(chain(ii));
-    
-    states(ii,:) = [ Athis chain(ii) ];
-    controls(ii,:) = [ cons Ap Bp Dp];
-    Athis = Ap;
-    Bthis = Bp;
-    Dthis = Dp;
+    Inext_all(ii) = Inext;
+    Imark = Inext;
 end
+
+%%% Phase 2: construct state/choice vectors for batch consumption computation
+Athis_vec = zeros(n-1,1);
+Bthis_vec = zeros(n-1,1);
+Dthis_vec = zeros(n-1,1);
+
+Athis_vec(1) = A(1,1);
+Bthis_vec(1) = B(1,1);
+Dthis_vec(1) = D(1,1);
+if n > 2
+    Athis_vec(2:end) = Aprime(Inext_all(1:end-1),1);
+    Bthis_vec(2:end) = Bprime(Inext_all(1:end-1),1);
+    Dthis_vec(2:end) = Dprime(Inext_all(1:end-1),1);
+end
+
+Ap_vec = Aprime(Inext_all,1);
+Bp_vec = Bprime(Inext_all,1);
+Dp_vec = Dprime(Inext_all,1);
+
+%%% Phase 3: one vectorized call to gen_dc_4se instead of n-1 scalar calls
+[~,~,~,~,W1_vec,W2_vec,W3_vec,W4_vec] = ...
+     gen_dc_4se(Athis_vec,Bthis_vec,Dthis_vec,Ap_vec,Bp_vec,Dp_vec,r_high,r_lend,r_water,water_lending,Y_high,Y_low,p1,p2,p1d,p2d,pd,alpha,k_high,k_low,lambda_high,lambda_low);
+
+%%% Phase 4: select consumption for the realized income state
+cons_all = [W1_vec W2_vec W3_vec W4_vec];
+chain_col = chain(1:n-1);
+chain_col = chain_col(:);
+cons_vec = sum(cons_all .* ((1:4) == chain_col), 2);
+
+states   = [Athis_vec chain_col];
+controls = [cons_vec Ap_vec Bp_vec Dp_vec];
 
 
 S = [0;states(1:end-1,2)];
