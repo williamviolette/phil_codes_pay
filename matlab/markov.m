@@ -30,16 +30,7 @@ if r ~= c;
   return;
 end;
 %
-for k=1:r;
-%   if sum(T(k,:)) ~= 1;
-%    disp('error using markov function')
-%     disp(['row ',num2str(k),' does not sum to one']);
-%     disp(' it sums to :'); 
-%     disp([ sum(T(k,:)) ]); 
-%     disp(['normalizing row ',num2str(k),'']);
-%     T(k,:)=T(k,:)/sum(T(k,:));
-%   end;
-end;
+% row normalization check removed (commented out, was empty loop)
 [v1 v2]=size(V);
 if v1 ~= 1 |v2 ~=r
   disp('error using markov function');
@@ -60,13 +51,13 @@ end;
 %T
 %rand('uniform');
 X=rand(n-1,1);
-s=zeros(r,1);
-s(s0)=1;
-cum=T*triu(ones(size(T)));
+cum=cumsum(T,2);  % cumulative transition probabilities (rxr)
+state=zeros(r,n-1);  % preallocate
+s_idx=s0;  % track state index directly
 %
 for k=1:length(X);
-  state(:,k)=s;
-  ppi=[0 s'*cum];
-  s=((X(k)<=ppi(2:r+1)).*(X(k)>ppi(1:r)))';
+  state(s_idx,k)=1;
+  ppi=[0 cum(s_idx,:)];  % direct row lookup instead of s'*cum
+  s_idx=find((X(k)<=ppi(2:r+1)).*(X(k)>ppi(1:r)),1);
 end;
 chain=V*state;

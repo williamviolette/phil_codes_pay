@@ -12,26 +12,27 @@ end
 
 Aprime_inc = (Aprime./(1+r_high)).*(Aprime<=0) + (Aprime./(1+r_lend)).*(Aprime>0);  %% UNCHANGED
 
-Bprime_inc = (Bprime.*(Bprime>=B) + B.*(Bprime<B))./(1+r_w); %% capped at B because the rest is raised through L
+Bprime_inc = max(Bprime, B)./(1+r_w); %% capped at B because the rest is raised through L
 
-cc = (D==0).*(Dprime==0); 
-cd = (D==0).*(Dprime==1);
-dc = (D==1).*(Dprime==0);
-dd = (D==1).*(Dprime==1);
+cc = (D==0).*(Dprime==0);
+Dprime_1 = (Dprime==1);  % = cd+dd (saves computing cd, dc, dd separately)
 
 if p1==p1d && p2==p2d
     p1f = p1;
     p2f = p2;
 else
+    cd = (D==0).*Dprime_1;
+    dc = (D==1).*(Dprime==0);
+    dd = (D==1).*Dprime_1;
     p1f = p1.*cc + p1d.*cd + p1.*dc + p1d.*dd;
     p2f = p2.*cc + p2d.*cd + p2.*dc + p2d.*dd;
 end
 
 Lf_12 = ((Bprime - B)./(1+r_w)).*(Bprime<B).*cc ;
 
-y_34f = (A-Aprime_inc + B)     + (-Bprime_inc).*(cd+dd) - pd.*(cd+dd) ;
+y_34f = (A-Aprime_inc + B) + (-Bprime_inc - pd).*Dprime_1 ;
 
-y_12f =  y_34f + (-1.*Bprime_inc).*cc  ;
+y_12f =  y_34f + (-Bprime_inc).*cc  ;
 
 
 if k_high==0 && k_low==0
