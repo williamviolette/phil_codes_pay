@@ -16,13 +16,24 @@ import os
 import time
 import numpy as np
 
-# Allow running from repo root, matlab/py/, or a Jupyter notebook
+# Allow running from repo root, matlab/py/, or a Jupyter notebook.
+# Find the repo root by looking for the 'moments/' directory.
 try:
     _this_dir = os.path.dirname(os.path.abspath(__file__))
 except NameError:
-    # __file__ not defined (e.g. Jupyter notebook / interactive REPL)
     _this_dir = os.getcwd()
-_repo_root = os.path.abspath(os.path.join(_this_dir, '..', '..'))
+
+def _find_repo_root(start):
+    d = os.path.abspath(start)
+    for _ in range(10):
+        if os.path.isdir(os.path.join(d, 'moments')):
+            return d
+        d = os.path.dirname(d)
+    raise FileNotFoundError(
+        "Cannot find repo root (looked for 'moments/' directory). "
+        "Set _repo_root manually or run from within the repo.")
+
+_repo_root = _find_repo_root(_this_dir)
 if _repo_root not in sys.path:
     sys.path.insert(0, _repo_root)
 
