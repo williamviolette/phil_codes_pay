@@ -16,8 +16,12 @@ import os
 import time
 import numpy as np
 
-# Allow running from either repo root or matlab/py/
-_this_dir = os.path.dirname(os.path.abspath(__file__))
+# Allow running from repo root, matlab/py/, or a Jupyter notebook
+try:
+    _this_dir = os.path.dirname(os.path.abspath(__file__))
+except NameError:
+    # __file__ not defined (e.g. Jupyter notebook / interactive REPL)
+    _this_dir = os.getcwd()
 _repo_root = os.path.abspath(os.path.join(_this_dir, '..', '..'))
 if _repo_root not in sys.path:
     sys.path.insert(0, _repo_root)
