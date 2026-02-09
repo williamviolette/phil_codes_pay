@@ -190,12 +190,12 @@ format long g
 
 
 
-    % given :  r_lend , r_water, r_high ,  lambda (U) ,   theta (y), gamma (a), alpha , beta_up , Y , p1, p2 ,pd,  n , metric, waterlend,
-           %    1         2       3         4             5          6         7        8       9    10  11  12       %
-%given=       [ r_lend    0      .03         0            0.28        0      .026      .02     y_avg p1  p2  170   n   10  0 ];
+    % given :  r_lend , r_water, r_high ,  lambda (U) ,   theta (y), gamma (a), alpha , beta_up , Y , p1, p2 ,pd,  n , curve, r_slope, waterlend,
+           %    1         2       3         4             5          6         7        8       9    10  11  12  13   14     15       16
+%given=       [ r_lend    0      .03         0            0.28        0      .026      .02     y_avg p1  p2  170   n   10  0  0 ];
 
-%given=       [ r_lend    0      .02         0            0.28        0      .026      .01     y_avg p1  p2  170   n   10  0 ];
-given=       [ r_lend    0      .02         0            0.35        0      .026      .015     y_avg p1(1)  p2(1)  170   n   10  0 ];
+%given=       [ r_lend    0      .02         0            0.28        0      .026      .01     y_avg p1  p2  170   n   10  0  0 ];
+given=       [ r_lend    0      .02         0            0.35        0      .026      .015     y_avg p1(1)  p2(1)  170   n   10  0  0 ];
 
 
 
