@@ -2,7 +2,6 @@
 
 
 clear
-octave_setup;
 
 rng(1)
 
