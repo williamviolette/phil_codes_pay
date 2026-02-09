@@ -17,23 +17,27 @@ import time
 import numpy as np
 
 # Allow running from repo root, matlab/py/, or a Jupyter notebook.
-# Find the repo root by looking for the 'moments/' directory.
+# Strategy: when __file__ is available, repo root = two levels up from matlab/py/.
+# Otherwise (Jupyter), search upward from cwd for 'moments/' or 'matlab/' directory.
 try:
     _this_dir = os.path.dirname(os.path.abspath(__file__))
+    # This file lives at <repo>/matlab/py/, so go up two levels
+    _repo_root = os.path.abspath(os.path.join(_this_dir, '..', '..'))
 except NameError:
+    # __file__ not defined (Jupyter / interactive REPL)
     _this_dir = os.getcwd()
-
-def _find_repo_root(start):
-    d = os.path.abspath(start)
+    _repo_root = None
+    d = os.path.abspath(_this_dir)
     for _ in range(10):
-        if os.path.isdir(os.path.join(d, 'moments')):
-            return d
+        if os.path.isdir(os.path.join(d, 'moments')) or \
+           os.path.isdir(os.path.join(d, 'matlab', 'py')):
+            _repo_root = d
+            break
         d = os.path.dirname(d)
-    raise FileNotFoundError(
-        "Cannot find repo root (looked for 'moments/' directory). "
-        "Set _repo_root manually or run from within the repo.")
-
-_repo_root = _find_repo_root(_this_dir)
+    if _repo_root is None:
+        raise FileNotFoundError(
+            "Cannot find repo root (looked for 'moments/' or 'matlab/py/'). "
+            "Set _repo_root manually or run from within the repo.")
 if _repo_root not in sys.path:
     sys.path.insert(0, _repo_root)
 
