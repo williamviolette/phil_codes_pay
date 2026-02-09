@@ -16,28 +16,40 @@ import os
 import time
 import numpy as np
 
-# Allow running from repo root, matlab/py/, or a Jupyter notebook.
-# Strategy: when __file__ is available, repo root = two levels up from matlab/py/.
-# Otherwise (Jupyter), search upward from cwd for 'moments/' or 'matlab/' directory.
-try:
-    _this_dir = os.path.dirname(os.path.abspath(__file__))
-    # This file lives at <repo>/matlab/py/, so go up two levels
-    _repo_root = os.path.abspath(os.path.join(_this_dir, '..', '..'))
-except NameError:
-    # __file__ not defined (Jupyter / interactive REPL)
-    _this_dir = os.getcwd()
-    _repo_root = None
-    d = os.path.abspath(_this_dir)
+# ---- Repo root detection ----
+# Works from: command line, Spyder, Jupyter, interactive REPL.
+# Override: set PHIL_CODES_PAY environment variable, or edit _MANUAL_ROOT below.
+_MANUAL_ROOT = None   # e.g. '/Users/willviolette/.../phil_codes_pay'
+
+def _find_repo_root():
+    # 1. Manual override
+    if _MANUAL_ROOT is not None:
+        return _MANUAL_ROOT
+    # 2. Environment variable
+    env = os.environ.get('PHIL_CODES_PAY')
+    if env and os.path.isdir(env):
+        return env
+    # 3. __file__ is available → go up two levels from matlab/py/
+    try:
+        here = os.path.dirname(os.path.abspath(__file__))
+        candidate = os.path.abspath(os.path.join(here, '..', '..'))
+        if os.path.isdir(os.path.join(candidate, 'moments')) or \
+           os.path.isdir(os.path.join(candidate, 'matlab')):
+            return candidate
+    except NameError:
+        pass
+    # 4. Search upward from cwd
+    d = os.path.abspath(os.getcwd())
     for _ in range(10):
         if os.path.isdir(os.path.join(d, 'moments')) or \
            os.path.isdir(os.path.join(d, 'matlab', 'py')):
-            _repo_root = d
-            break
+            return d
         d = os.path.dirname(d)
-    if _repo_root is None:
-        raise FileNotFoundError(
-            "Cannot find repo root (looked for 'moments/' or 'matlab/py/'). "
-            "Set _repo_root manually or run from within the repo.")
+    raise FileNotFoundError(
+        "Cannot find repo root. Set _MANUAL_ROOT in this file, or set "
+        "the PHIL_CODES_PAY environment variable to the repo path.")
+
+_repo_root = _find_repo_root()
 if _repo_root not in sys.path:
     sys.path.insert(0, _repo_root)
 
