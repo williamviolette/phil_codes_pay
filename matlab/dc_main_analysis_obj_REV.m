@@ -1,11 +1,14 @@
 
 
 
-clear
+clear;
+cd "/Users/willviolette/Library/CloudStorage/Dropbox/Mac/Documents/GitHub/phil_codes_pay/matlab";
+octave_setup;
 rng(1)
 
-folder ='/Users/willviolette/Library/CloudStorage/Dropbox/moments/';
-cd_dir ='/Users/willviolette/Library/CloudStorage/Dropbox/Mac/Documents/GitHub/phil_codes_pay/matlab/';
+folder ='/Users/willviolette/Library/CloudStorage/Dropbox/Mac/Documents/GitHub/phil_codes_pay/moments/';
+cd_dir ='/Users/willviolette/Library/CloudStorage/Dropbox/Mac/Documents/GitHub/phil_codes_pay/paper/tables_new/';
+
 
 
 
