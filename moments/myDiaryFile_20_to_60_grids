@@ -1,0 +1,433 @@
+
+nA =
+
+    20
+
+
+nB =
+
+    20
+
+
+beta_set =
+
+                     0.033
+
+
+ans =
+
+         0.677323496697219
+
+Elapsed time is 0.952252 seconds.
+ Sim 
+
+ans =
+
+                     28.09
+                   2732.02
+                      0.41
+
+ Data 
+
+ans =
+
+                      24.3
+                    1219.4
+                      0.19
+
+ A loan 
+
+ans =
+
+    23
+
+ A savings 
+
+ans =
+
+    82
+
+ B loan 
+
+ans =
+
+   330
+
+ old obj: 
+
+ans =
+
+          2.96320564295217
+
+ 
+pattern search ... 
+Optimization terminated: mesh size less than options.MeshTolerance.
+
+res =
+
+        0.0161106479167938                     0.033                       580
+
+
+fval =
+
+        0.0242116303747412
+
+
+Output = 
+
+  <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> with fields:
+
+         function: [function_handle]
+      problemtype: 'unconstrained'
+       pollmethod: 'gpspositivebasis2n'
+    maxconstraint: []
+     searchmethod: []
+       iterations: 48
+        funccount: 243
+         meshsize: 9.5367431640625e-07
+         rngstate: [1×1 struct]
+          message: 'Optimization terminated: mesh size less than options.MeshTolerance.'
+
+The number of iterations was : 48
+The number of function evaluations was : 243
+Elapsed time is 186.681150 seconds.
+   truth               estimates   
+
+ans =
+
+                      24.3                     22.45
+                    1219.4                    1383.9
+                      0.19                      0.19
+
+ psearch done ! :)
+ no lending : 
+
+U_nl_t =
+
+          156.099958333261
+
+
+ans =
+
+          156.099958333261
+
+
+nA =
+
+    40
+
+
+nB =
+
+    40
+
+
+beta_set =
+
+                     0.033
+
+
+ans =
+
+         0.677323496697219
+
+Elapsed time is 3.647694 seconds.
+ Sim 
+
+ans =
+
+                     22.94
+                   1322.65
+                      0.15
+
+ Data 
+
+ans =
+
+                      24.3
+                    1219.4
+                      0.19
+
+ A loan 
+
+ans =
+
+     1
+
+ A savings 
+
+ans =
+
+     6
+
+ B loan 
+
+ans =
+
+    46
+
+ old obj: 
+
+ans =
+
+         0.056301441185885
+
+ 
+pattern search ... 
+Optimization terminated: mesh size less than options.MeshTolerance.
+
+res =
+
+        0.0197261464595795            0.032755859375                       197
+
+
+fval =
+
+        0.0115475092066989
+
+
+Output = 
+
+  <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> with fields:
+
+         function: [function_handle]
+      problemtype: 'unconstrained'
+       pollmethod: 'gpspositivebasis2n'
+    maxconstraint: []
+     searchmethod: []
+       iterations: 42
+        funccount: 217
+         meshsize: 9.5367431640625e-07
+         rngstate: [1×1 struct]
+          message: 'Optimization terminated: mesh size less than options.MeshTolerance.'
+
+The number of iterations was : 42
+The number of function evaluations was : 217
+Elapsed time is 778.761102 seconds.
+   truth               estimates   
+
+ans =
+
+                      24.3                     22.67
+                    1219.4                   1290.75
+                      0.19                      0.18
+
+ psearch done ! :)
+ no lending : 
+
+U_nl_t =
+
+          16.8800096225034
+
+
+ans =
+
+          16.8800096225034
+
+
+nA =
+
+    60
+
+
+nB =
+
+    60
+
+
+beta_set =
+
+                     0.033
+
+
+ans =
+
+         0.677323496697219
+
+Elapsed time is 20.307222 seconds.
+ Sim 
+
+ans =
+
+                     24.25
+                   1314.51
+                      0.15
+
+ Data 
+
+ans =
+
+                      24.3
+                    1219.4
+                      0.19
+
+ A loan 
+
+ans =
+
+     2
+
+ A savings 
+
+ans =
+
+     1
+
+ B loan 
+
+ans =
+
+    62
+
+ old obj: 
+
+ans =
+
+        0.0509607761783822
+
+ 
+pattern search ... 
+Optimization terminated: mesh size less than options.MeshTolerance.
+
+res =
+
+        0.0199006688594818          0.03208447265625                       230
+
+
+fval =
+
+       0.00327903176588332
+
+
+Output = 
+
+  <a href="matlab:helpPopup struct" style="font-weight:bold">struct</a> with fields:
+
+         function: [function_handle]
+      problemtype: 'unconstrained'
+       pollmethod: 'gpspositivebasis2n'
+    maxconstraint: []
+     searchmethod: []
+       iterations: 76
+        funccount: 356
+         meshsize: 9.5367431640625e-07
+         rngstate: [1×1 struct]
+          message: 'Optimization terminated: mesh size less than options.MeshTolerance.'
+
+The number of iterations was : 76
+The number of function evaluations was : 356
+Elapsed time is 6788.397030 seconds.
+   truth               estimates   
+
+ans =
+
+                      24.3                     24.16
+                    1219.4                   1233.61
+                      0.19                      0.18
+
+ psearch done ! :)
+ no lending : 
+
+U_nl_t =
+
+          54.1597317521411
+
+
+ans =
+
+          54.1597317521411
+
+
+nA =
+
+    80
+
+
+nB =
+
+    80
+
+
+beta_set =
+
+                     0.033
+
+
+ans =
+
+         0.677323496697219
+
+Elapsed time is 89.757720 seconds.
+ Sim 
+
+ans =
+
+                      25.1
+                   1398.42
+                      0.17
+
+ Data 
+
+ans =
+
+                      24.3
+                    1219.4
+                      0.19
+
+ A loan 
+
+ans =
+
+     2
+
+ A savings 
+
+ans =
+
+     7
+
+ B loan 
+
+ans =
+
+    59
+
+ old obj: 
+
+ans =
+
+        0.0336344038851172
+
+ 
+pattern search ... 
+{Operation terminated by user during <a href="matlab:matlab.internal.language.introspective.errorDocCallback('gen_curve', '/Users/williamviolette/Documents/Philippines/phil_analysis/phil_codes_pay/matlab/gen_curve.m', 110)" style="font-weight:bold">gen_curve</a> (<a href="matlab: opentoline('/Users/williamviolette/Documents/Philippines/phil_analysis/phil_codes_pay/matlab/gen_curve.m',110,0)">line 110</a>)
+
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dc_obj_chow_pol_finite', '/Users/williamviolette/Documents/Philippines/phil_analysis/phil_codes_pay/matlab/dc_obj_chow_pol_finite.m', 58)" style="font-weight:bold">dc_obj_chow_pol_finite</a> (<a href="matlab: opentoline('/Users/williamviolette/Documents/Philippines/phil_analysis/phil_codes_pay/matlab/dc_obj_chow_pol_finite.m',58,0)">line 58</a>)
+         gen_curve(A,B,D,Aprime,Bprime,Dprime,r_high,r_slope,r_lend,r_water,water_lending,Y_high,Y_low,p1,p2,p1d,p2d,pd,alpha,k_high,k_low,lambda_high,lambda_low,curve);
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dc_objopt_chow_finite', '/Users/williamviolette/Documents/Philippines/phil_analysis/phil_codes_pay/matlab/dc_objopt_chow_finite.m', 5)" style="font-weight:bold">dc_objopt_chow_finite</a> (<a href="matlab: opentoline('/Users/williamviolette/Documents/Philippines/phil_analysis/phil_codes_pay/matlab/dc_objopt_chow_finite.m',5,0)">line 5</a>)
+est_mom=dc_obj_chow_pol_finite(given,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,refinement);
+
+In
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('dc_main_analysis_1>@(a1)dc_objopt_chow_finite(a1,given(inc_t,:),data(:,inc_t),option,option_moments_est,weights,prob,nA,sigA,Alb(inc_t),Aub(inc_t),nB,sigB,Blb(inc_t),nD,chain,s,int_size,refinement)')" style="font-weight:bold">dc_main_analysis_1>@(a1)dc_objopt_chow_finite(a1,given(inc_t,:),data(:,inc_t),option,option_moments_est,weights,prob,nA,sigA,Alb(inc_t),Aub(inc_t),nB,sigB,Blb(inc_t),nD,chain,s,int_size,refinement)</a>
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('funevaluate', '/Applications/MATLAB_R2018b.app/toolbox/globaloptim/globaloptim/private/funevaluate.m', 40)" style="font-weight:bold">funevaluate</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2018b.app/toolbox/globaloptim/globaloptim/private/funevaluate.m',40,0)">line 40</a>)
+    f = feval(FUN,reshapeinput(Xin,X),varargin{:});
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('psnextfeasible', '/Applications/MATLAB_R2018b.app/toolbox/globaloptim/globaloptim/private/psnextfeasible.m', 83)" style="font-weight:bold">psnextfeasible</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2018b.app/toolbox/globaloptim/globaloptim/private/psnextfeasible.m',83,0)">line 83</a>)
+            [sites(k).f,count,cache] = funevaluate(ObjFunc,Xin,sites(k).x,Cache,cache, ...
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('poll', '/Applications/MATLAB_R2018b.app/toolbox/globaloptim/globaloptim/private/poll.m', 171)" style="font-weight:bold">poll</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2018b.app/toolbox/globaloptim/globaloptim/private/poll.m',171,0)">line 171</a>)
+  psnextfeasible(ObjFunc,Xin,sites,Iterate,Aineq,bineq,Aeq,beq,lb,ub,tol,constr,objFcnArg,optimState.FunEval,options);
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('pfminunc', '/Applications/MATLAB_R2018b.app/toolbox/globaloptim/globaloptim/private/pfminunc.m', 61)" style="font-weight:bold">pfminunc</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2018b.app/toolbox/globaloptim/globaloptim/private/pfminunc.m',61,0)">line 61</a>)
+        [successPoll,nextIterate,optimState] = poll(FUN,X,Iterate,MeshSize,[],[], ...
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('patternsearch', '/Applications/MATLAB_R2018b.app/toolbox/globaloptim/globaloptim/patternsearch.m', 271)" style="font-weight:bold">patternsearch</a> (<a href="matlab: opentoline('/Applications/MATLAB_R2018b.app/toolbox/globaloptim/globaloptim/patternsearch.m',271,0)">line 271</a>)
+        [X,FVAL,EXITFLAG,OUTPUT] = pfminunc(FUN,X0,optimState,Iterate, ...
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('dc_main_analysis_1', '/Users/williamviolette/Documents/Philippines/phil_analysis/phil_codes_pay/matlab/dc_main_analysis_1.m', 160)" style="font-weight:bold">dc_main_analysis_1</a> (<a href="matlab: opentoline('/Users/williamviolette/Documents/Philippines/phil_analysis/phil_codes_pay/matlab/dc_main_analysis_1.m',160,0)">line 160</a>)
+                    [res,fval,~,Output] = patternsearch(obj,ag)
+} 
+diary off
