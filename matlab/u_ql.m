@@ -39,6 +39,7 @@ end
 
 
 util(y<=0)=-1000000;
+util(imag(util)~=0)=-1000000;
 
 if nargout>1
     util(w<0)=-1000000;
