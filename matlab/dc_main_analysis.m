@@ -12,7 +12,7 @@ cd_dir ='/Users/willviolette/Library/CloudStorage/Dropbox/Mac/Documents/GitHub/p
 real_data     = 1     ;
 second_output = 0     ;
 pick_sv       = 0     ;
-est_many      = 0     ;
+est_many      = 1     ;
 est_tables    = 0     ;
 counter       = 0     ;
 
@@ -209,7 +209,8 @@ given=       [ r_lend    0      .02         0            0.35        0      .026
     tic
     vgiven=0;
         [h,US,~,nA1,nB1,A1,B1,vgiven] = dc_obj_chow(given,prob,nA,sigA,Alb,Aub,nB,sigB,Blb,nD,chain,s,int_size,Fset,refinement,vgiven);
-        round(h(option_moments),2)
+        %round(h(option_moments),2)
+        h
     %     nA1
     %     nB1
     %     unique(A1)
