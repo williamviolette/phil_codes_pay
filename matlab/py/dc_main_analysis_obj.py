@@ -69,7 +69,7 @@ def main():
     # ---- Flags ----
     real_data    = 1
     given_sim    = 1
-    est_pattern  = 0
+    est_pattern  = 1
     results      = 1
     boot         = 1
     br           = 10      # bootstrap reps
