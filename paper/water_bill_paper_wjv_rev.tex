@@ -1,0 +1,1127 @@
+\documentclass[12pt,table]{article}
+
+\usepackage[table]{xcolor}
+% TEMPLATE DEFAULT PACKAGES
+\usepackage{amssymb,amsmath,amsfonts,eurosym,geometry,ulem,graphicx,xcolor,setspace,sectsty,comment,natbib,pdflscape,array,adjustbox,threeparttable}
+
+% ADDED PACKAGES FOR THIS MANUSCRIPT
+\usepackage{palatino,newtxmath,multirow,titlesec,threeparttable,tabu,booktabs,titlesec,threeparttable,mathtools,bm,bbm,subcaption,pdflscape,tcolorbox,mathrsfs,float}
+% endfloat,
+
+
+
+%\usepackage{kbordermatrix}% http://www.hss.caltech.edu/~kcb/TeX/kbordermatrix.sty
+%\usepackage{amsmath}% http://ctan.org/pkg/amsmath
+
+\usepackage[colorinlistoftodos]{todonotes}
+
+\usepackage{afterpage}
+\usepackage[hyphens]{url}
+\usepackage[margin=1cm]{caption}
+
+\usepackage[draft]{hyperref}
+\newcommand{\tim}{$\,\times\,$}
+% FIGURES & TABLES CAPTION STYLING
+\captionsetup[figure]{labelfont={bf},name={Figure},labelsep=period}
+\captionsetup[table]{labelfont={bf},name={Table},labelsep=period}
+
+% SECTION TITLE SETTINGS
+\titlelabel{\thetitle.\enskip}
+\titleformat*{\section}{\large\bfseries}
+\titleformat*{\subsection}{\normalsize\bfseries}
+
+% COLUMN TYPES
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}{>{\centering\arraybackslash}p{5.2em}}
+\newcolumntype{D}{>{\centering\arraybackslash}p{5em}}
+\newcolumntype{E}{>{\centering\arraybackslash}p{6em}}
+\newcolumntype{F}{>{\centering\arraybackslash}p{4em}}
+
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\newcolumntype{J}{>{\raggedright\arraybackslash}p{5em}}
+\newcolumntype{K}{>{\raggedleft\arraybackslash}p{5em}}
+\newcolumntype{M}{>{\raggedleft\arraybackslash}p{6em}}
+
+\renewcommand{\arraystretch}{1.2} 
+
+% MARGINS AND SPACING
+\normalem
+\geometry{left=1.1in,right=1.1in,top=1.0in,bottom=1.0in}
+\setlength{\parskip}{2.5pt}
+
+% SPECIAL CELL 
+\newcommand{\specialcell}[2][c]{%
+	\begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
+
+% NO INDENT ON FOOTNOTES
+\usepackage[hang,flushmargin]{footmisc}
+
+\begin{document}
+
+\begin{titlepage} 
+%\title{{Borrowing with Unpaid Bills}\thanks{}}
+%\title{{Microcredit from Delaying Bill Payments}\thanks{}}
+\title{Microcredit from Delaying Bill Payments}
+\author{\\[3em]
+  William Violette\thanks{Federal Trade Commission, Washington, DC. E-mail: william.j.violette@gmail.com   Any opinions and conclusions expressed herein are those of the author and do not necessarily represent the views of the Federal Trade Commission or its Commissioners.  Many thanks to Matthew Panhans, Miriam Larson-Koester, Adrian Rubli-Ornelas, and Stefano Polloni.} \\
+ \\ 
+  }
+\vspace{30mm}
+\date{\vspace{5mm}This Version: \today}
+\maketitle
+\begin{abstract}
+
+Delaying bill payments to public utilities may provide an important strategy for households with volatile incomes to smooth their consumption.  At the same time, allowing late payments may reduce net revenues for utilities, which often leads to higher prices to cover costs.  Using billing records from a large water utility in Manila, this paper estimates a household consumption and savings model to evaluate counterfactual payment policies.  A popular proposal to ensure upfront payments --- prepaid metering --- recoups less revenue than is needed to compensate households for their loss of consumption smoothing.  Alternatively, a revenue-neutral policy allowing more late payments increases welfare by encouraging greater consumption smoothing.
+
+
+
+\vspace{1in}
+\textbf{Keywords:} credit constraints; consumption smoothing; water utilities. \\
+\textbf{JEL Codes:} O13; E21; L95. \\
+\bigskip
+\end{abstract}
+\setcounter{page}{0}
+\thispagestyle{empty}
+\end{titlepage}
+\pagebreak \newpage
+
+%\spacing{1.5}
+\onehalfspacing
+
+\section{Introduction}
+
+Households face a dynamic problem of how to smooth their consumption over time, especially in low-income settings where households have little access to formal credit and risky income streams (\cite{morduch1995income}).  Households often resort to costly money lenders or informal arrangements with family members (\cite{banerjee2007economic}).  
+
+Firms may provide an additional channel for consumption smoothing by allowing households to delay their payments for goods and services.  Public utilities often tolerate high levels of delinquent bills each month.  Regulations also prevent utilities from disconnecting some households for nonpayment especially in extreme circumstances.  For example, utilities around the world have delayed or suspended disconnections in response to the COVID-19 epidemic.\footnote{\cite{bufordcampbell2020} list municipalities in the US who have and have not suspended disconnections in response to COVID-19.  \cite{domingo2020} reports how utility disconnections in Manila, Philippines have been delayed by 30 days in response to the COVID-19 epidemic.}   Delaying bill payments may provide an economically important source of credit for households since public utilities cover broad populations and take up approximately 5\% of household incomes in developing countries.\footnote{\cite{komives2006distributional} find that households spend 1-2\% of their incomes on water and 4\% on electricity.}
+
+Allowing late payments also imposes costs on firms.  Public utilities spend resources visiting and disconnecting delinquent households for nonpayment.  These costs can raise prices for all households since public utility prices are often regulated to cover production costs (\cite{hoque2013state}).\footnote{\cite{laffont2005regulation} discusses economic reasons for revenue-neutral pricing, which is common in both developed and developing country settings.}  As a result, policymakers have recently pushed for new prepaid metering technologies, which require upfront payments before releasing any services.  Recent research confirms that prepaid meters substantially increase utility revenues (\cite{jack2020charging}).  Prepaid meters for electricity already compose over 28\% of residential meters in Sub-Saharan Africa and are predicted to grow to 53\% by 2024 (\cite{northeast2014}).\footnote{By planning to install over 300,000 prepaid meters, the Botswana Water Utilities Corporation provides an example of the growing use of this technology in the water sector as documented by \cite{heymans2014limits}.}  Despite this growth, existing research has yet to consider how to balance revenue recovery against household demands for consumption smoothing.
+
+This paper incorporates delayed bill payments into household consumption and savings decisions in order to evaluate the welfare effects of counterfactual payment policies such as prepaid metering.  This paper studies a large piped water utility in Manila, Philippines where detailed administrative data record household consumption, bill payments, and disconnections for nonpayment.  In Manila, unpaid water bills average 5.5\% of household income, exceeding most other sources of short-term credit.\footnote{On average, short-term loans, which are mainly from moneylenders and microcredit agencies, only equal about 2.5\% of household income according to the 2014 Consumer Finance Survey.}  Descriptive evidence suggests that households time their bill payments to smooth their consumption when they face sudden income changes.  Out of each 100 PhP increase in income, households spend around 1 PhP on their unpaid water bills without changing their water consumption.\footnote{``PhP'' refers to Philippine Pesos where 45 PhP = 1 USD.}
+
+This paper builds a dynamic model to capture household consumption smoothing patterns.  In this model, households with risky incomes can borrow from a costly asset as well as from delayed payments to the water utility.  While delayed bills charge no interest, households face some probability each month of receiving a delinquency warning which confronts households with the choice of either paying their bills immediately or disconnecting and using an alternative water source.  This warning probability is estimated from households' delayed bills while household preferences are estimated from water consumption.  The estimated model matches descriptive evidence that households make large, infrequent payments and leave large unpaid balances when they disconnect permanently.
+
+The estimated model allows for evaluating the welfare effects of introducing prepaid meters.  Prepaid meters are paired with a price reduction to ensure that the utility's net revenues remain equal to zero given that with prepaid meters, the utility no longer needs to conduct delinquency warnings and households no longer leave unpaid bills when they disconnect permanently.  Simulations indicate that this price reduction is not enough to compensate households for their loss of consumption smoothing from having to pay their bills upfront.  Moreover, prepaid meters appear to steeply lower total household borrowing.
+
+The counterfactual exercises also consider a revenue-neutral policy that halves the utility's enforcement of unpaid bills.  In particular, this policy lowers the probability that households receive delinquency warnings by 50\%, which could be easily implemented by the utility.  This policy almost triples the average amount of unpaid bills, indicating substantially more consumption smoothing.  Despite larger unpaid bills, this policy actually results in a small price reduction because of lower enforcement costs and because of greater revenue raised from households substituting toward piped water consumption to increase their borrowing with unpaid bills.\footnote{For example in months where households are especially credit constrained, they may choose to wash clothes at home instead of at a laundromat or drink water instead of other beverages.}  This result suggests that less enforcement would more than pay for itself.  Overall, this policy is predicted to improve social welfare by 117 PhP (or 2.6 USD) per household each month.  Given 2.4 million piped water using households in Metro Manila, this estimate implies welfare gains up to 75 million USD each year.
+
+This paper contributes to three main strands of economic literature.  First, this paper brings payment and billing policy questions into a growing literature on optimal policy for utilities in developing countries (\cite{mcrae2015infrastructure}; \cite{szabo2015value}; \cite{jack2020charging}; \cite{jack2015pay}; \cite{szabo2015reducing}).  Building on previous static models, this paper also provides a framework for considering how dynamic incentives affect household demand for public utilities.  Second, this paper draws on a large body of research analyzing household credit constraints, particularly through microfinance interventions (\cite{morduch1999microfinance}; \cite{morduch1995income}; \cite{cull2009microfinance}; \cite{dupas2013savings}; \cite{jack2016borrowing}).  \cite{karlan2009expanding} and \cite{gine2014group} specifically focus on microfinance in the Philippines. Third, \cite{deaton1991saving} provides the foundational model of dynamic decision-making that serves as the starting point for the model in this paper, and the estimation of this model adapts methods developed by \cite{gourinchas2002consumption} and \cite{laibson2007estimating}.
+
+This paper proceeds with Section~\ref{section:data} describing the water billing data from Manila.  Billing practices, disconnection policies, and institutional details are discussed in Section~\ref{section:descriptives} alongside descriptive evidence.  Section~\ref{section:model} develops a model of household consumption and savings decisions while Section~\ref{section:estimation} discusses the estimation and results.  Counterfactual exercises and welfare impacts are provided in Section~\ref{section:counterfactuals}.  Section~\ref{section:conclusion} concludes. 
+
+% \todo[color=orange]{ non-pay correlated with other non-pay? possibility of bribery?}
+
+
+
+\section{Data}\label{section:data}
+
+% Describe notice of disconnection in more detail here??? and  NO DO IT LATER~! PLEASE!!!!  Disconnection is defined as months with missing values for usage.  Months with zero recorded consumption are not considered disconnected.  Since households face a 200 PhP reconnection charge but a 
+
+
+Measuring credit through delayed water bill payments requires information on water consumption and bill payments at the household-level as well as features of the credit environment in Manila.  % As well as information on the credit environment facing households
+
+Water consumption and bill payments come from water utility records collected as part of a research partnership with one of the two regulated utilities in Metro Manila, Philippines where each utility is responsible for serving their assigned geographic half of Metro Manila.  This utility provided access to monthly billing records for each connection as well as detailed information covering the regulatory structure and costs of production.  Monthly billing records include meter readings, billing amount, outstanding balances, and payments spanning January, 2008 to May, 2015. Over this period, the total number of connections increased from 900,000 to 1,500,000 as the water utility expanded service access.  Water connections are split into four categories: residential (90\%), semi-business (4\%), commercial (5\%), and industrial (1\%).  To focus on household consumption decisions, only residential connections are included in the analysis.
+
+To examine household demographics, billing data are merged at the connection-level to a water connection survey conducted independently to monitor the quality of the utility's service.  The survey randomly interviewed households with water connections covering 15,000 households in 2008, 24,000 households in 2010, and 23,000 households in 2012.  Since the survey followed a similar sampling design across rounds, 13\% of households were interviewed in two waves and 1.4\% of households were interviewed in three waves while remaining households were interviewed in only one of the waves.  To focus on household decisions, the analysis includes only connections that are identified in this survey as serving a single household (31\% of all connections).\footnote{Households using connections alone tend to be larger and wealthier than households that share connections with other households according to previous research (\cite{wjv}).}  The connection survey includes demographics for the households that own their water connections.  Table~\ref{table:sampleconstruction} in Appendix~\ref{appendix:sampleconstruction} includes more details on how the final sample is constructed for the analysis.
+% This sample restriction ensures that connection-level is equal to household-level.
+
+A household panel survey from Pasay City provides information on household income dynamics in Manila.  Pasay City is a centrally located sub-municipality of Metro Manila accounting for 3.2\% of the population of Metro Manila as of 2015 and is roughly representative of households living in the utility's service area.  The panel survey covers over 60\% of the population of Pasay City and is the only survey to provide a household-level income panel over a similar time frame in Manila.  The analysis includes data from \input{tables/total_inc_hhs_all}households that were interviewed in both 2008 and 2011.
+
+  % Pasay City is a centrally located city
+% The Consumer Finance Survey in 2014 provides useful information on the extent of credit access in Manila.
+
+% Since the analysis focuses on the borrowing and savings behavior of a representative household, additional data sources help characterize credit access in Manila.  
+
+% Average household income is calculated using the  2015 Family Income and Expenditure Survey, which covers 4,130 households in Metro Manila.  Interest rates for borrowing and saving come from the 2014 Consumer Finance Survey in Metro Manila as well as the World Bank Databank (2010-2015) for the Philippines.  
+
+
+
+
+% % Mention later: average interest rate, and other calibrations 
+% % The average interest rate for the Philippines is calibrated from the World Bank Databank (2010-2015).
+
+
+\section{Credit through Delayed Water Bill Payments}\label{section:descriptives}
+
+% \footnote{The company upgraded t in the first year of the sample.  Previously, the company mailed the bill to each household at the end of the month.} 
+% Each month, households consume \input{tables/usage_all}m3 of piped water on average, which totals an average monthly bill of \input{tables/bill_all}PhP as shown in Table~\ref{table:descriptives_all}.  Given an average monthly income in Manila of \input{tables/y_avg}PhP and savings rate of \input{tables/save_avg}PhP,  monthly water bills reach a modest average of \input{tables/bill_inc_all}\unskip\% of income and \input{tables/bill_sav_all}\unskip\% of savings.  
+
+%%% NOTES FROM TOWNSEND PAPER ! %%%
+% For the purposes of this partial equilibrium analysis, this borrowing constraint is exogenous.
+% It is not a natural borrowing constraint as in Aiyagari (1994) and therefore somewhat ad
+% hoc, but such a constraint can arise endogenously in models with limited commitment (see
+% Wright (2002)) or where lenders have rights to garnish a fraction of future wages (e.g.,
+% Lochner and Monge-Naranjo (2008))
+
+In Manila, households have poor access to credit.  Small-scale loans mainly from money lenders and micro-finance groups are the most common forms of credit and charge high monthly interest rates of \input{tables/irate}\unskip\% on average.\footnote{According to the 2014 Consumer Finance Survey in Manila, 1\% have credit cards, 3.8\% have auto-loans, 0.5\% have mortgages, and \input{tables/wloan}\unskip\% have all-purpose loans, of which \input{tables/money_lender}\unskip\% are from money lenders and \input{tables/micro_finance}\unskip\% are from micro-finance groups.}  In this environment, delaying water bill payments may provide a reliable, alternative source of credit because the water utility often tolerates high rates of delinquency before disconnecting water service and the utility is prohibited from charging any interest on outstanding balances.  
+
+Households often delay their water bills.  Instead of paying each month, households make large, infrequent payments.  Table~\ref{table:descriptives_all} provides summary statistics on household consumption, billing, and payments.  While the average bill is \input{tables/bill_all}PhP per month, payments average \input{tables/pay_size_all}PhP, occur in \input{tables/pay_freq}\unskip\% of months, and leave households \input{tables/days_delinquent_all}days behind on their bills.  Each month, the average household maintains \input{tables/balance_all}PhP in unpaid water bills and 3,077 PhP in small-scale loans mainly from money lenders and micro-finance groups.\footnote{According to the 2014 Consumer Finance Survey in Manila, 12\% of households have small-scale loans.  Average loan sizes equal \input{tables/meanloansize}PhP with an average period of \input{tables/meanloanlength}months.  In any given month, households with loans owe 25,640PhP, which translates to an average outstanding balance of 3,077PhP across all households.}   With average monthly incomes of \input{tables/y_avg}PhP, households spend around 3\% of their income on water while unpaid water bills total around 5.5\% of their income.\footnote{For reference, 1 USD is worth around 45 PhP over this period.}   
+% those that are at least two months delinquent
+\begin{table}[h!] % PUT IN DEMOGRAPHICS PLEASE ?!?!?
+\centering
+\caption{Summary Statistics per Household-Month}\label{table:descriptives_all}
+\vspace{-2mm}
+\begin{threeparttable}
+\begin{tabular}{@{}l*{1}{KK}@{}}
+\toprule
+ % & \multicolumn{1}{C}{Mean} & \multicolumn{1}{C}{Standard Deviation} \\
+  & Mean & Standard Deviation \\
+\midrule
+Consumption (m3) & \input{tables/table_c_mean} &  \input{tables/table_c_sd} \\
+Bill &  \input{tables/table_amount_mean} &  \input{tables/table_amount_sd} \\
+Unpaid Balance &  \input{tables/table_bal_mean} &  \input{tables/table_bal_sd} \\
+Payment &  \input{tables/table_pays_mean} &  \input{tables/table_pays_sd} \\
+Payment Frequency &  \input{tables/table_p0_mean} &  \input{tables/table_p0_sd} \\
+Disconnection Frequency &  \input{tables/table_shr_dc_mean} &  \input{tables/table_shr_dc_sd} \\
+Income &  \input{tables/table_inc_mean} &  \input{tables/table_inc_sd} \\
+% \input{tables/descriptives_new_all}
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\footnotesize
+\item Bill, Unpaid Balance, Payment, and Income are in PhP.  Measures exclude months where households remain disconnected through the end of the sample period.  Billing data include \input{tables/total_hhs_all}households for \input{tables/total_obs}household-month observations.  Income data include \input{tables/total_inc_hhs_all}households for \input{tables/total_inc_obs_all}household-month observations.  Unpaid balance often includes any money owed during the current billing cycle.  45 PhP = 1 USD \,\,
+% See Appendix~\ref{appendix:sampleconstruction} for more details on the sample construction.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+The utility enforces payment by visiting households and disconnecting them if they do not immediately pay their bills.\footnote{Disconnection typically involves placing a metal lock on the water meter that stops any flow.}  While households often try to negotiate for additional time to pay their bills, \input{tables/days_pay_under_30}\unskip\% of households report having to pay within 30 days and the average grace period is only \input{tables/days_pay_average}days.  As a result, only \input{tables/enough_time}\unskip\% of households report having ``enough time'' to make their payments, which may be in part due to poor credit access in Manila.  While disconnected, households likely substitute to alternative water sources including sharing with neighbors, using from deepwells, or purchasing from local water vendors.  In the 2012 wave of the water connection survey, \input{tables/disc_paws}\unskip\% of households report having been disconnected for delinquency.  The billing data find that even among households that remain connected at the end of the sample period, 1.5\% of their months are spent temporarily disconnected on average.  To reconnect, households must pay any outstanding bills as well as 200 PhP reconnection fee.
+
+The utility must frequently enforce payments because the utility often cannot recover unpaid bills once households have permanently disconnected and left the utility's service area.  7.5\% of households remain disconnected at the end of the sample who are defined as ``permanently disconnected'' households for the purpose of this analysis.  \input{tables/bal_n0}\unskip\% of these households leave large outstanding balances that are never repaid averaging \input{tables/out_bal}PhP, which is over 10 times the average water bill.  The remaining \input{tables/bal_0}\unskip\% pay their full balances upon disconnecting possibly because they plan to move to another dwelling within the utility's service area.  Since 0.13\% of households permanently disconnect each month on average,\footnote{The disconnection rate is calculated (1) for households that connect between 2007 and 2011, which covers the connection survey and (2) for disconnections occurring between Jan, 2012 and May, 2014 to ensure that any disconnections last for at least a year before the sample ends in June, 2015.} then the average household remains connected for around 32 years assuming a constant rate over time.\footnote{This constant rate is consistent with a weak observed correlation between the permanent disconnection rate and calendar months of -0.0033.}  Therefore, unpaid outstanding balances average 18.5 PhP per household-month or 2.8\% of water bills.
+
+Due to scarce resources, the utility is unable to visit every delinquent household each month.  Instead, the utility appears to use a strategy where workers sweep periodically through neighborhoods of around 200 households warning all households and issuing disconnection orders to especially delinquent households.\footnote{Neighborhoods refer to areas defined internally by the utility as ``Meter Reading Units.''  The utility has adopted a decentralized organizational structure by assigning one worker to manage each meter reading unit.}  Neighborhood sweeps may provide an efficient strategy given high transport costs in Manila.  On average, households receive \input{tables/tcd_per_hh}disconnection orders over the course of the sample.  72\% of disconnection orders result in immediate payment of outstanding bills while 28\% result in disconnection within two months.  For these disconnected households, 64\% eventually reconnect in an average of \input{tables/t_rec}months.  The remaining 36\% remain disconnected for the sample period.   Households that do not receive a disconnection order also increase their bill payments when nearby households receive disconnection orders as part of a neighborhood warning.\footnote{Appendix~\ref{appendix:paywarning} also finds that households do not increase payments in response to warnings for nearby households in separate neighborhoods.}  While data do not record occurrences of warnings, frequent disconnection orders suggest that warnings are common events.  On average, neighborhoods experience at least one disconnection order in \input{tables/mdcp}\unskip\% of months and at least four disconnection orders in \input{tables/mdcp4}\unskip\% of months.  Disconnection orders appear to occur at uneven intervals, which suggests that the timing of neighborhood warnings may be difficult for households to predict with precision.
+
+
+
+
+%% PUT IN FOOTNOTE: ! Households also increase payments when other households in their neighborhood receive warnings.   
+ % these results 
+
+
+% In total, neighborhoods 
+% Likely due to time and travel costs, these collection attempts are relatively rare, occurring in only \input{tables/prob_caught}\unskip\% of months where households are at least a month delinquent.\footnote{This rate ranges from \input{tables/prob_caught_min}\unskip\% to \input{tables/prob_caught_max}\unskip\% across the 12 business areas and is positively correlated with outstanding balances.  \input{tables/tcd_max}\unskip\% of households receive a collection attempt at some point during the sample.}  
+
+
+
+
+
+
+% \begin{table}[h!] % PUT IN DEMOGRAPHICS PLEASE ?!?!?
+% \centering
+% \caption{Mean Characteristics}\label{table:descriptives_all}
+% \vspace{-2mm}
+% \begin{threeparttable}
+% \begin{tabular}{l*{1}{cccccc}}
+% \toprule
+%  & Mean & Std. Dev. & Min &  25th & 75th & Max \\
+% \midrule
+% \input{tables/descriptives_new_all}
+% % \bottomrule \\ [-.8em]
+% \end{tabular}
+% \begin{tablenotes}
+% \footnotesize
+% \item  45 PhP $\sim$ 1 USD \,\, Std. Dev. refers to standard deviation.  25th and 75th refer to percentiles.  Bills, Unpaid Balances, and Payment Sizes are in PhP per household-month.  Negative bills and balances generally arise from refunds for billing or payment errors.  See Appendix~\ref{appendix:sampleconstruction} for more details on the sample construction.
+% \end{tablenotes}
+% \end{threeparttable}
+% \end{table}
+
+% , households do not pay and are disconnected within two months.  
+
+% Among delinquency visits that occur when households are over three months overdue on their bills,  \input{tables/tcd_share_rec_3}\unskip\% result in temporary disconnections and these households wait \input{tables/t_rec_3}months on average before reconnecting.  By contrast, when households are under three months overdue, only \input{tables/tcd_share_rec_3l}\unskip\% result in temporary disconnections and these households wait \input{tables/t_rec_3l}months on average before reconnecting.  This pattern is consistent with households facing credit constraints.  When households are confronted with small debts to keep water service, they quickly pay to remain connected to service.  Yet, when households must pay large debts to keep water service, many households delay payment for many months while they save income.  This pattern suggests that households do not have access to low-cost credit, which would allow them to maintain water service.  
+
+% Households are expected to pay the bill by the end of the month.  
+
+
+Households may also pay their water bills infrequently for other reasons aside from accessing low-cost credit.  First, households may not be aware of the size or due date for each water bill.  The utility addresses this problem by sending meter readers to record monthly consumption, deliver each bill in person, and educate households about their payment options.  Second, households may experience time or hassle costs in making each payment, which may naturally lead households to pay infrequently.  The utility reduces these costs by offering many different payment options.\footnote{\input{tables/center}\unskip\% of households use small payment centers (mall kiosks, gas stations, convenience stores, etc.), \input{tables/maynilad}\unskip\% of households pay at local utility offices, and \input{tables/atm}\unskip\% of households pay over the phone, online, or via ATM kiosks according to the connection survey.}  Third, previous research has documented how negative opinions toward public utilities or local governments can increase delinquency \citep{szabo2015reducing}.  In Manila, the utility enjoys largely positive public opinion because the water utility in Manila represents a public-private partnership that has dramatically improved service since taking over from the previous government utility.\footnote{The connection survey conducts an independent assessment of people's satisfaction with the utility finding that over 95\% of households rate the utility as ``good'' or ``very good'' as opposed to ``fair,'' ``poor,'' or ``very poor'' in terms of overall service quality.}
+
+
+% One reason may be households still experience time or hassle costs per payment, which lead households to pay infrequently.  Another reason may be that households treat delayed bill payments as a micro-loan 
+
+% The borrowing rate from standard assets is estimated to be \input{tables/est_irate_per}\unskip\% per month, which implies an annual interest rate of \input{tables/est_irate_annual_per}\unskip\%.  This estimate is substantially lower than the 20\% per month interest rate that \cite{karlan2009expanding} document as being commonly charged by moneylenders in Manila.  Despite this high interest rate, \cite{karlan2009expanding} document that at least 30\% of their sample of microentrepreneurs report taking credit from moneylenders.  The estimated borrowing rate of \input{tables/est_irate_per}\unskip\% is more similar to microloans of 1,000 PhP at 2.5\% monthly interest offered to rural Filipino households as part of a microfinance experiment conducted by \cite{gine2014group}.\footnote{The annual interest rate of \input{tables/est_irate_annual_per}\unskip\% well exceeds the average 13 to 25\% range offered by microfinance providers worldwide surveyed by \cite{cull2009microfinance}.  Two possible reasons for this discrepancy are that (1) institutional reasons unique to Manila may limit lenders' abilities to offer low rates and (2) subsidies may allow many microfinance providers to offer below-market interest rates.}
+
+% \todo[color=red]{ A what about procrastination? 
+% in the us when i paid utilities via direct pay online, i would always pay on time. here in mex, you can't do that so emilio and i are always delinquent on our bills but only cause we lazy a.f. to go to the 7-eleven to pay. deal with this later?}
+% \todo[color=red]{isn't this huge?}
+% \todo[color=red  ]{A so there's a 60 day grace period? any chance hhs know this and pay in 60 day intervals?}   Check!
+% \todo[color=green]{Do you not see visits in the larger dataset? Table 2 has visits for the full sample}
+
+% Delinquency visits often surprise households. 
+% --- low awareness, hassle costs, and negative public opinion
+
+Unlike these other reasons for delinquency, the credit mechanism predicts that households with volatile incomes may time their bill payments to smooth their consumption over time (\cite{deaton1991saving}).  The following equation tests whether income changes are more correlated with bill payments than with consumption by using changes in the number of working household members as a proxy for income changes
+\begin{align*}
+\Delta Y_{ht} =\beta_0\,+\, \beta_1\, \Delta \text{Working Members}_{ht} \, + \beta_2\, \Delta \text{Total Members}_{ht}   \,+\varepsilon_{ht}
+\end{align*}
+where $ \Delta \text{Working Members}_{ht} $ is the change in the number of working household members and $\Delta \text{Total Members}_{ht}$ is the change in the total number of household members for the same household, $h$ and month, $t$.  Changes are measured between the connection survey rounds in 2008, 2010, and 2012 and between the Pasay City panel survey in 2008 and 2011.  Outcomes, $\Delta Y_{ht}$, include changes in the water bill and bill payments per household-month where the changes are calculated using the billing data in the month before each household completed the connection survey.  $\Delta Y_{ht}$ also includes monthly household income change between 2011 and 2008 in the Pasay City panel survey. Standard errors are clustered at the household-level. \\
+
+\begin{table}[!ht]
+\small
+\centering
+\begin{threeparttable}
+\caption{Water Bills and Household Composition}\label{table:panelanalysis}
+\vspace{-2mm}
+% \resizebox{.8\linewidth}{!}{
+\begin{tabular}{@{}lccc@{}}
+\toprule
+ & \multicolumn{2}{c}{Billing Data} & Household Survey \\
+ & \small (1) & \small (2) & \small (3)  \\
+ & \small $\Delta$ Bill & \small $\Delta$ Payment & \small $\Delta$ Income \\[.5em]
+ \toprule
+\input{tables/table_panel_analysis}
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\footnotesize
+\item 
+This table reports results of regressing changes in the number of working household members and total household members on changes in monthly bills, payments, and income.  Outcomes are in PhP per household-month.  Billing and payment changes are measured for households that appear in the connection survey rounds in 2008, 2010, and 2012.  Income changes are measured for households in the Pasay City panel survey in 2008 and 2011.  Income changes exclude top and bottom 1\% outliers.  The mean of the outcome variables are also reported. 45 PhP = 1 USD.  Standard errors are clustered by household.  \,\, \textsuperscript{c} p$<$0.10,\textsuperscript{b} p$<$0.05,\textsuperscript{a} p$<$0.01 
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+Column (1) of Table~\ref{table:panelanalysis} finds a large statistically significant correlation between total household members and consumption as well as a small, statistically insignificant correlation between employed members and consumption.  This finding suggests both that the number of household members is a key driver of water demand and that changes in household income have little impact on water consumption.  Column (2) finds the opposite pattern for payments where employed members drive large increases in payments while total household members exhibit almost zero correlation.  Column (3) finds that working household members correlated much more strongly with household income than the total number of household members.  Comparing results from Column (2) and (3), estimates suggest that in response to income shocks, households spend almost one out of every 100 PhP on outstanding bills.  These results provide suggestive evidence of consumption smoothing where households flexibly adjust their payment patterns in response to income shocks without changing their water consumption.  
+
+These descriptive patterns are robust to an alternative measure of income shocks.  Appendix~\ref{appendix:alternativeincome} links the age, education, and location of connection owners to average changes in earnings for people with the same demographics from Quarterly Labor Force Surveys.  This exercise finds patterns consistent with consumption smoothing although the correlations have relatively small magnitudes likely due to substantial measurement error.
+
+
+\section{A Model of Borrowing, Saving, and Water Use}\label{section:model}
+
+To quantify the implications of different billing policies for household welfare, I construct a simple model of household borrowing, saving, and water consumption decisions over time.  This approach builds on a standard buffer-stock savings model as developed by \cite{deaton1991saving}.
+
+\subsection{Model Intuition}
+
+In this model, households first move to a dwelling in Manila and begin consuming piped water.  As households receive positive income shocks, they accumulate precautionary savings to insure against future negative income shocks.  In these months, households simply consume water according to their preferences and pay their bills.
+
+When households receive enough negative income shocks, they spend their savings and begin to borrow.  First, households borrow by not paying their water bills because they face zero interest rates on unpaid bills.  Each successive month, households can increase this debt by continuing to consume water without paying.
+
+Further negative income shocks may induce households to borrow beyond their current water bill at which point they face a trade-off: borrowing from a standard asset at a high interest rate or further increasing their water consumption to expand the size of their unpaid bills.  For example, instead of taking out a costly loan from a moneylender, households may choose to wash clothes at home instead of at a laundromat or drink water instead of other beverages while leaving their bills unpaid.  As substitution toward piped water becomes increasingly costly, households may then borrow from the standard asset.
+
+With some probability, the utility conducts delinquency warnings, which confront indebted households with a choice: pay their debts or disconnect and use an alternative water source.  Since the alternative water source involves an additional fixed cost each month, households with small debts may simply prefer to stay connected and pay their debts by using their savings, taking out a costly loan, and/or lowering their consumption this month.  Households with large debts may decide to disconnect in order to avoid taking out a large loan or experiencing a sharp drop in consumption this month.  Once disconnected, households begin accumulating savings to eventually pay their debts and reconnect to service.
+
+At some point, households learn whether they will move to a new dwelling in Manila or leave Manila.  Households that plan to stay in Manila must pay their full balance before moving because it is likely that the utility will recognize them at their new address.  Households that plan to leave Manila do not need to pay their outstanding debts before leaving.  Therefore just before changing dwellings, these households have an incentive to accumulate large unpaid bills since the utility is unable to collect on these bills if households leave Manila.  In these months, households may also have a strong incentive to disconnect in response to delinquency warnings.
+
+\subsection{Formal Model}
+
+To formally model household borrowing and savings decisions, I start from a standard intertemporal utility maximization problem as developed by \cite{deaton1991saving}.  This approach assumes a finite time horizon where households choose water usage, borrowing, and savings in each month to maximize current and expected future utility.  
+
+Households first move to their dwelling in Manila in month 1 and then choose their consumption of water and other goods as well as how much to borrow and save each month until they leave their dwelling in month $T$.  Household expected utility in each month $t$ is given by the following equation
+\begin{align}\label{eq:u}
+\begin{split}
+E_t \Big[ \sum_{\tau = t}^{T} (1+\delta)^{t-\tau} \,\frac{u(w_{\tau},x_{\tau})^{1-\gamma}}{1-\gamma}   \Big]\\
+u(w_{\tau},x_{\tau}) =  x_{\tau} -  \frac{1}{2} (w_{\tau} - \alpha)^2
+\end{split} 
+\end{align}
+where households have a rate of time preference $\delta \in (0,1)$.  Households have quadratic preferences over water consumption, $w_{t}$, and a bundle of other goods, $x_{t}$.  $\alpha$ is household's water satiation point each month, capturing the intuition that households are likely to consume a finite amount of water even if the price is zero.\footnote{This approach assumes that households are unable to resell water from their tap.}  Quadratic preferences also assume that income has no direct effect on consumption.\footnote{This assumption is consistent with descriptive evidence that fluctuations in household employment are uncorrelated with water spending.}  Households are assumed to have constant relative risk aversion for consumption across months given by $\gamma$.
+
+% \footnote{\cite{wjv} finds an average price elasticity of 0.84 in this setting while \cite{szabo2015value} finds an average price elasticity of 0.98 in South Africa.  Other studies find elasticities ranging from 0.01 to 0.81 (\cite{diakite2009proposal}, \cite{strand2005water}).} 
+
+In each month, households face a budget constraint as follows
+\begin{align}\label{eq:bc}
+\begin{split}
+x_t \, + \, p w_t \, &= \, y_t \, - (1-C_{t+1})f  \, + \,  A_t  - \dfrac{A_{t+1}}{1+r}   \, + \,  B_t - B_{t+1} 
+\end{split}
+\end{align}
+where $p$ captures the price of water, which is assumed to depend linearly on water consumption to approximate the tariff in Manila, $p=p_1+p_2w_t$.   The price of the bundle of other goods, $x_t$, is normalized to one.  $y_t$ represents household income each month which takes a value of $(1+\theta)\bar{y}$ with probability $\pi$ and a value of $(1-\theta)\bar{y}$ with probability $(1-\pi)$ where $\pi \in (0,1)$ and $\theta  \in (0,1)$.  
+
+Households choose whether to remain connected in the next month given by $C_{t+1}$.  When households are disconnected ($C_{t+1}=0$), they are assumed to face an fixed cost $f$ each month for water from alternative sources.\footnote{In practice, the utility may also charge monthly fixed prices.  The model implicitly normalizes any utility fixed prices to zero, in which case the fixed cost of alternative water sources can be interpreted as a relative fixed price.}  Since temporarily disconnected households are likely to share with neighbors or purchase from local vendors who resell piped water, they are assumed to face the same marginal prices as connected households.
+
+% talk about savings earlier!
+Households can use asset, $A$, for borrowing and saving.  $A_t$ captures debt (when $A_t<0$) or savings (when $A_t>0$) inherited from the previous month.  $A_{t+1}$ captures how much debt or savings to pass onto the following month.  Households are assumed to earn zero interest from saving consistent with low access to interest-bearing bank accounts in Manila.\footnote{Among households in the 2014 Consumer Finance Survey, 21\% have bank accounts, 14\% have bank accounts that pay interest, and 6\% have accounts that pay interest and balances over 10,000 PhP, which is the minimum balance needed to earn interest.  The Philippines National Bank lists an interest rate of 0.1\% on savings accounts above 10,000 PhP (accessed Jan. 28th, 2020).} Households face interest rate $r_h$ when borrowing so that  $r=r_h$ if $A_{t+1}<0$ (and $r = 0$ if $A_{t+1}\geq 0$).  Households are assumed to pay all debts or enjoy all savings from this asset before leaving Manila so that $A_{T}=0$.  Households are also assumed to face a borrowing constraint such that $A_{t+1}\geq\overline{A}$, which prevents households from infinitely borrowing.
+
+Households can also borrow by delaying payments to their water bills.  $B_t$ ($\leq0$) captures unpaid bills inherited from the previous month.  $B_{t+1}$ ($\leq0$) describes how much water debt to pass onto the following month (by delaying payment of the current bill).  Households must satisfy the following borrowing constraint each month, which ensures that water debt must be less than this month's bill and unpaid bills from previous months
+\begin{align}\label{eq:borrowingconstraint}
+B_{t+1} &\geq (1-v_t)  C_{t} C_{t+1} (B_t -pw_t) + (1-C_{t+1})B_t  \geq \overline{B}
+\end{align}
+
+
+The choice of $B_{t+1}$ depends on whether households receive a delinquency warning, $v_t$, which occurs with probability $\lambda \in (0,1)$ and is assumed to be independent of the two income states.  The delinquency warning confront indebted households with a choice: pay their debts or disconnect and use an alternative water source.  The choice of $B_{t+1}$ also depends on whether households are connected to piped water, $C_t$, and choose to remain connected in the next month, $C_{t+1}$.  
+
+
+The borrowing constraint creates the following four cases:
+
+\textbf{Case 1:} If there is no delinquency warning ($v_t=0$) and the household is connected ($C_{t}=1$) and chooses to stay connected ($C_{t+1}=1$), then the household can borrow up to their existing water debt plus their bill this month so that the borrowing constraint equals $B_{t+1}\geq B_t -  p w_t $.\footnote{Borrowing is given by negative values for $B_t$ and $B_{t+1}$}
+
+\textbf{Case 2:} If there is a delinquency warning ($v_t=1$) and the household is connected ($C_t=1$) and chooses to stay connected ($C_{t+1}=1$), then the household needs to pay their existing debt and cannot borrow from their water bill this month so that $B_{t+1} = 0$.
+
+\textbf{Case 3:} If the household chooses to be disconnected in the next month ($C_{t+1}=0$) likely in response to a delinquency warning, then the household avoids paying the existing debt but faces an additional fixed cost of $f$ per month to use a temporary water source.  In this case, the borrowing constraint reduces to $ B_{t+1} \geq B_t$ ensuring that households can only borrow up to their existing water debt.  
+
+\textbf{Case 4:} If the household is disconnected ($C_t=0$) and chooses to reconnect ($C_{t+1}=1$), then the household needs to pay off their existing debt and cannot borrow from their water bill this month so that $B_{t+1} = 0$.  
+% given their optimal choices of water, $w_t$, other goods, $x_t$, standard assets, $A_{t+1}$, water borrowing, $B_{t+1}$, and connection decision, $C_{t+1}$
+
+Households also face an additional borrowing constraint, $ B_{t+1} \geq \overline{B}$, which prevents households from borrowing indefinitely.  
+
+In the month $\overline{T}$, households learn where they will move at time $T$. With probability $\chi$, households learn that they will move to a new home in Manila at time $T$ in which case the need to pay their outstanding bills before moving (ie. $B_T=0$).  With probability $(1-\chi)$, they will leave Manila at time $T$ in which case they can leave bills unpaid with no consequence (ie. $0\geq B_T \geq \overline{B}$).
+
+The household's maximization problem can then be written recursively where households solve for a value function, $V_t(.)$, over four possible independent states given by $s_{t}$: (1) high income and delinquency warning with probability $\pi\lambda$, (2) high income and no delinquency warning with probability $\pi(1-\lambda)$, (3) low income and delinquency warning with probability $(1-\pi)\lambda$, and (4) low income and no delinquency warning with probability $(1-\pi)(1-\lambda)$.  Given these states, the recursive problem can be written as follows
+\begin{align}
+\label{eq:valmax}
+\begin{split}
+V_t(X_{t},s_t) &= max_{w_t,x_{t}} \,\,\, \frac{u(w_{\tau},x_{\tau})^{1-\gamma}}{1-\gamma}   + (1+\delta)^{-1}  E \Big[\, V(X_{t+1},s_{t+1})\Big] \\
+X_t &= [w_t,x_t,A_{t+1},B_{t+1},C_{t+1}] 
+\end{split}
+\end{align}
+with equations (\ref{eq:bc}) and (\ref{eq:borrowingconstraint}) holding each month.\footnote{At time $\overline{T}$, households learn about whether they will move $in$ or $out$ of Manila at time, $T$, meaning that $E \Big[\, V(X_{t+1},s_{t+1})\Big] =  \chi E \Big[\,V_{in}(X_{t+1},s_{t+1})\Big] + (1-\chi) E\Big[V_{out}(X_{t+1},s_{t+1})\Big]$.}  This problem can be solved in two steps: % (1) choosing $w_t$ and $x_t$ to maximize utility given each possible choice of assets, and (2) given optimal choices of $w_t$ and $x_t$, choosing assets to maximize $V_t(.)$ by iterating backwards from month $T$.
+
+
+\textbf{Step 1:} For each possible choice of assets, $A_{t+1}$ and $B_{t+1}$, and connection status, $C_{t+1}$, households maximize utility over water, $w_t$, and other goods, $x_t$, subject to their budget constraint and borrowing constraint.  Within each month, households maximize utility given by $ x_t -  \frac{1}{2} (w_t - \alpha)^2 $ such that the budget constraint and borrowing constraint hold.  When the borrowing constraint does not bind, then households reach an interior solution given by $w_t^{*} =  \frac{ \alpha - p_1}{2p_2 + 1}$.  The borrowing constraint does not bind when connected households have small unpaid bills (ie. $B_{t+1}$ is small).  Households also consume $w_t^{*}$ in months where $w_t$ does not affect the borrowing constraint such as when households are disconnected or when households receive delinquency warnings.
+
+When connected households want to use large unpaid bills as a source of credit (ie. $B_{t+1}$ is very negative), then the  interior solution, $w_t^{*}$, may be too small to satisfy the borrowing constraint.  Let $\overline{w}_t$ denote water consumption that just satisfies the borrowing constraint so that the bill this month, $-(p_1 +p_2\overline{w}_t)\overline{w}_t$ equals demand for additional borrowing, $B_{t+1}-B_{t}$ which gives $\overline{w}_t = \frac{(p_1^2 - 4p_2 (B_{t+1}-B_{t}))^{.5} - p_1}{2 p_2}$.  When $w_t^{*}=\overline{w}_t$, the interior solution just satisfies the borrowing constraint.  When $w_t^{*}<\overline{w}_t$, the interior solution is unable to satisfy the borrowing constraint so households consume $\overline{w}_t$.  When $w_t^{*}>\overline{w}_t$, the  interior solution more than satisfies the constraint so households consume $w_t^{*}$.
+
+\textbf{Step 2:}  Given optimal consumption choices of $w_t$ and $x_t$, households then choose their assets and whether to remain connected each month to maximize $V_t(.)$.  $V_t(.)$ can be solved by working backwards from month $T$ where $A_T = 0$.  Since households are assumed to have positive time preferences ($\delta>0$) and zero interest on their savings, households have an incentive to consume their initial assets until they reach their borrowing constraints (\cite{deaton1991saving}).  
+
+
+
+
+
+
+\section{Estimation}\label{section:estimation}    % https://www.cgdev.org/blog/compartamos-context
+
+
+% -- Representative household: Where is heterogeneity coming from then?
+% -- Assuming log utility  (justify that please!)
+
+Quantifying the welfare consequences of different billing policies requires estimates of household preferences for water consumption, the relative cost of an alternative water source, and the rate at which households receive delinquency warnings since neighborhood warnings of delinquent households are unobserved in the data.\footnote{The data only record disconnection orders.}  The empirical strategy matches simulated consumption and payment patterns for a representative household to average patterns observed in the billing data.  This strategy estimates the preference for water $\alpha$ from observed water consumption.  The rate of delinquency warnings $\lambda$ are estimated from the level of observed unpaid water bills since the frequency of delinquency warnings affects the incentive for households to accumulate unpaid water bills.  The fixed cost of using an alternative water source each month $f$ is identified by the observed share of households that temporarily disconnect in response to delinquency warnings.  
+% Higher fixed costs discourage households from disconnecting when they receive a delinquency warning.
+
+\subsection{Calibrated and Assumed Parameters}
+
+The empirical strategy requires calibrating prices, income, and interest rates to match economic conditions for the average household in Manila.  The strategy uses a fixed price per $\text{m}^{3}$ of $p_1=17.5$ PhP and a marginal increase in price per $\text{m}^{3}$ of $p_2=0.29$ PhP, which together reflect the linear function that best fits the increasing tariff in Manila as shown in Appendix Table~\ref{table:tarifftrue}.\footnote{Appendix~\ref{appendix:tariff} includes more details on this calculation. }  This approximation captures how prices increase with usage while also allowing for computational tractability within the dynamic model.\footnote{\cite{wjv} and \cite{szabo2015value} carefully capture non-linear pricing incentives with static models, which are computationally expensive.  The linear approximation also parallels average pricing models of consumer demand for utilities as suggested by \cite{ito2014consumers}.}  
+
+Mean monthly income, $\overline{y}$, is calibrated to average income in the household panel survey of Pasay City, taking a value of \input{tables/y_avg}PhP.  Monthly variation in income, $\theta$, is calculated by dividing the standard deviation of household income net of household fixed effects by mean income for a value of \input{tables/y_cv}\unskip.\footnote{Household fixed effects are calculated using the 2008 and 2011 waves of the Pasay City survey.}  For $\theta$ to capture monthly income variation within households, this calibration requires the assumption that reported income changes between 2008 and 2011 are representative of monthly income changes for households.  This estimate for $\theta$ falls within range of previous estimates in the literature.\footnote{$\theta$ can also be interpreted as measuring the coefficient of variation (CV), which measures the standard deviation of monthly household income divided by average household income (\cite{hannagan2015income}).  \cite{hannagan2015income} use monthly financial diaries in the US to calculate CVs of 0.39 for average households and 0.55 for households below the poverty line.  Using household surveys from Mexico, \cite{amuedo2011remittances} calculate CVs between 0.29 and 0.46.}  Households are also assumed to face even probabilities of high or low income realizations each month, which implies that $\pi$ equals 0.5.  The monthly interest rate on borrowing from standard assets is calibrated to equal \input{tables/irate}\unskip\% according to reported rates for ``all-purpose'' loans from the Consumer Finance Survey for Metro Manila.  The majority of these loans are issued from money lenders.
+
+The estimation also assumes parameters for household time-preferences.  First, the monthly discount rate $\delta$ is assumed to equal 0.005, which implies an annual discount rate of around 6\%. This discount rate is in range of estimates from similar structural dynamic models.\footnote{In US contexts, \cite{gourinchas2002consumption} use a similar structural approach finding a lower discount rate of around 5\% while \cite{laibson2007estimating} recover a discount rate of around 15\%.}  Second, the coefficient of relative risk aversion $\gamma$ is set equal to 1, which is approximated by the natural logarithm and falls within a wide range of estimates from the literature.\footnote{The literature provides a range of estimates for $\gamma$ which are above, below, and around one.  \cite{barseghyan2013nature} use insurance choices in the US to estimate a $\gamma$ between 0.21 and 0.37 while  \cite{beetsma2001measuring} use a natural experiment from a game show to estimate $\gamma$ ranging from 0.42 to 6.99.  \cite{carvalho2016effect} leverage an experimental setting in Nepal to estimate $\rho$ equal to 0.63.  Given these estimates, assuming $\rho$ equal to one implies a moderate curvature of the utility function and is relatively close to a comparable estimate from a development economics setting.}  Estimates are also provided under alternative preference assumptions.
+
+Households are assumed to remain at their dwelling for $T=384$ months before permanently disconnecting, consistent with a constant 0.13\% rate of permanent disconnection each month as observed in the sample.  Upon disconnection, \input{tables/bal_0}\unskip\% of households pay all of their remaining balances, which calibrates the share, $\chi$, of households that are assumed to move to a new dwelling within Manila.  Moreover, 12 months before disconnection, households are assumed to learn if they will have to pay their remaining balances upon disconnection.  This assumption is consistent with households accelerating their unpaid balances starting 12 months before disconnection.\footnote{Appendix Figure~\ref{figure:billtodc} plots average unpaid balances in the 36 months before permanent disconnection, finding an increasing trend that accelerates within 12 months of disconnection.}
+
+\subsection{Estimation Routine}\label{section:estimationroutine}
+
+The estimation routine solves the household's problem in equation (\ref{eq:valmax}) through backwards induction.  In the last month $T=384$, the routine finds the combination of water and asset choices that maximize utility in both the scenario where households must pay back their standard and water debts as well as the scenario where households do not have to pay back their water debt.  Taking these choices as given, the routine then steps back to month $T-1$ and finds the combination of assets and connection status that maximizes current utility plus discounted future utility separately for both scenarios.  In the thirteenth month before disconnection, households do not know whether they will have to pay back their water debt in month $T$.  Therefore, their total expected future utility weighs expected future utilities under each scenario by their probabilities of occurring.  Repeating this process for earlier months brings households to a steady state mapping of current assets and connection status to future assets and connection status. 
+
+The routine allows households to choose across 40 standard asset values and 40 water asset values.\footnote{Estimates are similar using denser grids with results available upon request.}  Standard assets values are evenly spaced between borrowing and saving up to twice average household income.  In simulations, households are never observed borrowing the maximum amount and are observed saving the maximum amount in less than 1\% of months.  Water assets are evenly spaced between 0 and borrowing up to \input{tables/Bb}PhP, which is equal to the 99th percentile of observed water debt.  In simulations, households are observed borrowing the maximum amount of water debt in less than 0.1\% of months.\footnote{For reference, Appendix Table~\ref{table:calibratedparam} lists the calibrated and assumed parameters.}
+
+The estimation strategy uses a simulated method of moments approach.  This method begins with an initial guess of values for the water preference, the fixed cost of being disconnected, and the probability of receiving a disconnection warning.  The method then computes the optimal path of asset choices and consumption given these parameters.  Next, the method takes 384 month random sequences of income and disconnection warning states and computes the savings and consumption profiles for 50 households.  Finally, the method computes three moments -- average consumption, average unpaid water bills, and average time spent temporarily disconnected -- for these simulated profiles and compares these simulated moments to moments observed in the data.  The method repeats this process updating the initial parameter guesses in order to minimize the sum of squared distances between simulated and true moments.\footnote{See \cite{laibson2007estimating} and \cite{gourinchas2002consumption} for similar approaches to estimation with dynamic consumption and savings models.}
+
+
+\subsection{Results}\label{section:results}    % https://www.cgdev.org/blog/compartamos-context
+
+Table~\ref{table:estimates} provides the estimation results.  Household preference for water is estimated to be 54.  Given quadratic preferences for water consumption, this parameter can be interpreted as optimal household consumption when the marginal price of water is zero.  This estimate suggests that households would roughly double their water consumption if water were free.  The estimation recovers a fixed cost of being disconnected of 327 PhP per month.  Given average water bills of \input{tables/table_amount_mean}PhP, this fixed cost estimate implies that households must pay around a 50\% total premium to consume from alternative water sources.  This estimate is consistent with high prices from local water resellers and may also reflect lower quality water provided by alternative sources.  This estimate is also likely to capture the one-time 200 PhP fee charged to households for reconnection.  The share of months that households receive delinquency warnings is estimated to be 0.22.  This estimate closely matches descriptive evidence that neighborhoods experience at least four disconnection orders in \input{tables/mdcp4}\unskip\% of months.  Estimates appear robust to alternative assumptions for household time-preferences given by Appendix Table~\ref{table:robustestimates}.
+
+
+ % Previous research uses a static, structural approach to estimate a long-term monthly fixed cost from using alternative water sources of 130 PhP/month (\cite{wjv}).  While these estimates fall in a similar range, this paper produces a larger estimate of the fixed-cost likely because sudden disconnections leave little time for households to invest in finding low-cost alternative sources for water.  
+ % where neighborhoods likely correspond to months where the utility conducts delinquency warnings across the neighborhoods.
+
+\begin{table}[h!]
+\centering
+\caption{Estimates}\label{table:estimates}
+\begin{threeparttable}
+\begin{tabular}{@{}l*{1}{c}@{}}
+\toprule
+%    &    Coefficients \\
+% \midrule
+Water Preference  ($\alpha$) & \input{tables/est_alpha_b} \\
+ &   (\input{tables/est_sd_alpha_b}\unskip) \\[.4em]
+Fixed Cost of Alternative Water ($f$) &  \input{tables/est_fc_b} \\
+ &    (\input{tables/est_sd_fc_b}\unskip) \\[.4em]
+Rate of Delinquency Warnings ($\lambda$) &  \input{tables/est_pc_b} \\
+ &   (\input{tables/est_sd_pc_b}\unskip) \\[.8em]
+Households &  \input{tables/est_hhs} \\
+Household-Months &  \input{tables/est_obs} \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item 
+\footnotesize
+This table includes structural estimates of a simulated method of moments approach matching three moments -- average consumption, average unpaid water bills, and average time spent temporarily disconnected.  The estimation approach is described in Section~\ref{section:estimationroutine}.  Standard errors in parentheses are bootstrapped at the household-level. 
+\end{tablenotes}
+\end{threeparttable}
+%}
+\end{table}
+
+Table~\ref{table:fit} provides average characteristics observed in the data and predicted by the estimated model.  The table also includes both average characteristics used for estimation (shaded in gray) as well as other average characteristics to help understand the fit of the model.  Since the model is exactly identified, the model is able to almost exactly predict the average characteristics used in estimation -- consumption, unpaid balance, and disconnection frequency.
+
+In terms of characteristics that are not used in estimation, both the data and the model predict that household bill payments occur infrequently and are large relative to average bills.\footnote{The model slightly underestimates the average water bill for households likely because the model approximates the steeply increasing tariff structure with a linear function that cannot capture how months with large consumption result in especially large bills.}  In both, households remain temporarily disconnected for long durations before reconnecting to service.  The model and data also predict similar levels of unpaid bills when households permanently disconnect, which suggests that the model may accurately capture the lost revenue associated with household delinquency.
+
+
+\begin{table}[H]
+\centering
+\caption{Model Fit to Average Characteristics}\label{table:fit}
+\begin{threeparttable}
+\begin{tabular}{@{}l*{1}{KK}@{}}
+\toprule
+ & Data & Model Prediction \\
+\midrule
+Consumption (m3) & \cellcolor{black!15}\input{tables/table_c_mean} & \cellcolor{black!15}\input{tables/table_c_mean_b}  \\
+Bill &  \input{tables/table_amount_mean} & \input{tables/table_bill_mean_b}  \\
+Unpaid Balance &  \cellcolor{black!15}\input{tables/table_bal_mean}  &  \cellcolor{black!15}\input{tables/table_bal_mean_b}  \\
+Payment &  \input{tables/table_pays_mean} &  \input{tables/table_pays_mean_b} \\
+Payment Frequency &  \input{tables/table_p0_mean} &  \input{tables/table_p0_mean_b}  \\
+Disconnection Frequency &  \cellcolor{black!15}\input{tables/table_shr_dc_mean}  &  \cellcolor{black!15}\input{tables/table_shr_dc_mean_b} \\
+Disconnection Length (Months) & \input{tables/t_rec} & \input{tables/table_t_rec_mean_b}  \\
+Unpaid Balance Upon &  \input{tables/bal_end_nc} &  \input{tables/table_bal_end_mean_b}  \\[-.5em]
+Permanent Disconnection \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item 
+\footnotesize
+This table provides moments from the data and moments predicted by the simulated model given estimates from Table~\ref{table:estimates}.  The highlighted cells indicate the three moments used in estimation.  Moment calculations exclude months in which households remain disconnected through the end of the sample period.  Bill, unpaid balance, payment, and unpaid balance upon permanent disconnection are in PhP per household-month.  Consumption, payment frequency, and disconnection frequency are per household-month.  Unpaid balance upon permanent disconnection measures any remaining balance leftover when households permanently disconnect.    45 PhP = 1 USD
+\end{tablenotes}
+\end{threeparttable}
+
+\end{table}
+
+
+The model predicts that households make more frequent, smaller payments and spend relatively shorter durations temporarily disconnected than those observed in the data.  One explanation may be that households experience persistent income shocks while the simple income process in the model assumes zero persistence.  Persistent income shocks may lead households to make lumpy payments during positive income realizations and remain disconnected for long durations during negative income realizations.  By assuming zero income persistence, the model may underestimate the value to households of timing bill payments to smooth their consumption.  
+
+Appendix Table~\ref{table:fitsd} provides the corresponding standard deviations for these characteristics both observed in the data and predicted by the estimated model.  The model grossly underestimates variation in consumption since the model only allows consumption to vary when households substitute toward water to increase their borrowing through unpaid bills.  The model does not allow for idiosyncratic fluctuations in water demand.  Despite this simplification, the model accounts for nearly two-thirds of the observed variation unpaid balances and almost exactly matches variation in payment sizes.  These findings suggest that while the model may not accurately predict fluctuations in water demand, it may provide a useful approximation for consumption smoothing over time.
+
+The model also predicts a positive correlation between income and bill payments of \input{tables/fit_pay_corr}\unskip, which is 10 times larger than the correlation implied by descriptive evidence in Table~\ref{table:panelanalysis}.  The model may overestimate the relationship between payments and income because the model does not account for hassle costs or other factors that may affect payment patterns independently of income fluctuations.  At the same time, descriptive evidence likely underestimates this relationship due to substantial measurement error in accounting for household income changes.  
+
+The model predicts a negative correlation between income and consumption of \input{tables/fit_use_corr}\unskip.  By contrast, descriptive evidence in Table~\ref{table:panelanalysis} predicts close to zero correlation between income and consumption.   By ignoring idiosyncratic water demand shocks, the model isolates only the consumption changes that occur when households substitute toward water consumption in order to borrow further through unpaid water bills. 
+
+
+
+
+
+\section{Counterfactual Policies}\label{section:counterfactuals}
+% The institutional context in Manila provides a useful setting to quantify welfare effects because the
+
+The estimated model allows for simulating the welfare effects of counterfactual billing policies.  The first counterfactual implements a prepaid metering system that requires households to pay upfront for their water consumption.  This system prevents households from timing their bill payments to smooth their consumption.  The second counterfactual halves the frequency of disconnection warnings.  This policy encourages households to accumulate large unpaid bills and smooth their consumption.  The third counterfactual introduces a late penalty equal to 10\% of the average unpaid balance, which charges delinquent households an extra fee of 123.5 PhP each month they carry an unpaid balance.  The fourth counterfactual imposes a fixed monthly interest rate of 4.9\% on unpaid bills, so that each month's outstanding balance is effectively discounted by $(1+0.049)$.
+
+These policies are paired with price adjustments that ensure that the utility's revenues always equal its costs.  This revenue-neutral approach reflects how governments in Manila and many other countries regulate utility prices (\cite{hoque2013state}).  Since utility profits are held constant at zero, changes in household welfare summarize the total welfare effects of the counterfactual policies.  
+
+\subsection{Modeling Utility Costs and Revenues}\label{section:costmodel}
+
+The counterfactual exercises account for how policies may affect utility operating costs in three ways:
+\begin{enumerate}
+	\item \textit{Lending Costs}:  By tolerating unpaid bills, the utility extends credit to households each month at zero interest rate.  The opportunity cost of this credit is equal to the 0.47\% monthly interest rate that the utility pays on its own loans to fund its pipe infrastructure.\footnote{The 0.47\% monthly interest rate is equal to a 5.75\% annual interest rate.}  These opportunity costs average \input{tables/lend_cost_reg_b}PhP per household-month.  The utility also loses revenue from households that leave unpaid bills when they disconnect, which average \input{tables/del_cost_reg_b}PhP per household-month.  Total lending opportunity costs per household can be expressed as $ - \chi B_T + \sum_{t=1}^{T}  - 0.0047 B_t $ where $B_t$ ($<0$) equals unpaid bills each month and $\chi$ is the share of households that leave unpaid bills upon disconnection.
+
+	\item \textit{Warning Costs}:  The utility incurs costs visiting and warning each delinquent household about their unpaid bills.  The cost of administering each warning is assumed to equal the reconnection fee of 200 PhP, which leads to average warning costs of \input{tables/visit_cost_reg_b}PhP per household-month.\footnote{Conversations with the utility suggest that travel costs make up the majority of the costs for any service performed on a water meter.}  Total warning costs per household can be expressed as  $\sum_{t=1}^{T} 200 \lambda \mathbbm{1}\{B_t < 0 \}  $ where $ \mathbbm{1}\{B_t < 0 \}$ indicates months where households are delinquent and $\lambda$ indicates the share of months where the utility conducts warnings.
+
+	\item \textit{Pumping Costs}: The utility estimates that the marginal cost of supplying a cubic meter of water is equal to 5 PhP, which generates average marginal costs of 121 PhP per household-month.  Total marginal costs per household can be expressed as $\sum_{t=1}^{T} 5 w_t  $ where $w_t$ reflects monthly water consumption.\footnote{Over this time period, Manila received much of its water from the Angat Dam, which was not suffering from drought conditions.  Therefore, the pumping costs consist mainly of distributing water throughout the network to the households.}
+\end{enumerate}
+Under Manila's price regulations, total revenue net of operating costs equal the fixed costs of building and maintaining the pipe network.  Therefore, fixed costs are measured as observed revenue net of observed operating costs according to the following equation
+\begin{align}
+\label{utilitybc}
+\sum_{t=1}^{T} FC = \underbrace{\sum_{t=1}^{T} (p_1+p_2 w_t)w_t}_{\text{Revenue}}  - \Big[ \underbrace{-\chi B_T +  \sum_{t=1}^{T} 5 w_t + 200 \lambda \mathbbm{1}\{B_t < 0 \} - 0.0047 B_t}_{\text{Operating Costs}} \Big]
+\end{align}
+where $FC$ equals fixed costs in monthly terms and averages \input{tables/rev_goal_reg_b}PhP per household-month.  Fixed costs are assumed to remain constant in counterfactual simulations.  As each counterfactual policy changes household consumption and billing patterns, the simulation adjusts the marginal price per cubic meter, $p_1$, to satisfy equation (\ref{utilitybc}).  For each counterfactual policy, Table~\ref{table:countercosts} provides simulated cost and price changes, and Table~\ref{table:counter} provides simulated household outcomes.  
+
+% Counterfactual simulations equate revenues with costs by either charging a fixed monthly fee or providing a fixed monthly rebate to households.\footnote{In practice, the utility charges households a small monthly fixed fee to cover some meter and pipe maintenance costs even households are temporarily disconnected.}  This approach preserves the utility's marginal prices because they may reflect the government's distributional preferences or attempts to mitigate environmental externalities.
+
+
+
+\subsection{Prepaid Metering}
+
+Prepaid metering generates cost savings because with prepaid meters, the utility no longer needs to conduct delinquency warnings and households can no longer leave their bills unpaid.  These costs savings lead to a reduction in the water price needed to cover the remaining pumping and fixed costs.  Column (2) of Table~\ref{table:countercosts} summarizes these cost changes under prepaid metering, finding a substantial reduction in the marginal price per m3 from \input{tables/p1_reg_b}to \input{tables/p1_nl_b}\unskip.  This reduction brings marginal prices closer to the marginal pumping cost of 5 PhP per m3, leading households to consume greater and more efficient quantities of water.
+
+\begin{table}[H]
+\centering
+\caption{Costs under Counterfactual Policies}\label{table:countercosts}
+% \resizebox{\columnwidth}{!}{%
+\begin{threeparttable}
+\begin{tabular}{@{}l*{1}{EEEEE}@{}}
+\toprule
+ & (1)    & (2)          & (3)  & (4)  & (5)  \\
+ & Current & Prepaid Metering & 50\% Less Enforcement  & Late Penalty & 4.9\% Interest  \\
+\midrule
+% Rate of Delinquency Warnings & \input{tables/vrate_reg_b}& \input{tables/vrate_nl_b}  & \input{tables/vrate_hf_b}  \\
+Lending Costs  & \input{tables/lend_cost_sum_reg_b}  & \input{tables/lend_cost_sum_nl_b}  & \input{tables/lend_cost_sum_hf_b}  & \input{tables_new/lend_cost_sum_lp_b}  & \input{tables_new/lend_cost_sum_ir_b}  \\
+  % & \input{tables/lend_cost_reg_b}  & \input{tables/lend_cost_nl_b}  & \input{tables/lend_cost_hf_b}  \\
+% Unpaid Balance Upon Disconnection 		 &  \input{tables/del_cost_reg_b} & \input{tables/del_cost_nl_b}   &  \input{tables/del_cost_hf_b} \\
+Warning Costs & \input{tables/visit_cost_reg_b} & \input{tables/visit_cost_nl_b}    &   \input{tables/visit_cost_hf_b}  & \input{tables_new/visit_cost_lp_b}  & \input{tables_new/visit_cost_ir_b}  \\
+Pumping Costs  &  \input{tables/mc_cost_reg_b}  & \input{tables/mc_cost_nl_b}    &   \input{tables/mc_cost_hf_b}  & \input{tables_new/mc_cost_lp_b}  & \input{tables_new/mc_cost_ir_b}  \\
+Fixed Cost &  \input{tables/rev_goal_reg_b}  &  \input{tables/rev_goal_reg_b}     &   \input{tables/rev_goal_reg_b}  &  \input{tables/rev_goal_reg_b}  &  \input{tables/rev_goal_reg_b}  \\
+Price per m3  &  \input{tables/p1_reg_b} & \input{tables/p1_nl_b}    &  \input{tables/p1_hf_b}  & \input{tables_new/p1_lp_b}  & \input{tables_new/p1_ir_b}  \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item
+\footnotesize
+ This table shows current costs in column (1) and costs under counterfactual scenarios in columns (2) through (5).  All costs are in PhP per household-month and Section~\ref{section:costmodel} details how costs are calculated.  Price per m3 reflects the constant portion marginal price per m3, $p_1$, where the total price equals $p_1+p_2 w_t$ and $w_t$ is monthly consumption in m3.  Column (4) applies a late penalty of $0.1 \times 1{,}235 = 123.5$ PhP per month when $B_{t+1}<0$.  Column (5) applies a 4.9\% monthly interest rate on unpaid bills so that $B_{t+1}$ becomes $B_{t+1}/(1+0.049)$.  45 PhP = 1 USD
+\end{tablenotes}
+\end{threeparttable}
+% }
+\end{table}
+
+
+Despite the decrease in prices, the exercise predicts that prepaid metering lowers social welfare.  The first row of Table~\ref{table:counter} calculates the compensating variation associated with each policy, which measures the change in monthly household income needed to make households indifferent between the current scenario in Manila and each policy.  Column (2) predicts that households would require an increase in their monthly incomes of at least \input{tables/cv_comp_nl_b}PhP in order to be willing to switch to prepaid metering.   This decline in welfare appears entirely driven by removing households' ability to smooth consumption through unpaid bills.  Comparing columns (1) and (2), unpaid balances drop from 1,235 to 0 PhP and standard borrowing levels drop by around 80 PhP.  These findings suggest that households substantially reduce their overall borrowing levels when credit from unpaid bills is no longer available.   % The utility costs of this loss of credit outweigh any 
+% This loss of credit outweighs the positive effects of greater water consumption and decreases in total water bills due to lower water prices.
+% Consistent with lower water prices, 
+% One way to ballpark the benefit of 
+
+
+
+
+\begin{table}[H]
+\centering
+\caption{Household Outcomes under Counterfactual Policies}\label{table:counter}
+% \resizebox{\columnwidth}{!}{%
+\begin{threeparttable}
+\begin{tabular}{@{}l*{1}{EEEEE}@{}}
+\toprule
+ & (1)    & (2)          & (3)  & (4)  & (5)  \\
+ & Current & Prepaid Metering & 50\% Less Enforcement  & Late Penalty & 4.9\% Interest  \\
+\midrule
+Compensating Variation &   & \input{tables/cv_comp_nl_b}  & \input{tables/cv_comp_hf_b}  & \input{tables_new/cv_comp_lp_b}  & \input{tables_new/cv_comp_ir_b}  \\
+Consumption (m3)	 &   \input{tables/cons_reg_b} & \input{tables/cons_nl_b}    &  \input{tables/cons_hf_b}  & \input{tables_new/cons_lp_b}    &  \input{tables_new/cons_ir_b} \\
+Bill			 &   \input{tables/cons_val_reg_b} & \input{tables/cons_val_nl_b}    &  \input{tables/cons_val_hf_b}  & \input{tables_new/cons_val_lp_b}    &  \input{tables_new/cons_val_ir_b} \\
+Unpaid Balance & \input{tables/debt_reg_b} & \input{tables/debt_nl_b}    &  \input{tables/debt_hf_b}  & \input{tables_new/debt_lp_b}    &  \input{tables_new/debt_ir_b}  \\
+Standard Borrowing & \input{tables/Aborr_abs_reg_b} & \input{tables/Aborr_abs_nl_b}    &  \input{tables/Aborr_abs_hf_b}  & \input{tables_new/Aborr_abs_lp_b}    &  \input{tables_new/Aborr_abs_ir_b}  \\
+% Standard Asset & \input{tables/Amean_reg_b} & \input{tables/Amean_nl_b}    &  \input{tables/Amean_hf_b}  \\
+% Standard Borrowing & \input{tables/Aborr_reg_b} & \input{tables/Aborr_nl_b}    &  \input{tables/Aborr_hf_b}  \\
+% Standard Saving & \input{tables/Asave_reg_b} & \input{tables/Asave_nl_b}    &  \input{tables/Asave_hf_b}  \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item
+\footnotesize
+This table shows current household outcomes in column (1) and household outcomes under counterfactual scenarios in columns (2) through (5).  All measures are per average household-month. Compensating variation measures the change in monthly income in PhP needed to make households indifferent between the current scenario and the counterfactual scenarios.  Standard borrowing measures the average amount of borrowing from the standard asset in PhP.  Bill and outstanding balance are in PhP.  Column (4) applies a late penalty of $0.1 \times 1{,}235 = 123.5$ PhP per month when $B_{t+1}<0$.  Column (5) applies a 4.9\% monthly interest rate on unpaid bills so that $B_{t+1}$ becomes $B_{t+1}/(1+0.049)$.    45 PhP = 1 USD
+\end{tablenotes}
+\end{threeparttable}
+% }
+\end{table}
+
+
+This exercise assumes that the utility faces negligible costs of installing and maintaining prepaid meters.  However as detailed in Appendix~\ref{appendix:prepaidcosts}, engineering estimates from 2014 suggest that prepaid meters may cost up to 51 PhP more per household-month than current meters.  While prepaid metering costs may likely decline with future technological innovation, these costs suggest that this counterfactual exercise underestimates the welfare costs from prepaid metering.    
+
+This exercise adjusts the marginal water price to ensure that revenues equal costs.  Alternatively, the utility may issue fixed rebates to consumers while holding marginal prices constant.  Under fixed rebates, prepaid metering would generate larger welfare losses because any cost savings would be directly transfered to households instead of helping to bring marginal prices closer to marginal costs.  It is unlikely that a system of fixed rebates would occur in this setting given that most tariff adjustments target marginal rates.
+
+The negative welfare effects of prepaid metering appear robust to alternative assumptions on household preferences.  Appendix Table~\ref{table:robustestimates} provides the compensating variation associated with prepaid metering under high and low discount rates and levels of risk aversion.  High discount rates and levels of risk aversion both increase household demand for consumption smoothing, which magnify the welfare costs of prepaid metering.  Welfare losses from prepaid metering are also higher under low estimated water preferences because households derive less utility from the price discounts brought by prepaid metering.  Estimates suggest uniformly negative welfare impacts impacts ranging from 5 to 113 PhP.
+
+
+\subsection{50\% Less Enforcement}
+% decreases costs to households of maintaining unpaid water bills as a source of credit. 
+The next counterfactual considers a 50\% reduction in delinquency enforcement, which is modeled by lowering the monthly probability of receiving a delinquency warning from 22\% to 11\%.  The exercise predicts that a 50\% reduction in delinquency enforcement substantially increases social welfare.  Compensating variation in Column (3) of Table~\ref{table:counter} indicates that households would tolerate a decrease in their monthly incomes of up to 117 PhP and still be willing to switch to a counterfactual with 50\% less delinquency enforcement.  
+
+This welfare gain comes from two channels.  First, less enforcement decreases the costs to households of using unpaid water bills as a source of credit.  Comparing columns (1) and (3) of Table~\ref{table:counter}, households almost triple their average unpaid balances while also reducing borrowing from standard assets.  Second, less enforcement leads households to increase their water consumption in order to have large unpaid bills as a source of credit.  Greater water consumption increases utility revenue net of pumping costs.  On net, Column (3) of Table~\ref{table:countercosts} indicates that the utility is able to cover its costs at a lower marginal price of \input{tables/p1_hf_b}PhP, which also improves household welfare.  This price lies midway between the current price and the price with prepaid metering.
+
+% that less enforcement increases lending costs while decreasing warning costs. 
+This exercise does not allow for the possibility that with less delinquency enforcement, some households may choose to connect to piped water, quickly accumulate large unpaid bills, and permanently disconnect as soon as they receive a warning.  Without accounting for these costly disconnections, the counterfactual exercise may underestimate the lending costs from lowering enforcement and therefore, may overestimate the welfare benefits to households.
+
+The positive welfare effects of reducing enforcement appear robust to alternative assumptions on household preferences.  Appendix Table~\ref{table:robustestimates} provides the compensating variation of reducing delinquency enforcement under high and low discount rates and levels of risk aversion.  High discount rates and levels of risk aversion both increase household demand for consumption smoothing, which magnify the welfare benefits of reduced enforcement.  Estimates suggest uniformly positive welfare impacts ranging from 94 to 161 PhP.
+
+
+\subsection{Late Penalty}
+
+The next counterfactual considers a late penalty equal to 10\% of the average unpaid balance.  This policy imposes an additional fee of $0.1 \times 1{,}235 = 123.5$ PhP each month that a household carries a negative water balance ($B_{t+1}<0$).  This penalty is modeled as an extra deduction from household income in months where the household chooses to carry unpaid bills into the next period.  Column~(4) of Table~\ref{table:countercosts} summarizes the cost changes under this policy, and Column~(4) of Table~\ref{table:counter} provides the corresponding household outcomes.  The compensating variation in Column~(4) measures the welfare impact of the late penalty after adjusting prices to maintain revenue neutrality.
+
+\subsection{Interest Rate on Unpaid Bills}
+
+The final counterfactual considers imposing a fixed monthly interest rate of 4.9\% on unpaid water bills.  Under this policy, unpaid balances are effectively discounted each month so that $B_{t+1}$ becomes $B_{t+1}/(1+0.049)$.  This interest charge raises the cost of carrying unpaid bills and reduces the implicit credit subsidy that the utility provides to delinquent households.  Column~(5) of Table~\ref{table:countercosts} summarizes the cost changes under this interest rate policy, and Column~(5) of Table~\ref{table:counter} provides the corresponding household outcomes.  The compensating variation in Column~(5) measures the welfare impact after adjusting prices to maintain revenue neutrality.
+
+% Instead, this exercise assumes that households permanently disconnect 384 months after connecting.
+
+
+ % While this policy may generate cost savings , the utility may also lose revenue when households leave large unpaid bills upon disconnection.  
+
+% added footnote which might deal with it, but think harder on it later --- deal with this? - in practice, the utility charges a fixed price... not model or introduce in the model earlier???
+
+
+
+
+
+
+
+
+% To measure how much households value credit from unpaid water bills, I examine how household welfare changes in a counterfactual setting where households are unable to borrow from their water bills.  Table~\ref{table:counter} includes outcomes for the current setting in Manila in Column (1) and for a counterfactual setting without water borrowing in Column (2), which is captured by raising the interest rate on unpaid water bills to 100\% and holding all else equal.  The first row calculates compensating variation equal to \input{tables/U_nl_abs}PhP (or \input{tables/U_nl_abs_usd}USD) per household-month associated with losing access to water credit.  This estimate suggests that households are indifferent between their current situation and a counterfactual with \input{tables/U_nl_abs}PhP per month in additional income and without access to water credit.  Given an average water bill of \input{tables/bill_all}PhP/month, this estimate would translate into households paying around \input{tables/U_nl_per}\unskip\% smaller bills each month.  
+
+% Eliminating credit access also decreases mean usage by \input{tables/c_h_nl_drop}\unskip\% as shown by columns (1) and (2) in the second row of Table~\ref{table:counter}.  Eliminating credit access lowers the extent to which households can smooth their consumption over time while also removing the incentive for households to overconsume water in order to finance water borrowing.  Given that households spend around \input{tables/bill_inc_all}\unskip\% of their income on water, this estimate is roughly proportional to similar evidence from South Africa where restricting credit access with prepaid electricity meters produced a 13\% reduction in usage and where households spend around 8-10\% of their income on electricity (\cite{jack2020charging}).\footnote{\cite{jack2020charging} also propose other mechanisms that may account for reductions in usage such as transaction costs and intra-household bargaining constraints.}
+
+
+
+
+
+% %\subsection{Prepaid Metering}
+
+% This setting also provides a useful opportunity to simulate the social welfare impacts of popular policies to reduce delinquency.  I consider a policy that (1) eliminates borrowing by raising the interest rate on unpaid bills to 100\% and (2) adjusts prices to ensure that the utility remains revenue-neutral.  The regulatory structure in Manila as well as many other developing cities ensures that prices for water are regulated to exactly cover all production costs .
+
+% Eliminating borrowing affects the costs of the utility in four main ways
+
+% To determine price increases necessary to cover these costs, the following expression first calculates the revenue raised through prices,  $p_1$ and $p_2$, per household-month given income, $Y$, net of marginal cost, $MC$
+% \begin{align*}
+% REV \big(p_1,r_b,Y \big) &= \Big ( \,  p_1 - MC +  p_2 \, w^{*}(p_1,p_2,r_b,Y)  \,  \Big ) \, \, w^{*}(p_1,p_2,r_b,Y)
+% \end{align*}
+% %With prepaid meters, the  utility would also no longer need to conduct delinquency visits.  
+
+%Appendix~\ref{appendix:visitcosts} provides evidence that these cost savings are likely to be negligible.
+
+
+
+%%% also include counterfactual where we increase the interest rate and see substitution? may have to rewrite some of the identification section....
+
+\section{Conclusion}\label{section:conclusion}
+
+
+
+% Prepaid meters for electricity already compose over 27.5\% of residential meters in Sub-Saharan Africa and are predicted to grow to 52.8\% by 2024 (\cite{northeast2014}).  Similarly, by planning to install over 300,000 prepaid meters, the Botswana Water Utilities Corporation provides an example of the growing use of this technology in the water sector (\cite{heymans2014limits}).  
+
+
+% This paper builds a dynamic model of household consumption smoothing to measure the extent to which households value billing flexibility.  Estimates imply that households' valuation of flexibility is on the order of \input{tables/U_nl_per}\unskip\% of their monthly water bills.  Counterfactual exercises further find that policies to eliminate nonpayment --- raising interest rates on unpaid bills and prepaid metering --- do not produce enough cost savings to justify their negative impacts on household consumption smoothing.\todo[color=red]{i'm still not sure i get this... what are the cost savings?}  On net, these policies are predicted to reduce social welfare by between \input{tables/U_ppe_abs_usd}and \input{tables/U_pp_abs_usd}USD per household-month.  \todo[color=red]{i would add more oomph to this. i think this is really interesting but the punchline needs to be bigger!}
+
+
+Policy proposals for prepaid meters often emphasize how this technology ensures cost-recovery for public utilities.  At the same time, households stress how ``water is a need, but money is not always available'' and  how ``postpaid gives you more time to find the money'' in qualitative evidence documented by \cite{heymans2014limits}.  These anecdotes suggest a potentially important role for billing flexibility in allowing households to smooth consumption.  This paper confirms this hypothesis by building and estimating a dynamic model of household consumption smoothing.  While prepaid meters reduce welfare, expanding access to credit through unpaid bills generates economically significant welfare gains on the order of 18\% of average water bills.  
+
+These results may open scope for regulating public utilities not only as service providers, but also as lenders.  When market failures limit formal lending, public utilities may provide efficient sources of credit.  First, poor access to collateral often restricts the availability of lending options to low-income households (\cite{jack2016borrowing}).  Public utilities overcome this barrier by threatening disconnection from future service to enforce repayment.  Second, poor infrastructure and mobile populations increase the transaction costs of screening and monitoring debtors, which contribute to high interest rates (\cite{jack2014risk}).  As part of their business practices, public utilities invest in meter reading and billing systems that may lower these transaction costs.  Third, moneylenders and peer-to-peer lending groups often cater to small pools of debtors while public utilities are able to spread default risk across a wide customer base.  To encourage lending, regulators may want to consider a broad set of policies such as providing utilities with tools to better track delinquent households over time or allowing utilities to offer loans that are not strictly linked to the household's consumption of services.  
+
+In focusing on the role of consumption smoothing, this approach abstracts away from other channels by which nonpayment may affect welfare.  First, high rates of nonpayment may weaken incentives for utilities to invest in and extend access to high quality infrastructure.  While regulators in Manila successfully ensure universal access and service quality, \cite{mcrae2015infrastructure} documents how electricity providers in Colombia often shirk on infrastructure investments in areas where they face high levels of nonpayment, which are also often underprivileged areas.  Second, policing nonpayment through unexpected disconnections may also have unintended health consequences (\cite{franklin2017}).  The US Department of \cite{liheap} lists a series of state-level policies restricting disconnections, especially in months with extreme temperatures, for public health reasons.  Finally, nonpayment may provide an important way for households to voice their dissatisfaction with utilities as well as local governments.  \cite{szabo2015reducing} find evidence that reaching out to consumers on behalf of a water utility increased payments from households motivated by a sense of reciprocity.  
+
+%Third, \cite{jack2015pay} also argue that prepaid meters may help savings constrained consumers by allowing low-income households to pay in small increments each month.
+
+% The counterfactual exercises constructs a framework for incorporating households' demand for consumption smoothing into evaluations of prepaid meters and other policies to reduce nonpayment.  
+
+% By focusing on consumption smoothing, this paper abstracts away from several other consequences of utility billing policy.  First, many governments require utilities to tolerate nonpayment due to health concerns.  For example, the NAACP cites stuff ....  cite some more of Jack!! what mechanisms? savings constraints?  intrahousehold bargaining; go look up her new paper!!!!
+
+
+
+% https://liheapch.acf.hhs.gov/Disconnect/disconnect.htm
+
+%% compared to prepaid electricity
+% • Prepaid water is often seen as controversial. Payment for the supply of electricity is accepted more widely than
+% payment for water, and access to electricity is not regarded a basic human right. T
+% • The electricity sector is much less fragmented than the water sector, and has far greater clout to direct what
+% manufacturers supply. 
+% • Prepaid water meters face physical stresses that do not apply to electricity. There are more moving parts,
+% most subjected to fluctuating pressures and flows, and wear, fatigue, and abrasion increase the likelihood of
+% malfunction. 
+
+
+% When discussing costs with service providers, the review
+% team was told on several occasions that “prepaid meters cost
+% about four times more than a conventional meter.” This is
+% based on the typical cost of a prepaid metering device for an
+% individual domestic connection, about US$210, compared
+% to typical conventional mechanical meter, about US$50.   96.2\% of costs for large systems.  average of 7 year life span (assume the same for both)
+
+
+% \cite{northeast2014} predict rapid increases in prepaid electricity meters throughout Sub-Saharan Africa.  
+
+% \cite{heymans2014limits}
+%  prepayment water systems are in use in more than
+% 20 African countries, and in locations such as Turkey, parts
+% of the Balkans and Azerbaijan, and Colombia. Their scale
+% of use is ramping up rapidly. The Botswana Water Utilities
+% Corporation, for example, is reported to be planning to install
+% 300,000 prepaid water meters in the near future, beyond
+% the existing small-scale installations. 
+
+%  don't like : “Postpaid gives you more time to find the money.”  “Water is a need, but money is not always available.”
+
+
+
+
+\pagebreak
+
+\section{Appendix}
+
+
+
+\subsection{Sample Construction}\label{appendix:sampleconstruction}
+
+Merging the full sample from the connection survey to the billing data yields an initial population of \input{tables/date_N}connection-months as described in Table~\ref{table:sampleconstruction}.  Non-residential accounts are first removed to ensure that results apply to household-level decisions.  Due to some data inconsistencies, payment records are missing for some connections, which are excluded.  Due to leaks, meter replacements, and meter reading errors, connections occasionally experience extremely high meter readings and bills.  Consumption records above 200 m3 as well as bills and payments above 80,000 are censored to address these issues.  Large negative payments and outstanding balances (due to reimbursements of billing errors) are also excluded due to likely measurement error.  Remaining negative payments and balances likely represent refunds to households (possibly due to system errors), which are included to accurately reflect each household's asset position.  Keeping only connections serving single households removes nearly one million observations.
+
+The descriptive panel analysis with results in Table~\ref{table:panelanalysis} uses the dataset at this stage, which includes observations before March, 2010.  These observations match connection survey data from as early as 2008 although billing data from the earlier period include some gaps in payment and consumption records.
+
+The dataset for the main analysis focuses on months including and after March, 2010 because these months do not include gaps in payment and billing records (except that all data are missing for June, 2014).  Excluding data before March, 2010 brings the final sample size to \input{tables/full_obs}household-months.
+
+% Households that connect during the sample or have large stretches of missing records are excluded by including only connections with over 30 months of data.  
+
+
+\begin{table}[H]
+\centering
+\caption{Sample Construction}\label{table:sampleconstruction}
+\vspace{-2mm}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{l*{1}{cc}}
+\toprule
+ & Observations & Observations Removed  \\
+\midrule
+Initial sample   &         \input{tables/date_N}  &     \\
+Keep residential connections (excluding commercial)   &            &    \input{tables/class_drop}  \\
+Keep connections with payment records &  &   \input{tables/pay_drop}   \\
+Keep months with usage under 200 m3    &            &  \input{tables/chigh_drop}     \\
+Keep bills $>$ -5,000 PhP and $<$ 80,000 PhP  &  & \input{tables/amount_drop}  \\
+Keep unpaid bills $>$ -5,000 PhP and $<$ 80,000 PhP &             &     \input{tables/bal_drop}  \\
+Keep payments $>$ -80,000 PhP and $<$ 80,000 PhP    &            &    \input{tables/paylh_drop}   \\
+% Keep connections with over 30 months of records   &            &   \input{tables/month_drop}    \\
+Keep connections serving a single household   &            &   \input{tables/SHH_drop}    \\
+Keep months after March, 2010 (with complete records)  &            &   \input{tables/datedrop}    \\
+Final sample & \input{tables/full_obs} & \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+
+\subsection{Bill Payments and Disconnection Orders}\label{appendix:paywarning}
+
+The following equation estimates the effect of disconnection orders on bill payments
+\begin{align*}
+Pay_{it} = \alpha &+ \beta  \{ \text{own order} \}_{it} + \\
+ &\sum_{k=1}^{3} \gamma_k \{ \text{order for k-th nearest HH in same neighborhood} \}_{it} +  \\
+ &\sum_{j=1}^{3} \theta_j \{ \text{order for j-th nearest HH in different neighborhood} \}_{it} + \eta_i + \zeta_t + \epsilon_{it}
+\end{align*}
+where $i$ indexes households and $t$ indexes months.  $Pay$ indicates bill payments in the same month.  Indicators variables signal months where households receive orders and where their three immediate neighbors receive orders.  Immediate neighbors are considered separately based on whether neighbors reside in the same or different neighborhoods.  The specification also includes household fixed effects ($\eta_i$) and calendar month fixed effects ($\zeta_t$).  Information on the exact location of each household is available for over half of the sample, which is used to measure distances between households.
+
+Table~\ref{table:paywarning} includes the results of this exercise.  Receiving a disconnection order is correlated with large, immediate increases in bill payments around the size of the average bill payment in the sample.  Conditional on receiving a order, households that have immediate neighbors who receive orders in the same neighborhood also increase their bill payments although the magnitudes are much smaller than the own order effect.  Orders for the 3rd nearest household have a slightly smaller effect than orders for the nearest household although orders for all households are positive and significant.  Households do not appear to change their payment behavior when nearby households in different neighborhoods receive orders, which suggests that the utility follows a neighborhood sweeping strategy.
+
+\begin{table}[!ht]
+\small
+\centering
+\begin{threeparttable}
+\caption{Bill Payments and Delinquency Orders}\label{table:paywarning}
+\vspace{-2mm}
+% \resizebox{.8\linewidth}{!}{
+\begin{tabular}{lc}
+\toprule
+ % & \small (1)  \\
+ & \small Bill Payment (PhP) \\[.5em]
+ \toprule
+\input{tables/table_visit_pay_robust_1}
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\footnotesize
+\item This table includes the results of predicting bill payments with monthly indicators for whether households or their three closest neighbors receive disconnection orders.  Effects are separated for neighbors in the same and different neighborhoods.  Bill payments are measured in PhP per household-month.  Data include only households with location information.  Household and calendar-month fixed effects are included. Standard errors are clustered at the household-level.  \textsuperscript{c} p$<$0.10,\textsuperscript{b} p$<$0.05,\textsuperscript{a} p$<$0.01 
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\pagebreak
+
+% \subsection{Average Unpaid Bills Before Permanent Disconnection}\label{section:billtodc}
+
+
+\begin{figure}[!ht]
+\caption{Average Unpaid Bills in 36 Months Before Permanent Disconnection}\label{figure:billtodc}
+\begin{center}
+\includegraphics[scale=.4]{tables/pay_to_dc_graph.png}
+\end{center}
+\footnotesize 
+This figure plots average unpaid balances per household-month in PhP relative to months to permanent disconnection for the 2,496 households that are observed permanently disconnecting during the sample.
+\end{figure}
+
+
+% \subsection{Shape of the Utility Function}\label{appendix:utilityshape}
+
+% Log-utility is a special case of Constant Relative Risk Aversion (CRRA) utility given by $u(c) = \frac{c^{1-\rho}}{1-\rho}$ when $\rho=1$.  CRRA is one of the most popular functions for risk aversion in the economics literature (\cite{wakker2008explaining}).  The literature provides a range of estimates for $\rho$ which are above, below, and around one.  \cite{barseghyan2013nature} use insurance choices in the US to estimate a $\rho$ between 0.21 and 0.37.  \cite{beetsma2001measuring} use a natural experiment from a Dutch game show to estimate $\rho$ ranging from 0.42 to 6.99.  \cite{carvalho2016effect} leverage an experimental setting in Nepal to estimate $\rho$ equal to 0.63.  Given these estimates, assuming $\rho$ equal to one implies a moderate curvature of the utility function and is relatively close to a comparable estimate from a development economics setting.  
+
+% \subsection{Indirect Utility Function}\label{appendix:indirectutil}
+
+% \begin{align}\label{eq:vstar}
+% \begin{split}
+% v^{*} &= 
+% \begin{cases}
+% \alpha \,\ln(\frac{p_{1}-\sqrt{{p_{1}}^2-8\,L\,\alpha \,p_{2}+8\,Y\,\alpha \,p_{2}+4\,L\,\alpha ^2\,p_{2}-4\,Y\,\alpha ^2\,p_{2}}}{2\,p_{2}\,(\alpha -2)})- \\ \ln(\frac{(\alpha -1)\,(8\,L-8\,Y-4\,L\,\alpha +4\,Y\,\alpha )}{2\,{(\alpha -2)}^2}+ \\
+% \frac{(p_{1}\,\sqrt{{p_{1}}^2-8\,L\,\alpha \,p_{2}+8\,Y\,\alpha \,p_{2}+4\,L\,\alpha ^2\,p_{2}-4\,Y\,\alpha ^2\,p_{2}}-{p_{1}}^2)\,(\alpha -1)}{2\,p_{2}\,{(\alpha -2)}^2})\,(\alpha -1)\\
+%  &\text{ if } L \geq \widehat{L} \\
+% \input{tables/veq_opt} &\text{ if } L < \widehat{L}
+% \end{cases} \\
+% &\widehat{L} = \input{tables/cut_point3}
+% \end{split}
+% \end{align}
+
+\pagebreak
+
+\subsection{Tariff Structure and Approximation}\label{appendix:tariff}
+
+% \begin{figure}
+% \caption{Example Residential Tariff Presented to Consumers}\label{figure:tarifftrue}
+% \begin{center}
+% \includegraphics[scale=.8]{tables/tariff_pic_png.png} \\
+% \footnotesize{``conn.'' refers to connection, ``cu.m.'' refers to cubic meters of usage \\ per month, and \textbf{P} refers to Philippine Pesos.  Includes Tariff as of February, 2019.}
+% \end{center}
+% \end{figure}
+
+
+\begin{table}
+\centering
+\caption{Example Residential Tariff As Presented to Consumers}\label{table:tarifftrue}
+\begin{threeparttable}
+\begin{tabular}{l*{1}{r}}
+\toprule
+Usage (m3) & Price (PhP) \\
+\midrule
+Under   10    &   \input{tables/f_10}/conn. \\
+Over    10    &   \input{tables/f_11}/conn. \\
+Next    10    &   \input{tables/c_12}/cu.m. \\
+Next    20    &   \input{tables/c_21}/cu.m. \\
+Next    20    &   \input{tables/c_41}/cu.m. \\
+Next    20    &   \input{tables/c_61}/cu.m. \\
+Next    20    &   \input{tables/c_81}/cu.m. \\
+Next    50    &   \input{tables/c_101}/cu.m. \\
+Next    50    &   \input{tables/c_151}/cu.m. \\
+Over   200    &   \input{tables/c_200}/cu.m. \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item 
+\footnotesize
+This table includes the average tariff between 2010-2015 inclusive of the value added tax. ``conn.'' refers to connection. ``cu.m.'' refers to m3/month.   45 PhP = 1 USD
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+Table~\ref{table:tarifftrue} provides the monthly tariff structure as it is presented to consumers.  Consumers face a fixed price as well as marginal prices for any usage above 10 m3.  The regulator gradually adjusts prices at roughly yearly intervals in order to ensure that the utility is able to exactly cover its costs.  The marginal price is highly non-linear, accelerating quickly at low usage levels before slowly increasing at high usage levels.  To achieve a tractable approximation of this price schedule, Table~\ref{table:tcd_predict} fits a simple regression model predicting average price as a function of an intercept, $p_1$, and monthly usage levels, $p_2$.  This model predicts that a increase in monthly usage of 10 m3 results in an increase in average price of 2.2 PhP/m3.  
+
+\begin{table}[H]
+\small
+\centering
+\caption{Average Price and Monthly Usage}\label{table:tcd_predict}
+\begin{threeparttable}
+\begin{tabular}{lc}
+\toprule
+& \small Avg. Price: $\frac{\text{Bill (PhP)}}{\text{Usage (m3)}}$    \\
+\midrule 
+\input{tables/price_reg}
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item
+\footnotesize
+This table predicts the average price with monthly usage in m3 and an intercept.  Average price is measured by household bill in PhP/month divided by usage in m3/month.  \textsuperscript{c} p$<$0.10,\textsuperscript{b} p$<$0.05,\textsuperscript{a} p$<$0.01
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+
+
+
+\subsection{Alternative Income Test}\label{appendix:alternativeincome}
+
+The following equation empirically tests whether income is more correlated with bill payments than with consumption
+\begin{align*}
+\Delta Y_{bq} = \beta\, \Delta \textsc{Income}_{bq} \,+\, \gamma_q \,+\varepsilon_{bq}
+\end{align*}
+where $\textsc{Income}_{bq}$ is proxied by the quarterly change in average labor earnings from Quarterly Labor Force Surveys where $q$ indexes 28 quarters from 2009 to 2015.  Average earnings are computed for 80 unique bins, $b$, defined by combinations of 4 sub-municipalities, age in 5 year intervals, and whether college educated in order to merge individuals from the Labor Force Survey to individuals water connection owners from the water connection survey.  $\Delta Y_{bq}$ is the quarterly change in either average water consumption (measured by the water bill in PhP) or average water bill payments (in PhP) by bin-quarter.  Standard errors are clustered at the bin-level.
+
+\begin{table}[!ht]
+\small
+\centering
+\begin{threeparttable}
+\caption{Correlations of Income with Consumption and Payment Patterns}\label{table:lfsanalysis}
+\vspace{-2mm}
+% \resizebox{.8\linewidth}{!}{
+\begin{tabular}{lcc}
+\toprule
+ & \small (1) & \small (2)  \\
+ & \small $\Delta$ Consumption & \small $\Delta$ Payment \\[.5em]
+ \toprule
+\input{tables/table_lfs_analysis}
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\footnotesize
+\item 
+This table regresses predicted changes in income on changes in consumption and payment.  All units are in PhP.  Quarterly fixed effects are included.  Standard errors are clustered by age-group, sub-municipality, and whether college educated (80 units).  \textsuperscript{c} p$<$0.10,\textsuperscript{b} p$<$0.05,\textsuperscript{a} p$<$0.01 
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+Column (1) of Table~\ref{table:lfsanalysis} finds a positive but statistically insignificant correlation between income and consumption.  Due to measurement error in income, the small point estimate of 0.0007 likely underestimates this correlation.  Measurement error in income is likely to be substantial both because only around 55 incomes are observed per quarter-bin in the Labor Force Survey and because bins are constructed from coarse demographic categories that may only loosely reflect household incomes.  Despite this potential measurement error, Column (2) finds a statistically significant correlation between bill payments and income that is six times larger than the correlation between income and consumption.  These results provide suggestive evidence of consumption smoothing where households flexibly adjust their payment patterns in response to income shocks without changing their water consumption.  
+
+
+% \subsection{Calibrated and Assumed Parameters}\label{section:calibratedparam}
+
+\begin{table}[H]
+\centering
+\caption{Calibrated and Assumed Parameters}\label{table:calibratedparam}
+\vspace{-2mm}
+\resizebox{\columnwidth}{!}{%
+\begin{threeparttable}
+\begin{tabular}{l*{1}{lll}}
+\toprule
+%Parameter  &   &  Value & Source \\
+%\midrule
+% Savings Interest Rate & $r_l$ & \input{tables/irate}\unskip\%  & {\footnotesize Philippines data from World Bank Databank (2010-2015) } \\
+Mean Income (PhP) & $\bar{y}$ & \input{tables/y_avg} & {\footnotesize Pasay City Household Panel Survey} \\
+Income Coefficient of Variation & $\theta$ & \input{tables/y_cv} & {\footnotesize  Pasay City Household Panel Survey} \\
+Interest Rate on Standard Borrowing & $r$ & \input{tables/irate}\unskip\% & {\footnotesize  Consumer Finance Survey for Manila} \\
+Tariff    & $(p_1 + p_2 w)$ & $(\input{tables/p_int} + \input{tables/p_slope}w)$ & {\footnotesize Estimated price by water usage  (See Appendix~\ref{appendix:tariff} for details) } \\
+Discount Rate & $\delta$ & 0.5\% & {\footnotesize In range of structural estimates from $\text{literature}^{\dagger}$} \\
+Coefficient of Relative Risk Aversion & $\gamma$ & 1 & {\footnotesize In range of structural estimates from $\text{literature}^{\diamond}$} \\
+Standard Asset Range & $A$ & \{-43,814, 43,814\}  & {\footnotesize Assumed to capture reasonable borrowing and saving constraints} \\
+Water Borrowing Range & $B$ & \{-16,082, 0\}     & {\footnotesize Assumed to capture reasonable water borrowing constraints} \\
+Household Water Account Length & $T$ & 384 & {\footnotesize Implied by 0.13\% of households disconnecting each month} \\
+Paying Balance upon Disconnection & $\chi$ & \input{tables/bal_0}\% & {\footnotesize Directly observed in billing data} \\ 
+When Households learn about  & $\overline{T}$ & $T-12=372$ & {\footnotesize Payment patterns before disconnection } \\[-.25em]
+whether to pay balance upon disconnection \\
+% High Inc. Risk& $\pi$ & 50\% & {\footnotesize Assumed to ensure symmetric income shocks} \\
+\bottomrule
+
+\end{tabular}
+\begin{tablenotes}
+\footnotesize
+\item
+All measures are monthly.  Annual rates are converted to monthly rates as follows: Monthly Rate = $(1+\text{Annual Rate})^{1/12}-1$ $\text{}^{\dagger}$ See \cite{andreoni2012estimating}, \cite{laibson2007estimating}, and \cite{gourinchas2002consumption} for structural $\delta$ estimates. $\text{}^{\diamond}$ See \cite{barseghyan2013nature}, \cite{beetsma2001measuring}, and \cite{carvalho2016effect} for structural $\lambda$ estimates. 
+\end{tablenotes}
+\end{threeparttable}
+}
+\end{table}
+
+
+\begin{table}[H]
+\centering
+\caption{Model Fit to Standard Deviation of Characteristics}\label{table:fitsd}
+\begin{threeparttable}
+\begin{tabular}{@{}l*{1}{KK}@{}}
+\toprule
+ & Data & Model Prediction \\
+\midrule
+Consumption (m3) & \input{tables/table_c_sd} & \input{tables/table_c_sd_b}  \\
+Bill &  \input{tables/table_amount_sd} & \input{tables/table_bill_sd_b}  \\
+Unpaid Balance &  \input{tables/table_bal_sd}  &  \input{tables/table_bal_sd_b}  \\
+Payment &  \input{tables/table_pays_sd} &  \input{tables/table_pays_sd_b} \\
+Payment Frequency &  \input{tables/table_p0_sd} &  \input{tables/table_p0_sd_b}  \\
+Disconnection Frequency &  \input{tables/table_shr_dc_sd}  &  \input{tables/table_shr_dc_sd_b} \\
+Disconnection Length (Months) & \input{tables/t_rec_sd} & \input{tables/table_t_rec_sd_b}  \\
+Unpaid Balance Upon &  \input{tables/bal_end_sd_nc} &  \input{tables/table_bal_end_sd_b}  \\[-.5em]
+Permanent Disconnection \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item 
+\footnotesize
+This table provides standard deviations of moments from the data and moments predicted by the simulated model given estimates from Table~\ref{table:estimates}.  Moment calculations exclude months in which households remain disconnected through the end of the sample period.  Bill, unpaid balance, payment, and unpaid balance upon permanent disconnection are in PhP per household-month.  Consumption, payment frequency, and disconnection frequency are per household-month.  Unpaid balance upon permanent disconnection measures any remaining balance leftover when households permanently disconnect.    45 PhP = 1 USD
+% The highlighted cells indicate the three moments used in estimation.  
+\end{tablenotes}
+\end{threeparttable}
+
+\end{table}
+
+
+
+
+
+\subsection{Cost Premium for Purchasing Prepaid Metering}\label{appendix:prepaidcosts}
+
+Prepaid meters introduce an additional cost for the utility in terms of purchasing and installing this new technology.  \cite{heymans2014limits} surveyed eight large water providers that implemented prepaid meters in developing countries and found that each prepaid meter costs about four times as much as a standard meter and requires replacement every 7 years.  According to utility documentation from Manila, each standard meter costs around 1,500 PhP and is replaced around every 6 years and 3 months, bringing the monthly cost to 20 PhP/month.  Assuming that a prepaid meter costs 4 times as much as a standard meter with a replacement rate of 7 years, the estimated monthly cost of a prepaid meter would be 71 PhP/month.  Therefore, prepaid meters imply an additional cost of 51 PhP/month per household.  \cite{heymans2014limits} also report that the fixed administrative costs of installing and monitoring new meters account for less than 4\% of the total costs of switching to prepaid meters while the bulk of the expenses come from purchasing new meters.  
+
+
+
+
+\begin{table}[H]
+\centering
+\caption{Estimates under Alternative Preference Assumptions}\label{table:robustestimates}
+\begin{threeparttable}
+\begin{tabular}{@{}l*{1}{FFFFF}@{}}
+\toprule
+& (1) & (2) & (3) & (4) & (5) \\
+   & Current & High Rate & Low Rate & High CRRA &  Low CRRA \\[.2em]
+\midrule   
+Assumed Preferences\\
+\hspace{1em}Discount Rate ($\delta$)  & .005  & .01 & .0025  & .005 & .005     \\
+\hspace{1em}CRRA Curvature ($\gamma$)  & 1  & 1 & 1 & 2 & .5     \\[.5em]
+Estimates \\
+\hspace{1em}Water Preference  & \input{tables/est_alpha_b} & \input{tables/est_alpha_bhigh} & \input{tables/est_alpha_blow} & \input{tables/est_alpha_chigh} & \input{tables/est_alpha_clow} \\
+\hspace{1em}Fixed Cost of Alternative  &  \input{tables/est_fc_b}  &  \input{tables/est_fc_bhigh}  &  \input{tables/est_fc_blow}  &  \input{tables/est_fc_chigh}  &  \input{tables/est_fc_clow}  \\
+\hspace{1em}Rate of Warnings  &  \input{tables/est_pc_b} &  \input{tables/est_pc_bhigh} &  \input{tables/est_pc_blow} &  \input{tables/est_pc_chigh} &  \input{tables/est_pc_clow} \\[.5em]
+Compensating Variation \\
+\hspace{1em}Prepaid Metering &  \input{tables/cv_comp_nl_b} &  \input{tables/cv_comp_nl_bhigh} &  \input{tables/cv_comp_nl_blow} &  \input{tables/cv_comp_nl_chigh} &  \input{tables/cv_comp_nl_clow}   \\  
+\hspace{1em}50\% Less Enforcement & \input{tables/cv_comp_hf_b} & \input{tables/cv_comp_hf_bhigh} & \input{tables/cv_comp_hf_blow} & \input{tables/cv_comp_hf_chigh} & \input{tables/cv_comp_hf_clow}    \\
+\hspace{1em}Late Penalty & \input{tables_new/cv_comp_lp_b} &  &  &  &    \\
+\hspace{1em}4.9\% Interest Rate & \input{tables_new/cv_comp_ir_b} &  &  &  &    \\
+% &   (\input{tables/est_sd_pc_b}\unskip) \\[.8em] % Households &  \input{tables/est_hhs} \\ % Household-Months &  \input{tables/est_obs} \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item 
+\footnotesize
+This table re-estimates the model under four alternate assumptions on preferences.  Column (1) repeats earlier estimates, columns (2) and (3) consider high and low discount rates respectively, and columns (4) and (5) consider high and low levels of risk aversion respectively.   All measures are per average household-month. Compensating variation measures the change in monthly income in PhP needed to make households indifferent between the current scenario and each of the two counterfactual scenarios.
+\end{tablenotes}
+\end{threeparttable}
+%}
+\end{table}
+
+% \subsection{Income Coefficient of Variation}\label{appendix:cvcalc}
+
+% \begin{table}[H]
+% \centering
+% \caption{Income Coefficient of Variation Estimates}\label{table:cvcalc}
+% \vspace{-2mm}
+% \begin{tabular}{l*{1}{cc}}
+% \toprule
+%  & (1) & (2)  \\
+%   & Raw & Adjusted  \\ \midrule
+% All & \input{tables/cv} & \input{tables/cv_adj} \\
+% \\
+% By Income Tercile \\
+% T1 & \input{tables/cv_t1} & \input{tables/cv_adj_t1} \\ 
+% T2 & \input{tables/cv_t2} & \input{tables/cv_adj_t2} \\ 
+% T3 & \input{tables/cv_t3} & \input{tables/cv_adj_t3} \\ 
+% Demographic/Occupation Controls  & No & Yes \\
+% Households & \input{tables/cbms_hhs} & \input{tables/cbms_hhs} \\
+% Years & 2008, 2011 & 2008, 2011 \\
+% \bottomrule
+% \multicolumn{3}{l}{\footnotesize The Coefficient of Variation (CV) for each household (HH) is $ \frac{ 2 \mid y_{2011} \,\, - \,\, y_{2008} \mid  }{y_{2011} \,\,+\,\, y_{2008}}  $    } \\[-.3em]
+% \multicolumn{3}{l}{\footnotesize where $y$ is HH income. Estimates take the mean CV across HHs. } \\[-.5em]
+% \multicolumn{3}{l}{\footnotesize   Income terciles are computed by mean HH income.} \\[-.2em]
+% \multicolumn{3}{l}{\footnotesize   Adjusted CV is $ \frac{ 2 \mid \overline{y}_{2011} \,\, - \,\, \overline{y}_{2008} \mid  }{y_{2011} \,\,+\,\, y_{2008}}  $  where $\overline{\text{y}}$ is  residual income controlling for} \\[-.3em]
+% \multicolumn{3}{l}{\footnotesize  HH employment by skill-level, oldest HH age, HH size by education,  } \\[-.5em]
+% \multicolumn{3}{l}{\footnotesize year, and HH fixed effects.  } \\
+% \end{tabular}
+% \end{table}
+
+
+% \subsection{Sampling of the Connection Survey}\label{appendix:pawssampling}
+
+% Connection survey documentation indicates that surveyors used stratified sampling where the number of connections surveyed was proportional to the census population in each small administrative district (Barangay).  Surveyors randomly interviewed owners of connections until reaching these targets.  
+
+
+% Although this approach ensures that connections are randomly sampled within areas, it may also lead to oversampling of areas with few connections.  To measure the extent of possible oversampling, the following regression expresses the share of surveyed connections in each Meter Reading Unit (MRU) --- the water company's smallest unit of geography including around 200 households per unit on average --- as a function of the demographics of households owning connections, $Z_{MRU,i}$, in each of these MRUs:
+
+% To test this hypothesis, the following equation predicts the share of connections surveyed in each Meter Reading Unit (MRU) --- the smallest geographical unit used by the water provider including a couple hundred water connections on average --- according to demographics of households owning connections, $Z_{MRU,i}$, in each of these MRUs:
+% \begin{align*}
+% ShareSurveyed_{MRU} = \beta Z_{MRU,i} + \epsilon_{MRU,i}
+% \end{align*}
+% Table~\ref{table:pawssampling} provides the results for this regression.  Although many coefficients are statistically significant consistent with large sample sizes for this estimation, the magnitudes of the effects are small in economic terms across most measures.  For example, increasing the average number of households per connection by a standard deviation (0.65) results in a 0.0021 percentage point decrease in the probability of being surveyed; given a mean survey probability of 6 percentage points, this change represents only a 3.3 percent decrease.  Dwelling types are the strongest predictor of coverage, indicating that surveyors may have oversampled apartments possibly due to easier availability to survey.  Taken together, these results suggest that to the extent that non-random sampling may affect results, it will lead to an underestimation of the importance of sharing networks in Manila.
+
+% \begin{table}[H]
+% \centering
+% \caption{ Predicting Share of Connections Surveyed with \\ Connection Owner Demographics }\label{table:pawssampling}
+% \input{tables/paws_sampling}
+% \end{table}
+
+
+% \begin{table}[H]
+% \centering
+% \caption{Model Fit}\label{table:fit}
+% \begin{threeparttable}
+% \begin{tabular}{@{}l*{1}{rrrr}@{}}
+% \toprule
+%  &  \multicolumn{2}{c}{Mean} & \multicolumn{2}{c}{Standard Dev.} \\
+%  & Data & Predicted & Data & Predicted \\
+% \midrule
+% Consumption (m3) & \cellcolor{black!15}\input{tables/table_c_mean} & \cellcolor{black!15}\input{tables/table_c_mean_b} &  \input{tables/table_c_sd} &  \input{tables/table_c_sd_b} \\
+% Bill &  \input{tables/table_amount_mean} & \input{tables/table_bill_mean_b} &  \input{tables/table_amount_sd} &  \input{tables/table_bill_sd_b} \\
+% Unpaid Balance &  \cellcolor{black!15}\input{tables/table_bal_mean}  &  \cellcolor{black!15}\input{tables/table_bal_mean_b} &  \input{tables/table_bal_sd} &  \input{tables/table_bal_sd_b} \\
+% Payment &  \input{tables/table_pays_mean} &  \input{tables/table_pays_mean_b} &  \input{tables/table_pays_sd} &  \input{tables/table_pays_sd_b} \\
+% Payment Frequency &  \input{tables/table_p0_mean} &  \input{tables/table_p0_mean_b} &  \input{tables/table_p0_sd} &  \input{tables/table_p0_sd_b} \\
+% Disconnection Frequency &  \cellcolor{black!15}\input{tables/table_shr_dc_mean}  &  \cellcolor{black!15}\input{tables/table_shr_dc_mean_b} &  \input{tables/table_shr_dc_sd} &  \input{tables/table_shr_dc_sd_b} \\
+% Disconnection Length (Months) & \input{tables/t_rec} & \input{tables/table_t_rec_mean_b} & \input{tables/t_rec_sd} & \input{tables/table_t_rec_sd_b} \\
+% Unpaid Balance Upon &  \input{tables/bal_end_nc} &  \input{tables/table_bal_end_mean_b} & \input{tables/bal_end_sd_nc} &  \input{tables/table_bal_end_sd_b}  \\[-.5em]
+% Permanent Disconnection \\
+% \bottomrule
+% \end{tabular}
+% \begin{tablenotes}
+% \item 
+% \footnotesize
+% The highlighted cells indicate the three moments used in estimation.
+% \end{tablenotes}
+% \end{threeparttable}
+
+% \end{table}
+
+
+
+
+\nocite{*}
+\singlespacing
+\setlength{\bibsep}{7pt}
+\bibliographystyle{abbrvnat}
+\bibliography{ref}
+
+
+
+\end{document}
+
+
