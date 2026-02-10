@@ -16,9 +16,40 @@ import os
 import time
 import numpy as np
 
-# Allow running from either repo root or matlab/py/
-_this_dir = os.path.dirname(os.path.abspath(__file__))
-_repo_root = os.path.abspath(os.path.join(_this_dir, '..', '..'))
+# ---- Repo root detection ----
+# Works from: command line, Spyder, Jupyter, interactive REPL.
+# Override: set PHIL_CODES_PAY environment variable, or edit _MANUAL_ROOT below.
+_MANUAL_ROOT = None   # e.g. '/Users/willviolette/.../phil_codes_pay'
+
+def _find_repo_root():
+    # 1. Manual override
+    if _MANUAL_ROOT is not None:
+        return _MANUAL_ROOT
+    # 2. Environment variable
+    env = os.environ.get('PHIL_CODES_PAY')
+    if env and os.path.isdir(env):
+        return env
+    # 3. __file__ is available → go up two levels from matlab/py/
+    try:
+        here = os.path.dirname(os.path.abspath(__file__))
+        candidate = os.path.abspath(os.path.join(here, '..', '..'))
+        if os.path.isdir(os.path.join(candidate, 'moments')) or \
+           os.path.isdir(os.path.join(candidate, 'matlab')):
+            return candidate
+    except NameError:
+        pass
+    # 4. Search upward from cwd
+    d = os.path.abspath(os.getcwd())
+    for _ in range(10):
+        if os.path.isdir(os.path.join(d, 'moments')) or \
+           os.path.isdir(os.path.join(d, 'matlab', 'py')):
+            return d
+        d = os.path.dirname(d)
+    raise FileNotFoundError(
+        "Cannot find repo root. Set _MANUAL_ROOT in this file, or set "
+        "the PHIL_CODES_PAY environment variable to the repo path.")
+
+_repo_root = _find_repo_root()
 if _repo_root not in sys.path:
     sys.path.insert(0, _repo_root)
 
@@ -38,10 +69,11 @@ def main():
     # ---- Flags ----
     real_data    = 1
     given_sim    = 1
-    est_pattern  = 0
+    est_pattern  = 1
     results      = 1
     boot         = 1
     br           = 10      # bootstrap reps
+    opt_method   = 'Nelder-Mead'  # 'Nelder-Mead' or 'Powell'
 
     int_size    = 1
     refinement  = 1
@@ -108,10 +140,13 @@ def main():
         if ver == 'bhigh': beta_set = 0.01
         if ver == 'blow':  beta_set = 0.0025
 
+        # MATLAB pattern search estimates (warm-start)
+        matlab_est = {'alpha': 54.001, 'pd': 319.56, 'pc': 0.22015}
+
         #                 0        1        2       3       4       5       6      7         8     9   10    11  12  13   14   15    16       17       18  19   20
         # given:      r_lend, r_water, r_high, hcost, inc_sh, untie, alpha, beta, Y,       p1,  p2,  pd,   n, curve,fee, vh,  pc,   pm,      Blb,  Tg,  sp
         given = np.array([
-            0,    0,    r_high, 0,   y_cv,  0,    54,   beta_set, y_avg, p1, p2,  325,  n, 1,   0,   0,  0.22, bal_0_end, Blb, 12, 0.8
+            0,    0,    r_high, 0,   y_cv,  0,    matlab_est['alpha'],   beta_set, y_avg, p1, p2,  matlab_est['pd'],  n, 1,   0,   0,  matlab_est['pc'], bal_0_end, Blb, 12, 0.8
         ], dtype=np.float64)
 
         if ver == 'bhigh':
@@ -174,14 +209,20 @@ def main():
                 return fval
 
             print(f"\n old obj: {obj_fn(ag):.6f}")
-            print(" Powell search ...")
+            print(f" {opt_method} search ...")
 
             t0 = time.time()
-            result = minimize(obj_fn, ag, method='Powell',
-                              bounds=list(zip(lb, ub)),
-                              options={'maxfev': 200, 'maxiter': 30, 'disp': True})
+            if opt_method == 'Nelder-Mead':
+                result = minimize(obj_fn, ag, method='Nelder-Mead',
+                                  options={'maxfev': 400, 'maxiter': 200,
+                                           'xatol': 0.5, 'fatol': 1e-5,
+                                           'adaptive': True, 'disp': True})
+            else:
+                result = minimize(obj_fn, ag, method='Powell',
+                                  bounds=list(zip(lb, ub)),
+                                  options={'maxfev': 400, 'maxiter': 30, 'disp': True})
             elapsed = time.time() - t0
-            res = result.x
+            res = np.clip(result.x, lb, ub)  # enforce bounds for Nelder-Mead
             fval = result.fun
 
             print(f"Iterations: {result.nit}")
@@ -225,9 +266,15 @@ def main():
 
                     print(f"\n Bootstrap rep {i_boot}")
                     t0 = time.time()
-                    result_b = minimize(obj_fn_b, ag, method='Powell',
-                                        bounds=list(zip(lb, ub)),
-                                        options={'maxfev': 200, 'maxiter': 30, 'disp': True})
+                    if opt_method == 'Nelder-Mead':
+                        result_b = minimize(obj_fn_b, ag, method='Nelder-Mead',
+                                            options={'maxfev': 400, 'maxiter': 200,
+                                                     'xatol': 0.5, 'fatol': 1e-5,
+                                                     'adaptive': True, 'disp': True})
+                    else:
+                        result_b = minimize(obj_fn_b, ag, method='Powell',
+                                            bounds=list(zip(lb, ub)),
+                                            options={'maxfev': 400, 'maxiter': 30, 'disp': True})
                     print(f"  Elapsed: {time.time()-t0:.1f}s")
 
                     np.savetxt(os.path.join(moments_folder,
