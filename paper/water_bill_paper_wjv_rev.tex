@@ -784,7 +784,23 @@ Table~\ref{table:paywarning} includes the results of this exercise.  Receiving a
  % & \small (1)  \\
  & \small Bill Payment (PhP) \\[.5em]
  \toprule
-\input{tables/table_visit_pay_robust_1}
+Own Disconnection Order         &      587.51\textsuperscript{a}\\
+                    &     (19.73)                   \\[0.5em]
+Disconnection Order in Same Neighborhood for: \\[.5em] \hspace{.5em}1st Nearest Household&       42.36\textsuperscript{a}\\
+                    &     (11.67)                   \\[0.1em]
+\hspace{.5em}2nd Nearest Household&       46.63\textsuperscript{a}\\
+                    &     (11.06)                   \\[0.1em]
+\hspace{.5em}3rd Nearest Household&       33.56\textsuperscript{a}\\
+                    &     (11.67)                   \\[0.1em]
+Disconnection Order in Different Neighborhood for:  \\[.5em] \hspace{.5em}1st Nearest Household&       10.97                   \\
+                    &     (33.01)                   \\[0.1em]
+\hspace{.5em}2nd Nearest Household&       -6.11                   \\
+                    &     (28.85)                   \\[0.1em]
+\hspace{.5em}3rd Nearest Household&        7.58                   \\
+                    &     (25.21)                   \\[0.1em]
+Mean                &      629.40                   \\
+$\text{R}^{2}$      &       0.286                   \\
+N                   &   1,148,439                   \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
@@ -880,7 +896,11 @@ Table~\ref{table:tarifftrue} provides the monthly tariff structure as it is pres
 \toprule
 & \small Avg. Price: $\frac{\text{Bill (PhP)}}{\text{Usage (m3)}}$    \\
 \midrule 
-\input{tables/price_reg}
+Usage (m3)          &        0.29\textsuperscript{a}\\
+                    &      (0.00)                   \\[0.5em]
+Intercept           &       17.57\textsuperscript{a}\\
+                    &      (0.05)                   \\[0.5em]
+Household-Months    &   1,861,200                   \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
@@ -914,7 +934,11 @@ where $\textsc{Income}_{bq}$ is proxied by the quarterly change in average labor
  & \small (1) & \small (2)  \\
  & \small $\Delta$ Consumption & \small $\Delta$ Payment \\[.5em]
  \toprule
-\input{tables/table_lfs_analysis}
+ $\Delta$ Income    &      0.0007                   &      0.0042\textsuperscript{a}\\
+                    &    (0.0011)                   &    (0.0013)                   \\[0.2em]
+Mean                &         651                   &         640                   \\
+$\text{R}^{2}$      &       0.451                   &       0.154                   \\
+N                   &       1,516                   &       1,516                   \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
