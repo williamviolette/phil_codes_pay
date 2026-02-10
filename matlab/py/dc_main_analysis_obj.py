@@ -16,6 +16,8 @@ import os
 import time
 import numpy as np
 
+# import os; os.environ['PHIL_CODES_PAY'] = '/Users/willviolette/Library/CloudStorage/Dropbox/Mac/Documents/GitHub/phil_codes_pay'
+
 # ---- Repo root detection ----
 # Works from: command line, Spyder, Jupyter, interactive REPL.
 # Override: set PHIL_CODES_PAY environment variable, or edit _MANUAL_ROOT below.
