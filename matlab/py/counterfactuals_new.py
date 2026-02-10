@@ -70,7 +70,8 @@ def wnum(directory, name, num, fmt='%5.0f'):
 # ---------------------------------------------------------------------------
 # cost_calc: translate of cost_calc.m
 # ---------------------------------------------------------------------------
-def cost_calc(controls, r_lend, visit_price, marginal_cost, p1, p2, s):
+def cost_calc(controls, r_lend, visit_price, marginal_cost, p1, p2, s,
+              h_param=0.0, r_water=0.0):
     """
     Calculate revenue goal and cost components.
 
@@ -90,10 +91,12 @@ def cost_calc(controls, r_lend, visit_price, marginal_cost, p1, p2, s):
     p1           : float, constant part of marginal price
     p2           : float, slope of marginal price
     s            : int,   account length (384)
+    h_param      : float, late penalty fee when B_{t+1} < 0 (revenue to utility)
+    r_water      : float, monthly interest rate on unpaid water bills (revenue to utility)
 
     Returns
     -------
-    rev_goal, lend_cost, delinquency_cost, visit_cost, wwr
+    rev_goal, lend_cost, delinquency_cost, visit_cost, wwr, penalty_rev, interest_rev
     """
     # Lending cost: opportunity cost of carrying debt
     lend_cost = np.mean(np.abs(controls[:, 2])) * r_lend
@@ -113,12 +116,24 @@ def cost_calc(controls, r_lend, visit_price, marginal_cost, p1, p2, s):
     delinquent_visited = np.sum((prev_B < 0) & (controls[:, 4] > 2))
     visit_cost = visit_price * (delinquent_visited / n_rows)
 
+    # Late penalty revenue: utility collects h_param each month B_{t+1} < 0
+    penalty_rev = h_param * np.mean(controls[:, 2] < 0) if h_param > 0 else 0.0
+
+    # Interest revenue: utility collects interest on unpaid bills
+    # Consistent with budget constraint: B_{t+1}/(1+r_water), so the
+    # interest paid = |B_{t+1}| * r_water/(1+r_water)
+    if r_water > 0:
+        interest_rev = (r_water / (1.0 + r_water)) * \
+            np.mean(np.abs(controls[:, 2]) * (controls[:, 2] < 0))
+    else:
+        interest_rev = 0.0
+
     # Water revenue net of marginal cost
     wwr = np.mean((p1 - marginal_cost + p2 * controls[:, 0]) * controls[:, 0])
 
-    rev_goal = wwr - (lend_cost + delinquency_cost + visit_cost)
+    rev_goal = wwr + penalty_rev + interest_rev - (lend_cost + delinquency_cost + visit_cost)
 
-    return rev_goal, lend_cost, delinquency_cost, visit_cost, wwr
+    return rev_goal, lend_cost, delinquency_cost, visit_cost, wwr, penalty_rev, interest_rev
 
 
 # ---------------------------------------------------------------------------
@@ -128,7 +143,8 @@ def counterfactuals_print(cd_dir, tag, vr, ucon, u_ch,
                           ucon_u, ucon_uc, sim_u, sim_uc,
                           rev_goal, rev_goal_u,
                           lend_cost_u, delinquency_cost_u, visit_cost_u, wwr_u,
-                          s, given, marginal_cost=5.0):
+                          s, given, marginal_cost=5.0,
+                          penalty_rev=0.0, interest_rev=0.0):
     """Write counterfactual results to .tex files (mirrors MATLAB print functions)."""
     # Welfare
     wnum(cd_dir, f'cv_{tag}.tex',      (ucon - ucon_u) / u_ch, '%5.0f')
@@ -160,6 +176,10 @@ def counterfactuals_print(cd_dir, tag, vr, ucon, u_ch,
     wnum(cd_dir, f'visit_cost_{tag}.tex',    visit_cost_u, '%5.0f')
     wnum(cd_dir, f'wwr_{tag}.tex',           wwr_u, '%5.0f')
     wnum(cd_dir, f'mc_cost_{tag}.tex',       np.mean(sim_uc[:, 0]) * marginal_cost, '%5.0f')
+
+    # Policy revenue
+    wnum(cd_dir, f'penalty_rev_{tag}.tex', penalty_rev, '%5.0f')
+    wnum(cd_dir, f'interest_rev_{tag}.tex', interest_rev, '%5.0f')
 
     # Standard borrowing
     borrow = np.abs(sim_uc[:, 1] * (sim_uc[:, 1] < 0))
@@ -319,7 +339,7 @@ def main():
     print(f"  obj() completed in {time.time()-t0:.1f}s")
     print(f"  Moments: {np.round(est_mom[:3], 3)}")
 
-    rev_goal, lend_cost, delinquency_cost, visit_cost, wwr = \
+    rev_goal, lend_cost, delinquency_cost, visit_cost, wwr, _, _ = \
         cost_calc(sim, r_lend, visit_price, marginal_cost, p1, p2, s)
     print(f"  rev_goal={rev_goal:.1f}, lend={lend_cost:.1f}, "
           f"delinq={delinquency_cost:.1f}, visit={visit_cost:.1f}, wwr={wwr:.1f}")
@@ -358,9 +378,12 @@ def main():
     print(f"  obj() completed in {time.time()-t0:.1f}s")
     print(f"  Uncompensated CV: {(ucon - ucon_lp)/u_ch:.1f} PhP")
 
-    rev_goal_lp, lend_cost_lp, delinquency_cost_lp, visit_cost_lp, wwr_lp = \
-        cost_calc(sim_lp, r_lend, visit_price, marginal_cost, p1, p2, s)
-    print(f"  rev_goal={rev_goal_lp:.1f}, delta_rev={rev_goal - rev_goal_lp:.1f}")
+    rev_goal_lp, lend_cost_lp, delinquency_cost_lp, visit_cost_lp, wwr_lp, \
+        penalty_rev_lp, _ = \
+        cost_calc(sim_lp, r_lend, visit_price, marginal_cost, p1, p2, s,
+                  h_param=late_penalty)
+    print(f"  rev_goal={rev_goal_lp:.1f}, penalty_rev={penalty_rev_lp:.1f}, "
+          f"delta_rev={rev_goal - rev_goal_lp:.1f}")
 
     # Revenue-neutral price adjustment
     p1_lp = find_revenue_neutral_price(
@@ -379,8 +402,9 @@ def main():
         _, _, sim_lpr, _, _, _, _ = \
             obj(res_lpr, nA, sigA, Alb, Aub, nB, sigB, nD, s,
                 int_size, refinement, X)
-        rev_goal_lpr, _, _, _, _ = \
-            cost_calc(sim_lpr, r_lend, visit_price, marginal_cost, p1r, p2, s)
+        rev_goal_lpr, _, _, _, _, _, _ = \
+            cost_calc(sim_lpr, r_lend, visit_price, marginal_cost, p1r, p2, s,
+                      h_param=late_penalty)
         R_ov[i] = rev_goal - rev_goal_lpr
         P_ov[i] = p1r
         print(f"    p1={p1r:.2f}, rev_gap={R_ov[i]:.1f}")
@@ -395,8 +419,10 @@ def main():
     _, ucon_lpc, sim_lpc, _, _, _, _ = \
         obj(res_lpc, nA, sigA, Alb, Aub, nB, sigB, nD, s,
             int_size, refinement, X)
-    rev_goal_lpc, lend_cost_lpc, delinquency_cost_lpc, visit_cost_lpc, wwr_lpc = \
-        cost_calc(sim_lpc, r_lend, visit_price, marginal_cost, p1_lp_final, p2, s)
+    rev_goal_lpc, lend_cost_lpc, delinquency_cost_lpc, visit_cost_lpc, wwr_lpc, \
+        penalty_rev_lpc, _ = \
+        cost_calc(sim_lpc, r_lend, visit_price, marginal_cost, p1_lp_final, p2, s,
+                  h_param=late_penalty)
 
     print(f"  Compensated CV: {(ucon - ucon_lpc)/u_ch:.1f} PhP")
     print(f"  Rev gap after compensation: {rev_goal - rev_goal_lpc:.1f}")
@@ -406,7 +432,8 @@ def main():
                           ucon, u_ch, ucon_lp, ucon_lpc, sim_lp, sim_lpc,
                           rev_goal, rev_goal_lpc,
                           lend_cost_lpc, delinquency_cost_lpc, visit_cost_lpc, wwr_lpc,
-                          s, res_lpc, marginal_cost)
+                          s, res_lpc, marginal_cost,
+                          penalty_rev=penalty_rev_lpc)
 
     # ==================================================================
     # COUNTERFACTUAL (b): INTEREST RATE ON UNPAID BILLS
@@ -426,9 +453,12 @@ def main():
     print(f"  obj() completed in {time.time()-t0:.1f}s")
     print(f"  Uncompensated CV: {(ucon - ucon_ir)/u_ch:.1f} PhP")
 
-    rev_goal_ir, lend_cost_ir, delinquency_cost_ir, visit_cost_ir, wwr_ir = \
-        cost_calc(sim_ir, r_lend, visit_price, marginal_cost, p1, p2, s)
-    print(f"  rev_goal={rev_goal_ir:.1f}, delta_rev={rev_goal - rev_goal_ir:.1f}")
+    rev_goal_ir, lend_cost_ir, delinquency_cost_ir, visit_cost_ir, wwr_ir, \
+        _, interest_rev_ir = \
+        cost_calc(sim_ir, r_lend, visit_price, marginal_cost, p1, p2, s,
+                  r_water=ir_rate)
+    print(f"  rev_goal={rev_goal_ir:.1f}, interest_rev={interest_rev_ir:.1f}, "
+          f"delta_rev={rev_goal - rev_goal_ir:.1f}")
 
     # Revenue-neutral price adjustment
     p1_ir = find_revenue_neutral_price(
@@ -447,8 +477,9 @@ def main():
         _, _, sim_irr, _, _, _, _ = \
             obj(res_irr, nA, sigA, Alb, Aub, nB, sigB, nD, s,
                 int_size, refinement, X)
-        rev_goal_irr, _, _, _, _ = \
-            cost_calc(sim_irr, r_lend, visit_price, marginal_cost, p1r, p2, s)
+        rev_goal_irr, _, _, _, _, _, _ = \
+            cost_calc(sim_irr, r_lend, visit_price, marginal_cost, p1r, p2, s,
+                      r_water=ir_rate)
         R_ov[i] = rev_goal - rev_goal_irr
         P_ov[i] = p1r
         print(f"    p1={p1r:.2f}, rev_gap={R_ov[i]:.1f}")
@@ -463,8 +494,10 @@ def main():
     _, ucon_irc, sim_irc, _, _, _, _ = \
         obj(res_irc, nA, sigA, Alb, Aub, nB, sigB, nD, s,
             int_size, refinement, X)
-    rev_goal_irc, lend_cost_irc, delinquency_cost_irc, visit_cost_irc, wwr_irc = \
-        cost_calc(sim_irc, r_lend, visit_price, marginal_cost, p1_ir_final, p2, s)
+    rev_goal_irc, lend_cost_irc, delinquency_cost_irc, visit_cost_irc, wwr_irc, \
+        _, interest_rev_irc = \
+        cost_calc(sim_irc, r_lend, visit_price, marginal_cost, p1_ir_final, p2, s,
+                  r_water=ir_rate)
 
     print(f"  Compensated CV: {(ucon - ucon_irc)/u_ch:.1f} PhP")
     print(f"  Rev gap after compensation: {rev_goal - rev_goal_irc:.1f}")
@@ -474,7 +507,8 @@ def main():
                           ucon, u_ch, ucon_ir, ucon_irc, sim_ir, sim_irc,
                           rev_goal, rev_goal_irc,
                           lend_cost_irc, delinquency_cost_irc, visit_cost_irc, wwr_irc,
-                          s, res_irc, marginal_cost)
+                          s, res_irc, marginal_cost,
+                          interest_rev=interest_rev_irc)
 
     # ==================================================================
     # SUMMARY
