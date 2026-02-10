@@ -1,11 +1,13 @@
-\documentclass[12pt,table]{article}
+\documentclass[12pt]{article}
 
-\usepackage[table]{xcolor}
+\usepackage{xcolor}
 % TEMPLATE DEFAULT PACKAGES
-\usepackage{amssymb,amsmath,amsfonts,eurosym,geometry,ulem,graphicx,xcolor,setspace,sectsty,comment,natbib,pdflscape,array,adjustbox,threeparttable}
+\usepackage{amssymb,amsmath,amsfonts,eurosym,geometry,ulem,graphicx,setspace,sectsty,comment,natbib,pdflscape,array,adjustbox,threeparttable}
 
 % ADDED PACKAGES FOR THIS MANUSCRIPT
 \usepackage{palatino,newtxmath,multirow,titlesec,threeparttable,booktabs,titlesec,threeparttable,mathtools,bm,bbm,subcaption,pdflscape,tcolorbox,mathrsfs,float}
+% colortbl must load AFTER booktabs to avoid "Misplaced \noalign" in TeX Live 2025
+\usepackage{colortbl}
 % endfloat,
 
 
