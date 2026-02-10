@@ -49,7 +49,7 @@ def _gen_curve_quad_kernel(A, B, D, Aprime, Bprime, Dprime,
 
             if untied == 0:
                 # Bprime_inc
-                if r_water > 0.0:
+                if r_water > 0.0 and dv == 0.0:
                     bp_inc = (bp if bp >= b else b) / (1.0 + r_water)
                 else:
                     bp_inc = bp if bp >= b else b
@@ -69,7 +69,7 @@ def _gen_curve_quad_kernel(A, B, D, Aprime, Bprime, Dprime,
                 y_34f = (a - ap_inc + b) + (-bp_inc) * cd_dd - pd * cd_dd
                 y_12f = y_34f + (-1.0 * bp_inc) * cc
 
-                if h_param > 0.0:
+                if h_param > 0.0 and dv == 0.0:
                     bp_neg = 1.0 if bp < 0.0 else 0.0
                     y_34f -= bp_neg * h_param
                     y_12f -= bp_neg * h_param
@@ -220,10 +220,11 @@ def _gen_curve_quad_numpy(A, B, D, Aprime, Bprime, Dprime,
                  (Aprime / (1 + r_lend)) * (Aprime > 0)
 
     if untied == 0:
+        Bprime_inc_raw = Bprime * (Bprime >= B) + B * (Bprime < B)
         if r_water > 0:
-            Bprime_inc = (Bprime * (Bprime >= B) + B * (Bprime < B)) / (1 + r_water)
+            Bprime_inc = np.where(D == 0, Bprime_inc_raw / (1 + r_water), Bprime_inc_raw)
         else:
-            Bprime_inc = Bprime * (Bprime >= B) + B * (Bprime < B)
+            Bprime_inc = Bprime_inc_raw
 
         cc = (D == 0) * (Dprime == 0)
         cd = (D == 0) * (Dprime == 1)
@@ -238,8 +239,8 @@ def _gen_curve_quad_numpy(A, B, D, Aprime, Bprime, Dprime,
         y_12f = y_34f + (-1.0 * Bprime_inc) * cc
 
         if h > 0:
-            y_34f = y_34f - (Bprime < 0) * h
-            y_12f = y_12f - (Bprime < 0) * h
+            y_34f = y_34f - (Bprime < 0) * (D == 0) * h
+            y_12f = y_12f - (Bprime < 0) * (D == 0) * h
         if vh > 0:
             y_34f = y_34f - (B < 0) * (cc + cd) * vh
         if fee != 0:
@@ -303,7 +304,7 @@ def gen_curve_quad_scalar_nb(A, B, D, Aprime, Bprime, Dprime,
         Aprime_inc = Aprime / (1 + r_lend)
 
     if untied == 0:
-        if r_water > 0:
+        if r_water > 0 and D == 0:
             bp_inc = (Bprime if Bprime >= B else B) / (1 + r_water)
         else:
             bp_inc = Bprime if Bprime >= B else B
@@ -322,7 +323,7 @@ def gen_curve_quad_scalar_nb(A, B, D, Aprime, Bprime, Dprime,
         y_34f = (A - Aprime_inc + B) + (-bp_inc) * cd_dd - pd * cd_dd
         y_12f = y_34f + (-1.0 * bp_inc) * cc
 
-        if h > 0:
+        if h > 0 and D == 0:
             bp_neg = 1.0 if Bprime < 0 else 0.0
             y_34f -= bp_neg * h
             y_12f -= bp_neg * h

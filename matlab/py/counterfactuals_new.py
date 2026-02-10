@@ -116,15 +116,20 @@ def cost_calc(controls, r_lend, visit_price, marginal_cost, p1, p2, s,
     delinquent_visited = np.sum((prev_B < 0) & (controls[:, 4] > 2))
     visit_cost = visit_price * (delinquent_visited / n_rows)
 
-    # Late penalty revenue: utility collects h_param each month B_{t+1} < 0
-    penalty_rev = h_param * np.mean(controls[:, 2] < 0) if h_param > 0 else 0.0
+    # Current disconnection state: D_t = D'_{t-1}, with D_0 = 0 (connected)
+    D_current = np.zeros(n_rows)
+    D_current[1:] = controls[:-1, 3]
+    connected = D_current == 0
 
-    # Interest revenue: utility collects interest on unpaid bills
+    # Late penalty revenue: only accrues when connected
+    penalty_rev = h_param * np.mean((controls[:, 2] < 0) & connected) if h_param > 0 else 0.0
+
+    # Interest revenue: only accrues when connected
     # Consistent with budget constraint: B_{t+1}/(1+r_water), so the
     # interest paid = |B_{t+1}| * r_water/(1+r_water)
     if r_water > 0:
         interest_rev = (r_water / (1.0 + r_water)) * \
-            np.mean(np.abs(controls[:, 2]) * (controls[:, 2] < 0))
+            np.mean(np.abs(controls[:, 2]) * (controls[:, 2] < 0) * connected)
     else:
         interest_rev = 0.0
 
