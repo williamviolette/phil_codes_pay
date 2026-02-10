@@ -45,51 +45,78 @@ disp ' NO-LOAN '
     rev_goal-rev_goal_nlcp
     
     
-disp ' HALF-RATE '
-    res_hf = given;
-    res_hf(:,17)=given(:,17)/2;
-    [~,ucon_hf,sim_hf] = obj(res_hf,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
-    disp 'utility from half rate '
-    (ucon_hf-ucon)/u_ch
-   
-    [rev_goal_hf,lend_cost_hf,delinquency_cost_hf,visit_cost_hf,wwr_hf] = cost_calc(sim_hf,r_lend,visit_price,marginal_cost,p1,p2,s);
-    disp 'Pre-Post: Rev'
-    rev_goal-rev_goal_hf
-    
-    R =  rev_goal + (wwr_hf-rev_goal_hf);
-    I = mean(sim_hf(:,1)) - (given(7)-p1)./(p2.*2+1);  %%% how much extra water do you use?
-    as = given(:,7);
-    mc = marginal_cost;
-    p2s = p2;
-    p1_hft =  (I + as + mc + 2*I*p2s - 2*p2s*(4*I^2*p2s^2 + 4*I^2*p2s + I^2 + 4*I*as*p2s + 2*I*as - 4*I*mc*p2s - 2*I*mc + as^2 - 2*as*mc + mc^2 - 4*R*p2s - 4*R)^(1/2) + 2*mc*p2s - (4*I^2*p2s^2 + 4*I^2*p2s + I^2 + 4*I*as*p2s + 2*I*as - 4*I*mc*p2s - 2*I*mc + as^2 - 2*as*mc + mc^2 - 4*R*p2s - 4*R)^(1/2))/(2*(p2s + 1));
-      
-    
-    Ogride = (-1:.25:-.25)' ;
-    R_ov = zeros(size(Ogride,1),1);
-    P_ov = zeros(size(Ogride,1),1);
-    
-    for i=1:size(Ogride,1)
-        p1r =p1_hft + Ogride(i);
-            res_hfr = res_hf;
-            res_hfr(:,10) = p1r;
-            [~,ucon_hfr,sim_hfr] =obj(res_hfr,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
-            disp 'compensated utility price from half rate'
-            (ucon_hfr-ucon)/u_ch
-            [rev_goal_hfr] = cost_calc(sim_hfr,r_lend,visit_price,marginal_cost,p1r,p2,s);
-            disp 'Pre-Post: Rev'
-        R_ov(i)=rev_goal-rev_goal_hfr;
-        P_ov(i)=p1r;
+disp ' OPTIMAL ENFORCEMENT (Lambda Sweep) '
+
+    %%% Sweep over lambda grid to find welfare-maximizing enforcement rate
+    lambda_grid = (.02:.02:.40)';
+    n_grid = size(lambda_grid,1);
+    CV_sweep  = zeros(n_grid,1);
+    P1_sweep  = zeros(n_grid,1);
+    REV_sweep = zeros(n_grid,1);
+
+    for ig=1:n_grid
+        disp(sprintf(' Lambda = %.3f (%d/%d)', lambda_grid(ig), ig, n_grid));
+
+        % Step 1: run at this lambda with baseline price
+        res_sw = given;
+        res_sw(:,17) = lambda_grid(ig);
+        [~,ucon_sw,sim_sw] = obj(res_sw,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
+        [rev_goal_sw,~,~,~,wwr_sw] = cost_calc(sim_sw,r_lend,visit_price,marginal_cost,p1,p2,s);
+
+        % Step 2: analytical revenue-neutral price
+        R =  rev_goal + (wwr_sw-rev_goal_sw);
+        I = mean(sim_sw(:,1)) - (given(7)-p1)./(p2.*2+1);
+        as = given(:,7);
+        mc = marginal_cost;
+        p2s = p2;
+        p1_sw =  (I + as + mc + 2*I*p2s - 2*p2s*(4*I^2*p2s^2 + 4*I^2*p2s + I^2 + 4*I*as*p2s + 2*I*as - 4*I*mc*p2s - 2*I*mc + as^2 - 2*as*mc + mc^2 - 4*R*p2s - 4*R)^(1/2) + 2*mc*p2s - (4*I^2*p2s^2 + 4*I^2*p2s + I^2 + 4*I*as*p2s + 2*I*as - 4*I*mc*p2s - 2*I*mc + as^2 - 2*as*mc + mc^2 - 4*R*p2s - 4*R)^(1/2))/(2*(p2s + 1));
+
+        % Step 3: grid search to refine price
+        Ogride_sw = (-1:.25:-.25)';
+        R_ov_sw = zeros(size(Ogride_sw,1),1);
+        P_ov_sw = zeros(size(Ogride_sw,1),1);
+        for j=1:size(Ogride_sw,1)
+            p1r = p1_sw + Ogride_sw(j);
+            res_swr = res_sw;
+            res_swr(:,10) = p1r;
+            [~,~,sim_swr] = obj(res_swr,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
+            [rev_goal_swr] = cost_calc(sim_swr,r_lend,visit_price,marginal_cost,p1r,p2,s);
+            R_ov_sw(j) = rev_goal - rev_goal_swr;
+            P_ov_sw(j) = p1r;
+        end
+        [~,R_ind_sw] = min(abs(R_ov_sw));
+        p1_sw_final = P_ov_sw(R_ind_sw);
+
+        % Step 4: final run at revenue-neutral price
+        res_swf = res_sw;
+        res_swf(:,10) = p1_sw_final;
+        [~,ucon_swf,sim_swf] = obj(res_swf,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
+
+        CV_sweep(ig) = (ucon-ucon_swf)/u_ch;
+        P1_sweep(ig) = p1_sw_final;
+        [rev_swf] = cost_calc(sim_swf,r_lend,visit_price,marginal_cost,p1_sw_final,p2,s);
+        REV_sweep(ig) = rev_goal - rev_swf;
+
+        disp(sprintf('  CV = %.1f, p1 = %.2f, rev gap = %.1f', CV_sweep(ig), P1_sweep(ig), REV_sweep(ig)));
     end
-    
-    [~,R_ind]=min(abs(R_ov));
-    p1_hf = P_ov(R_ind);
-    
+
+    %%% Find the optimum (most negative CV = largest welfare gain)
+    [~, opt_idx] = min(CV_sweep);
+    lambda_opt = lambda_grid(opt_idx);
+    disp(sprintf('\n OPTIMAL: lambda* = %.3f, CV = %.0f PhP', lambda_opt, CV_sweep(opt_idx)));
+
+    %%% Final run at optimal lambda for table output
+    res_hf = given;
+    res_hf(:,17) = lambda_opt;
+    [~,ucon_hf,sim_hf] = obj(res_hf,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
+
+    p1_hf = P1_sweep(opt_idx);
     res_hfcp = res_hf;
     res_hfcp(:,10) = p1_hf;
-    [~,ucon_hfcp,sim_hfcp] =obj(res_hfcp,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
-    disp 'compensated utility price from half rate'
+    [~,ucon_hfcp,sim_hfcp] = obj(res_hfcp,nA,sigA,Alb,Aub,nB,sigB,nD,s,int_size,refinement,X);
+    disp 'compensated utility from optimal enforcement'
     (ucon_hfcp-ucon)/u_ch
-    
+
     [rev_goal_hfcp,lend_cost_hfcp,delinquency_cost_hfcp,visit_cost_hfcp,wwr_hfcp] = cost_calc(sim_hfcp,r_lend,visit_price,marginal_cost,p1_hf,p2,s);
     disp 'Pre-Post: Rev'
     rev_goal-rev_goal_hfcp
@@ -103,7 +130,7 @@ disp ' HALF-RATE '
 
 h=counterfactuals_price_print(cd_dir,strcat('reg_',ver),res_poor(17),ucon,u_ch,ucon,ucon,sim,sim,rev_goal,rev_goal,lend_cost,delinquency_cost,visit_cost,wwr,s,given);
 h=counterfactuals_price_print(cd_dir,strcat('nl_',ver),0,ucon,u_ch,ucon_nl,ucon_nlcp,sim_nl,sim_nlcp,rev_goal,rev_goal_nlcp,lend_cost_nlcp,delinquency_cost_nlcp,visit_cost_nlcp,wwr_nlcp,s,res_nlcp);
-h=counterfactuals_price_print(cd_dir,strcat('hf_',ver),res_poor(17)/2,ucon,u_ch,ucon_hf,ucon_hfcp,sim_hf,sim_hfcp,rev_goal,rev_goal_hfcp,lend_cost_hfcp,delinquency_cost_hfcp,visit_cost_hfcp,wwr_hfcp,s,res_hfcp);
+h=counterfactuals_price_print(cd_dir,strcat('hf_',ver),lambda_opt,ucon,u_ch,ucon_hf,ucon_hfcp,sim_hf,sim_hfcp,rev_goal,rev_goal_hfcp,lend_cost_hfcp,delinquency_cost_hfcp,visit_cost_hfcp,wwr_hfcp,s,res_hfcp);
 
 
 out=0;

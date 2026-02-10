@@ -30,7 +30,7 @@ wnum(cd_dir,strcat('b_max_end_',tag,'.tex'), 100*bmax ,'%5.0f');
 
 
 
-% wnum(cd_dir,strcat('lend_cost_sum_',tag,'.tex'), (lend_cost_u + (delinquency_cost_u)) ,'%5.0f');
+wnum(cd_dir,strcat('lend_cost_sum_',tag,'.tex'), (lend_cost_u + (delinquency_cost_u)) ,'%5.0f');
 % wnum(cd_dir,strcat('Aborr_',tag,'.tex'), mean(sim_uc(sim_uc(:,2)<0,2)) ,'%5.0f');
 % wnum(cd_dir,strcat('Asave_',tag,'.tex'), mean(sim_uc(sim_uc(:,2)>=0,2)) ,'%5.0f');
 % wnum(cd_dir,strcat('Amean_',tag,'.tex'), mean(sim_uc(:,2)) ,'%5.0f');
