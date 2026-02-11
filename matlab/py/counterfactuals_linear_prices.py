@@ -163,22 +163,22 @@ def main():
     rev_goal_nl, lend_cost_nl, delinquency_cost_nl, visit_cost_nl, wwr_nl, _, _ = \
         cost_calc(sim_nl, r_lend, visit_price, marginal_cost, p1, p2, s)
 
-    # Revenue-neutral price — wider grid for prepaid (costs drop a lot)
+    # Revenue-neutral price
     p1_nl = find_revenue_neutral_price(
         sim_nl, res_nl, rev_goal, wwr_nl, rev_goal_nl,
         p1, p2, marginal_cost)
 
-    # Use absolute grid for prepaid: search p1 from marginal_cost+1 to alpha-1
-    p1_grid_nl = np.arange(marginal_cost + 1, alpha_est - 1, 0.5)
-    R_ov = np.zeros(len(p1_grid_nl)); P_ov = p1_grid_nl.copy()
-    for i, p1r in enumerate(p1_grid_nl):
+    Ogride = np.arange(-1, 0.25, 0.25)
+    R_ov = np.zeros(len(Ogride)); P_ov = np.zeros(len(Ogride))
+    for i, offset in enumerate(Ogride):
+        p1r = p1_nl + offset
         res_nlr = res_nl.copy(); res_nlr[9] = p1r
         _, _, sim_nlr, _, _, _, _ = \
             obj(res_nlr, nA, sigA, Alb, Aub, nB, sigB, nD, s,
                 int_size, refinement, X)
         rev_goal_nlr, _, _, _, _, _, _ = \
             cost_calc(sim_nlr, r_lend, visit_price, marginal_cost, p1r, p2, s)
-        R_ov[i] = rev_goal - rev_goal_nlr
+        R_ov[i] = rev_goal - rev_goal_nlr; P_ov[i] = p1r
         print(f"    p1={p1r:.2f}, rev_gap={R_ov[i]:.1f}")
     p1_nl_final = P_ov[np.argmin(np.abs(R_ov))]
     print(f"  Best p1 = {p1_nl_final:.2f}")
