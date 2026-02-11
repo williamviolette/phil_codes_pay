@@ -1064,6 +1064,38 @@ This table re-estimates the model under four alternate assumptions on preference
 %}
 \end{table}
 
+
+\subsection{Linear Prices}\label{appendix:linearprices}
+
+The main analysis approximates the tariff structure using a linear regression of average price on monthly usage, yielding a constant term $p_1$ and a slope $p_2$.  This appendix considers a robustness check that eliminates the curvature of prices by setting $p_2 = 0$ and $p_1 = 27.8$, so that the marginal price is constant at 27.8 PhP per m3.  Table~\ref{table:counter_linp} reproduces the counterfactual household outcomes from Table~\ref{table:counter} under this linear price assumption.
+
+\begin{table}[H]
+\centering
+\caption{Household Outcomes under Counterfactual Policies with Linear Prices}\label{table:counter_linp}
+% \resizebox{\columnwidth}{!}{%
+\begin{threeparttable}
+\begin{tabular}{@{}l*{1}{EEEEE}@{}}
+\toprule
+ & (1)    & (2)          & (3)  & (4)  & (5)  \\
+ & Current & Prepaid Metering & 50\% Less Enforcement  & Late Penalty & 4.9\% Interest  \\
+\midrule
+Compensating Variation &   & \input{tables_new/cv_comp_nl_linp_b}  & \input{tables_new/cv_comp_hf_linp_b}  & \input{tables_new/cv_comp_lp_linp_b}  & \input{tables_new/cv_comp_ir_linp_b}  \\
+Consumption (m3)	 &   \input{tables_new/cons_reg_linp_b} & \input{tables_new/cons_nl_linp_b}    &  \input{tables_new/cons_hf_linp_b}  & \input{tables_new/cons_lp_linp_b}    &  \input{tables_new/cons_ir_linp_b} \\
+Bill			 &   \input{tables_new/cons_val_reg_linp_b} & \input{tables_new/cons_val_nl_linp_b}    &  \input{tables_new/cons_val_hf_linp_b}  & \input{tables_new/cons_val_lp_linp_b}    &  \input{tables_new/cons_val_ir_linp_b} \\
+Unpaid Balance & \input{tables_new/debt_reg_linp_b} & \input{tables_new/debt_nl_linp_b}    &  \input{tables_new/debt_hf_linp_b}  & \input{tables_new/debt_lp_linp_b}    &  \input{tables_new/debt_ir_linp_b}  \\
+Standard Borrowing & \input{tables_new/Aborr_abs_reg_linp_b} & \input{tables_new/Aborr_abs_nl_linp_b}    &  \input{tables_new/Aborr_abs_hf_linp_b}  & \input{tables_new/Aborr_abs_lp_linp_b}    &  \input{tables_new/Aborr_abs_ir_linp_b}  \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item
+\footnotesize
+This table reproduces Table~\ref{table:counter} under the assumption of linear prices with $p_1 = 27.8$ and $p_2 = 0$.  All measures are per average household-month. Compensating variation measures the change in monthly income in PhP needed to make households indifferent between the current scenario and the counterfactual scenarios.  Standard borrowing measures the average amount of borrowing from the standard asset in PhP.  Bill and outstanding balance are in PhP.  Column (4) applies a late penalty of $0.1 \times 1{,}235 = 123.5$ PhP per month when $B_{t+1}<0$.  Column (5) applies a 4.9\% monthly interest rate on unpaid bills so that $B_{t+1}$ becomes $B_{t+1}/(1+0.049)$.    45 PhP = 1 USD
+\end{tablenotes}
+\end{threeparttable}
+% }
+\end{table}
+
+
 % \subsection{Income Coefficient of Variation}\label{appendix:cvcalc}
 
 % \begin{table}[H]
