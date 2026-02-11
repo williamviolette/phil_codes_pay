@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  11 FEB 2026 09:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  11 FEB 2026 09:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1347,17 +1347,12 @@ Overfull \hbox (46.28693pt too wide) in paragraph at lines 530--552
 
 
 [22] (./tables/cv_comp_nl_b.tex) (./tables/cv_comp_nl_b.tex) (./tables/cv_comp_hf_b.tex) (./tables_new/cv_comp_lp_b.tex) (./tables_new/cv_comp_ir_b.tex) (./tables/cons_reg_b.tex) (./tables/cons_nl_b.tex) (./tables/cons_hf_b.tex) (./tables_new/cons_lp_b.tex) (./tables_new/cons_ir_b.tex) (./tables/cons_val_reg_b.tex) (./tables/cons_val_nl_b.tex) (./tables/cons_val_hf_b.tex) (./tables_new/cons_val_lp_b.tex) (./tables_new/cons_val_ir_b.tex) (./tables/debt_reg_b.tex) (./tables/debt_nl_b.tex) (./tables/debt_hf_b.tex) (./tables_new/debt_lp_b.tex) (./tables_new/debt_ir_b.tex) (./tables/Aborr_abs_reg_b.tex) (./tables/Aborr_abs_nl_b.tex) (./tables/Aborr_abs_hf_b.tex) (./tables_new/Aborr_abs_lp_b.tex) (./tables_new/Aborr_abs_ir_b.tex)
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 582.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 585.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 586.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 586.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 586.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 586.
-
-Overfull \hbox (94.17848pt too wide) in paragraph at lines 568--590
- [] 
- []
-
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 589.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 589.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 589.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 589.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 589.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 589.
 
 
 [23]
@@ -1559,24 +1554,17 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1070.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1070.
  (./tables_new/cv_comp_nl_linp_b.tex) (./tables_new/cv_comp_hf_linp_b.tex) (./tables_new/cv_comp_lp_linp_b.tex) (./tables_new/cv_comp_ir_linp_b.tex) (./tables_new/cons_reg_linp_b.tex) (./tables_new/cons_nl_linp_b.tex) (./tables_new/cons_hf_linp_b.tex) (./tables_new/cons_lp_linp_b.tex) (./tables_new/cons_ir_linp_b.tex) (./tables_new/cons_val_reg_linp_b.tex) (./tables_new/cons_val_nl_linp_b.tex) (./tables_new/cons_val_hf_linp_b.tex) (./tables_new/cons_val_lp_linp_b.tex) (./tables_new/cons_val_ir_linp_b.tex) (./tables_new/debt_reg_linp_b.tex) (./tables_new/debt_nl_linp_b.tex) (./tables_new/debt_hf_linp_b.tex) (./tables_new/debt_lp_linp_b.tex) (./tables_new/debt_ir_linp_b.tex) (./tables_new/Aborr_abs_reg_linp_b.tex) (./tables_new/Aborr_abs_nl_linp_b.tex) (./tables_new/Aborr_abs_hf_linp_b.tex) (./tables_new/Aborr_abs_lp_linp_b.tex) (./tables_new/Aborr_abs_ir_linp_b.tex)
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1088.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1091.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1092.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1092.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1092.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1092.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1092.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1092.
-
-Overfull \hbox (94.17848pt too wide) in paragraph at lines 1077--1096
- [] 
- []
-
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1095.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1095.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1095.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1095.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1095.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1095.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1095.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1095.
 
 
 [36] (build/water_bill_paper_wjv_rev.bbl
-
-[37]
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 47.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
@@ -1592,6 +1580,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 44--48
 \OT1/pcr/m/n/12 still -[] havent -[] halted -[] utility -[] shut -[] offs -[] for -[] unpaid -[] water -[]
  []
 
+
+
+[37]
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 78.
 
 Underfull \hbox (badness 10000) in paragraph at lines 75--79
@@ -1620,13 +1611,13 @@ LaTeX Font Warning: Size substitutions with differences
 Here is how much of TeX's memory you used:
  32138 strings out of 473190
  609011 string characters out of 5715801
- 929917 words of memory out of 5000000
+ 929925 words of memory out of 5000000
  54112 multiletter control sequences out of 15000+600000
  660382 words of font info for 276 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,18n,131p,2041b,636s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,18n,131p,2041b,638s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/willviolette/Library/texlive/2025/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexas.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on build/water_bill_paper_wjv_rev.pdf (41 pages, 311005 bytes).
+Output written on build/water_bill_paper_wjv_rev.pdf (41 pages, 311072 bytes).
 PDF statistics:
  205 PDF objects out of 1000 (max. 8388607)
  135 compressed objects within 2 object streams
