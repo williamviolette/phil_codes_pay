@@ -71,7 +71,7 @@ def wnum(directory, name, num, fmt='%5.0f'):
 # cost_calc: translate of cost_calc.m
 # ---------------------------------------------------------------------------
 def cost_calc(controls, r_lend, visit_price, marginal_cost, p1, p2, s,
-              h_param=0.0, r_water=0.0):
+              h_param=0.0, r_water=0.0, untied=0):
     """
     Calculate revenue goal and cost components.
 
@@ -93,45 +93,52 @@ def cost_calc(controls, r_lend, visit_price, marginal_cost, p1, p2, s,
     s            : int,   account length (384)
     h_param      : float, late penalty fee when B_{t+1} < 0 (revenue to utility)
     r_water      : float, monthly interest rate on unpaid water bills (revenue to utility)
+    untied       : int,   1 = prepaid metering (no water debt, B costs are zero)
 
     Returns
     -------
     rev_goal, lend_cost, delinquency_cost, visit_cost, wwr, penalty_rev, interest_rev
     """
-    # Lending cost: opportunity cost of carrying debt
-    lend_cost = np.mean(np.abs(controls[:, 2])) * r_lend
-
-    # Delinquency cost: lost revenue from unpaid bills at end of account
-    end_mask = controls[:, 5] == s
-    if np.any(end_mask):
-        delinquency_cost = np.mean(np.abs(controls[end_mask, 2])) / s
-    else:
+    # In prepaid (untied=1), B' is not water debt — no lending/delinquency/visit costs
+    if untied == 1:
+        lend_cost = 0.0
         delinquency_cost = 0.0
-
-    # Visit cost: cost of visiting delinquent households
-    n_rows = controls.shape[0]
-    prev_B = np.empty(n_rows)
-    prev_B[0] = 0.0
-    prev_B[1:] = controls[:-1, 2]
-    delinquent_visited = np.sum((prev_B < 0) & (controls[:, 4] > 2))
-    visit_cost = visit_price * (delinquent_visited / n_rows)
-
-    # Current disconnection state: D_t = D'_{t-1}, with D_0 = 0 (connected)
-    D_current = np.zeros(n_rows)
-    D_current[1:] = controls[:-1, 3]
-    connected = D_current == 0
-
-    # Late penalty revenue: only accrues when connected
-    penalty_rev = h_param * np.mean((controls[:, 2] < 0) & connected) if h_param > 0 else 0.0
-
-    # Interest revenue: only accrues when connected
-    # Consistent with budget constraint: B_{t+1}/(1+r_water), so the
-    # interest paid = |B_{t+1}| * r_water/(1+r_water)
-    if r_water > 0:
-        interest_rev = (r_water / (1.0 + r_water)) * \
-            np.mean(np.abs(controls[:, 2]) * (controls[:, 2] < 0) * connected)
-    else:
+        visit_cost = 0.0
+        penalty_rev = 0.0
         interest_rev = 0.0
+    else:
+        # Lending cost: opportunity cost of carrying debt
+        lend_cost = np.mean(np.abs(controls[:, 2])) * r_lend
+
+        # Delinquency cost: lost revenue from unpaid bills at end of account
+        end_mask = controls[:, 5] == s
+        if np.any(end_mask):
+            delinquency_cost = np.mean(np.abs(controls[end_mask, 2])) / s
+        else:
+            delinquency_cost = 0.0
+
+        # Visit cost: cost of visiting delinquent households
+        n_rows = controls.shape[0]
+        prev_B = np.empty(n_rows)
+        prev_B[0] = 0.0
+        prev_B[1:] = controls[:-1, 2]
+        delinquent_visited = np.sum((prev_B < 0) & (controls[:, 4] > 2))
+        visit_cost = visit_price * (delinquent_visited / n_rows)
+
+        # Current disconnection state: D_t = D'_{t-1}, with D_0 = 0 (connected)
+        D_current = np.zeros(n_rows)
+        D_current[1:] = controls[:-1, 3]
+        connected = D_current == 0
+
+        # Late penalty revenue: only accrues when connected
+        penalty_rev = h_param * np.mean((controls[:, 2] < 0) & connected) if h_param > 0 else 0.0
+
+        # Interest revenue: only accrues when connected
+        if r_water > 0:
+            interest_rev = (r_water / (1.0 + r_water)) * \
+                np.mean(np.abs(controls[:, 2]) * (controls[:, 2] < 0) * connected)
+        else:
+            interest_rev = 0.0
 
     # Water revenue net of marginal cost
     wwr = np.mean((p1 - marginal_cost + p2 * controls[:, 0]) * controls[:, 0])
@@ -149,7 +156,7 @@ def counterfactuals_print(cd_dir, tag, vr, ucon, u_ch,
                           rev_goal, rev_goal_u,
                           lend_cost_u, delinquency_cost_u, visit_cost_u, wwr_u,
                           s, given, marginal_cost=5.0,
-                          penalty_rev=0.0, interest_rev=0.0):
+                          penalty_rev=0.0, interest_rev=0.0, untied=0):
     """Write counterfactual results to .tex files (mirrors MATLAB print functions)."""
     # Welfare
     wnum(cd_dir, f'cv_{tag}.tex',      (ucon - ucon_u) / u_ch, '%5.0f')
@@ -160,14 +167,24 @@ def counterfactuals_print(cd_dir, tag, vr, ucon, u_ch,
     wnum(cd_dir, f'p1_{tag}.tex',        given[9], '%5.1f')
     wnum(cd_dir, f'vrate_{tag}.tex',     vr, '%5.2f')
 
-    # Debt
-    end_mask = sim_uc[:, 5] == s
-    if np.any(end_mask):
-        debt_end = np.mean(np.abs(sim_uc[end_mask, 2]))
-    else:
+    # Debt — in prepaid (untied=1) B' is not water debt, so zero
+    if untied == 1:
         debt_end = 0.0
+        debt_avg = 0.0
+        bmax = 0.0
+    else:
+        end_mask = sim_uc[:, 5] == s
+        if np.any(end_mask):
+            debt_end = np.mean(np.abs(sim_uc[end_mask, 2]))
+        else:
+            debt_end = 0.0
+        debt_avg = np.mean(np.abs(sim_uc[:, 2]))
+        if np.any(end_mask):
+            bmax = np.sum(sim_uc[end_mask, 2] == np.min(sim_uc[end_mask, 2])) / np.sum(end_mask)
+        else:
+            bmax = 0.0
     wnum(cd_dir, f'debt_end_{tag}.tex', debt_end, '%5.0f')
-    wnum(cd_dir, f'debt_{tag}.tex',     np.mean(np.abs(sim_uc[:, 2])), '%5.0f')
+    wnum(cd_dir, f'debt_{tag}.tex',     debt_avg, '%5.0f')
 
     # Consumption
     wnum(cd_dir, f'cons_{tag}.tex',     np.mean(sim_uc[:, 0]), '%5.1f')
@@ -191,10 +208,6 @@ def counterfactuals_print(cd_dir, tag, vr, ucon, u_ch,
     wnum(cd_dir, f'Aborr_abs_{tag}.tex', np.mean(borrow), '%5.0f')
 
     # Fraction at max borrowing at end
-    if np.any(end_mask):
-        bmax = np.sum(sim_uc[end_mask, 2] == np.min(sim_uc[end_mask, 2])) / np.sum(end_mask)
-    else:
-        bmax = 0.0
     wnum(cd_dir, f'b_max_end_{tag}.tex', 100 * bmax, '%5.0f')
 
 

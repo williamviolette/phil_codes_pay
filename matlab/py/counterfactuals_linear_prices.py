@@ -161,7 +161,8 @@ def main():
     print(f"  obj() completed in {time.time()-t0:.1f}s")
 
     rev_goal_nl, lend_cost_nl, delinquency_cost_nl, visit_cost_nl, wwr_nl, _, _ = \
-        cost_calc(sim_nl, r_lend, visit_price, marginal_cost, p1, p2, s)
+        cost_calc(sim_nl, r_lend, visit_price, marginal_cost, p1, p2, s,
+                  untied=1)
 
     # Revenue-neutral price
     p1_nl = find_revenue_neutral_price(
@@ -177,7 +178,8 @@ def main():
             obj(res_nlr, nA, sigA, Alb, Aub, nB, sigB, nD, s,
                 int_size, refinement, X)
         rev_goal_nlr, _, _, _, _, _, _ = \
-            cost_calc(sim_nlr, r_lend, visit_price, marginal_cost, p1r, p2, s)
+            cost_calc(sim_nlr, r_lend, visit_price, marginal_cost, p1r, p2, s,
+                      untied=1)
         R_ov[i] = rev_goal - rev_goal_nlr; P_ov[i] = p1r
         print(f"    p1={p1r:.2f}, rev_gap={R_ov[i]:.1f}")
     p1_nl_final = P_ov[np.argmin(np.abs(R_ov))]
@@ -188,13 +190,14 @@ def main():
         obj(res_nlc, nA, sigA, Alb, Aub, nB, sigB, nD, s,
             int_size, refinement, X)
     rev_goal_nlc, lend_cost_nlc, delinquency_cost_nlc, visit_cost_nlc, wwr_nlc, _, _ = \
-        cost_calc(sim_nlc, r_lend, visit_price, marginal_cost, p1_nl_final, p2, s)
+        cost_calc(sim_nlc, r_lend, visit_price, marginal_cost, p1_nl_final, p2, s,
+                  untied=1)
 
     counterfactuals_print(cd_dir, f'nl_{ver}', given[16],
                           ucon, u_ch, ucon_nl, ucon_nlc, sim_nl, sim_nlc,
                           rev_goal, rev_goal_nlc,
                           lend_cost_nlc, delinquency_cost_nlc, visit_cost_nlc, wwr_nlc,
-                          s, res_nlc, marginal_cost)
+                          s, res_nlc, marginal_cost, untied=1)
 
     # ==================================================================
     # (3) 50% LESS ENFORCEMENT  (pc / 2)
