@@ -529,16 +529,154 @@ def main():
                           interest_rev=interest_rev_irc)
 
     # ==================================================================
+    # COUNTERFACTUAL (c): PREPAID METERING + LOWER BORROWING RATE
+    # Prepaid metering (untied=1) combined with lowering the interest
+    # rate r_high on borrowing from asset A.  Search over a coarse grid
+    # of r_high values to find the one that drives the compensating
+    # variation to zero.
+    # ==================================================================
+    print(f"\n--- PREPAID METERING + LOWER BORROWING RATE (CV -> 0) ---")
+    print(f"  Baseline r_high = {r_high:.4f}")
+
+    r_high_grid = np.arange(0.01, 0.10, 0.01)  # coarse grid: 1% to 9% monthly
+
+    cv_results = np.full(len(r_high_grid), np.nan)
+    p1_results = np.full(len(r_high_grid), np.nan)
+    ucon_uncomp_results = np.full(len(r_high_grid), np.nan)
+
+    for ig, r_high_try in enumerate(r_high_grid):
+        print(f"\n  r_high = {r_high_try:.3f} ({ig+1}/{len(r_high_grid)})")
+
+        res_pm = given.copy()
+        res_pm[5] = 1           # untied = 1 (prepaid metering)
+        res_pm[2] = r_high_try  # lower borrowing rate
+
+        # Uncompensated simulation
+        t0 = time.time()
+        _, ucon_pm, sim_pm, _, _, _, _ = \
+            obj(res_pm, nA, sigA, Alb, Aub, nB, sigB, nD, s,
+                int_size, refinement, X)
+        ucon_uncomp_results[ig] = ucon_pm
+
+        rev_goal_pm, _, _, _, wwr_pm, _, _ = \
+            cost_calc(sim_pm, r_lend, visit_price, marginal_cost, p1, p2, s,
+                      untied=1)
+
+        # Closed-form revenue-neutral price
+        p1_pm = find_revenue_neutral_price(
+            sim_pm, res_pm, rev_goal, wwr_pm, rev_goal_pm,
+            p1, p2, marginal_cost)
+
+        # Compensated simulation at revenue-neutral price
+        res_pmc = res_pm.copy()
+        res_pmc[9] = p1_pm
+        _, ucon_pmc, sim_pmc, _, _, _, _ = \
+            obj(res_pmc, nA, sigA, Alb, Aub, nB, sigB, nD, s,
+                int_size, refinement, X)
+
+        cv_val = (ucon - ucon_pmc) / u_ch
+        cv_results[ig] = cv_val
+        p1_results[ig] = p1_pm
+        print(f"    p1_rev_neutral = {p1_pm:.2f}, CV = {cv_val:.1f} PhP  "
+              f"({time.time()-t0:.1f}s)")
+
+    # Print coarse grid summary
+    print(f"\n  Coarse grid results:")
+    print(f"  {'r_high':>8} {'p1':>8} {'CV (PhP)':>10}")
+    print(f"  {'-'*28}")
+    for ig in range(len(r_high_grid)):
+        marker = " <--" if ig == np.argmin(np.abs(cv_results)) else ""
+        print(f"  {r_high_grid[ig]:>8.3f} {p1_results[ig]:>8.2f} "
+              f"{cv_results[ig]:>10.1f}{marker}")
+
+    # Find r_high with CV closest to zero
+    best_idx = np.argmin(np.abs(cv_results))
+    r_high_best = r_high_grid[best_idx]
+    print(f"\n  Best r_high = {r_high_best:.4f} "
+          f"(CV = {cv_results[best_idx]:.1f} PhP)")
+
+    # Full grid refinement for best r_high
+    print(f"\n  Running price grid refinement for r_high = {r_high_best:.4f} ...")
+    res_pm_best = given.copy()
+    res_pm_best[5] = 1
+    res_pm_best[2] = r_high_best
+
+    _, ucon_pm_best, sim_pm_best, _, _, _, _ = \
+        obj(res_pm_best, nA, sigA, Alb, Aub, nB, sigB, nD, s,
+            int_size, refinement, X)
+    print(f"  Uncompensated CV: {(ucon - ucon_pm_best)/u_ch:.1f} PhP")
+
+    rev_goal_pm_best, _, _, _, wwr_pm_best, _, _ = \
+        cost_calc(sim_pm_best, r_lend, visit_price, marginal_cost, p1, p2, s,
+                  untied=1)
+
+    p1_pm_cf = find_revenue_neutral_price(
+        sim_pm_best, res_pm_best, rev_goal, wwr_pm_best, rev_goal_pm_best,
+        p1, p2, marginal_cost)
+
+    # Grid search refinement around closed-form solution
+    Ogride = np.arange(-1, 0.25, 0.25)
+    R_ov = np.zeros(len(Ogride))
+    P_ov = np.zeros(len(Ogride))
+    for i, offset in enumerate(Ogride):
+        p1r = p1_pm_cf + offset
+        res_pmr = res_pm_best.copy()
+        res_pmr[9] = p1r
+        _, _, sim_pmr, _, _, _, _ = \
+            obj(res_pmr, nA, sigA, Alb, Aub, nB, sigB, nD, s,
+                int_size, refinement, X)
+        rev_goal_pmr, _, _, _, _, _, _ = \
+            cost_calc(sim_pmr, r_lend, visit_price, marginal_cost, p1r, p2, s,
+                      untied=1)
+        R_ov[i] = rev_goal - rev_goal_pmr
+        P_ov[i] = p1r
+        print(f"    p1={p1r:.2f}, rev_gap={R_ov[i]:.1f}")
+
+    best_p1_idx = np.argmin(np.abs(R_ov))
+    p1_pm_final = P_ov[best_p1_idx]
+    print(f"  Best revenue-neutral p1 = {p1_pm_final:.2f}")
+
+    # Final compensated simulation
+    res_pmc_final = res_pm_best.copy()
+    res_pmc_final[9] = p1_pm_final
+    _, ucon_pmc_final, sim_pmc_final, _, _, _, _ = \
+        obj(res_pmc_final, nA, sigA, Alb, Aub, nB, sigB, nD, s,
+            int_size, refinement, X)
+    rev_goal_pmc_final, lend_cost_pmc, delinquency_cost_pmc, visit_cost_pmc, \
+        wwr_pmc, _, _ = \
+        cost_calc(sim_pmc_final, r_lend, visit_price, marginal_cost,
+                  p1_pm_final, p2, s, untied=1)
+
+    cv_pm_final = (ucon - ucon_pmc_final) / u_ch
+    print(f"\n  FINAL: r_high={r_high_best:.4f}, p1={p1_pm_final:.2f}, "
+          f"CV={cv_pm_final:.1f} PhP")
+    print(f"  Rev gap: {rev_goal - rev_goal_pmc_final:.1f}")
+
+    # Print results
+    counterfactuals_print(cd_dir, f'pm_rhigh_{ver}', given[16],
+                          ucon, u_ch, ucon_pm_best, ucon_pmc_final,
+                          sim_pm_best, sim_pmc_final,
+                          rev_goal, rev_goal_pmc_final,
+                          lend_cost_pmc, delinquency_cost_pmc,
+                          visit_cost_pmc, wwr_pmc,
+                          s, res_pmc_final, marginal_cost, untied=1)
+
+    # Write the best r_high to .tex files
+    wnum(cd_dir, f'r_high_pm_{ver}.tex', r_high_best, '%5.4f')
+    wnum(cd_dir, f'r_high_pm_pct_{ver}.tex', r_high_best * 100, '%5.2f')
+
+    # ==================================================================
     # SUMMARY
     # ==================================================================
     print(f"\n{'='*60}")
     print(f"SUMMARY")
     print(f"{'='*60}")
-    print(f"{'Scenario':<25} {'Uncomp CV':>12} {'Comp CV':>12} {'Price p1':>10}")
-    print(f"{'-'*60}")
-    print(f"{'Baseline':<25} {'---':>12} {'---':>12} {p1:>10.1f}")
-    print(f"{'Late Penalty':<25} {(ucon-ucon_lp)/u_ch:>12.0f} {(ucon-ucon_lpc)/u_ch:>12.0f} {p1_lp_final:>10.1f}")
-    print(f"{'4.9% Interest Rate':<25} {(ucon-ucon_ir)/u_ch:>12.0f} {(ucon-ucon_irc)/u_ch:>12.0f} {p1_ir_final:>10.1f}")
+    print(f"{'Scenario':<35} {'Uncomp CV':>12} {'Comp CV':>12} {'Price p1':>10} {'r_high':>8}")
+    print(f"{'-'*78}")
+    print(f"{'Baseline':<35} {'---':>12} {'---':>12} {p1:>10.1f} {r_high:>8.4f}")
+    print(f"{'Late Penalty':<35} {(ucon-ucon_lp)/u_ch:>12.0f} {(ucon-ucon_lpc)/u_ch:>12.0f} {p1_lp_final:>10.1f} {r_high:>8.4f}")
+    print(f"{'4.9% Interest Rate':<35} {(ucon-ucon_ir)/u_ch:>12.0f} {(ucon-ucon_irc)/u_ch:>12.0f} {p1_ir_final:>10.1f} {r_high:>8.4f}")
+    print(f"{'Prepaid + Lower r_high (CV~0)':<35} {(ucon-ucon_pm_best)/u_ch:>12.0f} {cv_pm_final:>12.0f} {p1_pm_final:>10.1f} {r_high_best:>8.4f}")
     print(f"\nResults written to: {cd_dir}")
     print("Done.")
 
