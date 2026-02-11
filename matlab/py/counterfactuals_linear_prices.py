@@ -94,9 +94,9 @@ def main():
     r_lend = 0.0047
     r_high = 0.0945
 
-    # ---- Linear prices: p1 = 27.8, p2 ≈ 0 ----
+    # ---- Linear prices: keep original p1, set p2 ≈ 0 ----
     # Use small epsilon for p2 to avoid division-by-zero in boundary regime
-    p1 = 27.8
+    p1 = d['p1']       # original from data (17.566)
     p2 = 0.001
 
     # ---- Old parameter estimates ----
