@@ -96,7 +96,7 @@ Delaying bill payments to public utilities may provide an important strategy for
 Households face a dynamic problem of how to smooth their consumption over time, especially in low-income settings where households have little access to formal credit and risky income streams (\cite{morduch1995income}).  Households often resort to costly money lenders or informal arrangements with family members (\cite{banerjee2007economic}).  
 
 Firms may provide an additional channel for consumption smoothing by allowing households to delay their payments for goods and services.  Public utilities often tolerate high levels of delinquent bills each month.  Regulations also prevent utilities from disconnecting some households for nonpayment especially in extreme circumstances.  For example, utilities around the world have delayed or suspended disconnections in response to the COVID-19 epidemic.\footnote{\cite{bufordcampbell2020} list municipalities in the US who have and have not suspended disconnections in response to COVID-19.  \cite{domingo2020} reports how utility disconnections in Manila, Philippines have been delayed by 30 days in response to the COVID-19 epidemic.}   Delaying bill payments may provide an economically important source of credit for households since public utilities cover broad populations and take up approximately 5\% of household incomes in developing countries.\footnote{\cite{komives2006distributional} find that households spend 1-2\% of their incomes on water and 4\% on electricity.}
-
+ 
 Allowing late payments also imposes costs on firms.  Public utilities spend resources visiting and disconnecting delinquent households for nonpayment.  These costs can raise prices for all households since public utility prices are often regulated to cover production costs (\cite{hoque2013state}).\footnote{\cite{laffont2005regulation} discusses economic reasons for revenue-neutral pricing, which is common in both developed and developing country settings.}  As a result, policymakers have recently pushed for new prepaid metering technologies, which require upfront payments before releasing any services.  Recent research confirms that prepaid meters substantially increase utility revenues (\cite{jack2020charging}).  Prepaid meters for electricity already compose over 28\% of residential meters in Sub-Saharan Africa and are predicted to grow to 53\% by 2024 (\cite{northeast2014}).\footnote{By planning to install over 300,000 prepaid meters, the Botswana Water Utilities Corporation provides an example of the growing use of this technology in the water sector as documented by \cite{heymans2014limits}.}  Despite this growth, existing research has yet to consider how to balance revenue recovery against household demands for consumption smoothing.
 
 This paper incorporates delayed bill payments into household consumption and savings decisions in order to evaluate the welfare effects of counterfactual payment policies such as prepaid metering.  This paper studies a large piped water utility in Manila, Philippines where detailed administrative data record household consumption, bill payments, and disconnections for nonpayment.  In Manila, unpaid water bills average 5.5\% of household income, exceeding most other sources of short-term credit.\footnote{On average, short-term loans, which are mainly from moneylenders and microcredit agencies, only equal about 2.5\% of household income according to the 2014 Consumer Finance Survey.}  Descriptive evidence suggests that households time their bill payments to smooth their consumption when they face sudden income changes.  Out of each 100 PhP increase in income, households spend around 1 PhP on their unpaid water bills without changing their water consumption.\footnote{``PhP'' refers to Philippine Pesos where 45 PhP = 1 USD.}
@@ -164,18 +164,18 @@ Households often delay their water bills.  Instead of paying each month, househo
 \caption{Summary Statistics per Household-Month}\label{table:descriptives_all}
 \vspace{-2mm}
 \begin{threeparttable}
-\begin{tabular}{@{}l*{1}{KK}@{}}
+\begin{tabular}{@{}l*{1}{KKK}@{}}
 \toprule
- % & \multicolumn{1}{C}{Mean} & \multicolumn{1}{C}{Standard Deviation} \\
-  & Mean & Standard Deviation \\
+ % & \multicolumn{1}{C}{Mean} & \multicolumn{1}{C}{Median} & \multicolumn{1}{C}{Standard Deviation} \\
+  & Mean & Median & Standard Deviation \\
 \midrule
-Consumption (m3) & \input{tables/table_c_mean} &  \input{tables/table_c_sd} \\
-Bill &  \input{tables/table_amount_mean} &  \input{tables/table_amount_sd} \\
-Unpaid Balance &  \input{tables/table_bal_mean} &  \input{tables/table_bal_sd} \\
-Payment &  \input{tables/table_pays_mean} &  \input{tables/table_pays_sd} \\
-Payment Frequency &  \input{tables/table_p0_mean} &  \input{tables/table_p0_sd} \\
-Disconnection Frequency &  \input{tables/table_shr_dc_mean} &  \input{tables/table_shr_dc_sd} \\
-Income &  \input{tables/table_inc_mean} &  \input{tables/table_inc_sd} \\
+Consumption (m3) & \input{tables/table_c_mean} & \input{tables_rev/table_c_med} &  \input{tables/table_c_sd} \\
+Bill &  \input{tables/table_amount_mean} & \input{tables_rev/table_amount_med} &  \input{tables/table_amount_sd} \\
+Unpaid Balance &  \input{tables/table_bal_mean} & \input{tables_rev/table_bal_med} &  \input{tables/table_bal_sd} \\
+Payment &  \input{tables/table_pays_mean} & \input{tables_rev/table_pays_med} &  \input{tables/table_pays_sd} \\
+Payment Frequency &  \input{tables/table_p0_mean} & \input{tables_rev/table_p0_med} &  \input{tables/table_p0_sd} \\
+Disconnection Frequency &  \input{tables/table_shr_dc_mean} & \input{tables_rev/table_shr_dc_med} &  \input{tables/table_shr_dc_sd} \\
+Income &  \input{tables/table_inc_mean} & \input{tables_rev/table_inc_med} &  \input{tables/table_inc_sd} \\
 % \input{tables/descriptives_new_all}
 \bottomrule
 \end{tabular}
