@@ -124,9 +124,9 @@ def main():
     r_lend = 0.0047
     r_high = 0.0945
 
-    # ---- HIGH DISCOUNT RATE: delta = 0.027 ----
+    # ---- HIGH DISCOUNT RATE: delta = 0.027 ---- ACTUALLY .024 -- https://www.econstor.eu/bitstream/10419/194617/1/discrate.pdf ; https://ideas.repec.org/a/kap/expeco/v25y2022i1d10.1007_s10683-021-09716-9.html 
     ver = 'bhigh'
-    beta_set = 0.027
+    beta_set = 0.024
 
     print(f"\n{'='*60}")
     print(f"Robustness: delta = {beta_set}, ver = {ver}")

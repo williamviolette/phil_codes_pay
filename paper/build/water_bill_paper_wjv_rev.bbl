@@ -1,4 +1,4 @@
-\begin{thebibliography}{43}
+\begin{thebibliography}{47}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -19,6 +19,11 @@ N.~Anand.
 J.~Andreoni and C.~Sprenger.
 \newblock Estimating time preferences from convex budgets.
 \newblock \emph{American Economic Review}, 102\penalty0 (7):\penalty0 3333--56, 2012.
+
+\bibitem[Ashraf et~al.(2006)Ashraf, Karlan, and Yin]{ashraf2006tying}
+N.~Ashraf, D.~Karlan, and W.~Yin.
+\newblock Tying odysseus to the mast: Evidence from a commitment savings product in the philippines.
+\newblock \emph{The Quarterly Journal of Economics}, 121\penalty0 (2):\penalty0 635--672, 2006.
 
 \bibitem[Banerjee and Duflo(2007)]{banerjee2007economic}
 A.~V. Banerjee and E.~Duflo.
@@ -171,10 +176,21 @@ D.~Laibson, A.~Repetto, and J.~Tobacman.
 \newblock Estimating discount functions with consumption choices over the lifecycle.
 \newblock Technical report, National Bureau of Economic Research, 2007.
 
+\bibitem[Matousek et~al.(2022)Matousek, Havranek, and Irsova]{matousek2022individual}
+J.~Matousek, T.~Havranek, and Z.~Irsova.
+\newblock Individual discount rates: a meta-analysis of experimental evidence.
+\newblock \emph{Experimental Economics}, 25\penalty0 (1):\penalty0 318--358, 2022.
+
 \bibitem[McRae(2015)]{mcrae2015infrastructure}
 S.~McRae.
 \newblock Infrastructure quality and the subsidy trap.
 \newblock \emph{American Economic Review}, 105\penalty0 (1):\penalty0 35--66, 2015.
+
+\bibitem[{Metropolitan Naga Water District}(2026)]{mnwd_guidelines_bills_payments}
+{Metropolitan Naga Water District}.
+\newblock Guidelines on bills and payments, 2026.
+\newblock URL \url{https://www.mnwd.gov.ph/guidelines-on-bills-and-payments/}.
+\newblock Accessed: 2026-02-11.
 
 \bibitem[Morduch(1995)]{morduch1995income}
 J.~Morduch.
@@ -190,6 +206,12 @@ J.~Morduch.
 {Northeast Group}.
 \newblock Sub-saharan africa electricity metering: Market forecast (2014 to 2024).
 \newblock \emph{Northeast Group, LLC}, 2014.
+
+\bibitem[{Puerto Princesa City Water District}(2026)]{ppcwater_ur_billing}
+{Puerto Princesa City Water District}.
+\newblock Ur rule 6: Billing and collection, 2026.
+\newblock URL \url{https://ppcwater.gov.ph/about-us/utility-rules/ur-billing/}.
+\newblock Accessed: 2026-02-11.
 
 \bibitem[Stiglitz(1990)]{stiglitz1990peer}
 J.~E. Stiglitz.

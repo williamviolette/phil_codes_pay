@@ -7,6 +7,9 @@
 
 \hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue}
 
+\usepackage{xr-hyper}
+\externaldocument[paper-]{water_bill_paper_wjv_rev} 
+
 % Custom list styles
 \newlist{refpoints}{itemize}{2}
 \setlist[refpoints,1]{label=\textbullet, leftmargin=1.5em, itemsep=6pt, parsep=2pt}
@@ -26,9 +29,13 @@ William Violette \\[0.3em]
 
 \vspace{1em}
 
-Dear Editor,
+Dear Ryan,
 
-Thank you for the opportunity to revise and resubmit this paper. I am grateful for your thoughtful guidance and for the careful, constructive reports from both referees. Their comments have significantly improved the paper. Below, I respond to each point raised by the editor and referees, with referee comments in italics and my responses in sub-bullets.
+Thank you for the opportunity to revise and resubmit this paper and for the thoughtful suggestions.  Please find responses below, and please let me know if you have any follow-up questions.
+
+Thanks again,
+
+Will
 
 \vspace{1em}
 \hrule
@@ -122,14 +129,9 @@ Thank you for the opportunity to revise and resubmit this paper. I am grateful f
 
 \begin{refpoints}
 
-\item \refquote{The parameter for the household discount rate is assumed to be the same as found in the literature for the US. However, since the institutional details and behavior in Manila differ from those in the US, I believe it is important to use parameters that are estimated for developing countries.}
+\item \refquote{The parameter for the household discount rate is assumed to be the same as found in the literature for the US. However, since the institutional details and behavior in Manila differ from those in the US, I believe it is important to use parameters that are estimated for developing countries. It seems like a very strong assumption to assume that the annual discount rate in Manila is 6\%. This is reasonable in the US, where the annual interest rate could be considered 6\%. But in Manila, as the paper states, the annual interest rate for most households is about 200\% (9.5\% monthly rate). Perhaps it would be useful to look at discount rate estimates in the Philippines (Ashraf, Karlan, and Yin, 2006 QJE).}
   \begin{refpoints}
-  \item [Response here.]
-  \end{refpoints}
-
-\item \refquote{It seems like a very strong assumption to assume that the annual discount rate in Manila is 6\%. This is reasonable in the US, where the annual interest rate could be considered 6\%. But in Manila, as the paper states, the annual interest rate for most households is about 200\% (9.5\% monthly rate). Perhaps it would be useful to look at discount rate estimates in the Philippines (Ashraf, Karlan, and Yin, 2006 QJE).}
-  \begin{refpoints}
-  \item [Response here.]
+  \item Great suggestion; see updated Table~\ref{paper-table:robustestimates} which cites Ashraf, Karlan, and Yin, 2006 QJE to justify a higher discount rate and uses a monthly discount rate of 2.4\% implied by Matousek et al. [2022] in their meta-analysis of the experimental literature.  Overall, I find that high discount rates magnify welfare effects as discussed in Section~\ref{paper-section:costmodel}.
   \end{refpoints}
 
 \end{refpoints}
@@ -177,7 +179,7 @@ Thank you for the opportunity to revise and resubmit this paper. I am grateful f
 
 \item \refquote{It would be informative if Table~1 presented, in addition to the mean, other statistics, at least the median.}
   \begin{refpoints}
-  \item [Response here.]
+  \item Please see updated Table~\ref{paper-table:descriptives_all} including the median as well.
   \end{refpoints}
 
 \end{refpoints}
