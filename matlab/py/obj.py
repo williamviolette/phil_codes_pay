@@ -148,7 +148,7 @@ def obj(given, nA, sigA, Alb, Aub, nB, sigB, nD, s, int_size, refinement, X,
     ap_col = Aprime[:, 0]
     v = -100000.0 * (ap_col < 0)[:, None] * np.ones((1, 4))
 
-    if r_water > 0.6:
+    if r_water > 0.6 or untied == 1:
         bp_col = Bprime[:, 0]
         v = v + (-100000.0 * (bp_col < 0)[:, None] * np.ones((1, 4)))
         # Re-apply penalties on utils (in-place on Fortran arrays)
