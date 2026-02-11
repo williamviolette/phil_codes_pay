@@ -1,0 +1,155 @@
+
+editor letter:
+Dear William,
+
+I am pleased to offer you the opportunity to revise and resubmit your paper,
+"Microcredit from Delaying Bill Payments," for further consideration at JIE. Based on the reviews of two experts in the field, along with my own reading of the paper, I believe your work has considerable merit. Although I can make no guarantees at this point, I am optimistic that you have a reasonable chance of satisfying the reviewers’ requests for revisions.
+
+I found both reviews to be thoughtful and clear. Main comments are clearly separated from the less-critical ones. Please devote most of your effort on addressing the main points, but also take the minor ones seriously and do your best to address them whenever possible.
+
+A few comments stand out. First, please do your best to complete the welfare comparison by modeling prepaid smoothing strategies. Second, consider broadening the policy space beyond “current vs prepaid” to incorporate features such as late fees (or the equivalent early‑payment discount) instead of interest‑free debt via the utility bill and/or a design in which a separate entity provides the loan while the utility focuses on water provision. Third, provide more institutional context and discussion of external validity (e.g., How common are shutoffs elsewhere? Are utilities typically allowed to charge interest on arrears? What is distinctive about Manila and what may generalize?).
+
+Finally, please do not hesitate to contact me at any time while you’re revising your paper for further guidance or clarity about anything — I hope to make this a straightforward and smooth resubmission.
+
+Refereee 1:
+Reviewer Report
+Manuscript reviewed: Microcredit from Delaying Bill Payments (William Violette)
+Recommendation to Editor.
+Although I agonised over the completeness of the welfare calculations, I would like to
+recommend that this paper be accepted without revisions. The paper is well executed and is a
+substantial contribution.
+Overview.
+This manuscript deals with an aspect of utility provision that is of material importance, especially
+in developing country contexts where matters of related to growing the extent and quality of
+service provision and revenue collection are closely related. The paper is concerned to estimate
+how postpaid metering enables households to adopt a strategy of consumption smoothing
+enabled by credit.
+Data used are largely administrative records from a piped water utility in Manila (Philippines),
+specifically: household level billing, payment, and disconnection. A sub-set of household
+records are able to be matched to household survey records, from a water connection survey in
+2008, 2010, and 2012, as well as a smaller household panel survey (2008, 2011) in a sub-
+municipality of Manila, Pasay City, that falls entirely within the utility’s supply area.
+The author constructs a simple dynamic model of borrowing, saving and water consumption in
+the spirit of Deaton (1991). Estimation is by backward induction from the point of view of the
+optimising household in a simulated method of moments procedure that matches simulated
+consumption and payment patterns with average consumption and payment patterns observed
+in the data.
+Results show that households derive significant welfare from delaying payment and being able to
+catch these payments up later, or simply to decide never to pay (most often in the event that they
+leave the utility supply area). In the paper’s method prepaid metering removes this possibility and
+households su er welfare loss as a result.
+The important result relates to social welfare. Although the utility incurs greater revenue losses
+under postpaid metering, compared to prepaid metering, the welfare gain on the part of
+consumers outweighs this, to the extent that it is closer to optimal, from a social welfare point of
+view, for the utility to reduce its cost of operation by halving its payment enforcement e orts.
+Comment.
+This paper makes an important contribution to the literature on utility provision in developing
+countries. Insofar as metering technology enters into the discussion of utility service provision
+and revenue collection, there has been very little consideration of the welfare gains from allowing
+households to manage income shocks through consumption smoothing enabled by postpaid
+metering. For this reason, I think this paper is an important and timely contribution to the
+literature.
+One set of potential concerns with the sort of approach that the author adopts is that results can
+be an artefact of the model structure. So far as I can tell, however, Violette employs enough
+variation in model structure to convince me that, given the magnitude of the welfare e ect, the
+overall conclusion is not an artefact of model structure.
+A greater concern of mine relates to what I feel is an incompleteness in the Welfare calculations
+with respect to prepaid and postpaid metering. I agonised over this for a while. I describe my
+concern below.
+The author considers consumption smoothing enabled by credit, where households build up
+debt and reduce it by paying it o after a positive income shock. With postpaid meters this is the
+only route to consumption smoothing open to households. With prepaid meters, however,
+households can also consumption smooth in a more prospective fashion, through purchasing
+strategically ahead of time. There are two ways in which this could materially improve the welfare
+outcomes for households.
+First, where price follows an inclining block tari , as it does in this paper’s setting in Manila,
+additional welfare improvements for households are accessible through prepaid metering, but
+not postpaid metering. Prepaid metered households are able to minimise their total expenditure
+on the utility over the period they are connected by purchasing their average monthly
+consumption (calculated over the period they expect to be connected). This strategy reduces the
+household’s expenditure relative to the postpaid case by allowing households to buy units in
+excess of what they use in lower-than-average-usage months, building up a surplus, and then
+buying fewer units than they need in higher-than-average-usage months, drawing down this
+surplus. This strategy minimises the total number of litres bought at the higher marginal price
+blocks of the inclining block schedule over the period that the household is connected. Where
+prices increase as steeply as they seem to do in this paper’s context, this saving can be large,
+with a correspondingly large welfare e ect for households.
+Second, just by purchasing ahead, households reduce the risk of receiving demand letters and
+disconnection notices, as well as reducing the risk of being disconnected if they plan to stay in
+the utility’s service area. Demand letters and disconnection notices reduce utility and so do
+actual disconnections in the author’s model, as well as according to common sense. Avoiding
+these improves welfare, all else equal. Of course, for the utility, this improves revenue collection
+– also welfare improving.
+I do not know if the additional welfare would be enough to change the author’s conclusion in this
+paper. However, I would love to see this calculation; the welfare considerations feel incomplete
+without it. I would encourage the author to consider it.
+Nevertheless, in the end, I think that the contribution of this paper in its current form, with its
+focus on consumption smoothing through credit, is substantial enough for it to be published
+without revision.
+
+Referee 2:
+Report: ”Microcredit from Delaying Bill Payments” (MS 2025100)
+The paper studies how to improve a water utility company’s payment policies. It uses data
+from a water utility company in Manila, Philippines. It estimates a household consumption
+and savings model to evaluate the water company’s counterfactual payment policies. In the
+model, the household can borrow in two ways: either from a costly asset or by delaying its
+payments for water, interest-free. When it delays the payments, with some probability it
+receives a warning, upon which it has to either pay immediately or have its water supply
+disconnected (and can reconnect later for a modest fee). The model matches the data, where
+households are in large debt for water and, when disconnected, leave a large unpaid balance
+equivalent to about one year’s water bill. The paper considers two counterfactual policies:
+(1) upfront payments (prepaid metering), and (2) allowing more late payments. It finds that
+prepaid meters are inferior to the current policy, and that it would be welfare-improving to
+allow more late payments.
+Given the research question, in my opinion, the paper would be a better fit for a devel-
+opment economics journal.
+Main issues:
+1.1. Considering all relevant effects. I’m not sure whether the paper considers all
+relevant effects when making the policy conclusions. In this setting, the water utility
+company has two roles: providing interest-free loans and providing water. In my
+opinion, it is not a typical IO problem.
+First, access to clean water is a public health issue in developing countries. If the
+water company takes on dual roles, providing loans and water, it may face difficulties
+making the necessary investments to supply clean water to the entire population. In
+the current analysis, the firm’s investment decisions are not considered. I understand
+that the counterfactual is revenue-neutral, but the paper currently does not account
+for the water company’s investment decisions. In my opinion, it is likely that the
+current revenue is too low to support optimal investment. With better institutions,
+the company might be able to raise more revenue to make desirable investments. In
+my view, by focusing only on the income-smoothing aspect, the paper ignores other
+relevant effects. Hence, I’m not sure whether the policy conclusion that prepaid meters
+are inferior is correct.
+Second, if the government wants to provide interest-free loans, why do it via the water
+utility company? Why not create another entity that provides loans or build an institu-
+tional framework that allows the market to do so? In my opinion, for the counterfactual
+policy analysis, this implies that we shouldn’t consider only an epsilon improvement,
+but also consider what is optimal.
+1.2. Household discount rate. The parameter for the household discount rate is assumed
+to be the same as found in the literature for the US. However, since the institutional
+1
+details and behavior in Manila differ from those in the US, I believe it is important to
+use parameters that are estimated for developing countries.
+It seems like a very strong assumption to assume that the annual discount rate in
+Manila is 6%. This is reasonable in the US, where the annual interest rate could be
+considered 6%. But in Manila, as the paper states, the annual interest rate for most
+households is about 200% (9.5% monthly rate). Perhaps it would be useful to look at
+discount rate estimates in the Philippines (Ashraf, Karlan, and Yin, 2006 QJE).
+Other comments:
+2.1. More details on the institution and comparison with other countries. The
+paper studies a strange pattern of behavior: a large share of the population regularly
+allows its water to be turned off. To better understand what is going on, it would be
+helpful to have some background information for comparison with other countries. In
+other countries, how common is it for utilities to be turned off? How common is it for
+utility companies to be prohibited from charging interest on late payments?
+2.2. Additional counterfactuals. In my opinion, it would be interesting to add another
+counterfactual: the utility company charging interest on late payments, as is done in
+many other countries. If it is politically costly to impose a late fee, one could frame it
+as an early payment discount instead.
+2.3. Intra-household bargaining. What is the role of intra-household bargaining? In
+development economics, there is substantial literature on household bargaining and the
+inefficiencies that result from it. Who makes the decisions and pays the bills, and who
+bears most of the cost when the water is disconnected and the household has to obtain
+water from alternative sources? Is the person who pays the regular bill the same as
+the one who pays the one-time reconnection fee?
+2.4. Summary statistics. It would be informative if Table 1 presented, in addition to the
+mean, other statistics, at least the median.
