@@ -65,7 +65,7 @@ def main():
     # ---- Flags ----
     est_pattern  = 1
     results      = 1
-    boot         = 1
+    boot         = 0
     given_sim    = 1
     br           = 10      # bootstrap reps
     opt_method   = 'Nelder-Mead'
@@ -91,7 +91,7 @@ def main():
     # What to estimate:  alpha(idx 6), pd(idx 11), pc(idx 16)  [0-based]
     option = [6, 11, 16]
     lb = np.array([40.0,  10.0, 0.01])
-    ub = np.array([80.0, 400.0, 0.99])
+    ub = np.array([80.0, 1000.0, 0.99])
 
     option_moments     = [0, 1, 2]
     option_moments_est = [0, 1, 2]
