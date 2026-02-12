@@ -103,7 +103,7 @@ This paper incorporates delayed bill payments into household consumption and sav
 
 This paper builds a dynamic model to capture household consumption smoothing patterns.  In this model, households with risky incomes can borrow from a costly asset as well as from delayed payments to the water utility.  While delayed bills charge no interest, households face some probability each month of receiving a delinquency warning which confronts households with the choice of either paying their bills immediately or disconnecting and using an alternative water source.  This warning probability is estimated from households' delayed bills while household preferences are estimated from water consumption.  The estimated model matches descriptive evidence that households make large, infrequent payments and leave large unpaid balances when they disconnect permanently.
 
-The estimated model allows for evaluating the welfare effects of introducing prepaid meters.  Prepaid meters are paired with a price reduction to ensure that the utility's net revenues remain equal to zero given that with prepaid meters, the utility no longer needs to conduct delinquency warnings and households no longer leave unpaid bills when they disconnect permanently.  Simulations indicate that this price reduction is not enough to compensate households for their loss of consumption smoothing from having to pay their bills upfront.  Moreover, prepaid meters appear to steeply lower total household borrowing.
+The estimated model allows for evaluating the welfare effects of introducing prepaid meters.  Prepaid meters are paired with a price reduction to ensure that the utility's net revenues remain equal to zero given that with prepaid meters, the utility no longer needs to conduct delinquency warnings and households no longer leave unpaid bills when they disconnect permanently.  Simulations indicate that this price reduction is not enough to compensate households for their loss of consumption smoothing from having to pay their bills upfront.  Moreover, prepaid meters appear to steeply lower total household borrowing.  Results further suggest that these losses can be offset by lowering borrowing costs by around 25\%, which supports pairing prepaid meters with microcredit programs.  Compared to prepaid meters, additional counterfactuals that impose late fees or interest on arrears substantially reduce unpaid bills with less effect on consumer welfare.
 
 The counterfactual exercises also consider a revenue-neutral policy that halves the utility's enforcement of unpaid bills.  In particular, this policy lowers the probability that households receive delinquency warnings by 50\%, which could be easily implemented by the utility.  This policy almost triples the average amount of unpaid bills, indicating substantially more consumption smoothing.  Despite larger unpaid bills, this policy actually results in a small price reduction because of lower enforcement costs and because of greater revenue raised from households substituting toward piped water consumption to increase their borrowing with unpaid bills.\footnote{For example in months where households are especially credit constrained, they may choose to wash clothes at home instead of at a laundromat or drink water instead of other beverages.}  This result suggests that less enforcement would more than pay for itself.  Overall, this policy is predicted to improve social welfare by 117 PhP (or 2.6 USD) per household each month.  Given 2.4 million piped water using households in Metro Manila, this estimate implies welfare gains up to 75 million USD each year.
 
@@ -478,9 +478,9 @@ where $FC$ equals fixed costs in monthly terms and averages \input{tables/rev_go
 
 
 
-\subsection{Prepaid Metering}
+\subsection{Prepaid Metering}\label{section:prepaidmeters}
 
-Prepaid metering generates cost savings because with prepaid meters, the utility no longer needs to conduct delinquency warnings and households can no longer leave their bills unpaid.  These costs savings lead to a reduction in the water price needed to cover the remaining pumping and fixed costs.  Column (2) of Table~\ref{table:countercosts} summarizes these cost changes under prepaid metering, finding a substantial reduction in the marginal price per m3 from \input{tables/p1_reg_b}to \input{tables/p1_nl_b}\unskip.  This reduction brings marginal prices closer to the marginal pumping cost of 5 PhP per m3, leading households to consume greater and more efficient quantities of water.
+Prepaid metering generates cost savings because with prepaid meters, the utility no longer needs to conduct delinquency warnings and households can no longer leave their bills unpaid.  Prepaid meters attach to the pipe servicing the residence and allow water to flow once the household has entered credit into the meter.\footnote{For instance in South Africa, households purchase credits at local shops or ATMs, which they can then enter into their meter to ensure the flow of electricity (\cite{jack2020charging}).}  These costs savings lead to a reduction in the water price needed to cover the remaining pumping and fixed costs.  Column (2) of Table~\ref{table:countercosts} summarizes these cost changes under prepaid metering, finding a substantial reduction in the marginal price per m3 from \input{tables/p1_reg_b}to \input{tables/p1_nl_b}\unskip.  This reduction brings marginal prices closer to the marginal pumping cost of 5 PhP per m3, leading households to consume greater and more efficient quantities of water.
 
 \begin{table}[H]
 \centering
@@ -512,7 +512,12 @@ Price per m3  &  \input{tables/p1_reg_b} & \input{tables/p1_nl_b}    &  \input{t
 \end{table}
 
 
-Despite the decrease in prices, the exercise predicts that prepaid metering lowers social welfare.  The first row of Table~\ref{table:counter} calculates the compensating variation associated with each policy, which measures the change in monthly household income needed to make households indifferent between the current scenario in Manila and each policy.  Column (2) predicts that households would require an increase in their monthly incomes of at least \input{tables/cv_comp_nl_b}PhP in order to be willing to switch to prepaid metering.   This decline in welfare appears entirely driven by removing households' ability to smooth consumption through unpaid bills.  Comparing columns (1) and (2), unpaid balances drop from 1,235 to 0 PhP and standard borrowing levels drop by around 80 PhP.  These findings suggest that households substantially reduce their overall borrowing levels when credit from unpaid bills is no longer available.   % The utility costs of this loss of credit outweigh any 
+Despite the decrease in prices, the exercise predicts that prepaid metering lowers social welfare.  The first row of Table~\ref{table:counter} calculates the compensating variation associated with each policy, which measures the change in monthly household income needed to make households indifferent between the current scenario in Manila and each policy.  Column (2) predicts that households would require an increase in their monthly incomes of at least \input{tables/cv_comp_nl_b}PhP in order to be willing to switch to prepaid metering.   This decline in welfare appears entirely driven by removing households' ability to smooth consumption through unpaid bills.  Comparing columns (1) and (2), unpaid balances drop from 1,235 to 0 PhP and standard borrowing levels drop by around 80 PhP.  These findings suggest that households substantially reduce their overall borrowing levels when credit from unpaid bills is no longer available.  
+
+The counterfactual further calculates that households would be indifferent to having prepaid meters if the borrowing cost of the standard asset were also lowered from from 9.5\% (see Table~\ref{table:calibratedparam}) to 7\%.  This result suggests that pairing prepaid meters with microloan programs or other credit policies could help offset the consumer welfare effects of prepaid meters.
+
+
+% The utility costs of this loss of credit outweigh any 
 % This loss of credit outweighs the positive effects of greater water consumption and decreases in total water bills due to lower water prices.
 % Consistent with lower water prices, 
 % One way to ballpark the benefit of 
@@ -554,7 +559,7 @@ This exercise assumes that the utility faces negligible costs of installing and 
 
 This exercise adjusts the marginal water price to ensure that revenues equal costs.  Alternatively, the utility may issue fixed rebates to consumers while holding marginal prices constant.  Under fixed rebates, prepaid metering would generate larger welfare losses because any cost savings would be directly transfered to households instead of helping to bring marginal prices closer to marginal costs.  It is unlikely that a system of fixed rebates would occur in this setting given that most tariff adjustments target marginal rates.
 
-The negative welfare effects of prepaid metering appear robust to alternative assumptions on household preferences.  Appendix Table~\ref{table:robustestimates} provides the compensating variation associated with prepaid metering under high and low discount rates and levels of risk aversion.  High discount rates and levels of risk aversion both increase household demand for consumption smoothing, which magnify the welfare costs of prepaid metering.  Welfare losses from prepaid metering are also higher under low estimated water preferences because households derive less utility from the price discounts brought by prepaid metering.  Estimates suggest uniformly negative welfare impacts impacts ranging from 5 to 113 PhP.
+The negative welfare effects of prepaid metering appear robust to alternative assumptions on household preferences.  Appendix Table~\ref{table:robustestimates} provides the compensating variation associated with prepaid metering under high and low discount rates and levels of risk aversion.  High discount rates and levels of risk aversion both increase household demand for consumption smoothing, which magnify the welfare costs of prepaid metering.  Welfare losses from prepaid metering are also higher under low estimated water preferences because households derive less utility from the price discounts brought by prepaid metering.  Estimates suggest uniformly negative welfare impacts impacts ranging from 5 to 113 PhP.  These results are similar assuming a fixed marginal price for water as described in Appendix~\ref{appendix:linearprices}, which suggests that prepaid metering effects are robust to pricing structure.
 
 
 \subsection{50\% Less Enforcement}
@@ -569,57 +574,18 @@ This exercise does not allow for the possibility that with less delinquency enfo
 The positive welfare effects of reducing enforcement appear robust to alternative assumptions on household preferences.  Appendix Table~\ref{table:robustestimates} provides the compensating variation of reducing delinquency enforcement under high and low discount rates and levels of risk aversion.  High discount rates and levels of risk aversion both increase household demand for consumption smoothing, which magnify the welfare benefits of reduced enforcement.  Estimates suggest uniformly positive welfare impacts ranging from 94 to 161 PhP.
 
 
-\subsection{Late Penalty}
+\subsection{Late Penalty and Interest Rates on Unpaid Bills}\label{section:latepenalty}
 
-The next counterfactual considers a late penalty equal to 10\% of the average unpaid balance, which is consistent with billing policies among other public water providers in the Philippines.\footnote{This policy imposes an additional fee of $10\% \times 1{,}235 = 123.5$ PhP each month that a household carries a negative water balance ($B_{t+1}<0$) and remains connected. See \cite{mnwd_guidelines_bills_payments} and \cite{ppcwater_ur_billing} for examples.}
+The last counterfactuals consider alternative approaches to reducing billing delinquency to capture the fact that other water providers in the Philippines impose late penalties of around 10\% of total unpaid balances.\footnote{See \cite{mnwd_guidelines_bills_payments} and \cite{ppcwater_ur_billing} for examples.}
 
-.  This penalty is modeled as an extra deduction from household income in months where the household chooses to carry unpaid bills into the next period.  
+Column (4) of Tables~\ref{table:countercosts} and Table~\ref{table:counter} considers a fixed late penalty calibrated to 10\% of the average unpaid balance.\footnote{This policy imposes an additional fee of $10\% \times 1{,}235 = 123.5$ PhP each month that a household carries a negative water balance ($B_{t+1}<0$) and remains connected.} Column (5) of Tables~\ref{table:countercosts} and Table~\ref{table:counter} imposes a fixed monthly interest rate of 4.9\% on unpaid water bills that accumulate while the household is connected, calibrated to reflect the fact that households are on average two months in arrears.
 
-Column~(4) of Table~\ref{table:countercosts} summarizes the cost changes under this policy, and Column~(4) of Table~\ref{table:counter} provides the corresponding household outcomes.  The compensating variation in Column~(4) measures the welfare impact of the late penalty after adjusting prices to maintain revenue neutrality.
+These policies have similar effects.  Both leave households roughly indifferent to the current equilibrium.  Households consume borrow much less from their unpaid balances.  Cost savings from lower unpaid balances are passed onto households in the form of slightly lower water prices.  
 
-\subsection{Interest Rate on Unpaid Bills}
-
-The final counterfactual considers imposing a fixed monthly interest rate of 4.9\% on unpaid water bills.  Under this policy, unpaid balances are effectively discounted each month so that $B_{t+1}$ becomes $B_{t+1}/(1+0.049)$.  This interest charge raises the cost of carrying unpaid bills and reduces the implicit credit subsidy that the utility provides to delinquent households.  Column~(5) of Table~\ref{table:countercosts} summarizes the cost changes under this interest rate policy, and Column~(5) of Table~\ref{table:counter} provides the corresponding household outcomes.  The compensating variation in Column~(5) measures the welfare impact after adjusting prices to maintain revenue neutrality.
-
-% Instead, this exercise assumes that households permanently disconnect 384 months after connecting.
-
-
- % While this policy may generate cost savings , the utility may also lose revenue when households leave large unpaid bills upon disconnection.  
-
-% added footnote which might deal with it, but think harder on it later --- deal with this? - in practice, the utility charges a fixed price... not model or introduce in the model earlier???
+Despite having relatively low unpaid balances, households are still considerably better off than under prepaid metering.  This finding is consistent with households deriving substantial value from having access to unpaid bills as an emergency credit option.
 
 
 
-
-
-
-
-
-% To measure how much households value credit from unpaid water bills, I examine how household welfare changes in a counterfactual setting where households are unable to borrow from their water bills.  Table~\ref{table:counter} includes outcomes for the current setting in Manila in Column (1) and for a counterfactual setting without water borrowing in Column (2), which is captured by raising the interest rate on unpaid water bills to 100\% and holding all else equal.  The first row calculates compensating variation equal to \input{tables/U_nl_abs}PhP (or \input{tables/U_nl_abs_usd}USD) per household-month associated with losing access to water credit.  This estimate suggests that households are indifferent between their current situation and a counterfactual with \input{tables/U_nl_abs}PhP per month in additional income and without access to water credit.  Given an average water bill of \input{tables/bill_all}PhP/month, this estimate would translate into households paying around \input{tables/U_nl_per}\unskip\% smaller bills each month.  
-
-% Eliminating credit access also decreases mean usage by \input{tables/c_h_nl_drop}\unskip\% as shown by columns (1) and (2) in the second row of Table~\ref{table:counter}.  Eliminating credit access lowers the extent to which households can smooth their consumption over time while also removing the incentive for households to overconsume water in order to finance water borrowing.  Given that households spend around \input{tables/bill_inc_all}\unskip\% of their income on water, this estimate is roughly proportional to similar evidence from South Africa where restricting credit access with prepaid electricity meters produced a 13\% reduction in usage and where households spend around 8-10\% of their income on electricity (\cite{jack2020charging}).\footnote{\cite{jack2020charging} also propose other mechanisms that may account for reductions in usage such as transaction costs and intra-household bargaining constraints.}
-
-
-
-
-
-% %\subsection{Prepaid Metering}
-
-% This setting also provides a useful opportunity to simulate the social welfare impacts of popular policies to reduce delinquency.  I consider a policy that (1) eliminates borrowing by raising the interest rate on unpaid bills to 100\% and (2) adjusts prices to ensure that the utility remains revenue-neutral.  The regulatory structure in Manila as well as many other developing cities ensures that prices for water are regulated to exactly cover all production costs .
-
-% Eliminating borrowing affects the costs of the utility in four main ways
-
-% To determine price increases necessary to cover these costs, the following expression first calculates the revenue raised through prices,  $p_1$ and $p_2$, per household-month given income, $Y$, net of marginal cost, $MC$
-% \begin{align*}
-% REV \big(p_1,r_b,Y \big) &= \Big ( \,  p_1 - MC +  p_2 \, w^{*}(p_1,p_2,r_b,Y)  \,  \Big ) \, \, w^{*}(p_1,p_2,r_b,Y)
-% \end{align*}
-% %With prepaid meters, the  utility would also no longer need to conduct delinquency visits.  
-
-%Appendix~\ref{appendix:visitcosts} provides evidence that these cost savings are likely to be negligible.
-
-
-
-%%% also include counterfactual where we increase the interest rate and see substitution? may have to rewrite some of the identification section....
 
 \section{Conclusion}\label{section:conclusion}
 
@@ -1002,9 +968,9 @@ This table re-estimates the model under four alternate assumptions on preference
 \end{table}
 
 
-\subsection{Linear Prices}\label{appendix:linearprices}
+\subsection{Single Marginal Price}\label{appendix:linearprices}
 
-The main analysis approximates the tariff structure using a linear regression of average price on monthly usage, yielding a constant term $p_1$ and a slope $p_2$.  This appendix considers a robustness check that eliminates the curvature of prices by setting $p_2 = 0$ while keeping $p_1$ at its estimated value.  Table~\ref{table:counter_linp} reproduces the counterfactual household outcomes from Table~\ref{table:counter} under this linear price assumption.
+The main analysis approximates the tariff structure using a linear regression of average price on monthly usage, yielding a constant term $p_1$ and a slope $p_2$.  This appendix considers a robustness check that eliminates the curvature of prices by setting $p_2 = 0.001$ while keeping $p_1$ at its estimated value.  Table~\ref{table:counter_linp} reproduces the counterfactual household outcomes from Table~\ref{table:counter} under this linear price assumption.
 
 \begin{table}[H]
 \centering
