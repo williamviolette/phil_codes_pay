@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1770862608.61809 "/Users/willviolette/Library/CloudStorage/Dropbox/Mac/Documents/GitHub/phil_codes_pay/paper/referee_response.tex" "build/referee_response.pdf" "referee_response" 1770862610.31396 0
-  "/Users/willviolette/Library/CloudStorage/Dropbox/Mac/Documents/GitHub/phil_codes_pay/paper/referee_response.tex" 1770862608.41327 10070 746ffd8ea670a317153908eaec83de88 ""
+["pdflatex"] 1770903196.21795 "/Users/willviolette/Library/CloudStorage/Dropbox/Mac/Documents/GitHub/phil_codes_pay/paper/referee_response.tex" "build/referee_response.pdf" "referee_response" 1770903198.05279 0
+  "/Users/willviolette/Library/CloudStorage/Dropbox/Mac/Documents/GitHub/phil_codes_pay/paper/referee_response.tex" 1770903193.87315 18635 0b43cbeba21044b18c4b8ae536e640cf ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplb7t.tfm" 1136768653 1616 371d1ee60c04b008c8fd760060cd34f1 ""
@@ -77,11 +77,11 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1769800233 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "build/referee_response.aux" 1770862610.15135 162 59504cb8f8bee0a3f0488d753cb23a1e "pdflatex"
-  "build/referee_response.out" 1770862609.61835 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "build/water_bill_paper_wjv_rev.aux" 1770862467.84655 14511 4bbd86609bb59e0e2b096842b5f354d7 ""
-  "referee_response.tex" 1770862608.41327 10070 746ffd8ea670a317153908eaec83de88 ""
-  "water_bill_paper_wjv_rev.tex" 1770862458.10724 118480 44f4da595c5fdc704a14ed705985b133 ""
+  "build/referee_response.aux" 1770903197.80752 162 f042405b684a8c860cba07045d113040 "pdflatex"
+  "build/referee_response.out" 1770903197.33122 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "build/water_bill_paper_wjv_rev.aux" 1770903021.86904 14511 4bbd86609bb59e0e2b096842b5f354d7 ""
+  "referee_response.tex" 1770903193.87315 18635 0b43cbeba21044b18c4b8ae536e640cf ""
+  "water_bill_paper_wjv_rev.tex" 1770903031.484 123649 a53ab6c36c82146c00e04f365796ec71 ""
   (generated)
   "build/referee_response.aux"
   "build/referee_response.log"
