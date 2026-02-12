@@ -1,4 +1,4 @@
-\begin{thebibliography}{47}
+\begin{thebibliography}{53}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -51,10 +51,20 @@ T.~Buford and S.~Campbell.
 \newblock \emph{ProPublica}, Mar 2020.
 \newblock URL \url{https://www.propublica.org/article/some-towns-still-havent-halted-utility-shut-offs-for-unpaid-water-bills-during-coronavirus-even-as-federal-lawmakers-demand-it}.
 
+\bibitem[Burgess et~al.(2020)Burgess, Greenstone, Ryan, and Sudarshan]{burgess2020consequences}
+R.~Burgess, M.~Greenstone, N.~Ryan, and A.~Sudarshan.
+\newblock The consequences of treating electricity as a right.
+\newblock \emph{Journal of Economic Perspectives}, 34\penalty0 (1):\penalty0 145--169, 2020.
+
 \bibitem[Carvalho et~al.(2016)Carvalho, Prina, and Sydnor]{carvalho2016effect}
 L.~S. Carvalho, S.~Prina, and J.~Sydnor.
 \newblock The effect of saving on risk attitudes and intertemporal choices.
 \newblock \emph{Journal of Development Economics}, 120:\penalty0 41--52, 2016.
+
+\bibitem[Cicala(2021)]{cicala2021incidence}
+S.~Cicala.
+\newblock The incidence of extreme economic stress: Evidence from utility disconnections.
+\newblock \emph{Journal of Public Economics}, 200:\penalty0 104461, 2021.
 
 \bibitem[Cull et~al.(2009)Cull, Asli Demirg{\"u}{\c{c}}-Kunt, and Morduch]{cull2009microfinance}
 R.~Cull, A.~Asli Demirg{\"u}{\c{c}}-Kunt, and J.~Morduch.
@@ -70,6 +80,11 @@ A.~Deaton.
 A.~Demirguc-Kunt, L.~Klapper, D.~Singer, S.~Ansar, and J.~Hess.
 \newblock Global findex database 2017.
 \newblock Technical report, The World Bank, 2018.
+
+\bibitem[Devoto et~al.(2012)Devoto, Duflo, Dupas, Pariente, and Pons]{devoto2012happiness}
+F.~Devoto, E.~Duflo, P.~Dupas, W.~Pariente, and V.~Pons.
+\newblock Happiness on tap: Piped water adoption in urban morocco.
+\newblock \emph{American Economic Journal: Economic Policy}, 4\penalty0 (4):\penalty0 68--99, 2012.
 
 \bibitem[Diakit{\'e} et~al.(2009)Diakit{\'e}, Semenov, and Thomas]{diakite2009proposal}
 D.~Diakit{\'e}, A.~Semenov, and A.~Thomas.
@@ -176,6 +191,11 @@ D.~Laibson, A.~Repetto, and J.~Tobacman.
 \newblock Estimating discount functions with consumption choices over the lifecycle.
 \newblock Technical report, National Bureau of Economic Research, 2007.
 
+\bibitem[Marques et~al.(2023)Marques, Simoes, Machete, and Fagundes]{marques2023water}
+R.~C. Marques, P.~Simoes, I.~Machete, and T.~Fagundes.
+\newblock Water disconnection and vital flow policies: International practices in medium- and high-income countries.
+\newblock \emph{Water}, 15\penalty0 (5):\penalty0 935, 2023.
+
 \bibitem[Matousek et~al.(2022)Matousek, Havranek, and Irsova]{matousek2022individual}
 J.~Matousek, T.~Havranek, and Z.~Irsova.
 \newblock Individual discount rates: a meta-analysis of experimental evidence.
@@ -233,6 +253,11 @@ A.~Szab{\'o} and G.~Ujhelyi.
 \newblock Reducing nonpayment for public utilities: Experimental evidence from south africa.
 \newblock \emph{Journal of Development Economics}, 117:\penalty0 20--31, 2015.
 
+\bibitem[{United Nations General Assembly}(2010)]{unga2010water}
+{United Nations General Assembly}.
+\newblock Resolution 64/292: The human right to water and sanitation, 2010.
+\newblock A/RES/64/292, adopted 28 July 2010.
+
 \bibitem[Violette(2019)]{wjv}
 W.~Violette.
 \newblock Optimal pricing and informal sharing: Evidence from piped water in manila.
@@ -242,5 +267,10 @@ W.~Violette.
 P.~P. Wakker.
 \newblock Explaining the characteristics of the power (crra) utility family.
 \newblock \emph{Health economics}, 17\penalty0 (12):\penalty0 1329--1344, 2008.
+
+\bibitem[Wu and Malaluan(2008)]{wu2008tale}
+X.~Wu and N.~A. Malaluan.
+\newblock A tale of two concessionaires: A natural experiment of water privatisation in metro manila.
+\newblock \emph{Urban Studies}, 45\penalty0 (1):\penalty0 207--229, 2008.
 
 \end{thebibliography}

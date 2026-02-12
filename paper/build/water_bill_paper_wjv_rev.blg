@@ -4,51 +4,51 @@ The top-level auxiliary file: water_bill_paper_wjv_rev.aux
 The style file: abbrvnat.bst
 Database file #1: ref.bib
 Warning--entry type for "mnwd_guidelines_bills_payments" isn't style-file defined
---line 1 of file ref.bib
+--line 60 of file ref.bib
 Warning--entry type for "ppcwater_ur_billing" isn't style-file defined
---line 10 of file ref.bib
+--line 69 of file ref.bib
 Warning--empty journal in anand2014consuming
 Warning--empty journal in hannagan2015income
 Warning--empty journal in komives2006distributional
-You've used 47 entries,
+You've used 53 entries,
             2773 wiz_defined-function locations,
-            859 strings with 12000 characters,
-and the built_in function-call counts, 19494 in all, are:
-= -- 1789
-> -- 964
-< -- 36
-+ -- 333
-- -- 285
-* -- 1515
-:= -- 3015
-add.period$ -- 144
-call.type$ -- 47
-change.case$ -- 237
-chr.to.int$ -- 46
-cite$ -- 97
-duplicate$ -- 904
-empty$ -- 1698
-format.name$ -- 372
-if$ -- 4049
+            897 strings with 13094 characters,
+and the built_in function-call counts, 22257 in all, are:
+= -- 2031
+> -- 1131
+< -- 39
++ -- 390
+- -- 336
+* -- 1750
+:= -- 3444
+add.period$ -- 162
+call.type$ -- 53
+change.case$ -- 272
+chr.to.int$ -- 52
+cite$ -- 109
+duplicate$ -- 1022
+empty$ -- 1925
+format.name$ -- 431
+if$ -- 4619
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 41
-newline$ -- 246
-num.names$ -- 188
-pop$ -- 445
+missing$ -- 46
+newline$ -- 276
+num.names$ -- 212
+pop$ -- 511
 preamble$ -- 1
-purify$ -- 189
+purify$ -- 218
 quote$ -- 0
-skip$ -- 690
+skip$ -- 781
 stack$ -- 0
-substring$ -- 798
-swap$ -- 45
+substring$ -- 906
+swap$ -- 51
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 507
+type$ -- 573
 warning$ -- 3
-while$ -- 200
+while$ -- 226
 width$ -- 0
-write$ -- 607
+write$ -- 684
 (There were 5 warnings)
