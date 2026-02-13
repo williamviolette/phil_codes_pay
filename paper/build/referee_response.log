@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  12 FEB 2026 08:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  12 FEB 2026 09:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -275,23 +275,43 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 49.
 
+Overfull \hbox (2.95221pt too wide) in paragraph at lines 59--60
+\OT1/ppl/m/n/12 ment, and uni-ver-sal me-ter-ing un-der the 1997 con-ces-sion reform---and (4) where
+ []
+
+
 
 [1
 
 {/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc}]
 
 [2]
+Overfull \hbox (2.29097pt too wide) in paragraph at lines 91--92
+[]\OT1/ppl/m/n/12 While the set-ting is a de-vel-op-ing coun-try, the core ques-tions are squarely within
+ []
+
+
+Overfull \hbox (2.91473pt too wide) in paragraph at lines 91--92
+\OT1/ppl/m/n/12 The coun-ter-fac-tual exercises---prepaid me-ter-ing, en-force-ment lev-els, late penal-
+ []
+
+
+Overfull \hbox (2.42348pt too wide) in paragraph at lines 107--108
+[]\OT1/ppl/m/n/12 The pa-per ad-dresses this con-cern in two ways. First, the revenue-neutral frame-
+ []
+
+
 
 [3]
 
 [4]
-
-[5]
-Overfull \hbox (9.71902pt too wide) in paragraph at lines 160--161
-[]\OT1/ppl/m/n/12 This is a thought-ful point. The pa-per mod-els the house-hold as a uni-tary decision-
+Overfull \hbox (1.07867pt too wide) in paragraph at lines 136--137
+\OT1/ppl/m/n/12 is dis-tinc-tive about Manila---the com-bi-na-tion of developing-country credit con-
  []
 
 
+
+[5]
 
 [6] (build/referee_response.aux)
  ***********
@@ -302,18 +322,18 @@ Package rerunfilecheck Info: File `referee_response.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 9287 strings out of 473190
- 146635 string characters out of 5715801
- 563874 words of memory out of 5000000
- 32433 multiletter control sequences out of 15000+600000
+ 9288 strings out of 473190
+ 146663 string characters out of 5715801
+ 563983 words of memory out of 5000000
+ 32434 multiletter control sequences out of 15000+600000
  571107 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,8n,79p,1491b,704s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,8n,79p,1313b,706s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on build/referee_response.pdf (6 pages, 88495 bytes).
+Output written on build/referee_response.pdf (6 pages, 87465 bytes).
 PDF statistics:
- 78 PDF objects out of 1000 (max. 8388607)
- 61 compressed objects within 1 object stream
+ 110 PDF objects out of 1000 (max. 8388607)
+ 93 compressed objects within 1 object stream
  11 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

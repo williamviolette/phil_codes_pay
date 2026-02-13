@@ -1,4 +1,4 @@
-\begin{thebibliography}{53}
+\begin{thebibliography}{55}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -171,6 +171,12 @@ D.~Karlan and J.~Zinman.
 \newblock Expanding credit access: Using randomized supply decisions to estimate the impacts.
 \newblock \emph{The Review of Financial Studies}, 23\penalty0 (1):\penalty0 433--464, 2009.
 
+\bibitem[Kingdom et~al.(2006)Kingdom, Liemberger, and Marin]{kingdom2006challenge}
+W.~D. Kingdom, R.~Liemberger, and P.~Marin.
+\newblock The challenge of reducing non-revenue water in developing countries: How the private sector can help – a look at performance-based service contracting.
+\newblock Technical Report~8, World Bank, Washington, DC, 2006.
+\newblock URL \url{https://documents.worldbank.org/curated/en/385761468330326484/The-challenge-of-reducing-non-revenue-water-NRW-in-developing-countries-how-the-private-sector-can-help-a-look-at-performance-based-service-contracting}.
+
 \bibitem[Kojima and Trimble(2016)]{kojima2016making}
 M.~Kojima and C.~Trimble.
 \newblock \emph{Making power affordable for Africa and viable for its utilities}.
@@ -267,6 +273,11 @@ W.~Violette.
 P.~P. Wakker.
 \newblock Explaining the characteristics of the power (crra) utility family.
 \newblock \emph{Health economics}, 17\penalty0 (12):\penalty0 1329--1344, 2008.
+
+\bibitem[{World Economic Forum}(2025)]{WEF2025WaterGap}
+{World Economic Forum}.
+\newblock Bridging the €6.5 trillion water infrastructure gap: A playbook, 2025.
+\newblock URL \url{https://reports.weforum.org/docs/WEF_Bridging_the_6.5_Trillion_Water_Infrastructure_Gap_A_Playbook_2025.pdf}.
 
 \bibitem[Wu and Malaluan(2008)]{wu2008tale}
 X.~Wu and N.~A. Malaluan.

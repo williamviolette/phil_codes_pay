@@ -729,8 +729,6 @@ INPUT ./tables/disc_paws.tex
 INPUT ./tables/disc_paws.tex
 INPUT ./tables/disc_paws.tex
 INPUT tables/disc_paws.tex
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/palatino/pplb7t.vf
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplb8r.tfm
 INPUT ./tables/bal_n0.tex
 INPUT ./tables/bal_n0.tex
 INPUT ./tables/bal_n0.tex
@@ -746,6 +744,8 @@ INPUT ./tables/bal_0.tex
 INPUT ./tables/bal_0.tex
 INPUT ./tables/bal_0.tex
 INPUT tables/bal_0.tex
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/palatino/pplb7t.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplb8r.tfm
 INPUT ./tables/tcd_per_hh.tex
 INPUT ./tables/tcd_per_hh.tex
 INPUT ./tables/tcd_per_hh.tex
@@ -1787,11 +1787,15 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/courier/pcrr7t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/courier/pcrr8r.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplr8c.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/palatino/pplr8c.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/mathpazo/fplmr.tfm
 INPUT build/water_bill_paper_wjv_rev.aux
 INPUT /Users/willviolette/Library/texlive/2025/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexas.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexs.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb
