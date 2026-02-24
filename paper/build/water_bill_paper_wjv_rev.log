@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  12 FEB 2026 20:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  24 FEB 2026 09:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1168,9 +1168,9 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 (./tables/days_pay_under_30.tex) (./tables/days_pay_average.tex) (./tables/enough_time.tex) (./tables/disc_paws.tex)
 
-[5] (./tables/bal_n0.tex) (./tables/out_bal.tex) (./tables/bal_0.tex)
+[5] (./tables/bal_n0.tex) (./tables/out_bal.tex) (./tables/bal_0.tex) (./tables/tcd_per_hh.tex) (./tables/t_rec.tex) (./tables/mdcp.tex) (./tables/mdcp4.tex)
 
-[6] (./tables/tcd_per_hh.tex) (./tables/t_rec.tex) (./tables/mdcp.tex) (./tables/mdcp4.tex) (./tables/center.tex) (./tables/maynilad.tex) (./tables/atm.tex)
+[6] (./tables/center.tex) (./tables/maynilad.tex) (./tables/atm.tex)
 
 [7]
 Overfull \hbox (9.44292pt too wide) in paragraph at lines 255--256
@@ -1267,9 +1267,9 @@ Overfull \hbox (7.2681pt too wide) in paragraph at lines 411--412
 
 (./tables/table_amount_mean.tex) (./tables/mdcp4.tex)
 
-[17] (./tables/est_alpha_b.tex) (./tables/est_sd_alpha_b.tex) (./tables/est_fc_b.tex) (./tables/est_sd_fc_b.tex) (./tables/est_pc_b.tex) (./tables/est_sd_pc_b.tex) (./tables/est_hhs.tex) (./tables/est_obs.tex)
+[17] (./tables/est_alpha_b.tex) (./tables/est_sd_alpha_b.tex) (./tables/est_fc_b.tex) (./tables/est_sd_fc_b.tex) (./tables/est_pc_b.tex) (./tables/est_sd_pc_b.tex) (./tables/est_hhs.tex) (./tables/est_obs.tex) (./tables/table_c_mean.tex) (./tables/table_c_mean_b.tex) (./tables/table_amount_mean.tex) (./tables/table_bill_mean_b.tex) (./tables/table_bal_mean.tex) (./tables/table_bal_mean_b.tex) (./tables/table_pays_mean.tex) (./tables/table_pays_mean_b.tex) (./tables/table_p0_mean.tex) (./tables/table_p0_mean_b.tex) (./tables/table_shr_dc_mean.tex) (./tables/table_shr_dc_mean_b.tex) (./tables/t_rec.tex) (./tables/table_t_rec_mean_b.tex) (./tables/bal_end_nc.tex) (./tables/table_bal_end_mean_b.tex)
 
-[18] (./tables/table_c_mean.tex) (./tables/table_c_mean_b.tex) (./tables/table_amount_mean.tex) (./tables/table_bill_mean_b.tex) (./tables/table_bal_mean.tex) (./tables/table_bal_mean_b.tex) (./tables/table_pays_mean.tex) (./tables/table_pays_mean_b.tex) (./tables/table_p0_mean.tex) (./tables/table_p0_mean_b.tex) (./tables/table_shr_dc_mean.tex) (./tables/table_shr_dc_mean_b.tex) (./tables/t_rec.tex) (./tables/table_t_rec_mean_b.tex) (./tables/bal_end_nc.tex) (./tables/table_bal_end_mean_b.tex)
+[18]
 
 [19] (./tables/fit_pay_corr.tex) (./tables/fit_use_corr.tex)
 
@@ -1326,23 +1326,21 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input li
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 525.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 525.
  (./tables/p1_reg_b.tex) (./tables/p1_nl_b.tex) (./tables/lend_cost_sum_reg_b.tex) (./tables/lend_cost_sum_nl_b.tex) (./tables/lend_cost_sum_hf_b.tex) (./tables_new/lend_cost_sum_lp_b.tex) (./tables_new/lend_cost_sum_ir_b.tex) (./tables/visit_cost_reg_b.tex) (./tables/visit_cost_nl_b.tex) (./tables/visit_cost_hf_b.tex) (./tables_new/visit_cost_lp_b.tex) (./tables_new/visit_cost_ir_b.tex) (./tables/mc_cost_reg_b.tex) (./tables/mc_cost_nl_b.tex) (./tables/mc_cost_hf_b.tex) (./tables_new/mc_cost_lp_b.tex) (./tables_new/mc_cost_ir_b.tex) (./tables/rev_goal_reg_b.tex) (./tables/rev_goal_reg_b.tex) (./tables/rev_goal_reg_b.tex) (./tables/rev_goal_reg_b.tex) (./tables/rev_goal_reg_b.tex) (./tables/p1_reg_b.tex) (./tables/p1_nl_b.tex) (./tables/p1_hf_b.tex) (./tables_new/p1_lp_b.tex) (./tables_new/p1_ir_b.tex)
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 546.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 549.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 550.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 550.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 550.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 550.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 550.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 550.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 550.
-
-Overfull \hbox (46.28693pt too wide) in paragraph at lines 532--554
- [] 
- []
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 553.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 553.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 553.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 553.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 553.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 553.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 553.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 553.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 553.
 
 
-
-[22] (./tables/cv_comp_nl_b.tex) (./tables/cv_comp_nl_b.tex) (./tables/cv_comp_hf_b.tex) (./tables_new/cv_comp_lp_b.tex) (./tables_new/cv_comp_ir_b.tex) (./tables/cons_reg_b.tex) (./tables/cons_nl_b.tex) (./tables/cons_hf_b.tex) (./tables_new/cons_lp_b.tex) (./tables_new/cons_ir_b.tex) (./tables/cons_val_reg_b.tex) (./tables/cons_val_nl_b.tex) (./tables/cons_val_hf_b.tex) (./tables_new/cons_val_lp_b.tex) (./tables_new/cons_val_ir_b.tex) (./tables/debt_reg_b.tex) (./tables/debt_nl_b.tex) (./tables/debt_hf_b.tex) (./tables_new/debt_lp_b.tex) (./tables_new/debt_ir_b.tex) (./tables/Aborr_abs_reg_b.tex) (./tables/Aborr_abs_nl_b.tex) (./tables/Aborr_abs_hf_b.tex) (./tables_new/Aborr_abs_lp_b.tex) (./tables_new/Aborr_abs_ir_b.tex)
+[22] (./tables/cv_comp_nl_b.tex)
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 559.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 559.
+ (./tables/cv_comp_nl_b.tex) (./tables/cv_comp_hf_b.tex) (./tables_new/cv_comp_lp_b.tex) (./tables_new/cv_comp_ir_b.tex) (./tables/cons_reg_b.tex) (./tables/cons_nl_b.tex) (./tables/cons_hf_b.tex) (./tables_new/cons_lp_b.tex) (./tables_new/cons_ir_b.tex) (./tables/cons_val_reg_b.tex) (./tables/cons_val_nl_b.tex) (./tables/cons_val_hf_b.tex) (./tables_new/cons_val_lp_b.tex) (./tables_new/cons_val_ir_b.tex) (./tables/debt_reg_b.tex) (./tables/debt_nl_b.tex) (./tables/debt_hf_b.tex) (./tables_new/debt_lp_b.tex) (./tables_new/debt_ir_b.tex) (./tables/Aborr_abs_reg_b.tex) (./tables/Aborr_abs_nl_b.tex) (./tables/Aborr_abs_hf_b.tex) (./tables_new/Aborr_abs_lp_b.tex) (./tables_new/Aborr_abs_ir_b.tex)
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 596.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 596.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input line 596.
@@ -1629,15 +1627,15 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 32236 strings out of 473190
- 611851 string characters out of 5715801
- 926722 words of memory out of 5000000
- 54187 multiletter control sequences out of 15000+600000
+ 32237 strings out of 473190
+ 611872 string characters out of 5715801
+ 927764 words of memory out of 5000000
+ 54188 multiletter control sequences out of 15000+600000
  660936 words of font info for 278 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,18n,131p,2057b,669s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,18n,131p,2041b,669s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/willviolette/Library/texlive/2025/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexas.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on build/water_bill_paper_wjv_rev.pdf (42 pages, 321423 bytes).
+Output written on build/water_bill_paper_wjv_rev.pdf (42 pages, 321522 bytes).
 PDF statistics:
  213 PDF objects out of 1000 (max. 8388607)
  140 compressed objects within 2 object streams
