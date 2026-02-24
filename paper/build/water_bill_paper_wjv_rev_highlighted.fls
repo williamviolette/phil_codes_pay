@@ -752,6 +752,8 @@ INPUT ./tables/bal_0.tex
 INPUT ./tables/bal_0.tex
 INPUT ./tables/bal_0.tex
 INPUT tables/bal_0.tex
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/palatino/pplb7t.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplb8r.tfm
 INPUT ./tables/tcd_per_hh.tex
 INPUT ./tables/tcd_per_hh.tex
 INPUT ./tables/tcd_per_hh.tex
@@ -772,8 +774,6 @@ INPUT ./tables/mdcp4.tex
 INPUT ./tables/mdcp4.tex
 INPUT ./tables/mdcp4.tex
 INPUT tables/mdcp4.tex
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/palatino/pplb7t.vf
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplb8r.tfm
 INPUT ./tables/center.tex
 INPUT ./tables/center.tex
 INPUT ./tables/center.tex
@@ -861,12 +861,12 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/newtx/txex-bar.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/newtx/ntxmi7.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/newtx/NewTXMI7.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/newtx/stxscr.tfm
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/newtx/ntxmi7.vf
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/newtx/NewTXMI7.tfm
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/newtx/stxscr.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/newtx/ntxsy7.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/newtx/txsys.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/newtx/txex-bar.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/newtx/ntxmi7.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/newtx/NewTXMI7.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/newtx/stxscr.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/adobe/palatino/pplr7t.vf
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplr8r.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/newtx/ntxsy7.vf
@@ -1060,6 +1060,8 @@ INPUT ./tables/p1_nl_b.tex
 INPUT ./tables/p1_nl_b.tex
 INPUT ./tables/p1_nl_b.tex
 INPUT tables/p1_nl_b.tex
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/newtx/ntxexa.vf
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/newtx/txexas.tfm
 INPUT ./tables/lend_cost_sum_reg_b.tex
 INPUT ./tables/lend_cost_sum_reg_b.tex
 INPUT ./tables/lend_cost_sum_reg_b.tex
@@ -1157,8 +1159,6 @@ INPUT ./tables_new/p1_ir_b.tex
 INPUT ./tables_new/p1_ir_b.tex
 INPUT ./tables_new/p1_ir_b.tex
 INPUT tables_new/p1_ir_b.tex
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/vf/public/newtx/ntxexa.vf
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/newtx/txexas.tfm
 INPUT ./tables/cv_comp_nl_b.tex
 INPUT ./tables/cv_comp_nl_b.tex
 INPUT ./tables/cv_comp_nl_b.tex
