@@ -125,7 +125,9 @@ The estimated model allows for evaluating the welfare effects of introducing pre
 
 The counterfactual exercises also consider a revenue-neutral policy that halves the utility's enforcement of unpaid bills.  In particular, this policy lowers the probability that households receive delinquency warnings by 50\%, which could be easily implemented by the utility.  This policy almost triples the average amount of unpaid bills, indicating substantially more consumption smoothing.  Despite larger unpaid bills, this policy actually results in a small price reduction because of lower enforcement costs and because of greater revenue raised from households substituting toward piped water consumption to increase their borrowing with unpaid bills.\footnote{For example in months where households are especially credit constrained, they may choose to wash clothes at home instead of at a laundromat or drink water instead of other beverages.}  This result suggests that less enforcement would more than pay for itself.  Overall, this policy is predicted to improve social welfare by 117 PhP (or 2.6 USD) per household each month.  Given 2.4 million piped water using households in Metro Manila, this estimate implies welfare gains up to 75 million USD each year.
 
-This paper contributes to three main strands of economic literature.  First, this paper brings payment and billing policy questions into a growing literature on optimal policy for utilities in developing countries (\cite{mcrae2015infrastructure}; \cite{szabo2015value}; \cite{jack2020charging}; \cite{jack2015pay}; \cite{szabo2015reducing}).  Building on previous static models, this paper also provides a framework for considering how dynamic incentives affect household demand for public utilities.  Second, this paper draws on a large body of research analyzing household credit constraints, particularly through microfinance interventions (\cite{morduch1999microfinance}; \cite{morduch1995income}; \cite{cull2009microfinance}; \cite{dupas2013savings}; \cite{jack2016borrowing}).  \cite{karlan2009expanding} and \cite{gine2014group} specifically focus on microfinance in the Philippines. Third, \cite{deaton1991saving} provides the foundational model of dynamic decision-making that serves as the starting point for the model in this paper, and the estimation of this model adapts methods developed by \cite{gourinchas2002consumption} and \cite{laibson2007estimating}.
+\parmark\label{par:latepenaltyintro}\added{The paper also evaluates counterfactual late penalties and interest charges on unpaid bills, finding that both policies substantially reduce unpaid balances while leaving households roughly indifferent to the current equilibrium.  Even under these penalties, households remain considerably better off than under prepaid metering, consistent with households deriving substantial value from retaining access to unpaid bills as an emergency credit option.}
+
+This paper contributes to three main strands of economic literature.  First, this paper brings payment and billing policy questions into a growing literature on optimal policy for utilities in developing countries (\cite{mcrae2015infrastructure}; \cite{szabo2015value}; \cite{jack2020charging}; \cite{jack2015pay}; \cite{szabo2015reducing}).  \parmark\label{par:iocite}\added{In particular, the analysis considers how utilities function as de facto credit providers, connecting to work on the consequences of treating utility services as implicit entitlements (\cite{burgess2020consequences}) and on how disconnection and penalty policies distribute costs across households (\cite{cicala2021incidence}).}  Building on previous static models, this paper also provides a framework for considering how dynamic incentives affect household demand for public utilities.  Second, this paper draws on a large body of research analyzing household credit constraints, particularly through microfinance interventions (\cite{morduch1999microfinance}; \cite{morduch1995income}; \cite{cull2009microfinance}; \cite{dupas2013savings}; \cite{jack2016borrowing}).  \cite{karlan2009expanding} and \cite{gine2014group} specifically focus on microfinance in the Philippines. Third, \cite{deaton1991saving} provides the foundational model of dynamic decision-making that serves as the starting point for the model in this paper, and the estimation of this model adapts methods developed by \cite{gourinchas2002consumption} and \cite{laibson2007estimating}.
 
 This paper proceeds with Section~\ref{section:data} describing the water billing data from Manila.  Billing practices, disconnection policies, and institutional details \added{specific to Manila} are discussed in Section~\ref{section:descriptives} alongside descriptive evidence.  Section~\ref{section:model} develops a model of household consumption and savings decisions while Section~\ref{section:estimation} discusses the estimation and results.  Counterfactual exercises and welfare impacts are provided in Section~\ref{section:counterfactuals}.  Section~\ref{section:conclusion} concludes. 
 
@@ -534,22 +536,22 @@ Prepaid metering generates cost savings because with prepaid meters, the utility
 
 \begin{table}[H]
 \centering
-\caption{Costs under Counterfactual Policies}\label{table:countercosts}
+\caption{Costs under Counterfactual Policies}\label{table:countercosts}\parmark\label{par:costtable}
 \resizebox{\columnwidth}{!}{%
 \begin{threeparttable}
 \begin{tabular}{@{}l*{1}{EEEEE}@{}}
 \toprule
- & (1)    & (2)          & (3)  & \added{(4)}\parmark\label{par:costtable}  & \added{(5)}  \\
+ & (1)    & (2)          & (3)  & \added{(4)}  & \added{(5)}  \\
  & Current & Prepaid Metering & 50\% Less Enforcement  & \added{Late Penalty} & \added{4.9\% Interest}  \\
 \midrule
 % Rate of Delinquency Warnings & \input{tables/vrate_reg_b}& \input{tables/vrate_nl_b}  & \input{tables/vrate_hf_b}  \\
 Lending Costs  & \input{tables/lend_cost_sum_reg_b}  & \input{tables/lend_cost_sum_nl_b}  & \input{tables/lend_cost_sum_hf_b}  & \added{\input{tables_new/lend_cost_sum_lp_b}}  & \added{\input{tables_new/lend_cost_sum_ir_b}}  \\
   % & \input{tables/lend_cost_reg_b}  & \input{tables/lend_cost_nl_b}  & \input{tables/lend_cost_hf_b}  \\
 % Unpaid Balance Upon Disconnection 		 &  \input{tables/del_cost_reg_b} & \input{tables/del_cost_nl_b}   &  \input{tables/del_cost_hf_b} \\
-Warning Costs & \input{tables/visit_cost_reg_b} & \input{tables/visit_cost_nl_b}    &   \input{tables/visit_cost_hf_b}  & \input{tables_new/visit_cost_lp_b}  & \input{tables_new/visit_cost_ir_b}  \\
-Pumping Costs  &  \input{tables/mc_cost_reg_b}  & \input{tables/mc_cost_nl_b}    &   \input{tables/mc_cost_hf_b}  & \input{tables_new/mc_cost_lp_b}  & \input{tables_new/mc_cost_ir_b}  \\
-Fixed Cost &  \input{tables/rev_goal_reg_b}  &  \input{tables/rev_goal_reg_b}     &   \input{tables/rev_goal_reg_b}  &  \input{tables/rev_goal_reg_b}  &  \input{tables/rev_goal_reg_b}  \\
-Price per m3  &  \input{tables/p1_reg_b} & \input{tables/p1_nl_b}    &  \input{tables/p1_hf_b}  & \input{tables_new/p1_lp_b}  & \input{tables_new/p1_ir_b}  \\
+Warning Costs & \input{tables/visit_cost_reg_b} & \input{tables/visit_cost_nl_b}    &   \input{tables/visit_cost_hf_b}  & \added{\input{tables_new/visit_cost_lp_b}}  & \added{\input{tables_new/visit_cost_ir_b}}  \\
+Pumping Costs  &  \input{tables/mc_cost_reg_b}  & \input{tables/mc_cost_nl_b}    &   \input{tables/mc_cost_hf_b}  & \added{\input{tables_new/mc_cost_lp_b}}  & \added{\input{tables_new/mc_cost_ir_b}}  \\
+Fixed Cost &  \input{tables/rev_goal_reg_b}  &  \input{tables/rev_goal_reg_b}     &   \input{tables/rev_goal_reg_b}  &  \added{\input{tables/rev_goal_reg_b}}  &  \added{\input{tables/rev_goal_reg_b}}  \\
+Price per m3  &  \input{tables/p1_reg_b} & \input{tables/p1_nl_b}    &  \input{tables/p1_hf_b}  & \added{\input{tables_new/p1_lp_b}}  & \added{\input{tables_new/p1_ir_b}}  \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}
@@ -577,12 +579,12 @@ Despite the decrease in prices, the exercise predicts that prepaid metering lowe
 
 \begin{table}[H]
 \centering
-\caption{Household Outcomes under Counterfactual Policies}\label{table:counter}
+\caption{Household Outcomes under Counterfactual Policies}\label{table:counter}\parmark\label{par:outcometable}
 \resizebox{\columnwidth}{!}{%
 \begin{threeparttable}
 \begin{tabular}{@{}l*{1}{EEEEE}@{}}
 \toprule
- & (1)    & (2)          & (3)  & \added{(4)}\parmark\label{par:outcometable}  & \added{(5)}  \\
+ & (1)    & (2)          & (3)  & \added{(4)}  & \added{(5)}  \\
  & Current & Prepaid Metering & 50\% Less Enforcement  & \added{Late Penalty} & \added{4.9\% Interest}  \\
 \midrule
 Compensating Variation &   & \input{tables/cv_comp_nl_b}  & \input{tables/cv_comp_hf_b}  & \added{\input{tables_new/cv_comp_lp_b}}  & \added{\input{tables_new/cv_comp_ir_b}}  \\
@@ -605,7 +607,7 @@ This table shows current household outcomes in column (1) and household outcomes
 \end{table}
 
 
-This exercise assumes that the utility faces negligible costs of installing and maintaining prepaid meters.  However as detailed in Appendix~\ref{appendix:prepaidcosts}, engineering estimates from 2014 suggest that prepaid meters may cost up to 51 PhP more per household-month than current meters.  While prepaid metering costs may likely decline with future technological innovation, these costs suggest that this counterfactual exercise underestimates the welfare costs from prepaid metering.  This exercise also assumes that prepaid meters do not affect intra-household bargaining over water consumption if for example, the bill-payer and primary water users differ.\footnote{\cite{jack2020charging} note that prepaid meters may shift control over usage and payment decisions within the household.}
+This exercise assumes that the utility faces negligible costs of installing and maintaining prepaid meters.  However as detailed in Appendix~\ref{appendix:prepaidcosts}, engineering estimates from 2014 suggest that prepaid meters may cost up to 51 PhP more per household-month than current meters.  While prepaid metering costs may likely decline with future technological innovation, these costs suggest that this counterfactual exercise underestimates the welfare costs from prepaid metering.  \parmark\label{par:intrahh}\added{This exercise also assumes that prepaid meters do not affect intra-household bargaining over water consumption if for example, the bill-payer and primary water users differ.}\footnote{\cite{jack2020charging} note that prepaid meters may shift control over usage and payment decisions within the household.}
 
 This exercise adjusts the marginal water price to ensure that revenues equal costs.  Alternatively, the utility may issue fixed rebates to consumers while holding marginal prices constant.  Under fixed rebates, prepaid metering would generate larger welfare losses because any cost savings would be directly transfered to households instead of helping to bring marginal prices closer to marginal costs.  It is unlikely that a system of fixed rebates would occur in this setting given that most tariff adjustments target marginal rates.
 
