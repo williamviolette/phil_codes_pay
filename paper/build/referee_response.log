@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  24 FEB 2026 09:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  24 FEB 2026 10:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -168,9 +168,9 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 8.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/xr-hyper.sty
 Package: xr-hyper 2024-11-05 v7.01l eXternal References (DPC)
 )
-Package xr Info: IMPORTING LABELS FROM water_bill_paper_wjv_rev.aux on input line 12.
+Package xr Info: IMPORTING LABELS FROM water_bill_paper_wjv_rev_highlighted.aux on input line 12.
 \enitdp@refpoints=\count287
-LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 21.
+LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 24.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
@@ -180,24 +180,24 @@ File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 ) (build/referee_response.aux)
 \openout1 = `referee_response.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -255,50 +255,43 @@ File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
 \makeMPintoPDFobject=\count294
 \everyMPtoPDFconversion=\toks21
 )) (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/mathcolor.ltx))
-Package hyperref Info: Link coloring ON on input line 21.
+Package hyperref Info: Link coloring ON on input line 24.
  (build/referee_response.out) (build/referee_response.out)
 \@outlinefile=\write3
 \openout3 = `referee_response.out'.
 
-LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 47.
+LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 50.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 49.
+(Font)              <12> on input line 52.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 49.
+(Font)              <8> on input line 52.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 49.
+(Font)              <6> on input line 52.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 49.
+(Font)              <7> on input line 52.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 49.
+(Font)              <5> on input line 52.
 
 
 [1
 
 {/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc}]
 
-LaTeX Warning: Reference `paper-section:background' on page 2 undefined on input line 59.
-
-
-LaTeX Warning: Reference `paper-section:background' on page 2 undefined on input line 59.
-
-
-
 [2]
-Overfull \hbox (2.29097pt too wide) in paragraph at lines 91--92
+Overfull \hbox (2.29097pt too wide) in paragraph at lines 94--95
 []\OT1/ppl/m/n/12 While the set-ting is a de-vel-op-ing coun-try, the core ques-tions are squarely within
  []
 
 
-Overfull \hbox (2.91473pt too wide) in paragraph at lines 91--92
+Overfull \hbox (2.91473pt too wide) in paragraph at lines 94--95
 \OT1/ppl/m/n/12 The coun-ter-fac-tual exercises---prepaid me-ter-ing, en-force-ment lev-els, late penal-
  []
 
 
-Overfull \hbox (2.42348pt too wide) in paragraph at lines 107--108
+Overfull \hbox (2.42348pt too wide) in paragraph at lines 110--111
 []\OT1/ppl/m/n/12 The pa-per ad-dresses this con-cern in two ways. First, the revenue-neutral frame-
  []
 
@@ -307,11 +300,9 @@ Overfull \hbox (2.42348pt too wide) in paragraph at lines 107--108
 [3]
 
 [4]
-
-LaTeX Warning: Reference `paper-section:background' on page 5 undefined on input line 136.
-
-
-LaTeX Warning: Reference `paper-section:background' on page 5 undefined on input line 136.
+Overfull \hbox (1.35495pt too wide) in paragraph at lines 139--140
+\OT1/ppl/m/n/12 and in-ter-est and penalty poli-cies for util-ity ar-rears, cov-er-ing South Africa (Cape
+ []
 
 
 
@@ -322,26 +313,22 @@ LaTeX Warning: Reference `paper-section:background' on page 5 undefined on input
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `referee_response.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 9290 strings out of 473190
- 146713 string characters out of 5715801
- 563071 words of memory out of 5000000
- 32436 multiletter control sequences out of 15000+600000
+ 9308 strings out of 473190
+ 147205 string characters out of 5715801
+ 565958 words of memory out of 5000000
+ 32454 multiletter control sequences out of 15000+600000
  571107 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,8n,79p,1313b,703s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,8n,79p,1459b,703s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on build/referee_response.pdf (6 pages, 87924 bytes).
+Output written on build/referee_response.pdf (6 pages, 90306 bytes).
 PDF statistics:
- 108 PDF objects out of 1000 (max. 8388607)
- 91 compressed objects within 1 object stream
+ 127 PDF objects out of 1000 (max. 8388607)
+ 109 compressed objects within 2 object streams
  11 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

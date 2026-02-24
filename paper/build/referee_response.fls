@@ -82,9 +82,9 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/uniquecounter/uniquecounter
 INPUT /usr/local/texlive/2025/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/xr-hyper.sty
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/xr-hyper.sty
-INPUT ./water_bill_paper_wjv_rev.tex
-INPUT ./water_bill_paper_wjv_rev.tex
-INPUT build/water_bill_paper_wjv_rev.aux
+INPUT ./water_bill_paper_wjv_rev_highlighted.tex
+INPUT ./water_bill_paper_wjv_rev_highlighted.tex
+INPUT build/water_bill_paper_wjv_rev_highlighted.aux
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ot1ppl.fd

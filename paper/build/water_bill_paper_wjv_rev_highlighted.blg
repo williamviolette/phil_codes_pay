@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99d (TeX Live 2025)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: water_bill_paper_wjv_rev_highlighted.aux
+The style file: abbrvnat.bst
+Database file #1: ref.bib
+Warning--entry type for "WEF2025WaterGap" isn't style-file defined
+--line 2 of file ref.bib
+Warning--entry type for "mnwd_guidelines_bills_payments" isn't style-file defined
+--line 83 of file ref.bib
+Warning--entry type for "ppcwater_ur_billing" isn't style-file defined
+--line 92 of file ref.bib
+Warning--empty journal in anand2014consuming
+Warning--empty journal in hannagan2015income
+Warning--empty journal in komives2006distributional
+You've used 55 entries,
+            2773 wiz_defined-function locations,
+            912 strings with 13904 characters,
+and the built_in function-call counts, 22969 in all, are:
+= -- 2096
+> -- 1171
+< -- 41
++ -- 404
+- -- 348
+* -- 1803
+:= -- 3561
+add.period$ -- 169
+call.type$ -- 55
+change.case$ -- 282
+chr.to.int$ -- 54
+cite$ -- 113
+duplicate$ -- 1054
+empty$ -- 1981
+format.name$ -- 445
+if$ -- 4765
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 46
+newline$ -- 287
+num.names$ -- 220
+pop$ -- 530
+preamble$ -- 1
+purify$ -- 226
+quote$ -- 0
+skip$ -- 808
+stack$ -- 0
+substring$ -- 910
+swap$ -- 53
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 595
+warning$ -- 3
+while$ -- 232
+width$ -- 0
+write$ -- 712
+(There were 6 warnings)
