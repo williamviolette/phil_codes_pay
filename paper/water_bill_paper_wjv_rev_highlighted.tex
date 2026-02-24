@@ -13,7 +13,7 @@
 %%% ---- HIGHLIGHTING MACHINERY FOR REVISION ----
 \usepackage{marginnote}
 \newcounter{parnum}
-\newcommand{\parmark}{\refstepcounter{parnum}\textsuperscript{\textcolor{blue}{[\theparnum]}}\marginpar{\footnotesize\textcolor{blue}{\P\theparnum}}}
+\newcommand{\parmark}{\refstepcounter{parnum}\textsuperscript{\textcolor{blue}{[\theparnum]}}\marginnote{\footnotesize\textcolor{blue}{\P\theparnum}}}
 \newcommand{\added}[1]{\textcolor{blue}{#1}}
 \definecolor{revblue}{RGB}{0,0,180}
 %%% ---- END HIGHLIGHTING MACHINERY ----
@@ -624,7 +624,7 @@ This exercise does not allow for the possibility that with less delinquency enfo
 The positive welfare effects of reducing enforcement appear robust to alternative assumptions on household preferences.  Appendix Table~\ref{table:robustestimates} provides the compensating variation of reducing delinquency enforcement under high and low discount rates and levels of risk aversion.  High discount rates and levels of risk aversion both increase household demand for consumption smoothing, which magnify the welfare benefits of reduced enforcement.  Estimates suggest uniformly positive welfare impacts ranging from 94 to 161 PhP.
 
 
-\parmark\label{par:latepenaltysection}\added{\subsection{Late Penalty and Interest Rates on Unpaid Bills}\label{section:latepenalty}}
+\subsection{\added{Late Penalty and Interest Rates on Unpaid Bills}}\label{section:latepenalty}\parmark\label{par:latepenaltysection}
 
 \added{The last counterfactuals consider alternative approaches to reducing billing delinquency to capture the fact that other water providers in the Philippines impose late penalties of around 10\% of total unpaid balances.}\footnote{See \cite{mnwd_guidelines_bills_payments} and \cite{ppcwater_ur_billing} for examples.}
 
@@ -1021,7 +1021,7 @@ This table re-estimates the model under four alternate assumptions on preference
 \end{table}
 
 
-\parmark\label{par:linearpricesappendix}\added{\subsection{Single Marginal Price}\label{appendix:linearprices}}
+\subsection{\added{Single Marginal Price}}\label{appendix:linearprices}\parmark\label{par:linearpricesappendix}
 
 \added{The main analysis approximates the tariff structure using a linear regression of average price on monthly usage, yielding a constant term $p_1$ and a slope $p_2$.  This appendix considers a robustness check that eliminates the curvature of prices by setting $p_2 = 0.001$ while keeping $p_1$ at its estimated value.  Table~\ref{table:counter_linp} reproduces the counterfactual household outcomes from Table~\ref{table:counter} under this linear price assumption.}
 
