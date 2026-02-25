@@ -13,7 +13,7 @@
 %%% ---- HIGHLIGHTING MACHINERY FOR REVISION ----
 \usepackage{marginnote}
 \newcounter{parnum}
-\newcommand{\parmark}{\refstepcounter{parnum}\textsuperscript{\textcolor{blue}{[\theparnum]}}\marginnote{\footnotesize\textcolor{blue}{\P\theparnum}}}
+\newcommand{\parmark}{\refstepcounter{parnum}\marginnote{\footnotesize\textcolor{blue}{\P\theparnum}}}
 \newcommand{\added}[1]{\textcolor{blue}{#1}}
 \definecolor{revblue}{RGB}{0,0,180}
 %%% ---- END HIGHLIGHTING MACHINERY ----

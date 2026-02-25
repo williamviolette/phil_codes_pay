@@ -1061,8 +1061,6 @@ INPUT ./tables/p1_nl_b.tex
 INPUT ./tables/p1_nl_b.tex
 INPUT ./tables/p1_nl_b.tex
 INPUT tables/p1_nl_b.tex
-INPUT /usr/share/texlive/texmf-dist/fonts/vf/public/newtx/ntxexa.vf
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/txexas.tfm
 INPUT ./tables/lend_cost_sum_reg_b.tex
 INPUT ./tables/lend_cost_sum_reg_b.tex
 INPUT ./tables/lend_cost_sum_reg_b.tex
@@ -1160,6 +1158,8 @@ INPUT ./tables_new/p1_ir_b.tex
 INPUT ./tables_new/p1_ir_b.tex
 INPUT ./tables_new/p1_ir_b.tex
 INPUT tables_new/p1_ir_b.tex
+INPUT /usr/share/texlive/texmf-dist/fonts/vf/public/newtx/ntxexa.vf
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/newtx/txexas.tfm
 INPUT ./tables/cv_comp_nl_b.tex
 INPUT ./tables/cv_comp_nl_b.tex
 INPUT ./tables/cv_comp_nl_b.tex
