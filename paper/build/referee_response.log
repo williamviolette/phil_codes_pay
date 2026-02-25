@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  25 FEB 2026 14:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  25 FEB 2026 14:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -283,6 +283,11 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 [2]
 
 [3]
+Overfull \hbox (2.9753pt too wide) in paragraph at lines 144--145
+\OT1/ppl/m/n/12 con-nec-tion reg-u-la-tion and preva-lence as well as caps on late pay-ments/interest,
+ []
+
+
 
 [4]
 
@@ -297,13 +302,13 @@ Package rerunfilecheck Info: File `referee_response.out' has not changed.
 Here is how much of TeX's memory you used:
  9313 strings out of 473190
  147343 string characters out of 5715801
- 565472 words of memory out of 5000000
+ 566472 words of memory out of 5000000
  32460 multiletter control sequences out of 15000+600000
  571107 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,8n,79p,1129b,705s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on build/referee_response.pdf (5 pages, 87155 bytes).
+Output written on build/referee_response.pdf (5 pages, 87125 bytes).
 PDF statistics:
  120 PDF objects out of 1000 (max. 8388607)
  103 compressed objects within 2 object streams
