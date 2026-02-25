@@ -51,11 +51,6 @@ T.~Buford and S.~Campbell.
 \newblock \emph{ProPublica}, Mar 2020.
 \newblock URL \url{https://www.propublica.org/article/some-towns-still-havent-halted-utility-shut-offs-for-unpaid-water-bills-during-coronavirus-even-as-federal-lawmakers-demand-it}.
 
-\bibitem[Burgess et~al.(2020)Burgess, Greenstone, Ryan, and Sudarshan]{burgess2020consequences}
-R.~Burgess, M.~Greenstone, N.~Ryan, and A.~Sudarshan.
-\newblock The consequences of treating electricity as a right.
-\newblock \emph{Journal of Economic Perspectives}, 34\penalty0 (1):\penalty0 145--169, 2020.
-
 \bibitem[Carvalho et~al.(2016)Carvalho, Prina, and Sydnor]{carvalho2016effect}
 L.~S. Carvalho, S.~Prina, and J.~Sydnor.
 \newblock The effect of saving on risk attitudes and intertemporal choices.
@@ -250,6 +245,11 @@ Y.~Shavit, A.~Krause, and J.~Polemio.
 \newblock Household water arrearages and late fees: Evidence from jerusalem.
 \newblock \emph{Water Economics and Policy}, 9\penalty0 (2):\penalty0 1--18, 2024.
 \newblock \doi{10.1142/S2382624X24500050}.
+
+\bibitem[Spence(1975)]{spence1975monopoly}
+M.~Spence.
+\newblock Monopoly, quality, and regulation.
+\newblock \emph{Bell Journal of Economics}, 6\penalty0 (2):\penalty0 417--429, 1975.
 
 \bibitem[Stiglitz(1990)]{stiglitz1990peer}
 J.~E. Stiglitz.

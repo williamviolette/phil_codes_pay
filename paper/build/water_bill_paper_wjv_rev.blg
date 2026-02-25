@@ -4,44 +4,44 @@ The top-level auxiliary file: water_bill_paper_wjv_rev.aux
 The style file: abbrvnat.bst
 Database file #1: ref.bib
 Warning--entry type for "WEF2025WaterGap" isn't style-file defined
---line 22 of file ref.bib
+--line 33 of file ref.bib
 Warning--entry type for "mnwd_guidelines_bills_payments" isn't style-file defined
---line 103 of file ref.bib
+--line 114 of file ref.bib
 Warning--entry type for "ppcwater_ur_billing" isn't style-file defined
---line 112 of file ref.bib
+--line 123 of file ref.bib
 Warning--empty journal in anand2014consuming
 Warning--empty journal in hannagan2015income
 Warning--empty journal in komives2006distributional
 You've used 57 entries,
             2773 wiz_defined-function locations,
-            924 strings with 14314 characters,
-and the built_in function-call counts, 23765 in all, are:
-= -- 2170
-> -- 1211
-< -- 42
-+ -- 418
-- -- 360
-* -- 1863
-:= -- 3685
+            925 strings with 14239 characters,
+and the built_in function-call counts, 23600 in all, are:
+= -- 2159
+> -- 1182
+< -- 43
++ -- 409
+- -- 351
+* -- 1838
+:= -- 3658
 add.period$ -- 177
 call.type$ -- 57
-change.case$ -- 292
+change.case$ -- 289
 chr.to.int$ -- 56
 cite$ -- 117
-duplicate$ -- 1090
-empty$ -- 2051
-format.name$ -- 459
-if$ -- 4932
+duplicate$ -- 1089
+empty$ -- 2050
+format.name$ -- 450
+if$ -- 4901
 int.to.chr$ -- 2
 int.to.str$ -- 1
 missing$ -- 47
 newline$ -- 299
 num.names$ -- 228
-pop$ -- 551
+pop$ -- 546
 preamble$ -- 1
-purify$ -- 234
+purify$ -- 231
 quote$ -- 0
-skip$ -- 835
+skip$ -- 832
 stack$ -- 0
 substring$ -- 930
 swap$ -- 55

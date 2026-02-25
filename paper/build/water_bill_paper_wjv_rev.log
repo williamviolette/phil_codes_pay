@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  25 FEB 2026 14:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  25 FEB 2026 16:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1582,40 +1582,40 @@ Underfull \hbox (badness 10000) in paragraph at lines 49--53
 \OT1/pcr/m/n/12 still -[] havent -[] halted -[] utility -[] shut -[] offs -[] for -[] unpaid -[] water -[]
  []
 
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 98.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 93.
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--99
+Underfull \hbox (badness 10000) in paragraph at lines 90--94
 \OT1/pcr/m/n/12 1243964 / water -[] power -[] firms -[] give -[] customers -[] 30 -[] day -[] extension -[]
  []
 
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 113.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 108.
 
 
 [39]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 133.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 178.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 128.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 173.
 
-Underfull \hbox (badness 10000) in paragraph at lines 175--179
+Underfull \hbox (badness 10000) in paragraph at lines 170--174
 \OT1/pcr/m/n/12 en / 385761468330326484 / The -[] challenge -[] of -[] reducing -[] non -[] revenue -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 175--179
+Underfull \hbox (badness 10000) in paragraph at lines 170--174
 \OT1/pcr/m/n/12 water -[] NRW -[] in -[] developing -[] countries -[] how -[] the -[] private -[] sector -[]
  []
 
 
 
 [40]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 218.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 234.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 213.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 229.
 
-Underfull \hbox (badness 10000) in paragraph at lines 232--236
+Underfull \hbox (badness 10000) in paragraph at lines 227--231
 \OT1/pcr/m/n/12 https : / / www . law . cornell . edu / regulations / new -[] york / 16 -[] NYCRR -[]
  []
 
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 245.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 252.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 240.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 247.
 
 
 [41]
@@ -1635,14 +1635,14 @@ LaTeX Font Warning: Size substitutions with differences
  ) 
 Here is how much of TeX's memory you used:
  32246 strings out of 473190
- 612068 string characters out of 5715801
- 924879 words of memory out of 5000000
+ 612053 string characters out of 5715801
+ 924831 words of memory out of 5000000
  54197 multiletter control sequences out of 15000+600000
  660936 words of font info for 278 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,18n,131p,2041b,667s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,18n,131p,2041b,663s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </Users/willviolette/Library/texlive/2025/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexas.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on build/water_bill_paper_wjv_rev.pdf (43 pages, 323710 bytes).
+Output written on build/water_bill_paper_wjv_rev.pdf (43 pages, 324011 bytes).
 PDF statistics:
  217 PDF objects out of 1000 (max. 8388607)
  143 compressed objects within 2 object streams
