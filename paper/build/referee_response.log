@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  25 FEB 2026 11:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  25 FEB 2026 14:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -283,11 +283,6 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 [2]
 
 [3]
-Overfull \hbox (31.64299pt too wide) in paragraph at lines 142--143
-\OT1/ppl/m/n/12 on dis-con-nec-tion reg-u-la-tion and preva-lence as well as caps in late pay-ments/interest,
- []
-
-
 
 [4]
 
@@ -300,18 +295,18 @@ Package rerunfilecheck Info: File `referee_response.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 9314 strings out of 473190
- 147377 string characters out of 5715801
- 565578 words of memory out of 5000000
- 32461 multiletter control sequences out of 15000+600000
+ 9313 strings out of 473190
+ 147343 string characters out of 5715801
+ 565472 words of memory out of 5000000
+ 32460 multiletter control sequences out of 15000+600000
  571107 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,8n,79p,1143b,705s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,8n,79p,1129b,705s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on build/referee_response.pdf (5 pages, 87639 bytes).
+Output written on build/referee_response.pdf (5 pages, 87155 bytes).
 PDF statistics:
- 122 PDF objects out of 1000 (max. 8388607)
- 105 compressed objects within 2 object streams
+ 120 PDF objects out of 1000 (max. 8388607)
+ 103 compressed objects within 2 object streams
  10 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
