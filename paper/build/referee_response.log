@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  24 FEB 2026 16:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  24 FEB 2026 16:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -297,16 +297,16 @@ Package rerunfilecheck Info: File `referee_response.out' has not changed.
 Here is how much of TeX's memory you used:
  9310 strings out of 473190
  147264 string characters out of 5715801
- 566192 words of memory out of 5000000
+ 565192 words of memory out of 5000000
  32457 multiletter control sequences out of 15000+600000
  571107 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,8n,79p,1284b,652s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,8n,79p,1186b,704s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on build/referee_response.pdf (5 pages, 86885 bytes).
+Output written on build/referee_response.pdf (5 pages, 87456 bytes).
 PDF statistics:
- 121 PDF objects out of 1000 (max. 8388607)
- 104 compressed objects within 2 object streams
+ 125 PDF objects out of 1000 (max. 8388607)
+ 108 compressed objects within 2 object streams
  10 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

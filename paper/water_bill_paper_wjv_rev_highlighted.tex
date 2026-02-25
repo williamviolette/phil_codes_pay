@@ -111,12 +111,6 @@ This paper incorporates delayed bill payments into household consumption and sav
 
 \parmark\label{par:manilacontext}\added{Manila provides a lower-middle income setting with dense, urban setting with universal metering, standardized billing cycles, and systematic enforcement of arrears and disconnections.  These features allow for measuring consumer behavior at high frequency (\cite{wu2008tale}).  Stable water supply and relatively high water quality ensure that usage patterns reflect consumer demand fluctuations.  Although many developing cities operate under weaker service quality or enforcement capacity (\cite{kingdom2006challenge}), the Manila context is likely informative for countries undergoing simlar infrastructure expansions (\cite{WEF2025WaterGap}).}
 
-% In 1997, Manila’s water system transitioned from public provision to regulated private operators (\cite{wu2008tale}).  These operators have invested heavily in universal metering, standardized billing cycles, and systematic tracking of arrears and disconnections.  This setting produces detailed administrative records that allow for observing consumption, payments, and disconnections at high frequency.  
-% - Dense , rich/poor next to eachother -> not too costly to enforce
-% - Not water constrained -> very few shortages, water is generally good quality
-% - high financial inclusion?
-% In many other lower-middle-income countries, utilities operate with weaker infrastructure, higher rates of non-revenue water, lower metering coverage, and less systematic enforcement of arrears (\cite{kingdom2006challenge}).  However, continued investments in service modernization suggest that lessons from Manila may soon apply to many other developing cities (\cite{WEF2025WaterGap}). 
-% because it provides relatively high-capacity service provision.
 
 
 This paper builds a dynamic model to capture household consumption smoothing patterns.  In this model, households with risky incomes can borrow from a costly asset as well as from delayed payments to the water utility.  While delayed bills charge no interest, households face some probability each month of receiving a delinquency warning which confronts households with the choice of either paying their bills immediately or disconnecting and using an alternative water source.  This warning probability is estimated from households' delayed bills while household preferences are estimated from water consumption.  The estimated model matches descriptive evidence that households make large, infrequent payments and leave large unpaid balances when they disconnect permanently.
@@ -131,39 +125,9 @@ This paper contributes to three main strands of economic literature.  First, thi
 
 This paper proceeds with Section~\ref{section:data} describing the water billing data from Manila.  Billing practices, disconnection policies, and institutional details \added{specific to Manila} are discussed in Section~\ref{section:descriptives} alongside descriptive evidence.  Section~\ref{section:model} develops a model of household consumption and savings decisions while Section~\ref{section:estimation} discusses the estimation and results.  Counterfactual exercises and welfare impacts are provided in Section~\ref{section:counterfactuals}.  Section~\ref{section:conclusion} concludes. 
 
-% \todo[color=orange]{ non-pay correlated with other non-pay? possibility of bribery?}
-
-
-
-% \section{Background}\label{section:background}
-
-%  How common are shutoffs elsewhere? 
-%  Are utilities typically allowed to charge interest on arrears? 
-%  What is distinctive about Manila and what may generalize?
-
-% Utility disconnections and penalties for nonpayment are common across both developing and developed countries.  In the United States, \cite{cicala2021incidence} finds that disconnection rates are four times higher in minority communities, and many states restrict disconnections during extreme weather to protect public health (\cite{liheap}).  Water shutoffs are often permitted as a debt recovery tool in most high and middle income countries reviewed by \cite{marques2023water}.  
-
-
-% Likewise, unpaid balances accrue interest in South Africa (\cite{szabo2015reducing}) and some Phillipine providers outside of Manila charge late fees (\cite{mnwd_guidelines_bills_payments}; \cite{ppcwater_ur_billing}).  
-
-% In developing countries, high nonpayment rates have motivated the widespread adoption of prepaid meters (\cite{heymans2014limits}).
-% In some countries, water is treated as a basic human right (\cite{unga2010water}), prohibiting utilities from charging interest on late payments. In India, \cite{burgess2020consequences} describe a ``vicious circle'' in which tolerated nonpayment undermines utility finances and erodes payment incentives. 
-
-
-% In developing countries, policies on interest and penalties for utility arrears vary considerably. 
-
-% By contrast, study a context where .  Water utilities in Manila charge no interest on outstanding bills, though other Philippine providers impose late surcharges on outstanding bills 
-
-
-% The absence of interest charges effectively makes delayed payments an interest-free loan from the utility to the household---an implicit lending role that is rarely recognized in utility regulation (\cite{laffont2005regulation}).
-
-% At the same time, households face limited access to formal credit (\cite{demirguc2018global}), with the most common lending sources---moneylenders and microfinance groups---charging average monthly interest rates around 9.5\%, while the utility charges no interest on arrears.  This sharp contrast makes the credit value of delayed payments especially large.  
-
-
 
 \section{Data}\label{section:data}
 
-% Describe notice of disconnection in more detail here??? and  NO DO IT LATER~! PLEASE!!!!  Disconnection is defined as months with missing values for usage.  Months with zero recorded consumption are not considered disconnected.  Since households face a 200 PhP reconnection charge but a 
 
 
 Measuring credit through delayed water bill payments requires information on water consumption and bill payments at the household-level as well as features of the credit environment in Manila.  % As well as information on the credit environment facing households
@@ -175,31 +139,7 @@ To examine household demographics, billing data are merged at the connection-lev
 
 A household panel survey from Pasay City provides information on household income dynamics in Manila.  Pasay City is a centrally located sub-municipality of Metro Manila accounting for 3.2\% of the population of Metro Manila as of 2015 and is roughly representative of households living in the utility's service area.  The panel survey covers over 60\% of the population of Pasay City and is the only survey to provide a household-level income panel over a similar time frame in Manila.  The analysis includes data from \input{tables/total_inc_hhs_all}households that were interviewed in both 2008 and 2011.
 
-  % Pasay City is a centrally located city
-% The Consumer Finance Survey in 2014 provides useful information on the extent of credit access in Manila.
-
-% Since the analysis focuses on the borrowing and savings behavior of a representative household, additional data sources help characterize credit access in Manila.  
-
-% Average household income is calculated using the  2015 Family Income and Expenditure Survey, which covers 4,130 households in Metro Manila.  Interest rates for borrowing and saving come from the 2014 Consumer Finance Survey in Metro Manila as well as the World Bank Databank (2010-2015) for the Philippines.  
-
-
-
-
-% % Mention later: average interest rate, and other calibrations 
-% % The average interest rate for the Philippines is calibrated from the World Bank Databank (2010-2015).
-
-
 \section{Credit through Delayed Water Bill Payments}\label{section:descriptives}
-
-% \footnote{The company upgraded t in the first year of the sample.  Previously, the company mailed the bill to each household at the end of the month.} 
-% Each month, households consume \input{tables/usage_all}m3 of piped water on average, which totals an average monthly bill of \input{tables/bill_all}PhP as shown in Table~\ref{table:descriptives_all}.  Given an average monthly income in Manila of \input{tables/y_avg}PhP and savings rate of \input{tables/save_avg}PhP,  monthly water bills reach a modest average of \input{tables/bill_inc_all}\unskip\% of income and \input{tables/bill_sav_all}\unskip\% of savings.  
-
-%%% NOTES FROM TOWNSEND PAPER ! %%%
-% For the purposes of this partial equilibrium analysis, this borrowing constraint is exogenous.
-% It is not a natural borrowing constraint as in Aiyagari (1994) and therefore somewhat ad
-% hoc, but such a constraint can arise endogenously in models with limited commitment (see
-% Wright (2002)) or where lenders have rights to garnish a fraction of future wages (e.g.,
-% Lochner and Monge-Naranjo (2008))
 
 In Manila, households have poor access to credit.  Small-scale loans mainly from money lenders and micro-finance groups are the most common forms of credit and charge high monthly interest rates of \input{tables/irate}\unskip\% on average.\footnote{According to the 2014 Consumer Finance Survey in Manila, 1\% have credit cards, 3.8\% have auto-loans, 0.5\% have mortgages, and \input{tables/wloan}\unskip\% have all-purpose loans, of which \input{tables/money_lender}\unskip\% are from money lenders and \input{tables/micro_finance}\unskip\% are from micro-finance groups.}  In this environment, delaying water bill payments may provide a reliable, alternative source of credit because the water utility often tolerates high rates of delinquency before disconnecting water service and the utility is prohibited from charging any interest on outstanding balances.  
 

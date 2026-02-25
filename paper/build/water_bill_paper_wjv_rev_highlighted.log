@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  24 FEB 2026 16:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  24 FEB 2026 16:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1165,26 +1165,26 @@ LaTeX Font Info:    Font shape `LMX/ntxexx/b/n' will be
 Package marginnote Info: Margin note 4.1 is on absolute page 4 on input line 112.
 Package marginnote Info: right page because not two side mode on input line 112.
 Package marginnote Info: xpos seems to be 107.88297pt on input line 112.
-Package marginnote Info: Margin note 4.2 is on absolute page 4 on input line 124.
-Package marginnote Info: right page because not two side mode on input line 124.
-Package marginnote Info: xpos seems to be 227.9608pt on input line 124.
+Package marginnote Info: Margin note 4.2 is on absolute page 4 on input line 118.
+Package marginnote Info: right page because not two side mode on input line 118.
+Package marginnote Info: xpos seems to be 227.9608pt on input line 118.
 
 
 [2]
-Package marginnote Info: Margin note 5.1 is on absolute page 5 on input line 128.
-Package marginnote Info: right page because not two side mode on input line 128.
-Package marginnote Info: xpos seems to be 107.88297pt on input line 128.
-Package marginnote Info: Margin note 5.2 is on absolute page 5 on input line 130.
-Package marginnote Info: right page because not two side mode on input line 130.
-Package marginnote Info: xpos seems to be 398.88046pt on input line 130.
+Package marginnote Info: Margin note 5.1 is on absolute page 5 on input line 122.
+Package marginnote Info: right page because not two side mode on input line 122.
+Package marginnote Info: xpos seems to be 107.88297pt on input line 122.
+Package marginnote Info: Margin note 5.2 is on absolute page 5 on input line 124.
+Package marginnote Info: right page because not two side mode on input line 124.
+Package marginnote Info: xpos seems to be 398.88046pt on input line 124.
 
 
 [3]
 
 [4] (./tables/total_inc_hhs_all.tex) (./tables/irate.tex) (./tables/wloan.tex) (./tables/money_lender.tex) (./tables/micro_finance.tex) (./tables/bill_all.tex) (./tables/pay_size_all.tex) (./tables/pay_freq.tex) (./tables/days_delinquent_all.tex) (./tables/balance_all.tex) (./tables/meanloansize.tex) (./tables/meanloanlength.tex) (./tables/y_avg.tex)
-Package marginnote Info: Margin note 7.1 is on absolute page 8 on input line 221.
-Package marginnote Info: right page because not two side mode on input line 221.
-Package marginnote Info: xpos seems to be 410.3287pt on input line 221.
+Package marginnote Info: Margin note 7.1 is on absolute page 8 on input line 161.
+Package marginnote Info: right page because not two side mode on input line 161.
+Package marginnote Info: xpos seems to be 410.3287pt on input line 161.
  (./tables/table_c_mean.tex) (./tables_rev/table_c_med.tex) (./tables/table_c_sd.tex) (./tables/table_amount_mean.tex) (./tables_rev/table_amount_med.tex) (./tables/table_amount_sd.tex) (./tables/table_bal_mean.tex) (./tables_rev/table_bal_med.tex) (./tables/table_bal_sd.tex) (./tables/table_pays_mean.tex) (./tables_rev/table_pays_med.tex) (./tables/table_pays_sd.tex) (./tables/table_p0_mean.tex) (./tables_rev/table_p0_med.tex) (./tables/table_p0_sd.tex) (./tables/table_shr_dc_mean.tex) (./tables_rev/table_shr_dc_med.tex) (./tables/table_shr_dc_sd.tex) (./tables/table_inc_mean.tex) (./tables_rev/table_inc_med.tex) (./tables/table_inc_sd.tex) (./tables/total_hhs_all.tex) (./tables/total_obs.tex) (./tables/total_inc_hhs_all.tex) (./tables/total_inc_obs_all.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1194,76 +1194,76 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [5] (./tables/bal_n0.tex) (./tables/out_bal.tex) (./tables/bal_0.tex)
 
 [6] (./tables/tcd_per_hh.tex) (./tables/t_rec.tex) (./tables/mdcp.tex) (./tables/mdcp4.tex)
-Package marginnote Info: Margin note 9.1 is on absolute page 9 on input line 247.
-Package marginnote Info: right page because not two side mode on input line 247.
-Package marginnote Info: xpos seems to be 107.88297pt on input line 247.
+Package marginnote Info: Margin note 9.1 is on absolute page 9 on input line 187.
+Package marginnote Info: right page because not two side mode on input line 187.
+Package marginnote Info: xpos seems to be 107.88297pt on input line 187.
 
 
 [7] (./tables/center.tex) (./tables/maynilad.tex) (./tables/atm.tex)
-Overfull \hbox (9.44292pt too wide) in paragraph at lines 265--266
+Overfull \hbox (9.44292pt too wide) in paragraph at lines 205--206
 \OT1/ppl/m/n/12 changes are more cor-re-lated with bill pay-ments than with con-sump-tion by us-ing changes
  []
 
 LaTeX Font Info:    Font shape `OML/ntxmi/m/it' will be
-(Font)              scaled to size 10.95pt on input line 278.
+(Font)              scaled to size 10.95pt on input line 218.
 LaTeX Font Info:    Font shape `OML/ntxmi/m/it' will be
-(Font)              scaled to size 8.0pt on input line 278.
+(Font)              scaled to size 8.0pt on input line 218.
 LaTeX Font Info:    Font shape `OML/ntxmi/m/it' will be
-(Font)              scaled to size 6.1pt on input line 278.
+(Font)              scaled to size 6.1pt on input line 218.
 LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 10.95pt on input line 278.
+(Font)              scaled to size 10.95pt on input line 218.
 LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 8.0pt on input line 278.
+(Font)              scaled to size 8.0pt on input line 218.
 LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 6.1pt on input line 278.
+(Font)              scaled to size 6.1pt on input line 218.
 LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 10.95pt on input line 278.
+(Font)              scaled to size 10.95pt on input line 218.
 LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 8.0pt on input line 278.
+(Font)              scaled to size 8.0pt on input line 218.
 LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 6.1pt on input line 278.
+(Font)              scaled to size 6.1pt on input line 218.
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 10.95pt on input line 278.
+(Font)              scaled to size 10.95pt on input line 218.
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 8.0pt on input line 278.
+(Font)              scaled to size 8.0pt on input line 218.
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 6.1pt on input line 278.
+(Font)              scaled to size 6.1pt on input line 218.
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 10.95pt on input line 278.
+(Font)              scaled to size 10.95pt on input line 218.
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 8.0pt on input line 278.
+(Font)              scaled to size 8.0pt on input line 218.
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 6.1pt on input line 278.
+(Font)              scaled to size 6.1pt on input line 218.
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 10.95pt on input line 278.
+(Font)              scaled to size 10.95pt on input line 218.
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 8.0pt on input line 278.
+(Font)              scaled to size 8.0pt on input line 218.
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 6.1pt on input line 278.
+(Font)              scaled to size 6.1pt on input line 218.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 10.95pt on input line 278.
+(Font)              scaled to size 10.95pt on input line 218.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 8.0pt on input line 278.
+(Font)              scaled to size 8.0pt on input line 218.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 6.1pt on input line 278.
+(Font)              scaled to size 6.1pt on input line 218.
 LaTeX Font Info:    Font shape `OML/ntxmi/b/it' will be
-(Font)              scaled to size 10.95pt on input line 278.
+(Font)              scaled to size 10.95pt on input line 218.
 LaTeX Font Info:    Font shape `OML/ntxmi/b/it' will be
-(Font)              scaled to size 8.0pt on input line 278.
+(Font)              scaled to size 8.0pt on input line 218.
 LaTeX Font Info:    Font shape `OML/ntxmi/b/it' will be
-(Font)              scaled to size 6.1pt on input line 278.
+(Font)              scaled to size 6.1pt on input line 218.
 LaTeX Font Info:    Font shape `LMS/ntxsy/b/n' will be
-(Font)              scaled to size 10.95pt on input line 278.
+(Font)              scaled to size 10.95pt on input line 218.
 LaTeX Font Info:    Font shape `LMS/ntxsy/b/n' will be
-(Font)              scaled to size 8.0pt on input line 278.
+(Font)              scaled to size 8.0pt on input line 218.
 LaTeX Font Info:    Font shape `LMS/ntxsy/b/n' will be
-(Font)              scaled to size 6.1pt on input line 278.
+(Font)              scaled to size 6.1pt on input line 218.
 LaTeX Font Info:    Font shape `LMX/ntxexx/b/n' will be
-(Font)              scaled to size 10.95pt on input line 278.
+(Font)              scaled to size 10.95pt on input line 218.
 LaTeX Font Info:    Font shape `LMX/ntxexx/b/n' will be
-(Font)              scaled to size 8.0pt on input line 278.
+(Font)              scaled to size 8.0pt on input line 218.
 LaTeX Font Info:    Font shape `LMX/ntxexx/b/n' will be
-(Font)              scaled to size 6.1pt on input line 278.
+(Font)              scaled to size 6.1pt on input line 218.
 
 
 [8]
@@ -1273,13 +1273,13 @@ LaTeX Font Info:    Font shape `LMX/ntxexx/b/n' will be
 [10]
 
 [11]
-Package marginnote Info: Margin note 14.1 is on absolute page 14 on input line 348.
-Package marginnote Info: right page because not two side mode on input line 348.
-Package marginnote Info: xpos seems to be 232.56221pt on input line 348.
+Package marginnote Info: Margin note 14.1 is on absolute page 14 on input line 288.
+Package marginnote Info: right page because not two side mode on input line 288.
+Package marginnote Info: xpos seems to be 232.56221pt on input line 288.
 
 
 [12]
-Overfull \hbox (8.25153pt too wide) in paragraph at lines 374--375
+Overfull \hbox (8.25153pt too wide) in paragraph at lines 314--315
 []\OT1/ppl/m/n/12 The house-hold's max-i-miza-tion prob-lem can then be writ-ten re-cur-sively where house-
  []
 
@@ -1292,7 +1292,7 @@ Overfull \hbox (8.25153pt too wide) in paragraph at lines 374--375
 [15] (./tables/bal_0.tex)
 
 [16] (./tables/Bb.tex)
-Overfull \hbox (7.2681pt too wide) in paragraph at lines 421--422
+Overfull \hbox (7.2681pt too wide) in paragraph at lines 361--362
 []\OT1/ppl/m/n/12 The es-ti-ma-tion strat-egy uses a sim-u-lated method of mo-ments ap-proach. This method
  []
 
@@ -1303,342 +1303,342 @@ Overfull \hbox (7.2681pt too wide) in paragraph at lines 421--422
 [18] (./tables/table_c_mean.tex) (./tables/table_c_mean_b.tex) (./tables/table_amount_mean.tex) (./tables/table_bill_mean_b.tex) (./tables/table_bal_mean.tex) (./tables/table_bal_mean_b.tex) (./tables/table_pays_mean.tex) (./tables/table_pays_mean_b.tex) (./tables/table_p0_mean.tex) (./tables/table_p0_mean_b.tex) (./tables/table_shr_dc_mean.tex) (./tables/table_shr_dc_mean_b.tex) (./tables/t_rec.tex) (./tables/table_t_rec_mean_b.tex) (./tables/bal_end_nc.tex) (./tables/table_bal_end_mean_b.tex)
 
 [19] (./tables/fit_pay_corr.tex) (./tables/fit_use_corr.tex)
-Package marginnote Info: Margin note 22.1 is on absolute page 23 on input line 508.
-Package marginnote Info: right page because not two side mode on input line 508.
-Package marginnote Info: xpos seems to be 514.70987pt on input line 508.
+Package marginnote Info: Margin note 22.1 is on absolute page 23 on input line 448.
+Package marginnote Info: right page because not two side mode on input line 448.
+Package marginnote Info: xpos seems to be 514.70987pt on input line 448.
 
 
 [20] (./tables/lend_cost_reg_b.tex) (./tables/del_cost_reg_b.tex) (./tables/visit_cost_reg_b.tex)
 LaTeX Font Info:    Freeze math alphabet allocation in version normal.
-(Font)              Allocated math groups: 15 (local: 2) on input line 518.
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 518.
+(Font)              Allocated math groups: 15 (local: 2) on input line 458.
+LaTeX Font Info:    Trying to load font information for U+bbm on input line 458.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/bbm-macros/ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 )
-LaTeX Font Info:    Undo math alphabet allocation in version normal on input line 518.
-LaTeX Font Info:    Undo math alphabet allocation in version normal on input line 518.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 518.
+LaTeX Font Info:    Undo math alphabet allocation in version normal on input line 458.
+LaTeX Font Info:    Undo math alphabet allocation in version normal on input line 458.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 458.
 
 
 [21]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 520.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 520.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 520.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 520.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    Undo math alphabet allocation in version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    Undo math alphabet allocation in version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 526.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 527.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 460.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 460.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 460.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 460.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    Undo math alphabet allocation in version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    Undo math alphabet allocation in version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 466.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 467.
  (./tables/rev_goal_reg_b.tex)
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 527.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 535.
-Package marginnote Info: Margin note 24.1 is on absolute page 24 on input line 535.
-Package marginnote Info: right page because not two side mode on input line 535.
-Package marginnote Info: xpos seems to be 196.85184pt on input line 535.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 535.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 535.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 467.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 475.
+Package marginnote Info: Margin note 24.1 is on absolute page 24 on input line 475.
+Package marginnote Info: right page because not two side mode on input line 475.
+Package marginnote Info: xpos seems to be 196.85184pt on input line 475.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 475.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 475.
  (./tables/p1_reg_b.tex) (./tables/p1_nl_b.tex)
 
 [22]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 539.
-Package marginnote Info: Margin note 25.1 is on absolute page 25 on input line 539.
-Package marginnote Info: right page because not two side mode on input line 539.
-Package marginnote Info: xpos seems to be 314.72786pt on input line 539.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 479.
+Package marginnote Info: Margin note 25.1 is on absolute page 25 on input line 479.
+Package marginnote Info: right page because not two side mode on input line 479.
+Package marginnote Info: xpos seems to be 314.72786pt on input line 479.
  (./tables/lend_cost_sum_reg_b.tex) (./tables/lend_cost_sum_nl_b.tex) (./tables/lend_cost_sum_hf_b.tex) (./tables_new/lend_cost_sum_lp_b.tex) (./tables_new/lend_cost_sum_ir_b.tex) (./tables/visit_cost_reg_b.tex) (./tables/visit_cost_nl_b.tex) (./tables/visit_cost_hf_b.tex) (./tables_new/visit_cost_lp_b.tex) (./tables_new/visit_cost_ir_b.tex) (./tables/mc_cost_reg_b.tex) (./tables/mc_cost_nl_b.tex) (./tables/mc_cost_hf_b.tex) (./tables_new/mc_cost_lp_b.tex) (./tables_new/mc_cost_ir_b.tex) (./tables/rev_goal_reg_b.tex) (./tables/rev_goal_reg_b.tex) (./tables/rev_goal_reg_b.tex) (./tables/rev_goal_reg_b.tex) (./tables/rev_goal_reg_b.tex) (./tables/p1_reg_b.tex) (./tables/p1_nl_b.tex) (./tables/p1_hf_b.tex) (./tables_new/p1_lp_b.tex) (./tables_new/p1_ir_b.tex)
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 563.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 563.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 563.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 563.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 563.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 563.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 563.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 563.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 563.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 503.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 503.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 503.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 503.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 503.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 503.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 503.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 503.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 503.
  (./tables/cv_comp_nl_b.tex)
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 569.
-Package marginnote Info: Margin note 25.2 is on absolute page 25 on input line 569.
-Package marginnote Info: right page because not two side mode on input line 569.
-Package marginnote Info: xpos seems to be 112.28296pt on input line 569.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 569.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 569.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 582.
-Package marginnote Info: Margin note 25.3 is on absolute page 26 on input line 582.
-Package marginnote Info: right page because not two side mode on input line 582.
-Package marginnote Info: xpos seems to be 314.72786pt on input line 582.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 509.
+Package marginnote Info: Margin note 25.2 is on absolute page 25 on input line 509.
+Package marginnote Info: right page because not two side mode on input line 509.
+Package marginnote Info: xpos seems to be 112.28296pt on input line 509.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 509.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 509.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 522.
+Package marginnote Info: Margin note 25.3 is on absolute page 26 on input line 522.
+Package marginnote Info: right page because not two side mode on input line 522.
+Package marginnote Info: xpos seems to be 314.72786pt on input line 522.
  (./tables/cv_comp_nl_b.tex) (./tables/cv_comp_hf_b.tex) (./tables_new/cv_comp_lp_b.tex) (./tables_new/cv_comp_ir_b.tex) (./tables/cons_reg_b.tex) (./tables/cons_nl_b.tex) (./tables/cons_hf_b.tex) (./tables_new/cons_lp_b.tex) (./tables_new/cons_ir_b.tex) (./tables/cons_val_reg_b.tex) (./tables/cons_val_nl_b.tex) (./tables/cons_val_hf_b.tex) (./tables_new/cons_val_lp_b.tex) (./tables_new/cons_val_ir_b.tex) (./tables/debt_reg_b.tex) (./tables/debt_nl_b.tex) (./tables/debt_hf_b.tex) (./tables_new/debt_lp_b.tex) (./tables_new/debt_ir_b.tex) (./tables/Aborr_abs_reg_b.tex) (./tables/Aborr_abs_nl_b.tex) (./tables/Aborr_abs_hf_b.tex) (./tables_new/Aborr_abs_lp_b.tex) (./tables_new/Aborr_abs_ir_b.tex)
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 606.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 606.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 606.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 606.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 606.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 606.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 546.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 546.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 546.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 546.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 546.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 546.
 
 
 [23]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 610.
-Package marginnote Info: Margin note 26.1 is on absolute page 26 on input line 610.
-Package marginnote Info: right page because not two side mode on input line 610.
-Package marginnote Info: xpos seems to be 395.9851pt on input line 610.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 610.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 610.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 614.
-Package marginnote Info: Margin note 26.2 is on absolute page 27 on input line 614.
-Package marginnote Info: right page because not two side mode on input line 614.
-Package marginnote Info: xpos seems to be 336.94438pt on input line 614.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 550.
+Package marginnote Info: Margin note 26.1 is on absolute page 26 on input line 550.
+Package marginnote Info: right page because not two side mode on input line 550.
+Package marginnote Info: xpos seems to be 395.9851pt on input line 550.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 550.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 550.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 554.
+Package marginnote Info: Margin note 26.2 is on absolute page 27 on input line 554.
+Package marginnote Info: right page because not two side mode on input line 554.
+Package marginnote Info: xpos seems to be 336.94438pt on input line 554.
 
 
 [24] (./tables/p1_hf_b.tex)
 
 [25]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 629.
-Package marginnote Info: Margin note 28.1 is on absolute page 28 on input line 629.
-Package marginnote Info: right page because not two side mode on input line 629.
-Package marginnote Info: xpos seems to be 94.65814pt on input line 629.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 631.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 631.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 633.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 633.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 633.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 633.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 569.
+Package marginnote Info: Margin note 28.1 is on absolute page 28 on input line 569.
+Package marginnote Info: right page because not two side mode on input line 569.
+Package marginnote Info: xpos seems to be 94.65814pt on input line 569.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 571.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 571.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 573.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 573.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 573.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 573.
 
 
 [26]
 
 [27] (./tables/date_N.tex) (./tables/full_obs.tex) (./tables/date_N.tex) (./tables/class_drop.tex) (./tables/pay_drop.tex) (./tables/chigh_drop.tex)
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 743.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 743.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 683.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 683.
  (./tables/amount_drop.tex)
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 743.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 743.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 683.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 683.
  (./tables/bal_drop.tex)
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 743.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 743.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 683.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 683.
  (./tables/paylh_drop.tex) (./tables/SHH_drop.tex) (./tables/datedrop.tex) (./tables/full_obs.tex)
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 743.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 683.
 
 
 [28]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 754.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 754.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 754.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 754.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 754.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 754.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 754.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 754.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 754.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 754.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 754.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 754.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 754.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 754.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 754.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 754.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 754.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 754.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 754.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 754.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 754.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 754.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 755.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 755.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 755.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 755.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 755.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 694.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 694.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 694.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 694.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 694.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 694.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 694.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 694.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 694.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 694.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 694.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 694.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 694.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 694.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 694.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 694.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 694.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 694.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 694.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 694.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 694.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 694.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 695.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 695.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 695.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 695.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 695.
 
 
 [29]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 771.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 773.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 775.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 777.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 786.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 786.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 789.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 792.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 792.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 792.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 792.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 792.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 792.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 792.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 711.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 713.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 715.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 717.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 726.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 726.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 729.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 732.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 732.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 732.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 732.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 732.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 732.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 732.
 
 
 [30]
 <tables/pay_to_dc_graph.png, id=114, 891.83188pt x 648.4225pt>
 File: tables/pay_to_dc_graph.png Graphic file (type png)
 <use tables/pay_to_dc_graph.png>
-Package pdftex.def Info: tables/pay_to_dc_graph.png  used on input line 805.
+Package pdftex.def Info: tables/pay_to_dc_graph.png  used on input line 745.
 (pdftex.def)             Requested size: 356.72644pt x 259.3644pt.
 
 
 [31 <./tables/pay_to_dc_graph.png>] (./tables/f_10.tex) (./tables/f_11.tex) (./tables/c_12.tex) (./tables/c_21.tex) (./tables/c_41.tex) (./tables/c_61.tex) (./tables/c_81.tex) (./tables/c_101.tex) (./tables/c_151.tex) (./tables/c_200.tex)
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 837.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 840.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 777.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 780.
 
-Underfull \hbox (badness 1242) in paragraph at lines 841--842
+Underfull \hbox (badness 1242) in paragraph at lines 781--782
 \OT1/ppl/m/n/10 sive of the value added tax.
  []
 
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 846.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 846.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 855.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 855.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 855.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 857.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 859.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 863.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 866.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 867.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 867.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 867.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 867.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 867.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 867.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 786.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 786.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 795.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 795.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 795.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 797.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 799.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 803.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 806.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 807.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 807.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 807.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 807.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 807.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 807.
 
 
 [32]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 880.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 880.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 880.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 880.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 880.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 880.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 880.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 880.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 881.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 881.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 881.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 881.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 881.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 893.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 893.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 895.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 895.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 898.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 898.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 901.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 905.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 905.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 905.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 905.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 905.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 905.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 905.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 820.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 820.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 820.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 820.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 820.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 820.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 820.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 820.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 821.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 821.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 821.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 821.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 821.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 833.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 833.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 835.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 835.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 838.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 838.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 841.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 845.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 845.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 845.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 845.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 845.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 845.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 845.
 
 
 [33]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
  (./tables/y_avg.tex)
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
  (./tables/y_cv.tex)
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
  (./tables/irate.tex)
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
  (./tables/p_int.tex) (./tables/p_slope.tex)
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
-LaTeX Font Info:    Trying to load font information for OMS+ppl on input line 948.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
+LaTeX Font Info:    Trying to load font information for OMS+ppl on input line 888.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/omsppl.fd
 File: omsppl.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 948.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 888.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
  (./tables/bal_0.tex)
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 948.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 888.
  (./tables/table_c_sd.tex) (./tables/table_c_sd_b.tex) (./tables/table_amount_sd.tex) (./tables/table_bill_sd_b.tex) (./tables/table_bal_sd.tex) (./tables/table_bal_sd_b.tex) (./tables/table_pays_sd.tex) (./tables/table_pays_sd_b.tex) (./tables/table_p0_sd.tex) (./tables/table_p0_sd_b.tex) (./tables/table_shr_dc_sd.tex) (./tables/table_shr_dc_sd_b.tex) (./tables/t_rec_sd.tex) (./tables/table_t_rec_sd_b.tex) (./tables/bal_end_sd_nc.tex) (./tables/table_bal_end_sd_b.tex)
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 970.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 973.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 910.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 913.
 
 
 [34]
-Overfull \hbox (15.3228pt too wide) in paragraph at lines 987--988
+Overfull \hbox (15.3228pt too wide) in paragraph at lines 927--928
 \OT1/ppl/m/n/12 in-stalling this new tech-nol-ogy. Hey-mans et al. [2014] sur-veyed eight large wa-ter providers
  []
 
 
 
 [35]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1002.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1002.
-Package marginnote Info: Margin note 38.1 is on absolute page 38 on input line 1002.
-Package marginnote Info: right page because not two side mode on input line 1002.
-Package marginnote Info: xpos seems to be 343.82094pt on input line 1002.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1003.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 942.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 942.
+Package marginnote Info: Margin note 38.1 is on absolute page 38 on input line 942.
+Package marginnote Info: right page because not two side mode on input line 942.
+Package marginnote Info: xpos seems to be 343.82094pt on input line 942.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 943.
  (./tables/est_alpha_b.tex) (./tables_new/est_alpha_bhigh.tex) (./tables/est_alpha_blow.tex) (./tables/est_alpha_chigh.tex) (./tables/est_alpha_clow.tex) (./tables/est_fc_b.tex) (./tables_new/est_fc_bhigh.tex) (./tables/est_fc_blow.tex) (./tables/est_fc_chigh.tex) (./tables/est_fc_clow.tex) (./tables/est_pc_b.tex) (./tables_new/est_pc_bhigh.tex) (./tables/est_pc_blow.tex) (./tables/est_pc_chigh.tex) (./tables/est_pc_clow.tex) (./tables/cv_comp_nl_b.tex) (./tables_new/cv_comp_nl_bhigh.tex) (./tables/cv_comp_nl_blow.tex) (./tables/cv_comp_nl_chigh.tex) (./tables/cv_comp_nl_clow.tex) (./tables/cv_comp_hf_b.tex) (./tables_new/cv_comp_hf_bhigh.tex) (./tables/cv_comp_hf_blow.tex) (./tables/cv_comp_hf_chigh.tex) (./tables/cv_comp_hf_clow.tex) (./tables_new/cv_comp_lp_b.tex) (./tables_new/cv_comp_lp_bhigh.tex) (./tables_new/cv_comp_lp_blow.tex) (./tables_new/cv_comp_lp_chigh.tex) (./tables_new/cv_comp_lp_clow.tex)
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1012.
-Package marginnote Info: Margin note 38.2 is on absolute page 38 on input line 1012.
-Package marginnote Info: right page because not two side mode on input line 1012.
-Package marginnote Info: xpos seems to be 206.43013pt on input line 1012.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 952.
+Package marginnote Info: Margin note 38.2 is on absolute page 38 on input line 952.
+Package marginnote Info: right page because not two side mode on input line 952.
+Package marginnote Info: xpos seems to be 206.43013pt on input line 952.
  (./tables_new/cv_comp_ir_b.tex) (./tables_new/cv_comp_ir_bhigh.tex) (./tables_new/cv_comp_ir_blow.tex) (./tables_new/cv_comp_ir_chigh.tex) (./tables_new/cv_comp_ir_clow.tex)
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1015.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1018.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1026.
-Package marginnote Info: Margin note 38.3 is on absolute page 38 on input line 1026.
-Package marginnote Info: right page because not two side mode on input line 1026.
-Package marginnote Info: xpos seems to be 94.65814pt on input line 1026.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1028.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1028.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1028.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1028.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 955.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 958.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 966.
+Package marginnote Info: Margin note 38.3 is on absolute page 38 on input line 966.
+Package marginnote Info: right page because not two side mode on input line 966.
+Package marginnote Info: xpos seems to be 94.65814pt on input line 966.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 968.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 968.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 968.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 968.
 
 
 [36] (./tables_new/cv_comp_nl_linp_b.tex) (./tables_new/cv_comp_hf_linp_b.tex) (./tables_new/cv_comp_lp_linp_b.tex) (./tables_new/cv_comp_ir_linp_b.tex) (./tables_new/cons_reg_linp_b.tex) (./tables_new/cons_nl_linp_b.tex) (./tables_new/cons_hf_linp_b.tex) (./tables_new/cons_lp_linp_b.tex) (./tables_new/cons_ir_linp_b.tex) (./tables_new/cons_val_reg_linp_b.tex) (./tables_new/cons_val_nl_linp_b.tex) (./tables_new/cons_val_hf_linp_b.tex) (./tables_new/cons_val_lp_linp_b.tex) (./tables_new/cons_val_ir_linp_b.tex) (./tables_new/debt_reg_linp_b.tex) (./tables_new/debt_nl_linp_b.tex) (./tables_new/debt_hf_linp_b.tex) (./tables_new/debt_lp_linp_b.tex) (./tables_new/debt_ir_linp_b.tex) (./tables_new/Aborr_abs_reg_linp_b.tex) (./tables_new/Aborr_abs_nl_linp_b.tex) (./tables_new/Aborr_abs_hf_linp_b.tex) (./tables_new/Aborr_abs_lp_linp_b.tex) (./tables_new/Aborr_abs_ir_linp_b.tex)
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1053.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1053.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1053.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1053.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1053.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1053.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1053.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input line 1053.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 993.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 993.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 993.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 993.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 993.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 993.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 993.
+LaTeX Font Info:    No math alphabet change to frozen version normal on input line 993.
  (build/water_bill_paper_wjv_rev_highlighted.bbl
 
 [37]
