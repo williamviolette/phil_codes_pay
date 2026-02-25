@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex build/water_bill_paper_wjv_rev_highlighted"] 1771981279.92485 "build/water_bill_paper_wjv_rev_highlighted.aux" "build/water_bill_paper_wjv_rev_highlighted.bbl" "build/water_bill_paper_wjv_rev_highlighted" 1771981284.60823 0
-  "./ref.bib" 1771021675.69969 15871 ab71290d61aac75426119adf84eae786 ""
+["bibtex build/water_bill_paper_wjv_rev_highlighted"] 1771987671.22753 "build/water_bill_paper_wjv_rev_highlighted.aux" "build/water_bill_paper_wjv_rev_highlighted.bbl" "build/water_bill_paper_wjv_rev_highlighted" 1771987709.1245 0
+  "./ref.bib" 1771987128.69283 16633 7e423f94ea52d8f4879b1f22afdc7d10 ""
   "/usr/local/texlive/2025/texmf-dist/bibtex/bst/natbib/abbrvnat.bst" 1233624470 26532 66bed5cc59495faaa3f9ae9af9fa5e42 ""
-  "build/water_bill_paper_wjv_rev_highlighted.aux" 1771981283.83546 17817 daa693aee2a0a701a70f9c48eec654a1 "pdflatex"
+  "build/water_bill_paper_wjv_rev_highlighted.aux" 1771987708.41514 18124 6f8eb42340fc52b313ca88f72413917b "pdflatex"
   (generated)
   "build/water_bill_paper_wjv_rev_highlighted.bbl"
   "build/water_bill_paper_wjv_rev_highlighted.blg"
   (rewritten before read)
-["pdflatex"] 1771981280.17562 "/Users/willviolette/Library/CloudStorage/Dropbox/Mac/Documents/GitHub/phil_codes_pay/paper/water_bill_paper_wjv_rev_highlighted.tex" "build/water_bill_paper_wjv_rev_highlighted.pdf" "water_bill_paper_wjv_rev_highlighted" 1771981284.60858 0
-  "/Users/willviolette/Library/CloudStorage/Dropbox/Mac/Documents/GitHub/phil_codes_pay/paper/water_bill_paper_wjv_rev_highlighted.tex" 1771981275.37501 121347 e17b8007e8f6fe564ab1ac5c39ad9ef2 ""
+["pdflatex"] 1771987704.64114 "/Users/willviolette/Library/CloudStorage/Dropbox/Mac/Documents/GitHub/phil_codes_pay/paper/water_bill_paper_wjv_rev_highlighted.tex" "build/water_bill_paper_wjv_rev_highlighted.pdf" "water_bill_paper_wjv_rev_highlighted" 1771987709.12486 0
+  "/Users/willviolette/Library/CloudStorage/Dropbox/Mac/Documents/GitHub/phil_codes_pay/paper/water_bill_paper_wjv_rev_highlighted.tex" 1771987704.35031 119157 224b2d7325fead6996e859c0262806fa ""
   "/Users/willviolette/Library/texlive/2025/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk" 1770743936.97371 8424 0dd4caaaf30914b1ae800a468079e933 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -274,8 +274,8 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1769800233 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "build/water_bill_paper_wjv_rev_highlighted.aux" 1771981283.83546 17817 daa693aee2a0a701a70f9c48eec654a1 "pdflatex"
-  "build/water_bill_paper_wjv_rev_highlighted.bbl" 1771981280.15922 14516 dbf41897afb09882fb5da8f4dd06fd18 "bibtex build/water_bill_paper_wjv_rev_highlighted"
+  "build/water_bill_paper_wjv_rev_highlighted.aux" 1771987708.41514 18124 6f8eb42340fc52b313ca88f72413917b "pdflatex"
+  "build/water_bill_paper_wjv_rev_highlighted.bbl" 1771987671.43298 15161 5344f7cfd5b7e8f72655fd9197103760 "bibtex build/water_bill_paper_wjv_rev_highlighted"
   "tables/Aborr_abs_hf_b.tex" 1768334517.17538 4 63a5060ae60be54c548b22f85e50e533 ""
   "tables/Aborr_abs_nl_b.tex" 1768334517.17556 4 d1ca62983fb9a3d15d1f09530de99858 ""
   "tables/Aborr_abs_reg_b.tex" 1768334517.17572 4 9947c7f0524965d901fb6f43b1274695 ""
@@ -480,7 +480,7 @@
   "tables_rev/table_p0_med.tex" 1770824043 5 63af5004b8916aae1cba4f2c1e604f5d ""
   "tables_rev/table_pays_med.tex" 1770824040 3 04ecb1fa28506ccb6f72b12c0245ddbc ""
   "tables_rev/table_shr_dc_med.tex" 1770824044 5 295a2b1a89e65de7f25c6705209c7ea4 ""
-  "water_bill_paper_wjv_rev_highlighted.tex" 1771981275.37501 121347 e17b8007e8f6fe564ab1ac5c39ad9ef2 ""
+  "water_bill_paper_wjv_rev_highlighted.tex" 1771987704.35031 119157 224b2d7325fead6996e859c0262806fa ""
   (generated)
   "build/water_bill_paper_wjv_rev_highlighted.aux"
   "build/water_bill_paper_wjv_rev_highlighted.log"
