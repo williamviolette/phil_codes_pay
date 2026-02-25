@@ -1,56 +1,56 @@
 This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
-The top-level auxiliary file: water_bill_paper_wjv_rev.aux
+The top-level auxiliary file: build/water_bill_paper_wjv_rev.aux
 The style file: abbrvnat.bst
 Database file #1: ref.bib
 Warning--entry type for "WEF2025WaterGap" isn't style-file defined
---line 2 of file ref.bib
+--line 22 of file ref.bib
 Warning--entry type for "mnwd_guidelines_bills_payments" isn't style-file defined
---line 83 of file ref.bib
+--line 103 of file ref.bib
 Warning--entry type for "ppcwater_ur_billing" isn't style-file defined
---line 92 of file ref.bib
+--line 112 of file ref.bib
 Warning--empty journal in anand2014consuming
 Warning--empty journal in hannagan2015income
 Warning--empty journal in komives2006distributional
-You've used 55 entries,
+You've used 57 entries,
             2773 wiz_defined-function locations,
-            912 strings with 13880 characters,
-and the built_in function-call counts, 22969 in all, are:
-= -- 2096
-> -- 1171
-< -- 41
-+ -- 404
-- -- 348
-* -- 1803
-:= -- 3561
-add.period$ -- 169
-call.type$ -- 55
-change.case$ -- 282
-chr.to.int$ -- 54
-cite$ -- 113
-duplicate$ -- 1054
-empty$ -- 1981
-format.name$ -- 445
-if$ -- 4765
+            924 strings with 14326 characters,
+and the built_in function-call counts, 23765 in all, are:
+= -- 2170
+> -- 1211
+< -- 42
++ -- 418
+- -- 360
+* -- 1863
+:= -- 3685
+add.period$ -- 177
+call.type$ -- 57
+change.case$ -- 292
+chr.to.int$ -- 56
+cite$ -- 117
+duplicate$ -- 1090
+empty$ -- 2051
+format.name$ -- 459
+if$ -- 4932
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 46
-newline$ -- 287
-num.names$ -- 220
-pop$ -- 530
+missing$ -- 47
+newline$ -- 299
+num.names$ -- 228
+pop$ -- 551
 preamble$ -- 1
-purify$ -- 226
+purify$ -- 234
 quote$ -- 0
-skip$ -- 808
+skip$ -- 835
 stack$ -- 0
-substring$ -- 910
-swap$ -- 53
+substring$ -- 930
+swap$ -- 55
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 595
+type$ -- 617
 warning$ -- 3
-while$ -- 232
+while$ -- 240
 width$ -- 0
-write$ -- 712
+write$ -- 741
 (There were 6 warnings)

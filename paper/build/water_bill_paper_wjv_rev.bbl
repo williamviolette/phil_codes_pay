@@ -1,4 +1,4 @@
-\begin{thebibliography}{55}
+\begin{thebibliography}{57}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -293,6 +293,13 @@ J.~Morduch.
 \newblock \emph{Journal of economic literature}, 37\penalty0 (4):\penalty0
   1569--1614, 1999.
 
+\bibitem[{New York Public Service Commission}(2024)]{nycrr_11_15}
+{New York Public Service Commission}.
+\newblock 16 nycrr § 11.15 -- late payment charge.
+\newblock
+  \url{https://www.law.cornell.edu/regulations/new-york/16-NYCRR-11.15}, 2024.
+\newblock New York Codes, Rules and Regulations, Title 16, Section 11.15.
+
 \bibitem[{Northeast Group}(2014)]{northeast2014}
 {Northeast Group}.
 \newblock Sub-saharan africa electricity metering: Market forecast (2014 to
@@ -304,6 +311,14 @@ J.~Morduch.
 \newblock Ur rule 6: Billing and collection, 2026.
 \newblock URL \url{https://ppcwater.gov.ph/about-us/utility-rules/ur-billing/}.
 \newblock Accessed: 2026-02-11.
+
+\bibitem[Shavit et~al.(2024)Shavit, Krause, and
+  Polemio]{shavit_krause_polemio_2024}
+Y.~Shavit, A.~Krause, and J.~Polemio.
+\newblock Household water arrearages and late fees: Evidence from jerusalem.
+\newblock \emph{Water Economics and Policy}, 9\penalty0 (2):\penalty0 1--18,
+  2024.
+\newblock \doi{10.1142/S2382624X24500050}.
 
 \bibitem[Stiglitz(1990)]{stiglitz1990peer}
 J.~E. Stiglitz.
