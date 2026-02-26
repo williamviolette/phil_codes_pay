@@ -1,4 +1,4 @@
-\begin{thebibliography}{57}
+\begin{thebibliography}{58}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -186,6 +186,11 @@ K.~Komives, J.~Halpern, V.~Foster, Q.~T. Wodon, and R.~Abdullah.
 J.-J. Laffont.
 \newblock \emph{Regulation and development}.
 \newblock Cambridge University Press, 2005.
+
+\bibitem[Laffont and Tirole(1993)]{laffont1993theory}
+J.-J. Laffont and J.~Tirole.
+\newblock \emph{A Theory of Incentives in Procurement and Regulation}.
+\newblock MIT Press, 1993.
 
 \bibitem[Laibson et~al.(2007)Laibson, Repetto, and Tobacman]{laibson2007estimating}
 D.~Laibson, A.~Repetto, and J.~Tobacman.
