@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex build/water_bill_paper_wjv_final"] 1775524647.69024 "build/water_bill_paper_wjv_final.aux" "build/water_bill_paper_wjv_final.bbl" "build/water_bill_paper_wjv_final" 1775525795.01833 0
+["bibtex build/water_bill_paper_wjv_final"] 1775524647.69024 "build/water_bill_paper_wjv_final.aux" "build/water_bill_paper_wjv_final.bbl" "build/water_bill_paper_wjv_final" 1775526119.53123 0
   "./ref.bib" 1775524613.16332 16633 7e423f94ea52d8f4879b1f22afdc7d10 ""
   "/usr/local/texlive/2025/texmf-dist/bibtex/bst/natbib/abbrvnat.bst" 1233624470 26532 66bed5cc59495faaa3f9ae9af9fa5e42 ""
-  "build/water_bill_paper_wjv_final.aux" 1775525794.26443 15871 b1c92add19ad7287e231251705cec3f0 "pdflatex"
+  "build/water_bill_paper_wjv_final.aux" 1775526118.87097 15871 b1c92add19ad7287e231251705cec3f0 "pdflatex"
   (generated)
   "build/water_bill_paper_wjv_final.bbl"
   "build/water_bill_paper_wjv_final.blg"
   (rewritten before read)
-["pdflatex"] 1775525792.05314 "/Users/willviolette/Library/CloudStorage/Dropbox/Mac/Documents/GitHub/phil_codes_pay/paper/water_bill_paper_wjv_final.tex" "build/water_bill_paper_wjv_final.pdf" "water_bill_paper_wjv_final" 1775525795.01874 0
-  "/Users/willviolette/Library/CloudStorage/Dropbox/Mac/Documents/GitHub/phil_codes_pay/paper/water_bill_paper_wjv_final.tex" 1775525791.84636 102545 3b7a0b5175aaf07dcc377908ccf4c1db ""
+["pdflatex"] 1775526116.5294 "/Users/willviolette/Library/CloudStorage/Dropbox/Mac/Documents/GitHub/phil_codes_pay/paper/water_bill_paper_wjv_final.tex" "build/water_bill_paper_wjv_final.pdf" "water_bill_paper_wjv_final" 1775526119.53157 0
+  "/Users/willviolette/Library/CloudStorage/Dropbox/Mac/Documents/GitHub/phil_codes_pay/paper/water_bill_paper_wjv_final.tex" 1775526111 102545 3b7a0b5175aaf07dcc377908ccf4c1db ""
   "/Users/willviolette/Library/texlive/2025/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk" 1770743936.97371 8424 0dd4caaaf30914b1ae800a468079e933 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -273,10 +273,10 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1769800233 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "build/water_bill_paper_wjv_final.aux" 1775525794.26443 15871 b1c92add19ad7287e231251705cec3f0 "pdflatex"
+  "build/water_bill_paper_wjv_final.aux" 1775526118.87097 15871 b1c92add19ad7287e231251705cec3f0 "pdflatex"
   "build/water_bill_paper_wjv_final.bbl" 1775524647.87637 15161 5344f7cfd5b7e8f72655fd9197103760 "bibtex build/water_bill_paper_wjv_final"
   "tables/pay_to_dc_graph.png" 1768334517.33004 125211 a11ad807d7b5968315a2ddf1c6c70226 ""
-  "water_bill_paper_wjv_final.tex" 1775525791.84636 102545 3b7a0b5175aaf07dcc377908ccf4c1db ""
+  "water_bill_paper_wjv_final.tex" 1775526111 102545 3b7a0b5175aaf07dcc377908ccf4c1db ""
   (generated)
   "build/water_bill_paper_wjv_final.aux"
   "build/water_bill_paper_wjv_final.log"
